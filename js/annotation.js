@@ -19,7 +19,7 @@ function checkEmptyAnnotationsContainer() {
             emptyMessage.classList.add('empty-annotation-message');
             emptyMessage.innerHTML = `
                 <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
-                    <img src="../assets/list-is-empty-unscreen.gif" alt="list-is-empty-unscreen.gif" style="width:30%;" >
+                    <img src="../assets/list-is-empty-unscreen.gif" alt="list-is-empty-unscreen1.gif" style="width:20%;" >
                     <p style="color:#000;">Nenhuma Anotação no Momento</p>
                 </div>
             `;
@@ -46,10 +46,10 @@ function Update() {
         const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
 
         if (iconAnnotation) {
-            console.log("Container não está vazio");
+            // console.log("Container não está vazio");
             iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
         } else {
-            console.log("Container está vazio");
+            // console.log("Container está vazio");
             iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
         }
 
@@ -265,6 +265,7 @@ function showAutoCloseAlert(logs) {
         timer: 2000,
         heightAuto: false,
         timerProgressBar: true,
+        allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
             const timer = Swal.getPopup().querySelector('b');
@@ -704,3 +705,22 @@ function limitText(container, maxChars, maxWords) {
 
 Update()
 checkEmptyAnnotationsContainer()
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const iconAnnotation = checkEmptyAnnotationsContainer();
+    const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
+
+    if (iconAnnotation) {
+        console.log("Container não está vazio");
+        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
+    } else {
+        console.log("Container está vazio");
+        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
+    }
+
+    // Atualize os ícones para garantir que a nova configuração seja aplicada
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
+    }
+});

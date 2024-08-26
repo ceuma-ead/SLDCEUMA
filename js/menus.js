@@ -6,6 +6,7 @@ function abrirSumario() {
     botaoAbrirSumario.addEventListener('click', function(evento) {
         evento.stopPropagation();
 
+
         // Fecha o menu de anotações, se estiver aberto
         fecharMenuAnotacoes();
 
@@ -41,6 +42,10 @@ function abrirAnotacoes() {
     botaoAbrirAnotacoes.addEventListener('click', function(evento) {
         evento.stopPropagation();
 
+        // verificar se container é vazio pra mudar o icon
+        const iconAnnotation = checkEmptyAnnotationsContainer();
+
+
         // Fecha o menu de sumário, se estiver aberto
         fecharMenuSumario();
 
@@ -58,7 +63,7 @@ function abrirAnotacoes() {
             botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Fechar Anotações ❌');
             vizioon_anotation.innerHTML = `Fechar Anotações ❌`
         } else {
-            iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker');
+            iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
             botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
              vizioon_anotation.innerHTML = `Veja Suas Anotações Aqui 🤩!!!`
         }
@@ -106,7 +111,12 @@ function fecharMenuAnotacoes() {
         menuAnotacoes.classList.remove('open-annotation');
 
         
-        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker');
+        // verificar se container é vazio pra mudar o icon
+        const iconAnnotation = checkEmptyAnnotationsContainer();
+
+
+        
+        iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
         botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
         if(vizioon_anotation){
             vizioon_anotation.innerHTML = `Veja Suas Anotações Aqui 🤩!!!`
@@ -121,20 +131,5 @@ function fecharMenuAnotacoes() {
 document.addEventListener('DOMContentLoaded', function() {
     abrirSumario();
     abrirAnotacoes();
-    const iconAnnotation = checkEmptyAnnotationsContainer();
-    const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
-
-    if (iconAnnotation) {
-        console.log("Container não está vazio");
-        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
-    } else {
-        console.log("Container está vazio");
-        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
-    }
-
-    // Atualize os ícones para garantir que a nova configuração seja aplicada
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
-    }
 });
 

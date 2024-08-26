@@ -36,7 +36,9 @@ function abrirAnotacoes() {
   var botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
   var menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
   botaoAbrirAnotacoes.addEventListener('click', function (evento) {
-    evento.stopPropagation(); // Fecha o menu de sumário, se estiver aberto
+    evento.stopPropagation(); // verificar se container é vazio pra mudar o icon
+
+    var iconAnnotation = checkEmptyAnnotationsContainer(); // Fecha o menu de sumário, se estiver aberto
 
     fecharMenuSumario();
     menuAnotacoes.classList.toggle('open-annotation'); // Pegar ID Personalizado para Mudar o Nome do Tooltip...
@@ -50,7 +52,7 @@ function abrirAnotacoes() {
       botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Fechar Anotações ❌');
       vizioon_anotation.innerHTML = "Fechar Anota\xE7\xF5es \u274C";
     } else {
-      iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker');
+      iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
       botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
       vizioon_anotation.innerHTML = "Veja Suas Anota\xE7\xF5es Aqui \uD83E\uDD29!!!";
     }
@@ -91,8 +93,10 @@ function fecharMenuAnotacoes() {
 
   if (menuAnotacoes.classList.contains('open-annotation')) {
     var vizioon_anotation = document.querySelector(".vizion-annotation");
-    menuAnotacoes.classList.remove('open-annotation');
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker');
+    menuAnotacoes.classList.remove('open-annotation'); // verificar se container é vazio pra mudar o icon
+
+    var iconAnnotation = checkEmptyAnnotationsContainer();
+    iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
     botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
 
     if (vizioon_anotation) {
@@ -109,19 +113,4 @@ function fecharMenuAnotacoes() {
 document.addEventListener('DOMContentLoaded', function () {
   abrirSumario();
   abrirAnotacoes();
-  var iconAnnotation = checkEmptyAnnotationsContainer();
-  var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
-
-  if (iconAnnotation) {
-    console.log("Container não está vazio");
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
-  } else {
-    console.log("Container está vazio");
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
-  } // Atualize os ícones para garantir que a nova configuração seja aplicada
-
-
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
-  }
 });

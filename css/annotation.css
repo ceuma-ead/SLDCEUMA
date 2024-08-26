@@ -405,6 +405,17 @@ a:hover {
     right: 0%; 
 }
 
+.empty-annotation-message{
+    -moz-window-dragging: none;
+    -webkit-user-drag: none;
+    
+    height: 100%;
+}
+
+.empty-annotation-message img{
+    -moz-window-dragging: none;
+    -webkit-user-drag: none;
+}
 
 .highlight {
     background-color: #000000;
