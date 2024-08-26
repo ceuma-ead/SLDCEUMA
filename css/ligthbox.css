@@ -1,0 +1,291 @@
+@import url(./variaveis.css);
+
+.container-img-lightbox-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+    padding: 5rem;
+    /* background-color: aqua; */
+}
+
+.item-ligthbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.item-ligthbox-img {
+    max-width: 100%; /* Evita que a imagem seja maior que o contêiner */
+    max-height: 100%; /* Evita que a imagem seja maior que o contêiner */
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 2px solid var(--linha-de-borda-font-imagem);
+    position: relative;
+    transition: all 0.4s;
+    background-color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-ligthbox-img:hover {
+    transform: translateY(-0.5rem);
+    border: 2px solid rgb(255, 0, 0);
+}
+
+.item-ligthbox img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Garante que a imagem mantenha a proporção correta */
+    max-width:var(--largura-de-image-inicial-api); /* Evita que a imagem seja maior que o contêiner */
+    max-height: var(--altura-de-image-inicial-api); /* Evita que a imagem seja maior que o contêiner */
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-window-dragging: none;
+    filter: blur(var(--desfoque-da-imagem-inicial));
+}
+
+.description {
+    text-align: var(--alinhamento-do-texto-paragrafo);
+    /* Centraliza o texto */
+    /* background-color: aqua; */
+    font-family: var(--familia-da-font-paragrafo);
+    font-weight: var(--largura-para-paragrafor-imagem);
+    border-bottom: 2px solid var(--linha-de-borda-font-imagem);
+    padding: 0.5rem;
+    font-size: var(--tamanho-de-font-para-paragrafo-imagem);
+    font-style: var( --estilo-para-font-paragrafo);
+    margin-top: 8px;
+    color: var(--cor-da-font-paragrafo);
+    /* Espaçamento entre a imagem e o texto */
+}
+
+.lb-data .lb-close {
+    background-color: red;
+    position: absolute;
+    /* inset:0; */
+    border: 1px solid white;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 100%;
+    background-position: center;
+}
+
+.toggle-lupa {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3rem;
+    border-radius: 100rem;
+    background: var(--cor-de-fundo-da-lupa);
+    border: none;
+    color: var(--cor-de-fundo-do-icone);
+
+}
+
+
+
+.toggle-lupa>svg {
+    
+    width: var(--tamanho-do-texto-icone);
+    height: var(--tamanho-do-texto-icone);
+}
+
+.lightboxOverlay {
+    position: fixed !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: brown; */
+
+}
+
+.lightbox {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.lb-outerContainer {
+    width: 85% !important;
+    height: 85% !important;
+    /* background-color: black; */
+    background:none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.lb-dataContainer {
+    width: 85.7% !important;
+}
+
+.lb-container {
+    width: 90% !important;
+    height: 90% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* overflow: hidden; */
+}
+
+.lb-image {
+    /* width: 50% !important;
+    height: 50% !important; */
+    min-width: auto !important;
+    min-height: 95% !important;
+    border-radius:1rem !important;
+    object-fit: contain;
+
+}
+
+.lb-details {
+    text-align: center;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0);
+    border-radius: 0.5rem;
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+}
+
+.lb-caption {
+    text-align: center;
+    margin: 0 auto;
+    width: 100% !important;
+    height: 100% !important;
+    /* background-color: aqua; */
+}
+
+
+
+/* On screens that are 1200px wide or less, the background color is lightgray */
+@media screen and (max-width: 1200px) {
+    .toggle-lupa {
+        padding: 1.2rem 2.4rem;
+    }
+    .toggle-lupa>svg {
+        width: calc(var(--tamanho-do-texto-icone) * 0.6);
+        height: calc(var(--tamanho-do-texto-icone) * 0.6);
+    }
+    .description {
+        font-size: 75%;
+    }
+    .item-ligthbox-img {
+        height: 60%;
+    }
+}
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 992px) {
+    .toggle-lupa {
+        padding: 1rem 2rem;
+    }
+    .toggle-lupa>svg {
+        width: calc(var(--tamanho-do-texto-icone) * 0.5);
+        height: calc(var(--tamanho-do-texto-icone) * 0.5);
+    }
+    .description {
+        font-size: 65%;
+    }
+    .item-ligthbox-img {
+        height: 50%;
+    }
+}
+
+/* Em telas com 768px de largura ou menos, a cor de fundo é lightgreen  */
+@media screen and (max-width: 768px) {
+    .toggle-lupa {
+        padding: 0.8rem 1.6rem;
+    }
+    .toggle-lupa>svg {
+        width: calc(var(--tamanho-do-texto-icone) * 0.4);
+        height: calc(var(--tamanho-do-texto-icone) * 0.4);
+    }
+    .description {
+        font-size: 60%;
+    }
+    .item-ligthbox-img {
+        height: 45%;
+    }
+}
+
+/* Em telas com 600px de largura ou menos, a cor de fundo é olive */
+@media screen and (max-width: 600px) {
+    .toggle-lupa {
+        padding: 1rem 2rem;
+    }
+    .toggle-lupa>svg {
+        width: calc(var(--tamanho-do-texto-icone) / 2);
+        height: calc(var(--tamanho-do-texto-icone) / 2);
+    }
+    .description {
+        font-size: 50%;
+    }
+    .item-ligthbox-img {
+        height: 40%;
+    }
+}
+
+/* Em telas com 480px de largura ou menos, a cor de fundo é orange */
+@media screen and (max-width: 480px) {
+    .toggle-lupa {
+        padding: 0.6rem 1.2rem;
+    }
+    .toggle-lupa>svg {
+        width: calc(var(--tamanho-do-texto-icone) * 0.3);
+        height: calc(var(--tamanho-do-texto-icone) * 0.3);
+    }
+    .description {
+        font-size: 45%;
+    }
+    .item-ligthbox-img {
+        height: 35%;
+    }
+}
+
+/* Em telas com 320px de largura ou menos, a cor de fundo é amarela */
+@media screen and (max-width: 320px) {
+    .toggle-lupa {
+        padding: 0.4rem 0.8rem;
+    }
+    .toggle-lupa>svg {
+        width: calc(var(--tamanho-do-texto-icone) * 0.2);
+        height: calc(var(--tamanho-do-texto-icone) * 0.2);
+    }
+    .description {
+        font-size: 40%;
+    }
+    .item-ligthbox-img {
+        height: 30%;
+    }
+}

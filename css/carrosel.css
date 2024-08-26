@@ -1,0 +1,104 @@
+@import url(./variaveis.css);
+
+.carrosel--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--fundo-carrosel-js-default);
+}
+
+.c-carousel__slides {
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+    
+}
+
+.c-carousel__slide {
+    display: flex;
+    justify-content: center;
+    /* background-color: #f8f9fa; */
+    text-align: center;
+    font-size: 1.5rem;
+    /*border: 1px solid #ddd;*/
+    display: flex;
+    justify-content: center;
+    background: var(--fundo-carrosel);
+    background-image: var(--imagem-de-fundo-slider);
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size:var(--tamanho-x-y-imagem);
+    background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem);
+    margin: 0.5rem;
+    
+    
+
+}
+
+.glider-prev,
+.glider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #007bff; */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.glider-prev {
+    left: 10px;
+}
+
+.glider-next {
+    right: 10px;
+}
+
+.glider-next>i {
+    width: var(--largura-seta);
+    height: var(--altura-seta);
+    border-radius: 50rem;
+    font-size: var(--tamanho-de-fonte-seta);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-de-fundo-seta);
+    color: var(--cor-das-setas);
+}
+
+.glider-prev>i {
+    width: var(--largura-seta);
+    height: var(--altura-seta);
+    font-size: var(--tamanho-de-fonte-seta);
+    border-radius: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-de-fundo-seta);
+    color: var(--cor-das-setas);
+}
+
+#dots {
+    position: relative;
+    width: auto;
+    bottom: 8%;
+        transform: translateY(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: #007bff;*/
+    border: none;
+    color: rgb(27, 27, 27);
+    gap: 0.5rem;
+    cursor: pointer;
+    z-index: 1;
+}

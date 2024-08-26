@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal com Zoomist</title>
+    <link rel="stylesheet" href="../vizioonZoom/vizioon.min.css">
+    <link rel="stylesheet" href="../vizioonZoom/zoomist.css">
+   
+</head>
+<body>
+
+<h2>Exemplo de Modal com Zoomist</h2>
+
+<!-- Botão que abre o modal -->
+<button id="openImagem">Abrir Modal</button>
+
+<!-- O Modal -->
+<div id="modal-imagem" class="modal-imagem">
+  <!-- Conteúdo do Modal -->
+  <div class="modal-content-imagem">
+    <span class="close-imagem">×</span>
+    <div id="zoomist" class="zoomist-container">
+        <div class="zoomist-wrapper">
+            <div class="zoomist-image">
+                <img class="imagem-zoomist img-opacity" src="../../assets/unidade_01/Figura_02.png" />
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script src="../vizioonZoom/zoomist.umd.js"></script>
+<!-- <script src="../vizioonZoom/vizioon.min.js"></script> -->
+<script>
+    // Pega o modal
+    var modal = document.getElementById("modal-imagem");
+
+    // Pega o botão que abre o modal
+    var btn = document.getElementById("openImagem");
+
+    // Pega o elemento <span> que fecha o modal
+    var span = document.getElementsByClassName("close-imagem")[0];
+
+    // Quando o usuário clicar no botão, abre o modal
+    btn.onclick = function() {
+        modal.style.display = "flex";
+        const zoomist = new Zoomist("#zoomist", {
+            slider: true,
+            zoomer: true,
+            draggable:true,
+        });
+    }
+
+    // Quando o usuário clicar no <span> (x), fecha o modal
+    span.onclick = function() {
+        alert('oi')
+        modal.style.display = "none";
+    }
+
+    // Quando o usuário clicar fora do modal, fecha o modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

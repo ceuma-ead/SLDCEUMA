@@ -1,0 +1,124 @@
+
+:root{
+    --dark:black;
+    --ligth:white;
+
+
+    /* Tamanhos pra Setas do Carrorsel E Cores */
+    /* ---------------------------------------- */ 
+    /* --fundo-carrosel:rgb(255, 255, 255); */
+    --largura-seta:2rem;
+    --altura-seta:2rem;
+    --tamanho-de-fonte-seta:calc(
+        (var(--altura-seta) + var(--largura-seta)) / 5
+    );
+    --cor-das-setas:black;
+    --cor-de-fundo-seta:rgba(1, 28, 65, 0.22);
+    /* ----------------------------------------- */
+
+    /* Tamanhos e Cores para Sidebar */
+    /* ---------------------------------------- */ 
+    --fundo-siderbar:#011C41;
+    --tamanho-dos-icones-siderbar:2.5rem;
+    --cor-dos-icones-siderbar:rgb(255, 255, 255);
+    --cor-da-font-do-titulo:rgb(255, 255, 255);
+
+    /* Valores Padroes para Carrosel caso não Haja paramentos */
+    --fundo-carrosel-js-default:#eeeeee;
+    --fundo-siderbar-js-default:#011C41;
+    --tamanho-dos-icones-siderbar-js-default:3rem;
+    --cor-dos-icones-siderbar-js-default:rgb(255, 255, 255);
+    --cor-da-font-do-titulo-js-default:rgb(255, 255, 255);
+    /* ---------------------------------------- */
+    
+    /* Tamanhos e Cores para Icon de Anotação */
+    /* ---------------------------------------- */ 
+
+    --cor-dos-icones-de-anotacao:#011C41;
+    /* ---------------------------------------- */ 
+
+    /* Cor da Lupa e Icones da Lupa das Imagens */
+    /* ---------------------------------------- */ 
+
+    --cor-de-fundo-da-lupa:#0000008c;
+    --cor-de-fundo-do-icone:white;
+    --tamanho-do-texto-icone:2.5rem;
+    /* ---------------------------------------- */ 
+
+    /* Configuração LigthBox */
+    /* ---------------------------------------- */ 
+    --largura-ligthbox:50%;
+    --altura-ligthbox:var(var(--largura-ligthbox));
+    /* ---------------------------------------- */ 
+
+    /* ================================== API IMAGEM =========================== */
+        
+    /* Controlador de Fontes - IMAGEM */
+    /* ---------------------------------------- */ 
+    --fonte-para-paragrafo-imagem:'lato', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    --largura-para-paragrafor-imagem:bold;
+    --estilo-para-font-paragrafo:normal;
+    --tamanho-de-font-para-paragrafo-imagem:1rem;
+    --linha-de-borda-font-imagem:#1d1d1d;
+    --largura-de-imagem-da-modal:70%;
+    --altura-de-imagem-da-modal:70%;
+    --largura-de-imagem-inicial-api:100%;
+    --altura-de-image-inicial-api:100%;
+    --desfoque-da-imagem-inicial:3px;
+    /* ---------------------------------------- */ 
+    /* ================================== API IMAGEM =========================== */
+
+    /* Controlador de Fontes - SIDEBAR */
+    /* ---------------------------------------- */ 
+    --fonte-para-paragrafo-sidebar:'lato', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    --largura-para-paragrafor-sidebar:bold;
+    --estilo-para-font-paragrafo:normal;
+    --tamanho-de-font-para-paragrafo-sidebar:1.25rem;
+
+    /* Controlador de Animação - SIDEBAR */
+    /* ---------------------------------------- */ 
+    --animacao-sidebar:slideDown 2s forwards;
+    --animacao-sidebar-top:-95px;
+    --animacao-position:relative;
+
+
+    /* Confiurar Logo Slider */
+    /* ---------------------------------------- */ 
+    --imagem-de-fundo-slider:url('https://placehold.jp/30/000/ffffff/300x150.png?text=LOGO+CEUMA');
+    --posicao-y-imagem:bottom;
+    --posicao-x-imagem:left;
+    --tamanho-x-y-imagem:10%;
+    /* Confiurar Logo Slider */
+    font-weight: lighter;
+    /* ---------------------------------------- */ 
+    
+    
+    /* Controlador para fontes */
+    /* ---------------------------------------- */ 
+    --font-para-paragrafos:1rem;
+    --cor-da-font-paragrafo:black;
+    --familia-da-font-paragrafo:'lato', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    --alinhamento-do-texto-paragrafo:left;
+    --hifens-da-fonte-paragrafo:none;
+    /* Controlador para fontes */
+    /* ---------------------------------------- */ 
+    
+    
+    /* Controlador para Menu*/
+    /* ---------------------------------------- */ 
+    --fundo-menu-sumario:#fff;
+    --posicionamento-menu-sumario:6;
+    --altura-do-menu-sumario:40rem;
+    --accent-color: #fff;
+    --gradient-color: #FBFBFB;
+    --tamanho-do-header:20%;
+    --cor-do-paragrafo-header:#353535;
+    --tamanho-do-texto-do-paragrafo-header:1.5rem;
+    --familia-do-texto-do-paragrafo-header:var(--familia-da-font-paragrafo);
+    --cor-geral-fundo-e-componentes:#AB610B;
+    /* Controlador para fontes */
+    /* ---------------------------------------- */ 
+
+
+    }
+    

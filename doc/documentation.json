@@ -1,0 +1,9 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "SLDCEUMA +2.0",
+      "description": "Novo modelo de carrosel navegavel...",
+      "version": "0.0.1"
+    },
+    "paths": {}
+  }

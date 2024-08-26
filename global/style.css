@@ -1,0 +1,20 @@
+@import url(../css/texto.css);
+@import url(../css/menu_sidebar.css);
+@import url(../css/annotation.css);
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box !important;
+}
+
+
+
+body{
+    width: 100vw !important;
+    height: 100vh !important;
+    position: relative;
+    background-color: rgb(24, 86, 141);
+
+
+}

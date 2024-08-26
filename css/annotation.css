@@ -1,0 +1,414 @@
+@import url(./variaveis.css);
+
+:scope{
+    --margin-do-texto-ao-title:2rem;
+}
+
+.sidebar-menu-Annotation {
+    position: fixed;
+    width: 400px;
+    right: -200%;
+    top: 55%;
+    transform: translateY(-50%);
+    height: 30rem;
+    background-color: var(--fundo-menu-sumario);
+    transition: all .5s ease;
+    z-index: calc(var(--posicionamento-menu-sumario) - 1) ;
+    /* overflow: hidden;
+    overflow-y: scroll; */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top-left-radius: 50px;
+    background-color: #fefabc;
+    box-shadow: 0 8px 10px -7px black;
+    border-bottom-right-radius: 60px 10px;
+
+
+}
+
+.sidebar-menu-Annotation::before {
+    margin: -1px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 45px solid #eee;
+    border-bottom: 45px solid transparent;
+    box-shadow: 3px 3px 2px #dbd581;
+}
+
+.sidebar-menu-Annotation header {
+    position: sticky;
+    width: 100%;
+    height: var(--tamanho-do-header);
+    top: 0;
+    padding: 1rem;
+}
+
+.sidebar-menu-Annotation header{
+    /* background-color: #14AE5C; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.sidebar-menu-Annotation header svg {
+    /* background-color: red; */
+    justify-self:center;
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+}
+
+.sidebar-menu-Annotation header p:nth-of-type(1) {
+    font-size: var(--tamanho-do-texto-do-paragrafo-header);
+    color: var(--cor-do-paragrafo-header);
+    text-align: center;
+    /* background-color: #fff; */
+    user-select: none;
+    font-family: 'Lato';
+
+}
+
+
+.sidebar-menu-Annotation header p:nth-of-type(2) {
+    font-size: calc(var(--tamanho-do-texto-do-paragrafo-header) - 1);
+    color: var(--cor-do-paragrafo-header);
+    text-align: center;
+    /* background-color: #fff; */
+    user-select: none;
+    font-family: 'Lato';
+}
+
+.render-menu-Annotation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background-color: #A35200; */
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    padding-right: 1rem;
+    gap: 1rem;
+    margin: 1rem 0;
+
+}
+
+.render-menu-Annotation--title_anotation {
+   
+}
+
+
+.render-menu-Annotation .content-box-anotation {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+    border-left: 5px solid transparent;
+    font-family: var(--familia-do-texto-do-paragrafo-header);
+    transition: all .5s ease;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    font-weight: bolder;
+    hyphens: auto;
+    text-align: justify;
+    /* background-color: red; */
+    padding: 1rem;
+    border: 2px solid #3535358f;
+    
+    /* border-radius: 1rem; */
+}
+
+
+.line{
+    height: 100%;
+    padding:0.1rem;
+    background:#3535358f;
+}
+
+.content-box-anotation  p {
+ 
+    font-size: 0.8rem;
+    font-weight: normal;
+    width: 100%;
+    color: black;
+    /* padding-top: var( --margin-do-texto-ao-title); */
+    /* border-right: 2px solid #3535358f; */
+    padding-right: 0.4rem;
+    /* background-color: #14AE5C; */
+    margin-top: 2rem;
+    height: max-content;
+    overflow-x: hidden;
+}
+
+.content-box-anotation  svg {
+    cursor: pointer;
+}
+
+.render-menu-Annotation--icons  {
+
+    display: flex;
+    /* background-color: rebeccapurple; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* padding-top: var( --margin-do-texto-ao-title); */
+    gap: 0.5rem;
+    /* border-left: 2px solid #3535358f; */
+    position: sticky;
+    width: 10%;
+    height:fit-content ;
+    top: 0;
+}
+.render-menu-Annotation--icons button {
+    display: flex;
+    background-color: rgba(102, 51, 153, 0);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+     border-radius: 100%;
+    /* background-color: red; */
+
+    padding:0.5;
+}
+
+.searcListKeyWord {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border-radius: 0.5rem;
+    justify-content: center;
+    border: 2px solid var(--cor-geral-fundo-e-componentes);
+    margin: 0.5rem 0;
+    height: 100%;
+    
+}
+
+.searcListKeyWord input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: none;
+    padding-left: 0.5rem;
+}
+
+.searcListKeyWord span {
+    outline: none;
+    border: none;
+    background-color: none;
+    border-left: 2px solid var(--cor-geral-fundo-e-componentes);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+.container-searcListKeyWord{
+    display: flex;
+    /* background-color: red; */
+    align-items: center;
+    justify-content: space-between;
+    padding:  0 0.5rem;
+}
+.container-searcListKeyWord button{
+    background: none;
+    border:none; display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+    background: #14AE5C;
+    border-radius: 0.5rem;
+}
+
+
+/* HTML: <div class="ribbon" contentitbale>Your text content</div> */
+
+.ribbon {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    height: max-content;
+    overflow: hidden;
+    white-space: nowrap;
+    /* Impede quebra de linha */
+    text-overflow: ellipsis;
+    /* Adiciona "..." automaticamente, mas precisa de um container de largura fixa */
+    width: 5rem;
+    /* Ajuste conforme necessário */
+    outline: none;
+    background: radial-gradient(.2em 50% at left, #000a, #0000) border-box, #45ADA8 padding-box;
+    position: absolute;
+    top: 3px;
+    left: 0.5%;
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--r)) calc(100% - .25em), 100% 50%, calc(100% - var(--r)) .25em);
+    line-height: 1.8;
+    --r: .8em;
+    padding-inline: .5em calc(var(--r) + .25em);
+}
+
+.ribbon {
+    top: 3px;
+    left:0.5%;
+
+    --r: .8em;
+    /* control the cutout */
+    position:absolute;
+    border-block: .5em solid #0000;
+    padding-inline: .5em calc(var(--r) + .25em);
+    line-height: 1.8;
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--r)) calc(100% - .25em), 100% 50%, calc(100% - var(--r)) .25em);
+    background:
+        radial-gradient(.2em 50% at left, #000a, #0000) border-box,
+        #45ADA8 padding-box;
+    /* the color  */
+    width: fit-content;
+    outline: none;
+}
+.render-menu-Annotation a:hover {
+    background-color: #cecece;
+}
+
+
+
+/* a.active,
+a:hover {
+    border-left: 5px solid var(--accent-color);
+    color: #fff;
+    background: linear-gradient(to left, var(--accent-color), var(--gradient-color));
+} */
+
+/*#btnOpenSumario {
+    width: var(--tamanho-dos-icones-siderbar);
+    height: var(--tamanho-dos-icones-siderbar);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 100%;
+    background: none;
+    border: 2px solid var(--cor-dos-icones-siderbar);
+    color: var(--cor-dos-icones-siderbar);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+
+
+
+/* Estilo e animação para o ícone */
+#menuIcon {
+    transition: color 0.3s ease;
+    /* Transição suave para a cor do ícone */
+}
+
+/* Animação para o ícone quando o menu está aberto */
+/* @keyframes rotateIconx {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotateIconnotebook {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+
+#menuIcon[data-lucide="x"] {
+    animation: rotateIconx 0.3s ease-in-out;
+
+}
+
+#menuIcon[data-lucide="notebook-text"] {
+    animation: rotateIconnotebook 0.3s ease-in-out;
+
+} */
+
+
+.erro-notfound-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.erro-notfound-menu>svg {
+    width: 10rem;
+    height: 10rem;
+    gap: 0.5rem;
+}
+
+/* Chrome, Edge and Safari */
+.render-menu-Annotation::-webkit-scrollbar {
+    width: 8px;
+    min-height: min-content;
+    padding-left: 1rem;
+    /* background-color: red; */
+    height: 100%;
+    overflow: auto;
+
+}
+
+.render-menu-Annotation::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #00000000;
+}
+
+.render-menu-Annotation::-webkit-scrollbar-track:hover {
+    background-color: #00000000;
+}
+
+.render-menu-Annotation::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+}
+
+.render-menu-Annotation::-webkit-scrollbar-thumb {
+    border-radius: 17px;
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.render-menu-Annotation::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.render-menu-Annotation::-webkit-scrollbar-thumb:active {
+    background-color: #a3470000;
+}
+
+.sidebar-menu-Annotation.open-annotation {
+    right: 0%; 
+}
+
+
+.highlight {
+    background-color: #000000;
+    /* Fundo preto */
+    color: #ffffff;
+    /* Texto branco */
+}

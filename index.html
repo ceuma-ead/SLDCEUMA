@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SLDCEUMA (2.0) Version <BETA>">
+    <meta name="author" content="Ceuma">
+    <title>SLDCEUMA +2.0</title>
+    <link rel="stylesheet" type="text/css" href="./global/style.css">
+    <script type="text/javascript" src="./js/lucide.js"></script>
+    <script type="text/javascript" src="./plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="./plugins/glider/glider.min.js"></script>
+    <link rel="stylesheet" href="./plugins/vizioonZoom/vizioon.min.css">
+    <link rel="stylesheet" href="./plugins/vizioonZoom/zoomist.css">
+    <!-- Link para a fonte Lato do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato" rel="stylesheet">
+    <script type="text/javascript" src="./db/src/LocalDB.js"></script>
+</head>
+
+<body>
+
+    <div class="w-100 h-100 d-flex flex-column item ">
+        <!-- Header de Navegação -->
+        <header class="siderbar">
+            <div class="siderbar-container">
+                <!-- <img src="./assets/Logo.png" /> -->
+                <button class="navbar-toggler d-block d-md-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="text-light" data-lucide="menu"></i>
+                </button>
+
+                <!-- Menu Desktop -->
+                <!-- Iniciando Menu Desktop  -->
+                <div class="siderbar-container d-none d-md-block">
+                    <nav class="icons-action--container">
+                        <button vizioon-tip="Podcast" vizioon-posicao="gbottom"><i
+                                data-lucide="audio-lines"></i></button>
+                        <button vizioon-tip="Videoaula" vizioon-posicao="gbottom"><i data-lucide="video"></i></button>
+                        <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom"><i
+                                data-lucide="pencil-ruler"></i></button>
+                        <button vizioon-tip="Tela cheia" vizioon-posicao="gbottom"><i
+                                data-lucide="maximize-2"></i></button>
+                    </nav>
+                </div>
+                <!-- Menu Desktop -->
+                <!-- Dinalizando Menu Desktop  -->
+            </div>
+            <div class="header-title">
+                <p></p>
+            </div>
+            <!-- Menu Navigation  -->
+            <!-- Iniciando Menu Navigation -->
+            <div class="siderbar-container-menu">
+                <!-- <p class="d-none d-md-block">Sumário</p> -->
+                <!-- <button vizioon-tip="Sumário"
+                        vizioon-posicao="left" vizioon-attr="d-none d-md-block">
+                        <i data-lucide="notebook-text"></i>
+                    </button> -->
+
+                <button id="btnOpenSumario" vizioon-tip="Sumário" vizioon-posicao="left"
+                    vizioon-attr="d-none d-md-block">
+                    <i data-lucide="notebook-text" id="menuIcon"></i>
+                    <!-- <i class="fas fa-times" id="cancel"></i> -->
+                </button>
+
+                <div class="sidebar-menu">
+                    <div class="mola-encardernamento">
+
+                    </div>
+                    <header>
+                        <p>Hematologia Clínica</p>
+                        <hr class="hr-menu">
+                        <p>Unidade 01</p>
+                    </header>
+                    <!-- Caixa para Renderizar os Itemns -->
+                    <div class="render-menu">
+                        <a>
+                            <span>Dashboard</span>
+                            <span class="horizontal-menu-activer active-menu"></span>
+                        </a>
+                    </div>
+                    <!-- Caixa para Pesquisar Unitaria -->
+                    <footer>
+                        <div class="searcListMateria">
+                            <input type="text" placeholder="Pesquisar">
+                            <span><i data-lucide="square-arrow-out-up-right"></i></span>
+                        </div>
+                    </footer>
+
+                </div>
+
+                <div class="sidebar-menu-Annotation">
+
+                        <header>
+                            <p class="item-1">Anotações</p>
+                            <i class="item-2"
+                                data-lucide="arrow-left-right"></i>
+                        </header>
+                        <hr class="hr">
+                        <!-- Caixa para Renderizar os Itemns da anotação -->
+                        <div class="render-menu-Annotation">
+
+                            <!-- componente do item da anotação -->
+                            <!-- <div class="content-box-anotation">
+                                    <div class="ribbon"
+                                        contenteditable>Hematologia</div>
+                                    <p>Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Repudiandae vero et ipsam
+                                        fugit deserunt! Praesentium consectetur
+                                        similique cumque asperiores nobis est quo
+                                        ipsam, quisquam incidunt quidem,
+                                        consequuntur beatae fuga eum!ipsam, quisquam incidunt quidem,
+                                        consequuntur beatae fuga eum!</p>
+                                    <div class="render-menu-Annotation--icons">
+                                        <i data-lucide="trash-2"></i>
+                                        <i data-lucide="cloud-download"></i>
+                                        <i data-lucide="palette"></i>
+                                    </div>
+                                </div> -->
+
+                        </div>
+                        <!-- Caixa para Pesquisar Unitaria -->
+                        <footer class="container-searcListKeyWord">
+                            <div class="searcListKeyWord">
+                                <input type="search"
+                                    placeholder="#Palavras Chaves"
+                                    id="searchInput">
+                                <span
+                                    class="searchButton filterButton position-relative"
+                                    id="searchButton">
+                                    <i data-lucide="filter"
+                                        id="searcListKeyWord-icon"></i>
+
+                                    <span
+                                        class="countFoundResult d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        0
+                                    </span>
+
+                                </span>
+                            </div>
+
+                            <button><i data-lucide="circle-plus"></i></button>
+
+                    </footer>
+
+                </div>
+
+                </div>
+                <!-- Menu Navigation -->
+            </header>
+            <!-- Menu Mobile -->
+            <!-- Iniciando Menu Mobile -->
+            <div>
+                <nav
+                    class="icons-action--container navbar navbar-expand-lg d-block d-md-none">
+                    <div
+                        class="collapse navbar-collapse icons-action--container"
+                        id="navbarNavDropdown">
+                        <button><i data-lucide="audio-lines"></i></button>
+                        <button><i data-lucide="video"></i></button>
+                        <button><i data-lucide="pencil-ruler"></i></button>
+                    </div>
+                </nav>
+                <div class="icon--annotation-action">
+                    <button class="openAnnotation"
+                        vizioon-tip="Veja Suas Anotações Aqui 🤩!!!"
+                        vizioon-posicao="left"
+                        vizioon-attr="vizion-annotation"><i id="iconAnnotatio"
+                            data-lucide="sticker"></i></button>
+                </div>
+            </div>
+            <!-- Finalizando Menu Mobile -->
+            <main class="carrosel--container">
+                <article class="c-carousel c-carousel--simple w-100 h-100">
+                    <div
+                        class="c-carousel__slides js-carousel--simple content-render-api h-100">
+                        <!-- <article class="c-carousel__slide">1</article>
+                        <article class="c-carousel__slide">2</article>
+                        <article class="c-carousel__slide">3</article> -->
+                </div>
+                <button class="glider-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="glider-next"><i class="fas fa-chevron-right"></i></button>
+                <div id="dots"></div>
+            </article>
+        </main>
+
+        <!-- Menu Mobile -->
+        <!-- Iniciando Menu Mobile -->
+
+        <div class="menu-options-footer">
+            <div class="wrapper">
+                <input type="checkbox" />
+                <div class="fab"></div>
+                <div class="fac">
+                    <a href="#"><i data-lucide="messages-square"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- O Modal-Imagem -->
+        <div id="modal-imagem" class="modal-imagem">
+            <!-- Conteúdo do Modal - Imagem -->
+            <div class="modal-content-imagem">
+                <span class="close-imagem">×</span>
+                <div id="zoomist" class="zoomist-container">
+                    <div class="zoomist-wrapper">
+                        <div class="zoomist-image">
+                            <img class="imagem-zoomist img-opacity" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+    <!-- Arquivo Bootstrap -->
+    <script type="text/javascript" src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Arquivo Bootstrap -->
+
+    <!-- Arquivo Jquery -->
+    <script type="text/javascript" src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Arquivo Jquery -->
+
+    <!-- Arquivo Icones Lucide -->
+    <script type="text/javascript" src="./plugins/lucide/lucide.min.js"></script>
+    <!-- Arquivo Icones Lucide -->
+
+    <!-- Arquivo de Toltip Js -->
+    <script type="text/javascript" src="./plugins/tooltip/vizioonTip.min.js"></script>
+    <!-- Arquivo de Toltip Js -->
+
+        <!-- Arquivo de VizioonIst -->
+        <script src="./plugins/vizioonZoom/zoomist.umd.js"></script>
+        <!-- <script src="./plugins/vizioonZoom/vizioon.min.js"></script> -->
+        <!-- Arquivo de VizioonIst -->
+
+        <!-- Bancos de Dados Intregrado -->
+        <script src="./Js/annotation.js"></script>
+        <!-- Bancos de Dados Intregrado -->
+
+    <!-- Arquivo de Components -->
+    <script type="text/javascript" src="./api/Components/Lupa.js"></script>
+    <!-- Arquivo de Components -->
+
+    <!-- Arquivo da Api -->
+    <script type="text/javascript" src="./api/dados.js"></script>
+    <script type="text/javascript" src="./api/index.js"></script>
+    <!-- Arquivo da Api -->
+
+    <!-- Descatados Temporariamente -->
+    <script type="text/javascript" src="./js/menus.js"></script>
+    <script type="text/javascript" src="./js/slider.js"></script>
+    <!-- Descatados Temporariamente -->
+
+    <!-- Arquitetura Programtica Sistema -->
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/error.js"></script>
+    <!-- Arquitetura Programtica Sistema -->
+
+</body>
+
+</html>
