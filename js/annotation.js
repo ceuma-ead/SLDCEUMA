@@ -34,9 +34,6 @@ function checkEmptyAnnotationsContainer() {
         }
         return true; // Retorna true porque o contêiner tem anotações
     }
-    
-
-
 }
 
 function Update() {
@@ -61,7 +58,6 @@ function Update() {
 
 
 }
-
 
 
 checkEmptyAnnotationsContainer()
@@ -288,7 +284,7 @@ function showAutoCloseAlert(logs) {
 
 // Função para criar uma anotação
 async function createAnnotation() {
-    console.log('createAnnotation: Iniciando a criação de uma anotação.');
+    // console.log('createAnnotation: Iniciando a criação de uma anotação.');
 
     try {
         const {
@@ -691,6 +687,19 @@ function limitText(container, maxChars, maxWords) {
 
     container.textContent = originalText;
 }
+document.querySelector('.mudarPosicao').addEventListener('click', function() {
+    const sidebar = document.querySelector('.sidebar-menu-Annotation');
+    
+    if (sidebar.classList.contains('left')) {
+        sidebar.classList.remove('left');
+        sidebar.classList.add('right');
+    } else {
+        sidebar.classList.remove('right');
+        sidebar.classList.add('left');
+    }
+});
+
+
 
 // document.querySelector('.rb').addEventListener('blur', function () {
 //     limitText(this, 50, 10);
@@ -712,10 +721,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
 
     if (iconAnnotation) {
-        console.log("Container não está vazio");
+        // console.log("Container não está vazio");
         iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
     } else {
-        console.log("Container está vazio");
+        // console.log("Container está vazio");
         iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
     }
 

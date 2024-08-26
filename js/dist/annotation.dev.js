@@ -256,9 +256,8 @@ function createAnnotation() {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          console.log('createAnnotation: Iniciando a criação de uma anotação.');
-          _context.prev = 1;
-          _context.next = 4;
+          _context.prev = 0;
+          _context.next = 3;
           return regeneratorRuntime.awrap(Swal.fire({
             title: 'Crie sua anotação',
             input: 'textarea',
@@ -271,7 +270,7 @@ function createAnnotation() {
             heightAuto: false
           }));
 
-        case 4:
+        case 3:
           _ref = _context.sent;
           texto = _ref.value;
 
@@ -295,20 +294,20 @@ function createAnnotation() {
             console.log('createAnnotation: Nenhum texto fornecido.');
           }
 
-          _context.next = 12;
+          _context.next = 11;
           break;
 
-        case 9:
-          _context.prev = 9;
-          _context.t0 = _context["catch"](1);
+        case 8:
+          _context.prev = 8;
+          _context.t0 = _context["catch"](0);
           console.error('createAnnotation: Erro ao criar anotação.', _context.t0);
 
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[1, 9]]);
+  }, null, null, [[0, 8]]);
 } // Adiciona o evento de clique no botão de adicionar anotação
 
 
@@ -664,7 +663,19 @@ function limitText(container, maxChars, maxWords) {
   }
 
   container.textContent = originalText;
-} // document.querySelector('.rb').addEventListener('blur', function () {
+}
+
+document.querySelector('.mudarPosicao').addEventListener('click', function () {
+  var sidebar = document.querySelector('.sidebar-menu-Annotation');
+
+  if (sidebar.classList.contains('left')) {
+    sidebar.classList.remove('left');
+    sidebar.classList.add('right');
+  } else {
+    sidebar.classList.remove('right');
+    sidebar.classList.add('left');
+  }
+}); // document.querySelector('.rb').addEventListener('blur', function () {
 //     limitText(this, 50, 10);
 // });
 // document.querySelector('.rb').addEventListener('keydown', function (event) {
@@ -673,7 +684,6 @@ function limitText(container, maxChars, maxWords) {
 //     }
 // });
 
-
 Update();
 checkEmptyAnnotationsContainer();
 document.addEventListener('DOMContentLoaded', function () {
@@ -681,10 +691,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
 
   if (iconAnnotation) {
-    console.log("Container não está vazio");
+    // console.log("Container não está vazio");
     iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
   } else {
-    console.log("Container está vazio");
+    // console.log("Container está vazio");
     iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
   } // Atualize os ícones para garantir que a nova configuração seja aplicada
 

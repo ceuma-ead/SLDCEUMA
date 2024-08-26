@@ -29,7 +29,7 @@
     width: var(--width);
     height: var(--height);
     position: relative;
-    z-index: 3;
+    z-index: 0;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
@@ -99,7 +99,7 @@
     border-radius: var(--border-radius);
     cursor: pointer;
     position: absolute;
-    z-index: 5;
+    z-index: calc(var(--posicionamento-menu-sumario) - 4);
     opacity: 0;
   }
   .wrapper input:checked ~ .fab {

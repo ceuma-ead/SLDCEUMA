@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-top-left-radius: 50px;
+  
     background-color: #fefabc;
     box-shadow: 0 8px 10px -7px black;
     border-bottom-right-radius: 60px 10px;
@@ -29,16 +29,6 @@
 
 }
 
-.sidebar-menu-Annotation::before {
-    margin: -1px;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 45px solid #eee;
-    border-bottom: 45px solid transparent;
-    box-shadow: 3px 3px 2px #dbd581;
-}
 
 .sidebar-menu-Annotation header {
     position: sticky;
@@ -56,12 +46,23 @@
   
 }
 
-.sidebar-menu-Annotation header svg {
+.sidebar-menu-Annotation header button {
     /* background-color: red; */
     justify-self:center;
     position: absolute;
-    right: 5%;
+    text-align: center;
+    right: 10%;
     cursor: pointer;
+    border: 1px solid transparent;
+    background: none;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 100%;
+    padding: 0.5rem;
+}
+
+.sidebar-menu-Annotation header button:hover {
+    border: 1px solid #000000;
 }
 
 .sidebar-menu-Annotation header p:nth-of-type(1) {
@@ -404,6 +405,53 @@ a:hover {
 .sidebar-menu-Annotation.open-annotation {
     right: 0%; 
 }
+
+/* Mudar Posição da Caixa ao Clicar no butão de Mudar de Lado */
+
+
+/* Triângulo à esquerda (visível por padrão) */
+.sidebar-menu-Annotation::before {
+    margin: -1px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 45px solid #eee;
+    border-bottom: 45px solid transparent;
+    box-shadow: 3px 3px 2px #dbd581;
+    display: block; /* Visível por padrão */
+}
+
+/* Triângulo à direita (oculto por padrão) */
+.sidebar-menu-Annotation::after {
+    margin: -1px;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-right: 45px solid #eee;
+    border-bottom: 45px solid transparent;
+    box-shadow: -3px 3px 2px #dbd581;
+    display: none; /* Oculto por padrão */
+}
+
+/* Quando a sidebar está à esquerda */
+.sidebar-menu-Annotation.left {
+    left: 0;
+    right: auto;
+}
+
+/* Esconde o triângulo à esquerda e exibe o da direita quando a sidebar está à esquerda */
+.sidebar-menu-Annotation.left::before {
+    display: none;
+}
+
+.sidebar-menu-Annotation.left::after {
+    display: block;
+}
+
+
+
 
 .empty-annotation-message{
     -moz-window-dragging: none;
