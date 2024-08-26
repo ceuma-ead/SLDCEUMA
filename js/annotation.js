@@ -19,7 +19,7 @@ function checkEmptyAnnotationsContainer() {
             emptyMessage.classList.add('empty-annotation-message');
             emptyMessage.innerHTML = `
                 <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
-                    <img src="../assets/list-is-empty-unscreen.gif" alt="list-is-empty-unscreen1.gif" style="width:20%;" >
+                    <img src="./assets/list-is-empty-unscreen.gif" alt="list-is-empty-unscreen1.gif" style="width:20%;" >
                     <p style="color:#000;">Nenhuma Anotação no Momento</p>
                 </div>
             `;

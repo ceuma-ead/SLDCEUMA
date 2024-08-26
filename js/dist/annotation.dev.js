@@ -21,7 +21,7 @@ function checkEmptyAnnotationsContainer() {
     if (!emptyMessage) {
       emptyMessage = document.createElement('div');
       emptyMessage.classList.add('empty-annotation-message');
-      emptyMessage.innerHTML = "\n                <div class=\"d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center\">\n                    <img src=\"../assets/list-is-empty-unscreen.gif\" alt=\"list-is-empty-unscreen1.gif\" style=\"width:20%;\" >\n                    <p style=\"color:#000;\">Nenhuma Anota\xE7\xE3o no Momento</p>\n                </div>\n            ";
+      emptyMessage.innerHTML = "\n                <div class=\"d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center\">\n                    <img src=\"./assets/list-is-empty-unscreen.gif\" alt=\"list-is-empty-unscreen1.gif\" style=\"width:20%;\" >\n                    <p style=\"color:#000;\">Nenhuma Anota\xE7\xE3o no Momento</p>\n                </div>\n            ";
       renderMenuDiv.appendChild(emptyMessage);
     }
 
