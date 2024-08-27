@@ -17,7 +17,7 @@
 .c-carousel__slides {
     display: flex;
     overflow: hidden;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     width: 100%;
     /* background: red; */
     height: auto;

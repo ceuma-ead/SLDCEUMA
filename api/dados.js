@@ -3,7 +3,7 @@ const api = [
      // PAGINA 1
     {
         "pagina": 1,
-        "nome_page": `Apresentação da disciplina`,
+        "nome_page": ``,
         "tipo": "Texto",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
