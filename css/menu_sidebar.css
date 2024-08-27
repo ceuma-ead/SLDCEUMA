@@ -3,7 +3,7 @@
 .sidebar-menu  {
     position: fixed;
     width: 350px;
-    right: -100%;
+    right: -200%;
     top: 55%;
     transform: translateY(-50%);
     height: 30rem;

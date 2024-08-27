@@ -1,6 +1,10 @@
 "use strict";
 
-// Função para abrir o sumário
+document.addEventListener('DOMContentLoaded', function () {
+  abrirSumario();
+  abrirAnotacoes();
+}); // Função para abrir o sumário
+
 function abrirSumario() {
   var botaoAbrirSumario = document.getElementById('btnOpenSumario');
   var menuSumario = document.querySelector('.sidebar-menu');
@@ -38,7 +42,12 @@ function abrirAnotacoes() {
   botaoAbrirAnotacoes.addEventListener('click', function (evento) {
     evento.stopPropagation(); // verificar se container é vazio pra mudar o icon
 
-    var iconAnnotation = checkEmptyAnnotationsContainer(); // Fecha o menu de sumário, se estiver aberto
+    var iconAnnotation = checkEmptyAnnotationsContainer(); // Verificar e remover a classe 'close-annotation' se ela existir
+
+    if (menuAnotacoes.classList.contains('close-annotation')) {
+      menuAnotacoes.classList.remove('close-annotation');
+    } // Fecha o menu de sumário, se estiver aberto
+
 
     fecharMenuSumario();
     menuAnotacoes.classList.toggle('open-annotation'); // Pegar ID Personalizado para Mudar o Nome do Tooltip...
@@ -83,32 +92,36 @@ function fecharMenuSumario() {
       lucide.createIcons();
     }
   }
-} // Função para fechar o menu de anotações
-
+}
 
 function fecharMenuAnotacoes() {
   var menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
   var botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
-  var iconeMenuAnotacoes = document.getElementById("iconAnnotatio"); // Pegar ID Personalizado para Mudar o Nome do Tooltip...
+  var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
+  var vizioon_anotation = document.querySelector(".vizion-annotation"); // Verificar se o container é vazio para mudar o ícone
+
+  var iconAnnotation = checkEmptyAnnotationsContainer();
 
   if (menuAnotacoes.classList.contains('open-annotation')) {
-    var vizioon_anotation = document.querySelector(".vizion-annotation");
-    menuAnotacoes.classList.remove('open-annotation');
+    menuAnotacoes.classList.remove('open-annotation'); // Verificar se está à esquerda e adicionar a classe 'close-annotation'
+
+    if (menuAnotacoes.classList.contains('left')) {
+      menuAnotacoes.classList.remove('left');
+      menuAnotacoes.classList.add('close-annotation');
+    } // Atualizar o ícone e o tooltip
+
+
     iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
     botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
 
     if (vizioon_anotation) {
-      vizioon_anotation.innerHTML = "Veja Suas Anota\xE7\xF5es Aqui \uD83E\uDD29!!!";
-      vizioon_anotation.style.display = "none";
-    }
+      vizioon_anotation.innerHTML = 'Veja Suas Anotações Aqui 🤩!!!';
+      vizioon_anotation.style.display = 'none';
+    } // Atualizar ícones, se necessário
+
 
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
       lucide.createIcons();
     }
   }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  abrirSumario();
-  abrirAnotacoes();
-});

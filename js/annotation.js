@@ -687,9 +687,13 @@ function limitText(container, maxChars, maxWords) {
 
     container.textContent = originalText;
 }
+
+
+
+
 document.querySelector('.mudarPosicao').addEventListener('click', function() {
     const sidebar = document.querySelector('.sidebar-menu-Annotation');
-    
+
     if (sidebar.classList.contains('left')) {
         sidebar.classList.remove('left');
         sidebar.classList.add('right');
@@ -697,9 +701,17 @@ document.querySelector('.mudarPosicao').addEventListener('click', function() {
         sidebar.classList.remove('right');
         sidebar.classList.add('left');
     }
+
+    // Atualizar a lógica de clique fora ao mudar a posição
+    document.addEventListener('click', function(evento) {
+        if (sidebar.classList.contains('open-annotation') && !sidebar.contains(evento.target) && evento.target !== document.querySelector('.openAnnotation')) {
+            fecharMenuAnotacoes();
+        }
+    });
 });
 
 
+//    <div class="ribbon rb" contenteditable="true">${annotationItem.title}</div>
 
 // document.querySelector('.rb').addEventListener('blur', function () {
 //     limitText(this, 50, 10);

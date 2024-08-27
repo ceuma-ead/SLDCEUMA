@@ -222,7 +222,7 @@ function abrirConfigurcoesBaseMenu() {
 function showAutoCloseAlert(logs) {
   var timerInterval;
   Swal.fire({
-    title: 'Criando Estrutura...',
+    title: 'Escrevendo seu texto...',
     html: "\n            <div>\n                <p>Aguarde em <b></b> milissegundos.</p>\n                <!-- <textarea class=\"swal2-textarea\" style=\"width:80%;\" id=\"swal2-textarea\" readonly>".concat(logs, "</textarea> -->\n            </div>\n        "),
     timer: 2000,
     heightAuto: false,
@@ -674,8 +674,16 @@ document.querySelector('.mudarPosicao').addEventListener('click', function () {
   } else {
     sidebar.classList.remove('right');
     sidebar.classList.add('left');
-  }
-}); // document.querySelector('.rb').addEventListener('blur', function () {
+  } // Atualizar a lógica de clique fora ao mudar a posição
+
+
+  document.addEventListener('click', function (evento) {
+    if (sidebar.classList.contains('open-annotation') && !sidebar.contains(evento.target) && evento.target !== document.querySelector('.openAnnotation')) {
+      fecharMenuAnotacoes();
+    }
+  });
+}); //    <div class="ribbon rb" contenteditable="true">${annotationItem.title}</div>
+// document.querySelector('.rb').addEventListener('blur', function () {
 //     limitText(this, 50, 10);
 // });
 // document.querySelector('.rb').addEventListener('keydown', function (event) {

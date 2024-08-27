@@ -444,6 +444,11 @@ a:hover {
     
 }
 
+.sidebar-menu-Annotation.close-annotation {
+    left: -200%; 
+    
+}
+
 /* Esconde o triângulo à esquerda e exibe o da direita quando a sidebar está à esquerda */
 .sidebar-menu-Annotation.left::before {
     display: none;

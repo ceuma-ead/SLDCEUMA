@@ -40,8 +40,7 @@
 
 /* Chrome, Edge and Safari */
 .pagina-tipo-texto--box-texto::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
+    width: 5px;
     display: none;
 }
 
@@ -58,13 +57,16 @@
     background-color: #B8C0C2;
 }
 
+
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-thumb {
     border-radius: 17px;
     background-color: #FF6710;
+    height: 1px !important;
 }
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-thumb:hover {
     background-color: #A35200;
+    
 }
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-thumb:active {

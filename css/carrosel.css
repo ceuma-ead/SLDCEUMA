@@ -40,8 +40,6 @@
     background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem);
     margin: 0.5rem;
     /* background-color: blueviolet; */
-    
-
 }
 
 .glider-prev,
