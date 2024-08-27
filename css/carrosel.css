@@ -15,14 +15,16 @@
     overflow: hidden;
     border-radius: 10px;
     width: 100%;
-    height: 100%;
+    /* background: red; */
+    height: auto;
     
 }
 
 .c-carousel__slide {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: auto;
+    overflow: hidden;
     justify-content: center;
     /* background-color: #f8f9fa; */
     text-align: center;
@@ -37,7 +39,7 @@
     background-size:var(--tamanho-x-y-imagem);
     background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem);
     margin: 0.5rem;
-    
+    /* background-color: blueviolet; */
     
 
 }
