@@ -18,11 +18,7 @@ const api = [
         `,
         "data": {
             "container_render": `       
-                <div id="header-capa">
-                    Cabeçalho Animado
-                </div>
-
-                <!-- Container do texto animado -->
+                                <!-- Container do texto animado -->
                 <div id="text-container-capa">
                     <div class="animated-text">Hematologia Clínica</div>
                     <div id="underline"></div>
