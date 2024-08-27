@@ -10,7 +10,7 @@ var api = [// PAGINA 1
   "id_elemento_para_modificar": "container-imagem",
   "cabecalho_link_script": "\n            <!-- Link para a biblioteca de \xEDcones Font Awesome -->\n            <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />\n            <!-- Link para a fonte Lato do Google Fonts -->\n            <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n            <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n            <link href=\"https://fonts.googleapis.com/css2?family=Lato\" rel=\"stylesheet\">\n        ",
   "data": {
-    "container_render": "       \n                <div id=\"header-capa\">\n                    Cabe\xE7alho Animado\n                </div>\n\n                <!-- Container do texto animado -->\n                <div id=\"text-container-capa\">\n                    <div class=\"animated-text\">Hematologia Cl\xEDnica</div>\n                    <div id=\"underline\"></div>\n                    <div id=\"second-text\">unidade 1</div>\n                    <button id=\"animated-button\">iniciar</button>\n                </div>\n\n                <!-- Imagem animada -->\n                <div id=\"animated-image\"></div>\n                \n                <!-- Imagem -->\n                <div id=\"image\"></div>\n            "
+    "container_render": "       \n\n                <!-- Container do texto animado -->\n                <div id=\"text-container-capa\">\n                    <div class=\"animated-text\">Hematologia Cl\xEDnica</div>\n                    <div id=\"underline\"></div>\n                    <div id=\"second-text\">unidade 1</div>\n                    <button id=\"animated-button\">iniciar</button>\n                </div>\n\n                <!-- Imagem animada -->\n                <div id=\"animated-image\"></div>\n                \n                <!-- Imagem -->\n                <div id=\"image-capaOverlay\"></div>\n            "
   },
   "paramentros": {
     "cores": {
@@ -92,7 +92,13 @@ var api = [// PAGINA 1
       "posicaoX": "left 0.5%",
       "tamanho": "10%"
     },
-    "script_simples": "\n            \n                <script>\n\n                    alert('oi')\n\n                </script>\n            "
+    "script_simples": [{
+      "posicao": "body",
+      // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
+      // "attr":"defer" // pode ser defer ou async
+      // "insert":"beforebegin", // opcional onde ele vai inserir
+      "conteudo_script": "\n\n                       console.log(\"funcionando\")\n                    \n                    "
+    }]
   }
 }, // PAGINA 2
 {
@@ -176,7 +182,17 @@ var api = [// PAGINA 1
       "posicaoY": "bottom 1.8%",
       "posicaoX": "left 0.5%",
       "tamanho": "10%"
-    }
+    } // "script_simples":[
+    //     {
+    //         "posicao":"head", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
+    //         // "attr":"defer" // pode ser defer ou async
+    //         "insert":"afterbegin", // opcional onde ele vai inserir
+    //         "conteudo_script":`
+    //             alert('oi')
+    //         `
+    //     }
+    // ]
+
   }
 } // PAGINA 3
 // {

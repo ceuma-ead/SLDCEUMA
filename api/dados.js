@@ -18,7 +18,8 @@ const api = [
         `,
         "data": {
             "container_render": `       
-                                <!-- Container do texto animado -->
+
+                <!-- Container do texto animado -->
                 <div id="text-container-capa">
                     <div class="animated-text">Hematologia Clínica</div>
                     <div id="underline"></div>
@@ -30,7 +31,7 @@ const api = [
                 <div id="animated-image"></div>
                 
                 <!-- Imagem -->
-                <div id="image"></div>
+                <div id="image-capaOverlay"></div>
             `,
         },
         "paramentros": {
@@ -246,14 +247,18 @@ const api = [
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
             },
-            "script_simples":`
-            
-                <script>
+            "script_simples":[
+                {
+                    "posicao":"body", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
+                    // "attr":"defer" // pode ser defer ou async
+                    // "insert":"beforebegin", // opcional onde ele vai inserir
+                    "conteudo_script":`
 
-                    alert('oi')
-
-                </script>
-            `
+                       console.log("funcionando")
+                    
+                    `
+                }
+            ]
         }
     },
     
@@ -503,6 +508,18 @@ const api = [
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
             },
+            // "script_simples":[
+            //     {
+            //         "posicao":"head", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
+            //         // "attr":"defer" // pode ser defer ou async
+            //         "insert":"afterbegin", // opcional onde ele vai inserir
+            //         "conteudo_script":`
+
+            //             alert('oi')
+                    
+            //         `
+            //     }
+            // ]
             
         }
     },

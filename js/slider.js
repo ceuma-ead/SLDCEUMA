@@ -53,6 +53,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     itemnsMenu('', event.detail.slide);
     //Adcionar Fundo ao Slider Atual
     adicionarFundo(event.detail.slide)
+    //Fazer a inserção de scripts na página
+    injectScriptPage(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -123,7 +125,6 @@ function adicionarFundo(slideIndex) {
 
     }
 }
-
 
 // Função para Ativar logo no Slider
 function adicionarLogo(slideIndex) {
@@ -615,6 +616,57 @@ function atualizarCoresdaNavegacao(slideIndex) {
     }
 }
 
+// Função para injetar scripts na página
+function injectScriptPage(slideIndex) {
+    const pageData = api[slideIndex];
+
+    // Verifica se os scripts simples existem na estrutura de parâmetros
+    if (pageData && pageData.paramentros && pageData.paramentros.script_simples) {
+        const scripts = pageData.paramentros.script_simples;
+
+        scripts.forEach(scriptItem => {
+            // Cria um elemento de script
+            const scriptElement = document.createElement('script');
+            
+            // Verifica a posição do script (head, body, etc.)
+            let parentElement;
+            switch(scriptItem.posicao) {
+                case 'head':
+                    parentElement = document.head;
+                    break;
+                case 'body':
+                    parentElement = document.body;
+                    break;
+                case 'footer':
+                    parentElement = document.querySelector('footer');
+                    break;
+                default:
+                    parentElement = document.body;
+            }
+
+            // Adiciona atributos como defer ou async, se especificados
+            if (scriptItem.attr) {
+                scriptElement.setAttribute(scriptItem.attr, '');
+            }
+
+            // Define o conteúdo do script
+            scriptElement.innerHTML = scriptItem.conteudo_script;
+
+            // Verifica onde inserir o script dentro do elemento pai
+            const insertPosition = scriptItem.insert || 'beforeend';
+
+            // Insere o script no elemento apropriado na posição especificada
+            parentElement.insertAdjacentElement(insertPosition, scriptElement);
+        });
+
+    } else {
+        // Atualiza o controle do glider caso não haja scripts
+        glider.refresh(true);
+        glider.updateControls();
+    }
+}
+
+
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
@@ -622,6 +674,7 @@ adicionarLogo(savedPosition);
 modificarFontes(savedPosition);
 adcionarMarcadores(savedPosition);
 adicionarFundo(savedPosition)
+injectScriptPage(savedPosition)
 
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);
