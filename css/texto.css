@@ -47,11 +47,11 @@
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-track {
     border-radius: 3px;
-    background-color: #000000;
+    background-color: #00000000;
 }
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-track:hover {
-    background-color: #000000;
+    background-color: #00000000;
 }
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-track:active {
