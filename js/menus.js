@@ -111,11 +111,6 @@ function fecharMenuAnotacoes() {
         menuAnotacoes.classList.remove('open-annotation');
 
         
-        // verificar se container é vazio pra mudar o icon
-        const iconAnnotation = checkEmptyAnnotationsContainer();
-
-
-        
         iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
         botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
         if(vizioon_anotation){
@@ -132,4 +127,5 @@ document.addEventListener('DOMContentLoaded', function() {
     abrirSumario();
     abrirAnotacoes();
 });
+
 

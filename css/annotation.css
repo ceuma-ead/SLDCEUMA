@@ -402,9 +402,7 @@ a:hover {
     background-color: #a3470000;
 }
 
-.sidebar-menu-Annotation.open-annotation {
-    right: 0%; 
-}
+
 
 /* Mudar Posição da Caixa ao Clicar no butão de Mudar de Lado */
 
@@ -419,7 +417,7 @@ a:hover {
     border-left: 45px solid #eee;
     border-bottom: 45px solid transparent;
     box-shadow: 3px 3px 2px #dbd581;
-    display: block; /* Visível por padrão */
+    display: block; 
 }
 
 /* Triângulo à direita (oculto por padrão) */
@@ -439,6 +437,11 @@ a:hover {
 .sidebar-menu-Annotation.left {
     left: 0;
     right: auto;
+}
+
+.sidebar-menu-Annotation.open-annotation {
+    right: 0%; 
+    
 }
 
 /* Esconde o triângulo à esquerda e exibe o da direita quando a sidebar está à esquerda */

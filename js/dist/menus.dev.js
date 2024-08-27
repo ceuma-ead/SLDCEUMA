@@ -93,9 +93,7 @@ function fecharMenuAnotacoes() {
 
   if (menuAnotacoes.classList.contains('open-annotation')) {
     var vizioon_anotation = document.querySelector(".vizion-annotation");
-    menuAnotacoes.classList.remove('open-annotation'); // verificar se container é vazio pra mudar o icon
-
-    var iconAnnotation = checkEmptyAnnotationsContainer();
+    menuAnotacoes.classList.remove('open-annotation');
     iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
     botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
 

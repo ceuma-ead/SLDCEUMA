@@ -53,7 +53,7 @@
 }
 
 .glider-slide {
-    user-select: none;
+    /* user-select: none; */
     justify-content: center;
     align-content: center;
     width: 100%;
