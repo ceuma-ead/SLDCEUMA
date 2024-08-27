@@ -63,7 +63,7 @@ const api = [
                 `,
                 // Criar um Estilo Geral
                 "attr_inline": `
-                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top]
+                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]
                 `,
                 // Criar uma injeção de Dados para estilizar o Marcador
                 "estilo_marcador_inject": `
