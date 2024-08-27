@@ -62,7 +62,6 @@ function Update() {
 
 checkEmptyAnnotationsContainer()
 
-
 // Função para renderizar uma anotação na interface
 function renderAnnotation(annotationItem) {
     const renderMenuDiv = document.querySelector('.render-menu-Annotation');
@@ -74,10 +73,10 @@ function renderAnnotation(annotationItem) {
 
     // Configura o conteúdo da nova anotação, incluindo o título editável, texto e ícones de ações
     newAnnotation.innerHTML = `
-     
-        <div class="ribbon rb d-inline-block text-truncate"  title="${annotationItem.title}" contenteditable="true">${annotationItem.title}</div>
-
-        <p>${annotationItem.Texto}</p>
+        <div class="ribbon rb d-inline-block text-truncate" style="max-width: 80%;" 
+             title='${annotationItem.title}' contenteditable="true">${annotationItem.title}</div>
+        
+        <p contenteditable="true">${annotationItem.Texto}</p>
         <div class="line"></div>
         <div class="render-menu-Annotation--icons">
             <button class="delete-icon"><i data-lucide="trash-2"></i></button>
@@ -125,11 +124,17 @@ function renderAnnotation(annotationItem) {
     newAnnotation.querySelector('.ribbon').addEventListener('blur', function () {
         const updatedTitle = this.innerText.trim();
         if (updatedTitle !== annotationItem.title) {
-            annotation.update({
-                id: annotationItem.id
-            }, {
-                title: updatedTitle
-            });
+            // Atualiza o título da anotação
+            updateAnnotationField(annotationItem.id, { title: updatedTitle });
+        }
+    });
+
+    // Evento para salvar o texto quando o usuário editar e sair do campo (blur)
+    newAnnotation.querySelector('p').addEventListener('blur', function () {
+        const updatedText = this.innerText.trim();
+        if (updatedText !== annotationItem.Texto) {
+            // Atualiza o texto da anotação
+            updateAnnotationField(annotationItem.id, { Texto: updatedText });
         }
     });
 
@@ -140,7 +145,14 @@ function renderAnnotation(annotationItem) {
     lucide.createIcons();
 
     // Verifica se o contêiner está vazio após adicionar a nova anotação
-    checkEmptyAnnotationsContainer()
+    checkEmptyAnnotationsContainer();
+}
+
+// Função para atualizar campos específicos da anotação
+function updateAnnotationField(id, updates) {
+    // Implementar a lógica para atualizar o título ou texto da anotação no banco de dados
+    // Exemplo fictício:
+    annotation.update({ id }, updates);
 }
 
 

@@ -143,6 +143,7 @@
     margin-top: 2rem;
     height: max-content;
     overflow-x: hidden;
+    
 }
 
 .content-box-anotation svg {
@@ -290,6 +291,19 @@
     background-color: #cecece;
 }
 
+/* .content-box-anotation p{
+    transition: all 0.4s;
+}
+  
+.content-box-anotation p:hover{
+    border: 2px solid  rgb(77, 77, 77);
+} */
+
+
+.content-box-anotation p[contenteditable="true"]{
+    outline: none;
+    cursor:pointer;
+}
 
 
 /* a.active,
