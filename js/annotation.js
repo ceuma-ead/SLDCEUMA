@@ -251,7 +251,7 @@ function abrirConfigurcoesBaseMenu() {
 function showAutoCloseAlert(logs) {
     let timerInterval;
     Swal.fire({
-        title: 'Criando Estrutura...',
+        title: 'Escrevendo seu texto...',
         html: `
             <div>
                 <p>Aguarde em <b></b> milissegundos.</p>
