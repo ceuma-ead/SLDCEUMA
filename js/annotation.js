@@ -74,7 +74,9 @@ function renderAnnotation(annotationItem) {
 
     // Configura o conteúdo da nova anotação, incluindo o título editável, texto e ícones de ações
     newAnnotation.innerHTML = `
-        <div class="ribbon rb" contenteditable="true">${annotationItem.title}</div>
+     
+        <div class="ribbon rb d-inline-block text-truncate"  title="${annotationItem.title}" contenteditable="true">${annotationItem.title}</div>
+
         <p>${annotationItem.Texto}</p>
         <div class="line"></div>
         <div class="render-menu-Annotation--icons">
@@ -671,25 +673,6 @@ annotation.find({}, function (results) {
 // Adiciona o evento de clique no botão de adicionar anotação
 document.querySelector('footer button').addEventListener('click', createAnnotation);
 
-function limitText(container, maxChars, maxWords) {
-    let originalText = container.textContent;
-
-    // Limite de caracteres
-    if (originalText.length > maxChars) {
-        originalText = originalText.substring(0, maxChars - 3) + "...";
-    }
-
-    // Limite de palavras
-    let words = originalText.split(/\s+/); // Divide o texto em palavras
-    if (words.length > maxWords) {
-        originalText = words.slice(0, maxWords).join(' ') + "...";
-    }
-
-    container.textContent = originalText;
-}
-
-
-
 
 document.querySelector('.mudarPosicao').addEventListener('click', function() {
     const sidebar = document.querySelector('.sidebar-menu-Annotation');
@@ -711,17 +694,14 @@ document.querySelector('.mudarPosicao').addEventListener('click', function() {
 });
 
 
-//    <div class="ribbon rb" contenteditable="true">${annotationItem.title}</div>
 
-// document.querySelector('.rb').addEventListener('blur', function () {
-//     limitText(this, 50, 10);
-// });
 
-// document.querySelector('.rb').addEventListener('keydown', function (event) {
-//     if (event.key === 'Enter') {
-//         event.preventDefault(); // Impede a quebra de linha ao pressionar Enter
-//     }
-// });
+document.querySelector('.rb').addEventListener('keydown', function (event) {
+    // Impede a quebra de linha ao pressionar Enter
+    if (event.key === 'Enter') {
+        event.preventDefault();
+    }
+});
 
 
 Update()

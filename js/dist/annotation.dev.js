@@ -67,7 +67,7 @@ function renderAnnotation(annotationItem) {
   newAnnotation.dataset.id = annotationItem.id; // Armazena o ID da anotação
   // Configura o conteúdo da nova anotação, incluindo o título editável, texto e ícones de ações
 
-  newAnnotation.innerHTML = "\n        <div class=\"ribbon rb\" contenteditable=\"true\">".concat(annotationItem.title, "</div>\n        <p>").concat(annotationItem.Texto, "</p>\n        <div class=\"line\"></div>\n        <div class=\"render-menu-Annotation--icons\">\n            <button class=\"delete-icon\"><i data-lucide=\"trash-2\"></i></button>\n            <button class=\"download-icon\"><i data-lucide=\"cloud-download\"></i></button>\n            <button class=\"color-icon\"><i data-lucide=\"palette\"></i></button>\n        </div>\n    "); // Aplica a cor salva na anotação, se existir
+  newAnnotation.innerHTML = "\n     \n        <div class=\"ribbon rb d-inline-block text-truncate\"  title=\"".concat(annotationItem.title, "\" contenteditable=\"true\">").concat(annotationItem.title, "</div>\n\n        <p>").concat(annotationItem.Texto, "</p>\n        <div class=\"line\"></div>\n        <div class=\"render-menu-Annotation--icons\">\n            <button class=\"delete-icon\"><i data-lucide=\"trash-2\"></i></button>\n            <button class=\"download-icon\"><i data-lucide=\"cloud-download\"></i></button>\n            <button class=\"color-icon\"><i data-lucide=\"palette\"></i></button>\n        </div>\n    "); // Aplica a cor salva na anotação, se existir
 
   if (annotationItem.color) {
     newAnnotation.style.background = annotationItem.color.background; // Força a aplicação da cor do texto ao parágrafo
@@ -647,24 +647,6 @@ annotation.find({}, function (results) {
 }); // Adiciona o evento de clique no botão de adicionar anotação
 
 document.querySelector('footer button').addEventListener('click', createAnnotation);
-
-function limitText(container, maxChars, maxWords) {
-  var originalText = container.textContent; // Limite de caracteres
-
-  if (originalText.length > maxChars) {
-    originalText = originalText.substring(0, maxChars - 3) + "...";
-  } // Limite de palavras
-
-
-  var words = originalText.split(/\s+/); // Divide o texto em palavras
-
-  if (words.length > maxWords) {
-    originalText = words.slice(0, maxWords).join(' ') + "...";
-  }
-
-  container.textContent = originalText;
-}
-
 document.querySelector('.mudarPosicao').addEventListener('click', function () {
   var sidebar = document.querySelector('.sidebar-menu-Annotation');
 
@@ -682,16 +664,13 @@ document.querySelector('.mudarPosicao').addEventListener('click', function () {
       fecharMenuAnotacoes();
     }
   });
-}); //    <div class="ribbon rb" contenteditable="true">${annotationItem.title}</div>
-// document.querySelector('.rb').addEventListener('blur', function () {
-//     limitText(this, 50, 10);
-// });
-// document.querySelector('.rb').addEventListener('keydown', function (event) {
-//     if (event.key === 'Enter') {
-//         event.preventDefault(); // Impede a quebra de linha ao pressionar Enter
-//     }
-// });
-
+});
+document.querySelector('.rb').addEventListener('keydown', function (event) {
+  // Impede a quebra de linha ao pressionar Enter
+  if (event.key === 'Enter') {
+    event.preventDefault();
+  }
+});
 Update();
 checkEmptyAnnotationsContainer();
 document.addEventListener('DOMContentLoaded', function () {
