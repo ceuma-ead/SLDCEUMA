@@ -49,15 +49,21 @@ function abrirAnotacoes() {
 
     botaoAbrirAnotacoes.addEventListener('click', function (evento) {
         evento.stopPropagation();
-
+        
         // verificar se container é vazio pra mudar o icon
         const iconAnnotation = checkEmptyAnnotationsContainer();
 
-        // Verificar e remover a classe 'close-annotation' se ela existir
+        // Verificar e remover a classe 'close-annotation' se ela existir pois ele fecha a 
+        // esquerda
         if (menuAnotacoes.classList.contains('close-annotation')) {
             menuAnotacoes.classList.remove('close-annotation');
         }
 
+        // Verificar se está à esquerda e adicionar a classe 'close-annotation'
+        if (menuAnotacoes.classList.contains('left')) {
+            menuAnotacoes.classList.remove('left');
+            menuAnotacoes.classList.add('close-annotation');
+        }
 
         // Fecha o menu de sumário, se estiver aberto
         fecharMenuSumario();
