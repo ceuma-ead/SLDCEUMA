@@ -1,5 +1,267 @@
 const api = [
-    // PAGINA 1
+    
+     // PAGINA 1
+    {
+        "pagina": 1,
+        "nome_page": `Apresentação da disciplina`,
+        "tipo": "Texto",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-imagem",
+        "cabecalho_link_script":`
+            <!-- Link para a biblioteca de ícones Font Awesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <!-- Link para a fonte Lato do Google Fonts -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lato" rel="stylesheet">
+        `,
+        "data": {
+            "container_render": `       
+                <div id="header-capa">
+                    Cabeçalho Animado
+                </div>
+
+                <!-- Container do texto animado -->
+                <div id="text-container-capa">
+                    <div class="animated-text">Hematologia Clínica</div>
+                    <div id="underline"></div>
+                    <div id="second-text">unidade 1</div>
+                    <button id="animated-button">iniciar</button>
+                </div>
+
+                <!-- Imagem animada -->
+                <div id="animated-image"></div>
+                
+                <!-- Imagem -->
+                <div id="image"></div>
+            `,
+        },
+        "paramentros": {
+            "cores": {
+                // "sidebar": "red",
+                "fundo": ":#00000000",
+                // "icones": "rgb(0, 110, 201)"
+                "imagemFundo":{
+                    "ativar": true,
+                    "img": "url(../assets/fundo.gif)",
+                    "posicaoY": "bottom 1.8%",
+                    "posicaoX": "left 0.5%",
+                    "tamanho": "100%",
+                }
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 2
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".pagina-tipo-texto--box-texto"
+                }
+            },
+            "marcador": [{
+                "tipo": "p",
+                "posicao": 2,
+                "palavras": "social|econômica|cultural",
+                // Atributos Gerais
+                "attr": `  
+                  cursor=[pointer] , border-radius=[5px] , /*border=[2px solid #000]*/
+                `,
+                // Criar um Estilo Geral
+                "attr_inline": `
+                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]
+                `,
+                // Criar uma injeção de Dados para estilizar o Marcador
+                "estilo_marcador_inject": `
+                    
+                    .bt-1 {
+                       background: #011c41;
+                       color: #fff;
+                       display: inline-block;
+                       transition: all .4s ease-in-out;
+                       transform-style: preserve-3d;
+                       animation-name: zoom;
+                       animation-duration: 1s;
+                    }
+
+                    .bt-1:hover {
+                      background: #024db3;
+                      transform: rotate3d(1, 0, 0, -360deg);
+            }
+
+                    @keyframes zoom 0% {
+                    transform: scale(0)
+                    
+                    }
+                    
+                    @keyframes zoom 100% {
+                    transform: scale(1)
+                    
+                    } 
+                    
+                     .bt-2 {
+                        background:red;
+                        color:#fff; display: inline-block;
+                        transition: all .4s ease-in-out;
+                        transform-style: preserve-3d;
+                        animation-name: zoom;
+            animation-duration: 1s;
+                    }
+
+                    .bt-2:hover {
+                      background: #024db3;
+                      transform: rotate3d(1, 0, 0, -360deg);
+            }
+
+                    @keyframes zoom 0% {
+                    transform: scale(0)
+                    
+                    }
+                    
+                    @keyframes zoom 100% {
+                    transform: scale(1)
+                    
+                    } 
+
+                    .bt-3 {
+                        background:#FF8A00;
+                        color:#fff; display: inline-block;
+                       transition: all .4s ease-in-out;
+                       transform-style: preserve-3d;
+                        animation-name: zoom;
+            animation-duration: 1s;
+                    }
+
+                    .bt-3:hover {
+                      background: #024db3;
+                      transform: rotate3d(1, 0, 0, -360deg);
+            }
+
+                    @keyframes zoom 0% {
+                    transform: scale(0)
+                    
+                    }
+                    
+                    @keyframes zoom 100% {
+                    transform: scale(1)
+                    
+                    } 
+
+                    .my-poup{
+
+                       background:#FF8A00;
+                    }
+
+                `,
+                // Atributos Especificos
+                "attr_unitario": {
+                    "social": {
+                        // "attr": "background=[red],color=[white]",
+                        "attr_inline": "id=[#1], class=[bt-1]",
+                    },
+                    "econômica": {
+                        // "attr": "background=[blue],color=[white]",
+                        "attr_inline": "id=[#1], class=[bt-2]"
+                    },
+
+                    "cultural": {
+                        // "attr": "background=[blue],color=[white]",
+                        "attr_inline": "id=[#1], class=[bt-3]"
+                    },
+                },
+                // "fundo": "blue",
+                // "corTexto": "black",
+                "padding": "0.3rem",
+                "onclick": [{
+                        "palavra": "social",
+                        "acao": "onclick",
+                        "funcao_script": `
+                            function s_ocial() {
+                                Swal.fire(
+                                    {   icon:"info",
+                                        // title:"Social",
+                                        // customClass: {
+                                        //     popup:"my-poup"
+                                        // },
+                                        heightAuto: false,
+                                        text:"A compreensão profunda das alterações hematológicas e suas causas permite aos futuros biomédicos diagnosticar e tratar doenças de forma mais eficaz, contribuindo para a melhoria da saúde pública.",
+                                        // footer:"<a href='#'>Baixar Conceito</a>"
+                                    }
+                                );
+                            }
+                        `,
+                        "funcao": "s_ocial()"
+                    },
+                    {
+                        "palavra": "econômica",
+                        "acao": "onclick",
+                        "funcao_script": `
+                            function e_conomica() {
+                                Swal.fire(
+                                    {   icon:"info",
+                                        // title:"econômica",
+                                        // customClass: {
+                                        //     popup:"my-poup"
+                                        // },
+                                        heightAuto: false,
+                                        text:"Culturalmente, ao entender as particularidades genéticas e epidemiológicas de diferentes populações, o biomédico pode oferecer um cuidado mais personalizado e adequado.",
+                                        // footer:"<a href='#'>Baixar Conceito</a>"
+                                    }
+                                );
+                            }
+                        `,
+                        "funcao": "e_conomica()"
+                    },
+                    {
+                        "palavra": "cultural",
+                        "acao": "onclick",
+                        "funcao_script": `
+                            function c_ultural() {
+                                Swal.fire(
+                                    {   icon:"info",
+                                        // title:"cultural",
+                                        // customClass: {
+                                        //     popup:"my-poup"
+                                        // },
+                                        heightAuto: false,
+                                        text:"Em um contexto econômico, o diagnóstico preciso e rápido de doenças hematológicas pode reduzir custos com tratamentos prolongados ou ineficazes.",
+                                        // footer:"<a href='#'>Baixar Conceito</a>"
+                                    }
+                                );
+                            }
+                        `,
+                        "funcao": "c_ultural()"
+                    },
+
+                ]
+
+            }],
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto":"justify",
+                "hifens":"auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logopreta.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            "script_simples":`
+            
+                <script>
+
+                    alert('oi')
+
+                </script>
+            `
+        }
+    },
+    
+    // PAGINA 2
     {
         "pagina": 1,
         "nome_page": `Apresentação da disciplina`,
@@ -245,99 +507,97 @@ const api = [
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
             },
-            "menu": {
-
-            }
+            
         }
     },
 
-    // PAGINA 2
-    {
-        "pagina": 2,
-        "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,
-        "tipo": "imagem",
-        "id_page": ".content-render-api",
-        "id_component": ".c-carousel__slides",
-        "id_elemento_para_modificar": "container-imagem",
-        "data": {
-            "container_render": `
-            <div class="container-img-lightbox-fluid">
-            <div class="item-ligthbox">
-            <div class="item-ligthbox-img img-photo-actions">
+    // PAGINA 3
+    // {
+    //     "pagina": 3,
+    //     "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,
+    //     "tipo": "imagem",
+    //     "id_page": ".content-render-api",
+    //     "id_component": ".c-carousel__slides",
+    //     "id_elemento_para_modificar": "container-imagem",
+    //     "data": {
+    //         "container_render": `
+    //         <div class="container-img-lightbox-fluid">
+    //         <div class="item-ligthbox">
+    //         <div class="item-ligthbox-img img-photo-actions">
             
-            <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01"/>    
+    //         <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01"/>    
             
-            </div>
-            <p class="description">Descrição da imagem 1</p>
-            </div>
-            <div class="item-ligthbox">
-            <div class="item-ligthbox-img img-photo-actions">
+    //         </div>
+    //         <p class="description">Descrição da imagem 1</p>
+    //         </div>
+    //         <div class="item-ligthbox">
+    //         <div class="item-ligthbox-img img-photo-actions">
             
-            <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1"/>
+    //         <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1"/>
             
-            </div>
-            <p class="description">Descrição da imagem 2</p>
-                        </div>
-                        </div>
-            `
-        },
-        "paramentros": {
-            "lupa": "Yes",
-            "cores": {
-                // "sidebar": "black",
-                // "fundo": "black",
-                // "icones": "rgb(0, 110, 201)"
-            },
-            "fonte": {
-                // "titulo":"1rem",
-                // "paragrafos":"1rem",
-                // "font_familly":"Lato",
-                // "cor_fonte":"black",
-                // "alinhamento_texto":"center"
-            },
-            "configuracoes_gerais": {
-                // Habilitar Procurar de Paragrafos ná Pagina 2
-                "_procurar_paragrafos": {
-                    "status": true,
-                    "onde_procurar": ".item-ligthbox" // onde precisa procurar os Elementos
-                }
-            },
-            // "marcador": [{
-            //     "tipo": "p",
-            //     "posicao": 0,
-            //     "palavras": "imagem",
-            //     // "attr": `  
-            //     //     font-weight=[500], font-style=[lighter], text-decoration=[overline #ffff] ,          text-underline-offset=[8px]
-            //     // `,
-            //     "attr": `  
-            //       border-bottom=[dashed black]
-            //     `,
-            //     "attr_inline": `id=[#1] , class=[px-1 , bg-success]`,
-            //     // "fundo": "blue",
-            //     "corTexto": "black",
-            //     "padding": "0.3rem",
-            //     // "onclick":[
-            //     //     {
-            //     //         "palavra":"imagem",
-            //     //         "acao":"onclick",
-            //     //         "funcao_script":`
-            //     //             function sejas() {
-            //     //                 alert('Estudantes')
-            //     //             }
-            //     //         `,
-            //     //         "funcao":"sejas()",
-            //     //     }
-            //     // ]
+    //         </div>
+    //         <p class="description">Descrição da imagem 2</p>
+    //                     </div>
+    //                     </div>
+    //         `
+    //     },
+    //     "paramentros": {
+    //         "lupa": "Yes",
+    //         "cores": {
+    //             // "sidebar": "black",
+    //             // "fundo": "black",
+    //             // "icones": "rgb(0, 110, 201)"
+    //         },
+    //         "fonte": {
+    //             // "titulo":"1rem",
+    //             // "paragrafos":"1rem",
+    //             // "font_familly":"Lato",
+    //             // "cor_fonte":"black",
+    //             // "alinhamento_texto":"center"
+    //         },
+    //         "configuracoes_gerais": {
+    //             // Habilitar Procurar de Paragrafos ná Pagina 2
+    //             "_procurar_paragrafos": {
+    //                 "status": true,
+    //                 "onde_procurar": ".item-ligthbox" // onde precisa procurar os Elementos
+    //             }
+    //         },
+    //         // "marcador": [{
+    //         //     "tipo": "p",
+    //         //     "posicao": 0,
+    //         //     "palavras": "imagem",
+    //         //     // "attr": `  
+    //         //     //     font-weight=[500], font-style=[lighter], text-decoration=[overline #ffff] ,          text-underline-offset=[8px]
+    //         //     // `,
+    //         //     "attr": `  
+    //         //       border-bottom=[dashed black]
+    //         //     `,
+    //         //     "attr_inline": `id=[#1] , class=[px-1 , bg-success]`,
+    //         //     // "fundo": "blue",
+    //         //     "corTexto": "black",
+    //         //     "padding": "0.3rem",
+    //         //     // "onclick":[
+    //         //     //     {
+    //         //     //         "palavra":"imagem",
+    //         //     //         "acao":"onclick",
+    //         //     //         "funcao_script":`
+    //         //     //             function sejas() {
+    //         //     //                 alert('Estudantes')
+    //         //     //             }
+    //         //     //         `,
+    //         //     //         "funcao":"sejas()",
+    //         //     //     }
+    //         //     // ]
 
-            // }],
-            "logo": {
-                "ativar": true, // True || False
-                "img": "url(../assets/logopreta.png)",
-                "posicaoY": "bottom 1.8%",
-                "posicaoX": "left 0.5%",
-                "tamanho": "10%",
-            }
-        }
-    },
+    //         // }],
+    //         "logo": {
+    //             "ativar": true, // True || False
+    //             "img": "url(../assets/logopreta.png)",
+    //             "posicaoY": "bottom 1.8%",
+    //             "posicaoX": "left 0.5%",
+    //             "tamanho": "10%",
+    //         }
+    //     }
+    // },
 
 ];

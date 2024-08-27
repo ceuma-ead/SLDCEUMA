@@ -120,5 +120,13 @@
     /* ---------------------------------------- */ 
 
 
+
+
+    /* Controlador de Imagem Carrosel */
+    --imgem-fundo-carrosel:url(../assets/fundo.gif);
+    --imgem-fundo-carrosel-posicao-y-imagem:center;
+    --imgem-fundo-carrosel-posicao-x-imagem:center;
+    --imgem-fundo-tamanho-x-y-imagem:100%;
+
     }
     

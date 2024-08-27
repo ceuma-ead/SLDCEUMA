@@ -126,6 +126,7 @@ function renderAnnotation(annotationItem) {
         if (updatedTitle !== annotationItem.title) {
             // Atualiza o título da anotação
             updateAnnotationField(annotationItem.id, { title: updatedTitle });
+           
         }
     });
 
@@ -704,7 +705,6 @@ document.querySelector('.mudarPosicao').addEventListener('click', function() {
         }
     });
 });
-
 
 
 

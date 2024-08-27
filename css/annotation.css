@@ -302,7 +302,7 @@
 
 .content-box-anotation p[contenteditable="true"]{
     outline: none;
-    cursor:pointer;
+    /* cursor:pointer; */
 }
 
 
@@ -479,10 +479,6 @@ a:hover {
 .sidebar-menu-Annotation.left::after {
     display: block;
 }
-
-
-
-
 
 
 .empty-annotation-message {

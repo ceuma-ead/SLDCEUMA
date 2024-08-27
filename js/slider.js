@@ -51,6 +51,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     adcionarMarcadores(event.detail.slide)
     //Passa a Posição Atual da Pagina para o Menu
     itemnsMenu('', event.detail.slide);
+    //Adcionar Fundo ao Slider Atual
+    adicionarFundo(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -62,6 +64,66 @@ function updatePageTitle(slideIndex) {
         titulo.textContent = pageData.nome_page;
     }
 }
+
+// Função para Ativar Fundo no Slider
+function adicionarFundo(slideIndex) {
+    const pageData = api[slideIndex];
+    // console.log(pageData)
+
+    // Criar um padrão para Logo
+    const LogoPadrao = {
+        ativar: true,
+        img: getComputedStyle(document.documentElement).getPropertyValue('--imgem-fundo-carrosel').trim(),
+        posicaoY: getComputedStyle(document.documentElement).getPropertyValue('--imgem-fundo-carrosel-posicao-y-imagem').trim(),
+        posicaoX: getComputedStyle(document.documentElement).getPropertyValue('--imgem-fundo-carrosel-posicao-x-imagem').trim(),
+        tamanho: getComputedStyle(document.documentElement).getPropertyValue('--imgem-fundo-tamanho-x-y-imagem').trim(),
+    };
+
+    if (pageData && pageData.paramentros && pageData.paramentros.cores.imagemFundo) {
+        const {
+            ativar = LogoPadrao.ativar, // Valores padrão em caso de ausência
+                img = LogoPadrao.img,
+                posicaoY = LogoPadrao.posicaoY,
+                posicaoX = LogoPadrao.posicaoX,
+                tamanho = LogoPadrao.tamanho
+
+        } = pageData.paramentros.cores.imagemFundo;
+
+        // console.log(pageData.paramentros.logo)
+        const verificarItem = pageData.paramentros.cores
+        if (Object.values(verificarItem).length === 0) {
+            document.documentElement.style.setProperty('--imgem-fundo-carrosel', "url()");
+            return;
+        }
+
+        if (ativar) {
+            // console.log(img)
+            // console.log(document.documentElement.style.getPropertyValue('--imgem-fundo-carrosel'))
+
+            document.documentElement.style.setProperty('--imgem-fundo-carrosel', img);
+            document.documentElement.style.setProperty('--imgem-fundo-carrosel-posicao-y-imagem', posicaoY);
+            document.documentElement.style.setProperty('--imgem-fundo-carrosel-posicao-x-imagem', posicaoX);
+            document.documentElement.style.setProperty('--imgem-fundo-tamanho-x-y-imagem', tamanho);
+        } else {
+            document.documentElement.style.setProperty('--imgem-fundo-carrosel', "url()");
+        }
+    } else {
+
+        if (typeof glider !== 'undefined') {
+            glider.refresh(true);
+            glider.updateControls();
+        } else {
+            console.error('O objeto glider não está definido.');
+        }
+        // Mantém os estilos padrão e atualiza o glider
+        document.documentElement.style.setProperty('--imgem-fundo-carrosel', 'url()');
+        document.documentElement.style.setProperty('--imgem-fundo-carrosel-posicao-y-imagem', LogoPadrao.posicaoY);
+        document.documentElement.style.setProperty('--imgem-fundo-carrosel-posicao-x-imagem', LogoPadrao.posicaoX);
+
+
+    }
+}
+
 
 // Função para Ativar logo no Slider
 function adicionarLogo(slideIndex) {
@@ -118,7 +180,6 @@ function adicionarLogo(slideIndex) {
 
     }
 }
-
 
 // Função para limitar o texto e adicionar "..."
 function reduzirTexto(texto, tamanhoMaximo) {
@@ -215,7 +276,6 @@ function reduzirTexto(texto, tamanhoMaximo) {
     }
 }
 
-
 // Função para renderizar o menu dinamicamente
 function itemnsMenu(filtro = '', slideIndex) {
     const renderMenuDiv = document.querySelector('.render-menu');
@@ -250,7 +310,7 @@ function itemnsMenu(filtro = '', slideIndex) {
                 <span title="${item.nome_page}">${textoReduzido}</span>
                 <span class="horizontal-menu-activer ${slideIndex + 1 === item.pagina ? "active-menu" : ""}"></span>
             `;
-            
+
 
             // Evento de clique para ir para a página no slider
             menuItem.onclick = () => {
@@ -296,7 +356,6 @@ function handleSearch() {
         }
     };
 }
-
 
 // Função para Modificar Fonte no Slider
 function modificarFontes(slideIndex) {
@@ -386,277 +445,6 @@ function modificarFontes(slideIndex) {
 // Função marcadorTexto
 function adcionarMarcadores(slideIndex) {
     const pageData = api[slideIndex];
-
-
-    // if(pageData && pageData.paramentros && pageData.paramentros.configuracoes_gerais._procurar_paragrafos.status){
-    //         const slider_container = document.querySelector(pageData.paramentros.configuracoes_gerais._procurar_paragrafos.onde_procurar);
-    //         // console.log(pageData.paramentros.configuracoes_gerais)
-    //         pageData.paramentros.marcador.forEach((marcadores) => {
-    //             const {
-    //                 tipo,
-    //                 posicao,
-    //                 palavras,
-    //                 attr,
-    //                 attr_inline,
-    //                 fundo,
-    //                 corTexto,
-    //                 padding,
-    //                 onclick
-    //             } = marcadores;
-
-    //             const paragrafo = slider_container.querySelectorAll(tipo)[posicao];
-
-    //             if (paragrafo) {
-    //                 const palavrasArray = palavras.split('|');
-
-    //                 console.log(palavrasArray)
-    //                 let styles = '';
-    //                 if (attr) {
-    //                     attr.split(',').forEach(attribute => {
-    //                         const [key, value] = attribute.split('=');
-    //                         if (key && value) {
-    //                             styles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
-    //                         }
-    //                     });
-    //                 }
-
-    //                 styles += `background-color:${fundo}; color:${corTexto}; padding:${padding};`;
-
-    //                 let inlineAttrs = '';
-    //                 if (attr_inline) {
-    //                     attr_inline.split(',').forEach(attribute => {
-    //                         const [key, value] = attribute.split('=');
-    //                         if (key && value) {
-    //                             inlineAttrs += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
-    //                         }
-    //                     });
-    //                 }
-
-    //                 palavrasArray.forEach(palavra => {
-    //                     const regex = new RegExp(`(${palavra})`, 'gi');
-
-    //                     // Verifica se o span já existe para a palavra
-    //                     if (paragrafo.innerHTML.includes(`<span ${inlineAttrs.trim()}`)) {
-    //                         return; // Se já existe, não faz nada
-    //                     }
-
-    //                     paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, (match) => {
-    //                         let eventHandlers = '';
-
-    //                         if (onclick) {
-    //                             onclick.forEach(event => {
-    //                                 if (event.palavra === palavra) {
-    //                                     const eventName = event.acao;
-    //                                     const functionName = event.funcao.split('(')[0];
-
-    //                                     // Verifica se a função já existe
-    //                                     if (!window[functionName]) {
-    //                                         // Cria a função no escopo global através de uma tag <script>
-    //                                         const scriptTag = document.createElement('script');
-    //                                         scriptTag.textContent = event.funcao_script.trim();
-    //                                         document.body.appendChild(scriptTag);
-    //                                     }
-
-    //                                     // Associa o evento ao span
-    //                                     eventHandlers += `${eventName}="${functionName}()" `;
-    //                                 }
-    //                             });
-    //                         }
-    //                         console.log(`<span ${inlineAttrs} style="${styles}" ${eventHandlers}>${match}</span>`)
-    //                         return `<span ${inlineAttrs} style="${styles}" ${eventHandlers}>${match}</span>`;
-    //                     });
-    //                 });
-    //             } else {
-    //                 console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
-    //             }
-    //         });
-    //     }
-    // }
-
-    // if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
-    //     const slider_container = document.querySelector(pageData.id_component);
-
-    //     pageData.paramentros.marcador.forEach((marcadores) => {
-    //         const {
-    //             tipo,
-    //             posicao,
-    //             palavras,
-    //             attr,
-    //             attr_inline,
-    //             fundo,
-    //             corTexto,
-    //             padding,
-    //             onclick
-    //         } = marcadores;
-
-    //         const paragrafo = slider_container.querySelectorAll(tipo)[posicao];
-
-    //         if (paragrafo) {
-    //             const palavrasArray = palavras.split('|');
-
-    //             let styles = '';
-    //             if (attr) {
-    //                 attr.split(',').forEach(attribute => {
-    //                     const [key, value] = attribute.split('=');
-    //                     if (key && value) {
-    //                         styles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
-    //                     }
-    //                 });
-    //             }
-
-    //             styles += `background-color:${fundo}; color:${corTexto}; padding:${padding};`;
-
-    //             let inlineAttrs = '';
-    //             if (attr_inline) {
-    //                 attr_inline.split(',').forEach(attribute => {
-    //                     const [key, value] = attribute.split('=');
-    //                     if (key && value) {
-    //                         inlineAttrs += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
-    //                     }
-    //                 });
-    //             }
-
-    //             palavrasArray.forEach(palavra => {
-    //                 const regex = new RegExp(`(?!<span[^>]*>)(${palavra})(?!</span>)`, 'gi');
-
-    //                 paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, (match) => {
-    //                     let eventHandlers = '';
-
-    //                     if (onclick) {
-    //                         onclick.forEach(event => {
-    //                             if (event.palavra === palavra) {
-    //                                 const eventName = event.acao;
-    //                                 const functionName = event.funcao.split('(')[0];
-
-    //                                 // Verifica se a função já existe
-    //                                 if (!window[functionName]) {
-    //                                     // Cria a função no escopo global através de uma tag <script>
-    //                                     const scriptTag = document.createElement('script');
-    //                                     scriptTag.textContent = event.funcao_script.trim();
-    //                                     document.body.appendChild(scriptTag);
-    //                                 }
-
-    //                                 // Associa o evento ao span
-    //                                 eventHandlers += `${eventName}="${functionName}()" `;
-    //                             }
-    //                         });
-    //                     }
-
-    //                     // Só aplica o span se não estiver já dentro de um span
-    //                     return `<span ${inlineAttrs} style="${styles}" ${eventHandlers}>${match}</span>`;
-    //                 });
-    //             });
-    //         } else {
-    //             console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
-    //         }
-    //     });
-    // }
-
-    // if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
-    //     const slider_container = document.querySelector(pageData.id_component);
-
-    //     pageData.paramentros.marcador.forEach((marcadores) => {
-    //         const {
-    //             tipo,
-    //             posicao,
-    //             palavras,
-    //             attr,
-    //             attr_inline,
-    //             attr_unitario,
-    //             fundo,
-    //             corTexto,
-    //             padding,
-    //             onclick
-    //         } = marcadores;
-
-    //         const paragrafo = slider_container.querySelectorAll(tipo)[posicao];
-
-    //         if (paragrafo) {
-    //             const palavrasArray = palavras.split('|');
-
-    //             palavrasArray.forEach(palavra => {
-    //                 // Aplica atributos específicos se existirem
-    //                 let inlineAttrs = '';
-    //                 let specificStyles = '';
-
-    //                 if (attr_unitario && attr_unitario[palavra]) {
-    //                     const unitAttr = attr_unitario[palavra];
-    //                     if (unitAttr.attr) {
-    //                         unitAttr.attr.split(',').forEach(attribute => {
-    //                             const [key, value] = attribute.split('=');
-    //                             if (key && value) {
-    //                                 specificStyles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
-    //                             }
-    //                         });
-    //                     }
-    //                     if (unitAttr.attr_inline) {
-    //                         unitAttr.attr_inline.split(',').forEach(attribute => {
-    //                             const [key, value] = attribute.split('=');
-    //                             if (key && value) {
-    //                                 inlineAttrs += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
-    //                             }
-    //                         });
-    //                     }
-    //                 }
-
-    //                 // Inclui atributos genéricos
-    //                 let styles = '';
-    //                 if (attr) {
-    //                     attr.split(',').forEach(attribute => {
-    //                         const [key, value] = attribute.split('=');
-    //                         if (key && value) {
-    //                             styles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
-    //                         }
-    //                     });
-    //                 }
-
-    //                 styles += `background-color:${fundo ? fundo : ""}; color:${corTexto ? corTexto : "black"}; padding:${padding ? padding : ""};`;
-    //                 styles += specificStyles; // Sobrescreve atributos genéricos com específicos
-
-    //                 const regex = new RegExp(`(?!<span[^>]*>)(${palavra})(?!</span>)`, 'gi');
-
-    //                 let inlineAttrs_all = '';
-    //                 if (attr_inline) {
-    //                     attr_inline.split(',').forEach(attribute => {
-    //                         const [key, value] = attribute.split('=');
-    //                         if (key && value) {
-    //                             inlineAttrs_all += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
-    //                         }
-    //                     });
-    //                 }
-
-    //                 paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, (match) => {
-    //                     let eventHandlers = '';
-
-    //                     if (onclick) {
-    //                         onclick.forEach(event => {
-    //                             if (event.palavra === palavra) {
-    //                                 const eventName = event.acao;
-    //                                 const functionName = event.funcao.split('(')[0];
-
-    //                                 // Verifica se a função já existe
-    //                                 if (!window[functionName]) {
-    //                                     // Cria a função no escopo global através de uma tag <script>
-    //                                     const scriptTag = document.createElement('script');
-    //                                     scriptTag.textContent = event.funcao_script.trim();
-    //                                     document.body.appendChild(scriptTag);
-    //                                 }
-
-    //                                 // Associa o evento ao span
-    //                                 eventHandlers += `${eventName}="${functionName}()" `;
-    //                             }
-    //                         });
-    //                     }
-
-    //                     // Só aplica o span se não estiver já dentro de um span
-    //                     return `<span ${inlineAttrs} ${inlineAttrs_all ? inlineAttrs_all : ""} style="${styles}" ${eventHandlers}>${match}</span>`;
-    //                 });
-    //             });
-    //         } else {
-    //             console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
-    //         }
-    //     });
-    // }
 
     if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
         const slider_container = document.querySelector(pageData.id_component);
@@ -777,8 +565,6 @@ function adcionarMarcadores(slideIndex) {
         });
     }
 
-
-
 }
 
 // Atualiza as cores da página visível
@@ -835,6 +621,7 @@ atualizarCoresdaNavegacao(savedPosition);
 adicionarLogo(savedPosition);
 modificarFontes(savedPosition);
 adcionarMarcadores(savedPosition);
+adicionarFundo(savedPosition)
 
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);
