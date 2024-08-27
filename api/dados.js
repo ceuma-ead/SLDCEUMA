@@ -1,3 +1,5 @@
+const _prefixAssets = "../assets/"
+
 const api = [
     
      // PAGINA 1
@@ -115,9 +117,12 @@ const api = [
                           Trata-se de uma disciplina que contribui em inúmeras esferas para a sua formação acadêmica e pode ser aplicada em diversos contextos da vida real, possibilitando a interpretação de exames laboratoriais e identificação de condições como anemias, leucemias e coagulopatias. Este conhecimento é fundamental para o diagnóstico clínico, além de proporcionar uma base sólida para a realização de pesquisas científicas em áreas como a fisiologia das células-tronco e o desenvolvimento de novas terapias.
                         </p>
 
-                        <p>
-                        Ao final da disciplina você estará capacitado para implementar e monitorar processos de controle de qualidade em laboratórios, garantindo a precisão e confiabilidade dos resultados. Ademais, ensina sobre a política de sangue, normas técnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a importância dos testes pré-transfusionais.
-                        </p>
+                       <div class="pagina-tipo-texto--box-texto-div-container-presets">
+                            <img src="${_prefixAssets}ok.gif" />
+                            <p>
+                            Ao final da disciplina você estará capacitado para implementar e monitorar processos de controle de qualidade em laboratórios, garantindo a precisão e confiabilidade dos resultados. Ademais, ensina sobre a política de sangue, normas técnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a importância dos testes pré-transfusionais.
+                            </p>
+                       </div>
 
                         <p>Com base nos perfis e recursos de competências da disciplina, é esperado que, ao final da disciplina, você</p>
     

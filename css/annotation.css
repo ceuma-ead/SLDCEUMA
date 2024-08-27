@@ -423,6 +423,14 @@ a:hover {
     background-color: #a3470000;
 }
 
+.pagina-tipo-texto--box-texto-div-container-presets{
+    display: flex;
+    align-items: center;
+}
+
+.pagina-tipo-texto--box-texto-div-container-presets img{
+    width: 10%;
+}
 
 
 /* Mudar Posição da Caixa ao Clicar no butão de Mudar de Lado */
@@ -498,4 +506,44 @@ a:hover {
     /* Fundo preto */
     color: #ffffff;
     /* Texto branco */
+}
+
+/* overflow-y: scroll; */
+
+/* On screens that are 1200px wide or less, the background color is lightgray */
+@media screen and (max-width: 1200px) {
+   
+}
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 992px) {
+    
+}
+
+/* Em telas com 768px de largura ou menos, a cor de fundo é lightgreen  */
+@media screen and (max-width: 768px) {
+    
+}
+
+/* Em telas com 600px de largura ou menos, a cor de fundo é olive */
+@media screen and (max-width: 600px) {
+   .pagina-tipo-texto--box-texto-div-container-presets{
+    flex-direction: column;
+
+   }
+
+   .pagina-tipo-texto--box-texto-div-container-presets img{
+    width: 40%;
+    
+   }
+}
+
+/* Em telas com 480px de largura ou menos, a cor de fundo é orange */
+@media screen and (max-width: 480px) {
+   
+}
+
+/* Em telas com 320px de largura ou menos, a cor de fundo é amarela */
+@media screen and (max-width: 320px) {
+   
 }

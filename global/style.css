@@ -19,3 +19,10 @@ body{
     /* overflow: hidden; */
 
 }
+
+
+img{
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-window-dragging: none;
+}
