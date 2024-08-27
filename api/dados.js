@@ -119,7 +119,7 @@ const api = [
 
                        <div class="pagina-tipo-texto--box-texto-div-container-presets">
                             <img src="${_prefixAssets}ok.gif" />
-                            <p style="padding: 10px; background:#4285f4;">
+                            <p style="padding: 10px; background:#4285f4; font-weight: 700;">
                             Ao final da disciplina você estará capacitado para implementar e monitorar processos de controle de qualidade em laboratórios, garantindo a precisão e confiabilidade dos resultados. Ademais, ensina sobre a política de sangue, normas técnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a importância dos testes pré-transfusionais.
                             </p>
                        </div>
