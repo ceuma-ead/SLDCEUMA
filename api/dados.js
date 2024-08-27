@@ -24,7 +24,7 @@ const api = [
                     <div class="animated-text">Hematologia Clínica</div>
                     <div id="underline"></div>
                     <div id="second-text">unidade 1</div>
-                    <button id="animated-button">iniciar</button>
+                    <button id="animated-button" onclick="iniciar()">iniciar</button>
                 </div>
 
                 <!-- Imagem animada -->
@@ -55,183 +55,7 @@ const api = [
                     "onde_procurar": ".pagina-tipo-texto--box-texto"
                 }
             },
-            "marcador": [{
-                "tipo": "p",
-                "posicao": 2,
-                "palavras": "social|econômica|cultural",
-                // Atributos Gerais
-                "attr": `  
-                  cursor=[pointer] , border-radius=[5px] , /*border=[2px solid #000]*/
-                `,
-                // Criar um Estilo Geral
-                "attr_inline": `
-                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]
-                `,
-                // Criar uma injeção de Dados para estilizar o Marcador
-                "estilo_marcador_inject": `
-                    
-                    .bt-1 {
-                       background: #011c41;
-                       color: #fff;
-                       display: inline-block;
-                       transition: all .4s ease-in-out;
-                       transform-style: preserve-3d;
-                       animation-name: zoom;
-                       animation-duration: 1s;
-                    }
-
-                    .bt-1:hover {
-                      background: #024db3;
-                      transform: rotate3d(1, 0, 0, -360deg);
-            }
-
-                    @keyframes zoom 0% {
-                    transform: scale(0)
-                    
-                    }
-                    
-                    @keyframes zoom 100% {
-                    transform: scale(1)
-                    
-                    } 
-                    
-                     .bt-2 {
-                        background:red;
-                        color:#fff; display: inline-block;
-                        transition: all .4s ease-in-out;
-                        transform-style: preserve-3d;
-                        animation-name: zoom;
-            animation-duration: 1s;
-                    }
-
-                    .bt-2:hover {
-                      background: #024db3;
-                      transform: rotate3d(1, 0, 0, -360deg);
-            }
-
-                    @keyframes zoom 0% {
-                    transform: scale(0)
-                    
-                    }
-                    
-                    @keyframes zoom 100% {
-                    transform: scale(1)
-                    
-                    } 
-
-                    .bt-3 {
-                        background:#FF8A00;
-                        color:#fff; display: inline-block;
-                       transition: all .4s ease-in-out;
-                       transform-style: preserve-3d;
-                        animation-name: zoom;
-            animation-duration: 1s;
-                    }
-
-                    .bt-3:hover {
-                      background: #024db3;
-                      transform: rotate3d(1, 0, 0, -360deg);
-            }
-
-                    @keyframes zoom 0% {
-                    transform: scale(0)
-                    
-                    }
-                    
-                    @keyframes zoom 100% {
-                    transform: scale(1)
-                    
-                    } 
-
-                    .my-poup{
-
-                       background:#FF8A00;
-                    }
-
-                `,
-                // Atributos Especificos
-                "attr_unitario": {
-                    "social": {
-                        // "attr": "background=[red],color=[white]",
-                        "attr_inline": "id=[#1], class=[bt-1]",
-                    },
-                    "econômica": {
-                        // "attr": "background=[blue],color=[white]",
-                        "attr_inline": "id=[#1], class=[bt-2]"
-                    },
-
-                    "cultural": {
-                        // "attr": "background=[blue],color=[white]",
-                        "attr_inline": "id=[#1], class=[bt-3]"
-                    },
-                },
-                // "fundo": "blue",
-                // "corTexto": "black",
-                "padding": "0.3rem",
-                "onclick": [{
-                        "palavra": "social",
-                        "acao": "onclick",
-                        "funcao_script": `
-                            function s_ocial() {
-                                Swal.fire(
-                                    {   icon:"info",
-                                        // title:"Social",
-                                        // customClass: {
-                                        //     popup:"my-poup"
-                                        // },
-                                        heightAuto: false,
-                                        text:"A compreensão profunda das alterações hematológicas e suas causas permite aos futuros biomédicos diagnosticar e tratar doenças de forma mais eficaz, contribuindo para a melhoria da saúde pública.",
-                                        // footer:"<a href='#'>Baixar Conceito</a>"
-                                    }
-                                );
-                            }
-                        `,
-                        "funcao": "s_ocial()"
-                    },
-                    {
-                        "palavra": "econômica",
-                        "acao": "onclick",
-                        "funcao_script": `
-                            function e_conomica() {
-                                Swal.fire(
-                                    {   icon:"info",
-                                        // title:"econômica",
-                                        // customClass: {
-                                        //     popup:"my-poup"
-                                        // },
-                                        heightAuto: false,
-                                        text:"Culturalmente, ao entender as particularidades genéticas e epidemiológicas de diferentes populações, o biomédico pode oferecer um cuidado mais personalizado e adequado.",
-                                        // footer:"<a href='#'>Baixar Conceito</a>"
-                                    }
-                                );
-                            }
-                        `,
-                        "funcao": "e_conomica()"
-                    },
-                    {
-                        "palavra": "cultural",
-                        "acao": "onclick",
-                        "funcao_script": `
-                            function c_ultural() {
-                                Swal.fire(
-                                    {   icon:"info",
-                                        // title:"cultural",
-                                        // customClass: {
-                                        //     popup:"my-poup"
-                                        // },
-                                        heightAuto: false,
-                                        text:"Em um contexto econômico, o diagnóstico preciso e rápido de doenças hematológicas pode reduzir custos com tratamentos prolongados ou ineficazes.",
-                                        // footer:"<a href='#'>Baixar Conceito</a>"
-                                    }
-                                );
-                            }
-                        `,
-                        "funcao": "c_ultural()"
-                    },
-
-                ]
-
-            }],
+           
             "fonte": {
                 // "titulo":"1rem",
                 "paragrafos": "1rem",
@@ -254,7 +78,10 @@ const api = [
                     // "insert":"beforebegin", // opcional onde ele vai inserir
                     "conteudo_script":`
 
-                       console.log("funcionando")
+                    function iniciar(){
+                    glider.scrollItem(2);
+                    };   
+
                     
                     `
                 }
