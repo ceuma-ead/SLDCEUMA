@@ -37,11 +37,11 @@
     display: flex;
     justify-content: center;
     background: var(--fundo-carrosel);
-    background-image: var(--imagem-de-fundo-slider);
     align-items: center;
+    /* background-image: var(--imagem-de-fundo-slider);
     background-repeat: no-repeat;
     background-size:var(--tamanho-x-y-imagem);
-    background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem);
+    background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem); */
     margin: 0.5rem;
     /* background-color: blueviolet; */
 }
@@ -98,15 +98,35 @@
 #dots {
     position: relative;
     width: auto;
-    bottom: 8%;
+    bottom: 10%;
         transform: translateY(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    /*background-color: #007bff;*/
+    background-color: var(--fundo-carrosel);
+    /* background: var(--fundo-carrosel); */
     border: none;
     color: rgb(27, 27, 27);
     gap: 0.5rem;
     cursor: pointer;
     z-index: 1;
+    height: 4rem;
+    
+}
+
+.marca-da-agua{
+    position: absolute;
+    bottom:1%;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 1rem;
+    /* background: var(--fundo-carrosel); */
+    background-image: var(--imagem-de-fundo-slider);
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size:calc(var(--tamanho-x-y-imagem) * 9) ;
+    background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem);
+    margin: 0.5rem;
+    z-index: 1;
+    width: 10rem;
+    
 }

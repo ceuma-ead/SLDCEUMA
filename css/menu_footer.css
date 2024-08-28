@@ -12,6 +12,8 @@
     bottom: 0;
     right:0;
     margin: 1rem;
+    /* background-color: red; */
+    z-index: calc(var(--posicionamento-menu-sumario) - 4);
   }
   
   .wrapper {
