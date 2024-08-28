@@ -23,7 +23,10 @@
         <!-- Link para a fonte Lato do Google Fonts -->
 
         <!-- Link Para Animação Textual -->
-        <link src="./plugins/textify/Textify.min.css" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
         <!-- Link Para Animação Textual -->
         <script type="text/javascript" src="./db/src/LocalDB.js"></script>
     </head>
@@ -305,28 +308,6 @@
             src="./plugins/textify/gsap.min.js"></script>
         <script src="./plugins/textify/Textify.min.js"></script>
         <!-- Script para animação Textual -->
-
-        <script>
-
-            new Textify({
-                el: "[data-textify]",
-                largeText: true,
-                splitType: "lines",
-                animation: {
-                    by: "lines",
-                    duration: 0.7,
-                    ease: "power3.inOut",
-                    stagger: 0.1,
-                    transformOrigin: "left top",
-                    animateProps: {
-                    rotate: 2,
-                    opacity: 0,
-                    },
-                },
-            },gsap);
-
-                            
-        </script>
     </body>
 
 </html>

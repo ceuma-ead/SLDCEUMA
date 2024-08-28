@@ -1,10 +1,14 @@
 const _prefixAssets = "./assets/"
 
+const animation = [
+    // Efeito de Pulo do Texto
+    "animate__animated animate__bounce",
 
+]
 
 const api = [
-    
-     // PAGINA 1
+
+    // PAGINA 1
     {
         "pagina": 1,
         "nome_page": `Início`,
@@ -12,7 +16,7 @@ const api = [
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
         "id_elemento_para_modificar": "container-imagem",
-        "cabecalho_link_script":`
+        "cabecalho_link_script": `
             <!-- Link para a biblioteca de ícones Font Awesome -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
             <!-- Link para a fonte Lato do Google Fonts -->
@@ -43,7 +47,7 @@ const api = [
                 // "sidebar": "red",
                 "fundo": ":#00000000",
                 // "icones": "rgb(0, 110, 201)"
-                "imagemFundo":{
+                "imagemFundo": {
                     "ativar": true,
                     "img": "url(../assets/fundo.gif)",
                     "posicaoY": "bottom 1.8%",
@@ -59,14 +63,14 @@ const api = [
                     "onde_procurar": ".pagina-tipo-texto--box-texto"
                 }
             },
-           
+
             "fonte": {
                 // "titulo":"1rem",
                 "paragrafos": "1rem",
                 // "font_familly":"Lato",
                 // "cor_fonte":"black",
-                "alinhamento_texto":"justify",
-                "hifens":"auto"
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
             },
             "logo": {
                 "ativar": true,
@@ -75,12 +79,11 @@ const api = [
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
             },
-            "script_simples":[
-                {
-                    "posicao":"body", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
-                    // "attr":"defer" // pode ser defer ou async
-                    // "insert":"beforebegin", // opcional onde ele vai inserir
-                    "conteudo_script":`
+            "script_simples": [{
+                "posicao": "body", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
+                // "attr":"defer" // pode ser defer ou async
+                // "insert":"beforebegin", // opcional onde ele vai inserir
+                "conteudo_script": `
 
                     function iniciar(){
                     glider.scrollItem(2);
@@ -88,11 +91,10 @@ const api = [
 
                     
                     `
-                }
-            ]
+            }]
         }
     },
-    
+
     // PAGINA 2
     {
         "pagina": 2,
@@ -107,7 +109,7 @@ const api = [
                     <div class="pagina-tipo-texto--box-texto">
                         <p>Olá, estudante! </p>
 
-                        <p data-textify >
+                        <p>
                            Seja bem-vindo (a) ao estudo de Hematologia Clínica, uma disciplina essencial para um melhor desenvolvimento acadêmico com vistas ao sucesso profissional. Sou Milena Mendonça, professora desta disciplina. 
                         </p>
 
@@ -330,8 +332,8 @@ const api = [
                 "paragrafos": "1rem",
                 // "font_familly":"Lato",
                 // "cor_fonte":"black",
-                "alinhamento_texto":"justify",
-                "hifens":"auto"
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
             },
             "logo": {
                 "ativar": true,
@@ -348,11 +350,21 @@ const api = [
             //         "conteudo_script":`
 
             //             alert('oi')
-                    
+
             //         `
             //     }
-            // ]
-            
+            // ],
+
+
+            // Animação para Texto API
+            "animacao_texto": [{
+                "indice": "0", // 0 | all
+                "indentificador": "",
+                "script_animation": `
+                    ${animation[1]}
+                `
+            }]
+
         }
     },
 
@@ -370,17 +382,17 @@ const api = [
     //         <div class="container-img-lightbox-fluid">
     //         <div class="item-ligthbox">
     //         <div class="item-ligthbox-img img-photo-actions">
-            
+
     //         <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01"/>    
-            
+
     //         </div>
     //         <p class="description">Descrição da imagem 1</p>
     //         </div>
     //         <div class="item-ligthbox">
     //         <div class="item-ligthbox-img img-photo-actions">
-            
+
     //         <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1"/>
-            
+
     //         </div>
     //         <p class="description">Descrição da imagem 2</p>
     //                     </div>
