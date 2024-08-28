@@ -364,92 +364,92 @@ const api = [
 
 
     // PAGINA PARA IMAGENS
-    // {
-    //     "pagina": 3,
-    //     "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,
-    //     "tipo": "imagem",
-    //     "id_page": ".content-render-api",
-    //     "id_component": ".c-carousel__slides",
-    //     "id_elemento_para_modificar": "container-imagem",
-    //     "data": {
-    //         "container_render": `
-    //         <div class="container-img-lightbox-fluid">
-    //         <div class="item-ligthbox">
-    //         <div class="item-ligthbox-img img-photo-actions">
+    {
+        "pagina": 3,
+        "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,
+        "tipo": "imagem",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-imagem",
+        "data": {
+            "container_render": `
+            <div class="container-img-lightbox-fluid">
+            <div class="item-ligthbox">
+            <div class="item-ligthbox-img img-photo-actions">
 
-    //         <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01"/>    
+            <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01"/>    
 
-    //         </div>
-    //         <p class="description">Descrição da imagem 1</p>
-    //         </div>
-    //         <div class="item-ligthbox">
-    //         <div class="item-ligthbox-img img-photo-actions">
+            </div>
+            <p class="description">Descrição da imagem 1</p>
+            </div>
+            <div class="item-ligthbox">
+            <div class="item-ligthbox-img img-photo-actions">
 
-    //         <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1"/>
+            <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1"/>
 
-    //         </div>
-    //         <p class="description">Descrição da imagem 2</p>
-    //                     </div>
-    //                     </div>
-    //         `
-    //     },
-    //     "paramentros": {
-    //         "lupa": "Yes",
-    //         "cores": {
-    //             // "sidebar": "black",
-    //             // "fundo": "black",
-    //             // "icones": "rgb(0, 110, 201)"
-    //         },
-    //         "fonte": {
-    //             // "titulo":"1rem",
-    //             // "paragrafos":"1rem",
-    //             // "font_familly":"Lato",
-    //             // "cor_fonte":"black",
-    //             // "alinhamento_texto":"center"
-    //         },
-    //         "configuracoes_gerais": {
-    //             // Habilitar Procurar de Paragrafos ná Pagina 2
-    //             "_procurar_paragrafos": {
-    //                 "status": true,
-    //                 "onde_procurar": ".item-ligthbox" // onde precisa procurar os Elementos
-    //             }
-    //         },
-    //         // "marcador": [{
-    //         //     "tipo": "p",
-    //         //     "posicao": 0,
-    //         //     "palavras": "imagem",
-    //         //     // "attr": `  
-    //         //     //     font-weight=[500], font-style=[lighter], text-decoration=[overline #ffff] ,          text-underline-offset=[8px]
-    //         //     // `,
-    //         //     "attr": `  
-    //         //       border-bottom=[dashed black]
-    //         //     `,
-    //         //     "attr_inline": `id=[#1] , class=[px-1 , bg-success]`,
-    //         //     // "fundo": "blue",
-    //         //     "corTexto": "black",
-    //         //     "padding": "0.3rem",
-    //         //     // "onclick":[
-    //         //     //     {
-    //         //     //         "palavra":"imagem",
-    //         //     //         "acao":"onclick",
-    //         //     //         "funcao_script":`
-    //         //     //             function sejas() {
-    //         //     //                 alert('Estudantes')
-    //         //     //             }
-    //         //     //         `,
-    //         //     //         "funcao":"sejas()",
-    //         //     //     }
-    //         //     // ]
+            </div>
+            <p class="description">Descrição da imagem 2</p>
+                        </div>
+                        </div>
+            `
+        },
+        "paramentros": {
+            "lupa": "Yes",
+            "cores": {
+                // "sidebar": "black",
+                // "fundo": "black",
+                // "icones": "rgb(0, 110, 201)"
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                // "paragrafos":"1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                // "alinhamento_texto":"center"
+            },
+            "configuracoes_gerais": {
+                // Habilitar Procurar de Paragrafos ná Pagina 2
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".item-ligthbox" // onde precisa procurar os Elementos
+                }
+            },
+            // "marcador": [{
+            //     "tipo": "p",
+            //     "posicao": 0,
+            //     "palavras": "imagem",
+            //     // "attr": `  
+            //     //     font-weight=[500], font-style=[lighter], text-decoration=[overline #ffff] ,          text-underline-offset=[8px]
+            //     // `,
+            //     "attr": `  
+            //       border-bottom=[dashed black]
+            //     `,
+            //     "attr_inline": `id=[#1] , class=[px-1 , bg-success]`,
+            //     // "fundo": "blue",
+            //     "corTexto": "black",
+            //     "padding": "0.3rem",
+            //     // "onclick":[
+            //     //     {
+            //     //         "palavra":"imagem",
+            //     //         "acao":"onclick",
+            //     //         "funcao_script":`
+            //     //             function sejas() {
+            //     //                 alert('Estudantes')
+            //     //             }
+            //     //         `,
+            //     //         "funcao":"sejas()",
+            //     //     }
+            //     // ]
 
-    //         // }],
-    //         "logo": {
-    //             "ativar": true, // True || False
-    //             "img": "url(../assets/logopreta.png)",
-    //             "posicaoY": "bottom 1.8%",
-    //             "posicaoX": "left 0.5%",
-    //             "tamanho": "10%",
-    //         }
-    //     }
-    // },
+            // }],
+            "logo": {
+                "ativar": true, // True || False
+                "img": "url(../assets/logopreta.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            }
+        }
+    },
 
 ];
