@@ -20,7 +20,7 @@ function checkEmptyAnnotationsContainer() {
             emptyMessage.innerHTML = `
                 <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
                     <img src="./assets/list.gif" alt="list-is-empty-unscreen1.gif" style="width:20%;" >
-                    <p style="color:#000;">Nenhuma Anotação no Momento</p>
+                    <p style="color:#000;">Nada aqui ainda...</p>
                 </div>
             `;
             renderMenuDiv.appendChild(emptyMessage);
