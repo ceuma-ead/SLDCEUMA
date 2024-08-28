@@ -57,6 +57,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     injectScriptPage(event.detail.slide)
     //Fazer a inserção de animação para Paragrafos na Página
     AnimatedParagrafos(event.detail.slide)
+    //Fazer a inserção e Atualizaçaões de Animações na Página
+    AnimationVariablesUpPage(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -446,7 +448,6 @@ function modificarFontes(slideIndex) {
 }
 
 // Função para criar Animação no Slider
-
 function AnimatedParagrafos(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -464,9 +465,9 @@ function AnimatedParagrafos(slideIndex) {
 
         const configurarAnimacao = pageData.paramentros.animacao_texto;
         configurarAnimacao.forEach((animation) => {
-            const { 
+            const {
                 script_animation = animacaoPadrao.script_animation,
-                indice = animacaoPadrao.indice
+                    indice = animacaoPadrao.indice
             } = animation;
 
             if (animation.indice === "all") {
@@ -748,10 +749,10 @@ function injectScriptPage(slideIndex) {
         scripts.forEach(scriptItem => {
             // Cria um elemento de script
             const scriptElement = document.createElement('script');
-            
+
             // Verifica a posição do script (head, body, etc.)
             let parentElement;
-            switch(scriptItem.posicao) {
+            switch (scriptItem.posicao) {
                 case 'head':
                     parentElement = document.head;
                     break;
@@ -788,6 +789,47 @@ function injectScriptPage(slideIndex) {
 }
 
 
+// Força Atualição
+function AnimationVariablesUpPage(slideIndex) {
+    const pageData = api[slideIndex];
+
+    if (pageData && pageData.paramentros && pageData.forcarAtualizacao) {
+        const variaveis = pageData.forcarAtualizacao.variaveis || [];
+        aplicarReflowVariaveis(variaveis);
+    } else {
+        // Atualiza o controle do glider se estiver definido
+        if (typeof glider !== 'undefined') {
+            glider.refresh(true);
+            glider.updateControls();
+        } else {
+            console.error('O objeto glider não está definido.');
+        }
+
+        // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
+        const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
+        aplicarReflowVariaveis(variaveis);
+    }
+}
+
+// Função para aplicar o reflow e atualizar as variáveis de animação
+function aplicarReflowVariaveis(variaveis) {
+    variaveis.forEach(variable => {
+        // Define o valor de 'Entrada' antes do reflow
+        document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
+    });
+
+    // Força o reflow
+    void document.documentElement.offsetWidth;
+
+    variaveis.forEach(variable => {
+        // Define o valor de 'Saida' após o reflow
+        document.documentElement.style.setProperty(variable.Nome, variable.Saida);
+    });
+}
+
+
+
+
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
@@ -797,7 +839,7 @@ adcionarMarcadores(savedPosition);
 adicionarFundo(savedPosition)
 injectScriptPage(savedPosition)
 AnimatedParagrafos(savedPosition)
-
+AnimationVariablesUpPage(savedPosition)
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);
 // console.log(irItem)

@@ -13,6 +13,13 @@ var api = [// PAGINA 1
   "data": {
     "container_render": "       \n\n                <!-- Container do texto animado -->\n                <div id=\"text-container-capa\">\n                    <div class=\"animated-text\">Hematologia Cl\xEDnica</div>\n                    <div id=\"underline\"></div>\n                    <div id=\"second-text\">unidade 1</div>\n                    <button id=\"animated-button\" onclick=\"iniciar()\">iniciar</button>\n                </div>\n\n                <!-- Imagem animada -->\n                <div id=\"animated-image\"></div>\n                \n                <!-- Imagem -->\n                <div id=\"image-capaOverlay\"></div>\n            "
   },
+  "forcarAtualizacao": {
+    "variaveis": [{
+      "Nome": "--animacao-sidebar",
+      "Entrada": "none",
+      "Saida": "slideDown 2s forwards"
+    }]
+  },
   "paramentros": {
     "cores": {
       // "sidebar": "red",
@@ -53,7 +60,7 @@ var api = [// PAGINA 1
       // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
       // "attr":"defer" // pode ser defer ou async
       // "insert":"beforebegin", // opcional onde ele vai inserir
-      "conteudo_script": "\n\n                    function iniciar(){\n                    glider.scrollItem(2);\n                    };   \n\n                    \n                    "
+      "conteudo_script": "\n\n                    function iniciar(){\n                    glider.scrollItem(1);\n                    };   \n\n                    \n                    "
     }]
   }
 }, // PAGINA 2
@@ -67,6 +74,19 @@ var api = [// PAGINA 1
   "data": {
     "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                        <p>Ol\xE1, estudante! </p>\n\n                        <p>\n                           Seja bem-vindo (a) ao estudo de Hematologia Cl\xEDnica, uma disciplina essencial para um melhor desenvolvimento acad\xEAmico com vistas ao sucesso profissional. Sou Milena Mendon\xE7a, professora desta disciplina. \n                        </p>\n\n                        <p>\n                            A disciplina de Hematologia Cl\xEDnica \xE9 essencial para a sua forma\xE7\xE3o enquanto estudante de Biomedicina, considerando a realidade social , econ\xF4mica e cultural , tanto em \xE2mbito nacional quanto mundial.  \n                        </p>\n\n                        <p>\n                          Trata-se de uma disciplina que contribui em in\xFAmeras esferas para a sua forma\xE7\xE3o acad\xEAmica e pode ser aplicada em diversos contextos da vida real, possibilitando a interpreta\xE7\xE3o de exames laboratoriais e identifica\xE7\xE3o de condi\xE7\xF5es como anemias, leucemias e coagulopatias. Este conhecimento \xE9 fundamental para o diagn\xF3stico cl\xEDnico, al\xE9m de proporcionar uma base s\xF3lida para a realiza\xE7\xE3o de pesquisas cient\xEDficas em \xE1reas como a fisiologia das c\xE9lulas-tronco e o desenvolvimento de novas terapias.\n                        </p>\n\n                       <div class=\"pagina-tipo-texto--box-texto-div-container-presets\">\n                            <img src=\"".concat(_prefixAssets, "ok.gif\" />\n                            <p style=\"padding: 10px; background:#4285f4; font-weight: 700; border-radius: 10px;\">\n                            Ao final da disciplina voc\xEA estar\xE1 capacitado para implementar e monitorar processos de controle de qualidade em laborat\xF3rios, garantindo a precis\xE3o e confiabilidade dos resultados. Ademais, ensina sobre a pol\xEDtica de sangue, normas t\xE9cnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a import\xE2ncia dos testes pr\xE9-transfusionais.\n                            </p>\n                       </div>\n\n                \n                    </div> \n                    \n                \n                    \n                 </div>\n            ")
   },
+  "forcarAtualizacao": {
+    "variaveis": [{
+      "Nome": "--animacao-sidebar",
+      "Entrada": "none",
+      "Saida": "slideDown 2s forwards"
+    }]
+  },
+  // Injetar estilos na Pagina
+  "inject_style_render": [{
+    "id_style": "estiloCabecalho",
+    "autoridade": "shar256",
+    "conteudo_estilo": "\n                .siderbar {\n                        width: 100%;\n                        background: var(--fundo-siderbar);\n                        display: flex;\n                        align-items: center;\n                        flex-direction: row;\n                        justify-content: space-between;\n                        gap: 0.5rem;\n                        padding: 0.5rem 0.5rem;\n                        top: var(--animacao-sidebar-top);\n                        animation: var(--animacao-sidebar);\n                        position: var(--animacao-position);    \n                    }\n                \n            "
+  }],
   "paramentros": {
     "cores": {// "sidebar": "red",
       // "fundo": "red",
@@ -88,7 +108,7 @@ var api = [// PAGINA 1
       // Criar um Estilo Geral
       "attr_inline": "\n                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]\n                ",
       // Criar uma injeção de Dados para estilizar o Marcador
-      "estilo_marcador_inject": "\n                    \n                    .bt-1 {\n                       background: #011c41;\n                       color: #fff;\n                       display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                       animation-name: zoom;\n                       animation-duration: 1s;\n                    }\n\n                    .bt-1:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n            }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n                    \n                     .bt-2 {\n                        background:red;\n                        color:#fff; display: inline-block;\n                        transition: all .4s ease-in-out;\n                        transform-style: preserve-3d;\n                        animation-name: zoom;\n            animation-duration: 1s;\n                    }\n\n                    .bt-2:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n            }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .bt-3 {\n                        background:#FF8A00;\n                        color:#fff; display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                        animation-name: zoom;\n            animation-duration: 1s;\n                    }\n\n                    .bt-3:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n            }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .my-poup{\n\n                       background:#FF8A00;\n                    }\n\n                ",
+      "estilo_marcador_inject": "\n                \n                    \n                    .bt-1 {\n                       background: #011c41;\n                       color: #fff;\n                       display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                       animation-name: zoom;\n                       animation-duration: 1s;\n                    }\n\n                    .bt-1:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n                    \n                    .bt-2 {\n                        background:red;\n                        color:#fff; display: inline-block;\n                        transition: all .4s ease-in-out;\n                        transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 1s;\n                    }\n\n                    .bt-2:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .bt-3 {\n                        background:#FF8A00;\n                        color:#fff; display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 1s;\n                    }\n\n                    .bt-3:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .my-poup{\n\n                       background:#FF8A00;\n                    }\n\n                    \n\n                ",
       // Atributos Especificos
       "attr_unitario": {
         "social": {
@@ -151,9 +171,9 @@ var api = [// PAGINA 1
     // ],
     // Animação para Texto API
     "animacao_texto": [{
-      "indice": "0",
+      "indice": "all",
       // 0 | all
-      "script_animation": "\n                    animate__animated animate__backInUp\n                "
+      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
     }]
   }
 } // PAGINA PARA IMAGENS
