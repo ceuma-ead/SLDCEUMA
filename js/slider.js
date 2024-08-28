@@ -44,21 +44,21 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     //Atualizar Cores da Página
     atualizarCoresdaNavegacao(event.detail.slide);
     //Adicionar Logo a Página
-    adicionarLogo(event.detail.slide)
+    adicionarLogo(event.detail.slide);
     //Modificar fontes da Página
-    modificarFontes(event.detail.slide)
+    modificarFontes(event.detail.slide);
     //Adcionar Marcadores ao Texto
-    adcionarMarcadores(event.detail.slide)
+    adcionarMarcadores(event.detail.slide);
     //Passa a Posição Atual da Pagina para o Menu
     itemnsMenu('', event.detail.slide);
     //Adcionar Fundo ao Slider Atual
-    adicionarFundo(event.detail.slide)
+    adicionarFundo(event.detail.slide);
     //Fazer a inserção de scripts na página
-    injectScriptPage(event.detail.slide)
+    injectScriptPage(event.detail.slide);
     //Fazer a inserção de animação para Paragrafos na Página
-    AnimatedParagrafos(event.detail.slide)
+    AnimatedParagrafos(event.detail.slide);
     //Fazer a inserção e Atualizaçaões de Animações na Página
-    AnimationVariablesUpPage(event.detail.slide)
+    AnimationVariablesUpPage(event.detail.slide);
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -788,7 +788,6 @@ function injectScriptPage(slideIndex) {
     }
 }
 
-
 // Força Atualição
 function AnimationVariablesUpPage(slideIndex) {
     const pageData = api[slideIndex];
@@ -826,8 +825,6 @@ function aplicarReflowVariaveis(variaveis) {
         document.documentElement.style.setProperty(variable.Nome, variable.Saida);
     });
 }
-
-
 
 
 // Atualiza o título e as cores ao inicializar
