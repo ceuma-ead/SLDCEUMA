@@ -4,7 +4,7 @@ const responsivo = [
         "synchronous" : `
              .pagina-tipo-texto--box-texto p{
                     font-size: 0.1rem ;
-                    /* background-color: aqua; */
+                    background-color: aqua;
              }
         `,
         "variantes":`
@@ -14,3 +14,4 @@ const responsivo = [
         
     }
 ]
+

@@ -124,10 +124,17 @@
 }
 
 
-.line {
+.line_anottation {
     height: 100%;
     padding: 0.1rem;
     background: #3535358f;
+    overflow: hidden;
+}
+
+
+.line {
+    background: var(--fundo-carrosel);
+    overflow: hidden;
 }
 
 .content-box-anotation p {

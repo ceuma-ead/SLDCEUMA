@@ -67,7 +67,7 @@ function renderAnnotation(annotationItem) {
   newAnnotation.dataset.id = annotationItem.id; // Armazena o ID da anotação
   // Configura o conteúdo da nova anotação, incluindo o título editável, texto e ícones de ações
 
-  newAnnotation.innerHTML = "\n        <div class=\"ribbon rb d-inline-block text-truncate\" style=\"max-width: 80%;\" \n             title='".concat(annotationItem.title, "' contenteditable=\"true\">").concat(annotationItem.title, "</div>\n        \n        <p contenteditable=\"true\">").concat(annotationItem.Texto, "</p>\n        <div class=\"line\"></div>\n        <div class=\"render-menu-Annotation--icons\">\n            <button class=\"delete-icon\"><i data-lucide=\"trash-2\"></i></button>\n            <button class=\"download-icon\"><i data-lucide=\"cloud-download\"></i></button>\n            <button class=\"color-icon\"><i data-lucide=\"palette\"></i></button>\n        </div>\n    "); // Aplica a cor salva na anotação, se existir
+  newAnnotation.innerHTML = "\n        <div class=\"ribbon rb d-inline-block text-truncate\" style=\"max-width: 80%;\" \n             title='".concat(annotationItem.title, "' contenteditable=\"true\">").concat(annotationItem.title, "</div>\n        \n        <p contenteditable=\"true\">").concat(annotationItem.Texto, "</p>\n        <div class=\"line_anottation\"></div>\n        <div class=\"render-menu-Annotation--icons\">\n            <button class=\"delete-icon\"><i data-lucide=\"trash-2\"></i></button>\n            <button class=\"download-icon\"><i data-lucide=\"cloud-download\"></i></button>\n            <button class=\"color-icon\"><i data-lucide=\"palette\"></i></button>\n        </div>\n    "); // Aplica a cor salva na anotação, se existir
 
   if (annotationItem.color) {
     newAnnotation.style.background = annotationItem.color.background; // Força a aplicação da cor do texto ao parágrafo
@@ -684,12 +684,17 @@ document.querySelector('.mudarPosicao').addEventListener('click', function () {
     }
   });
 });
-document.querySelector('.rb').addEventListener('keydown', function (event) {
-  // Impede a quebra de linha ao pressionar Enter
-  if (event.key === 'Enter') {
-    event.preventDefault();
-  }
-});
+var title_rb = document.querySelector('.rb');
+
+if (title_rb) {
+  document.querySelector('.rb').addEventListener('keydown', function (event) {
+    // Impede a quebra de linha ao pressionar Enter
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  });
+}
+
 Update();
 checkEmptyAnnotationsContainer();
 document.addEventListener('DOMContentLoaded', function () {

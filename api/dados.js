@@ -107,7 +107,7 @@ const api = [
                     <div class="pagina-tipo-texto--box-texto">
                         <p>Olá, estudante! </p>
 
-                        <p>
+                        <p data-textify >
                            Seja bem-vindo (a) ao estudo de Hematologia Clínica, uma disciplina essencial para um melhor desenvolvimento acadêmico com vistas ao sucesso profissional. Sou Milena Mendonça, professora desta disciplina. 
                         </p>
 

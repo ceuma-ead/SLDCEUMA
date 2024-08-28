@@ -77,7 +77,7 @@ function renderAnnotation(annotationItem) {
              title='${annotationItem.title}' contenteditable="true">${annotationItem.title}</div>
         
         <p contenteditable="true">${annotationItem.Texto}</p>
-        <div class="line"></div>
+        <div class="line_anottation"></div>
         <div class="render-menu-Annotation--icons">
             <button class="delete-icon"><i data-lucide="trash-2"></i></button>
             <button class="download-icon"><i data-lucide="cloud-download"></i></button>
@@ -707,19 +707,24 @@ document.querySelector('.mudarPosicao').addEventListener('click', function() {
 });
 
 
+const title_rb = document.querySelector('.rb');
 
-document.querySelector('.rb').addEventListener('keydown', function (event) {
-    // Impede a quebra de linha ao pressionar Enter
-    if (event.key === 'Enter') {
-        event.preventDefault();
-    }
-});
+if(title_rb){
+
+    document.querySelector('.rb').addEventListener('keydown', function (event) {
+        // Impede a quebra de linha ao pressionar Enter
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    });
+}
 
 
 Update()
 checkEmptyAnnotationsContainer()
 
 document.addEventListener('DOMContentLoaded', function() {
+    
 
     const iconAnnotation = checkEmptyAnnotationsContainer();
     const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");

@@ -20,6 +20,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato"
             rel="stylesheet">
+        <!-- Link para a fonte Lato do Google Fonts -->
+
+        <!-- Link Para Animação Textual -->
+        <link src="./plugins/textify/Textify.min.css" rel="stylesheet" />
+        <!-- Link Para Animação Textual -->
         <script type="text/javascript" src="./db/src/LocalDB.js"></script>
     </head>
 
@@ -185,7 +190,8 @@
                     <button class="openAnnotation"
                         vizioon-tip="Veja Suas Anotações Aqui 🤩!!!"
                         vizioon-posicao="left"
-                        vizioon-attr="vizion-annotation d-none d-md-block"><i id="iconAnnotatio"
+                        vizioon-attr="vizion-annotation d-none d-md-block"><i
+                            id="iconAnnotatio"
                             data-lucide="sticker"></i></button>
                 </div>
             </div>
@@ -290,6 +296,37 @@
         <script type="text/javascript" src="./js/error.js"></script>
         <!-- Arquitetura Programtica Sistema -->
 
+        <!-- Arquitetura De Responsividade -->
+        <script type="text/javascript" src="./api/responsive.js"></script>
+        <!-- Arquitetura De Responsividade -->
+
+        <!-- Script para animação Textual -->
+        <script
+            src="./plugins/textify/gsap.min.js"></script>
+        <script src="./plugins/textify/Textify.min.js"></script>
+        <!-- Script para animação Textual -->
+
+        <script>
+
+            new Textify({
+                el: "[data-textify]",
+                largeText: true,
+                splitType: "lines",
+                animation: {
+                    by: "lines",
+                    duration: 0.7,
+                    ease: "power3.inOut",
+                    stagger: 0.1,
+                    transformOrigin: "left top",
+                    animateProps: {
+                    rotate: 2,
+                    opacity: 0,
+                    },
+                },
+            },gsap);
+
+                            
+        </script>
     </body>
 
 </html>
