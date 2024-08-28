@@ -1,4 +1,4 @@
-const _prefixAssets = "../assets/"
+const _prefixAssets = "./assets/"
 
 const api = [
     
