@@ -1,10 +1,10 @@
 "use strict";
 
-var _prefixAssets = "../assets/";
+var _prefixAssets = "./assets/";
 var api = [// PAGINA 1
 {
   "pagina": 1,
-  "nome_page": "TEste",
+  "nome_page": "In\xEDcio",
   "tipo": "Texto",
   "id_page": ".content-render-api",
   "id_component": ".c-carousel__slides",
@@ -58,14 +58,14 @@ var api = [// PAGINA 1
   }
 }, // PAGINA 2
 {
-  "pagina": 1,
+  "pagina": 2,
   "nome_page": "Apresenta\xE7\xE3o da disciplina",
   "tipo": "Texto",
   "id_page": ".content-render-api",
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                        <p>Ol\xE1, estudante! </p>\n\n                        <p>\n                           Seja bem-vindo (a) ao estudo de Hematologia Cl\xEDnica, uma disciplina essencial para um melhor desenvolvimento acad\xEAmico com vistas ao sucesso profissional. Sou Milena Mendon\xE7a, professora desta disciplina. \n                        </p>\n\n                        <p>\n                            A disciplina de Hematologia Cl\xEDnica \xE9 essencial para a sua forma\xE7\xE3o enquanto estudante de Biomedicina, considerando a realidade social , econ\xF4mica e cultural , tanto em \xE2mbito nacional quanto mundial.  \n                        </p>\n\n                        <p>\n                          Trata-se de uma disciplina que contribui em in\xFAmeras esferas para a sua forma\xE7\xE3o acad\xEAmica e pode ser aplicada em diversos contextos da vida real, possibilitando a interpreta\xE7\xE3o de exames laboratoriais e identifica\xE7\xE3o de condi\xE7\xF5es como anemias, leucemias e coagulopatias. Este conhecimento \xE9 fundamental para o diagn\xF3stico cl\xEDnico, al\xE9m de proporcionar uma base s\xF3lida para a realiza\xE7\xE3o de pesquisas cient\xEDficas em \xE1reas como a fisiologia das c\xE9lulas-tronco e o desenvolvimento de novas terapias.\n                        </p>\n\n                       <div class=\"pagina-tipo-texto--box-texto-div-container-presets\">\n                            <img src=\"".concat(_prefixAssets, "ok.gif\" />\n                            <p>\n                            Ao final da disciplina voc\xEA estar\xE1 capacitado para implementar e monitorar processos de controle de qualidade em laborat\xF3rios, garantindo a precis\xE3o e confiabilidade dos resultados. Ademais, ensina sobre a pol\xEDtica de sangue, normas t\xE9cnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a import\xE2ncia dos testes pr\xE9-transfusionais.\n                            </p>\n                       </div>\n\n                        <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA</p>\n    \n\n                    </div> \n                    \n                \n                    \n                 </div>\n            ")
+    "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                        <p>Ol\xE1, estudante! </p>\n\n                        <p>\n                           Seja bem-vindo (a) ao estudo de Hematologia Cl\xEDnica, uma disciplina essencial para um melhor desenvolvimento acad\xEAmico com vistas ao sucesso profissional. Sou Milena Mendon\xE7a, professora desta disciplina. \n                        </p>\n\n                        <p>\n                            A disciplina de Hematologia Cl\xEDnica \xE9 essencial para a sua forma\xE7\xE3o enquanto estudante de Biomedicina, considerando a realidade social , econ\xF4mica e cultural , tanto em \xE2mbito nacional quanto mundial.  \n                        </p>\n\n                        <p>\n                          Trata-se de uma disciplina que contribui em in\xFAmeras esferas para a sua forma\xE7\xE3o acad\xEAmica e pode ser aplicada em diversos contextos da vida real, possibilitando a interpreta\xE7\xE3o de exames laboratoriais e identifica\xE7\xE3o de condi\xE7\xF5es como anemias, leucemias e coagulopatias. Este conhecimento \xE9 fundamental para o diagn\xF3stico cl\xEDnico, al\xE9m de proporcionar uma base s\xF3lida para a realiza\xE7\xE3o de pesquisas cient\xEDficas em \xE1reas como a fisiologia das c\xE9lulas-tronco e o desenvolvimento de novas terapias.\n                        </p>\n\n                       <div class=\"pagina-tipo-texto--box-texto-div-container-presets\">\n                            <img src=\"".concat(_prefixAssets, "ok.gif\" />\n                            <p style=\"padding: 10px; background:#4285f4; font-weight: 700; border-radius: 10px;\">\n                            Ao final da disciplina voc\xEA estar\xE1 capacitado para implementar e monitorar processos de controle de qualidade em laborat\xF3rios, garantindo a precis\xE3o e confiabilidade dos resultados. Ademais, ensina sobre a pol\xEDtica de sangue, normas t\xE9cnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a import\xE2ncia dos testes pr\xE9-transfusionais.\n                            </p>\n                       </div>\n\n                        <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA</p>\n    \n\n                    </div> \n                    \n                \n                    \n                 </div>\n            ")
   },
   "paramentros": {
     "cores": {// "sidebar": "red",

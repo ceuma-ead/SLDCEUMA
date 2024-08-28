@@ -36,6 +36,7 @@
     transition: all 200ms ease;
     transition-duration: 0.2s;
     transition-delay: 0s;
+    font-size: var(--font-para-paragrafos);
 }
 
 
