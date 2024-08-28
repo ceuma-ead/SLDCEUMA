@@ -124,9 +124,7 @@ const api = [
                             </p>
                        </div>
 
-                        <p>Com base nos perfis e recursos de competências da disciplina, é esperado que, ao final da disciplina, você</p>
-    
-
+                
                     </div> 
                     
                 
