@@ -353,9 +353,9 @@ const api = [
 
             // Animação para Texto API
             "animacao_texto": [{
-                "indice": "0", // 0 | all
+                "indice": "all", // 0 | all
                 "script_animation": `
-                    animate__animated animate__backInUp
+                    animate__animated animate__fadeInDown animate__slow
                 `
             }]
 
