@@ -81,7 +81,7 @@ const api = [
                 "conteudo_script": `
 
                     function iniciar(){
-                    glider.scrollItem(2);
+                    glider.scrollItem(1);
                     };   
 
                     
