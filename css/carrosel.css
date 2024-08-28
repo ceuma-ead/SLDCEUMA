@@ -98,7 +98,7 @@
 #dots {
     position: relative;
     width: auto;
-    bottom: 9%;
+    bottom: 12%;
         transform: translateY(-50%, -50%);
     display: flex;
     justify-content: center;
