@@ -1,5 +1,7 @@
 const _prefixAssets = "./assets/"
 
+
+
 const api = [
     
      // PAGINA 1
@@ -354,7 +356,8 @@ const api = [
         }
     },
 
-    // PAGINA 3
+
+    // PAGINA PARA IMAGENS
     // {
     //     "pagina": 3,
     //     "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,

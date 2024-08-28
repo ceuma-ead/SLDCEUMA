@@ -1,17 +1,16 @@
 /* Quando Estiver na Resolução 1042 * 389 */
+@import url(./variaveis.css);
+
+@media screen and (max-width: 1366px) {
+
+}
 
 @media screen and (max-width: 1200px) {
     
 }
 
-@media screen and (max-width: 1366px) {
-    .pagina-tipo-texto--box-texto p{
-        font-size: 0.8rem !important;
-    }
-}
-
 @media screen and (max-width: 992px) {
-    
+   
 }
 
 @media screen and (max-width: 768px) {
