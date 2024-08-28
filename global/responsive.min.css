@@ -4,6 +4,12 @@
     
 }
 
+@media screen and (max-width: 1366px) {
+    .pagina-tipo-texto--box-texto p{
+        font-size: 0.8rem !important;
+    }
+}
+
 @media screen and (max-width: 992px) {
     
 }
@@ -17,9 +23,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .pagina-tipo-texto--box-texto p{
-        background-color: brown;
-    }
+    
 }
 
 @media screen and (max-width: 320px) {
