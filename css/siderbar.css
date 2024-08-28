@@ -142,7 +142,7 @@
    
     width: var(--tamanho-dos-icones-siderbar);
     height: var(--tamanho-dos-icones-siderbar);
-    background: var(--fundo-carrosel);
+    background: none;
     border: none;
     color: var(--cor-dos-icones-de-anotacao);
     transition: all 0.3s; 
