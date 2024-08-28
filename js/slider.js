@@ -55,6 +55,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     adicionarFundo(event.detail.slide)
     //Fazer a inserção de scripts na página
     injectScriptPage(event.detail.slide)
+    //Fazer a inserção de animação para Paragrafos na Página
+    AnimatedParagrafos(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -443,6 +445,125 @@ function modificarFontes(slideIndex) {
     }
 }
 
+// Função para criar Animação no Slider
+
+function AnimatedParagrafos(slideIndex) {
+    const pageData = api[slideIndex];
+
+    // Verifica se os dados da página e as animações de texto estão disponíveis
+    if (pageData && pageData.paramentros && pageData.paramentros.animacao_texto) {
+        const animacaoPadrao = {
+            indice: "all",
+            script_animation: "animate__animated animate__backInLeft"
+        };
+
+        const verificarItem = pageData.paramentros.animacao_texto;
+        if (Object.values(verificarItem).length === 0) {
+            return; // Se não houver animação definida, sai da função
+        }
+
+        const configurarAnimacao = pageData.paramentros.animacao_texto;
+        configurarAnimacao.forEach((animation) => {
+            const { 
+                script_animation = animacaoPadrao.script_animation,
+                indice = animacaoPadrao.indice
+            } = animation;
+
+            if (animation.indice === "all") {
+                // Se a animação for para todos os parágrafos
+                const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
+
+                if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
+                    const procurarParagrafosNoContainer = document.querySelector(procurarParagrafo.onde_procurar.trim());
+
+                    if (procurarParagrafosNoContainer) {
+                        const paragrafos = procurarParagrafosNoContainer.querySelectorAll("p");
+                        paragrafos.forEach((p) => {
+                            // Remove as classes de animação individualmente, verificando se a classe não está vazia
+                            script_animation.split(" ").forEach(cls => {
+                                if (cls.trim()) {
+                                    p.classList.remove(cls.trim());
+                                }
+                            });
+                            void p.offsetWidth; // Força um reflow
+                            // Adiciona novamente as classes de animação
+                            script_animation.split(" ").forEach(cls => {
+                                if (cls.trim()) {
+                                    p.classList.add(cls.trim());
+                                }
+                            });
+                        });
+                    }
+                } else {
+                    // Erro se o local de procura não estiver definido ou ativado
+                    handleErroAnimacao(procurarParagrafo);
+                }
+            } else {
+                // Animação específica para um índice de parágrafo
+                const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
+
+                if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
+                    const procurarParagrafosNoContainer = document.querySelector(procurarParagrafo.onde_procurar.trim());
+
+                    if (procurarParagrafosNoContainer) {
+                        const p = procurarParagrafosNoContainer.querySelectorAll("p")[indice];
+                        if (p) {
+                            // Remove as classes de animação individualmente, verificando se a classe não está vazia
+                            script_animation.split(" ").forEach(cls => {
+                                if (cls.trim()) {
+                                    p.classList.remove(cls.trim());
+                                }
+                            });
+                            void p.offsetWidth; // Força um reflow
+                            // Adiciona novamente as classes de animação
+                            script_animation.split(" ").forEach(cls => {
+                                if (cls.trim()) {
+                                    p.classList.add(cls.trim());
+                                }
+                            });
+                        }
+                    }
+                } else {
+                    // Erro se o local de procura não estiver definido ou ativado
+                    handleErroAnimacao(procurarParagrafo);
+                }
+            }
+        });
+    } else {
+        // Atualiza o slider se a animação não estiver definida
+        if (typeof glider !== 'undefined') {
+            glider.refresh(true);
+            glider.updateControls();
+        } else {
+            console.error('O objeto glider não está definido.');
+        }
+    }
+}
+
+// Função para lidar com erros de animação
+function handleErroAnimacao(procurarParagrafo) {
+    const erro = {
+        status: 204,
+        statusText: "Erro Animação",
+        responseText: `
+Ops, você tentou definir uma animação para o texto, porém:
+${procurarParagrafo.onde_procurar ? `Você precisa ativar primeiro o suporte em:
+--> (configuracoes_gerais._procurar_paragrafos)
+--> Defina o status como true e configure o container de renderização...` : `Você precisa definir onde procurar o texto para encontrar o parágrafo...`}
+        `
+    };
+
+    const _encodErro = encodeURIComponent(JSON.stringify(erro));
+
+    Swal.fire({
+        icon: "error",
+        title: `Opps...`,
+        text: `Código do Erro: Erro Animação`,
+        heightAuto: false,
+        footer: `<a href="#" onclick="analiseErro('${_encodErro}')">Baixar Análise de Erro</a>`
+    });
+}
+
 // Função marcadorTexto
 function adcionarMarcadores(slideIndex) {
     const pageData = api[slideIndex];
@@ -675,6 +796,7 @@ modificarFontes(savedPosition);
 adcionarMarcadores(savedPosition);
 adicionarFundo(savedPosition)
 injectScriptPage(savedPosition)
+AnimatedParagrafos(savedPosition)
 
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);

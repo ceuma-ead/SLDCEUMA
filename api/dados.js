@@ -1,10 +1,5 @@
 const _prefixAssets = "./assets/"
 
-const animation = [
-    // Efeito de Pulo do Texto
-    "animate__animated animate__bounce",
-
-]
 
 const api = [
 
@@ -359,9 +354,8 @@ const api = [
             // Animação para Texto API
             "animacao_texto": [{
                 "indice": "0", // 0 | all
-                "indentificador": "",
                 "script_animation": `
-                    ${animation[1]}
+                    animate__animated animate__backInUp
                 `
             }]
 

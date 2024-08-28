@@ -1,8 +1,6 @@
 "use strict";
 
 var _prefixAssets = "./assets/";
-var animation = [// Efeito de Pulo do Texto
-"animate__animated animate__bounce"];
 var api = [// PAGINA 1
 {
   "pagina": 1,
@@ -155,8 +153,7 @@ var api = [// PAGINA 1
     "animacao_texto": [{
       "indice": "0",
       // 0 | all
-      "indentificador": "",
-      "script_animation": "\n                    ".concat(animation[1], "\n                ")
+      "script_animation": "\n                    animate__animated animate__backInUp\n                "
     }]
   }
 } // PAGINA PARA IMAGENS
