@@ -103,6 +103,7 @@
     .pagina-tipo-texto--box-texto{
         overflow-y: scroll;
         padding-right: 1rem;
+        padding-bottom: 2.5rem;
     }
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
         
@@ -118,22 +119,34 @@
     .pagina-tipo-texto--box-texto{
         overflow-y: scroll;
         padding-right: 1rem;
+        padding-bottom: 4rem;
     }
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
         
         display: block;
     }
    
+    #dots {
+        height: 6rem !important;
+    }
+
 }
 
-/* Em telas com 320px de largura ou menos, a cor de fundo é amarela */
-@media screen and (max-width: 320px) {
+/* Em telas com 375px de largura ou menos, a cor de fundo é amarela */
+@media screen and (max-width: 375px) {
     .pagina-tipo-texto--box-texto{
         overflow-y: scroll;
         padding-right: 1rem;
+        padding-bottom: 2.5rem;
     }
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
         
         display: block;
     }
+
+    #dots {
+        height: 4rem !important;
+    }
+
 }
+
