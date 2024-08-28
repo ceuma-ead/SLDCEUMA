@@ -10,7 +10,6 @@
 }
 
 
-
 body{
     width: 100vw !important;
     height: 100vh !important;
@@ -19,7 +18,6 @@ body{
     /* overflow: hidden; */
 
 }
-
 
 img{
     user-select: none;

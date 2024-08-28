@@ -70,5 +70,14 @@
         "posix": "header",
         "elemento": "head",
         "position": "after"
+    },
+    {
+        "index":8,
+        "anchor": "link",
+        "_ref": "./global/responsive.min.css",
+        "_regx": "  | media='all' ",
+        "posix": "header",
+        "elemento": "head",
+        "position": "after"
     }
 ]
