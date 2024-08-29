@@ -7,3 +7,9 @@ var responsivo = [{
   "pagina": 1 // Opcional se não existe fica para todas as paginas
 
 }];
+
+function responsivePage(slideIndex) {
+  var pageData = api[slideIndex];
+}
+
+responsivePage(savedPosition);

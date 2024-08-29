@@ -15,3 +15,9 @@ const responsivo = [
     }
 ]
 
+
+function responsivePage(slideIndex){
+    const pageData = api[slideIndex];
+}
+
+responsivePage(savedPosition);

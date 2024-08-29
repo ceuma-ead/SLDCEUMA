@@ -2,7 +2,7 @@
 @import url(../css/menu_sidebar.css);
 @import url(../css/annotation.css);
 @import url(../css/capa.css);
-
+@import url(../css/spinner.css);
 *{
     margin:0;
     padding:0;

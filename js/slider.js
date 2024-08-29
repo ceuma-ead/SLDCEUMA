@@ -25,6 +25,7 @@ function getSavedSliderPosition() {
 const glider = new Glider(gliderElement, {
     slidesToShow: 1,
     slidesToScroll: 1,
+    duration:0.5,
     arrows: {
         prev: '.glider-prev',
         next: '.glider-next'
@@ -32,33 +33,75 @@ const glider = new Glider(gliderElement, {
     dots: '#dots'
 });
 
-// Recupera e define a posição salva ao inicializar
+// // Recupera e define a posição salva ao inicializar
+// const savedPosition = getSavedSliderPosition();
+// glider.scrollItem(savedPosition);
+
+// // Evento para salvar a posição atual sempre que o slider for alterado
+// gliderElement.addEventListener('glider-slide-visible', function (event) {
+//     saveSliderPosition(event.detail.slide);
+//     //Atualizar titulo da Página
+//     updatePageTitle(event.detail.slide);
+//     //Atualizar Cores da Página
+//     atualizarCoresdaNavegacao(event.detail.slide);
+//     //Adicionar Logo a Página
+//     adicionarLogo(event.detail.slide);
+//     //Modificar fontes da Página
+//     modificarFontes(event.detail.slide);
+//     //Adcionar Marcadores ao Texto
+//     adcionarMarcadores(event.detail.slide);
+//     //Passa a Posição Atual da Pagina para o Menu
+//     itemnsMenu('', event.detail.slide);
+//     //Adcionar Fundo ao Slider Atual
+//     adicionarFundo(event.detail.slide);
+//     //Fazer a inserção de scripts na página
+//     injectScriptPage(event.detail.slide);
+//     //Fazer a inserção de animação para Paragrafos na Página
+//     AnimatedParagrafos(event.detail.slide);
+//     //Fazer a inserção e Atualizaçaões de Animações na Página
+//     AnimationVariablesUpPage(event.detail.slide);
+//     //Fazer a inserção de Responsividade em uma Página ou Varias
+//     responsivePage(event.detail.slide);
+//     console.log("Está na Página 🎉 => " + event.detail.slide);
+// });
+
 const savedPosition = getSavedSliderPosition();
+const loadingSpinner = document.getElementById('loading-spinner');
+
+function showLoading() {
+    loadingSpinner.style.display = 'flex';
+    // Garantir que o loading desapareça após 3 segundos (ou ajuste conforme necessário)
+    setTimeout(hideLoading, 700);
+}
+
+function hideLoading() {
+    loadingSpinner.style.display = 'none';
+}
+
+// Mostrar o loading antes de iniciar a mudança de slide
+gliderElement.addEventListener('glider-slide-hidden', function () {
+    showLoading();
+});
+
+//Executar ao scrollar para um novo slide
 glider.scrollItem(savedPosition);
 
-// Evento para salvar a posição atual sempre que o slider for alterado
 gliderElement.addEventListener('glider-slide-visible', function (event) {
+    hideLoading(); // Esconder o loading assim que o slide estiver visível
+
     saveSliderPosition(event.detail.slide);
-    //Atualizar titulo da Página
     updatePageTitle(event.detail.slide);
-    //Atualizar Cores da Página
     atualizarCoresdaNavegacao(event.detail.slide);
-    //Adicionar Logo a Página
     adicionarLogo(event.detail.slide);
-    //Modificar fontes da Página
     modificarFontes(event.detail.slide);
-    //Adcionar Marcadores ao Texto
     adcionarMarcadores(event.detail.slide);
-    //Passa a Posição Atual da Pagina para o Menu
     itemnsMenu('', event.detail.slide);
-    //Adcionar Fundo ao Slider Atual
     adicionarFundo(event.detail.slide);
-    //Fazer a inserção de scripts na página
     injectScriptPage(event.detail.slide);
-    //Fazer a inserção de animação para Paragrafos na Página
     AnimatedParagrafos(event.detail.slide);
-    //Fazer a inserção e Atualizaçaões de Animações na Página
     AnimationVariablesUpPage(event.detail.slide);
+    responsivePage(event.detail.slide);
+
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -70,6 +113,7 @@ function updatePageTitle(slideIndex) {
         titulo.textContent = pageData.nome_page;
     }
 }
+
 
 // Função para Ativar Fundo no Slider
 function adicionarFundo(slideIndex) {
@@ -834,9 +878,9 @@ adicionarLogo(savedPosition);
 modificarFontes(savedPosition);
 adcionarMarcadores(savedPosition);
 adicionarFundo(savedPosition)
-injectScriptPage(savedPosition)
-AnimatedParagrafos(savedPosition)
-AnimationVariablesUpPage(savedPosition)
+injectScriptPage(savedPosition);
+AnimatedParagrafos(savedPosition);
+AnimationVariablesUpPage(savedPosition);
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);
 // console.log(irItem)
