@@ -114,7 +114,6 @@ function updatePageTitle(slideIndex) {
     }
 }
 
-
 // Função para Ativar Fundo no Slider
 function adicionarFundo(slideIndex) {
     const pageData = api[slideIndex];

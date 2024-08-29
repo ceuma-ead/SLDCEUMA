@@ -26,3 +26,7 @@
     justify-content: center;
 
 }
+
+#loading-spinner img{
+    width: 30%;
+}
