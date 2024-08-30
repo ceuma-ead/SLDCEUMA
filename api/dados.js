@@ -683,7 +683,7 @@ const api = [
             "animacao_texto": [{
                 "indice": "all", // 0 | all
                 "script_animation": `
-                    animate__animated animate__fadeInDown animate__slow
+                    animate__animated animate__fadeInLeft animate__slow
                 `
             }]
 
