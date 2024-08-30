@@ -2,15 +2,15 @@
 
 var responsivo = [{
   // Onde o Estilo tem que aparecer 
-  "Tipo": 2,
+  "Tipo": "All",
   // Pode ser "All" para todas as páginas ou um número específico para uma página
   // Que tipo de quebra Tem que Fazer
-  "media": "(max-width: 1366px)",
+  "media": "(max-width: 1240px)",
   // Apenas a condição dentro dos parênteses
   // Estilos que podem vir adicionais
-  "synchronous": "\n             .pagina-tipo-texto--box-texto p{\n                    // font-size: 0.9rem;\n                    // background-color: aqua;\n             }\n        ",
+  "synchronous": "\n             .pagina-tipo-texto--box-texto p{\n             margin-bottom: 0.3rem !important;\n                    font-size: 0.8rem;\n                    // background-color: aqua;\n             }\n\n            .header-title p {\n                margin-bottom: 0.3rem !important;\n\n            }\n\n            svg {\n                padding: 2px !important;\n            \n            }\n\n            #dots {\n                bottom: 8%;\n                align-items: normal;\n            }\n\n            .animated-text {\n                font-size: 4vw;\n            }\n\n            #second-text {\n                font-size: 2.5vw;\n            }\n\n            #animated-button {\n                margin-top: 15px;\n                font-size: 1.8vw;\n            }\n\n            .sidebar-menu {\n                width: 300px;\n                height: 21rem;\n                padding: 0.8rem;\n            }\n\n            .sidebar-menu header {\n                padding: 0.2rem;\n            }\n\n\n\n            .mola-encardernamento {\n                width: 9%;\n                height: 92%;\n                margin-left: -1.85rem;\n                background-size: 100%;\n            }\n\n            .render-menu a {\n                height: 35px;\n                font-size: 13px !important;\n            }\n\n\n            .searcListMateria {\n                margin: 0.3rem 0;\n            }\n\n            .sidebar-menu-Annotation {\n                width: 300px;\n                height: 20rem;\n            }\n\n            .sidebar-menu-Annotation header {\n                    padding: 0.2rem;\n            }\n                \n            hr {\n                margin: 0.2rem 0;\n            }\n\n            .searcListKeyWord {\n                margin: 0.1rem 0;\n            }\n\n            .searcListKeyWord span {\n                padding: 0 0;\n            }\n\n            .container-searcListKeyWord button {\n                margin: 0.2rem;\n            }\n\n            .render-menu-Annotation {\n                padding-right: 0;\n            }\n\n            .sidebar-menu header p:nth-of-type(1){\n                font-size:1.2rem;\n            }\n\n            .sidebar-menu header p:nth-of-type(2){\n                font-size:1rem;\n            }\n\n    ",
   // Atualização Forçada onde ele está aparecendo
-  "variantes": "\n            // --tamanho-de-font-para-paragrafo-sidebar=[1rem];\n            --font-para-paragrafos=[1rem]\n        ",
+  "variantes": "\n            --tamanho-de-font-para-paragrafo-sidebar=[1rem];\n            --tamanho-dos-icones-siderbar=[2rem];\n            --tamanho-x-y-imagem=[7%];\n            --width=[40px];\n           --height=[40px];\n        //    --tamanho-do-texto-do-paragrafo-header=[1.2rem];\n            // --font-para-paragrafos=[1rem]\n        ",
   "atualizacaoBrutaElementos": [// Exemplos de atualizações brutas de elementos
     // {
     //     "Elemento":"p",

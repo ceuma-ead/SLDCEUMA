@@ -60,7 +60,7 @@ var api = [// PAGINA 1
       // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
       // "attr":"defer" // pode ser defer ou async
       // "insert":"beforebegin", // opcional onde ele vai inserir
-      "conteudo_script": "\n\n                    function iniciar(){\n                    glider.scrollItem(1);\n                    };   \n\n                    \n                    "
+      "conteudo_script": "\n\n                    function iniciar(){\n                        glider.scrollItem(1);\n                    };   \n\n                "
     }]
   }
 }, // PAGINA 2
@@ -144,6 +144,227 @@ var api = [// PAGINA 1
         "funcao": "c_ultural()"
       }]
     }],
+    "fonte": {
+      // "titulo":"1rem",
+      "paragrafos": "1rem",
+      // "font_familly":"Lato",
+      // "cor_fonte":"black",
+      "alinhamento_texto": "justify",
+      "hifens": "auto"
+    },
+    "logo": {
+      "ativar": true,
+      "img": "url(../assets/logopreta.png)",
+      "posicaoY": "bottom 1.8%",
+      "posicaoX": "left 0.5%",
+      "tamanho": "10%"
+    },
+    // "script_simples":[
+    //     {
+    //         "posicao":"head", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
+    //         // "attr":"defer" // pode ser defer ou async
+    //         "insert":"afterbegin", // opcional onde ele vai inserir
+    //         "conteudo_script":`
+    //             alert('oi')
+    //         `
+    //     }
+    // ],
+    // Animação para Texto API
+    "animacao_texto": [{
+      "indice": "all",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+    }]
+  }
+}, // PAGINA 3
+{
+  "pagina": 3,
+  "nome_page": "Apresenta\xE7\xE3o da disciplina",
+  "tipo": "Texto",
+  "id_page": ".content-render-api",
+  "id_component": ".c-carousel__slides",
+  "id_elemento_para_modificar": "container-imagem",
+  "data": {
+    "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                        <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA: </p>\n                        \n                    </div> \n                 </div>\n            "
+  },
+  "forcarAtualizacao": {
+    "variaveis": [{
+      "Nome": "--animacao-sidebar",
+      "Entrada": "none",
+      "Saida": "slideDown 2s forwards"
+    }]
+  },
+  // Injetar estilos na Pagina
+  "inject_style_render": [{
+    "id_style": "estiloCabecalho",
+    "autoridade": "shar256",
+    "conteudo_estilo": "\n                .siderbar {\n                        width: 100%;\n                        background: var(--fundo-siderbar);\n                        display: flex;\n                        align-items: center;\n                        flex-direction: row;\n                        justify-content: space-between;\n                        gap: 0.5rem;\n                        padding: 0.5rem 0.5rem;\n                        top: var(--animacao-sidebar-top);\n                        animation: var(--animacao-sidebar);\n                        position: var(--animacao-position);    \n                    }\n                \n            "
+  }],
+  "paramentros": {
+    "cores": {// "sidebar": "red",
+      // "fundo": "red",
+      // "icones": "rgb(0, 110, 201)"
+    },
+    "configuracoes_gerais": {
+      // Habilitar Procurar de Paragrafos ná Pagina 2
+      "_procurar_paragrafos": {
+        "status": true,
+        "onde_procurar": ".pagina-tipo-texto--box-texto"
+      }
+    },
+    // "marcador": [{
+    //     "tipo": "p",
+    //     "posicao": 2,
+    //     "palavras": "social|econômica|cultural",
+    //     // Atributos Gerais
+    //     "attr": `  
+    //       cursor=[pointer] , border-radius=[5px] , /*border=[2px solid #000]*/
+    //     `,
+    //     // Criar um Estilo Geral
+    //     "attr_inline": `
+    //         vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]
+    //     `,
+    //     // Criar uma injeção de Dados para estilizar o Marcador
+    //     "estilo_marcador_inject": `
+    //         .bt-1 {
+    //            background: #011c41;
+    //            color: #fff;
+    //            display: inline-block;
+    //            transition: all .4s ease-in-out;
+    //            transform-style: preserve-3d;
+    //            animation-name: zoom;
+    //            animation-duration: 1s;
+    //         }
+    //         .bt-1:hover {
+    //           background: #024db3;
+    //           transform: rotate3d(1, 0, 0, -360deg);
+    //         }
+    //         @keyframes zoom 0% {
+    //         transform: scale(0)
+    //         }
+    //         @keyframes zoom 100% {
+    //         transform: scale(1)
+    //         } 
+    //         .bt-2 {
+    //             background:red;
+    //             color:#fff; display: inline-block;
+    //             transition: all .4s ease-in-out;
+    //             transform-style: preserve-3d;
+    //             animation-name: zoom;
+    //             animation-duration: 1s;
+    //         }
+    //         .bt-2:hover {
+    //           background: #024db3;
+    //           transform: rotate3d(1, 0, 0, -360deg);
+    //         }
+    //         @keyframes zoom 0% {
+    //         transform: scale(0)
+    //         }
+    //         @keyframes zoom 100% {
+    //         transform: scale(1)
+    //         } 
+    //         .bt-3 {
+    //             background:#FF8A00;
+    //             color:#fff; display: inline-block;
+    //            transition: all .4s ease-in-out;
+    //            transform-style: preserve-3d;
+    //             animation-name: zoom;
+    //             animation-duration: 1s;
+    //         }
+    //         .bt-3:hover {
+    //           background: #024db3;
+    //           transform: rotate3d(1, 0, 0, -360deg);
+    //         }
+    //         @keyframes zoom 0% {
+    //         transform: scale(0)
+    //         }
+    //         @keyframes zoom 100% {
+    //         transform: scale(1)
+    //         } 
+    //         .my-poup{
+    //            background:#FF8A00;
+    //         }
+    //     `,
+    //     // Atributos Especificos
+    //     "attr_unitario": {
+    //         "social": {
+    //             // "attr": "background=[red],color=[white]",
+    //             "attr_inline": "id=[#1], class=[bt-1]",
+    //         },
+    //         "econômica": {
+    //             // "attr": "background=[blue],color=[white]",
+    //             "attr_inline": "id=[#1], class=[bt-2]"
+    //         },
+    //         "cultural": {
+    //             // "attr": "background=[blue],color=[white]",
+    //             "attr_inline": "id=[#1], class=[bt-3]"
+    //         },
+    //     },
+    //     // "fundo": "blue",
+    //     // "corTexto": "black",
+    //     "padding": "0.3rem",
+    //     "onclick": [{
+    //             "palavra": "social",
+    //             "acao": "onclick",
+    //             "funcao_script": `
+    //                 function s_ocial() {
+    //                     Swal.fire(
+    //                         {   icon:"info",
+    //                             // title:"Social",
+    //                             // customClass: {
+    //                             //     popup:"my-poup"
+    //                             // },
+    //                             heightAuto: false,
+    //                             text:"A compreensão profunda das alterações hematológicas e suas causas permite aos futuros biomédicos diagnosticar e tratar doenças de forma mais eficaz, contribuindo para a melhoria da saúde pública.",
+    //                             // footer:"<a href='#'>Baixar Conceito</a>"
+    //                         }
+    //                     );
+    //                 }
+    //             `,
+    //             "funcao": "s_ocial()"
+    //         },
+    //         {
+    //             "palavra": "econômica",
+    //             "acao": "onclick",
+    //             "funcao_script": `
+    //                 function e_conomica() {
+    //                     Swal.fire(
+    //                         {   icon:"info",
+    //                             // title:"econômica",
+    //                             // customClass: {
+    //                             //     popup:"my-poup"
+    //                             // },
+    //                             heightAuto: false,
+    //                             text:"Culturalmente, ao entender as particularidades genéticas e epidemiológicas de diferentes populações, o biomédico pode oferecer um cuidado mais personalizado e adequado.",
+    //                             // footer:"<a href='#'>Baixar Conceito</a>"
+    //                         }
+    //                     );
+    //                 }
+    //             `,
+    //             "funcao": "e_conomica()"
+    //         },
+    //         {
+    //             "palavra": "cultural",
+    //             "acao": "onclick",
+    //             "funcao_script": `
+    //                 function c_ultural() {
+    //                     Swal.fire(
+    //                         {   icon:"info",
+    //                             // title:"cultural",
+    //                             // customClass: {
+    //                             //     popup:"my-poup"
+    //                             // },
+    //                             heightAuto: false,
+    //                             text:"Em um contexto econômico, o diagnóstico preciso e rápido de doenças hematológicas pode reduzir custos com tratamentos prolongados ou ineficazes.",
+    //                             // footer:"<a href='#'>Baixar Conceito</a>"
+    //                         }
+    //                     );
+    //                 }
+    //             `,
+    //             "funcao": "c_ultural()"
+    //         },
+    //     ]
+    // }],
     "fonte": {
       // "titulo":"1rem",
       "paragrafos": "1rem",

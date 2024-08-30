@@ -3,7 +3,7 @@ const responsivo = [
         // Onde o Estilo tem que aparecer 
         "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
         // Que tipo de quebra Tem que Fazer
-        "media" : "(max-width: 1366px)", // Apenas a condição dentro dos parênteses
+        "media" : "(max-width: 1240px)", // Apenas a condição dentro dos parênteses
         // Estilos que podem vir adicionais
         "synchronous" : `
              .pagina-tipo-texto--box-texto p{
@@ -15,99 +15,96 @@ const responsivo = [
             .header-title p {
                 margin-bottom: 0.3rem !important;
 
-    }
+            }
 
-    svg {
-    padding: 2px !important;
-   
-}
+            svg {
+                padding: 2px !important;
+            
+            }
 
-#dots {
-        bottom: 8%;
-       align-items: normal;
-    }
+            #dots {
+                bottom: 8%;
+                align-items: normal;
+            }
 
-    .animated-text {
-        font-size: 4vw;
-    }
+            .animated-text {
+                font-size: 4vw;
+            }
 
-    #second-text {
-        font-size: 2.5vw;
-    }
+            #second-text {
+                font-size: 2.5vw;
+            }
 
-    #animated-button {
-        margin-top: 15px;
-        font-size: 1.8vw;
-    }
+            #animated-button {
+                margin-top: 15px;
+                font-size: 1.8vw;
+            }
 
-        .sidebar-menu {
-        width: 300px;
-        height: 21rem;
-        padding: 0.8rem;
-    }
+            .sidebar-menu {
+                width: 300px;
+                height: 21rem;
+                padding: 0.8rem;
+            }
 
-    .sidebar-menu header {
-        padding: 0.2rem;
-    }
-
-
-
-    .mola-encardernamento {
-    width: 9%;
-    height: 92%;
-    margin-left: -1.85rem;
-    background-size: 100%;
-    }
-
-    .render-menu a {
-    height: 35px;
-    font-size: 13px !important;
-    }
+            .sidebar-menu header {
+                padding: 0.2rem;
+            }
 
 
-    .searcListMateria {
-        margin: 0.3rem 0;
-    }
 
-    .sidebar-menu-Annotation {
-        width: 300px;
-        height: 20rem;
-    }
-        .sidebar-menu-Annotation header {
-        padding: 0.2rem;
-    }
-    
-    hr {
-    margin: 0.2rem 0;
-    }
+            .mola-encardernamento {
+                width: 9%;
+                height: 92%;
+                margin-left: -1.85rem;
+                background-size: 100%;
+            }
+
+            .render-menu a {
+                height: 35px;
+                font-size: 13px !important;
+            }
 
 
-    .searcListKeyWord {
-  margin: 0.1rem 0;
-    }
+            .searcListMateria {
+                margin: 0.3rem 0;
+            }
 
-.searcListKeyWord span {
-        padding: 0 0;
-    }
+            .sidebar-menu-Annotation {
+                width: 300px;
+                height: 20rem;
+            }
 
-.container-searcListKeyWord button {
-    margin: 0.2rem;
-    }
+            .sidebar-menu-Annotation header {
+                    padding: 0.2rem;
+            }
+                
+            hr {
+                margin: 0.2rem 0;
+            }
 
-    .render-menu-Annotation {
-    padding-right: 0;
-    }
+            .searcListKeyWord {
+                margin: 0.1rem 0;
+            }
 
-.sidebar-menu header p:nth-of-type(1){
+            .searcListKeyWord span {
+                padding: 0 0;
+            }
+
+            .container-searcListKeyWord button {
+                margin: 0.2rem;
+            }
+
+            .render-menu-Annotation {
+                padding-right: 0;
+            }
+
+            .sidebar-menu header p:nth-of-type(1){
                 font-size:1.2rem;
             }
 
             .sidebar-menu header p:nth-of-type(2){
                 font-size:1rem;
             }
-
-
-
 
     `,
         // Atualização Forçada onde ele está aparecendo

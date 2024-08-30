@@ -406,6 +406,95 @@ function handleSearch() {
 }
 
 // Função para Modificar Fonte no Slider
+// function modificarFontes(slideIndex) {
+//     const pageData = api[slideIndex];
+//     // console.log(pageData)
+
+//     // Criar um Font padrão para Página
+//     const FontPadrao = {
+//         titulo: getComputedStyle(document.documentElement).getPropertyValue('--tamanho-de-font-para-paragrafo-sidebar').trim(),
+//         paragrafos: getComputedStyle(document.documentElement).getPropertyValue('--font-para-paragrafos').trim(),
+//         font_familly: getComputedStyle(document.documentElement).getPropertyValue('--familia-da-font-paragrafo').trim(),
+//         cor_fonte: getComputedStyle(document.documentElement).getPropertyValue('--cor-da-font-paragrafo').trim(),
+//         alinhamento_texto: getComputedStyle(document.documentElement).getPropertyValue('--alinhamento-do-texto-paragrafo').trim(),
+//         hifens: getComputedStyle(document.documentElement).getPropertyValue('--hifens-da-fonte-paragrafo').trim()
+//     };
+
+//     if (pageData && pageData.paramentros && pageData.paramentros.logo) {
+//         const {
+//                 titulo = FontPadrao.titulo,
+//                 paragrafos = FontPadrao.paragrafos,
+//                 font_familly = FontPadrao.font_familly,
+//                 cor_fonte = FontPadrao.cor_fonte,
+//                 alinhamento_texto = FontPadrao.alinhamento_texto,
+//                 hifens = FontPadrao.hifens
+
+//         } = pageData.paramentros.fonte;
+
+//         // console.log(titulo)
+//         // console.log(paragrafos)
+//         // console.log(unidade_medida)
+//         // console.log(font_familly)
+//         // console.log(cor_fonte)
+
+//         // console.log(pageData.paramentros.logo)
+//         const verificarItem = pageData.paramentros.logo
+//         if (Object.values(verificarItem).length === 0) {
+
+//             document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
+//             document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
+//             document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
+//             document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
+//             document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
+
+//             return;
+//         }
+
+//         //cria um controlador de fontes para página
+//         // console.log(pageData)
+
+//         const slider_container = document.querySelector(pageData.id_component)
+//         // console.log(slider_container)
+
+//         //verificar se existe paragrafos dentro do slider
+//         // const paragrafos_slider = slider_container.querySelectorAll("p")
+//         // // console.log(paragrafos_slider)
+
+//         // paragrafos_slider.forEach((p, index) => {
+//         //     p.style.fontSize = `${paragrafos}`;
+//         //     p.style.fontFamily = `${font_familly}`;
+//         //     p.style.color = `${cor_fonte}`;
+//         //     p.style.textAlign = `${alinhamento_texto}`
+//         //     p.style.hyphens = `${hifens}`
+//         // })
+
+//         document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', titulo);
+//         document.documentElement.style.setProperty('--font-para-paragrafos', paragrafos);
+//         document.documentElement.style.setProperty('--familia-da-font-paragrafo', font_familly);
+//         document.documentElement.style.setProperty('--cor-da-font-paragrafo', cor_fonte);
+//         document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo',alinhamento_texto);
+//         document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', hifens);
+
+
+//     } else {
+
+//         if (typeof glider !== 'undefined') {
+//             glider.refresh(true);
+//             glider.updateControls();
+//         } else {
+//             console.error('O objeto glider não está definido.');
+//         }
+//         // Mantém os estilos padrão e atualiza o glider
+//         document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
+//         document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
+//         document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
+//         document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
+//         document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.cor_fonte);
+//         document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
+
+//     }
+// }
+
 function modificarFontes(slideIndex) {
     const pageData = api[slideIndex];
     // console.log(pageData)
@@ -494,6 +583,7 @@ function modificarFontes(slideIndex) {
 
     }
 }
+
 
 // Função para criar Animação no Slider
 function AnimatedParagrafos(slideIndex) {

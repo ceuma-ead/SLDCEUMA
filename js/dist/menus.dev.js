@@ -17,11 +17,9 @@ function abrirSumario() {
     var botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
 
     if (menuSumario.classList.contains('open')) {
-      iconeMenuSumario.setAttribute('data-lucide', 'x');
-      botaoAbrirSumario.setAttribute('vizioon-tip', 'Fechar Sumário');
+      iconeMenuSumario.setAttribute('data-lucide', 'x'); // botaoAbrirSumario.setAttribute('vizioon-tip', 'Fechar Sumário');
     } else {
-      iconeMenuSumario.setAttribute('data-lucide', 'notebook-text');
-      botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
+      iconeMenuSumario.setAttribute('data-lucide', 'notebook-text'); // botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
     }
 
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -33,6 +31,23 @@ function abrirSumario() {
       fecharMenuSumario();
     }
   });
+} // Função para fechar o menu de sumário
+
+
+function fecharMenuSumario() {
+  var menuSumario = document.querySelector('.sidebar-menu');
+  var botaoAbrirSumario = document.getElementById('btnOpenSumario');
+  var iconeMenuSumario = document.getElementById('menuIcon');
+
+  if (menuSumario.classList.contains('open')) {
+    menuSumario.classList.remove('open');
+    iconeMenuSumario.setAttribute('data-lucide', 'notebook-text');
+    botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
+
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+      lucide.createIcons();
+    }
+  }
 } // Função para abrir o menu de anotações
 
 
@@ -69,8 +84,8 @@ function abrirAnotacoes() {
       vizioon_anotation.innerHTML = "Fechar Anota\xE7\xF5es \u274C";
     } else {
       iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
-      botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
-      vizioon_anotation.innerHTML = "Veja Suas Anota\xE7\xF5es Aqui \uD83E\uDD29!!!";
+      botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
+      vizioon_anotation.innerHTML = "Suas Anota\xE7\xF5es \uD83E\uDD29 !!";
     }
 
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -82,23 +97,6 @@ function abrirAnotacoes() {
       fecharMenuAnotacoes();
     }
   });
-} // Função para fechar o menu de sumário
-
-
-function fecharMenuSumario() {
-  var menuSumario = document.querySelector('.sidebar-menu');
-  var botaoAbrirSumario = document.getElementById('btnOpenSumario');
-  var iconeMenuSumario = document.getElementById('menuIcon');
-
-  if (menuSumario.classList.contains('open')) {
-    menuSumario.classList.remove('open');
-    iconeMenuSumario.setAttribute('data-lucide', 'notebook-text');
-    botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
-
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
-    }
-  }
 }
 
 function fecharMenuAnotacoes() {
@@ -119,10 +117,10 @@ function fecharMenuAnotacoes() {
 
 
     iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
-    botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Veja Suas Anotações Aqui 🤩!!!');
+    botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
 
     if (vizioon_anotation) {
-      vizioon_anotation.innerHTML = 'Veja Suas Anotações Aqui 🤩!!!';
+      vizioon_anotation.innerHTML = 'Suas Anotações 🤩 !!';
       vizioon_anotation.style.display = 'none';
     } // Atualizar ícones, se necessário
 
