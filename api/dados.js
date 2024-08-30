@@ -71,7 +71,7 @@ const api = [
 
             "fonte": {
                 // "titulo":"1rem",
-                "paragrafos": "4rem",
+                "paragrafos": "1rem",
                 // "font_familly":"Lato",
                 // "cor_fonte":"black",
                 "alinhamento_texto": "justify",
@@ -96,6 +96,8 @@ const api = [
 
                 `
             }]
+            
+            
         }
     },
 

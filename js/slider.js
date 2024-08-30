@@ -406,6 +406,7 @@ function handleSearch() {
 }
 
 // Função para Modificar Fonte no Slider
+// ------------------ Versão ( 01 ) -----------------
 // function modificarFontes(slideIndex) {
 //     const pageData = api[slideIndex];
 //     // console.log(pageData)
@@ -494,10 +495,10 @@ function handleSearch() {
 
 //     }
 // }
+// ------------------ Versão ( 01 ) -----------------
 
 function modificarFontes(slideIndex) {
     const pageData = api[slideIndex];
-    // console.log(pageData)
 
     // Criar um Font padrão para Página
     const FontPadrao = {
@@ -509,63 +510,63 @@ function modificarFontes(slideIndex) {
         hifens: getComputedStyle(document.documentElement).getPropertyValue('--hifens-da-fonte-paragrafo').trim()
     };
 
-    if (pageData && pageData.paramentros && pageData.paramentros.logo) {
+    if (pageData && pageData.paramentros && pageData.paramentros.fonte) {
         const {
-                titulo = FontPadrao.titulo,
-                paragrafos = FontPadrao.paragrafos,
-                font_familly = FontPadrao.font_familly,
-                cor_fonte = FontPadrao.cor_fonte,
-                alinhamento_texto = FontPadrao.alinhamento_texto,
-                hifens = FontPadrao.hifens
-
+            titulo = FontPadrao.titulo,
+            paragrafos = FontPadrao.paragrafos,
+            font_familly = FontPadrao.font_familly,
+            cor_fonte = FontPadrao.cor_fonte,
+            alinhamento_texto = FontPadrao.alinhamento_texto,
+            hifens = FontPadrao.hifens
         } = pageData.paramentros.fonte;
 
-        // console.log(titulo)
-        // console.log(paragrafos)
-        // console.log(unidade_medida)
-        // console.log(font_familly)
-        // console.log(cor_fonte)
-
-        // console.log(pageData.paramentros.logo)
-        const verificarItem = pageData.paramentros.logo
+        const verificarItem = pageData.paramentros.logo;
         if (Object.values(verificarItem).length === 0) {
-
+            // Reverter para as fontes padrão
             document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
             document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
             document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
             document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
+            document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.alinhamento_texto);
             document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
 
             return;
         }
 
-        //cria um controlador de fontes para página
-        // console.log(pageData)
+        // Selecionar o contêiner correto para o slide atual
+        const slider_container = document.querySelector(pageData.id_component);
 
-        const slider_container = document.querySelector(pageData.id_component)
-        // console.log(slider_container)
+        if (slider_container) {
+            // Selecionar todos os parágrafos dentro do contêiner
+            const paragrafos_slider = slider_container.querySelectorAll("p");
 
-        //verificar se existe paragrafos dentro do slider
-        // const paragrafos_slider = slider_container.querySelectorAll("p")
-        // // console.log(paragrafos_slider)
+            paragrafos_slider.forEach((p) => {
+                p.style.fontSize = paragrafos;
+                p.style.fontFamily = font_familly;
+                p.style.color = cor_fonte;
+                p.style.textAlign = alinhamento_texto;
+                p.style.hyphens = hifens;
+            });
 
-        // paragrafos_slider.forEach((p, index) => {
-        //     p.style.fontSize = `${paragrafos}`;
-        //     p.style.fontFamily = `${font_familly}`;
-        //     p.style.color = `${cor_fonte}`;
-        //     p.style.textAlign = `${alinhamento_texto}`
-        //     p.style.hyphens = `${hifens}`
-        // })
-
-        document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', titulo);
-        document.documentElement.style.setProperty('--font-para-paragrafos', paragrafos);
-        document.documentElement.style.setProperty('--familia-da-font-paragrafo', font_familly);
-        document.documentElement.style.setProperty('--cor-da-font-paragrafo', cor_fonte);
-        document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo',alinhamento_texto);
-        document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', hifens);
-
+            // Aplicar estilos globais para a página atual
+            document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', titulo);
+            document.documentElement.style.setProperty('--font-para-paragrafos', paragrafos);
+            document.documentElement.style.setProperty('--familia-da-font-paragrafo', font_familly);
+            document.documentElement.style.setProperty('--cor-da-font-paragrafo', cor_fonte);
+            document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', alinhamento_texto);
+            document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', hifens);
+        } else {
+            console.error('O contêiner do slider não foi encontrado.');
+        }
 
     } else {
+        // Se não houver dados ou fontes personalizadas, reverter para as fontes padrão
+        document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
+        document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
+        document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
+        document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
+        document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.alinhamento_texto);
+        document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
 
         if (typeof glider !== 'undefined') {
             glider.refresh(true);
@@ -573,103 +574,160 @@ function modificarFontes(slideIndex) {
         } else {
             console.error('O objeto glider não está definido.');
         }
-        // Mantém os estilos padrão e atualiza o glider
-        document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
-        document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
-        document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
-        document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
-        document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.cor_fonte);
-        document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
-
     }
 }
 
 
 // Função para criar Animação no Slider
+// ------------------ Versão ( 01 ) -----------------
+// function AnimatedParagrafos(slideIndex) {
+//     const pageData = api[slideIndex];
+
+//     // Verifica se os dados da página e as animações de texto estão disponíveis
+//     if (pageData && pageData.paramentros && pageData.paramentros.animacao_texto) {
+//         const animacaoPadrao = {
+//             indice: "all",
+//             script_animation: "animate__animated animate__backInLeft"
+//         };
+
+//         const verificarItem = pageData.paramentros.animacao_texto;
+//         if (Object.values(verificarItem).length === 0) {
+//             return; // Se não houver animação definida, sai da função
+//         }
+
+//         const configurarAnimacao = pageData.paramentros.animacao_texto;
+//         configurarAnimacao.forEach((animation) => {
+//             const {
+//                 script_animation = animacaoPadrao.script_animation,
+//                     indice = animacaoPadrao.indice
+//             } = animation;
+
+//             if (animation.indice === "all") {
+//                 // Se a animação for para todos os parágrafos
+//                 const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
+
+//                 if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
+//                     const procurarParagrafosNoContainer = document.querySelector(procurarParagrafo.onde_procurar.trim());
+
+//                     if (procurarParagrafosNoContainer) {
+//                         const paragrafos = procurarParagrafosNoContainer.querySelectorAll("p");
+//                         paragrafos.forEach((p) => {
+//                             // Remove as classes de animação individualmente, verificando se a classe não está vazia
+//                             script_animation.split(" ").forEach(cls => {
+//                                 if (cls.trim()) {
+//                                     p.classList.remove(cls.trim());
+//                                 }
+//                             });
+//                             void p.offsetWidth; // Força um reflow
+//                             // Adiciona novamente as classes de animação
+//                             script_animation.split(" ").forEach(cls => {
+//                                 if (cls.trim()) {
+//                                     p.classList.add(cls.trim());
+//                                 }
+//                             });
+//                         });
+//                     }
+//                 } else {
+//                     // Erro se o local de procura não estiver definido ou ativado
+//                     handleErroAnimacao(procurarParagrafo);
+//                 }
+//             } else {
+//                 // Animação específica para um índice de parágrafo
+//                 const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
+
+//                 if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
+//                     const procurarParagrafosNoContainer = document.querySelector(procurarParagrafo.onde_procurar.trim());
+
+//                     if (procurarParagrafosNoContainer) {
+//                         const p = procurarParagrafosNoContainer.querySelectorAll("p")[indice];
+//                         if (p) {
+//                             // Remove as classes de animação individualmente, verificando se a classe não está vazia
+//                             script_animation.split(" ").forEach(cls => {
+//                                 if (cls.trim()) {
+//                                     p.classList.remove(cls.trim());
+//                                 }
+//                             });
+//                             void p.offsetWidth; // Força um reflow
+//                             // Adiciona novamente as classes de animação
+//                             script_animation.split(" ").forEach(cls => {
+//                                 if (cls.trim()) {
+//                                     p.classList.add(cls.trim());
+//                                 }
+//                             });
+//                         }
+//                     }
+//                 } else {
+//                     // Erro se o local de procura não estiver definido ou ativado
+//                     handleErroAnimacao(procurarParagrafo);
+//                 }
+//             }
+//         });
+//     } else {
+//         // Atualiza o slider se a animação não estiver definida
+//         if (typeof glider !== 'undefined') {
+//             glider.refresh(true);
+//             glider.updateControls();
+//         } else {
+//             console.error('O objeto glider não está definido.');
+//         }
+//     }
+// }
+// ------------------ Versão ( 01 ) -----------------
+
 function AnimatedParagrafos(slideIndex) {
     const pageData = api[slideIndex];
 
-    // Verifica se os dados da página e as animações de texto estão disponíveis
     if (pageData && pageData.paramentros && pageData.paramentros.animacao_texto) {
         const animacaoPadrao = {
             indice: "all",
-            script_animation: "animate__animated animate__backInLeft"
+            script_animation: "animate__animated animate__fadeInDown animate__slow"
         };
-
-        const verificarItem = pageData.paramentros.animacao_texto;
-        if (Object.values(verificarItem).length === 0) {
-            return; // Se não houver animação definida, sai da função
-        }
 
         const configurarAnimacao = pageData.paramentros.animacao_texto;
         configurarAnimacao.forEach((animation) => {
             const {
                 script_animation = animacaoPadrao.script_animation,
-                    indice = animacaoPadrao.indice
+                indice = animacaoPadrao.indice
             } = animation;
 
-            if (animation.indice === "all") {
-                // Se a animação for para todos os parágrafos
-                const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
+            const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
 
-                if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
-                    const procurarParagrafosNoContainer = document.querySelector(procurarParagrafo.onde_procurar.trim());
+            if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
+                // Seleciona todos os contêineres que possuem a mesma classe
+                const procurarParagrafosNosContainers = document.querySelectorAll(procurarParagrafo.onde_procurar);
+                
+                procurarParagrafosNosContainers.forEach((container) => {
+                    const paragrafos = container.querySelectorAll("p");
 
-                    if (procurarParagrafosNoContainer) {
-                        const paragrafos = procurarParagrafosNoContainer.querySelectorAll("p");
-                        paragrafos.forEach((p) => {
-                            // Remove as classes de animação individualmente, verificando se a classe não está vazia
+                    paragrafos.forEach((p, i) => {
+                        if (indice === "all" || indice == i) {
+                            // Remove as classes de animação para forçar o reprocessamento
                             script_animation.split(" ").forEach(cls => {
                                 if (cls.trim()) {
                                     p.classList.remove(cls.trim());
                                 }
                             });
-                            void p.offsetWidth; // Força um reflow
-                            // Adiciona novamente as classes de animação
-                            script_animation.split(" ").forEach(cls => {
-                                if (cls.trim()) {
-                                    p.classList.add(cls.trim());
-                                }
-                            });
-                        });
-                    }
-                } else {
-                    // Erro se o local de procura não estiver definido ou ativado
-                    handleErroAnimacao(procurarParagrafo);
-                }
-            } else {
-                // Animação específica para um índice de parágrafo
-                const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
 
-                if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
-                    const procurarParagrafosNoContainer = document.querySelector(procurarParagrafo.onde_procurar.trim());
-
-                    if (procurarParagrafosNoContainer) {
-                        const p = procurarParagrafosNoContainer.querySelectorAll("p")[indice];
-                        if (p) {
-                            // Remove as classes de animação individualmente, verificando se a classe não está vazia
-                            script_animation.split(" ").forEach(cls => {
-                                if (cls.trim()) {
-                                    p.classList.remove(cls.trim());
-                                }
-                            });
-                            void p.offsetWidth; // Força um reflow
-                            // Adiciona novamente as classes de animação
-                            script_animation.split(" ").forEach(cls => {
-                                if (cls.trim()) {
-                                    p.classList.add(cls.trim());
-                                }
+                            // Utiliza requestAnimationFrame para garantir que a animação seja reaplicada
+                            requestAnimationFrame(() => {
+                                requestAnimationFrame(() => {
+                                    // Adiciona novamente as classes de animação
+                                    script_animation.split(" ").forEach(cls => {
+                                        if (cls.trim()) {
+                                            p.classList.add(cls.trim());
+                                        }
+                                    });
+                                });
                             });
                         }
-                    }
-                } else {
-                    // Erro se o local de procura não estiver definido ou ativado
-                    handleErroAnimacao(procurarParagrafo);
-                }
+                    });
+                });
+
+            } else {
+                handleErroAnimacao(procurarParagrafo);
             }
         });
     } else {
-        // Atualiza o slider se a animação não estiver definida
         if (typeof glider !== 'undefined') {
             glider.refresh(true);
             glider.updateControls();
