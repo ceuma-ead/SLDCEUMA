@@ -71,7 +71,7 @@ const loadingSpinner = document.getElementById('loading-spinner');
 function showLoading() {
     loadingSpinner.style.display = 'flex';
     // Garantir que o loading desapareça após 3 segundos (ou ajuste conforme necessário)
-    setTimeout(hideLoading, 650);
+    setTimeout(hideLoading, 700);
 }
 
 function hideLoading() {
