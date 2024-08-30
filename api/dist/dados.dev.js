@@ -394,7 +394,7 @@ var api = [// PAGINA 1
     "animacao_texto": [{
       "indice": "all",
       // 0 | all
-      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+      "script_animation": "\n                    animate__animated animate__fadeInLeft animate__slow\n                "
     }]
   }
 } // PAGINA PARA IMAGENS
