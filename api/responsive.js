@@ -8,7 +8,7 @@ const responsivo = [
         "synchronous" : `
              .pagina-tipo-texto--box-texto p{
              margin-bottom: 0.3rem !important;
-                    font-size: 0.8rem;
+                    font-size: 0.8rem !important;
                     // background-color: aqua;
              }
 
