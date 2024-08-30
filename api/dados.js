@@ -209,8 +209,9 @@ const api = [
                        transition: all .4s ease-in-out;
                        transform-style: preserve-3d;
                        animation-name: zoom;
-                       animation-duration: 1s;
-                    }
+                       animation-duration: 3s;
+                    
+                                           }
 
                     .bt-1:hover {
                       background: #024db3;
@@ -218,6 +219,7 @@ const api = [
                     }
 
                     @keyframes zoom 0% {
+                    
                     transform: scale(0)
                     
                     }
@@ -233,7 +235,7 @@ const api = [
                         transition: all .4s ease-in-out;
                         transform-style: preserve-3d;
                         animation-name: zoom;
-                        animation-duration: 1s;
+                        animation-duration: 3s;
                     }
 
                     .bt-2:hover {
@@ -257,7 +259,7 @@ const api = [
                        transition: all .4s ease-in-out;
                        transform-style: preserve-3d;
                         animation-name: zoom;
-                        animation-duration: 1s;
+                        animation-duration: 3s;
                     }
 
                     .bt-3:hover {
