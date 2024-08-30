@@ -87,7 +87,7 @@ gliderElement.addEventListener('glider-slide-hidden', function () {
 glider.scrollItem(savedPosition);
 
 gliderElement.addEventListener('glider-slide-visible', function (event) {
-    hideLoading(); // Esconder o loading assim que o slide estiver visível
+    // hideLoading(); // Esconder o loading assim que o slide estiver visível
 
     saveSliderPosition(event.detail.slide);
     updatePageTitle(event.detail.slide);
