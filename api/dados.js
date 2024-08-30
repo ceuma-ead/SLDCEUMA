@@ -95,6 +95,12 @@ const api = [
                     };   
 
                 `
+            }],
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInRigth animate__slow
+                `
             }]
             
             
@@ -183,7 +189,11 @@ const api = [
                 // Habilitar Procurar de Paragrafos ná Pagina 2
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-texto--box-texto"
+                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                },
+                "_procurar_animacao":{
+                    "status":true,
+                    "onde_procurar_animacao":".animation",
                 }
             },
             "marcador": [{
@@ -403,6 +413,12 @@ const api = [
                 "script_animation": `
                     animate__animated animate__fadeInDown animate__slow
                 `
+            }],
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInRigth animate__slow
+                `
             }]
 
         }
@@ -418,11 +434,8 @@ const api = [
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                 <div class="pagina-tipo-texto">
-                    <div class="pagina-tipo-texto--box-texto">
-                        <p>Com base nos perfis e recursos de competências da disciplina, é esperado que, ao final da disciplina, você: </p>
-                        
-                    </div> 
+                 <div class="pagina-tipo-texto animation">
+                    <button>Teste Animation 1</button>
                  </div>
             `,
         },
@@ -467,7 +480,11 @@ const api = [
                 // Habilitar Procurar de Paragrafos ná Pagina 2
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-texto--box-texto"
+                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                },
+                "_procurar_animacao":{
+                    "status":true,
+                    "onde_procurar_animacao":".animation",
                 }
             },
             // "marcador": [{
@@ -683,7 +700,109 @@ const api = [
             "animacao_texto": [{
                 "indice": "all", // 0 | all
                 "script_animation": `
+                    animate__animated animate__fadeInLeft animate__slow 
+                `
+            }],
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
                     animate__animated animate__fadeInLeft animate__slow
+                `
+            }]
+
+        }
+    },
+
+    // PAGINA 4
+    {
+        "pagina": 4,
+        "nome_page": `Teste Animação`,
+        "tipo": "Texto",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-imagem",
+        "data": {
+            "container_render": `
+                 <div class="pagina-tipo-texto animation">
+                    <button>Teste Animation 2</button>
+                 </div>
+            `,
+        },
+        "forcarAtualizacao":{
+            "variaveis":[
+                {
+                    "Nome":"--animacao-sidebar",
+                    "Entrada":"none",
+                    "Saida":"slideDown 2s forwards"
+                }
+            ]
+        },
+        // Injetar estilos na Pagina
+        "inject_style_render": [{
+            "id_style":"estiloCabecalho",
+            "autoridade": "shar256",
+            "conteudo_estilo": `
+                .siderbar {
+                        width: 100%;
+                        background: var(--fundo-siderbar);
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        gap: 0.5rem;
+                        padding: 0.5rem 0.5rem;
+                        top: var(--animacao-sidebar-top);
+                        animation: var(--animacao-sidebar);
+                        position: var(--animacao-position);    
+                    }
+                
+            `
+        }],
+        "paramentros": {
+            "cores": {
+                // "sidebar": "red",
+                // "fundo": "red",
+                // "icones": "rgb(0, 110, 201)"
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 2
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                },
+                "_procurar_animacao":{
+                    "status":true,
+                    "onde_procurar_animacao":".animation",
+                }
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logopreta.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+          
+            // Animação para Texto API
+            "animacao_texto": [{
+                "indice": "all", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInLeft animate__slow 
+                `
+            }],
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInRigth animate__slow
                 `
             }]
 

@@ -25,7 +25,7 @@ function getSavedSliderPosition() {
 const glider = new Glider(gliderElement, {
     slidesToShow: 1,
     slidesToScroll: 1,
-    duration:0.5,
+    duration: 0.5,
     arrows: {
         prev: '.glider-prev',
         next: '.glider-next'
@@ -90,18 +90,30 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     // hideLoading(); // Esconder o loading assim que o slide estiver visível
 
     saveSliderPosition(event.detail.slide);
+    //Atualizar titulo da Página
     updatePageTitle(event.detail.slide);
+    //Atualizar Cores da Página
     atualizarCoresdaNavegacao(event.detail.slide);
+    //Adicionar Logo a Página
     adicionarLogo(event.detail.slide);
+    //Modificar fontes da Página
     modificarFontes(event.detail.slide);
+    //Adcionar Marcadores ao Texto
     adcionarMarcadores(event.detail.slide);
+    //Passa a Posição Atual da Pagina para o Menu
     itemnsMenu('', event.detail.slide);
+    //Adcionar Fundo ao Slider Atual
     adicionarFundo(event.detail.slide);
+    //Fazer a inserção de scripts na página
     injectScriptPage(event.detail.slide);
+    //Fazer a inserção de animação para Paragrafos na Página
     AnimatedParagrafos(event.detail.slide);
+    //Fazer a inserção e Atualizaçaões de Animações na Página
     AnimationVariablesUpPage(event.detail.slide);
+    //Fazer a inserção de Responsividade em uma Página ou Varias
     responsivePage(event.detail.slide);
-
+    //Fazer animação no Elemento da Página
+    AnimatedElementos(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -513,11 +525,11 @@ function modificarFontes(slideIndex) {
     if (pageData && pageData.paramentros && pageData.paramentros.fonte) {
         const {
             titulo = FontPadrao.titulo,
-            paragrafos = FontPadrao.paragrafos,
-            font_familly = FontPadrao.font_familly,
-            cor_fonte = FontPadrao.cor_fonte,
-            alinhamento_texto = FontPadrao.alinhamento_texto,
-            hifens = FontPadrao.hifens
+                paragrafos = FontPadrao.paragrafos,
+                font_familly = FontPadrao.font_familly,
+                cor_fonte = FontPadrao.cor_fonte,
+                alinhamento_texto = FontPadrao.alinhamento_texto,
+                hifens = FontPadrao.hifens
         } = pageData.paramentros.fonte;
 
         const verificarItem = pageData.paramentros.logo;
@@ -695,7 +707,7 @@ function modificarFontes(slideIndex) {
 //             if (procurarParagrafo.status && procurarParagrafo.onde_procurar !== "") {
 //                 // Seleciona todos os contêineres que possuem a mesma classe
 //                 const procurarParagrafosNosContainers = document.querySelectorAll(procurarParagrafo.onde_procurar);
-                
+
 //                 procurarParagrafosNosContainers.forEach((container) => {
 //                     const paragrafos = container.querySelectorAll("p");
 
@@ -750,7 +762,7 @@ function AnimatedParagrafos(slideIndex) {
         configurarAnimacao.forEach((animation) => {
             const {
                 script_animation = animacaoPadrao.script_animation,
-                indice = animacaoPadrao.indice
+                    indice = animacaoPadrao.indice
             } = animation;
 
             const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
@@ -795,6 +807,82 @@ function AnimatedParagrafos(slideIndex) {
         }
     }
 }
+
+// Função para Criar animação no Elemento
+// Função para Criar animação no Elemento
+function AnimatedElementos(slideIndex) {
+    const pageData = api[slideIndex];
+
+    if (!pageData) {
+        console.error('pageData não está definido.');
+        return;
+    }
+
+    if (!pageData.paramentros) {
+        console.error('pageData.paramentros não está definido.');
+        return;
+    }
+
+    if (!pageData.paramentros.animacao_elemento) {
+        console.error('pageData.paramentros.animacao_elemento não está definido.');
+        return;
+    }
+
+    const animacaoPadrao = {
+        elemento: "all",
+        script_animation: "animate__animated animate__fadeInRight animate__slow"
+    };
+
+    const configurarAnimacao = pageData.paramentros.animacao_elemento;
+
+    configurarAnimacao.forEach((animation) => {
+        const {
+            script_animation = animacaoPadrao.script_animation,
+                elemento = animacaoPadrao.elemento
+        } = animation;
+
+        const configuracoesGerais = pageData.paramentros.configuracoes_gerais;
+
+        if (!configuracoesGerais) {
+            console.error('pageData.paramentros.configuracoes_gerais não está definido.');
+            return;
+        }
+
+        const procurarAnimacao = configuracoesGerais._procurar_animacao;
+
+        if (!procurarAnimacao) {
+            console.error('pageData.paramentros.configuracoes_gerais._procurar_animacao não está definido.');
+            return;
+        }
+
+        if (procurarAnimacao.status && procurarAnimacao.onde_procurar_animacao !== "") {
+            const procurarElementosNosContainers = document.querySelectorAll(procurarAnimacao.onde_procurar_animacao);
+
+            procurarElementosNosContainers.forEach((container) => {
+
+                // Remove as classes de animação existentes
+                container.className = container.className.replace(/\banimate__\S+/g, '').trim();
+                console.log(container.className)
+                // Utiliza requestAnimationFrame para garantir que a animação seja reaplicada
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        // Adiciona novamente as classes de animação
+                        script_animation.split(" ").forEach(cls => {
+                            if (cls.trim()) {
+                                container.classList.add(cls.trim());
+                            }
+                        });
+                    });
+                });
+
+            });
+
+        } else {
+            handleErroAnimacao(procurarAnimacao);
+        }
+    });
+}
+
 
 
 // Função para lidar com erros de animação
@@ -1093,6 +1181,7 @@ adicionarFundo(savedPosition)
 injectScriptPage(savedPosition);
 AnimatedParagrafos(savedPosition);
 AnimationVariablesUpPage(savedPosition);
+AnimatedElementos(savedPosition)
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);
 // console.log(irItem)

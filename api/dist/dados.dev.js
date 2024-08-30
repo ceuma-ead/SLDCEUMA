@@ -61,6 +61,11 @@ var api = [// PAGINA 1
       // "attr":"defer" // pode ser defer ou async
       // "insert":"beforebegin", // opcional onde ele vai inserir
       "conteudo_script": "\n\n                    function iniciar(){\n                        glider.scrollItem(1);\n                    };   \n\n                "
+    }],
+    "animacao_elemento": [{
+      "elemento": ".animation",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInRigth animate__slow\n                "
     }]
   }
 }, // PAGINA 2
@@ -97,6 +102,10 @@ var api = [// PAGINA 1
       "_procurar_paragrafos": {
         "status": true,
         "onde_procurar": ".pagina-tipo-texto--box-texto"
+      },
+      "_procurar_animacao": {
+        "status": true,
+        "onde_procurar_animacao": ".animation"
       }
     },
     "marcador": [{
@@ -108,7 +117,7 @@ var api = [// PAGINA 1
       // Criar um Estilo Geral
       "attr_inline": "\n                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]\n                ",
       // Criar uma injeção de Dados para estilizar o Marcador
-      "estilo_marcador_inject": "\n                \n                    \n                    .bt-1 {\n                       background: #011c41;\n                       color: #fff;\n                       display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                       animation-name: zoom;\n                       animation-duration: 1s;\n                    }\n\n                    .bt-1:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n                    \n                    .bt-2 {\n                        background:red;\n                        color:#fff; display: inline-block;\n                        transition: all .4s ease-in-out;\n                        transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 1s;\n                    }\n\n                    .bt-2:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .bt-3 {\n                        background:#FF8A00;\n                        color:#fff; display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 1s;\n                    }\n\n                    .bt-3:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .my-poup{\n\n                       background:#FF8A00;\n                    }\n\n                    \n\n                ",
+      "estilo_marcador_inject": "\n                \n                    \n                    .bt-1 {\n                       background: #011c41;\n                       color: #fff;\n                       display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                       animation-name: zoom;\n                       animation-duration: 3s;\n                    \n                                           }\n\n                    .bt-1:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    \n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n                    \n                    .bt-2 {\n                        background:red;\n                        color:#fff; display: inline-block;\n                        transition: all .4s ease-in-out;\n                        transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 3s;\n                    }\n\n                    .bt-2:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .bt-3 {\n                        background:#FF8A00;\n                        color:#fff; display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 3s;\n                    }\n\n                    .bt-3:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .my-poup{\n\n                       background:#FF8A00;\n                    }\n\n                    \n\n                ",
       // Atributos Especificos
       "attr_unitario": {
         "social": {
@@ -174,6 +183,11 @@ var api = [// PAGINA 1
       "indice": "all",
       // 0 | all
       "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+    }],
+    "animacao_elemento": [{
+      "elemento": ".animation",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInRigth animate__slow\n                "
     }]
   }
 }, // PAGINA 3
@@ -185,7 +199,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                        <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA: </p>\n                        \n                    </div> \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <button>Teste Animation 1</button>\n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
@@ -210,6 +224,10 @@ var api = [// PAGINA 1
       "_procurar_paragrafos": {
         "status": true,
         "onde_procurar": ".pagina-tipo-texto--box-texto"
+      },
+      "_procurar_animacao": {
+        "status": true,
+        "onde_procurar_animacao": ".animation"
       }
     },
     // "marcador": [{
@@ -394,7 +412,79 @@ var api = [// PAGINA 1
     "animacao_texto": [{
       "indice": "all",
       // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInLeft animate__slow \n                "
+    }],
+    "animacao_elemento": [{
+      "elemento": ".animation",
+      // 0 | all
       "script_animation": "\n                    animate__animated animate__fadeInLeft animate__slow\n                "
+    }]
+  }
+}, // PAGINA 4
+{
+  "pagina": 4,
+  "nome_page": "Teste Anima\xE7\xE3o",
+  "tipo": "Texto",
+  "id_page": ".content-render-api",
+  "id_component": ".c-carousel__slides",
+  "id_elemento_para_modificar": "container-imagem",
+  "data": {
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <button>Teste Animation 2</button>\n                 </div>\n            "
+  },
+  "forcarAtualizacao": {
+    "variaveis": [{
+      "Nome": "--animacao-sidebar",
+      "Entrada": "none",
+      "Saida": "slideDown 2s forwards"
+    }]
+  },
+  // Injetar estilos na Pagina
+  "inject_style_render": [{
+    "id_style": "estiloCabecalho",
+    "autoridade": "shar256",
+    "conteudo_estilo": "\n                .siderbar {\n                        width: 100%;\n                        background: var(--fundo-siderbar);\n                        display: flex;\n                        align-items: center;\n                        flex-direction: row;\n                        justify-content: space-between;\n                        gap: 0.5rem;\n                        padding: 0.5rem 0.5rem;\n                        top: var(--animacao-sidebar-top);\n                        animation: var(--animacao-sidebar);\n                        position: var(--animacao-position);    \n                    }\n                \n            "
+  }],
+  "paramentros": {
+    "cores": {// "sidebar": "red",
+      // "fundo": "red",
+      // "icones": "rgb(0, 110, 201)"
+    },
+    "configuracoes_gerais": {
+      // Habilitar Procurar de Paragrafos ná Pagina 2
+      "_procurar_paragrafos": {
+        "status": true,
+        "onde_procurar": ".pagina-tipo-texto--box-texto"
+      },
+      "_procurar_animacao": {
+        "status": true,
+        "onde_procurar_animacao": ".animation"
+      }
+    },
+    "fonte": {
+      // "titulo":"1rem",
+      "paragrafos": "1rem",
+      // "font_familly":"Lato",
+      // "cor_fonte":"black",
+      "alinhamento_texto": "justify",
+      "hifens": "auto"
+    },
+    "logo": {
+      "ativar": true,
+      "img": "url(../assets/logopreta.png)",
+      "posicaoY": "bottom 1.8%",
+      "posicaoX": "left 0.5%",
+      "tamanho": "10%"
+    },
+    // Animação para Texto API
+    "animacao_texto": [{
+      "indice": "all",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInLeft animate__slow \n                "
+    }],
+    "animacao_elemento": [{
+      "elemento": ".animation",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInRigth animate__slow\n                "
     }]
   }
 } // PAGINA PARA IMAGENS

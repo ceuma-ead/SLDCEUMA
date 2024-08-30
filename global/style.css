@@ -3,6 +3,17 @@
 @import url(../css/annotation.css);
 @import url(../css/capa.css);
 @import url(../css/spinner.css);
+
+/* ------ Animações ------ */
+@import url(../plugins/vizionnAnimation/attention.css);
+@import url(../plugins/vizionnAnimation/bounce.css);
+@import url(../plugins/vizionnAnimation/fade.css);
+@import url(../plugins/vizionnAnimation/flip.css);
+@import url(../plugins/vizionnAnimation/rotate.css);
+@import url(../plugins/vizionnAnimation/slide.css);
+@import url(../plugins/vizionnAnimation/zoom.css);
+/* ------ Animações ------ */
+
 *{
     margin:0;
     padding:0;
