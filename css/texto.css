@@ -2,7 +2,7 @@
 
     background: #024db3;
     color: white;
-    }
+}
 
 .pagina-tipo-texto {
     width: 100%;
@@ -22,9 +22,8 @@
 
 .pagina-tipo-texto--box-texto p {
     width: 100%;
-        /* background-color: #A34700; */
+    /* background-color: #A34700; */
     height: min-content;
-    hyphens: var(--hifens-da-fonte-paragrafo);
     
 }
 
@@ -37,6 +36,8 @@
     transition-duration: 0.2s;
     transition-delay: 0s;
     font-size: var(--font-para-paragrafos);
+    text-align: var(--alinhamento-do-texto-paragrafo);
+    hyphens: var(--hifens-da-fonte-paragrafo);
 }
 
 

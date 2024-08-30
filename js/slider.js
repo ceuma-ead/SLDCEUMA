@@ -422,7 +422,7 @@ function modificarFontes(slideIndex) {
 
     if (pageData && pageData.paramentros && pageData.paramentros.logo) {
         const {
-            titulo = FontPadrao.titulo,
+                titulo = FontPadrao.titulo,
                 paragrafos = FontPadrao.paragrafos,
                 font_familly = FontPadrao.font_familly,
                 cor_fonte = FontPadrao.cor_fonte,
@@ -445,7 +445,7 @@ function modificarFontes(slideIndex) {
             document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
             document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
             document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
-            document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.cor_fonte);
+            document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
 
             return;
         }
@@ -457,18 +457,23 @@ function modificarFontes(slideIndex) {
         // console.log(slider_container)
 
         //verificar se existe paragrafos dentro do slider
-        const paragrafos_slider = slider_container.querySelectorAll("p")
-        // console.log(paragrafos_slider)
+        // const paragrafos_slider = slider_container.querySelectorAll("p")
+        // // console.log(paragrafos_slider)
 
-        paragrafos_slider.forEach((p, index) => {
-            p.style.fontSize = `${paragrafos}`;
-            p.style.fontFamily = `${font_familly}`;
-            p.style.color = `${cor_fonte}`;
-            p.style.textAlign = `${alinhamento_texto}`
-            p.style.hyphens = `${hifens}`
-        })
+        // paragrafos_slider.forEach((p, index) => {
+        //     p.style.fontSize = `${paragrafos}`;
+        //     p.style.fontFamily = `${font_familly}`;
+        //     p.style.color = `${cor_fonte}`;
+        //     p.style.textAlign = `${alinhamento_texto}`
+        //     p.style.hyphens = `${hifens}`
+        // })
 
         document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', titulo);
+        document.documentElement.style.setProperty('--font-para-paragrafos', paragrafos);
+        document.documentElement.style.setProperty('--familia-da-font-paragrafo', font_familly);
+        document.documentElement.style.setProperty('--cor-da-font-paragrafo', cor_fonte);
+        document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo',alinhamento_texto);
+        document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', hifens);
 
 
     } else {

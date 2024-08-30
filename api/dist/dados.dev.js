@@ -42,7 +42,7 @@ var api = [// PAGINA 1
     },
     "fonte": {
       // "titulo":"1rem",
-      "paragrafos": "1rem",
+      "paragrafos": "4rem",
       // "font_familly":"Lato",
       // "cor_fonte":"black",
       "alinhamento_texto": "justify",
