@@ -106,6 +106,9 @@ const responsivo = [
                 font-size:1rem;
             }
 
+            #image-capaOverlay {
+                max-width: 34%;
+            }    
     `,
         // Atualização Forçada onde ele está aparecendo
         "variantes":`
