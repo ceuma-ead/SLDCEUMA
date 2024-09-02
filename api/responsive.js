@@ -149,6 +149,33 @@ const responsivo = [
                 }
 
     `,
+
+    
+    //     // Onde o Estilo tem que aparecer 
+        "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
+    //     // Que tipo de quebra Tem que Fazer
+        "media" : "(max-width: 480px)", // Apenas a condição dentro dos parênteses
+    //     // Estilos que podem vir adicionais
+        "synchronous" : `
+                .message-box {
+                display: block !important;
+                }
+
+                .olcards--divisor {
+                display: contents !important;
+                }
+
+                .olcards {
+                align-items: flex-start !important;
+                }
+
+                .olcards li .content {
+                text-align: justify !important;
+                }
+
+
+    `,
+
         // Atualização Forçada onde ele está aparecendo
         "variantes":`
             --tamanho-de-font-para-paragrafo-sidebar=[1rem];
