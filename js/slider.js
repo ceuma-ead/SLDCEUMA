@@ -749,6 +749,7 @@ function modificarFontes(slideIndex) {
 //     }
 // }
 
+// Função para Criar animação no Paragrafo
 function AnimatedParagrafos(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -859,22 +860,20 @@ function AnimatedElementos(slideIndex) {
             const procurarElementosNosContainers = document.querySelectorAll(procurarAnimacao.onde_procurar_animacao);
 
             procurarElementosNosContainers.forEach((container) => {
-
                 // Remove as classes de animação existentes
                 container.className = container.className.replace(/\banimate__\S+/g, '').trim();
-                console.log(container.className)
-                // Utiliza requestAnimationFrame para garantir que a animação seja reaplicada
-                requestAnimationFrame(() => {
+
+                // Adiciona um pequeno atraso para garantir que a animação seja reaplicada
+                setTimeout(() => {
+                    // Utiliza requestAnimationFrame para garantir que a animação seja reaplicada
                     requestAnimationFrame(() => {
-                        // Adiciona novamente as classes de animação
                         script_animation.split(" ").forEach(cls => {
                             if (cls.trim()) {
                                 container.classList.add(cls.trim());
                             }
                         });
                     });
-                });
-
+                }, 50); // Ajuste o tempo do atraso conforme necessário
             });
 
         } else {

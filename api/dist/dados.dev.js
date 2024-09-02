@@ -484,7 +484,7 @@ var api = [// PAGINA 1
     "animacao_elemento": [{
       "elemento": ".animation",
       // 0 | all
-      "script_animation": "\n                    animate__animated animate__fadeInRigth animate__slow\n                "
+      "script_animation": "\n                    animate__animated animate__wobble animate__slow\n                "
     }]
   }
 } // PAGINA PARA IMAGENS

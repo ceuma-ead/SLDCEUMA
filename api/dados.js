@@ -802,13 +802,12 @@ const api = [
             "animacao_elemento": [{
                 "elemento": ".animation", // 0 | all
                 "script_animation": `
-                    animate__animated animate__fadeInRigth animate__slow
+                    animate__animated animate__wobble animate__slow
                 `
             }]
 
         }
     },
-
 
     // PAGINA PARA IMAGENS
     // {
