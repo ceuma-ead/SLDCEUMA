@@ -108,7 +108,26 @@ const responsivo = [
 
             #image-capaOverlay {
                 max-width: 34%;
-            }    
+            }  
+                
+            .olcards li .content .text {
+             font-size: 0.8rem !important;
+             text-align: justify;
+            }
+
+            .olcards, .olcards * {
+                margin: -1px 0 !important;
+                }
+
+
+            .olcards li .content {
+                padding: 0.6rem !important;
+            }
+
+            .message-text {
+                font-size: 18px;
+            }
+
     `,
         // Atualização Forçada onde ele está aparecendo
         "variantes":`

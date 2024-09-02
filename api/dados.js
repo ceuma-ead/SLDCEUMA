@@ -330,21 +330,21 @@ const api = [
                        <div class="olcards--divisor">
 
                             <ol class="olcards">
-                                <li style="--cardColor:#fc374e">
+                                <li style="--cardColor:#fc374e" class="box1">
                                     <div class="content">
                                         <div class="icon"></div>
 
                                         <div class="text">Saiba identificar e interpretar as alterações hematológicas, entendendo suas causas e efeitos</div>
                                     </div>
                                 </li>
-                                <li style="--cardColor:#36aeb3">
+                                <li style="--cardColor:#36aeb3"  class="box2">
                                     <div class="content">
                                         <div class="icon"></div>
                     
                                         <div class="text">Compreenda a fisiologia e a fisiopatogenia das células-tronco, a eritropoese e a estrutura da hemoglobina</div>
                                     </div>
                                 </li>
-                                <li style="--cardColor:#162d59">
+                                <li style="--cardColor:#162d59"  class="box3">
                                     <div class="content">
                                         <div class="icon"></div>
              
@@ -356,7 +356,7 @@ const api = [
                             </ol>
                        
                              <ol class="olcards">
-                             <li style="--cardColor:#f15f0e">
+                             <li style="--cardColor:#f15f0e" class="box4">
                                     <div class="content">
                                         <div class="icon"></div>
 
@@ -364,7 +364,7 @@ const api = [
                                     </div>
                                 </li>
 
-                                <li style="--cardColor:#fc374e">
+                                <li style="--cardColor:#fc374e" class="box5">
                                     <div class="content">
                                         <div class="icon"></div>
      
@@ -375,7 +375,7 @@ const api = [
                             </ol>
 
                        </div>
-                        <p class="olcards--box">
+                        <p>
                                     Esta disciplina está estruturada em 3 (três) unidades. Para que você obtenha sucesso, aproveite todas as orientações de estudo apresentadas neste material. Realize as leituras obrigatórias, pois nelas você terá acesso ao conhecimento necessário para o curso e sua carreira e também para a realização das atividades de estudo
                                 </p>
                     </div> 
@@ -443,7 +443,45 @@ const api = [
                 "script_animation": `
                     animate__animated animate__fadeInDown animate__slow
                 `
-            }]
+            },
+        
+            {
+                "elemento": ".box1", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInLeft animate__slow animate__delay-1s
+                `
+            },
+        
+            {
+                "elemento": ".box2", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInLeft animate__slow animate__delay-2s
+                `
+            },
+
+            {
+                "elemento": ".box3", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInLeft animate__slow animate__delay-3s
+                `
+            },
+
+
+            {
+                "elemento": ".box4", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInRight animate__slow animate__delay-4s
+                `
+            },
+
+            {
+                "elemento": ".box5", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInRight animate__slow animate__delay-5s
+                `
+            },
+
+        ]
 
         }
     },
