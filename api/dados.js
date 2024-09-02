@@ -332,21 +332,21 @@ const api = [
                             <ol class="olcards">
                                 <li style="--cardColor:#fc374e">
                                     <div class="content">
-                                        <div class="icon">01</div>
+                                        <div class="icon"></div>
 
                                         <div class="text">Saiba identificar e interpretar as alterações hematológicas, entendendo suas causas e efeitos</div>
                                     </div>
                                 </li>
                                 <li style="--cardColor:#36aeb3">
                                     <div class="content">
-                                        <div class="icon">02</div>
+                                        <div class="icon"></div>
                     
                                         <div class="text">Compreenda a fisiologia e a fisiopatogenia das células-tronco, a eritropoese e a estrutura da hemoglobina</div>
                                     </div>
                                 </li>
                                 <li style="--cardColor:#162d59">
                                     <div class="content">
-                                        <div class="icon">03</div>
+                                        <div class="icon"></div>
              
                                         <div class="text">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</div>
                                     </div>
@@ -358,7 +358,7 @@ const api = [
                              <ol class="olcards">
                              <li style="--cardColor:#f15f0e">
                                     <div class="content">
-                                        <div class="icon">04</div>
+                                        <div class="icon"></div>
 
                                         <div class="text">Saiba avaliar e otimizar o controle de qualidade nas etapas pré-analítica, analítica e pós-analítica, com ênfase na automação em hematologia.</div>
                                     </div>
@@ -366,19 +366,20 @@ const api = [
 
                                 <li style="--cardColor:#fc374e">
                                     <div class="content">
-                                        <div class="icon">05</div>
+                                        <div class="icon"></div>
      
                                         <div class="text">Entenda a história da hemoterapia, as normas técnicas, a legislação vigente e as práticas de banco de sangue, além de dominar os testes pré-transfusionais e gerenciar reações transfusionais</div>
                                     </div>
                                 </li>
-
-                                <p class="olcards--box">
-                                    Esta disciplina está estruturada em 3 (três) unidades. Para que você obtenha sucesso, aproveite todas as orientações de estudo apresentadas neste material. Realize as leituras obrigatórias, pois nelas você terá acesso ao conhecimento necessário para o curso e sua carreira e também para a realização das atividades de estudo
-                                </p>
                                 
                             </ol>
 
+                            
+
                        </div>
+                        <p class="olcards--box">
+                                    Esta disciplina está estruturada em 3 (três) unidades. Para que você obtenha sucesso, aproveite todas as orientações de estudo apresentadas neste material. Realize as leituras obrigatórias, pois nelas você terá acesso ao conhecimento necessário para o curso e sua carreira e também para a realização das atividades de estudo
+                                </p>
                     </div> 
 
                    

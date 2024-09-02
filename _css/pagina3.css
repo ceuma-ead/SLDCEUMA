@@ -12,6 +12,7 @@
   counter-reset: cardCount;
   font-family: sans-serif;
   display: flex;
+  align-items: center;
   flex-direction: column;
   --cardsGap: 1rem;
   gap: var(--cardsGap);
@@ -22,13 +23,13 @@
 
 /* Estilos para desktop */
 .olcards li {
-  counter-increment: cardCount;
+  /* counter-increment: cardCount; */
   display: flex;
   color: white;
   --labelOffset: 1rem;
   --arrowClipSize: 1.5rem;
   transition: all 0.4s;
-  margin-top: var(--labelOffset);
+  /* margin-top: var(--labelOffset); */
 
 }
 
@@ -39,22 +40,27 @@
 .olcards li .content {
   background-color: var(--cardColor);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   padding: 1rem;
   border-radius: 1rem;
+  gap: 0.5rem;
+  /* background-color: red; */
 }
 
 .olcards li .icon {
+  --w:10px;
   font-size: var(--font-para-paragrafos);
   border: 2px solid rgb(255, 255, 255);
-  width: 30px;
-  height: 30px;
+  /* background-color: white; */
+  width: var(--w);
+  height: var(--w);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 100%;
+  /* background-color: #9ddc86; */
 
 }
 
@@ -65,13 +71,14 @@
 .olcards--divisor {
   display: flex;
   gap: 0.5rem;
+
 }
 
 .olcards--box {
-  background-color: rgb(0, 132, 255);
+  /* background-color: rgb(0, 132, 255); */
   padding: 1rem;
-  border-radius: 1rem;
-  color: white !important;
+  /* border-radius: 1rem; */
+  /* color: white !important; */
 }
 
 .message-box {
