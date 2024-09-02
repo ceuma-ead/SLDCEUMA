@@ -106,9 +106,9 @@ const responsivo = [
                 font-size:1rem;
             }
 
-            // #image-capaOverlay {
-            //     max-width: 34%;
-            // }  
+            #image-capaOverlay {
+                max-width: 34%;
+            }  
                 
             .olcards li .content .text {
              font-size: 0.8rem !important;
@@ -127,26 +127,6 @@ const responsivo = [
             .message-text {
                 font-size: 18px;
             }
-
-    `,
-
-        // Onde o Estilo tem que aparecer 
-        "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
-        // Que tipo de quebra Tem que Fazer
-        "media" : "(max-width: 1024px)", // Apenas a condição dentro dos parênteses
-        // Estilos que podem vir adicionais
-        "synchronous" : `
-                .olcards--divisor {
-                display: contents !important;
-                }
-
-                .olcards {
-                align-items: flex-start !important;
-                }
-
-                .olcards li .content {
-                text-align: justify !important;
-                }
 
     `,
         // Atualização Forçada onde ele está aparecendo

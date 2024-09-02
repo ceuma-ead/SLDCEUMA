@@ -121,7 +121,7 @@
 #image-capaOverlay {
     display: flex;
     position: absolute;
-    max-width:20%;
+    max-width:34%;
     width:100%;
     padding: 1rem;
     max-height:100%;

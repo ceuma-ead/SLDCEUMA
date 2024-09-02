@@ -354,7 +354,87 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Apresenta\xE7\xE3o da Unidade -->\n\n                        <p>\n                            Ol\xE1, estudante! Bem-vindo \xE0 Unidade 1! \n                        </p>\n\n                        <p>\n                            Nesta unidade, voc\xEA aprender\xE1 os fundamentos essenciais da hematologia, com foco na interpreta\xE7\xE3o de altera\xE7\xF5es hematol\xF3gicas e compreens\xE3o da fisiologia das c\xE9lulas-tronco e da hemoglobina. Este conhecimento \xE9 valioso para a sua forma\xE7\xE3o como biom\xE9dico, permitindo que voc\xEA entenda e diagnostique diversas condi\xE7\xF5es hematol\xF3gicas, contribuindo significativamente para o campo da sa\xFAde. Ao final desta unidade, voc\xEA ter\xE1 desenvolvido compet\xEAncias fundamentais para a an\xE1lise laboratorial, pesquisa cient\xEDfica e pr\xE1tica cl\xEDnica.\n                            Os objetos de conhecimento que exploraremos incluem a composi\xE7\xE3o e fun\xE7\xF5es do sangue, os processos de eritropoiese e as metodologias para interpreta\xE7\xE3o de exames hematol\xF3gicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exerc\xEDcios e v\xEDdeos demonstrativos. Cada material foi selecionado para proporcionar uma compreens\xE3o profunda e aplicada dos conceitos abordados. \n                        </p>\n\n                        </div>\n                    </div> \n\n                   \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Apresenta\xE7\xE3o da Unidade -->\n\n                        <p>\n                            Ol\xE1, estudante! Bem-vindo \xE0 Unidade 1! \n                        </p>\n\n                        <p>\n                            Nesta unidade, voc\xEA aprender\xE1 os fundamentos essenciais da hematologia, com foco na interpreta\xE7\xE3o de altera\xE7\xF5es hematol\xF3gicas e compreens\xE3o da fisiologia das c\xE9lulas-tronco e da hemoglobina. Este conhecimento \xE9 valioso para a sua forma\xE7\xE3o como biom\xE9dico, permitindo que voc\xEA entenda e diagnostique diversas condi\xE7\xF5es hematol\xF3gicas, contribuindo significativamente para o campo da sa\xFAde. Ao final desta unidade, voc\xEA ter\xE1 desenvolvido compet\xEAncias fundamentais para a an\xE1lise laboratorial, pesquisa cient\xEDfica e pr\xE1tica cl\xEDnica.\n                            Os objetos de conhecimento que exploraremos incluem a composi\xE7\xE3o e fun\xE7\xF5es do sangue, os processos de eritropoiese e as metodologias para interpreta\xE7\xE3o de exames hematol\xF3gicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exerc\xEDcios e v\xEDdeos demonstrativos. Cada material foi selecionado para proporcionar uma compreens\xE3o profunda e aplicada dos conceitos abordados. \n                        </p>\n\n                       \n\n                    </div> \n                \n                 </div>\n            "
+  },
+  "forcarAtualizacao": {
+    "variaveis": [{
+      "Nome": "--animacao-sidebar",
+      "Entrada": "none",
+      "Saida": "slideDown 2s forwards"
+    }]
+  },
+  "paramentros": {
+    // Injetar estilos na Pagina
+    "inserir_estilo_pagina": [{
+      "url": "./_css/pagina5.css"
+    }],
+    "marcador": [{
+      "tipo": "p",
+      "posicao": 0,
+      "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
+      "attr_unitario": {
+        "Olá, estudante! Bem-vindo à Unidade 1!": {
+          "attr": "font-weight=[999]"
+        }
+      } // "fundo": "blue",
+      // "corTexto": "black",
+      // "padding": "0.3rem",
+
+    }],
+    "cores": {// "sidebar": "red",
+      // "fundo": "red",
+      // "icones": "rgb(0, 110, 201)"
+    },
+    "configuracoes_gerais": {
+      // Habilitar Procurar de Paragrafos ná Pagina 2
+      "_procurar_paragrafos": {
+        "status": true,
+        "onde_procurar": ".pagina-tipo-texto--box-texto"
+      },
+      "_procurar_animacao": {
+        "status": true,
+        "onde_procurar_animacao": ".animation"
+      }
+    },
+    "fonte": {
+      // "titulo":"1rem",
+      "paragrafos": "1rem",
+      // "font_familly":"Lato",
+      // "cor_fonte":"black",
+      "alinhamento_texto": "justify",
+      "hifens": "auto"
+    },
+    "logo": {
+      "ativar": true,
+      "img": "url(../assets/logopreta.png)",
+      "posicaoY": "bottom 1.8%",
+      "posicaoX": "left 0.5%",
+      "tamanho": "10%"
+    },
+    // Animação para Texto API
+    // "animacao_texto": [{
+    //     "indice": "all", // 0 | all
+    //     "script_animation": `
+    //         animate__animated animate__fadeInDown animate__slow
+    //     `
+    // }],
+    // Animação pra toda Página
+    "animacao_elemento": [{
+      "elemento": ".animation",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+    }]
+  }
+}, // PAGINA 6
+{
+  "pagina": 6,
+  "nome_page": "Apresenta\xE7\xE3o da Unidade",
+  "tipo": "Texto",
+  "id_page": ".content-render-api",
+  "id_component": ".c-carousel__slides",
+  "id_elemento_para_modificar": "container-imagem",
+  "data": {
+    "container_render": "\n                <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto align-accordion\">\n                \n                       <!-- Apresenta\xE7\xE3o da Unidade -->\n\n       \n                         <div class=\"accordion accordion-flush\" id=\"accordionApresentacao\">\n                            <div class=\"accordion-item\">\n                                <h2 class=\"accordion-header\">\n                                <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#flush-collapseOne\" aria-expanded=\"false\" aria-controls=\"flush-collapseOne\">\n                                    Compet\xEAncias a serem desenvolvidas\n                                </button>\n                                </h2>\n                                <div id=\"flush-collapseOne\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionApresentacao\">\n                                    <div class=\"accordion-body\"> \n                                        <ul>\n                                            <li>Capacidade de identificar e interpretar altera\xE7\xF5es hematol\xF3gicas.</li>\n                                            <li>Habilidade em realizar e interpretar exames hematol\xF3gicos</li>\n                                            <li>Conhecimento profundo sobre a fisiologia das c\xE9lulas-tronco e a estrutura da hemoglobina. </li>\n                                        </ul>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"accordion-item\">\n                                <h2 class=\"accordion-header\">\n                                <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#flush-collapseTwo\" aria-expanded=\"false\" aria-controls=\"flush-collapseTwo\">\n                                    Objetos de conhecimento\n                                </button>\n                                </h2>\n                                <div id=\"flush-collapseTwo\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionApresentacao\">\n                                    <div class=\"accordion-body\">\n                                        <ul>\n                                                <li><strong>Composi\xE7\xE3o e fun\xE7\xF5es do sangue:</strong> Entendimento dos componentes sangu\xEDneos e suas fun\xE7\xF5es vitais. </li>\n                                                <li><strong>Eritropoese</strong>: A forma\xE7\xE3o da hem\xE1cia</li>\n                                                <li><strong>Interpreta\xE7\xE3o de altera\xE7\xF5es hematol\xF3gicas</strong>: T\xE9cnicas para an\xE1lise de hemogramas</li>\n                                                <li><strong>Fisiologia das c\xE9lulas-tronco</strong>: Estudo das propriedades das c\xE9lulas-tronco e seu papel</li>\n                                                <li><strong>Estrutura e fun\xE7\xE3o da hemoglobina</strong>: An\xE1lise da mol\xE9cula de hemoglobina e seu papel no transporte de oxig\xEAnio. </li>\n                                                <li><strong>Eritrograma</strong>: Procedimentos para realiza\xE7\xE3o e interpreta\xE7\xE3o deste exame crucial.</li>\n                                        </ul>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"accordion-item\">\n                                <h2 class=\"accordion-header\">\n                                    <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#flush-collapseThree\" aria-expanded=\"false\" aria-controls=\"flush-collapseThree\">\n                                        Materiais Disponibilizados para Estudo\n                                    </button>\n                                </h2>\n                                <div id=\"flush-collapseThree\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionApresentacao\">\n                                    <div class=\"accordion-body\">\n                                         <ul>\n                                                <li><strong>Composi\xE7\xE3o do sangue:</strong> Detalhamento dos componentes do sangue e suas fun\xE7\xF5es. </li>\n                                                <li><strong>Fisiologia das c\xE9lulas-tronco</strong>: Explica\xE7\xE3o sobre a origem, propriedades e fun\xE7\xF5es das c\xE9lulas-tronco.</li>\n                                                <li><strong>Estrutura da hemoglobina</strong>: Descri\xE7\xE3o da estrutura molecular da hemoglobina e suas fun\xE7\xF5es.</li>\n                                                <li><strong>Exerc\xEDcios pr\xE1ticos</strong>: Atividades e quest\xF5es de estudo que permitem ao estudante aplicar os conhecimentos adquiridos e testar sua compreens\xE3o.</li>\n                                                <li><strong>V\xEDdeos educativos</strong>: V\xEDdeos que demonstram t\xE9cnicas de coleta de amostras, manejo de materiais inerentes \xE0 hematologia cl\xEDnica e aparelhos para auxiliar na compreens\xE3o. </li>\n                                                <li><strong>Coleta de amostras sangu\xEDneas</strong>: Demonstra\xE7\xE3o das melhores dicas para coleta de sangue.</li>\n                                        </ul>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                        \n                       \n                    </div> \n                \n                </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{

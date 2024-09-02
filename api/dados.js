@@ -582,7 +582,7 @@ const api = [
         }
     },
 
-     // PAGINA 5
+    // PAGINA 5
     {
         "pagina": 5,
         "nome_page": `Apresentação da Unidade`,
@@ -592,7 +592,7 @@ const api = [
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                 <div class="pagina-tipo-texto">
+                 <div class="pagina-tipo-texto animation">
                     <div class="pagina-tipo-texto--box-texto">
                 
                        <!-- Apresentação da Unidade -->
@@ -606,10 +606,10 @@ const api = [
                             Os objetos de conhecimento que exploraremos incluem a composição e funções do sangue, os processos de eritropoiese e as metodologias para interpretação de exames hematológicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exercícios e vídeos demonstrativos. Cada material foi selecionado para proporcionar uma compreensão profunda e aplicada dos conceitos abordados. 
                         </p>
 
-                        </div>
-                    </div> 
+                       
 
-                   
+                    </div> 
+                
                  </div>
             `,
         },
@@ -633,7 +633,7 @@ const api = [
                 "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
                 "attr_unitario": {
                     "Olá, estudante! Bem-vindo à Unidade 1!": {
-                        "attr": "font-weight=[999], font-size=[24px]", 
+                        "attr": "font-weight=[999]",
 
                     },
                     
@@ -678,19 +678,180 @@ const api = [
                 "tamanho": "10%",
             },
             // Animação para Texto API
-            "animacao_texto": [{
-                "indice": "all", // 0 | all
-                "script_animation": `
-                    animate__animated animate__fadeInDown animate__slow
-                `
-            }],
-            // Animação pra toda Página
-            // "animacao_elemento": [{
-            //     "elemento": "all", // 0 | all
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
             //     "script_animation": `
             //         animate__animated animate__fadeInDown animate__slow
             //     `
-            // }]
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInDown animate__slow
+                `
+            }]
+
+        }
+    },
+
+    // PAGINA 6
+    {
+        "pagina": 6,
+        "nome_page": `Apresentação da Unidade`,
+        "tipo": "Texto",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-imagem",
+        "data": {
+            "container_render": `
+                <div class="pagina-tipo-texto animation">
+                    <div class="pagina-tipo-texto--box-texto align-accordion">
+                
+                       <!-- Apresentação da Unidade -->
+
+       
+                         <div class="accordion accordion-flush" id="accordionApresentacao">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Competências a serem desenvolvidas
+                                </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionApresentacao">
+                                    <div class="accordion-body"> 
+                                        <ul>
+                                            <li>Capacidade de identificar e interpretar alterações hematológicas.</li>
+                                            <li>Habilidade em realizar e interpretar exames hematológicos</li>
+                                            <li>Conhecimento profundo sobre a fisiologia das células-tronco e a estrutura da hemoglobina. </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    Objetos de conhecimento
+                                </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionApresentacao">
+                                    <div class="accordion-body">
+                                        <ul>
+                                                <li><strong>Composição e funções do sangue:</strong> Entendimento dos componentes sanguíneos e suas funções vitais. </li>
+                                                <li><strong>Eritropoese</strong>: A formação da hemácia</li>
+                                                <li><strong>Interpretação de alterações hematológicas</strong>: Técnicas para análise de hemogramas</li>
+                                                <li><strong>Fisiologia das células-tronco</strong>: Estudo das propriedades das células-tronco e seu papel</li>
+                                                <li><strong>Estrutura e função da hemoglobina</strong>: Análise da molécula de hemoglobina e seu papel no transporte de oxigênio. </li>
+                                                <li><strong>Eritrograma</strong>: Procedimentos para realização e interpretação deste exame crucial.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                        Materiais Disponibilizados para Estudo
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionApresentacao">
+                                    <div class="accordion-body">
+                                         <ul>
+                                                <li><strong>Composição do sangue:</strong> Detalhamento dos componentes do sangue e suas funções. </li>
+                                                <li><strong>Fisiologia das células-tronco</strong>: Explicação sobre a origem, propriedades e funções das células-tronco.</li>
+                                                <li><strong>Estrutura da hemoglobina</strong>: Descrição da estrutura molecular da hemoglobina e suas funções.</li>
+                                                <li><strong>Exercícios práticos</strong>: Atividades e questões de estudo que permitem ao estudante aplicar os conhecimentos adquiridos e testar sua compreensão.</li>
+                                                <li><strong>Vídeos educativos</strong>: Vídeos que demonstram técnicas de coleta de amostras, manejo de materiais inerentes à hematologia clínica e aparelhos para auxiliar na compreensão. </li>
+                                                <li><strong>Coleta de amostras sanguíneas</strong>: Demonstração das melhores dicas para coleta de sangue.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                    </div> 
+                
+                </div>
+            `,
+        },
+        "forcarAtualizacao":{
+            "variaveis":[
+                {
+                    "Nome":"--animacao-sidebar",
+                    "Entrada":"none",
+                    "Saida":"slideDown 2s forwards"
+                }
+            ]
+        },
+        "paramentros": {
+            // Injetar estilos na Pagina
+            "inserir_estilo_pagina": [{
+                "url":"./_css/pagina5.css"
+            }],
+            "marcador": [{
+                "tipo": "p",
+                "posicao": 0,
+                "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
+                "attr_unitario": {
+                    "Olá, estudante! Bem-vindo à Unidade 1!": {
+                        "attr": "font-weight=[999]",
+
+                    },
+                    
+                },
+                // "fundo": "blue",
+                // "corTexto": "black",
+                // "padding": "0.3rem",
+                
+
+            }],
+                
+            "cores": {
+                // "sidebar": "red",
+                // "fundo": "red",
+                // "icones": "rgb(0, 110, 201)"
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 2
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                },
+                "_procurar_animacao":{
+                    "status":true,
+                    "onde_procurar_animacao":".animation",
+                }
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logopreta.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            // Animação para Texto API
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInDown animate__slow
+                `
+            }]
 
         }
     },
