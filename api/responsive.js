@@ -130,7 +130,34 @@ const responsivo = [
 
     `,
 
-    
+
+
+        // Atualização Forçada onde ele está aparecendo
+        "variantes":`
+            --tamanho-de-font-para-paragrafo-sidebar=[1rem];
+            --tamanho-dos-icones-siderbar=[2rem];
+            --tamanho-x-y-imagem=[7%];
+            --width=[40px];
+           --height=[40px];
+        //    --tamanho-do-texto-do-paragrafo-header=[1.2rem];
+            // --font-para-paragrafos=[1rem]
+        `,
+        "atualizacaoBrutaElementos":[
+            // Exemplos de atualizações brutas de elementos
+            // {
+            //     "Elemento":"p",
+            //     "Ranger":[...10] // ranger 1 a 10 Ex: [1,2,3,4] ou [...10] ou all
+            //      "scriptAtualizacao":`
+            //          [document.querySelectorAll(p)] => var[p] {
+            //              p.fontSize = 2rem;
+            //          }
+            //      `
+            // }
+        ]
+    },
+    {   
+        
+
     //     // Onde o Estilo tem que aparecer 
         "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
     //     // Que tipo de quebra Tem que Fazer
