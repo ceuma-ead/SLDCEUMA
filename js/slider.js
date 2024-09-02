@@ -840,41 +840,27 @@ function AnimatedElementos(slideIndex) {
     configurarAnimacao.forEach((animation) => {
         const {
             script_animation = animacaoPadrao.script_animation,
-                elemento = animacaoPadrao.elemento
+            elemento = animacaoPadrao.elemento
         } = animation;
 
-        const configuracoesGerais = pageData.paramentros.configuracoes_gerais;
+        const elementos = document.querySelectorAll(elemento);
 
-        if (!configuracoesGerais) {
-            console.error('pageData.paramentros.configuracoes_gerais não está definido.');
-            return;
-        }
-
-        const procurarAnimacao = configuracoesGerais._procurar_animacao;
-
-        if (!procurarAnimacao) {
-            console.error('pageData.paramentros.configuracoes_gerais._procurar_animacao não está definido.');
-            return;
-        }
-
-        if (procurarAnimacao.status && procurarAnimacao.onde_procurar_animacao !== "") {
-            const procurarElementosNosContainers = document.querySelectorAll(procurarAnimacao.onde_procurar_animacao);
-
-            procurarElementosNosContainers.forEach((container) => {
+        if (elementos.length > 0) {
+            elementos.forEach((el) => {
                 // Remove as classes de animação existentes
-                container.className = container.className.replace(/\banimate__\S+/g, '').trim();
+                el.className = el.className.replace(/\banimate__\S+/g, '').trim();
 
+                // Aguarda o próximo ciclo de renderização para adicionar a animação
                 requestAnimationFrame(() => {
                     script_animation.split(" ").forEach(cls => {
                         if (cls.trim()) {
-                            container.classList.add(cls.trim());
+                            el.classList.add(cls.trim());
                         }
                     });
                 });
             });
-
         } else {
-            handleErroAnimacao(procurarAnimacao);
+            console.warn(`Nenhum elemento encontrado para a animação: ${elemento}`);
         }
     });
 }

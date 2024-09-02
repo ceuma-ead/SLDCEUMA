@@ -374,8 +374,6 @@ const api = [
                                 
                             </ol>
 
-                            
-
                        </div>
                         <p class="olcards--box">
                                     Esta disciplina está estruturada em 3 (três) unidades. Para que você obtenha sucesso, aproveite todas as orientações de estudo apresentadas neste material. Realize as leituras obrigatórias, pois nelas você terá acesso ao conhecimento necessário para o curso e sua carreira e também para a realização das atividades de estudo
@@ -450,7 +448,6 @@ const api = [
         }
     },
     
-
     // PAGINA 4
     {
         "pagina": 4,
@@ -544,6 +541,122 @@ const api = [
 
         }
     },
+
+     // PAGINA 5
+    {
+        "pagina": 5,
+        "nome_page": `Apresentação da Unidade`,
+        "tipo": "Texto",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-imagem",
+        "data": {
+            "container_render": `
+                 <div class="pagina-tipo-texto animation">
+                    <div class="pagina-tipo-texto--box-texto">
+                
+                       <!-- Apresentação da Unidade -->
+
+                        <p>
+                            Olá, estudante! Bem-vindo à Unidade 1! 
+                        </p>
+
+                        <p>
+                            Nesta unidade, você aprenderá os fundamentos essenciais da hematologia, com foco na interpretação de alterações hematológicas e compreensão da fisiologia das células-tronco e da hemoglobina. Este conhecimento é valioso para a sua formação como biomédico, permitindo que você entenda e diagnostique diversas condições hematológicas, contribuindo significativamente para o campo da saúde. Ao final desta unidade, você terá desenvolvido competências fundamentais para a análise laboratorial, pesquisa científica e prática clínica.
+                            Os objetos de conhecimento que exploraremos incluem a composição e funções do sangue, os processos de eritropoiese e as metodologias para interpretação de exames hematológicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exercícios e vídeos demonstrativos. Cada material foi selecionado para proporcionar uma compreensão profunda e aplicada dos conceitos abordados. 
+                        </p>
+
+                        </div>
+                    </div> 
+
+                   
+                 </div>
+            `,
+        },
+        "forcarAtualizacao":{
+            "variaveis":[
+                {
+                    "Nome":"--animacao-sidebar",
+                    "Entrada":"none",
+                    "Saida":"slideDown 2s forwards"
+                }
+            ]
+        },
+        "paramentros": {
+            // Injetar estilos na Pagina
+            "inserir_estilo_pagina": [{
+                "url":"./_css/pagina5.css"
+            }],
+            // "marcador": [{
+            //     "tipo": "p",
+            //     "posicao": 2,
+            //     "palavras": "estudante|",
+            //     "attr_unitario": {
+            //         "estudante": {
+            //             "attr": "background=[red],color=[white]",
+
+            //         },
+                    
+            //     },
+            //     "fundo": "blue",
+            //     "corTexto": "black",
+            //     "padding": "0.3rem",
+                
+
+            // }],
+                
+            "cores": {
+                // "sidebar": "red",
+                // "fundo": "red",
+                // "icones": "rgb(0, 110, 201)"
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 2
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".pagina-tipo-texto--box-texto2",
+                },
+                "_procurar_animacao":{
+                    "status":true,
+                    "onde_procurar_animacao":".animation",
+                }
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logopreta.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            // Animação para Texto API
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInDown animate__slow
+                `
+            }]
+
+        }
+    },
+
+
+    
 
    
 
