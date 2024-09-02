@@ -33,7 +33,7 @@
 }
 
 .olcards li:hover{
-  transform: translateY(-1rem);
+  transform: translateY(-0.5rem);
 }
 
 .olcards li .content {

@@ -376,6 +376,7 @@ function itemnsMenu(filtro = '', slideIndex) {
 
             // Evento de clique para ir para a página no slider
             menuItem.onclick = () => {
+                showLoading(); // emite evento ao carregar conteudo
                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
             }
 

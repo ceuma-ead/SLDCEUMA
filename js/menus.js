@@ -121,6 +121,7 @@ function abrirAnotacoes() {
 
 
 function fecharMenuAnotacoes() {
+    
     const menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
     const botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
     const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
