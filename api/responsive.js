@@ -106,9 +106,9 @@ const responsivo = [
                 font-size:1rem;
             }
 
-            #image-capaOverlay {
-                max-width: 34%;
-            }  
+            // #image-capaOverlay {
+            //     max-width: 34%;
+            // }  
                 
             .olcards li .content .text {
              font-size: 0.8rem !important;
