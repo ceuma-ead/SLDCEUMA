@@ -330,6 +330,7 @@ function reduzirTexto(texto, tamanhoMaximo) {
 // }
 
 // Função para limitar o texto e adicionar "..."
+
 function reduzirTexto(texto, tamanhoMaximo) {
     if (texto.length > tamanhoMaximo) {
         return texto.substring(0, tamanhoMaximo) + '...';
@@ -592,7 +593,6 @@ function modificarFontes(slideIndex) {
     }
 }
 
-
 // Função para criar Animação no Slider
 // ------------------ Versão ( 01 ) -----------------
 // function AnimatedParagrafos(slideIndex) {
@@ -753,6 +753,7 @@ function modificarFontes(slideIndex) {
 // }
 
 // Função para Criar animação no Paragrafo
+
 function AnimatedParagrafos(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -785,13 +786,11 @@ function AnimatedParagrafos(slideIndex) {
 
                             // Utiliza requestAnimationFrame para garantir que a animação seja reaplicada
                             requestAnimationFrame(() => {
-                                requestAnimationFrame(() => {
-                                    // Adiciona novamente as classes de animação
-                                    script_animation.split(" ").forEach(cls => {
-                                        if (cls.trim()) {
-                                            p.classList.add(cls.trim());
-                                        }
-                                    });
+                                // Adiciona novamente as classes de animação
+                                script_animation.split(" ").forEach(cls => {
+                                    if (cls.trim()) {
+                                        p.classList.add(cls.trim());
+                                    }
                                 });
                             });
                         }
@@ -865,17 +864,13 @@ function AnimatedElementos(slideIndex) {
                 // Remove as classes de animação existentes
                 container.className = container.className.replace(/\banimate__\S+/g, '').trim();
 
-                // Adiciona um pequeno atraso para garantir que a animação seja reaplicada
-                setTimeout(() => {
-                    // Utiliza requestAnimationFrame para garantir que a animação seja reaplicada
-                    requestAnimationFrame(() => {
-                        script_animation.split(" ").forEach(cls => {
-                            if (cls.trim()) {
-                                container.classList.add(cls.trim());
-                            }
-                        });
+                requestAnimationFrame(() => {
+                    script_animation.split(" ").forEach(cls => {
+                        if (cls.trim()) {
+                            container.classList.add(cls.trim());
+                        }
                     });
-                }, 50); // Ajuste o tempo do atraso conforme necessário
+                });
             });
 
         } else {
@@ -1169,7 +1164,6 @@ function aplicarReflowVariaveis(variaveis) {
     });
 }
 
-
 // Função para injetar Estilo na página
 function injectEstiloRender(slideIndex) {
     const pageData = api[slideIndex];
@@ -1184,7 +1178,7 @@ function injectEstiloRender(slideIndex) {
                 const linkElement = document.createElement('link');
                 linkElement.rel = 'stylesheet';
                 linkElement.href = styleObj.url;
-
+                linkElement.type = "text/css"
                 // console.log(linkElement)
 
                 // Adiciona o <link> ao head do documento
@@ -1199,8 +1193,6 @@ function injectEstiloRender(slideIndex) {
         glider.updateControls();
     }
 }
-
-
 
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);

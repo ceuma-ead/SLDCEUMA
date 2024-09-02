@@ -321,7 +321,7 @@ const api = [
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                 <div class="pagina-tipo-texto">
+                 <div class="pagina-tipo-texto animation">
                     <div class="pagina-tipo-texto--box-texto">
                        <p>Com base nos perfis e recursos de competências da disciplina, é esperado que, ao final da disciplina, você: </p>
                     
@@ -432,23 +432,108 @@ const api = [
                 "tamanho": "10%",
             },
             // Animação para Texto API
-            "animacao_texto": [{
-                "indice": "all", // 0 | all
-                "script_animation": `
-                    animate__animated animate__fadeInDown animate__slow
-                `
-            }],
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
             // Animação pra toda Página
             "animacao_elemento": [{
                 "elemento": ".animation", // 0 | all
                 "script_animation": `
-                    animate__animated animate__fadeInRigth animate__slow
+                    animate__animated animate__fadeInDown animate__slow
                 `
             }]
 
         }
     },
     
+
+    // PAGINA 4
+    {
+        "pagina": 4,
+        "nome_page": `Apresentação da disciplina`,
+        "tipo": "Texto",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-imagem",
+        "data": {
+            "container_render": `
+                 <div class="pagina-tipo-texto animation">
+                    <div class="pagina-tipo-texto--box-texto">
+                
+                       <!-- Alert Box -->
+
+                    </div> 
+
+                   
+                 </div>
+            `,
+        },
+        "forcarAtualizacao":{
+            "variaveis":[
+                {
+                    "Nome":"--animacao-sidebar",
+                    "Entrada":"none",
+                    "Saida":"slideDown 2s forwards"
+                }
+            ]
+        },
+        "paramentros": {
+            // Injetar estilos na Pagina
+            "inserir_estilo_pagina": [{
+                "url":"./_css/pagina3.css"
+            }],
+            "cores": {
+                // "sidebar": "red",
+                // "fundo": "red",
+                // "icones": "rgb(0, 110, 201)"
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 2
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                },
+                "_procurar_animacao":{
+                    "status":true,
+                    "onde_procurar_animacao":".animation",
+                }
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logopreta.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            // Animação para Texto API
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                    animate__animated animate__fadeInDown animate__slow
+                `
+            }]
+
+        }
+    },
 
    
 

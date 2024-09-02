@@ -200,7 +200,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                       <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA: </p>\n                    \n                       <!-- Lista -->\n\n                       <div class=\"olcards--divisor\">\n\n                            <ol class=\"olcards\">\n                                <li style=\"--cardColor:#fc374e\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">01</div>\n\n                                        <div class=\"text\">Saiba identificar e interpretar as altera\xE7\xF5es hematol\xF3gicas, entendendo suas causas e efeitos</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#36aeb3\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">02</div>\n                    \n                                        <div class=\"text\">Compreenda a fisiologia e a fisiopatogenia das c\xE9lulas-tronco, a eritropoese e a estrutura da hemoglobina</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#162d59\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">03</div>\n             \n                                        <div class=\"text\">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</div>\n                                    </div>\n                                </li>\n                                \n                                \n                            </ol>\n                       \n                             <ol class=\"olcards\">\n                             <li style=\"--cardColor:#f15f0e\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">04</div>\n\n                                        <div class=\"text\">Saiba avaliar e otimizar o controle de qualidade nas etapas pr\xE9-anal\xEDtica, anal\xEDtica e p\xF3s-anal\xEDtica, com \xEAnfase na automa\xE7\xE3o em hematologia.</div>\n                                    </div>\n                                </li>\n\n                                <li style=\"--cardColor:#fc374e\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">05</div>\n     \n                                        <div class=\"text\">Entenda a hist\xF3ria da hemoterapia, as normas t\xE9cnicas, a legisla\xE7\xE3o vigente e as pr\xE1ticas de banco de sangue, al\xE9m de dominar os testes pr\xE9-transfusionais e gerenciar rea\xE7\xF5es transfusionais</div>\n                                    </div>\n                                </li>\n\n                                <p class=\"olcards--box\">\n                                    Esta disciplina est\xE1 estruturada em 3 (tr\xEAs) unidades. Para que voc\xEA obtenha sucesso, aproveite todas as orienta\xE7\xF5es de estudo apresentadas neste material. Realize as leituras obrigat\xF3rias, pois nelas voc\xEA ter\xE1 acesso ao conhecimento necess\xE1rio para o curso e sua carreira e tamb\xE9m para a realiza\xE7\xE3o das atividades de estudo\n                                </p>\n                                \n                            </ol>\n\n                       </div>\n                    </div> \n\n                   \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                       <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA: </p>\n                    \n                       <!-- Lista -->\n\n                       <div class=\"olcards--divisor\">\n\n                            <ol class=\"olcards\">\n                                <li style=\"--cardColor:#fc374e\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">01</div>\n\n                                        <div class=\"text\">Saiba identificar e interpretar as altera\xE7\xF5es hematol\xF3gicas, entendendo suas causas e efeitos</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#36aeb3\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">02</div>\n                    \n                                        <div class=\"text\">Compreenda a fisiologia e a fisiopatogenia das c\xE9lulas-tronco, a eritropoese e a estrutura da hemoglobina</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#162d59\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">03</div>\n             \n                                        <div class=\"text\">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</div>\n                                    </div>\n                                </li>\n                                \n                                \n                            </ol>\n                       \n                             <ol class=\"olcards\">\n                             <li style=\"--cardColor:#f15f0e\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">04</div>\n\n                                        <div class=\"text\">Saiba avaliar e otimizar o controle de qualidade nas etapas pr\xE9-anal\xEDtica, anal\xEDtica e p\xF3s-anal\xEDtica, com \xEAnfase na automa\xE7\xE3o em hematologia.</div>\n                                    </div>\n                                </li>\n\n                                <li style=\"--cardColor:#fc374e\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\">05</div>\n     \n                                        <div class=\"text\">Entenda a hist\xF3ria da hemoterapia, as normas t\xE9cnicas, a legisla\xE7\xE3o vigente e as pr\xE1ticas de banco de sangue, al\xE9m de dominar os testes pr\xE9-transfusionais e gerenciar rea\xE7\xF5es transfusionais</div>\n                                    </div>\n                                </li>\n\n                                <p class=\"olcards--box\">\n                                    Esta disciplina est\xE1 estruturada em 3 (tr\xEAs) unidades. Para que voc\xEA obtenha sucesso, aproveite todas as orienta\xE7\xF5es de estudo apresentadas neste material. Realize as leituras obrigat\xF3rias, pois nelas voc\xEA ter\xE1 acesso ao conhecimento necess\xE1rio para o curso e sua carreira e tamb\xE9m para a realiza\xE7\xE3o das atividades de estudo\n                                </p>\n                                \n                            </ol>\n\n                       </div>\n                    </div> \n\n                   \n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
@@ -245,16 +245,84 @@ var api = [// PAGINA 1
       "tamanho": "10%"
     },
     // Animação para Texto API
-    "animacao_texto": [{
-      "indice": "all",
-      // 0 | all
-      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
-    }],
+    // "animacao_texto": [{
+    //     "indice": "all", // 0 | all
+    //     "script_animation": `
+    //         animate__animated animate__fadeInDown animate__slow
+    //     `
+    // }],
     // Animação pra toda Página
     "animacao_elemento": [{
       "elemento": ".animation",
       // 0 | all
-      "script_animation": "\n                    animate__animated animate__fadeInRigth animate__slow\n                "
+      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+    }]
+  }
+}, // PAGINA 4
+{
+  "pagina": 4,
+  "nome_page": "Apresenta\xE7\xE3o da disciplina",
+  "tipo": "Texto",
+  "id_page": ".content-render-api",
+  "id_component": ".c-carousel__slides",
+  "id_elemento_para_modificar": "container-imagem",
+  "data": {
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n\n                    </div> \n\n                   \n                 </div>\n            "
+  },
+  "forcarAtualizacao": {
+    "variaveis": [{
+      "Nome": "--animacao-sidebar",
+      "Entrada": "none",
+      "Saida": "slideDown 2s forwards"
+    }]
+  },
+  "paramentros": {
+    // Injetar estilos na Pagina
+    "inserir_estilo_pagina": [{
+      "url": "./_css/pagina3.css"
+    }],
+    "cores": {// "sidebar": "red",
+      // "fundo": "red",
+      // "icones": "rgb(0, 110, 201)"
+    },
+    "configuracoes_gerais": {
+      // Habilitar Procurar de Paragrafos ná Pagina 2
+      "_procurar_paragrafos": {
+        "status": true,
+        "onde_procurar": ".pagina-tipo-texto--box-texto"
+      },
+      "_procurar_animacao": {
+        "status": true,
+        "onde_procurar_animacao": ".animation"
+      }
+    },
+    "fonte": {
+      // "titulo":"1rem",
+      "paragrafos": "1rem",
+      // "font_familly":"Lato",
+      // "cor_fonte":"black",
+      "alinhamento_texto": "justify",
+      "hifens": "auto"
+    },
+    "logo": {
+      "ativar": true,
+      "img": "url(../assets/logopreta.png)",
+      "posicaoY": "bottom 1.8%",
+      "posicaoX": "left 0.5%",
+      "tamanho": "10%"
+    },
+    // Animação para Texto API
+    // "animacao_texto": [{
+    //     "indice": "all", // 0 | all
+    //     "script_animation": `
+    //         animate__animated animate__fadeInDown animate__slow
+    //     `
+    // }],
+    // Animação pra toda Página
+    "animacao_elemento": [{
+      "elemento": ".animation",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
     }]
   }
 }];
