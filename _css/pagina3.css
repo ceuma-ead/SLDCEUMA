@@ -74,6 +74,61 @@
   color: white !important;
 }
 
+.message-box {
+  width: 100%;
+  border-radius: 6px;
+  margin: 20px auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.message-box--divisor{
+  display: flex;
+  align-items: center;
+}
+.message-box i {
+  vertical-align: middle;
+  padding: 20px;
+}
+.message-box i.exit-button {
+  float: right;
+  opacity: 0.4;
+}
+.message-box i.exit-button:hover {
+  opacity: 0.8;
+}
+
+.message-text {
+  text-align: left;
+}
+
+.message-box-info {
+  background-color: #CDE8F6;
+  border: #2697d1 2px solid;
+  color: #447EAF;
+}
+
+.message-box-warn {
+  background-color: #F8F4D5;
+  border: #e9dd7e 2px solid;
+  color: #96722E;
+}
+
+.message-box-error {
+  background-color: #ECC8C5;
+  border: #d37f78 2px solid;
+  color: #B83C37;
+}
+
+.message-box-success {
+  background-color: #DDF3D5;
+  border: #9ddc86 2px solid;
+  color: #597151;
+}
+
 /* Estilos para dispositivos móveis */
 @media (max-width: 768px) {
   .olcards li {
@@ -97,3 +152,5 @@
     text-align: center;
   }
 }
+
+

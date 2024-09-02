@@ -465,6 +465,15 @@ const api = [
                 
                        <!-- Alert Box -->
 
+                       <div class="message-box message-box-warn">
+                        <div class="message-box--divisor">
+                            <i class="fa fa-warning fa-2x"></i>
+                            <span class="message-text"><strong>Lembrete:</strong> </span>
+                        </div>
+                        <span class="message-text">Lembre-se de ler os materiais complementares, eles são essenciais para o aprofundamento dos conteúdos abordados ao longo da disciplina.</span>
+                        <!-- <i class="fa fa-times fa-2x exit-button "></i> -->
+                        </div>
+
                     </div> 
 
                    

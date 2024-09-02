@@ -267,7 +267,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n\n                    </div> \n\n                   \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n\n                       <div class=\"message-box message-box-warn\">\n                        <div class=\"message-box--divisor\">\n                            <i class=\"fa fa-warning fa-2x\"></i>\n                            <span class=\"message-text\"><strong>Lembrete:</strong> </span>\n                        </div>\n                        <span class=\"message-text\">Lembre-se de ler os materiais complementares, eles s\xE3o essenciais para o aprofundamento dos conte\xFAdos abordados ao longo da disciplina.</span>\n                        <!-- <i class=\"fa fa-times fa-2x exit-button \"></i> -->\n                        </div>\n\n                    </div> \n\n                   \n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
