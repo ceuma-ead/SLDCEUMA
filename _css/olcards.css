@@ -1,0 +1,99 @@
+@import url("./css/variaveis.css");
+
+.olcards,
+.olcards * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.olcards {
+  list-style: none;
+  counter-reset: cardCount;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  --cardsGap: 1rem;
+  gap: var(--cardsGap);
+  padding-bottom: var(--cardsGap);
+  width: 100%;
+ 
+}
+
+/* Estilos para desktop */
+.olcards li {
+  counter-increment: cardCount;
+  display: flex;
+  color: white;
+  --labelOffset: 1rem;
+  --arrowClipSize: 1.5rem;
+  transition: all 0.4s;
+  margin-top: var(--labelOffset);
+
+}
+
+.olcards li:hover{
+  transform: translateY(-1rem);
+}
+
+.olcards li .content {
+  background-color: var(--cardColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.olcards li .icon {
+  font-size: var(--font-para-paragrafos);
+  border: 2px solid rgb(255, 255, 255);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 100%;
+
+}
+
+.olcards li .content .text {
+  font-size: var(--font-para-paragrafos);
+}
+
+.olcards--divisor {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.olcards--box {
+  background-color: rgb(0, 132, 255);
+  padding: 1rem;
+  border-radius: 1rem;
+  color: white !important;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  .olcards li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .olcards li::before {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    transform: translateY(0);
+  }
+
+  .olcards li .icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .olcards li .content {
+    padding: 1rem;
+    text-align: center;
+  }
+}

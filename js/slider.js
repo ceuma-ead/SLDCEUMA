@@ -114,6 +114,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     responsivePage(event.detail.slide);
     //Fazer animação no Elemento da Página
     AnimatedElementos(event.detail.slide)
+    // Função para inserir a URL ná página
+    injectEstiloRender(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -810,7 +812,6 @@ function AnimatedParagrafos(slideIndex) {
 }
 
 // Função para Criar animação no Elemento
-// Função para Criar animação no Elemento
 function AnimatedElementos(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -881,8 +882,6 @@ function AnimatedElementos(slideIndex) {
         }
     });
 }
-
-
 
 // Função para lidar com erros de animação
 function handleErroAnimacao(procurarParagrafo) {
@@ -1170,6 +1169,38 @@ function aplicarReflowVariaveis(variaveis) {
 }
 
 
+// Função para injetar Estilo na página
+function injectEstiloRender(slideIndex) {
+    const pageData = api[slideIndex];
+
+    // Verifica se as URLs de estilos existem na estrutura de parâmetros
+    if (pageData && pageData.paramentros && pageData.paramentros.inserir_estilo_pagina) {
+        const urls = pageData.paramentros.inserir_estilo_pagina;
+        // console.log(urls )
+        urls.forEach(styleObj => {
+            if (styleObj.url) {
+                // Cria um novo elemento <link> para o estilo
+                const linkElement = document.createElement('link');
+                linkElement.rel = 'stylesheet';
+                linkElement.href = styleObj.url;
+
+                // console.log(linkElement)
+
+                // Adiciona o <link> ao head do documento
+                document.head.appendChild(linkElement);
+                
+            }
+        });
+
+    } else {
+        // Atualiza o controle do glider caso não haja estilos para injetar
+        glider.refresh(true);
+        glider.updateControls();
+    }
+}
+
+
+
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
@@ -1181,6 +1212,7 @@ injectScriptPage(savedPosition);
 AnimatedParagrafos(savedPosition);
 AnimationVariablesUpPage(savedPosition);
 AnimatedElementos(savedPosition)
+injectEstiloRender(savedPosition)
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition);
 // console.log(irItem)
