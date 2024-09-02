@@ -562,6 +562,7 @@ const api = [
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
             },
+
             // Animação para Texto API
             // "animacao_texto": [{
             //     "indice": "all", // 0 | all
@@ -569,6 +570,7 @@ const api = [
             //         animate__animated animate__fadeInDown animate__slow
             //     `
             // }],
+
             // Animação pra toda Página
             "animacao_elemento": [{
                 "elemento": ".animation", // 0 | all
@@ -625,23 +627,23 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":"./_css/pagina5.css"
             }],
-            // "marcador": [{
-            //     "tipo": "p",
-            //     "posicao": 2,
-            //     "palavras": "estudante|",
-            //     "attr_unitario": {
-            //         "estudante": {
-            //             "attr": "background=[red],color=[white]",
+            "marcador": [{
+                "tipo": "p",
+                "posicao": 0,
+                "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
+                "attr_unitario": {
+                    "Olá, estudante! Bem-vindo à Unidade 1!": {
+                        "attr": "font-weight=[999]",
 
-            //         },
+                    },
                     
-            //     },
-            //     "fundo": "blue",
-            //     "corTexto": "black",
-            //     "padding": "0.3rem",
+                },
+                // "fundo": "blue",
+                // "corTexto": "black",
+                // "padding": "0.3rem",
                 
 
-            // }],
+            }],
                 
             "cores": {
                 // "sidebar": "red",
@@ -653,7 +655,7 @@ const api = [
                 // Habilitar Procurar de Paragrafos ná Pagina 2
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-texto--box-texto2",
+                    "onde_procurar": ".pagina-tipo-texto--box-texto",
                 },
                 "_procurar_animacao":{
                     "status":true,

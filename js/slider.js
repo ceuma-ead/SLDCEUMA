@@ -840,7 +840,7 @@ function AnimatedElementos(slideIndex) {
     configurarAnimacao.forEach((animation) => {
         const {
             script_animation = animacaoPadrao.script_animation,
-            elemento = animacaoPadrao.elemento
+                elemento = animacaoPadrao.elemento
         } = animation;
 
         const elementos = document.querySelectorAll(elemento);
@@ -890,129 +890,263 @@ ${procurarParagrafo.onde_procurar ? `Você precisa ativar primeiro o suporte em:
 }
 
 // Função marcadorTexto
+// function adcionarMarcadores(slideIndex) {
+//     const pageData = api[slideIndex];
+
+//     if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
+//         const slider_container = document.querySelector(pageData.id_component);
+//         console.log(slider_container)
+//         pageData.paramentros.marcador.forEach((marcadores) => {
+//             const {
+//                 tipo,
+//                 posicao,
+//                 palavras,
+//                 attr,
+//                 estilo_marcador_inject,
+//                 attr_inline,
+//                 attr_unitario,
+//                 fundo,
+//                 corTexto,
+//                 padding,
+//                 onclick
+//             } = marcadores;
+
+//             // Verifica se o estilo geral já foi injetado
+//             if (estilo_marcador_inject) {
+//                 let styleTag = document.querySelector('#style-geral-marcador');
+//                 if (!styleTag) {
+//                     styleTag = document.createElement('style');
+//                     // styleTag.id = 'style-geral-marcador';
+//                     document.head.appendChild(styleTag);
+//                 }
+//                 // Adiciona o estilo ao conteúdo do style
+//                 styleTag.textContent += estilo_marcador_inject.trim();
+//             }
+
+//             const paragrafo = slider_container.querySelectorAll(tipo)[posicao];
+//             console.log(paragrafo)
+
+//             if (paragrafo) {
+//                 const palavrasArray = palavras.split('|');
+
+//                 palavrasArray.forEach(palavra => {
+//                     // Aplica atributos específicos se existirem
+//                     let inlineAttrs = '';
+//                     let specificStyles = '';
+
+//                     if (attr_unitario && attr_unitario[palavra]) {
+//                         const unitAttr = attr_unitario[palavra];
+//                         if (unitAttr.attr) {
+//                             unitAttr.attr.split(',').forEach(attribute => {
+//                                 const [key, value] = attribute.split('=');
+//                                 if (key && value) {
+//                                     specificStyles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
+//                                 }
+//                             });
+//                         }
+//                         if (unitAttr.attr_inline) {
+//                             unitAttr.attr_inline.split(',').forEach(attribute => {
+//                                 const [key, value] = attribute.split('=');
+//                                 if (key && value) {
+//                                     inlineAttrs += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
+//                                 }
+//                             });
+//                         }
+//                     }
+
+//                     // Inclui atributos genéricos
+//                     let styles = '';
+//                     if (attr) {
+//                         attr.split(',').forEach(attribute => {
+//                             const [key, value] = attribute.split('=');
+//                             if (key && value) {
+//                                 styles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
+//                             }
+//                         });
+//                     }
+
+//                     styles += `${fundo ? `background-color:${fundo}`:""};${corTexto ? `color:${corTexto}`:""};${padding ? `padding:${padding}`:""}`;
+//                     styles += specificStyles; // Sobrescreve atributos genéricos com específicos
+
+//                     const regex = new RegExp(`(?!<span[^>]*>)(${palavra})(?!</span>)`, 'gi');
+
+//                     let inlineAttrs_all = '';
+//                     if (attr_inline) {
+//                         attr_inline.split(',').forEach(attribute => {
+//                             const [key, value] = attribute.split('=');
+//                             if (key && value) {
+//                                 inlineAttrs_all += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
+//                             }
+//                         });
+//                     }
+
+//                     paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, (match) => {
+//                         let eventHandlers = '';
+
+//                         if (onclick) {
+//                             onclick.forEach(event => {
+//                                 if (event.palavra === palavra) {
+//                                     const eventName = event.acao;
+//                                     const functionName = event.funcao.split('(')[0];
+
+//                                     // Verifica se a função já existe
+//                                     if (!window[functionName]) {
+//                                         // Cria a função no escopo global através de uma tag <script>
+//                                         const scriptTag = document.createElement('script');
+//                                         scriptTag.textContent = event.funcao_script.trim();
+//                                         document.body.appendChild(scriptTag);
+//                                     }
+
+//                                     // Associa o evento ao span
+//                                     eventHandlers += `${eventName}="${functionName}()" `;
+//                                 }
+//                             });
+//                         }
+
+//                         // Só aplica o span se não estiver já dentro de um span
+//                         return `<span ${inlineAttrs} ${inlineAttrs_all ? inlineAttrs_all : ""} style="${styles}" ${eventHandlers}>${match}</span>`;
+//                     });
+//                 });
+//             } else {
+//                 console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
+//             }
+//         });
+    
+//     }
+
+// }
+// Função marcadorTexto
 function adcionarMarcadores(slideIndex) {
     const pageData = api[slideIndex];
 
     if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
-        const slider_container = document.querySelector(pageData.id_component);
+        const slider_containers = document.querySelectorAll(pageData.paramentros.configuracoes_gerais._procurar_paragrafos.onde_procurar);
+        
+        if (slider_containers.length === 0) {
+            console.warn('Nenhum container encontrado para aplicar o marcador.');
+            return;
+        }
 
-        pageData.paramentros.marcador.forEach((marcadores) => {
-            const {
-                tipo,
-                posicao,
-                palavras,
-                attr,
-                estilo_marcador_inject,
-                attr_inline,
-                attr_unitario,
-                fundo,
-                corTexto,
-                padding,
-                onclick
-            } = marcadores;
+        slider_containers.forEach(slider_container => {
+            pageData.paramentros.marcador.forEach((marcadores) => {
+                const {
+                    tipo,
+                    posicao,
+                    palavras,
+                    attr,
+                    estilo_marcador_inject,
+                    attr_inline,
+                    attr_unitario,
+                    fundo,
+                    corTexto,
+                    padding,
+                    onclick
+                } = marcadores;
 
-            // Verifica se o estilo geral já foi injetado
-            if (estilo_marcador_inject) {
-                let styleTag = document.querySelector('#style-geral-marcador');
-                if (!styleTag) {
-                    styleTag = document.createElement('style');
-                    // styleTag.id = 'style-geral-marcador';
-                    document.head.appendChild(styleTag);
+                // Verifica se o estilo geral já foi injetado
+                if (estilo_marcador_inject) {
+                    let styleTag = document.querySelector('#style-geral-marcador');
+                    if (!styleTag) {
+                        styleTag = document.createElement('style');
+                        styleTag.id = 'style-geral-marcador';
+                        document.head.appendChild(styleTag);
+                    }
+                    // Adiciona o estilo ao conteúdo do style
+                    styleTag.textContent += estilo_marcador_inject.trim();
                 }
-                // Adiciona o estilo ao conteúdo do style
-                styleTag.textContent += estilo_marcador_inject.trim();
-            }
 
-            const paragrafo = slider_container.querySelectorAll(tipo)[posicao];
+                const paragrafos = slider_container.querySelectorAll(tipo);
 
-            if (paragrafo) {
-                const palavrasArray = palavras.split('|');
+                if (paragrafos && paragrafos[posicao]) {
+                    const paragrafo = paragrafos[posicao];
+                    const palavrasArray = palavras.split('|');
 
-                palavrasArray.forEach(palavra => {
-                    // Aplica atributos específicos se existirem
-                    let inlineAttrs = '';
-                    let specificStyles = '';
+                    palavrasArray.forEach(palavra => {
+                        // Aplica atributos específicos se existirem
+                        let inlineAttrs = '';
+                        let specificStyles = '';
 
-                    if (attr_unitario && attr_unitario[palavra]) {
-                        const unitAttr = attr_unitario[palavra];
-                        if (unitAttr.attr) {
-                            unitAttr.attr.split(',').forEach(attribute => {
-                                const [key, value] = attribute.split('=');
-                                if (key && value) {
-                                    specificStyles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
-                                }
-                            });
-                        }
-                        if (unitAttr.attr_inline) {
-                            unitAttr.attr_inline.split(',').forEach(attribute => {
-                                const [key, value] = attribute.split('=');
-                                if (key && value) {
-                                    inlineAttrs += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
-                                }
-                            });
-                        }
-                    }
-
-                    // Inclui atributos genéricos
-                    let styles = '';
-                    if (attr) {
-                        attr.split(',').forEach(attribute => {
-                            const [key, value] = attribute.split('=');
-                            if (key && value) {
-                                styles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
-                            }
-                        });
-                    }
-
-                    styles += `${fundo ? `background-color:${fundo}`:""};${corTexto ? `color:${corTexto}`:""};${padding ? `padding:${padding}`:""}`;
-                    styles += specificStyles; // Sobrescreve atributos genéricos com específicos
-
-                    const regex = new RegExp(`(?!<span[^>]*>)(${palavra})(?!</span>)`, 'gi');
-
-                    let inlineAttrs_all = '';
-                    if (attr_inline) {
-                        attr_inline.split(',').forEach(attribute => {
-                            const [key, value] = attribute.split('=');
-                            if (key && value) {
-                                inlineAttrs_all += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
-                            }
-                        });
-                    }
-
-                    paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, (match) => {
-                        let eventHandlers = '';
-
-                        if (onclick) {
-                            onclick.forEach(event => {
-                                if (event.palavra === palavra) {
-                                    const eventName = event.acao;
-                                    const functionName = event.funcao.split('(')[0];
-
-                                    // Verifica se a função já existe
-                                    if (!window[functionName]) {
-                                        // Cria a função no escopo global através de uma tag <script>
-                                        const scriptTag = document.createElement('script');
-                                        scriptTag.textContent = event.funcao_script.trim();
-                                        document.body.appendChild(scriptTag);
+                        if (attr_unitario && attr_unitario[palavra]) {
+                            const unitAttr = attr_unitario[palavra];
+                            if (unitAttr.attr) {
+                                unitAttr.attr.split(',').forEach(attribute => {
+                                    const [key, value] = attribute.split('=');
+                                    if (key && value) {
+                                        specificStyles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
                                     }
+                                });
+                            }
+                            if (unitAttr.attr_inline) {
+                                unitAttr.attr_inline.split(',').forEach(attribute => {
+                                    const [key, value] = attribute.split('=');
+                                    if (key && value) {
+                                        inlineAttrs += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
+                                    }
+                                });
+                            }
+                        }
 
-                                    // Associa o evento ao span
-                                    eventHandlers += `${eventName}="${functionName}()" `;
+                        // Inclui atributos genéricos
+                        let styles = '';
+                        if (attr) {
+                            attr.split(',').forEach(attribute => {
+                                const [key, value] = attribute.split('=');
+                                if (key && value) {
+                                    styles += `${key.trim()}:${value.replace(/\[|\]/g, '').trim()};`;
                                 }
                             });
                         }
 
-                        // Só aplica o span se não estiver já dentro de um span
-                        return `<span ${inlineAttrs} ${inlineAttrs_all ? inlineAttrs_all : ""} style="${styles}" ${eventHandlers}>${match}</span>`;
+                        styles += `${fundo ? `background-color:${fundo}`:""};${corTexto ? `color:${corTexto}`:""};${padding ? `padding:${padding}`:""}`;
+                        styles += specificStyles; // Sobrescreve atributos genéricos com específicos
+
+                        const regex = new RegExp(`(?!<span[^>]*>)(${palavra})(?!</span>)`, 'gi');
+
+                        let inlineAttrs_all = '';
+                        if (attr_inline) {
+                            attr_inline.split(',').forEach(attribute => {
+                                const [key, value] = attribute.split('=');
+                                if (key && value) {
+                                    inlineAttrs_all += `${key.trim()}="${value.replace(/\[|\]/g, '').trim()}" `;
+                                }
+                            });
+                        }
+
+                        paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, (match) => {
+                            let eventHandlers = '';
+
+                            if (onclick) {
+                                onclick.forEach(event => {
+                                    if (event.palavra === palavra) {
+                                        const eventName = event.acao;
+                                        const functionName = event.funcao.split('(')[0];
+
+                                        // Verifica se a função já existe
+                                        if (!window[functionName]) {
+                                            // Cria a função no escopo global através de uma tag <script>
+                                            const scriptTag = document.createElement('script');
+                                            scriptTag.textContent = event.funcao_script.trim();
+                                            document.body.appendChild(scriptTag);
+                                        }
+
+                                        // Associa o evento ao span
+                                        eventHandlers += `${eventName}="${functionName}()" `;
+                                    }
+                                });
+                            }
+
+                            // Só aplica o span se não estiver já dentro de um span
+                            return `<span ${inlineAttrs} ${inlineAttrs_all ? inlineAttrs_all : ""} style="${styles}" ${eventHandlers}>${match}</span>`;
+                        });
                     });
-                });
-            } else {
-                console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
-            }
+                } else {
+                    console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado no slide ${slideIndex}.`);
+                }
+            });
         });
     }
-
 }
+
 
 // Atualiza as cores da página visível
 function atualizarCoresdaNavegacao(slideIndex) {
@@ -1169,7 +1303,7 @@ function injectEstiloRender(slideIndex) {
 
                 // Adiciona o <link> ao head do documento
                 document.head.appendChild(linkElement);
-                
+
             }
         });
 
