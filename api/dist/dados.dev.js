@@ -9,7 +9,6 @@ var api = [// PAGINA 1
   "id_page": ".content-render-api",
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
-  "cabecalho_link_script": "\n            <!-- Link para a biblioteca de \xEDcones Font Awesome -->\n            <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />\n            <!-- Link para a fonte Lato do Google Fonts -->\n            <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n            <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n            <link href=\"https://fonts.googleapis.com/css2?family=Lato\" rel=\"stylesheet\">\n        ",
   "data": {
     "container_render": "       \n\n                <!-- Container do texto animado -->\n                <div id=\"text-container-capa\">\n                    <div class=\"animated-text\">Hematologia Cl\xEDnica</div>\n                    <div id=\"underline\"></div>\n                    <div id=\"second-text\">unidade 1</div>\n                    <button id=\"animated-button\" onclick=\"iniciar()\">iniciar</button>\n                </div>\n\n                <!-- Imagem animada -->\n                <div id=\"animated-image\"></div>\n                \n                <!-- Imagem -->\n                <div id=\"image-capaOverlay\"></div>\n            "
   },
@@ -21,6 +20,9 @@ var api = [// PAGINA 1
     }]
   },
   "paramentros": {
+    "inserir_estilo_pagina": [{
+      "url": ""
+    }],
     "cores": {
       // "sidebar": "red",
       "fundo": ":#00000000",
@@ -86,8 +88,10 @@ var api = [// PAGINA 1
       "Saida": "slideDown 2s forwards"
     }]
   },
-  // Injetar estilos na Pagi
   "paramentros": {
+    "inserir_estilo_pagina": [{
+      "url": "./_css/pagina2.css"
+    }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",
       // "icones": "rgb(0, 110, 201)"
@@ -112,7 +116,8 @@ var api = [// PAGINA 1
       // Criar um Estilo Geral
       "attr_inline": "\n                    vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]\n                ",
       // Criar uma injeção de Dados para estilizar o Marcador
-      "estilo_marcador_inject": "\n                \n                    \n                    .bt-1 {\n                       background: #011c41;\n                       color: #fff;\n                       display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                       animation-name: zoom;\n                       animation-duration: 3s;\n                    \n                                           }\n\n                    .bt-1:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    \n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n                    \n                    .bt-2 {\n                        background:red;\n                        color:#fff; display: inline-block;\n                        transition: all .4s ease-in-out;\n                        transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 3s;\n                    }\n\n                    .bt-2:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .bt-3 {\n                        background:#FF8A00;\n                        color:#fff; display: inline-block;\n                       transition: all .4s ease-in-out;\n                       transform-style: preserve-3d;\n                        animation-name: zoom;\n                        animation-duration: 3s;\n                    }\n\n                    .bt-3:hover {\n                      background: #024db3;\n                      transform: rotate3d(1, 0, 0, -360deg);\n                    }\n\n                    @keyframes zoom 0% {\n                    transform: scale(0)\n                    \n                    }\n                    \n                    @keyframes zoom 100% {\n                    transform: scale(1)\n                    \n                    } \n\n                    .my-poup{\n\n                       background:#FF8A00;\n                    }\n\n                    \n\n                ",
+      "estilo_marcador_inject": "",
+      // ❌ Depreciada
       // Atributos Especificos
       "attr_unitario": {
         "social": {
@@ -207,7 +212,7 @@ var api = [// PAGINA 1
   "paramentros": {
     // Injetar estilos na Pagina
     "inserir_estilo_pagina": [{
-      "url": "./_css/olcards.css"
+      "url": "./_css/pagina3.css"
     }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",

@@ -1,0 +1,79 @@
+.bt-1 {
+    background: #011c41;
+    color: #fff;
+    display: inline-block;
+    transition: all .4s ease-in-out;
+    transform-style: preserve-3d;
+    animation-name: zoom;
+    animation-duration: 3s;
+ 
+                        }
+
+ .bt-1:hover {
+   background: #024db3;
+   transform: rotate3d(1, 0, 0, -360deg);
+ }
+
+ @keyframes zoom 0% {
+ 
+ transform: scale(0)
+ 
+ }
+ 
+ @keyframes zoom 100% {
+ transform: scale(1)
+ 
+ } 
+ 
+ .bt-2 {
+     background:red;
+     color:#fff; display: inline-block;
+     transition: all .4s ease-in-out;
+     transform-style: preserve-3d;
+     animation-name: zoom;
+     animation-duration: 3s;
+ }
+
+ .bt-2:hover {
+   background: #024db3;
+   transform: rotate3d(1, 0, 0, -360deg);
+ }
+
+ @keyframes zoom 0% {
+ transform: scale(0)
+ 
+ }
+ 
+ @keyframes zoom 100% {
+ transform: scale(1)
+ 
+ } 
+
+ .bt-3 {
+     background:#FF8A00;
+     color:#fff; display: inline-block;
+    transition: all .4s ease-in-out;
+    transform-style: preserve-3d;
+     animation-name: zoom;
+     animation-duration: 3s;
+ }
+
+ .bt-3:hover {
+   background: #024db3;
+   transform: rotate3d(1, 0, 0, -360deg);
+ }
+
+ @keyframes zoom 0% {
+ transform: scale(0)
+ 
+ }
+ 
+ @keyframes zoom 100% {
+ transform: scale(1)
+ 
+ } 
+
+ .my-poup{
+
+    background:#FF8A00;
+ }

@@ -10,14 +10,6 @@ const api = [
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
         "id_elemento_para_modificar": "container-imagem",
-        "cabecalho_link_script": `
-            <!-- Link para a biblioteca de ícones Font Awesome -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-            <!-- Link para a fonte Lato do Google Fonts -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Lato" rel="stylesheet">
-        `,
         "data": {
             "container_render": `       
 
@@ -46,6 +38,9 @@ const api = [
             ]
         },
         "paramentros": {
+            "inserir_estilo_pagina": [{
+                "url":""
+            }],
             "cores": {
                 // "sidebar": "red",
                 "fundo": ":#00000000",
@@ -151,8 +146,10 @@ const api = [
                 }
             ]
         },
-        // Injetar estilos na Pagi
         "paramentros": {
+            "inserir_estilo_pagina": [{
+                "url":"./_css/pagina2.css"
+            }],
             "cores": {
                 // "sidebar": "red",
                 // "fundo": "red",
@@ -183,92 +180,7 @@ const api = [
                     vizioon-tip=[Saiba Mais] , vizioon-posicao=[top] , vizioon-attr=[d-none d-md-block]
                 `,
                 // Criar uma injeção de Dados para estilizar o Marcador
-                "estilo_marcador_inject": `
-                
-                    
-                    .bt-1 {
-                       background: #011c41;
-                       color: #fff;
-                       display: inline-block;
-                       transition: all .4s ease-in-out;
-                       transform-style: preserve-3d;
-                       animation-name: zoom;
-                       animation-duration: 3s;
-                    
-                                           }
-
-                    .bt-1:hover {
-                      background: #024db3;
-                      transform: rotate3d(1, 0, 0, -360deg);
-                    }
-
-                    @keyframes zoom 0% {
-                    
-                    transform: scale(0)
-                    
-                    }
-                    
-                    @keyframes zoom 100% {
-                    transform: scale(1)
-                    
-                    } 
-                    
-                    .bt-2 {
-                        background:red;
-                        color:#fff; display: inline-block;
-                        transition: all .4s ease-in-out;
-                        transform-style: preserve-3d;
-                        animation-name: zoom;
-                        animation-duration: 3s;
-                    }
-
-                    .bt-2:hover {
-                      background: #024db3;
-                      transform: rotate3d(1, 0, 0, -360deg);
-                    }
-
-                    @keyframes zoom 0% {
-                    transform: scale(0)
-                    
-                    }
-                    
-                    @keyframes zoom 100% {
-                    transform: scale(1)
-                    
-                    } 
-
-                    .bt-3 {
-                        background:#FF8A00;
-                        color:#fff; display: inline-block;
-                       transition: all .4s ease-in-out;
-                       transform-style: preserve-3d;
-                        animation-name: zoom;
-                        animation-duration: 3s;
-                    }
-
-                    .bt-3:hover {
-                      background: #024db3;
-                      transform: rotate3d(1, 0, 0, -360deg);
-                    }
-
-                    @keyframes zoom 0% {
-                    transform: scale(0)
-                    
-                    }
-                    
-                    @keyframes zoom 100% {
-                    transform: scale(1)
-                    
-                    } 
-
-                    .my-poup{
-
-                       background:#FF8A00;
-                    }
-
-                    
-
-                `,
+                "estilo_marcador_inject": ``, // ❌ Depreciada
                 // Atributos Especificos
                 "attr_unitario": {
                     "social": {
@@ -399,7 +311,6 @@ const api = [
         }
     },
     
-
     // PAGINA 3
     {
         "pagina": 3,
@@ -486,7 +397,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":"./_css/olcards.css"
+                "url":"./_css/pagina3.css"
             }],
             "cores": {
                 // "sidebar": "red",
