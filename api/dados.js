@@ -498,9 +498,10 @@ const api = [
                     <div class="pagina-tipo-texto--box-texto">
                 
                        <!-- Alert Box -->
-
-                       
-
+                        <p>
+                            Esta disciplina está estruturada em 3 (três) unidades. Para que você obtenha sucesso, aproveite todas as orientações de estudo apresentadas neste material. Realize as leituras obrigatórias, pois nelas você terá acesso ao conhecimento necessário para o curso e sua carreira e também para a realização das atividades de estudo. 
+                        </p>
+                        
                        <div class="message-box message-box-warn">
                         <div class="message-box--divisor">
                             <i class="fa fa-warning fa-2x"></i>
@@ -528,7 +529,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":"./_css/pagina3.css"
+                "url":"./conf/css/pagina3.css"
             }],
             "cores": {
                 // "sidebar": "red",
@@ -625,7 +626,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":"./conf/css/pagina5.css"
+                "url":""
             }],
             "marcador": [{
                 "tipo": "p",
@@ -706,10 +707,10 @@ const api = [
         "data": {
             "container_render": `
                 <div class="pagina-tipo-texto animation">
+
                     <div class="pagina-tipo-texto--box-texto align-accordion">
                 
                        <!-- Apresentação da Unidade -->
-
        
                          <div class="accordion accordion-flush" id="accordionApresentacao">
                             <div class="accordion-item">
@@ -857,7 +858,7 @@ const api = [
     },
 
 
-    
+
     
 
    
