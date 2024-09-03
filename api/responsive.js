@@ -206,6 +206,7 @@ const responsivo = [
     }
 ];
 
+
 function aplicarVariantes(variantes, media) {
     // Verificar se a condição da media query é verdadeira
     if (window.matchMedia(media).matches) {

@@ -187,6 +187,7 @@ function adicionarFundo(slideIndex) {
     }
 }
 
+
 // Função para Ativar logo no Slider
 function adicionarLogo(slideIndex) {
     const pageData = api[slideIndex];

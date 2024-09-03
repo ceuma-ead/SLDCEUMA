@@ -13,6 +13,7 @@ function inicializarToolbarFerramentas() {
         toolbar.appendChild(btn);
     });
 
+    
     const btnPesquisa = document.createElement('button');
     btnPesquisa.textContent = '🔍';
     btnPesquisa.addEventListener('click', realizarPesquisa);

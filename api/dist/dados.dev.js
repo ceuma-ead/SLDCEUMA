@@ -354,7 +354,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Apresenta\xE7\xE3o da Unidade -->\n\n                        <p>\n                            Ol\xE1, estudante! Bem-vindo \xE0 Unidade 1! \n                        </p>\n\n                        <p>\n                            Nesta unidade, voc\xEA aprender\xE1 os fundamentos essenciais da hematologia, com foco na interpreta\xE7\xE3o de altera\xE7\xF5es hematol\xF3gicas e compreens\xE3o da fisiologia das c\xE9lulas-tronco e da hemoglobina. Este conhecimento \xE9 valioso para a sua forma\xE7\xE3o como biom\xE9dico, permitindo que voc\xEA entenda e diagnostique diversas condi\xE7\xF5es hematol\xF3gicas, contribuindo significativamente para o campo da sa\xFAde. Ao final desta unidade, voc\xEA ter\xE1 desenvolvido compet\xEAncias fundamentais para a an\xE1lise laboratorial, pesquisa cient\xEDfica e pr\xE1tica cl\xEDnica.\n                            Os objetos de conhecimento que exploraremos incluem a composi\xE7\xE3o e fun\xE7\xF5es do sangue, os processos de eritropoiese e as metodologias para interpreta\xE7\xE3o de exames hematol\xF3gicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exerc\xEDcios e v\xEDdeos demonstrativos. Cada material foi selecionado para proporcionar uma compreens\xE3o profunda e aplicada dos conceitos abordados. \n                        </p>\n\n                       \n\n                    </div> \n                \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Apresenta\xE7\xE3o da Unidade -->\n\n                        <p>\n                            Ol\xE1, estudante! Bem-vindo \xE0 Unidade 1! \n                        </p>\n\n                        <p>\n                            Nesta unidade, voc\xEA aprender\xE1 os fundamentos essenciais da hematologia, com foco na interpreta\xE7\xE3o de altera\xE7\xF5es hematol\xF3gicas e compreens\xE3o da fisiologia das c\xE9lulas-tronco e da hemoglobina. Este conhecimento \xE9 valioso para a sua forma\xE7\xE3o como biom\xE9dico, permitindo que voc\xEA entenda e diagnostique diversas condi\xE7\xF5es hematol\xF3gicas, contribuindo significativamente para o campo da sa\xFAde. Ao final desta unidade, voc\xEA ter\xE1 desenvolvido compet\xEAncias fundamentais para a an\xE1lise laboratorial, pesquisa cient\xEDfica e pr\xE1tica cl\xEDnica.\n                            Os objetos de conhecimento que exploraremos incluem a composi\xE7\xE3o e fun\xE7\xF5es do sangue, os processos de eritropoiese e as metodologias para interpreta\xE7\xE3o de exames hematol\xF3gicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exerc\xEDcios e v\xEDdeos demonstrativos. Cada material foi selecionado para proporcionar uma compreens\xE3o profunda e aplicada dos conceitos abordados. \n                        </p>\n\n                       \n\n                    </div> \n                \n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
@@ -374,7 +374,7 @@ var api = [// PAGINA 1
       "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
       "attr_unitario": {
         "Olá, estudante! Bem-vindo à Unidade 1!": {
-          "attr": "font-weight=[999]"
+          "attr": "font-weight=[999], font-size=[20px],"
         }
       } // "fundo": "blue",
       // "corTexto": "black",
@@ -412,18 +412,18 @@ var api = [// PAGINA 1
       "tamanho": "10%"
     },
     // Animação para Texto API
-    // "animacao_texto": [{
-    //     "indice": "all", // 0 | all
+    "animacao_texto": [{
+      "indice": "all",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+    }] // Animação pra toda Página
+    // "animacao_elemento": [{
+    //     "elemento": ".animation", // 0 | all
     //     "script_animation": `
     //         animate__animated animate__fadeInDown animate__slow
     //     `
-    // }],
-    // Animação pra toda Página
-    "animacao_elemento": [{
-      "elemento": ".animation",
-      // 0 | all
-      "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
-    }]
+    // }]
+
   }
 }, // PAGINA 6
 {

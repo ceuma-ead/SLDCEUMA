@@ -1,8 +1,10 @@
+@import url(../css/toolbar.css);
 @import url(../css/texto.css);
 @import url(../css/menu_sidebar.css);
 @import url(../css/annotation.css);
 @import url(../css/capa.css);
 @import url(../css/spinner.css);
+
 
 /* ------ Animações ------ */
 @import url(../plugins/vizionnAnimation/attention.css);
