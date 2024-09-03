@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .accordion {
@@ -18,6 +19,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  height: max-content;
+  overflow: hidden;
 
 }
 
@@ -32,6 +35,7 @@
   background-color: #333;
   overflow: hidden;
   border-radius: 3px;
+
 
 }
 
@@ -49,7 +53,7 @@
   align-items: center;
   justify-content: center;
   color: black !important;
-  border-radius: 10rem;
+  border-radius: 0 1rem 0 1rem;
   -webkit-transform-origin: 0 0;
   -moz-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
@@ -60,6 +64,7 @@
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg) translate(-50%, -50%);
+
 
 }
 
@@ -72,17 +77,20 @@
 
 .accordion section:target {
   width: 30rem;
-  padding: 0 1rem;
+  overflow: hidden;
+  /* padding: 0 1rem; */
   color: #333;
-  background-color: #fff;
+  background-color: #ffffff;
   /* background-color: aqua; */
+  
 
 }
 
 .accordion section ul {
-  list-style-type:lower-alpha;
-    text-align: left;
-    font-size:11px ;
+  list-style-type: lower-alpha;
+  text-align: left;
+  font-size: 11.7px;
+  
 }
 
 .accordion section:target h2 {
@@ -95,6 +103,7 @@
   -ms-transform: rotate(0deg);
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
+  
 }
 
 .accordion section,
@@ -104,4 +113,5 @@
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
+  
 }

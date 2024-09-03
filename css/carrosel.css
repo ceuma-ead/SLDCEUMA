@@ -96,21 +96,24 @@
 }
 
 #dots {
-    position: relative;
-    width: auto;
-    bottom: 12%;
-    transform: translateY(-50%, -50%);
+    /* position: relative; */
+    position: absolute;
+    width: 100%;
+    /* bottom: 12%; */
+    top:93%;
+    transform: translateY(0%, 0%);
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--fundo-carrosel);
+    /* background-color: blueviolet; */
     /* background: var(--fundo-carrosel); */
     border: none;
     color: rgb(27, 27, 27);
     gap: 0.5rem;
     cursor: pointer;
     z-index: 1;
-    height: 4rem;
+    /* height: 4rem; */
     
 }
 
