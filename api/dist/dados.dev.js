@@ -23,6 +23,11 @@ var api = [// PAGINA 1
     "inserir_estilo_pagina": [{
       "url": ""
     }],
+    "inserir_escript_pagina": [{
+      "onde": "body",
+      "posicao": "beforeend",
+      "src": "./conf/js/pagina1.js"
+    }],
     "cores": {
       // "sidebar": "red",
       "fundo": ":#00000000",
@@ -57,13 +62,6 @@ var api = [// PAGINA 1
       "posicaoX": "left 0.5%",
       "tamanho": "10%"
     },
-    "script_simples": [{
-      "posicao": "body",
-      // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
-      // "attr":"defer" // pode ser defer ou async
-      // "insert":"beforebegin", // opcional onde ele vai inserir
-      "conteudo_script": "\n\n                    function iniciar(){\n                        glider.scrollItem(1);\n                    };   \n\n                "
-    }],
     "animacao_elemento": [{
       "elemento": ".animation",
       // 0 | all
@@ -287,7 +285,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n                        <p>\n                            Esta disciplina est\xE1 estruturada em 3 (tr\xEAs) unidades. Para que voc\xEA obtenha sucesso, aproveite todas as orienta\xE7\xF5es de estudo apresentadas neste material. Realize as leituras obrigat\xF3rias, pois nelas voc\xEA ter\xE1 acesso ao conhecimento necess\xE1rio para o curso e sua carreira e tamb\xE9m para a realiza\xE7\xE3o das atividades de estudo. \n                        </p>\n                        \n                       <div class=\"message-box message-box-warn\">\n                        <div class=\"message-box--divisor\">\n                            <i class=\"fa fa-warning fa-2x\"></i>\n                            <span class=\"message-text\"><strong>Lembrete:</strong> </span>\n                        </div>\n                        <span class=\"message-text\">Lembre-se de ler os materiais complementares, eles s\xE3o essenciais para o aprofundamento dos conte\xFAdos abordados ao longo da disciplina.</span>\n                        <!-- <i class=\"fa fa-times fa-2x exit-button \"></i> -->\n                        </div>\n\n                    </div> \n\n                   \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n                        <p>\n                            Esta disciplina est\xE1 estruturada em 3 (tr\xEAs) unidades. Para que voc\xEA obtenha sucesso, aproveite todas as orienta\xE7\xF5es de estudo apresentadas neste material. Realize as leituras obrigat\xF3rias, pois nelas voc\xEA ter\xE1 acesso ao conhecimento necess\xE1rio para o curso e sua carreira e tamb\xE9m para a realiza\xE7\xE3o das atividades de estudo. \n                        </p>\n                        \n                       <div class=\"message-box message-box-warn\">\n                        <div class=\"message-box--divisor\">\n                            <i class=\"fa fa-warning fa-2x warn\"></i>\n                            <span class=\"message-text\"><strong>Lembrete:</strong> </span>\n                        </div>\n                        <span class=\"message-text\">Lembre-se de ler os materiais complementares, eles s\xE3o essenciais para o aprofundamento dos conte\xFAdos abordados ao longo da disciplina.</span>\n                        <!-- <i class=\"fa fa-times fa-2x exit-button \"></i> -->\n                        </div>\n\n                    </div> \n\n                   \n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
@@ -343,6 +341,10 @@ var api = [// PAGINA 1
       "elemento": ".animation",
       // 0 | all
       "script_animation": "\n                    animate__animated animate__fadeInDown animate__slow\n                "
+    }, {
+      "elemento": ".warn",
+      // 0 | all
+      "script_animation": "\n                    animate__animated animate__flash animate__infinite animate__slow\n                "
     }]
   }
 }, // PAGINA 5
@@ -454,7 +456,7 @@ var api = [// PAGINA 1
       "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
       "attr_unitario": {
         "Olá, estudante! Bem-vindo à Unidade 1!": {
-          "attr": "font-weight=[999]"
+          "attr": "font-weight=[999], Font-size=[18px]"
         }
       } // "fundo": "blue",
       // "corTexto": "black",

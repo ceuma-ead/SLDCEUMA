@@ -87,6 +87,13 @@ gliderElement.addEventListener('glider-slide-hidden', function (event) {
 //Executar ao scrollar para um novo slide
 glider.scrollItem(savedPosition);
 
+
+//Controlador =================
+
+let filtroDuplicadoSumario = true
+
+//Controlador =================
+
 gliderElement.addEventListener('glider-slide-visible', function (event) {
     // hideLoading(); // Esconder o loading assim que o slide estiver visível
     showLoading()
@@ -103,7 +110,7 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     //Adcionar Marcadores ao Texto
     adcionarMarcadores(event.detail.slide);
     //Passa a Posição Atual da Pagina para o Menu
-    itemnsMenu('', event.detail.slide);
+    itemnsMenu('', event.detail.slide,filtroDuplicadoSumario);
     //Adcionar Fundo ao Slider Atual
     adicionarFundo(event.detail.slide);
     //Fazer a inserção de scripts na página
@@ -255,6 +262,8 @@ function reduzirTexto(texto, tamanhoMaximo) {
 }
 
 // // Função para renderizar o menu dinamicamente
+
+// Versão do Sumário 001 --------------------------
 // function itemnsMenu(filtro = '', slideIndex) {
 //     const renderMenuDiv = document.querySelector('.render-menu');
 //     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
@@ -333,56 +342,115 @@ function reduzirTexto(texto, tamanhoMaximo) {
 
 // Função para limitar o texto e adicionar "..."
 
-
-
 // Função para renderizar o menu dinamicamente
 
-function itemnsMenu(filtro = '', slideIndex) {
+// function itemnsMenu(filtro = '', slideIndex) {
+//     const renderMenuDiv = document.querySelector('.render-menu');
+//     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
+
+//     // Define o tamanho máximo do texto a ser exibido
+//     const tamanhoMaximoTexto = 25;
+
+//     // Verifica se algum item corresponde ao filtro
+//     let encontrouItem = false;
+//     let paginaEncontrada = null; // Armazena a página do item encontrado
+
+
+//     // Itera sobre a API e cria os elementos do menu
+//     api.forEach(item => {
+//         // Verifica se o item corresponde ao filtro de pesquisa
+//         if (
+//             filtro === '' ||
+//             item.nome_page.toLowerCase().includes(filtro.toLowerCase()) ||
+//             `#${item.pagina}` === filtro ||
+//             item.pagina.toString() === filtro
+//         ) {
+
+//             // console.log(item)
+//             encontrouItem = true; // Marca que pelo menos um item foi encontrado
+//             paginaEncontrada = item.pagina; // Armazena a página encontrada
+
+//             const textoReduzido = reduzirTexto(item.nome_page, tamanhoMaximoTexto);
+
+//             const menuItem = document.createElement('a');
+//             menuItem.innerHTML = `
+//                 <span title="${item.nome_page}">${textoReduzido}</span>
+//                 <span class="horizontal-menu-activer ${slideIndex + 1 === item.pagina ? "active-menu" : ""}"></span>
+//             `;
+
+
+//             // Evento de clique para ir para a página no slider
+//             menuItem.onclick = () => {
+//                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
+//             }
+
+//             // Adiciona o item ao container do menu
+//             renderMenuDiv.appendChild(menuItem);
+//         }
+//     });
+
+//     // Se nenhum item for encontrado, exibe uma mensagem de erro
+//     if (!encontrouItem) {
+//         const menuItemErro = document.createElement('div');
+//         menuItemErro.className = `erro-notfound-menu`;
+//         menuItemErro.innerHTML = `
+//             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+//             <p style="color:#000;">Erro: Nenhum item encontrado para "${filtro}"</p>
+//         `;
+//         renderMenuDiv.appendChild(menuItemErro);
+//     }
+
+//     return paginaEncontrada; // Retorna a página encontrada ou null se nada foi encontrado
+// }
+
+
+// Função para lidar com o evento de pesquisa
+
+function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
     const renderMenuDiv = document.querySelector('.render-menu');
     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
 
-    // Define o tamanho máximo do texto a ser exibido
     const tamanhoMaximoTexto = 25;
-
-    // Verifica se algum item corresponde ao filtro
     let encontrouItem = false;
-    let paginaEncontrada = null; // Armazena a página do item encontrado
+    let paginaEncontrada = null;
 
+    const titulosExibidos = new Set(); // Conjunto para armazenar títulos exibidos
 
-    // Itera sobre a API e cria os elementos do menu
     api.forEach(item => {
+        const titulo = item.nome_page;
+
         // Verifica se o item corresponde ao filtro de pesquisa
         if (
             filtro === '' ||
-            item.nome_page.toLowerCase().includes(filtro.toLowerCase()) ||
+            titulo.toLowerCase().includes(filtro.toLowerCase()) ||
             `#${item.pagina}` === filtro ||
             item.pagina.toString() === filtro
         ) {
+            // Se ocultarDuplicados estiver habilitado e o título já foi exibido, pula para o próximo item
+            if (ocultarDuplicados && titulosExibidos.has(titulo)) {
+                return;
+            }
 
-            // console.log(item)
-            encontrouItem = true; // Marca que pelo menos um item foi encontrado
-            paginaEncontrada = item.pagina; // Armazena a página encontrada
+            encontrouItem = true;
+            paginaEncontrada = item.pagina;
+            titulosExibidos.add(titulo); // Adiciona o título ao conjunto
 
-            const textoReduzido = reduzirTexto(item.nome_page, tamanhoMaximoTexto);
+            const textoReduzido = reduzirTexto(titulo, tamanhoMaximoTexto);
 
             const menuItem = document.createElement('a');
             menuItem.innerHTML = `
-                <span title="${item.nome_page}">${textoReduzido}</span>
+                <span title="${titulo}">${textoReduzido}</span>
                 <span class="horizontal-menu-activer ${slideIndex + 1 === item.pagina ? "active-menu" : ""}"></span>
             `;
 
-
-            // Evento de clique para ir para a página no slider
             menuItem.onclick = () => {
                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
             }
 
-            // Adiciona o item ao container do menu
             renderMenuDiv.appendChild(menuItem);
         }
     });
 
-    // Se nenhum item for encontrado, exibe uma mensagem de erro
     if (!encontrouItem) {
         const menuItemErro = document.createElement('div');
         menuItemErro.className = `erro-notfound-menu`;
@@ -393,23 +461,26 @@ function itemnsMenu(filtro = '', slideIndex) {
         renderMenuDiv.appendChild(menuItemErro);
     }
 
-    return paginaEncontrada; // Retorna a página encontrada ou null se nada foi encontrado
+    return paginaEncontrada;
 }
 
-// Função para lidar com o evento de pesquisa
+// itemnsMenu('', 1, true); // Oculta itens duplicados
+// itemnsMenu('', 1, false); // Exibe todos os itens, mesmo que duplicados
+
+
 function handleSearch() {
     const searchInput = document.querySelector('.searcListMateria input');
     searchInput.addEventListener('input', () => {
         const filtro = searchInput.value.trim();
         
-        itemnsMenu(filtro, savedPosition);
+        itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
     });
 
     // Quando clicado, ele vai para a página do item que ele encontrou...
     const butaoIr = document.querySelector('.searcListMateria span');
     butaoIr.onclick = () => {
         const filtro = searchInput.value.trim();
-        const irItem = itemnsMenu(filtro, savedPosition);
+        const irItem = itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
         // console.log(irItem); // Exibe no console o ID da página encontrada
         if (irItem !== null) {
             // Exemplo: Se quiser fazer algo com a página encontrada
@@ -1144,7 +1215,6 @@ function adcionarMarcadores(slideIndex) {
     }
 }
 
-
 // Atualiza as cores da página visível
 function atualizarCoresdaNavegacao(slideIndex) {
     const pageData = api[slideIndex];
@@ -1197,45 +1267,39 @@ function atualizarCoresdaNavegacao(slideIndex) {
 function injectScriptPage(slideIndex) {
     const pageData = api[slideIndex];
 
-    // Verifica se os scripts simples existem na estrutura de parâmetros
-    if (pageData && pageData.paramentros && pageData.paramentros.script_simples) {
-        const scripts = pageData.paramentros.script_simples;
+    // Verifica se existe a chave "inserir_escript_pagina" na estrutura de parâmetros
+    if (pageData && pageData.paramentros && pageData.paramentros.inserir_escript_pagina) {
+        const scripts = pageData.paramentros.inserir_escript_pagina;
 
         scripts.forEach(scriptItem => {
-            // Cria um elemento de script
-            const scriptElement = document.createElement('script');
+            // Verifica se o script já existe na página
+            const existingScript = document.querySelector(`script[src="${scriptItem.src}"]`);
+            if (!existingScript) {
+                // Cria um elemento de script
+                const scriptElement = document.createElement('script');
+                scriptElement.src = scriptItem.src;
 
-            // Verifica a posição do script (head, body, etc.)
-            let parentElement;
-            switch (scriptItem.posicao) {
-                case 'head':
-                    parentElement = document.head;
-                    break;
-                case 'body':
-                    parentElement = document.body;
-                    break;
-                case 'footer':
-                    parentElement = document.querySelector('footer');
-                    break;
-                default:
-                    parentElement = document.body;
+                // Verifica a posição do script (head, body, etc.)
+                let parentElement;
+                switch (scriptItem.onde) {
+                    case 'head':
+                        parentElement = document.head;
+                        break;
+                    case 'body':
+                        parentElement = document.body;
+                        break;
+                    case 'footer':
+                        parentElement = document.querySelector('footer');
+                        break;
+                    default:
+                        parentElement = document.body;
+                }
+
+                // Insere o script na posição especificada dentro do elemento pai
+                const insertPosition = scriptItem.posicao || 'beforeend';
+                parentElement.insertAdjacentElement(insertPosition, scriptElement);
             }
-
-            // Adiciona atributos como defer ou async, se especificados
-            if (scriptItem.attr) {
-                scriptElement.setAttribute(scriptItem.attr, '');
-            }
-
-            // Define o conteúdo do script
-            scriptElement.innerHTML = scriptItem.conteudo_script;
-
-            // Verifica onde inserir o script dentro do elemento pai
-            const insertPosition = scriptItem.insert || 'beforeend';
-
-            // Insere o script no elemento apropriado na posição especificada
-            parentElement.insertAdjacentElement(insertPosition, scriptElement);
         });
-
     } else {
         // Atualiza o controle do glider caso não haja scripts
         glider.refresh(true);
@@ -1324,7 +1388,7 @@ AnimationVariablesUpPage(savedPosition);
 AnimatedElementos(savedPosition)
 injectEstiloRender(savedPosition)
 // Rederizar Menu
-const irItem = itemnsMenu('', savedPosition);
+const irItem = itemnsMenu('', savedPosition,filtroDuplicadoSumario);
 // console.log(irItem)
 // Pesquisar Item Menu
 handleSearch();

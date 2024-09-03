@@ -154,6 +154,8 @@
   /* display: block; */
   width: auto;
   height: 100%;
+  /* padding: 1rem; */
+  /* background-color: aqua; */
   /* margin: 1em 0 0.5em 0.5em; */
   color: #333;
   /* background-color: #333; */
@@ -394,4 +396,65 @@
 
 }
 
-@media screen and (max-width: 320px) {}
+@media screen and (max-width: 320px) {
+  .accordion {
+    flex-direction: column;
+    /* background-color: aqua; */
+
+  }
+
+  .accordion section h2 {
+    position: absolute;
+    border-radius: 0 1rem 0 1rem;
+    top: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    background-color: var(--cardColor);
+    
+
+
+  }
+
+  .align-accordion {
+    overflow-y: scroll;
+    height: 100%;
+    display: flex;
+    /* background-color: red; */
+    overflow: hidden;
+    
+  }
+
+
+  .accordion section .box {
+    position: relative;
+    width: 100%;
+    height: 0rem;
+    /* background-color: aqua; */
+    overflow: hidden;
+    margin-top: 2rem;
+
+  }
+
+  .accordion section:target .box {
+    width: 100%;
+    height: 15rem;
+    overflow: hidden;
+    overflow: scroll;
+    /* padding: 0 1rem; */
+    color: #333;
+    /* background-color: #b63030; */
+
+  }
+
+  #acc1,#acc2,#acc3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+
+}

@@ -41,6 +41,11 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":""
             }],
+            "inserir_escript_pagina": [{
+                "onde":"body",
+                "posicao":"beforeend",
+                "src":"./conf/js/pagina1.js"
+            }],
             "cores": {
                 // "sidebar": "red",
                 "fundo": ":#00000000",
@@ -77,18 +82,6 @@ const api = [
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
             },
-            "script_simples": [{
-                "posicao": "body", // Aqui pode ficar no header ou body ou footer ou qualquer outro elemento
-                // "attr":"defer" // pode ser defer ou async
-                // "insert":"beforebegin", // opcional onde ele vai inserir
-                "conteudo_script": `
-
-                    function iniciar(){
-                        glider.scrollItem(1);
-                    };   
-
-                `
-            }],
             "animacao_elemento": [{
                 "elemento": ".animation", // 0 | all
                 "script_animation": `
