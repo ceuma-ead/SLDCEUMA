@@ -68,130 +68,58 @@ const glider = new Glider(gliderElement, {
 const savedPosition = getSavedSliderPosition();
 const loadingSpinner = document.getElementById('loading-spinner');
 
-// const maxTempo = 700
-
-// function showLoading(time) {
-//     loadingSpinner.style.display = 'flex';
-//     // Garantir que o loading desapareça após 3 segundos (ou ajuste conforme necessário)
-//     setTimeout(hideLoading, time);
-// }
-
-// function hideLoading() {
-//     loadingSpinner.style.display = 'none';
-// }
-
-// // Mostrar o loading antes de iniciar a mudança de slide
-// // gliderElement.addEventListener('glider-slide-hidden', function () {
-// //     showLoading(maxTempo);
-// // });
-
-// //Executar ao scrollar para um novo slide
-// glider.scrollItem(savedPosition);
-
-// gliderElement.addEventListener("glider-loaded",function(event){
-//     showLoading(maxTempo);
-// })
-
-// gliderElement.addEventListener('glider-slide-visible', function (event) {
-//     hideLoading(); // Esconder o loading assim que o slide estiver visível
-
-//     saveSliderPosition(event.detail.slide);
-//     //Atualizar titulo da Página
-//     updatePageTitle(event.detail.slide);
-//     //Atualizar Cores da Página
-//     atualizarCoresdaNavegacao(event.detail.slide);
-//     //Adicionar Logo a Página
-//     adicionarLogo(event.detail.slide);
-//     //Modificar fontes da Página
-//     modificarFontes(event.detail.slide);
-//     //Adcionar Marcadores ao Texto
-//     adcionarMarcadores(event.detail.slide);
-//     //Passa a Posição Atual da Pagina para o Menu
-//     itemnsMenu('', event.detail.slide);
-//     //Adcionar Fundo ao Slider Atual
-//     adicionarFundo(event.detail.slide);
-//     //Fazer a inserção de scripts na página
-//     injectScriptPage(event.detail.slide);
-//     //Fazer a inserção de animação para Paragrafos na Página
-//     AnimatedParagrafos(event.detail.slide);
-//     //Fazer a inserção e Atualizaçaões de Animações na Página
-//     AnimationVariablesUpPage(event.detail.slide);
-//     //Fazer a inserção de Responsividade em uma Página ou Varias
-//     responsivePage(event.detail.slide);
-//     //Fazer animação no Elemento da Página
-//     AnimatedElementos(event.detail.slide)
-//     // Função para inserir a URL ná página
-//     injectEstiloRender(event.detail.slide)
-//     console.log("Está na Página 🎉 => " + event.detail.slide);
-// });
-
-
-// Função para mostrar o spinner de loading
-function showLoading() {
+function showLoading(time) {
     loadingSpinner.style.display = 'flex';
+    // Garantir que o loading desapareça após 3 segundos (ou ajuste conforme necessário)
+    setTimeout(hideLoading, time);
 }
 
-// Função para esconder o spinner de loading
 function hideLoading() {
     loadingSpinner.style.display = 'none';
 }
 
-// Função para aplicar o loading com tempo antes de atualizar o conteúdo
-function aplicarLoadingComTempo(gliderElement, api) {
+// Mostrar o loading antes de iniciar a mudança de slide
+gliderElement.addEventListener('glider-slide-hidden', function (event) {
+    showLoading(event.timeStamp);
+    // console.log()
+});
 
-    // Evento do slider para verificar a página visível e aplicar o loading
-    gliderElement.addEventListener('glider-slide-visible', function (event) {
-        // Número da página atual (começa em 0)
-        const esta_na_pagina = event.detail.slide;
-
-        // Mostrar o spinner de loading imediatamente
-        showLoading();
-
-        // Definir um pequeno delay para garantir que o spinner seja visível
-        setTimeout(() => {
-            // Array de páginas da API
-            const paginas = api;
-
-            paginas.forEach((pagina, index) => {
-                if (esta_na_pagina === index) {
-                    // Esconder o loading após um tempo proporcional ao índice da página
-                    setTimeout(hideLoading, 700 * (index + 1));
-                }
-            });
-        }, 100); // Delay de 100ms para garantir a visibilidade do spinner
-    });
-}
-
-// Aplicar o loading ao componente
-aplicarLoadingComTempo(gliderElement, api);
-
-// Executar ao scrollar para um novo slide
+//Executar ao scrollar para um novo slide
 glider.scrollItem(savedPosition);
 
 gliderElement.addEventListener('glider-slide-visible', function (event) {
-
+    // hideLoading(); // Esconder o loading assim que o slide estiver visível
+    showLoading()
+    
     saveSliderPosition(event.detail.slide);
-
-
-    // Atualizar o conteúdo da página
+    //Atualizar titulo da Página
     updatePageTitle(event.detail.slide);
+    //Atualizar Cores da Página
     atualizarCoresdaNavegacao(event.detail.slide);
+    //Adicionar Logo a Página
     adicionarLogo(event.detail.slide);
+    //Modificar fontes da Página
     modificarFontes(event.detail.slide);
+    //Adcionar Marcadores ao Texto
     adcionarMarcadores(event.detail.slide);
+    //Passa a Posição Atual da Pagina para o Menu
     itemnsMenu('', event.detail.slide);
+    //Adcionar Fundo ao Slider Atual
     adicionarFundo(event.detail.slide);
+    //Fazer a inserção de scripts na página
     injectScriptPage(event.detail.slide);
+    //Fazer a inserção de animação para Paragrafos na Página
     AnimatedParagrafos(event.detail.slide);
+    //Fazer a inserção e Atualizaçaões de Animações na Página
     AnimationVariablesUpPage(event.detail.slide);
+    //Fazer a inserção de Responsividade em uma Página ou Varias
     responsivePage(event.detail.slide);
-    AnimatedElementos(event.detail.slide);
-    injectEstiloRender(event.detail.slide);
-
+    //Fazer animação no Elemento da Página
+    AnimatedElementos(event.detail.slide)
+    // Função para inserir a URL ná página
+    injectEstiloRender(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
-
 });
-
 
 // Função para atualizar o título da página ao carregar
 function updatePageTitle(slideIndex) {
@@ -317,7 +245,16 @@ function adicionarLogo(slideIndex) {
     }
 }
 
-// Função para renderizar o menu dinamicamente
+// Função para limitar o texto e adicionar "..."
+function reduzirTexto(texto, tamanhoMaximo) {
+    if (texto.length > tamanhoMaximo) {
+        return texto.substring(0, tamanhoMaximo) + '...';
+    } else {
+        return texto;
+    }
+}
+
+// // Função para renderizar o menu dinamicamente
 // function itemnsMenu(filtro = '', slideIndex) {
 //     const renderMenuDiv = document.querySelector('.render-menu');
 //     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
@@ -396,15 +333,10 @@ function adicionarLogo(slideIndex) {
 
 // Função para limitar o texto e adicionar "..."
 
-function reduzirTexto(texto, tamanhoMaximo) {
-    if (texto.length > tamanhoMaximo) {
-        return texto.substring(0, tamanhoMaximo) + '...';
-    } else {
-        return texto;
-    }
-}
+
 
 // Função para renderizar o menu dinamicamente
+
 function itemnsMenu(filtro = '', slideIndex) {
     const renderMenuDiv = document.querySelector('.render-menu');
     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
@@ -442,7 +374,6 @@ function itemnsMenu(filtro = '', slideIndex) {
 
             // Evento de clique para ir para a página no slider
             menuItem.onclick = () => {
-                showLoading()
                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
             }
 
@@ -469,8 +400,8 @@ function itemnsMenu(filtro = '', slideIndex) {
 function handleSearch() {
     const searchInput = document.querySelector('.searcListMateria input');
     searchInput.addEventListener('input', () => {
-        showLoading()
         const filtro = searchInput.value.trim();
+        
         itemnsMenu(filtro, savedPosition);
     });
 
@@ -481,7 +412,6 @@ function handleSearch() {
         const irItem = itemnsMenu(filtro, savedPosition);
         // console.log(irItem); // Exibe no console o ID da página encontrada
         if (irItem !== null) {
-            showLoading()
             // Exemplo: Se quiser fazer algo com a página encontrada
             glider.scrollItem(irItem); // Vai para a página encontrada
         }
@@ -1078,7 +1008,7 @@ ${procurarParagrafo.onde_procurar ? `Você precisa ativar primeiro o suporte em:
 //                 console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
 //             }
 //         });
-
+    
 //     }
 
 // }
@@ -1088,7 +1018,7 @@ function adcionarMarcadores(slideIndex) {
 
     if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
         const slider_containers = document.querySelectorAll(pageData.paramentros.configuracoes_gerais._procurar_paragrafos.onde_procurar);
-
+        
         if (slider_containers.length === 0) {
             console.warn('Nenhum container encontrado para aplicar o marcador.');
             return;
@@ -1213,6 +1143,7 @@ function adcionarMarcadores(slideIndex) {
         });
     }
 }
+
 
 // Atualiza as cores da página visível
 function atualizarCoresdaNavegacao(slideIndex) {
