@@ -711,38 +711,43 @@ const api = [
                        <!-- Apresentação da Unidade -->
        
                         <article class="accordion">
-                            <section id="acc1" style="--cardColor:#fc374e">
+                            <section id="acc1" style="--cardColor:#fc374e;--font-color:#fff;">
                                 <h2><a href="#acc1">Competências a serem desenvolvidas</a></h2>
                    
-                                 <ul>
-                                    <li>Capacidade de identificar e interpretar alterações hematológicas.</li>
-                                    <li>Habilidade em realizar e interpretar exames hematológicos</li>
-                                    <li>Conhecimento profundo sobre a fisiologia das células-tronco e a estrutura da hemoglobina. </li>
-                                </ul>
+                                <div class="box">
+                                
+                                    <ul>
+                                        <li>Capacidade de identificar e interpretar alterações hematológicas.</li>
+                                        <li>Habilidade em realizar e interpretar exames hematológicos</li>
+                                        <li>Conhecimento profundo sobre a fisiologia das células-tronco e a estrutura da hemoglobina. </li>
+                                    </ul>
+                                </div>
                             </section>
-                            <section id="acc2" style="--cardColor:#36aeb3" >
+                            <section id="acc2" style="--cardColor:#36aeb3;--font-color:#fff;" >
                                 <h2><a href="#acc2">Objetos de conhecimento</a></h2>
-                 
-                                 <ul>
-                                    <li><strong>Composição e funções do sangue:</strong> Entendimento dos componentes sanguíneos e suas funções vitais. </li>
-                                    <li><strong>Eritropoese</strong>: A formação da hemácia</li>
-                                    <li><strong>Interpretação de alterações hematológicas</strong>: Técnicas para análise de hemogramas</li>
-                                    <li><strong>Fisiologia das células-tronco</strong>: Estudo das propriedades das células-tronco e seu papel</li>
-                                    <li><strong>Estrutura e função da hemoglobina</strong>: Análise da molécula de hemoglobina e seu papel no transporte de oxigênio. </li>
-                                    <li><strong>Eritrograma</strong>: Procedimentos para realização e interpretação deste exame crucial.</li>
-                                </ul>
+                                <div class="box">
+                                    <ul>
+                                        <li><strong>Composição e funções do sangue:</strong> Entendimento dos componentes sanguíneos e suas funções vitais. </li>
+                                        <li><strong>Eritropoese</strong>: A formação da hemácia</li>
+                                        <li><strong>Interpretação de alterações hematológicas</strong>: Técnicas para análise de hemogramas</li>
+                                        <li><strong>Fisiologia das células-tronco</strong>: Estudo das propriedades das células-tronco e seu papel</li>
+                                        <li><strong>Estrutura e função da hemoglobina</strong>: Análise da molécula de hemoglobina e seu papel no transporte de oxigênio. </li>
+                                        <li><strong>Eritrograma</strong>: Procedimentos para realização e interpretação deste exame crucial.</li>
+                                    </ul>
+                                </div>
                             </section>
-                            <section id="acc3" style="--cardColor:#f15f0e" >
+                            <section id="acc3" style="--cardColor:#f15f0e;--font-color:#fff;" >
                                 <h2><a href="#acc3">Materiais Disponibilizados para Estudo</a></h2>
-                 
-                                <ul>
-                                    <li><strong>Composição do sangue:</strong> Detalhamento dos componentes do sangue e suas funções. </li>
-                                    <li><strong>Fisiologia das células-tronco</strong>: Explicação sobre a origem, propriedades e funções das células-tronco.</li>
-                                    <li><strong>Estrutura da hemoglobina</strong>: Descrição da estrutura molecular da hemoglobina e suas funções.</li>
-                                    <li><strong>Exercícios práticos</strong>: Atividades e questões de estudo que permitem ao estudante aplicar os conhecimentos adquiridos e testar sua compreensão.</li>
-                                    <li><strong>Vídeos educativos</strong>: Vídeos que demonstram técnicas de coleta de amostras, manejo de materiais inerentes à hematologia clínica e aparelhos para auxiliar na compreensão. </li>
-                                    <li><strong>Coleta de amostras sanguíneas</strong>: Demonstração das melhores dicas para coleta de sangue.</li>
-                                </ul>
+                                <div class="box">
+                                    <ul>
+                                        <li><strong>Composição do sangue:</strong> Detalhamento dos componentes do sangue e suas funções. </li>
+                                        <li><strong>Fisiologia das células-tronco</strong>: Explicação sobre a origem, propriedades e funções das células-tronco.</li>
+                                        <li><strong>Estrutura da hemoglobina</strong>: Descrição da estrutura molecular da hemoglobina e suas funções.</li>
+                                        <li><strong>Exercícios práticos</strong>: Atividades e questões de estudo que permitem ao estudante aplicar os conhecimentos adquiridos e testar sua compreensão.</li>
+                                        <li><strong>Vídeos educativos</strong>: Vídeos que demonstram técnicas de coleta de amostras, manejo de materiais inerentes à hematologia clínica e aparelhos para auxiliar na compreensão. </li>
+                                        <li><strong>Coleta de amostras sanguíneas</strong>: Demonstração das melhores dicas para coleta de sangue.</li>
+                                    </ul>
+                                </div>
                             </section>
                             
                          
