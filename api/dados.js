@@ -607,10 +607,8 @@ const api = [
                             Os objetos de conhecimento que exploraremos incluem a composição e funções do sangue, os processos de eritropoiese e as metodologias para interpretação de exames hematológicos. Os materiais disponibilizados para esta unidade incluem textos explicativos, exercícios e vídeos demonstrativos. Cada material foi selecionado para proporcionar uma compreensão profunda e aplicada dos conceitos abordados. 
                         </p>
 
-                       
-
                     </div> 
-                
+
                  </div>
             `,
         },
@@ -626,7 +624,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":""
+                "url":"./conf/css/pagina5.css"
             }],
             "marcador": [{
                 "tipo": "p",
@@ -712,62 +710,25 @@ const api = [
                 
                        <!-- Apresentação da Unidade -->
        
-                         <div class="accordion accordion-flush" id="accordionApresentacao">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Competências a serem desenvolvidas
-                                </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionApresentacao">
-                                    <div class="accordion-body"> 
-                                        <ul>
-                                            <li>Capacidade de identificar e interpretar alterações hematológicas.</li>
-                                            <li>Habilidade em realizar e interpretar exames hematológicos</li>
-                                            <li>Conhecimento profundo sobre a fisiologia das células-tronco e a estrutura da hemoglobina. </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    Objetos de conhecimento
-                                </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionApresentacao">
-                                    <div class="accordion-body">
-                                        <ul>
-                                                <li><strong>Composição e funções do sangue:</strong> Entendimento dos componentes sanguíneos e suas funções vitais. </li>
-                                                <li><strong>Eritropoese</strong>: A formação da hemácia</li>
-                                                <li><strong>Interpretação de alterações hematológicas</strong>: Técnicas para análise de hemogramas</li>
-                                                <li><strong>Fisiologia das células-tronco</strong>: Estudo das propriedades das células-tronco e seu papel</li>
-                                                <li><strong>Estrutura e função da hemoglobina</strong>: Análise da molécula de hemoglobina e seu papel no transporte de oxigênio. </li>
-                                                <li><strong>Eritrograma</strong>: Procedimentos para realização e interpretação deste exame crucial.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                        Materiais Disponibilizados para Estudo
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionApresentacao">
-                                    <div class="accordion-body">
-                                         <ul>
-                                                <li><strong>Composição do sangue:</strong> Detalhamento dos componentes do sangue e suas funções. </li>
-                                                <li><strong>Fisiologia das células-tronco</strong>: Explicação sobre a origem, propriedades e funções das células-tronco.</li>
-                                                <li><strong>Estrutura da hemoglobina</strong>: Descrição da estrutura molecular da hemoglobina e suas funções.</li>
-                                                <li><strong>Exercícios práticos</strong>: Atividades e questões de estudo que permitem ao estudante aplicar os conhecimentos adquiridos e testar sua compreensão.</li>
-                                                <li><strong>Vídeos educativos</strong>: Vídeos que demonstram técnicas de coleta de amostras, manejo de materiais inerentes à hematologia clínica e aparelhos para auxiliar na compreensão. </li>
-                                                <li><strong>Coleta de amostras sanguíneas</strong>: Demonstração das melhores dicas para coleta de sangue.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <article class="accordion">
+                            <section id="acc1">
+                                <h2><a href="#acc1">Title One</a></h2>
+                                <p>This content appears on page 1.</p>
+                            </section>
+                            <section id="acc2">
+                                <h2><a href="#acc2">Title Two</a></h2>
+                                <p>This content appears on page 2.</p>
+                            </section>
+                            <section id="acc3">
+                                <h2><a href="#acc3">Title Three</a></h2>
+                                <p>This content appears on page 3.</p>
+                            </section>
+                            <section id="acc4">
+                                <h2><a href="#acc4">Title Four</a></h2>
+                                <p>This content appears on page 4.</p>
+                            </section>
+                         
+                        </article>
                         
                        
                     </div> 
