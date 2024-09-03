@@ -504,7 +504,7 @@ const api = [
                         
                        <div class="message-box message-box-warn">
                         <div class="message-box--divisor">
-                            <i class="fa fa-warning fa-2x"></i>
+                            <i class="fa fa-warning fa-2x warn"></i>
                             <span class="message-text"><strong>Lembrete:</strong> </span>
                         </div>
                         <span class="message-text">Lembre-se de ler os materiais complementares, eles são essenciais para o aprofundamento dos conteúdos abordados ao longo da disciplina.</span>
@@ -578,7 +578,18 @@ const api = [
                 "script_animation": `
                     animate__animated animate__fadeInDown animate__slow
                 `
-            }]
+            },
+        
+            {
+                "elemento": ".warn", // 0 | all
+                "script_animation": `
+                    animate__animated animate__flash animate__infinite animate__slow
+                `
+            }
+        
+        
+        
+        ]
 
         }
     },
@@ -779,7 +790,7 @@ const api = [
                 "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
                 "attr_unitario": {
                     "Olá, estudante! Bem-vindo à Unidade 1!": {
-                        "attr": "font-weight=[999]",
+                        "attr": "font-weight=[999], Font-size=[18px]",
 
                     },
                     
