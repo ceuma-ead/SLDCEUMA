@@ -711,7 +711,7 @@ const api = [
                        <!-- Apresentação da Unidade -->
        
                         <article class="accordion">
-                            <section id="acc1">
+                            <section id="acc1" style="--cardColor:#fc374e">
                                 <h2><a href="#acc1">Competências a serem desenvolvidas</a></h2>
                    
                                  <ul>
@@ -720,7 +720,7 @@ const api = [
                                     <li>Conhecimento profundo sobre a fisiologia das células-tronco e a estrutura da hemoglobina. </li>
                                 </ul>
                             </section>
-                            <section id="acc2">
+                            <section id="acc2" style="--cardColor:#36aeb3" >
                                 <h2><a href="#acc2">Objetos de conhecimento</a></h2>
                  
                                  <ul>
@@ -732,7 +732,7 @@ const api = [
                                     <li><strong>Eritrograma</strong>: Procedimentos para realização e interpretação deste exame crucial.</li>
                                 </ul>
                             </section>
-                            <section id="acc3">
+                            <section id="acc3" style="--cardColor:#f15f0e" >
                                 <h2><a href="#acc3">Materiais Disponibilizados para Estudo</a></h2>
                  
                                 <ul>

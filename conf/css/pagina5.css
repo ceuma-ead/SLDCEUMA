@@ -37,6 +37,8 @@
   border-radius: 3px;
 
 
+
+
 }
 
 .accordion section h2 {
@@ -48,7 +50,8 @@
   text-align: center;
   z-index: 2;
   font-size: var(--font-para-paragrafos);
-  background-color: #969696;
+  padding: 1rem;
+  /* background-color: #969696; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +67,7 @@
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg) translate(-50%, -50%);
-
+  background-color: var(--cardColor);
 
 }
 
