@@ -103,8 +103,8 @@
 @media screen and (max-width: 600px) {
     .pagina-tipo-texto--box-texto{
         overflow-y: scroll;
-        padding-right: 1rem;
-        padding-bottom: 2.5rem;
+        padding-right: 0.2rem;
+        padding-left: 0.5rem;
     }
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
         
@@ -119,7 +119,8 @@
 @media screen and (max-width: 480px) {
     .pagina-tipo-texto--box-texto{
         overflow-y: scroll;
-        padding-right: 1rem;
+        padding-right: 0.2rem;
+        padding-left: 0.5rem;
         padding-bottom: 4rem;
     }
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
@@ -137,8 +138,8 @@
 @media screen and (max-width: 375px) {
     .pagina-tipo-texto--box-texto{
         overflow-y: scroll;
-        padding-right: 1rem;
-        padding-bottom: 2.5rem;
+        padding-right: 0.2rem;
+        padding-left: 0.5rem;
     }
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
         

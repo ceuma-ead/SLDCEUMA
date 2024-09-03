@@ -128,6 +128,7 @@ const responsivo = [
                 font-size: 18px;
             }
 
+            
     `,
 
 
@@ -178,6 +179,30 @@ const responsivo = [
                 text-align: justify !important;
                 }
 
+                #accordionApresentacao {
+            display: block !important;
+            }
+
+            .accordion-flush .accordion-item {
+            margin-top: 0.5rem !important;
+            }
+
+            .marca-da-agua {
+            display:none !important;
+
+            }
+
+            .glider-prev {
+                left: 0px !important;
+            }
+
+            .glider-next {
+                right: 0px !important;
+            }
+
+            .pagina-tipo-texto--box-texto p {
+                 font-size: 1rem !important;
+    }
 
     `,
 
@@ -203,7 +228,102 @@ const responsivo = [
             //      `
             // }
         ]
-    }
+    },
+    {   
+        //Onde o Estilo tem que aparecer 
+            "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
+        //Que tipo de quebra Tem que Fazer
+            "media" : "(max-width: 980px)", // Apenas a condição dentro dos parênteses
+        //Estilos que podem vir adicionais
+            "synchronous" : `
+                    .message-box {
+                    display: block !important;
+                    }
+    
+                    .olcards--divisor {
+                    display: contents !important;
+                    }
+    
+                    .olcards {
+                    align-items: flex-start !important;
+                    }
+    
+                    .olcards li .content {
+                    text-align: justify !important;
+                    }
+    
+                    #accordionApresentacao {
+                display: block !important;
+                }
+    
+                .accordion-flush .accordion-item {
+                margin-top: 0.5rem !important;
+                }
+    
+                .marca-da-agua {
+                display:none !important;
+                }
+    
+                .glider-prev {
+                    left: 0px !important;
+                }
+    
+                .glider-next {
+                    right: 0px !important;
+                }
+    
+                #accordionApresentacao {
+                display: block !important;
+                font-size: 1.5rem !important;
+                }
+
+                .accordion-flush .accordion-item {
+                margin-top: 0.5rem !important;
+                }
+
+                .pagina-tipo-texto--box-texto p {
+                 font-size: 1.5rem !important;
+                 }
+
+                .olcards li .content .text {
+                    font-size: 1.5rem !important;
+                    text-align: left !important;
+                    
+                }
+
+                    .message-text {
+                        font-size: 1.5rem !important;
+                    }
+
+
+                    .accordion-button {
+                    font-size: 1.5rem !important;
+                    }
+        `,
+    
+            // Atualização Forçada onde ele está aparecendo
+            "variantes":`
+                --tamanho-de-font-para-paragrafo-sidebar=[1rem];
+                --tamanho-dos-icones-siderbar=[2rem];
+                --tamanho-x-y-imagem=[7%];
+                --width=[40px];
+               --height=[40px];
+            //    --tamanho-do-texto-do-paragrafo-header=[1.2rem];
+                // --font-para-paragrafos=[1rem]
+            `,
+            "atualizacaoBrutaElementos":[
+                // Exemplos de atualizações brutas de elementos
+                // {
+                //     "Elemento":"p",
+                //     "Ranger":[...10] // ranger 1 a 10 Ex: [1,2,3,4] ou [...10] ou all
+                //      "scriptAtualizacao":`
+                //          [document.querySelectorAll(p)] => var[p] {
+                //              p.fontSize = 2rem;
+                //          }
+                //      `
+                // }
+            ]
+        }
 ];
 
 
