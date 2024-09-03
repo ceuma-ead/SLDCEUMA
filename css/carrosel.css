@@ -99,7 +99,7 @@
     position: relative;
     width: auto;
     bottom: 12%;
-        transform: translateY(-50%, -50%);
+    transform: translateY(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;

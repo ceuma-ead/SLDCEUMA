@@ -20,6 +20,8 @@
     margin:0;
     padding:0;
     box-sizing: border-box !important;
+    font-family: var(--font-para-paragrafos);
+
 }
 /* 
 html{
