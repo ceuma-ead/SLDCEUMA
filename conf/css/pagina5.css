@@ -47,7 +47,7 @@
   top: 50%;
   text-align: center;
   z-index: 2;
-  font-size: 1rem;
+  font-size: var(--font-para-paragrafos);
   background-color: #969696;
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@
 .accordion section ul {
   list-style-type: lower-alpha;
   text-align: left;
-  font-size: 11.7px;
+  font-size: calc(var(--font-para-paragrafos) - 4px);
   
 }
 
