@@ -90,7 +90,7 @@ var api = [// PAGINA 1
   },
   "paramentros": {
     "inserir_estilo_pagina": [{
-      "url": "./_css/pagina2.css"
+      "url": "./conf/css/pagina2.css"
     }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",
@@ -200,7 +200,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                       <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA: </p>\n                    \n                       <!-- Lista -->\n\n                       <div class=\"olcards--divisor\">\n\n                            <ol class=\"olcards\">\n                                <li style=\"--cardColor:#fc374e\" class=\"box1\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n\n                                        <div class=\"text\">Saiba identificar e interpretar as altera\xE7\xF5es hematol\xF3gicas, entendendo suas causas e efeitos</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#36aeb3\"  class=\"box2\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n                    \n                                        <div class=\"text\">Compreenda a fisiologia e a fisiopatogenia das c\xE9lulas-tronco, a eritropoese e a estrutura da hemoglobina</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#162d59\"  class=\"box3\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n             \n                                        <div class=\"text\">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</div>\n                                    </div>\n                                </li>\n                                \n                                \n                            </ol>\n                       \n                             <ol class=\"olcards\">\n                             <li style=\"--cardColor:#f15f0e\" class=\"box4\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n\n                                        <div class=\"text\">Saiba avaliar e otimizar o controle de qualidade nas etapas pr\xE9-anal\xEDtica, anal\xEDtica e p\xF3s-anal\xEDtica, com \xEAnfase na automa\xE7\xE3o em hematologia.</div>\n                                    </div>\n                                </li>\n\n                                <li style=\"--cardColor:#fc374e\" class=\"box5\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n     \n                                        <div class=\"text\">Entenda a hist\xF3ria da hemoterapia, as normas t\xE9cnicas, a legisla\xE7\xE3o vigente e as pr\xE1ticas de banco de sangue, al\xE9m de dominar os testes pr\xE9-transfusionais e gerenciar rea\xE7\xF5es transfusionais</div>\n                                    </div>\n                                </li>\n                                \n                            </ol>\n\n                       </div>\n                        <p>\n                                    Esta disciplina est\xE1 estruturada em 3 (tr\xEAs) unidades. Para que voc\xEA obtenha sucesso, aproveite todas as orienta\xE7\xF5es de estudo apresentadas neste material. Realize as leituras obrigat\xF3rias, pois nelas voc\xEA ter\xE1 acesso ao conhecimento necess\xE1rio para o curso e sua carreira e tamb\xE9m para a realiza\xE7\xE3o das atividades de estudo\n                                </p>\n                    </div> \n\n                   \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                       <p>Com base nos perfis e recursos de compet\xEAncias da disciplina, \xE9 esperado que, ao final da disciplina, voc\xEA: </p>\n                    \n                       <!-- Lista -->\n\n                       <div class=\"olcards--divisor\">\n\n                            <ol class=\"olcards\">\n                                <li style=\"--cardColor:#fc374e\" class=\"box1\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n\n                                        <div class=\"text\">Saiba identificar e interpretar as altera\xE7\xF5es hematol\xF3gicas, entendendo suas causas e efeitos</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#36aeb3\"  class=\"box2\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n                    \n                                        <div class=\"text\">Compreenda a fisiologia e a fisiopatogenia das c\xE9lulas-tronco, a eritropoese e a estrutura da hemoglobina</div>\n                                    </div>\n                                </li>\n                                <li style=\"--cardColor:#162d59\"  class=\"box3\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n             \n                                        <div class=\"text\">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</div>\n                                    </div>\n                                </li>\n                                \n                                \n                            </ol>\n                       \n                             <ol class=\"olcards\">\n                             <li style=\"--cardColor:#f15f0e\" class=\"box4\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n\n                                        <div class=\"text\">Saiba avaliar e otimizar o controle de qualidade nas etapas pr\xE9-anal\xEDtica, anal\xEDtica e p\xF3s-anal\xEDtica, com \xEAnfase na automa\xE7\xE3o em hematologia.</div>\n                                    </div>\n                                </li>\n\n                                <li style=\"--cardColor:#fc374e\" class=\"box5\">\n                                    <div class=\"content\">\n                                        <div class=\"icon\"></div>\n     \n                                        <div class=\"text\">Entenda a hist\xF3ria da hemoterapia, as normas t\xE9cnicas, a legisla\xE7\xE3o vigente e as pr\xE1ticas de banco de sangue, al\xE9m de dominar os testes pr\xE9-transfusionais e gerenciar rea\xE7\xF5es transfusionais</div>\n                                    </div>\n                                </li>\n                                \n                            </ol>\n\n                       </div>\n                       \n                    </div> \n\n                   \n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
@@ -212,7 +212,7 @@ var api = [// PAGINA 1
   "paramentros": {
     // Injetar estilos na Pagina
     "inserir_estilo_pagina": [{
-      "url": "./_css/pagina3.css"
+      "url": "./conf/css/pagina3.css"
     }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",
@@ -287,7 +287,7 @@ var api = [// PAGINA 1
   "id_component": ".c-carousel__slides",
   "id_elemento_para_modificar": "container-imagem",
   "data": {
-    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n\n                       <div class=\"message-box message-box-warn\">\n                        <div class=\"message-box--divisor\">\n                            <i class=\"fa fa-warning fa-2x\"></i>\n                            <span class=\"message-text\"><strong>Lembrete:</strong> </span>\n                        </div>\n                        <span class=\"message-text\">Lembre-se de ler os materiais complementares, eles s\xE3o essenciais para o aprofundamento dos conte\xFAdos abordados ao longo da disciplina.</span>\n                        <!-- <i class=\"fa fa-times fa-2x exit-button \"></i> -->\n                        </div>\n\n                    </div> \n\n                   \n                 </div>\n            "
+    "container_render": "\n                 <div class=\"pagina-tipo-texto animation\">\n                    <div class=\"pagina-tipo-texto--box-texto\">\n                \n                       <!-- Alert Box -->\n\n                       \n\n                       <div class=\"message-box message-box-warn\">\n                        <div class=\"message-box--divisor\">\n                            <i class=\"fa fa-warning fa-2x\"></i>\n                            <span class=\"message-text\"><strong>Lembrete:</strong> </span>\n                        </div>\n                        <span class=\"message-text\">Lembre-se de ler os materiais complementares, eles s\xE3o essenciais para o aprofundamento dos conte\xFAdos abordados ao longo da disciplina.</span>\n                        <!-- <i class=\"fa fa-times fa-2x exit-button \"></i> -->\n                        </div>\n\n                    </div> \n\n                   \n                 </div>\n            "
   },
   "forcarAtualizacao": {
     "variaveis": [{
@@ -366,7 +366,7 @@ var api = [// PAGINA 1
   "paramentros": {
     // Injetar estilos na Pagina
     "inserir_estilo_pagina": [{
-      "url": "./_css/pagina5.css"
+      "url": "./conf/css/pagina5.css"
     }],
     "marcador": [{
       "tipo": "p",
@@ -446,7 +446,7 @@ var api = [// PAGINA 1
   "paramentros": {
     // Injetar estilos na Pagina
     "inserir_estilo_pagina": [{
-      "url": "./_css/pagina5.css"
+      "url": "./conf/css/pagina5.css"
     }],
     "marcador": [{
       "tipo": "p",

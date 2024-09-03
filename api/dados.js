@@ -148,7 +148,7 @@ const api = [
         },
         "paramentros": {
             "inserir_estilo_pagina": [{
-                "url":"./_css/pagina2.css"
+                "url":"./conf/css/pagina2.css"
             }],
             "cores": {
                 // "sidebar": "red",
@@ -375,9 +375,7 @@ const api = [
                             </ol>
 
                        </div>
-                        <p>
-                                    Esta disciplina está estruturada em 3 (três) unidades. Para que você obtenha sucesso, aproveite todas as orientações de estudo apresentadas neste material. Realize as leituras obrigatórias, pois nelas você terá acesso ao conhecimento necessário para o curso e sua carreira e também para a realização das atividades de estudo
-                                </p>
+                       
                     </div> 
 
                    
@@ -396,7 +394,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":"./_css/pagina3.css"
+                "url":"./conf/css/pagina3.css"
             }],
             "cores": {
                 // "sidebar": "red",
@@ -500,6 +498,8 @@ const api = [
                     <div class="pagina-tipo-texto--box-texto">
                 
                        <!-- Alert Box -->
+
+                       
 
                        <div class="message-box message-box-warn">
                         <div class="message-box--divisor">
@@ -625,7 +625,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":"./_css/pagina5.css"
+                "url":"./conf/css/pagina5.css"
             }],
             "marcador": [{
                 "tipo": "p",
@@ -786,7 +786,7 @@ const api = [
         "paramentros": {
             // Injetar estilos na Pagina
             "inserir_estilo_pagina": [{
-                "url":"./_css/pagina5.css"
+                "url":"./conf/css/pagina5.css"
             }],
             "marcador": [{
                 "tipo": "p",
