@@ -23,13 +23,13 @@ var responsivo = [{
     // }
   ]
 }, {
-  //  // Onde o Estilo tem que aparecer 
+  //Onde o Estilo tem que aparecer 
   "Tipo": "All",
   // Pode ser "All" para todas as páginas ou um número específico para uma página
-  //   // Que tipo de quebra Tem que Fazer
+  //Que tipo de quebra Tem que Fazer
   "media": "(max-width: 480px)",
   // Apenas a condição dentro dos parênteses
-  //   // Estilos que podem vir adicionais
+  //Estilos que podem vir adicionais
   "synchronous": "\n                .message-box {\n                display: block !important;\n                }\n\n                .olcards--divisor {\n                display: contents !important;\n                }\n\n                .olcards {\n                align-items: flex-start !important;\n                }\n\n                .olcards li .content {\n                text-align: justify !important;\n                }\n\n\n    ",
   // Atualização Forçada onde ele está aparecendo
   "variantes": "\n            --tamanho-de-font-para-paragrafo-sidebar=[1rem];\n            --tamanho-dos-icones-siderbar=[2rem];\n            --tamanho-x-y-imagem=[7%];\n            --width=[40px];\n           --height=[40px];\n        //    --tamanho-do-texto-do-paragrafo-header=[1.2rem];\n            // --font-para-paragrafos=[1rem]\n        ",

@@ -243,15 +243,6 @@ function adicionarLogo(slideIndex) {
     }
 }
 
-// Função para limitar o texto e adicionar "..."
-function reduzirTexto(texto, tamanhoMaximo) {
-    if (texto.length > tamanhoMaximo) {
-        return texto.substring(0, tamanhoMaximo) + '...';
-    } else {
-        return texto;
-    }
-}
-
 // // Função para renderizar o menu dinamicamente
 // function itemnsMenu(filtro = '', slideIndex) {
 //     const renderMenuDiv = document.querySelector('.render-menu');

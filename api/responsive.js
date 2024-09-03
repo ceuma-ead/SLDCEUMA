@@ -156,13 +156,11 @@ const responsivo = [
         ]
     },
     {   
-    
-
-    //  // Onde o Estilo tem que aparecer 
+    //Onde o Estilo tem que aparecer 
         "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
-    //   // Que tipo de quebra Tem que Fazer
+    //Que tipo de quebra Tem que Fazer
         "media" : "(max-width: 480px)", // Apenas a condição dentro dos parênteses
-    //   // Estilos que podem vir adicionais
+    //Estilos que podem vir adicionais
         "synchronous" : `
                 .message-box {
                 display: block !important;
