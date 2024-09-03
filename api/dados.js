@@ -785,7 +785,7 @@ const api = [
                 "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
                 "attr_unitario": {
                     "Olá, estudante! Bem-vindo à Unidade 1!": {
-                        "attr": "font-weight=[999]",
+                        "attr": "font-weight=[999], Font-size=[18px]",
 
                     },
                     
