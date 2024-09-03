@@ -592,7 +592,7 @@ const api = [
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                 <div class="pagina-tipo-texto animation">
+                 <div class="pagina-tipo-texto">
                     <div class="pagina-tipo-texto--box-texto">
                 
                        <!-- Apresentação da Unidade -->
@@ -633,7 +633,7 @@ const api = [
                 "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
                 "attr_unitario": {
                     "Olá, estudante! Bem-vindo à Unidade 1!": {
-                        "attr": "font-weight=[999]",
+                        "attr": "font-weight=[999], font-size=[20px],",
 
                     },
                     
@@ -678,19 +678,19 @@ const api = [
                 "tamanho": "10%",
             },
             // Animação para Texto API
-            // "animacao_texto": [{
-            //     "indice": "all", // 0 | all
-            //     "script_animation": `
-            //         animate__animated animate__fadeInDown animate__slow
-            //     `
-            // }],
-            // Animação pra toda Página
-            "animacao_elemento": [{
-                "elemento": ".animation", // 0 | all
+            "animacao_texto": [{
+                "indice": "all", // 0 | all
                 "script_animation": `
                     animate__animated animate__fadeInDown animate__slow
                 `
-            }]
+            }],
+            // Animação pra toda Página
+            // "animacao_elemento": [{
+            //     "elemento": ".animation", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }]
 
         }
     },
