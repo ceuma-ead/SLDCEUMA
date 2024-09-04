@@ -135,3 +135,4 @@ function adicionarFerramenta(icone, acao) {
 
 // Exemplo: Adicionando uma nova ferramenta ao toolbar
 adicionarFerramenta('🖌️', () => alert('Nova ferramenta adicionada!'));
+
