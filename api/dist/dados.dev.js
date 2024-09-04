@@ -40,7 +40,7 @@ var api = [// PAGINA 1
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" aria-label=\"close\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       },
       "FullScreen": {
         "ativa": true,
@@ -59,6 +59,36 @@ var api = [// PAGINA 1
       "Ferramentas": {
         "ativa": true,
         "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "box-tools-inline",
+      "Resulmo": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resulmo</button>\n                        "
+      },
+      "Destacar": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"pencil\"></i>Destacar</button>\n                        "
+      },
+      "Notas": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+      },
+      "Ouvinte": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"ear\"></i>Ouvinte</button>\n                        "
+      },
+      "Download": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"download\"></i>Download</button>\n                        "
+      },
+      "Dicionario": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+      },
+      "close": {
+        "ativa": true,
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box-tools-inline\"></i></button>\n                        "
       }
     }],
     "cores": {
@@ -159,6 +189,36 @@ var api = [// PAGINA 1
       "Ferramentas": {
         "ativa": true,
         "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "box-tools-inline",
+      "Resulmo": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resulmo</button>\n                        "
+      },
+      "Destacar": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"pencil\"></i>Destacar</button>\n                        "
+      },
+      "Notas": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+      },
+      "Ouvinte": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"ear\"></i>Ouvinte</button>\n                        "
+      },
+      "Download": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"download\"></i>Download</button>\n                        "
+      },
+      "Dicionario": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+      },
+      "close": {
+        "ativa": true,
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box-tools-inline\"></i></button>\n                        "
       }
     }],
     "cores": {// "sidebar": "red",

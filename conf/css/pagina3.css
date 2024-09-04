@@ -37,6 +37,11 @@
   transform: translateY(-0.5rem);
 }
 
+.olcards li:hover .icon{
+  background-color: white;
+}
+
+
 .olcards li .content {
   background-color: var(--cardColor);
   display: flex;

@@ -1,0 +1,36 @@
+@import url(./variaveis.css);
+
+
+
+.box-tools-inline{
+    position: absolute;
+    background-color:#FFFFFF;
+    padding: 1rem;
+    width: 90%;
+    margin-top: 5rem;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: calc(var(--posicionamento-menu-sumario) + 3);
+    justify-content: center;
+    gap: 3rem;
+    display: none;
+    
+}
+
+.box-tools-inline button{
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.box-tools-inline svg{
+    stroke: #FF8A00;
+}
+
+#close_box-tools-inline{
+    background: rgb(0, 0, 0);
+    stroke: #FFFFFF;
+}

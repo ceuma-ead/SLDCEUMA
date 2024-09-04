@@ -50,7 +50,24 @@ function eventButton() {
     };
   } else {
     console.log("Botão de tela cheia não encontrado.");
-  }
+  } // Butão de Caixa de Ferramentas
+
+
+  var btnFerramentas = document.querySelectorAll('.btn-ferramentas');
+  btnFerramentas.forEach(function (button, index) {
+    button.addEventListener('click', function () {
+      // Seleciona todas as caixas de ferramentas
+      var toolBoxes = document.querySelectorAll('.box-tools-inline'); // Verifica se a caixa correspondente existe
+
+      if (toolBoxes[index]) {
+        // Alterna a exibição da caixa de ferramentas
+        var toolBox = toolBoxes[index];
+        toolBox.style.display = toolBox.style.display === 'none' || toolBox.style.display === '' ? 'flex' : 'none';
+      } else {
+        console.error('Caixa de ferramentas não encontrada para este botão.');
+      }
+    });
+  });
 } // Iniciar Evento
 
 

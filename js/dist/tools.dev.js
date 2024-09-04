@@ -12,6 +12,11 @@ function renderTools(sliderIndex) {
   var allContainersMobile = document.querySelectorAll('.icons-action--container-mobile');
   allContainersMobile.forEach(function (container) {
     return container.innerHTML = '';
+  }); // Limpa os contêineres Inline
+
+  var allContainersInlines = document.querySelectorAll('.box-tools-inline');
+  allContainersInlines.forEach(function (container) {
+    return container.innerHTML = '';
   }); // Verifica se a página possui ferramentas
 
   if (pageData && pageData.paramentros && pageData.paramentros.ferramentas) {
