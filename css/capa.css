@@ -139,29 +139,29 @@
 /* Media Queries para responsividade */
 @media (max-width: 768px) {
     .animated-text {
-        font-size: 7vw;
+        font-size: 7vw !important;
     }
 
     #second-text {
-        font-size: 5vw;
+        font-size: 5vw !important;
     }
 
     #animated-button {
-        font-size: 4vw;
+        font-size: 5vw !important;
     }
 }
 
 @media (max-width: 480px) {
     .animated-text {
-        font-size: 7vw;
+        font-size: 7vw !important;
     }
 
     #second-text {
-        font-size: 5vw;
+        font-size: 5vw !important;
     }
 
     #animated-button {
-        font-size: 4vw;
+        font-size: 5vw !important;
     }
 
     
