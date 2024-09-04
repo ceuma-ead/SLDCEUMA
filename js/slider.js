@@ -261,135 +261,54 @@ function reduzirTexto(texto, tamanhoMaximo) {
     }
 }
 
-// // Função para renderizar o menu dinamicamente
-
-// Versão do Sumário 001 --------------------------
-// function itemnsMenu(filtro = '', slideIndex) {
-//     const renderMenuDiv = document.querySelector('.render-menu');
-//     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
-
-//     // Define o tamanho máximo do texto a ser exibido
-//     const tamanhoMaximoTexto = 20;
-
-//     // Verifica se algum item corresponde ao filtro
-//     let encontrouItem = false;
-
-//     // Itera sobre a API e cria os elementos do menu
-//     api.forEach(item => {
-//         // Verifica se o item corresponde ao filtro de pesquisa
-//         if (
-//             filtro === '' ||
-//             item.nome_page.toLowerCase().includes(filtro.toLowerCase()) ||
-//             `#${item.pagina}` === filtro ||
-//             item.pagina.toString() === filtro
-//         ) {
-//             encontrouItem = true; // Marca que pelo menos um item foi encontrado
-
-//             const textoReduzido = reduzirTexto(item.nome_page, tamanhoMaximoTexto);
-
-//             const menuItem = document.createElement('a');
-//             // menuItem.href = "#"; // Pode ser alterado para o link correto
-//             menuItem.innerHTML = `
-//                 <span title="${item.nome_page}">${textoReduzido}</span>
-//                 <span class="horizontal-menu-activer ${slideIndex + 1 === item.pagina ? "active-menu" : ""}"></span>
-//             `;
-
-//             // // Adiciona classe active-menu se for o item ativo
-//             // if (item.pagina.toString() === filtro || `#${item.pagina}` === filtro) {
-//             //     menuItem.querySelector('.horizontal-menu-activer').classList.add('active-menu');
-//             // }
-
-//             // Evento de clique para ir para a página no slider
-//             menuItem.onclick = () => {
-//                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
-//             }
-
-//             // Adiciona o item ao container do menu
-//             renderMenuDiv.appendChild(menuItem);
-
-//             return item.pagina
-//         }
-//     });
-
-//     // Se nenhum item for encontrado, exibe uma mensagem de erro
-//     if (!encontrouItem) {
-//         const menuItemErro = document.createElement('div');
-//         menuItemErro.className = `erro-notfound-menu`
-//         menuItemErro.innerHTML = `
-//             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
-//             <p style="color:#000;">Erro: Nenhum item encontrado para "${filtro}"</p>
-//         `;
-//         renderMenuDiv.appendChild(menuItemErro);
-//     }
-// }
 
 // // Função para lidar com o evento de pesquisa
-// function handleSearch() {
-//     const searchInput = document.querySelector('.searcListMateria input');
-//     searchInput.addEventListener('input', () => {
-//         const filtro = searchInput.value.trim();
-//         const irItem = itemnsMenu(filtro , savedPosition);
-//     });
-
-//     // quando clicado ele ir para a pagian do item que ele encontrou...
-//     const butaoIr = document.querySelector('.searcListMateria span');
-//     butaoIr.onclick  = () => {
-//         const filtro = searchInput.value.trim();
-//         const irItem = itemnsMenu(filtro , savedPosition);
-//         console.log(irItem)
-//     }
-// }
-
-// Função para limitar o texto e adicionar "..."
-
-// Função para renderizar o menu dinamicamente
-
-// function itemnsMenu(filtro = '', slideIndex) {
+// function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
 //     const renderMenuDiv = document.querySelector('.render-menu');
 //     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
 
-//     // Define o tamanho máximo do texto a ser exibido
 //     const tamanhoMaximoTexto = 25;
-
-//     // Verifica se algum item corresponde ao filtro
 //     let encontrouItem = false;
-//     let paginaEncontrada = null; // Armazena a página do item encontrado
+//     let paginaEncontrada = null;
 
+//     const titulosExibidos = new Set(); // Conjunto para armazenar títulos exibidos
 
-//     // Itera sobre a API e cria os elementos do menu
 //     api.forEach(item => {
+//         const titulo = item.nome_page;
+
 //         // Verifica se o item corresponde ao filtro de pesquisa
 //         if (
 //             filtro === '' ||
-//             item.nome_page.toLowerCase().includes(filtro.toLowerCase()) ||
+//             titulo.toLowerCase().includes(filtro.toLowerCase()) ||
 //             `#${item.pagina}` === filtro ||
 //             item.pagina.toString() === filtro
 //         ) {
+//             // Se ocultarDuplicados estiver habilitado e o título já foi exibido, pula para o próximo item
+//             if (ocultarDuplicados && titulosExibidos.has(titulo)) {
+//                 return;
+//             }
 
-//             // console.log(item)
-//             encontrouItem = true; // Marca que pelo menos um item foi encontrado
-//             paginaEncontrada = item.pagina; // Armazena a página encontrada
+//             encontrouItem = true;
+//             paginaEncontrada = item.pagina;
+//             titulosExibidos.add(titulo); // Adiciona o título ao conjunto
 
-//             const textoReduzido = reduzirTexto(item.nome_page, tamanhoMaximoTexto);
+//             const textoReduzido = reduzirTexto(titulo, tamanhoMaximoTexto);
 
 //             const menuItem = document.createElement('a');
 //             menuItem.innerHTML = `
-//                 <span title="${item.nome_page}">${textoReduzido}</span>
+//                 <span title="${titulo}">${textoReduzido}</span>
 //                 <span class="horizontal-menu-activer ${slideIndex + 1 === item.pagina ? "active-menu" : ""}"></span>
 //             `;
 
-
-//             // Evento de clique para ir para a página no slider
 //             menuItem.onclick = () => {
+//                 fecharMenuSumario()
 //                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
 //             }
 
-//             // Adiciona o item ao container do menu
 //             renderMenuDiv.appendChild(menuItem);
 //         }
 //     });
 
-//     // Se nenhum item for encontrado, exibe uma mensagem de erro
 //     if (!encontrouItem) {
 //         const menuItemErro = document.createElement('div');
 //         menuItemErro.className = `erro-notfound-menu`;
@@ -400,12 +319,37 @@ function reduzirTexto(texto, tamanhoMaximo) {
 //         renderMenuDiv.appendChild(menuItemErro);
 //     }
 
-//     return paginaEncontrada; // Retorna a página encontrada ou null se nada foi encontrado
+//     return paginaEncontrada;
+// }
+
+// // itemnsMenu('', 1, true); // Oculta itens duplicados
+// // itemnsMenu('', 1, false); // Exibe todos os itens, mesmo que duplicados
+
+// function handleSearch() {
+//     const searchInput = document.querySelector('.searcListMateria input');
+//     searchInput.addEventListener('input', () => {
+//         const filtro = searchInput.value.trim();
+        
+//         itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
+//     });
+
+//     // Quando clicado, ele vai para a página do item que ele encontrou...
+//     const butaoIr = document.querySelector('.searcListMateria span');
+//     butaoIr.onclick = () => {
+//         const filtro = searchInput.value.trim();
+//         const irItem = itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
+//         // console.log(irItem); // Exibe no console o ID da página encontrada
+//         if (irItem !== null) {
+//             // Exemplo: Se quiser fazer algo com a página encontrada
+//             glider.scrollItem(irItem); // Vai para a página encontrada
+//         }
+//     };
 // }
 
 
-// Função para lidar com o evento de pesquisa
+// ==========================================
 
+// Função para lidar com o evento de pesquisa
 function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
     const renderMenuDiv = document.querySelector('.render-menu');
     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
@@ -414,7 +358,7 @@ function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
     let encontrouItem = false;
     let paginaEncontrada = null;
 
-    const titulosExibidos = new Set(); // Conjunto para armazenar títulos exibidos
+    const titulosExibidos = new Map(); // Map para armazenar títulos e seus índices
 
     api.forEach(item => {
         const titulo = item.nome_page;
@@ -426,14 +370,17 @@ function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
             `#${item.pagina}` === filtro ||
             item.pagina.toString() === filtro
         ) {
-            // Se ocultarDuplicados estiver habilitado e o título já foi exibido, pula para o próximo item
             if (ocultarDuplicados && titulosExibidos.has(titulo)) {
+                // Se o item atual corresponde ao slideIndex, transfere a marcação para o primeiro item
+                if (slideIndex + 1 === item.pagina) {
+                    const menuItemAnterior = titulosExibidos.get(titulo);
+                    menuItemAnterior.querySelector('.horizontal-menu-activer').classList.add('active-menu');
+                }
                 return;
             }
 
             encontrouItem = true;
             paginaEncontrada = item.pagina;
-            titulosExibidos.add(titulo); // Adiciona o título ao conjunto
 
             const textoReduzido = reduzirTexto(titulo, tamanhoMaximoTexto);
 
@@ -444,10 +391,12 @@ function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
             `;
 
             menuItem.onclick = () => {
+                fecharMenuSumario();
                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
             }
 
             renderMenuDiv.appendChild(menuItem);
+            titulosExibidos.set(titulo, menuItem); // Armazena o menuItem criado
         }
     });
 
@@ -464,30 +413,26 @@ function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
     return paginaEncontrada;
 }
 
-// itemnsMenu('', 1, true); // Oculta itens duplicados
-// itemnsMenu('', 1, false); // Exibe todos os itens, mesmo que duplicados
-
-
+// Função para habilitar/desabilitar a exibição de duplicados e realizar pesquisa
 function handleSearch() {
     const searchInput = document.querySelector('.searcListMateria input');
     searchInput.addEventListener('input', () => {
         const filtro = searchInput.value.trim();
-        
-        itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
+        itemnsMenu(filtro, savedPosition, filtroDuplicadoSumario);
     });
 
-    // Quando clicado, ele vai para a página do item que ele encontrou...
     const butaoIr = document.querySelector('.searcListMateria span');
     butaoIr.onclick = () => {
         const filtro = searchInput.value.trim();
-        const irItem = itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
-        // console.log(irItem); // Exibe no console o ID da página encontrada
+        const irItem = itemnsMenu(filtro, savedPosition, filtroDuplicadoSumario);
         if (irItem !== null) {
-            // Exemplo: Se quiser fazer algo com a página encontrada
-            glider.scrollItem(irItem); // Vai para a página encontrada
+            glider.scrollItem(irItem);
         }
     };
 }
+
+
+// ==========================================
 
 // Função para Modificar Fonte no Slider
 // ------------------ Versão ( 01 ) -----------------
@@ -1083,6 +1028,7 @@ ${procurarParagrafo.onde_procurar ? `Você precisa ativar primeiro o suporte em:
 //     }
 
 // }
+
 // Função marcadorTexto
 function adcionarMarcadores(slideIndex) {
     const pageData = api[slideIndex];
