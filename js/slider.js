@@ -825,6 +825,7 @@ function AnimatedParagrafos(slideIndex) {
     }
 }
 
+
 // Função para Criar animação no Elemento
 function AnimatedElementos(slideIndex) {
     const pageData = api[slideIndex];

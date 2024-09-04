@@ -1,5 +1,6 @@
 function eventButton() {
 
+
     // Função para entrar/sair da tela cheia
     function Screen(tipo, elemento) {
         const elem = document.documentElement; // Seleciona o elemento raiz (html)
@@ -51,5 +52,6 @@ function eventButton() {
 
 // Iniciar Evento 
 eventButton();
+
 
 

@@ -16,6 +16,7 @@ function eventButton() {
 }
 
 
+
 function renderTools(sliderIndex) {
     const pageData = api[sliderIndex];
 
