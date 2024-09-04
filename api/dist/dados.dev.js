@@ -44,7 +44,21 @@ var api = [// PAGINA 1
       },
       "FullScreen": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-fullscreen\" aria-label=\"min\" vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "icons-action--container-mobile",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       }
     }],
     "cores": {
@@ -108,6 +122,44 @@ var api = [// PAGINA 1
   "paramentros": {
     "inserir_estilo_pagina": [{
       "url": "./conf/css/pagina2.css"
+    }],
+    "inserir_escript_pagina": [{
+      "onde": "body",
+      "posicao": "",
+      "src": ""
+    }],
+    "ferramentas": [{
+      "container": "icons-action--container",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      },
+      "FullScreen": {
+        "ativa": true,
+        "html": "\n                            <button class=\"btn-fullscreen\" aria-label=\"min\" vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "icons-action--container-mobile",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
     }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",
@@ -231,6 +283,44 @@ var api = [// PAGINA 1
     "inserir_estilo_pagina": [{
       "url": "./conf/css/pagina3.css"
     }],
+    "inserir_escript_pagina": [{
+      "onde": "body",
+      "posicao": "",
+      "src": ""
+    }],
+    "ferramentas": [{
+      "container": "icons-action--container",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      },
+      "FullScreen": {
+        "ativa": true,
+        "html": "\n                            <button class=\"btn-fullscreen\" aria-label=\"min\" vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "icons-action--container-mobile",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
+    }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",
       // "icones": "rgb(0, 110, 201)"
@@ -318,6 +408,44 @@ var api = [// PAGINA 1
     "inserir_estilo_pagina": [{
       "url": "./conf/css/pagina3.css"
     }],
+    "inserir_escript_pagina": [{
+      "onde": "body",
+      "posicao": "",
+      "src": ""
+    }],
+    "ferramentas": [{
+      "container": "icons-action--container",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      },
+      "FullScreen": {
+        "ativa": true,
+        "html": "\n                            <button class=\"btn-fullscreen\" aria-label=\"min\" vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "icons-action--container-mobile",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
+    }],
     "cores": {// "sidebar": "red",
       // "fundo": "red",
       // "icones": "rgb(0, 110, 201)"
@@ -388,6 +516,44 @@ var api = [// PAGINA 1
     // Injetar estilos na Pagina
     "inserir_estilo_pagina": [{
       "url": "./conf/css/pagina5.css"
+    }],
+    "inserir_escript_pagina": [{
+      "onde": "body",
+      "posicao": "",
+      "src": ""
+    }],
+    "ferramentas": [{
+      "container": "icons-action--container",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      },
+      "FullScreen": {
+        "ativa": true,
+        "html": "\n                            <button class=\"btn-fullscreen\" aria-label=\"min\" vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "icons-action--container-mobile",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
     }],
     "marcador": [{
       "tipo": "p",
@@ -468,6 +634,44 @@ var api = [// PAGINA 1
     // Injetar estilos na Pagina
     "inserir_estilo_pagina": [{
       "url": "./conf/css/pagina5.css"
+    }],
+    "inserir_escript_pagina": [{
+      "onde": "body",
+      "posicao": "",
+      "src": ""
+    }],
+    "ferramentas": [{
+      "container": "icons-action--container",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      },
+      "FullScreen": {
+        "ativa": true,
+        "html": "\n                            <button class=\"btn-fullscreen\" aria-label=\"min\" vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "icons-action--container-mobile",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
     }],
     "marcador": [{
       "tipo": "p",

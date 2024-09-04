@@ -62,6 +62,36 @@
 }
 
 
+.icons-action--container-mobile{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.icons-action--container-mobile button{
+    width: var(--tamanho-dos-icones-siderbar);
+    height: var(--tamanho-dos-icones-siderbar);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 100%;
+    background-color:var(--fundo-siderbar);
+    border: 2px solid var(--cor-dos-icones-siderbar);
+    color: var(--cor-dos-icones-siderbar);
+    transition: all 0.3s;
+}
+
+.icons-action--container-mobile button:hover{
+    background-color:rgba(112, 112, 112, 0.788);
+}
+
+
+
 .header-title{
     display: flex;
     width: 100%;

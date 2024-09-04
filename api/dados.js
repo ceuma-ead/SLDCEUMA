@@ -76,8 +76,36 @@ const api = [
                     "FullScreen":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
                                 <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container":"icons-action--container-mobile",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
                     },
@@ -181,6 +209,77 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":"./conf/css/pagina2.css"
             }],
+            "inserir_escript_pagina": [{
+                "onde":"body",
+                "posicao":"",
+                "src":""
+            }],
+            "ferramentas":[
+                {
+                    "container":"icons-action--container",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen":{
+                        "ativa":true,
+                        "html" : `
+                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container":"icons-action--container-mobile",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                }
+            ],
             "cores": {
                 // "sidebar": "red",
                 // "fundo": "red",
@@ -427,6 +526,77 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":"./conf/css/pagina3.css"
             }],
+            "inserir_escript_pagina": [{
+                "onde":"body",
+                "posicao":"",
+                "src":""
+            }],
+            "ferramentas":[
+                {
+                    "container":"icons-action--container",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen":{
+                        "ativa":true,
+                        "html" : `
+                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container":"icons-action--container-mobile",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                }
+            ],
             "cores": {
                 // "sidebar": "red",
                 // "fundo": "red",
@@ -562,6 +732,77 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":"./conf/css/pagina3.css"
             }],
+            "inserir_escript_pagina": [{
+                "onde":"body",
+                "posicao":"",
+                "src":""
+            }],
+            "ferramentas":[
+                {
+                    "container":"icons-action--container",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen":{
+                        "ativa":true,
+                        "html" : `
+                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container":"icons-action--container-mobile",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                }
+            ],
             "cores": {
                 // "sidebar": "red",
                 // "fundo": "red",
@@ -668,6 +909,77 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":"./conf/css/pagina5.css"
             }],
+            "inserir_escript_pagina": [{
+                "onde":"body",
+                "posicao":"",
+                "src":""
+            }],
+            "ferramentas":[
+                {
+                    "container":"icons-action--container",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen":{
+                        "ativa":true,
+                        "html" : `
+                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container":"icons-action--container-mobile",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                }
+            ],
             "marcador": [{
                 "tipo": "p",
                 "posicao": 0,
@@ -815,6 +1127,77 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url":"./conf/css/pagina5.css"
             }],
+            "inserir_escript_pagina": [{
+                "onde":"body",
+                "posicao":"",
+                "src":""
+            }],
+            "ferramentas":[
+                {
+                    "container":"icons-action--container",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen":{
+                        "ativa":true,
+                        "html" : `
+                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container":"icons-action--container-mobile",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                }
+            ],
             "marcador": [{
                 "tipo": "p",
                 "posicao": 0,
