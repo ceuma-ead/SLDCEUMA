@@ -390,6 +390,9 @@
     flex-direction: column;
   }
 
+  .accordion section ul {
+     font-size: calc(var(--font-para-paragrafos) - 1px);
+
 
 }
 
