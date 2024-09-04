@@ -180,29 +180,36 @@ const responsivo = [
                 }
 
                 #accordionApresentacao {
-            display: block !important;
+                display: block !important;
+                }
+
+                .accordion-flush .accordion-item {
+                margin-top: 0.5rem !important;
+                }
+
+                .marca-da-agua {
+                display:none !important;
+
+                }
+
+                .glider-prev {
+                    left: 0px !important;
+                }
+
+                .glider-next {
+                    right: 0px !important;
+                }
+
+                .pagina-tipo-texto--box-texto p {
+                    font-size: 1rem !important;
+                }
+
+                .carrosel--container {            
+                
+                background-size: 370% !important;
+                background-position-x: 36% !important;
             }
 
-            .accordion-flush .accordion-item {
-            margin-top: 0.5rem !important;
-            }
-
-            .marca-da-agua {
-            display:none !important;
-
-            }
-
-            .glider-prev {
-                left: 0px !important;
-            }
-
-            .glider-next {
-                right: 0px !important;
-            }
-
-            .pagina-tipo-texto--box-texto p {
-                 font-size: 1rem !important;
-    }
 
     `,
 
@@ -214,7 +221,8 @@ const responsivo = [
             --width=[40px];
            --height=[40px];
         //    --tamanho-do-texto-do-paragrafo-header=[1.2rem];
-            // --font-para-paragrafos=[1rem]
+            // --font-para-paragrafos=[1rem];
+            
         `,
         "atualizacaoBrutaElementos":[
             // Exemplos de atualizações brutas de elementos
@@ -309,7 +317,10 @@ const responsivo = [
                 --width=[40px];
                --height=[40px];
             //    --tamanho-do-texto-do-paragrafo-header=[1.2rem];
-                // --font-para-paragrafos=[1rem]
+                // --font-para-paragrafos=[1rem];
+                --imgem-fundo-tamanho-x-y-imagem=[260%];
+                --imgem-fundo-carrosel-posicao-x-imagem=[left 31.5%];
+                
             `,
             "atualizacaoBrutaElementos":[
                 // Exemplos de atualizações brutas de elementos
