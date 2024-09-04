@@ -176,10 +176,6 @@
   background-color: #333;
   overflow: hidden;
   border-radius: 3px;
-
-
-
-
 }
 
 .accordion section h2 {
@@ -190,7 +186,7 @@
   top: 50%;
   text-align: center;
   z-index: 2;
-  font-size: var(--font-para-paragrafos);
+  font-size: calc(var(--font-para-paragrafos));
   padding: 1rem;
   background-color: #969696; 
   display: flex;
@@ -209,9 +205,8 @@
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg) translate(-50%, -50%);
   background-color: var(--cardColor);
-
-
 }
+
 
 .accordion section h2 a  {
   width: 100%;
@@ -221,25 +216,22 @@
 }
 
 .accordion section:target .box {
-    width: 30rem;
+  width: 30rem;
   overflow: hidden;
   padding: 0 0.5rem 0 1rem;
   color: #333;
   background-color: #ffffff;
   /* background-color: aqua; */
-
-
 }
 
 .accordion section:target {
   width: 30rem;
+  height: 100%;
   overflow: hidden;
   /* padding: 0 1rem; */
   color: #333;
   background-color: #ffffff;
   /* background-color: aqua; */
-
-
 }
 
 .accordion section ul {
@@ -247,7 +239,7 @@
   padding-left: 1rem;
   list-style-type: lower-alpha;
   text-align: left;
-  font-size: var(--font-para-paragrafos);
+  font-size: calc(var(--font-para-paragrafos) - 4px);
 
 }
 
@@ -273,8 +265,6 @@
   transition: all 1s ease;
 
 }
-
-
 
 @media screen and (max-width: 1366px) {}
 

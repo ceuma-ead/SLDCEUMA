@@ -21,7 +21,7 @@
     width: 100%;
     /* background: red; */
     height: auto;
-    
+
 }
 
 .c-carousel__slide {
@@ -98,35 +98,36 @@
 #dots {
     position: relative;
     width: auto;
-    bottom: 12%;
-        transform: translateY(-50%, -50%);
+    /* bottom: 12%; */
+    transform: translateY(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--fundo-carrosel);
+    /* background-color: rebeccapurple; */
     /* background: var(--fundo-carrosel); */
     border: none;
     color: rgb(27, 27, 27);
     gap: 0.5rem;
     cursor: pointer;
     z-index: 1;
-    height: 4rem;
-    
+    /* height: 4rem; */
+
 }
 
-.marca-da-agua{
+.marca-da-agua {
     position: absolute;
-    bottom:1%;
+    bottom: 1%;
     background-color: rgba(255, 255, 255, 0);
     padding: 1rem;
     /* background: var(--fundo-carrosel); */
     background-image: var(--imagem-de-fundo-slider);
     align-items: center;
     background-repeat: no-repeat;
-    background-size:calc(var(--tamanho-x-y-imagem) * 9) ;
-    background-position:  var(--posicao-y-imagem) var(--posicao-x-imagem);
+    background-size: calc(var(--tamanho-x-y-imagem) * 9);
+    background-position: var(--posicao-y-imagem) var(--posicao-x-imagem);
     margin: 0.5rem;
     z-index: 1;
     width: 10rem;
-    
+
 }
