@@ -1,21 +1,3 @@
-function eventButton() {
-    // Função de tela cheia
-    function fullScreen() {
-        alert('Oi');
-    }
-
-    // Reaplica o evento de clique para o botão de tela cheia
-    const btnScreen = document.querySelector(".btn-fullscreen");
-    if (btnScreen) {
-        btnScreen.onclick = () => {
-            fullScreen();
-        };
-    } else {
-        console.log("Botão de tela cheia não encontrado.");
-    }
-}
-
-
 
 function renderTools(sliderIndex) {
     const pageData = api[sliderIndex];
@@ -52,9 +34,12 @@ function renderTools(sliderIndex) {
 
         // Aplica novamente os ícones
         lucide.createIcons();
-
-        // Chama a função para associar eventos aos botões
-        eventButton();
+        if(typeof eventButton === "function"){
+            eventButton()
+        }
+        else{
+            console.log("Funçao Não Renderizada...")
+        }
     } else {
         console.log('Nenhuma ferramenta ativa para esta página.');
     }

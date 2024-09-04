@@ -1,23 +1,5 @@
 "use strict";
 
-function eventButton() {
-  // Função de tela cheia
-  function fullScreen() {
-    alert('Oi');
-  } // Reaplica o evento de clique para o botão de tela cheia
-
-
-  var btnScreen = document.querySelector(".btn-fullscreen");
-
-  if (btnScreen) {
-    btnScreen.onclick = function () {
-      fullScreen();
-    };
-  } else {
-    console.log("Botão de tela cheia não encontrado.");
-  }
-}
-
 function renderTools(sliderIndex) {
   var pageData = api[sliderIndex]; // Seleciona todos os contêineres onde as ferramentas podem ser inseridas
 
@@ -50,9 +32,13 @@ function renderTools(sliderIndex) {
       }
     }); // Aplica novamente os ícones
 
-    lucide.createIcons(); // Chama a função para associar eventos aos botões
+    lucide.createIcons();
 
-    eventButton();
+    if (typeof eventButton === "function") {
+      eventButton();
+    } else {
+      console.log("Funçao Não Renderizada...");
+    }
   } else {
     console.log('Nenhuma ferramenta ativa para esta página.');
   } // Atualiza o glider se ele estiver definido

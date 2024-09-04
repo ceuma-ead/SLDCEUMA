@@ -6,8 +6,7 @@ function eventButton() {
     var elem = document.documentElement; // Seleciona o elemento raiz (html)
 
     if (tipo === "min") {
-      elemento.ariaLabel = "max";
-      elemento.innerHTML = "<i data-lucide=\"minimize-2\"></i>";
+      elemento.ariaLabel = "max"; // elemento.innerHTML = `<i data-lucide="minimize-2"></i>`;
 
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
@@ -22,8 +21,7 @@ function eventButton() {
         elem.msRequestFullscreen();
       }
     } else if (tipo === "max") {
-      elemento.ariaLabel = "min";
-      elemento.innerHTML = "<i data-lucide=\"maximize-2\"></i>";
+      elemento.ariaLabel = "min"; // elemento.innerHTML = `<i data-lucide="maximize-2"></i>`;
 
       if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -53,7 +51,7 @@ function eventButton() {
   } else {
     console.log("Botão de tela cheia não encontrado.");
   }
-} // Iniciar Evento 
+} // Iniciar Evento
 
 
 eventButton();

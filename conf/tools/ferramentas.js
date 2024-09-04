@@ -1,13 +1,12 @@
 function eventButton() {
 
-
     // Função para entrar/sair da tela cheia
     function Screen(tipo, elemento) {
         const elem = document.documentElement; // Seleciona o elemento raiz (html)
 
         if (tipo === "min") {
             elemento.ariaLabel = "max";
-            elemento.innerHTML = `<i data-lucide="minimize-2"></i>`;
+            // elemento.innerHTML = `<i data-lucide="minimize-2"></i>`;
 
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
@@ -21,7 +20,7 @@ function eventButton() {
 
         } else if (tipo === "max") {
             elemento.ariaLabel = "min";
-            elemento.innerHTML = `<i data-lucide="maximize-2"></i>`;
+            // elemento.innerHTML = `<i data-lucide="maximize-2"></i>`;
 
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -38,7 +37,6 @@ function eventButton() {
         lucide.createIcons();
     }
 
- 
     // Reaplica o evento de clique para o botão de tela cheia
     const btnScreen = document.querySelector(".btn-fullscreen");
     if (btnScreen) {
@@ -48,10 +46,9 @@ function eventButton() {
     } else {
         console.log("Botão de tela cheia não encontrado.");
     }
+
+ 
 }
 
-// Iniciar Evento 
+// Iniciar Evento
 eventButton();
-
-
-
