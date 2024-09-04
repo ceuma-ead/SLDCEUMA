@@ -221,6 +221,18 @@
 }
 
 .accordion section:target .box {
+  margin-right: 0.5rem;
+  width: 30rem;
+  overflow: hidden;
+  /* padding: 0 1rem; */
+  color: #333;
+  background-color: #ffffff;
+  /* background-color: aqua; */
+
+
+}
+
+.accordion section:target {
   width: 30rem;
   overflow: hidden;
   /* padding: 0 1rem; */
@@ -232,9 +244,11 @@
 }
 
 .accordion section ul {
+  padding-right: 0.5rem;
+  padding-left: 1rem;
   list-style-type: lower-alpha;
   text-align: left;
-  font-size: calc(var(--font-para-paragrafos) - 4px);
+  font-size: var(--font-para-paragrafos);
 
 }
 
@@ -376,7 +390,7 @@
   }
 
   .accordion section:target .box {
-    width: 100%;
+    width: 60%;
     height: 15rem;
     overflow: hidden;
     overflow: scroll;
