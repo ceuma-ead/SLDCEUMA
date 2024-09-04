@@ -46,6 +46,44 @@ const api = [
                 "posicao":"beforeend",
                 "src":"./conf/js/pagina1.js"
             }],
+            "ferramentas":[
+                {
+                    "container":"icons-action--container",
+                    "Podcast":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen":{
+                        "ativa":true,
+                        "html" : `
+                            <button vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                }
+            ],
             "cores": {
                 // "sidebar": "red",
                 "fundo": ":#00000000",

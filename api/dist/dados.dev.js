@@ -28,6 +28,25 @@ var api = [// PAGINA 1
       "posicao": "beforeend",
       "src": "./conf/js/pagina1.js"
     }],
+    "ferramentas": [{
+      "container": "icons-action--container",
+      "Podcast": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+      },
+      "Videoaula": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+      },
+      "Ferramentas": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      },
+      "FullScreen": {
+        "ativa": true,
+        "html": "\n                            <button vizioon-tip=\"Tela cheia\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"maximize-2\"></i>\n                            </button>\n                        "
+      }
+    }],
     "cores": {
       // "sidebar": "red",
       "fundo": ":#00000000",

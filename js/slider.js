@@ -125,6 +125,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     AnimatedElementos(event.detail.slide)
     // Função para inserir a URL ná página
     injectEstiloRender(event.detail.slide)
+    // Renderizar Ferramentas por Página
+    renderTools(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -430,7 +432,6 @@ function handleSearch() {
         }
     };
 }
-
 
 // ==========================================
 
