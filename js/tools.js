@@ -60,3 +60,5 @@ function renderTools(sliderIndex) {
 // Exemplo de chamada da função
 renderTools(savedPosition);
 
+
+

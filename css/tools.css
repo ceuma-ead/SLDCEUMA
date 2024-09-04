@@ -7,9 +7,9 @@
     background-color:#FFFFFF;
     padding: 1rem;
     width: 90%;
+    left: 5%;
     margin-top: 5rem;
-    left:50%;
-    transform: translateX(-50%);
+    transform: translateX(-5%);
     z-index: calc(var(--posicionamento-menu-sumario) + 3);
     justify-content: center;
     gap: 3rem;
@@ -30,7 +30,7 @@
     stroke: #FF8A00;
 }
 
-#close_box-tools-inline{
+#close_box{
     background: rgb(0, 0, 0);
     stroke: #FFFFFF;
 }

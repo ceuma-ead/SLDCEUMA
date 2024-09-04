@@ -88,7 +88,7 @@ var api = [// PAGINA 1
       },
       "close": {
         "ativa": true,
-        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box-tools-inline\"></i></button>\n                        "
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box\"></i></button>\n                        "
       }
     }],
     "cores": {
@@ -170,7 +170,7 @@ var api = [// PAGINA 1
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" aria-label=\"close\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       },
       "FullScreen": {
         "ativa": true,
@@ -218,7 +218,7 @@ var api = [// PAGINA 1
       },
       "close": {
         "ativa": true,
-        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box-tools-inline\"></i></button>\n                        "
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box\"></i></button>\n                        "
       }
     }],
     "cores": {// "sidebar": "red",

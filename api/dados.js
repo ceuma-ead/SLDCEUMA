@@ -153,7 +153,7 @@ const api = [
                     "close":{
                         "ativa":true,
                         "html" : `
-                              <button><i data-lucide="x" id="close_box-tools-inline"></i></button>
+                              <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
                     
@@ -286,7 +286,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -371,10 +371,9 @@ const api = [
                     "close":{
                         "ativa":true,
                         "html" : `
-                              <button><i data-lucide="x" id="close_box-tools-inline"></i></button>
+                              <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
-                    
                    
 
                 }
