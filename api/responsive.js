@@ -25,7 +25,9 @@ const responsivo = [
             #dots {
                 bottom: 8%;
                 align-items: normal;
-            }
+                position: relative !important;
+        left: 0% !important;
+                        }
 
             .animated-text {
                 font-size: 4vw;

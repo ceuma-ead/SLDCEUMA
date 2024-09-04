@@ -96,10 +96,10 @@
 }
 
 #dots {
-    position: relative;
-    width: auto;
-    /* bottom: 12%; */
-    transform: translateY(-50%, -50%);
+    position: absolute;
+    width: 100%;
+    bottom: 1%;
+        transform: translateY(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
