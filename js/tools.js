@@ -2,33 +2,37 @@ function renderTools(sliderIndex) {
     const pageData = api[sliderIndex];
 
     // Seleciona todos os contêineres onde as ferramentas podem ser inseridas
-    const allContainers = document.querySelector('.icons-action--container');
+    const allContainers = document.querySelectorAll('.icons-action--container');
 
     // Limpa os contêineres antes de inserir novas ferramentas
     allContainers.forEach(container => container.innerHTML = '');
 
+    // Verifica se a página possui ferramentas
     if (pageData && pageData.paramentros && pageData.paramentros.ferramentas) {
         const ferramentas = pageData.paramentros.ferramentas;
 
-        for (const [key, ferramenta] of Object.entries(ferramentas)) {
-            // Verifica se a ferramenta está ativa
-            if (ferramenta.ativa) {
-                const containerClass = ferramenta.container || 'icons-action--container';
-                const container = document.querySelector(`.${containerClass}`);
+        ferramentas.forEach(ferramentaGrupo => {
+            for (const key in ferramentaGrupo) {
+                if (key !== 'container' && ferramentaGrupo[key].ativa) {
+                    const containerClass = ferramentaGrupo.container || 'icons-action--container';
+                    const container = document.querySelector(`.${containerClass}`);
 
-                if (container) {
-                    // Insere o HTML da ferramenta no contêiner correspondente
-                    container.insertAdjacentHTML('beforeend', ferramenta.html);
-                } else {
-                    console.error(`Contêiner com a classe ${containerClass} não encontrado.`);
+                    if (container) {
+                        // Insere o HTML da ferramenta no contêiner correspondente
+                        container.insertAdjacentHTML('beforeend', ferramentaGrupo[key].html);
+                    } else {
+                        console.error(`Contêiner com a classe ${containerClass} não encontrado.`);
+                    }
                 }
+
+                lucide.createIcons();
             }
-        }
+        });
     } else {
-        console.log('Nenhuma ferramenta ativa nesta página.');
+        console.log('Nenhuma ferramenta ativa para esta página.');
     }
 
-    // Atualiza o controle do glider se necessário
+    // Atualiza o glider se ele estiver definido
     if (typeof glider !== 'undefined') {
         glider.refresh(true);
         glider.updateControls();
@@ -37,5 +41,5 @@ function renderTools(sliderIndex) {
     }
 }
 
-// Renderiza as ferramentas da página atual
+// Exemplo de chamada da função
 renderTools(savedPosition);
