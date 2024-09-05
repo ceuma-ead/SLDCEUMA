@@ -166,6 +166,15 @@
 /* On screens that are 992px wide or less, the background color is blue */
 @media screen and (max-width: 992px) {}
 
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 850px) {
+ 
+        .pagina-tipo-texto--box-texto {
+            justify-content: flex-start !important;
+
+    }
+}
+
 /* Em telas com 768px de largura ou menos, a cor de fundo é lightgreen  */
 @media screen and (max-width: 768px) {}
 
