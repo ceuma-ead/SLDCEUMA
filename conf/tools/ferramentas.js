@@ -55,8 +55,8 @@ function eventButton() {
     }
 
     const btnFerramentas = document.querySelectorAll('.btn-ferramentas');
-        const _animationShow = "animate__bounceInDown";
-        const _animationHide = "animate__bounceOutUp";
+        const _animationShow = "animate__fadeInDown";
+        const _animationHide = "animate__backOutUp";
     
         // Função para abrir/fechar a caixa de ferramentas
         function toggleToolBox(toolBox, show) {
