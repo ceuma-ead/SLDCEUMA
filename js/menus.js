@@ -14,7 +14,7 @@ function closeToggleBox(toolBox) {
     toolBox.addEventListener('animationend', () => {
         toolBox.style.display = 'none';
         toolBox.classList.remove('animate__animated', _animationHide); // Remove a animação de saída
-    });
+    }, {once: true});
 }
 
 // Função para abrir o sumário

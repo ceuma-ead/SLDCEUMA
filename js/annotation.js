@@ -224,7 +224,7 @@ function changeAnnotationColor(annotationElement, annotationId) {
         button.style.color = colorConfigurations[currentColorIndex].textButtonColor;
 
         // Atualiza a cor dos ícones SVG dentro do botão
-        const svgIcon = button.querySelector('svg');
+        const svgIcon = button.querySelector('i[data-lucide]');
         if (svgIcon) {
             svgIcon.style.fill = colorConfigurations[currentColorIndex].iconColor;
         }
