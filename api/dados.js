@@ -652,7 +652,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -694,7 +694,57 @@ const api = [
                         `
                     },
 
+                },
+                {
+                    "container":"box-tools-inline",
+                    "Resulmo":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="file-text"></i>Resumo</button>
+                        `
+                    },
+                    "Destacar":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="pencil"></i>Destacar</button>
+                        `
+                    },
+                    
+                    "Notas":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="sticky-note"></i>Notas</button>
+                        `
+                    },
+                    "Ouvinte":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                        `
+                    },
+                    "Download":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="download"></i>Download</button>
+                        `
+                    },
+                    "Dicionario":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="search"></i>Dicionario</button>
+                        `
+                    },
+                    "close":{
+                        "ativa":true,
+                        "html" : `
+                              <button><i data-lucide="x" id="close_box"></i></button>
+                        `
+                    },
+                    
+                   
+
                 }
+
             ],
             "cores": {
                 // "sidebar": "red",
@@ -858,7 +908,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -900,7 +950,57 @@ const api = [
                         `
                     },
 
+                },
+                {
+                    "container":"box-tools-inline",
+                    "Resulmo":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="file-text"></i>Resumo</button>
+                        `
+                    },
+                    "Destacar":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="pencil"></i>Destacar</button>
+                        `
+                    },
+                    
+                    "Notas":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="sticky-note"></i>Notas</button>
+                        `
+                    },
+                    "Ouvinte":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                        `
+                    },
+                    "Download":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="download"></i>Download</button>
+                        `
+                    },
+                    "Dicionario":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="search"></i>Dicionario</button>
+                        `
+                    },
+                    "close":{
+                        "ativa":true,
+                        "html" : `
+                              <button><i data-lucide="x" id="close_box"></i></button>
+                        `
+                    },
+                    
+                   
+
                 }
+
             ],
             "cores": {
                 // "sidebar": "red",
@@ -1035,7 +1135,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1077,7 +1177,57 @@ const api = [
                         `
                     },
 
+                },
+                {
+                    "container":"box-tools-inline",
+                    "Resulmo":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="file-text"></i>Resumo</button>
+                        `
+                    },
+                    "Destacar":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="pencil"></i>Destacar</button>
+                        `
+                    },
+                    
+                    "Notas":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="sticky-note"></i>Notas</button>
+                        `
+                    },
+                    "Ouvinte":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                        `
+                    },
+                    "Download":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="download"></i>Download</button>
+                        `
+                    },
+                    "Dicionario":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="search"></i>Dicionario</button>
+                        `
+                    },
+                    "close":{
+                        "ativa":true,
+                        "html" : `
+                              <button><i data-lucide="x" id="close_box"></i></button>
+                        `
+                    },
+                    
+                   
+
                 }
+
             ],
             "marcador": [{
                 "tipo": "p",
@@ -1253,7 +1403,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1295,7 +1445,57 @@ const api = [
                         `
                     },
 
+                },
+                {
+                    "container":"box-tools-inline",
+                    "Resulmo":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="file-text"></i>Resumo</button>
+                        `
+                    },
+                    "Destacar":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="pencil"></i>Destacar</button>
+                        `
+                    },
+                    
+                    "Notas":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="sticky-note"></i>Notas</button>
+                        `
+                    },
+                    "Ouvinte":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                        `
+                    },
+                    "Download":{
+                        "ativa":true,
+                        "html" : `
+                            <button><i data-lucide="download"></i>Download</button>
+                        `
+                    },
+                    "Dicionario":{
+                        "ativa":true,
+                        "html" : `
+                             <button><i data-lucide="search"></i>Dicionario</button>
+                        `
+                    },
+                    "close":{
+                        "ativa":true,
+                        "html" : `
+                              <button><i data-lucide="x" id="close_box"></i></button>
+                        `
+                    },
+                    
+                   
+
                 }
+
             ],
             "marcador": [{
                 "tipo": "p",

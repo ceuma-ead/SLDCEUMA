@@ -4,7 +4,7 @@
 
 .box-tools-inline{
     position: absolute;
-    background-color:#FFFFFF;
+    background-color:#ffffffd4;
     padding: 1rem;
     width: 90%;
     left: 5%;
@@ -24,6 +24,13 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+}
+
+.box-tools-inline button:hover{
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    padding: 0 0.2rem;
+    background: #e9e9e9;
 }
 
 .box-tools-inline svg{
