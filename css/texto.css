@@ -17,23 +17,23 @@
 .pagina-tipo-texto--box-texto {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
     width: 90%;
     height: 100%;
     overflow: hidden;
     /* background-color: blue; */
-    
+
 }
 
 .pagina-tipo-texto--box-texto p {
     width: 100%;
     /* background-color: #A34700; */
     height: min-content;
-    
+
 }
 
-.pagina-tipo-texto--box-texto p{
+.pagina-tipo-texto--box-texto p {
     display: inline-block;
     position: relative;
     /* cursor: pointer; */
@@ -81,7 +81,7 @@
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-thumb:hover {
     background-color: #A35200;
-    
+
 }
 
 .pagina-tipo-texto--box-texto::-webkit-scrollbar-thumb:active {
@@ -93,17 +93,17 @@
 /* On screens that are 1200px wide or less, the background color is lightgray */
 @media screen and (min-width: 1280px) {
 
-    .pagina-tipo-texto--box-texto p{
-        font-size:calc( var(--font-para-paragrafos) + 2) !important;
+    .pagina-tipo-texto--box-texto p {
+        font-size: calc(var(--font-para-paragrafos) + 2) !important;
     }
 
     .olcards {
-                align-items: normal !important;
+        align-items: normal !important;
     }
-   
+
     .olcards li .content .text {
         text-align: left;
-        font-size:calc( var(--font-para-paragrafos) + 2) !important;
+        font-size: calc(var(--font-para-paragrafos) + 2) !important;
 
     }
 
@@ -112,7 +112,7 @@
     }
 
     .header-title p {
-        font-size: calc( var(--tamanho-de-font-para-paragrafo-sidebar) + 0.5rem) !important;
+        font-size: calc(var(--tamanho-de-font-para-paragrafo-sidebar) + 0.5rem) !important;
     }
 
     .accordion section ul {
@@ -130,17 +130,17 @@
 
     .align-accordion {
         height: 30rem !important;
-    }    
+    }
 
     .accordion section h2 {
-                width: 25rem !important;
+        width: 25rem !important;
         height: 4rem !important;
         font-size: calc(var(--font-para-paragrafos) + 4px) !important;
     }
- 
+
     .accordion section:target h2 {
-                font-size: 1.5rem !important;
-    
+        font-size: 1.5rem !important;
+
     }
 
     .accordion section .box {
@@ -157,53 +157,50 @@
         top: 35% !important;
     }
 
-    }
+}
 
 
 /* On screens that are 1200px wide or less, the background color is lightgray */
-@media screen and (max-width: 1200px) {
-   
-}
+@media screen and (max-width: 1200px) {}
 
 /* On screens that are 992px wide or less, the background color is blue */
-@media screen and (max-width: 992px) {
-    
-}
+@media screen and (max-width: 992px) {}
 
 /* Em telas com 768px de largura ou menos, a cor de fundo é lightgreen  */
-@media screen and (max-width: 768px) {
-    
-}
+@media screen and (max-width: 768px) {}
 
 /* Em telas com 600px de largura ou menos, a cor de fundo é olive */
 @media screen and (max-width: 600px) {
-    .pagina-tipo-texto--box-texto{
+    .pagina-tipo-texto--box-texto {
         overflow-y: scroll;
         padding-right: 0.2rem;
         padding-left: 0.5rem;
     }
+
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
-        
+
         display: block;
     }
-   
+
+
 }
 
 
 
 /* Em telas com 480px de largura ou menos, a cor de fundo é orange */
 @media screen and (max-width: 480px) {
-    .pagina-tipo-texto--box-texto{
+    .pagina-tipo-texto--box-texto {
         overflow-y: scroll;
         padding-right: 0.2rem;
         padding-left: 0.5rem;
         padding-bottom: 4rem;
     }
+
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
-        
+
         display: block;
     }
-   
+
     #dots {
         height: 6rem !important;
     }
@@ -212,13 +209,14 @@
 
 /* Em telas com 375px de largura ou menos, a cor de fundo é amarela */
 @media screen and (max-width: 375px) {
-    .pagina-tipo-texto--box-texto{
+    .pagina-tipo-texto--box-texto {
         overflow-y: scroll;
         padding-right: 0.2rem;
         padding-left: 0.5rem;
     }
+
     .pagina-tipo-texto--box-texto::-webkit-scrollbar {
-        
+
         display: block;
     }
 
@@ -227,4 +225,3 @@
     }
 
 }
-
