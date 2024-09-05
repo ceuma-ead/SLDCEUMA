@@ -91,6 +91,76 @@
 /* overflow-y: scroll; */
 
 /* On screens that are 1200px wide or less, the background color is lightgray */
+@media screen and (min-width: 1280px) {
+
+    .pagina-tipo-texto--box-texto p{
+        font-size:calc( var(--font-para-paragrafos) + 2) !important;
+    }
+
+    .olcards {
+                align-items: normal !important;
+    }
+   
+    .olcards li .content .text {
+        text-align: left;
+        font-size:calc( var(--font-para-paragrafos) + 2) !important;
+
+    }
+
+    .olcards li .icon {
+        margin-top: 8px;
+    }
+
+    .header-title p {
+        font-size: calc( var(--tamanho-de-font-para-paragrafo-sidebar) + 0.5rem) !important;
+    }
+
+    .accordion section ul {
+        font-size: calc(var(--font-para-paragrafos) + 2px) !important;
+    }
+
+    .accordion section:target {
+        width: 45rem !important;
+    }
+
+    .accordion section:target .box {
+        width: 45rem !important;
+        height: 45rem !important;
+    }
+
+    .align-accordion {
+        height: 30rem !important;
+    }    
+
+    .accordion section h2 {
+                width: 25rem !important;
+        height: 4rem !important;
+        font-size: calc(var(--font-para-paragrafos) + 4px) !important;
+    }
+ 
+    .accordion section:target h2 {
+                font-size: 1.5rem !important;
+    
+    }
+
+    .accordion section .box {
+        width: 2.5em !important;
+        height: 28rem !important;
+
+    }
+
+    .sidebar-menu {
+        top: 35% !important;
+    }
+
+    .sidebar-menu-Annotation {
+        top: 35% !important;
+    }
+
+    }
+
+
+/* On screens that are 1200px wide or less, the background color is lightgray */
 @media screen and (max-width: 1200px) {
    
 }
