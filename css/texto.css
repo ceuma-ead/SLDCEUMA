@@ -15,10 +15,10 @@
 }
 
 .pagina-tipo-texto--box-texto {
-    flex-direction: column;
-    justify-content: center;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
     width: 90%;
     height: 100%;
     overflow: hidden;
