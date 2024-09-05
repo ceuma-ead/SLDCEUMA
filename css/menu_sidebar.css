@@ -9,7 +9,7 @@
     height: 30rem;
     background-color:var(--fundo-menu-sumario);
     transition: all .5s ease;
-    z-index: var(--posicionamento-menu-sumario);
+    z-index: calc(var(--posicionamento-menu-sumario) + 2);
     /* overflow: hidden;
     overflow-y: scroll; */
     border-radius: 0.5rem;
