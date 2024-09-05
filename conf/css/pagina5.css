@@ -1,131 +1,12 @@
-/* @import url(../../css/variaveis.css);
-
-.align-accordion {
-  width: 100%;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.accordion {
-  display: flex;
-  width: 100%;
-  margin: 0 auto;
-   background-color: #666; 
-  border-radius: 5px;
-   box-shadow: 0 3px 3px rgba(0,0,0,0.3); 
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  height: max-content;
-  overflow: hidden;
-
-}
-
-.accordion section {
-  position: relative;
-   display: block; 
-  float: left;
-  width: 2em;
-  height: 11em;
-   margin: 1em 0 0.5em 0.5em; 
-  color: #333;
-  background-color: #333;
-  overflow: hidden;
-  border-radius: 3px;
-
-
-
-
-}
-
-.accordion section h2 {
-  position: absolute;
-  font-weight: bold;
-  width: 14rem;
-  height: 3rem;
-  top: 50%;
-  text-align: center;
-  z-index: 2;
-  font-size: var(--font-para-paragrafos);
-  padding: 1rem;
-  background-color: #969696; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black !important;
-  border-radius: 0 1rem 0 1rem;
-  -webkit-transform-origin: 0 0;
-  -moz-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  -o-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  transform: rotate(-90deg) translate(-50%, -50%);
-  background-color: var(--cardColor);
-
-
-}
-
-.accordion section h2 a {
-  width: 100%;
-  text-decoration: none;
-  color: var(--font-color);
-  outline: 0 none;
-}
-
-.accordion section:target {
-  width: 30rem;
-  overflow: hidden;
-   padding: 0 1rem; 
-  color: #333;
-  background-color: #ffffff;
-   background-color: aqua; 
-  
-
-}
-
-.accordion section ul {
-  list-style-type: lower-alpha;
-  text-align: left;
-  font-size: calc(var(--font-para-paragrafos) - 4px);
-  
-}
-
-.accordion section:target h2 {
-  position: static;
-  font-size: 1rem;
-  text-indent: 0;
-  color: #333;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  
-}
-
-.accordion section,
-.accordion section h2 {
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
-  
-} */
-
 
 @import url(../../css/variaveis.css);
 
 .align-accordion {
   width: 100%;
   height: 20rem;
+  /* background-color: red; */
+ 
+
 }
 
 .accordion {
@@ -136,10 +17,11 @@
   border-radius: 5px;
   /* box-shadow: 0 3px 3px rgba(0,0,0,0.3); */
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  
   height: max-content;
   overflow: hidden;
+  overflow-y: scroll;
+
 
 
 }
@@ -183,7 +65,7 @@
   z-index: 2;
   font-size: calc(var(--font-para-paragrafos));
   padding: 1rem;
-  background-color: #969696;
+  /* background-color: #969696; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +104,6 @@
 .accordion section:target {
   width: 30rem;
   height: 100%;
-  overflow: hidden;
   /* padding: 0 1rem; */
   color: #333;
   background-color: #ffffff;
@@ -297,93 +178,49 @@
     display: flex;
     /* background-color: red; */
     overflow: hidden;
+    justify-content: center;
+    align-items: center;
 
   }
 
 
   .accordion section .box {
-    position: relative;
+   
     width: 100%;
-    height: 0rem;
-    /* background-color: aqua; */
-    overflow: hidden;
+    height: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* margin: 1em 0 0.5em 0.5em; */
+    color: #333;
+    /* background-color: #ffffff; */
     margin-top: 2rem;
+    border-radius: 3px;
+    text-align: left;
+  
 
+  }
+
+  
+  .accordion section:target  {
+    height: 100%;
   }
 
   .accordion section:target .box {
     margin-right: 0.5rem;
     width: 100%;
     height: 15rem;
-    overflow: hidden;
-    overflow: scroll;
+ 
     /* padding: 0 1rem; */
     color: #333;
     /* background-color: #b63030; */
-
-  }
-
-  #acc1,
-  #acc2,
-  #acc3 {
+  
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-  }
-
-}
-
-@media screen and (max-width: 480px) {
-  .accordion {
-    flex-direction: column;
-    /* background-color: aqua; */
-
-  }
-
-
-  .accordion section h2 {
-    position: absolute;
-    border-radius: 0 1rem 0 1rem;
-    top: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    background-color: var(--cardColor);
-
-
-
-  }
-
-  .align-accordion {
-    width: 100%;
-    height: 90%;
-    overflow: hidden;
-    /* background-color: rgb(0, 255, 200); */
-    overflow-y: scroll;
-
-  }
-
-
-  .accordion section .box {
-    position: relative;
-    width: 100%;
-    height: 0rem;
-    /* background-color: aqua; */
-    overflow: hidden;
-    margin-top: 2rem;
-
-  }
-
-  .accordion section:target .box {
-    width: 60%;
-    height: 100%;
-    /* padding: 0 1rem; */
-    color: #333;
-    /* background-color: #b63030; */
-
+ 
+    
   }
 
   #acc1,
@@ -396,72 +233,19 @@
   }
 
   .accordion section ul {
-    font-size: calc(var(--font-para-paragrafos) - px);
 
-
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .accordion {
-    flex-direction: column;
-    /* background-color: aqua; */
-
-  }
-
-  .accordion section h2 {
-    position: absolute;
-    border-radius: 0 1rem 0 1rem;
-    top: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    background-color: var(--cardColor);
-
-
-
-  }
-
-  .align-accordion {
-    overflow-y: scroll;
-    height: 100%;
     display: flex;
-    /* background-color: red; */
-    overflow: hidden;
-
-  }
-
-
-  .accordion section .box {
-    position: relative;
-    width: 100%;
-    height: 0rem;
-    /* background-color: aqua; */
-    overflow: hidden;
-    margin-top: 2rem;
-
-  }
-
-  .accordion section:target .box {
+    list-style-type: lower-alpha;
+  
     width: 60%;
-    height: 100%;
-    /* padding: 0 1rem; */
-    color: #333;
-    /* background-color: #b63030; */
+    height: 90%;
 
-  }
-
-
-  #acc1,
-  #acc2,
-  #acc3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* background: blue; */
+    font-size: calc(var(--font-para-paragrafos) - 4px);
     flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+  
   }
-
-
 }
+

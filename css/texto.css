@@ -170,7 +170,11 @@
 @media screen and (max-width: 850px) {
  
         .pagina-tipo-texto--box-texto {
-            justify-content: flex-start !important;
+            display: flex;
+            align-items: center;
+            justify-content:start;
+            flex-direction: column;
+ 
 
     }
 }

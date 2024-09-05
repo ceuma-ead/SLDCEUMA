@@ -209,7 +209,6 @@ const api = [
         }
     },
     
-
     // PAGINA 2
     {
         "pagina": 2,
@@ -1246,7 +1245,6 @@ const api = [
                 // "corTexto": "black",
                 // "padding": "0.3rem",
                 
-
             }],
                 
             "cores": {
@@ -1320,7 +1318,6 @@ const api = [
                                 <h2><a href="#acc1">Competências a serem desenvolvidas</a></h2>
                    
                                 <div class="box">
-                                
                                     <ul>
                                         <li>Capacidade de identificar e interpretar alterações hematológicas.</li>
                                         <li>Habilidade em realizar e interpretar exames hematológicos</li>
@@ -1328,6 +1325,7 @@ const api = [
                                     </ul>
                                 </div>
                             </section>
+                            
                             <section id="acc2" style="--cardColor:#36aeb3;--font-color:#fff;" >
                                 <h2><a href="#acc2">Objetos de conhecimento</a></h2>
                                 <div class="box">
@@ -1341,6 +1339,7 @@ const api = [
                                     </ul>
                                 </div>
                             </section>
+
                             <section id="acc3" style="--cardColor:#f15f0e;--font-color:#fff;" >
                                 <h2><a href="#acc3">Materiais Disponibilizados para Estudo</a></h2>
                                 <div class="box">
@@ -1566,7 +1565,5 @@ const api = [
 
         }
     },
-
-
 
 ];
