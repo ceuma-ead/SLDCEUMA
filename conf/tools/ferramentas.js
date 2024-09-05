@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Iniciar Evento
     eventButton();
+    
 });
 
 
@@ -37,7 +38,7 @@ function eventButton() {
                 document.msExitFullscreen();
             }
         }
-        
+
     }
 
     // Reaplica o evento de clique para o botão de tela cheia
@@ -104,7 +105,7 @@ function eventButton() {
     // // Chamando a função para fechar a caixa de ferramentas
     // closeToggleBox(toolBox);
 
-    
+
 
     // Evento para fechar a caixa de ferramentas ao clicar no botão de fechar
     document.querySelectorAll('#close_box').forEach((closeButton, index) => {
@@ -125,18 +126,18 @@ function eventButton() {
 
 
     const abri_anotacao = document.querySelectorAll('.abrir-annotation');
-    abri_anotacao.forEach((openAnnotation,index) =>{
-        openAnnotation.addEventListener("click",function(event){
-            eventButton();
-            createAnnotation()
-            abrirConfigurcoesBaseMenu();
+    abri_anotacao.forEach((openAnnotation, index) => {
+        openAnnotation.addEventListener("click", function (event) {
+                
+            createAnnotation();
+            
         })
 
-        
+
     })
 
     // ======================================================= \\
-    
+
 
 
 

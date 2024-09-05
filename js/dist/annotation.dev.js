@@ -63,7 +63,7 @@ function renderAnnotation(annotationItem) {
   newAnnotation.dataset.id = annotationItem.id; // Armazena o ID da anotação
   // Configura o conteúdo da nova anotação, incluindo o título editável, texto e ícones de ações
 
-  newAnnotation.innerHTML = "\n        <div class=\"ribbon rb d-inline-block text-truncate\" style=\"max-width: 80%;\" \n             title='".concat(annotationItem.title, "' contenteditable=\"true\">").concat(annotationItem.title, "</div>\n        \n        <p contenteditable=\"true\">").concat(annotationItem.Texto, "</p>\n        <div class=\"line_anottation\"></div>\n        <div class=\"render-menu-Annotation--icons\">\n            <button class=\"delete-icon\"><i data-lucide=\"trash-2\"></i></button>\n            <button class=\"download-icon\"><i data-lucide=\"cloud-download\"></i></button>\n            <button class=\"color-icon\"><i data-lucide=\"palette\"></i></button>\n        </div>\n    "); // Aplica a cor salva na anotação, se existir
+  newAnnotation.innerHTML = "\n        <div class=\"ribbon rb d-inline-block text-truncate\" style=\"max-width: 80%;\" \n             title='".concat(annotationItem.title, "' contenteditable=\"true\">").concat(annotationItem.title, "</div>\n        \n        <p contenteditable=\"true\">").concat(annotationItem.Texto, "</p>\n        <div class=\"line_anottation\"></div>\n        <div class=\"render-menu-Annotation--icons\">\n            <button class=\"delete-icon\">\n\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-trash-2\"><path d=\"M3 6h18\"/><path d=\"M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6\"/><path d=\"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2\"/><line x1=\"10\" x2=\"10\" y1=\"11\" y2=\"17\"/><line x1=\"14\" x2=\"14\" y1=\"11\" y2=\"17\"/></svg>\n            \n            </button>\n            <button class=\"download-icon\">\n            \n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-cloud-download\"><path d=\"M12 13v8l-4-4\"/><path d=\"m12 21 4-4\"/><path d=\"M4.393 15.269A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.436 8.284\"/></svg>\n            \n            </button>\n            <button class=\"color-icon\">\n\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-palette\"><circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\"/><circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\"/><circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\"/><circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\"/><path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z\"/></svg>\n\n            </button>\n        </div>\n    "); // Aplica a cor salva na anotação, se existir
 
   if (annotationItem.color) {
     newAnnotation.style.background = annotationItem.color.background; // Força a aplicação da cor do texto ao parágrafo
@@ -210,7 +210,10 @@ function abrirConfigurcoesBaseMenu() {
 
   var iconAnnotation = checkEmptyAnnotationsContainer();
 
-  if (!menuAnotacoes || !ButtonMenuAnotacoes || !vizioon_anotation) {
+  if (!menuAnotacoes || !ButtonMenuAnotacoes) {
+    console.log(menuAnotacoes);
+    console.log(ButtonMenuAnotacoes);
+    console.log(vizioon_anotation);
     console.error('abrirConfigurcoesBaseMenu: Elementos não encontrados.');
     return;
   }
@@ -230,12 +233,15 @@ function abrirConfigurcoesBaseMenu() {
   if (vizioon_anotation) {
     vizioon_anotation.innerHTML = 'Suas Anotações 🤩 !!';
     vizioon_anotation.style.display = 'none';
-  } // // Atualiza os ícones, se necessário
+  } // // // Atualiza os ícones, se necessário
   // if (typeof lucide !== 'undefined' && lucide.createIcons) {
   //     lucide.createIcons();
   // }
 
-} // Função para exibir o alerta com fechamento automático e logs
+} // if(typeof abrirConfigurcoesBaseMenu === "function" ){
+//     abrirConfigurcoesBaseMenu()
+// }
+// Função para exibir o alerta com fechamento automático e logs
 
 
 function showAutoCloseAlert(logs) {

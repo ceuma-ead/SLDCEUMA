@@ -120,9 +120,7 @@ function eventButton() {
   var abri_anotacao = document.querySelectorAll('.abrir-annotation');
   abri_anotacao.forEach(function (openAnnotation, index) {
     openAnnotation.addEventListener("click", function (event) {
-      eventButton();
       createAnnotation();
-      abrirConfigurcoesBaseMenu();
     });
   }); // ======================================================= \\
 }

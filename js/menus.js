@@ -19,8 +19,6 @@ function closeToggleBox(toolBox) {
     });
 }
 
-
-
 // Função para abrir o sumário
 function abrirSumario() {
     const botaoAbrirSumario = document.getElementById('btnOpenSumario');

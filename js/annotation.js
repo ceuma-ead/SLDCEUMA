@@ -37,7 +37,6 @@ function checkEmptyAnnotationsContainer() {
 }
 
 
-
 function Update() {
     // Exemplo de uso
 
@@ -59,11 +58,12 @@ function Update() {
 
 }
 
-
 checkEmptyAnnotationsContainer()
 
 // Função para renderizar uma anotação na interface
 function renderAnnotation(annotationItem) {
+
+    
     const renderMenuDiv = document.querySelector('.render-menu-Annotation');
 
     // Cria o elemento para a nova anotação
@@ -79,9 +79,21 @@ function renderAnnotation(annotationItem) {
         <p contenteditable="true">${annotationItem.Texto}</p>
         <div class="line_anottation"></div>
         <div class="render-menu-Annotation--icons">
-            <button class="delete-icon"><i data-lucide="trash-2"></i></button>
-            <button class="download-icon"><i data-lucide="cloud-download"></i></button>
-            <button class="color-icon"><i data-lucide="palette"></i></button>
+            <button class="delete-icon">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+            
+            </button>
+            <button class="download-icon">
+            
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-download"><path d="M12 13v8l-4-4"/><path d="m12 21 4-4"/><path d="M4.393 15.269A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.436 8.284"/></svg>
+            
+            </button>
+            <button class="color-icon">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+
+            </button>
         </div>
     `;
 
@@ -243,7 +255,10 @@ function abrirConfigurcoesBaseMenu() {
     // verificar se container é vazio pra mudar o icon
     const iconAnnotation = checkEmptyAnnotationsContainer();
 
-    if (!menuAnotacoes || !ButtonMenuAnotacoes || !vizioon_anotation) {
+    if (!menuAnotacoes || !ButtonMenuAnotacoes) {
+        console.log(menuAnotacoes);
+        console.log(ButtonMenuAnotacoes);
+        console.log(vizioon_anotation);
         console.error('abrirConfigurcoesBaseMenu: Elementos não encontrados.');
         return;
     }
@@ -272,11 +287,15 @@ function abrirConfigurcoesBaseMenu() {
         vizioon_anotation.style.display = 'none';
     }
 
-    // // Atualiza os ícones, se necessário
+    // // // Atualiza os ícones, se necessário
     // if (typeof lucide !== 'undefined' && lucide.createIcons) {
     //     lucide.createIcons();
     // }
 }
+
+// if(typeof abrirConfigurcoesBaseMenu === "function" ){
+//     abrirConfigurcoesBaseMenu()
+// }
 
 // Função para exibir o alerta com fechamento automático e logs
 function showAutoCloseAlert(logs) {
@@ -359,9 +378,6 @@ async function createAnnotation() {
             `;
 
             showAutoCloseAlert(logs);
-
-
-
             checkEmptyAnnotationsContainer();
         } else {
             console.log('createAnnotation: Nenhum texto fornecido.');
@@ -743,5 +759,4 @@ if (title_rb) {
 document.addEventListener('DOMContentLoaded', function () {
     Update()
     checkEmptyAnnotationsContainer()
-
 });
