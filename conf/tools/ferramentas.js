@@ -1,3 +1,10 @@
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Iniciar Evento
+    eventButton();
+});
+
+
 function eventButton() {
 
     // Função para entrar/sair da tela cheia
@@ -107,5 +114,3 @@ function eventButton() {
 
 }
 
-// Iniciar Evento
-eventButton();

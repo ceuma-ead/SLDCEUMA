@@ -1,5 +1,10 @@
 "use strict";
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Iniciar Evento
+  eventButton();
+});
+
 function eventButton() {
   // Função para entrar/sair da tela cheia
   function Screen(tipo, elemento) {
@@ -54,8 +59,8 @@ function eventButton() {
 
 
   var btnFerramentas = document.querySelectorAll('.btn-ferramentas');
-  var _animationShow = "animate__bounceInDown";
-  var _animationHide = "animate__bounceOutUp";
+  var _animationShow = "animate__fadeInDown";
+  var _animationHide = "animate__backOutUp";
   btnFerramentas.forEach(function (button, index) {
     button.addEventListener('click', function () {
       // Seleciona todas as caixas de ferramentas
@@ -106,7 +111,4 @@ function eventButton() {
       }
     });
   });
-} // Iniciar Evento
-
-
-eventButton();
+}
