@@ -36,6 +36,7 @@ function renderTools(sliderIndex) {
             }
         });
 
+        
         // Aplica novamente os ícones
         lucide.createIcons();
         if(typeof eventButton === "function"){

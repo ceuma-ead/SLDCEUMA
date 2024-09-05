@@ -1324,6 +1324,7 @@ function injectEstiloRender(slideIndex) {
 }
 
 
+
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);

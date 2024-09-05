@@ -36,6 +36,8 @@ function checkEmptyAnnotationsContainer() {
     }
 }
 
+
+
 function Update() {
     // Exemplo de uso
 
