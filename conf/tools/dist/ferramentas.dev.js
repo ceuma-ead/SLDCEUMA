@@ -55,42 +55,49 @@ function eventButton() {
     };
   } else {
     console.log("Botão de tela cheia não encontrado.");
-  } // Botões de Caixa de Ferramentas
-
+  }
 
   var btnFerramentas = document.querySelectorAll('.btn-ferramentas');
-  var _animationShow = "animate__fadeInDown";
-  var _animationHide = "animate__backOutUp";
+  var _animationShow = "animate__bounceInDown";
+  var _animationHide = "animate__bounceOutUp"; // Função para abrir/fechar a caixa de ferramentas
+
+  function toggleToolBox(toolBox, show) {
+    if (show) {
+      // Abrir a caixa de ferramentas com animação
+      toolBox.style.display = 'flex';
+      toolBox.classList.remove(_animationHide); // Remove a animação de saída
+
+      toolBox.classList.add('animate__animated', _animationShow); // Adiciona a animação de entrada
+    } else {
+      // Fechar a caixa de ferramentas com animação
+      toolBox.classList.remove(_animationShow); // Remove a animação de entrada
+
+      toolBox.classList.add('animate__animated', _animationHide); // Adiciona a animação de saída
+      // Aguarda o término da animação para ocultar o elemento
+
+      toolBox.addEventListener('animationend', function () {
+        toolBox.style.display = 'none';
+        toolBox.classList.remove('animate__animated', _animationHide); // Remove a animação de saída
+      }, {
+        once: true
+      });
+    }
+  } // Evento para abrir/fechar caixas de ferramentas ao clicar no botão correspondente
+
+
   btnFerramentas.forEach(function (button, index) {
     button.addEventListener('click', function () {
-      // Seleciona todas as caixas de ferramentas
-      var toolBoxes = document.querySelectorAll('.box-tools-inline'); // Verifica se a caixa correspondente existe
+      var toolBoxes = document.querySelectorAll('.box-tools-inline');
 
       if (toolBoxes[index]) {
-        var toolBox = toolBoxes[index]; // Verifica se a caixa está visível e alterna a exibição
-
-        if (toolBox.style.display === 'none' || toolBox.style.display === '') {
-          toolBox.style.display = 'flex';
-          toolBox.classList.remove(_animationHide); // Remove a animação de saída, se houver
-
-          toolBox.classList.add('animate__animated', _animationShow);
-        } else {
-          toolBox.classList.remove(_animationShow); // Remove a animação de entrada, se houver
-
-          toolBox.classList.add('animate__animated', _animationHide); // Aguarda a animação de saída terminar para ocultar a caixa
-
-          toolBox.addEventListener('animationend', function () {
-            toolBox.style.display = 'none';
-            toolBox.classList.remove('animate__animated', _animationHide);
-          }, {
-            once: true
-          });
-        }
+        var toolBox = toolBoxes[index];
+        var isVisible = toolBox.style.display === 'flex';
+        toggleToolBox(toolBox, !isVisible); // Alterna a exibição da caixa
       } else {
         console.error('Caixa de ferramentas não encontrada para este botão.');
       }
     });
-  }); // Função para fechar a caixa de ferramentas ao clicar no botão de fechar
+  }); // Evento para fechar a caixa de ferramentas ao clicar no botão de fechar
 
   document.querySelectorAll('#close_box').forEach(function (closeButton, index) {
     closeButton.addEventListener('click', function () {
@@ -98,16 +105,7 @@ function eventButton() {
 
       if (toolBoxes[index]) {
         var toolBox = toolBoxes[index];
-        toolBox.classList.remove(_animationShow); // Remove a animação de entrada, se houver
-
-        toolBox.classList.add('animate__animated', _animationHide); // Aguarda a animação de saída terminar para ocultar a caixa
-
-        toolBox.addEventListener('animationend', function () {
-          toolBox.style.display = 'none';
-          toolBox.classList.remove('animate__animated', _animationHide);
-        }, {
-          once: true
-        });
+        toggleToolBox(toolBox, false); // Fechar a caixa ao clicar no botão de fechar
       }
     });
   });

@@ -182,3 +182,15 @@
    color: rgb(8, 61, 175);
 }
 
+
+.icon--annotation-action button i {
+    width: var(--tamanho-dos-icones-siderbar);
+    height: var(--tamanho-dos-icones-siderbar);
+    background: none;
+    border: none;
+    color: var(--cor-dos-icones-de-anotacao);
+    transition: all 0.3s; 
+    -webkit-text-stroke: 1px;
+    /* border: 2px solid red; */
+}
+

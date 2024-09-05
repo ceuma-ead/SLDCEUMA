@@ -160,6 +160,12 @@ a:hover {
     cursor: pointer;
 }
 
+#btnOpenSumario i {
+   
+    -webkit-text-stroke: 0.3px;
+    /* border: 2px solid red; */
+}
+
 /* Ir para 4% */
 
 .sidebar-menu.open {

@@ -39,21 +39,19 @@ function checkEmptyAnnotationsContainer() {
 function Update() {
     // Exemplo de uso
 
-        const iconAnnotation = checkEmptyAnnotationsContainer();
-        const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
+    const iconAnnotation = checkEmptyAnnotationsContainer();
+    const ButtonMenuAnotacoes = document.querySelector(".openAnnotation");
 
-        if (iconAnnotation) {
-            // console.log("Container não está vazio");
-            iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
-        } else {
-            // console.log("Container está vazio");
-            iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
-        }
+    if (iconAnnotation) {
+        // console.log("Container não está vazio");
+        console.log(ButtonMenuAnotacoes)
+        ButtonMenuAnotacoes.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticker"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M14 3v4a2 2 0 0 0 2 2h4"/><path d="M8 13h.01"/><path d="M16 13h.01"/><path d="M10 16s.8 1 2 1c1.3 0 2-1 2-1"/></svg>`;
 
-        // Atualize os ícones para garantir que a nova configuração seja aplicada
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
-        }
+    } else {
+        // console.log("Container está vazio");
+        ButtonMenuAnotacoes.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticky-note"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></svg> `;
+
+    }
 
 
 
@@ -125,8 +123,10 @@ function renderAnnotation(annotationItem) {
         const updatedTitle = this.innerText.trim();
         if (updatedTitle !== annotationItem.title) {
             // Atualiza o título da anotação
-            updateAnnotationField(annotationItem.id, { title: updatedTitle });
-           
+            updateAnnotationField(annotationItem.id, {
+                title: updatedTitle
+            });
+
         }
     });
 
@@ -135,7 +135,9 @@ function renderAnnotation(annotationItem) {
         const updatedText = this.innerText.trim();
         if (updatedText !== annotationItem.Texto) {
             // Atualiza o texto da anotação
-            updateAnnotationField(annotationItem.id, { Texto: updatedText });
+            updateAnnotationField(annotationItem.id, {
+                Texto: updatedText
+            });
         }
     });
 
@@ -153,7 +155,9 @@ function renderAnnotation(annotationItem) {
 function updateAnnotationField(id, updates) {
     // Implementar a lógica para atualizar o título ou texto da anotação no banco de dados
     // Exemplo fictício:
-    annotation.update({ id }, updates);
+    annotation.update({
+        id
+    }, updates);
 }
 
 
@@ -394,7 +398,7 @@ async function removeAnnotation(id) {
                     }).then((result) => {
                         if (result.isConfirmed) {
                             checkEmptyAnnotationsContainer();
-                            Update() 
+                            Update()
                         }
                     })
 
@@ -687,7 +691,7 @@ annotation.find({}, function (results) {
 document.querySelector('footer button').addEventListener('click', createAnnotation);
 
 
-document.querySelector('.mudarPosicao').addEventListener('click', function() {
+document.querySelector('.mudarPosicao').addEventListener('click', function () {
     const sidebar = document.querySelector('.sidebar-menu-Annotation');
 
     if (sidebar.classList.contains('left')) {
@@ -699,7 +703,7 @@ document.querySelector('.mudarPosicao').addEventListener('click', function() {
     }
 
     // Atualizar a lógica de clique fora ao mudar a posição
-    document.addEventListener('click', function(evento) {
+    document.addEventListener('click', function (evento) {
         if (sidebar.classList.contains('open-annotation') && !sidebar.contains(evento.target) && evento.target !== document.querySelector('.openAnnotation')) {
             fecharMenuAnotacoes();
         }
@@ -709,7 +713,7 @@ document.querySelector('.mudarPosicao').addEventListener('click', function() {
 
 const title_rb = document.querySelector('.rb');
 
-if(title_rb){
+if (title_rb) {
 
     document.querySelector('.rb').addEventListener('keydown', function (event) {
         // Impede a quebra de linha ao pressionar Enter
@@ -720,25 +724,10 @@ if(title_rb){
 }
 
 
-Update()
-checkEmptyAnnotationsContainer()
 
-document.addEventListener('DOMContentLoaded', function() {
-    
 
-    const iconAnnotation = checkEmptyAnnotationsContainer();
-    const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
+document.addEventListener('DOMContentLoaded', function () {
+    Update()
+    checkEmptyAnnotationsContainer()
 
-    if (iconAnnotation) {
-        // console.log("Container não está vazio");
-        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
-    } else {
-        // console.log("Container está vazio");
-        iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
-    }
-
-    // Atualize os ícones para garantir que a nova configuração seja aplicada
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
-    }
 });

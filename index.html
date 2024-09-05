@@ -26,6 +26,11 @@
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <!-- Option 1: Include in HTML -->
+        <link rel="stylesheet"
+            href="./plugins/bootstrapIcons/font/bootstrap-icons.css">
+        <link rel="stylesheet"
+            href="./plugins/bootstrapIcons/font/bootstrap-icons.min.css">
         <!-- Link Para Animação Textual -->
         <script type="text/javascript" src="./db/src/LocalDB.js"></script>
 
@@ -91,8 +96,8 @@
                     <button id="btnOpenSumario" vizioon-tip="Sumário"
                         vizioon-posicao="left"
                         vizioon-attr="d-none d-md-block">
-                        <i data-lucide="notebook-text" id="menuIcon"></i>
-                        <!-- <i class="fas fa-times" id="cancel"></i> -->
+                        <i class="bi bi-journal-bookmark"></i>
+
                     </button>
 
                     <div class="sidebar-menu">
@@ -187,7 +192,7 @@
             <!-- Menu Mobile -->
 
             <!-- Iniciando Menu Mobile -->
-             
+
             <div>
                 <nav
                     class="  navbar navbar-expand-lg d-block d-md-none">
@@ -218,13 +223,11 @@
                         vizioon-tip="Suas Anotações 🤩 !!!"
                         vizioon-posicao="left"
                         vizioon-attr="vizion-annotation d-none d-md-block"><i
-                            id="iconAnnotatio"
-                            data-lucide="sticker"></i></button>
+                            class='bi bi-sticky'></i></button>
                 </div>
             </div>
             <!-- Finalizando Menu Mobile -->
-             
-             
+
             <main class="carrosel--container">
                 <article class="c-carousel c-carousel--simple w-100 h-100">
                     <div

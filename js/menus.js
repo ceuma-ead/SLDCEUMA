@@ -3,35 +3,28 @@ document.addEventListener('DOMContentLoaded', function () {
     abrirAnotacoes();
 });
 
-
-
 // Função para abrir o sumário
 function abrirSumario() {
     const botaoAbrirSumario = document.getElementById('btnOpenSumario');
     const menuSumario = document.querySelector('.sidebar-menu');
-
     botaoAbrirSumario.addEventListener('click', function (evento) {
+        
         evento.stopPropagation();
-
-
         // Fecha o menu de anotações, se estiver aberto
         fecharMenuAnotacoes();
-
         menuSumario.classList.toggle('open');
 
-        const iconeMenuSumario = document.getElementById('menuIcon');
-        const botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
+        
         if (menuSumario.classList.contains('open')) {
-            iconeMenuSumario.setAttribute('data-lucide', 'x');
-            // botaoAbrirSumario.setAttribute('vizioon-tip', 'Fechar Sumário');
+            botaoAbrirSumario.innerHTML = `
+                 <i class="bi bi-x-lg "></i>
+            `
         } else {
-            iconeMenuSumario.setAttribute('data-lucide', 'notebook-text');
-            // botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
+            botaoAbrirSumario.innerHTML = `
+                <i class="bi bi-journal-bookmark"></i>
+            `
         }
-
-        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-            lucide.createIcons();
-        }
+        
     });
 
     document.addEventListener('click', function (evento) {
@@ -45,26 +38,21 @@ function abrirSumario() {
 function fecharMenuSumario() {
     const menuSumario = document.querySelector('.sidebar-menu');
     const botaoAbrirSumario = document.getElementById('btnOpenSumario');
-    const iconeMenuSumario = document.getElementById('menuIcon');
 
     if (menuSumario.classList.contains('open')) {
         menuSumario.classList.remove('open');
 
-
-        iconeMenuSumario.setAttribute('data-lucide', 'notebook-text');
-        botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
-
-        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-            lucide.createIcons();
-        }
+       botaoAbrirSumario.innerHTML = `
+             <i class="bi bi-journal-bookmark"></i>
+       `
     }
 }
+
 
 // Função para abrir o menu de anotações
 function abrirAnotacoes() {
     const botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
     const menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
-
 
     botaoAbrirAnotacoes.addEventListener('click', function (evento) {
         evento.stopPropagation();
@@ -89,26 +77,25 @@ function abrirAnotacoes() {
 
         menuAnotacoes.classList.toggle('open-annotation');
 
-
         // Pegar ID Personalizado para Mudar o Nome do Tooltip...
         const vizioon_anotation = document.querySelector(".vizion-annotation")
 
         // console.log(vizioon_anotation)
 
-        const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
+
         if (menuAnotacoes.classList.contains('open-annotation')) {
-            iconeMenuAnotacoes.setAttribute('data-lucide', 'x');
+            botaoAbrirAnotacoes.innerHTML = `<i class="bi bi-x-lg "></i>`
             botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Fechar Anotações ❌');
             vizioon_anotation.innerHTML = `Fechar Anotações ❌`
         } else {
-            iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
+            
+            botaoAbrirAnotacoes.innerHTML = `
+                ${ iconAnnotation ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticker"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M14 3v4a2 2 0 0 0 2 2h4"/><path d="M8 13h.01"/><path d="M16 13h.01"/><path d="M10 16s.8 1 2 1c1.3 0 2-1 2-1"/></svg>` : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticker"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M14 3v4a2 2 0 0 0 2 2h4"/><path d="M8 13h.01"/><path d="M16 13h.01"/><path d="M10 16s.8 1 2 1c1.3 0 2-1 2-1"/></svg>`}
+            `
             botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
             vizioon_anotation.innerHTML = `Suas Anotações 🤩 !!`
         }
 
-        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-            lucide.createIcons();
-        }
     });
 
     document.addEventListener('click', function (evento) {
@@ -124,7 +111,6 @@ function fecharMenuAnotacoes() {
     
     const menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
     const botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
-    const iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
     const vizioon_anotation = document.querySelector(".vizion-annotation");
     
     // Verificar se o container é vazio para mudar o ícone
@@ -141,7 +127,9 @@ function fecharMenuAnotacoes() {
         }
 
         // Atualizar o ícone e o tooltip
-        iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
+        botaoAbrirAnotacoes.innerHTML = `
+        ${ iconAnnotation ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticker"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M14 3v4a2 2 0 0 0 2 2h4"/><path d="M8 13h.01"/><path d="M16 13h.01"/><path d="M10 16s.8 1 2 1c1.3 0 2-1 2-1"/></svg>` : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticker"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M14 3v4a2 2 0 0 0 2 2h4"/><path d="M8 13h.01"/><path d="M16 13h.01"/><path d="M10 16s.8 1 2 1c1.3 0 2-1 2-1"/></svg>`}
+        `
         botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
 
         if (vizioon_anotation) {
@@ -149,9 +137,6 @@ function fecharMenuAnotacoes() {
             vizioon_anotation.style.display = 'none';
         }
 
-        // Atualizar ícones, se necessário
-        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-            lucide.createIcons();
-        }
+       
     }
 }

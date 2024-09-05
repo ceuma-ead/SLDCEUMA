@@ -21,7 +21,7 @@ function checkEmptyAnnotationsContainer() {
     if (!emptyMessage) {
       emptyMessage = document.createElement('div');
       emptyMessage.classList.add('empty-annotation-message');
-      emptyMessage.innerHTML = "\n                <div class=\"d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center\">\n                    <img src=\"./assets/list.gif\" alt=\"list-is-empty-unscreen1.gif\" style=\"width:20%;\" >\n                    <p style=\"color:#000;\">Nenhuma Anota\xE7\xE3o no Momento</p>\n                </div>\n            ";
+      emptyMessage.innerHTML = "\n                <div class=\"d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center\">\n                    <img src=\"./assets/list.gif\" alt=\"list-is-empty-unscreen1.gif\" style=\"width:20%;\" >\n                    <p style=\"color:#000;\">Nada aqui ainda...</p>\n                </div>\n            ";
       renderMenuDiv.appendChild(emptyMessage);
     }
 
@@ -41,19 +41,15 @@ function checkEmptyAnnotationsContainer() {
 function Update() {
   // Exemplo de uso
   var iconAnnotation = checkEmptyAnnotationsContainer();
-  var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
+  var ButtonMenuAnotacoes = document.querySelector(".openAnnotation");
 
   if (iconAnnotation) {
     // console.log("Container não está vazio");
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
+    console.log(ButtonMenuAnotacoes);
+    ButtonMenuAnotacoes.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticker\"><path d=\"M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z\"/><path d=\"M14 3v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M10 16s.8 1 2 1c1.3 0 2-1 2-1\"/></svg>";
   } else {
     // console.log("Container está vazio");
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
-  } // Atualize os ícones para garantir que a nova configuração seja aplicada
-
-
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
+    ButtonMenuAnotacoes.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticky-note\"><path d=\"M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z\"/><path d=\"M15 3v4a2 2 0 0 0 2 2h4\"/></svg> ";
   }
 }
 
@@ -695,22 +691,7 @@ if (title_rb) {
   });
 }
 
-Update();
-checkEmptyAnnotationsContainer();
 document.addEventListener('DOMContentLoaded', function () {
-  var iconAnnotation = checkEmptyAnnotationsContainer();
-  var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
-
-  if (iconAnnotation) {
-    // console.log("Container não está vazio");
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker'); // Defina o ícone correto aqui
-  } else {
-    // console.log("Container está vazio");
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticky-note'); // Defina o ícone correto aqui
-  } // Atualize os ícones para garantir que a nova configuração seja aplicada
-
-
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons(); // Certifique-se de que lucide está definido e carregado corretamente
-  }
+  Update();
+  checkEmptyAnnotationsContainer();
 });

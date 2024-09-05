@@ -13,17 +13,11 @@ function abrirSumario() {
 
     fecharMenuAnotacoes();
     menuSumario.classList.toggle('open');
-    var iconeMenuSumario = document.getElementById('menuIcon');
-    var botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
 
     if (menuSumario.classList.contains('open')) {
-      iconeMenuSumario.setAttribute('data-lucide', 'x'); // botaoAbrirSumario.setAttribute('vizioon-tip', 'Fechar Sumário');
+      botaoAbrirSumario.innerHTML = "\n                 <i class=\"bi bi-x-lg \"></i>\n            ";
     } else {
-      iconeMenuSumario.setAttribute('data-lucide', 'notebook-text'); // botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
-    }
-
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
+      botaoAbrirSumario.innerHTML = "\n                <i class=\"bi bi-journal-bookmark\"></i>\n            ";
     }
   });
   document.addEventListener('click', function (evento) {
@@ -37,16 +31,10 @@ function abrirSumario() {
 function fecharMenuSumario() {
   var menuSumario = document.querySelector('.sidebar-menu');
   var botaoAbrirSumario = document.getElementById('btnOpenSumario');
-  var iconeMenuSumario = document.getElementById('menuIcon');
 
   if (menuSumario.classList.contains('open')) {
     menuSumario.classList.remove('open');
-    iconeMenuSumario.setAttribute('data-lucide', 'notebook-text');
-    botaoAbrirSumario.setAttribute('vizioon-tip', 'Abrir Sumário');
-
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
-    }
+    botaoAbrirSumario.innerHTML = "\n             <i class=\"bi bi-journal-bookmark\"></i>\n       ";
   }
 } // Função para abrir o menu de anotações
 
@@ -76,20 +64,14 @@ function abrirAnotacoes() {
 
     var vizioon_anotation = document.querySelector(".vizion-annotation"); // console.log(vizioon_anotation)
 
-    var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
-
     if (menuAnotacoes.classList.contains('open-annotation')) {
-      iconeMenuAnotacoes.setAttribute('data-lucide', 'x');
+      botaoAbrirAnotacoes.innerHTML = "<i class=\"bi bi-x-lg \"></i>";
       botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Fechar Anotações ❌');
       vizioon_anotation.innerHTML = "Fechar Anota\xE7\xF5es \u274C";
     } else {
-      iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
+      botaoAbrirAnotacoes.innerHTML = "\n                ".concat(iconAnnotation ? "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticker\"><path d=\"M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z\"/><path d=\"M14 3v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M10 16s.8 1 2 1c1.3 0 2-1 2-1\"/></svg>" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticker\"><path d=\"M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z\"/><path d=\"M14 3v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M10 16s.8 1 2 1c1.3 0 2-1 2-1\"/></svg>", "\n            ");
       botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
       vizioon_anotation.innerHTML = "Suas Anota\xE7\xF5es \uD83E\uDD29 !!";
-    }
-
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
     }
   });
   document.addEventListener('click', function (evento) {
@@ -102,7 +84,6 @@ function abrirAnotacoes() {
 function fecharMenuAnotacoes() {
   var menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
   var botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
-  var iconeMenuAnotacoes = document.getElementById("iconAnnotatio");
   var vizioon_anotation = document.querySelector(".vizion-annotation"); // Verificar se o container é vazio para mudar o ícone
 
   var iconAnnotation = checkEmptyAnnotationsContainer();
@@ -116,17 +97,12 @@ function fecharMenuAnotacoes() {
     } // Atualizar o ícone e o tooltip
 
 
-    iconeMenuAnotacoes.setAttribute('data-lucide', iconAnnotation ? "sticker" : "sticky-note");
+    botaoAbrirAnotacoes.innerHTML = "\n        ".concat(iconAnnotation ? "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticker\"><path d=\"M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z\"/><path d=\"M14 3v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M10 16s.8 1 2 1c1.3 0 2-1 2-1\"/></svg>" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticker\"><path d=\"M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z\"/><path d=\"M14 3v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M10 16s.8 1 2 1c1.3 0 2-1 2-1\"/></svg>", "\n        ");
     botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
 
     if (vizioon_anotation) {
       vizioon_anotation.innerHTML = 'Suas Anotações 🤩 !!';
       vizioon_anotation.style.display = 'none';
-    } // Atualizar ícones, se necessário
-
-
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
     }
   }
 }
