@@ -50,8 +50,8 @@ function eventButton() {
 
     // Botões de Caixa de Ferramentas
     const btnFerramentas = document.querySelectorAll('.btn-ferramentas');
-    const _animationShow = "animate__bounceInDown";
-    const _animationHide = "animate__bounceOutUp";
+    const _animationShow = "animate__fadeInDown";
+    const _animationHide = "animate__backOutUp";
 
     btnFerramentas.forEach((button, index) => {
         button.addEventListener('click', () => {

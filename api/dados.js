@@ -116,7 +116,7 @@ const api = [
                     "Resulmo":{
                         "ativa":true,
                         "html" : `
-                            <button><i data-lucide="file-text"></i>Resulmo</button>
+                            <button><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar":{
