@@ -72,7 +72,7 @@ var api = [// PAGINA 1
       },
       "Notas": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+        "html": "\n                             <button class=\"abrir-annotation\"><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
       },
       "Ouvinte": {
         "ativa": true,
@@ -194,7 +194,7 @@ var api = [// PAGINA 1
       "container": "box-tools-inline",
       "Resulmo": {
         "ativa": true,
-        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resulmo</button>\n                        "
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resumo</button>\n                        "
       },
       "Destacar": {
         "ativa": true,
@@ -202,7 +202,7 @@ var api = [// PAGINA 1
       },
       "Notas": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+        "html": "\n                             <button class=\"abrir-annotation\"><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
       },
       "Ouvinte": {
         "ativa": true,
@@ -384,7 +384,7 @@ var api = [// PAGINA 1
       "container": "box-tools-inline",
       "Resulmo": {
         "ativa": true,
-        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resulmo</button>\n                        "
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resumo</button>\n                        "
       },
       "Destacar": {
         "ativa": true,
@@ -392,7 +392,7 @@ var api = [// PAGINA 1
       },
       "Notas": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+        "html": "\n                             <button class=\"abrir-annotation\"><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
       },
       "Ouvinte": {
         "ativa": true,
@@ -515,7 +515,7 @@ var api = [// PAGINA 1
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" aria-label=\"close\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       },
       "FullScreen": {
         "ativa": true,
@@ -534,6 +534,36 @@ var api = [// PAGINA 1
       "Ferramentas": {
         "ativa": true,
         "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "box-tools-inline",
+      "Resulmo": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resumo</button>\n                        "
+      },
+      "Destacar": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"pencil\"></i>Destacar</button>\n                        "
+      },
+      "Notas": {
+        "ativa": true,
+        "html": "\n                             <button class=\"abrir-annotation\"><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+      },
+      "Ouvinte": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"ear\"></i>Ouvinte</button>\n                        "
+      },
+      "Download": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"download\"></i>Download</button>\n                        "
+      },
+      "Dicionario": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+      },
+      "close": {
+        "ativa": true,
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box\"></i></button>\n                        "
       }
     }],
     "cores": {// "sidebar": "red",
@@ -624,7 +654,7 @@ var api = [// PAGINA 1
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" aria-label=\"close\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       },
       "FullScreen": {
         "ativa": true,
@@ -644,6 +674,36 @@ var api = [// PAGINA 1
         "ativa": true,
         "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       }
+    }, {
+      "container": "box-tools-inline",
+      "Resulmo": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resumo</button>\n                        "
+      },
+      "Destacar": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"pencil\"></i>Destacar</button>\n                        "
+      },
+      "Notas": {
+        "ativa": true,
+        "html": "\n                             <button class=\"abrir-annotation\"><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+      },
+      "Ouvinte": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"ear\"></i>Ouvinte</button>\n                        "
+      },
+      "Download": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"download\"></i>Download</button>\n                        "
+      },
+      "Dicionario": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+      },
+      "close": {
+        "ativa": true,
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box\"></i></button>\n                        "
+      }
     }],
     "marcador": [{
       "tipo": "p",
@@ -651,7 +711,8 @@ var api = [// PAGINA 1
       "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
       "attr_unitario": {
         "Olá, estudante! Bem-vindo à Unidade 1!": {
-          "attr": "font-weight=[999], font-size=[20px],"
+          "attr": "font-weight=[999], font-size=[20px]," // "attr_inline":`class=[],id=[]`
+
         }
       } // "fundo": "blue",
       // "corTexto": "black",
@@ -742,7 +803,7 @@ var api = [// PAGINA 1
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" aria-label=\"close\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       },
       "FullScreen": {
         "ativa": true,
@@ -761,6 +822,36 @@ var api = [// PAGINA 1
       "Ferramentas": {
         "ativa": true,
         "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+      }
+    }, {
+      "container": "box-tools-inline",
+      "Resulmo": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"file-text\"></i>Resumo</button>\n                        "
+      },
+      "Destacar": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"pencil\"></i>Destacar</button>\n                        "
+      },
+      "Notas": {
+        "ativa": true,
+        "html": "\n                             <button class=\"abrir-annotation\"><i data-lucide=\"sticky-note\"></i>Notas</button>\n                        "
+      },
+      "Ouvinte": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"ear\"></i>Ouvinte</button>\n                        "
+      },
+      "Download": {
+        "ativa": true,
+        "html": "\n                            <button><i data-lucide=\"download\"></i>Download</button>\n                        "
+      },
+      "Dicionario": {
+        "ativa": true,
+        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+      },
+      "close": {
+        "ativa": true,
+        "html": "\n                              <button><i data-lucide=\"x\" id=\"close_box\"></i></button>\n                        "
       }
     }],
     "marcador": [{

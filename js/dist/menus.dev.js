@@ -3,7 +3,24 @@
 document.addEventListener('DOMContentLoaded', function () {
   abrirSumario();
   abrirAnotacoes();
-}); // Função para abrir o sumário
+});
+var toolBox = document.querySelector('.box-tools-inline');
+var _animationShow = "animate__fadeInDown";
+var _animationHide = "animate__backOutUp"; // Função para Fechar o Toobox quando o sumário ou anotações for Aberto
+
+function closeToggleBox(toolBox) {
+  toolBox.classList.remove(_animationShow); // Remove a animação de entrada
+
+  toolBox.classList.add('animate__animated', _animationHide); // Adiciona a animação de saída
+
+  toolBox.addEventListener('animationend', function () {
+    toolBox.style.display = 'none';
+    toolBox.classList.remove('animate__animated', _animationHide); // Remove a animação de saída
+  }, {
+    once: true
+  });
+} // Função para abrir o sumário
+
 
 function abrirSumario() {
   var botaoAbrirSumario = document.getElementById('btnOpenSumario');
@@ -11,13 +28,15 @@ function abrirSumario() {
   botaoAbrirSumario.addEventListener('click', function (evento) {
     evento.stopPropagation(); // Fecha o menu de anotações, se estiver aberto
 
-    fecharMenuAnotacoes();
+    fecharMenuAnotacoes(); // Chamando a função para fechar a caixa de ferramentas
+
+    closeToggleBox(toolBox);
     menuSumario.classList.toggle('open');
 
     if (menuSumario.classList.contains('open')) {
-      botaoAbrirSumario.innerHTML = "\n                 <i class=\"bi bi-x-lg \"></i>\n            ";
+      botaoAbrirSumario.innerHTML = "\n                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg>\n            ";
     } else {
-      botaoAbrirSumario.innerHTML = "\n                <i class=\"bi bi-journal-bookmark\"></i>\n            ";
+      botaoAbrirSumario.innerHTML = "\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-notebook-text\"><path d=\"M2 6h4\"/><path d=\"M2 10h4\"/><path d=\"M2 14h4\"/><path d=\"M2 18h4\"/><rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"/><path d=\"M9.5 8h5\"/><path d=\"M9.5 12H16\"/><path d=\"M9.5 16H14\"/></svg>\n            ";
     }
   });
   document.addEventListener('click', function (evento) {
@@ -34,7 +53,7 @@ function fecharMenuSumario() {
 
   if (menuSumario.classList.contains('open')) {
     menuSumario.classList.remove('open');
-    botaoAbrirSumario.innerHTML = "\n             <i class=\"bi bi-journal-bookmark\"></i>\n       ";
+    botaoAbrirSumario.innerHTML = "\n             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-notebook-text\"><path d=\"M2 6h4\"/><path d=\"M2 10h4\"/><path d=\"M2 14h4\"/><path d=\"M2 18h4\"/><rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"/><path d=\"M9.5 8h5\"/><path d=\"M9.5 12H16\"/><path d=\"M9.5 16H14\"/></svg>\n       ";
   }
 } // Função para abrir o menu de anotações
 
@@ -59,7 +78,9 @@ function abrirAnotacoes() {
     } // Fecha o menu de sumário, se estiver aberto
 
 
-    fecharMenuSumario();
+    fecharMenuSumario(); // Chamando a função para fechar a caixa de ferramentas
+
+    closeToggleBox(toolBox);
     menuAnotacoes.classList.toggle('open-annotation'); // Pegar ID Personalizado para Mudar o Nome do Tooltip...
 
     var vizioon_anotation = document.querySelector(".vizion-annotation"); // console.log(vizioon_anotation)

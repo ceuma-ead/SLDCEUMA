@@ -1341,3 +1341,5 @@ const irItem = itemnsMenu('', savedPosition,filtroDuplicadoSumario);
 // console.log(irItem)
 // Pesquisar Item Menu
 handleSearch();
+
+// console.log(api[savedPosition]);

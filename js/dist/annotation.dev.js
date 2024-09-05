@@ -116,9 +116,7 @@ function renderAnnotation(annotationItem) {
     }
   }); // Adiciona a nova anotação na interface
 
-  renderMenuDiv.appendChild(newAnnotation); // Atualiza os ícones para usar o Lucide Icons
-
-  lucide.createIcons(); // Verifica se o contêiner está vazio após adicionar a nova anotação
+  renderMenuDiv.appendChild(newAnnotation); // Verifica se o contêiner está vazio após adicionar a nova anotação
 
   checkEmptyAnnotationsContainer();
 } // Função para atualizar campos específicos da anotação
@@ -207,10 +205,12 @@ function changeAnnotationColor(annotationElement, annotationId) {
 
 function abrirConfigurcoesBaseMenu() {
   var menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
-  var iconeMenuAnotacoes = document.getElementById('iconAnnotatio');
-  var vizioon_anotation = document.querySelector(".vizion-annotation");
+  var ButtonMenuAnotacoes = document.querySelector(".openAnnotation");
+  var vizioon_anotation = document.querySelector(".vizion-annotation"); // verificar se container é vazio pra mudar o icon
 
-  if (!menuAnotacoes || !iconeMenuAnotacoes || !vizioon_anotation) {
+  var iconAnnotation = checkEmptyAnnotationsContainer();
+
+  if (!menuAnotacoes || !ButtonMenuAnotacoes || !vizioon_anotation) {
     console.error('abrirConfigurcoesBaseMenu: Elementos não encontrados.');
     return;
   }
@@ -218,19 +218,23 @@ function abrirConfigurcoesBaseMenu() {
   menuAnotacoes.classList.toggle('open-annotation'); // Atualiza o ícone e o texto com base no estado do menu
 
   if (menuAnotacoes.classList.contains('open-annotation')) {
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'x');
+    ButtonMenuAnotacoes.innerHTML = "\n                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg>\n            ";
     vizioon_anotation.innerHTML = 'Fechar Anotações ❌';
     console.log('abrirConfigurcoesBaseMenu: Menu aberto.');
   } else {
-    iconeMenuAnotacoes.setAttribute('data-lucide', 'sticker');
+    ButtonMenuAnotacoes.innerHTML = "\n        ".concat(iconAnnotation ? "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticker\"><path d=\"M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z\"/><path d=\"M14 3v4a2 2 0 0 0 2 2h4\"/><path d=\"M8 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M10 16s.8 1 2 1c1.3 0 2-1 2-1\"/></svg>" : "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sticky-note\"><path d=\"M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z\"/><path d=\"M15 3v4a2 2 0 0 0 2 2h4\"/></svg> ", "\n    ");
     vizioon_anotation.innerHTML = 'Veja Suas Anotações Aqui 🤩!!!';
     console.log('abrirConfigurcoesBaseMenu: Menu fechado.');
-  } // Atualiza os ícones, se necessário
-
-
-  if (typeof lucide !== 'undefined' && lucide.createIcons) {
-    lucide.createIcons();
   }
+
+  if (vizioon_anotation) {
+    vizioon_anotation.innerHTML = 'Suas Anotações 🤩 !!';
+    vizioon_anotation.style.display = 'none';
+  } // // Atualiza os ícones, se necessário
+  // if (typeof lucide !== 'undefined' && lucide.createIcons) {
+  //     lucide.createIcons();
+  // }
+
 } // Função para exibir o alerta com fechamento automático e logs
 
 
@@ -302,7 +306,7 @@ function createAnnotation() {
               console.log("createAnnotation: Anota\xE7\xE3o salva: ".concat(savedAnnotation.id));
               renderAnnotation(savedAnnotation);
             });
-            logs = "\n====== Anota\xE7\xE3o criada com sucesso =====\n\n> ID: ".concat(newAnnotation.id, "\n> T\xEDtulo: ").concat(title, "\n> Texto: ").concat(texto, "\n            ");
+            logs = "\n                ====== Anota\xE7\xE3o criada com sucesso =====\n\n                > ID: ".concat(newAnnotation.id, "\n                > T\xEDtulo: ").concat(title, "\n                > Texto: ").concat(texto, "\n            ");
             showAutoCloseAlert(logs);
             checkEmptyAnnotationsContainer();
           } else {

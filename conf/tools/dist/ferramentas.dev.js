@@ -40,10 +40,7 @@ function eventButton() {
         // IE/Edge
         document.msExitFullscreen();
       }
-    } // Atualiza os ícones
-
-
-    lucide.createIcons();
+    }
   } // Reaplica o evento de clique para o botão de tela cheia
 
 
@@ -58,8 +55,8 @@ function eventButton() {
   }
 
   var btnFerramentas = document.querySelectorAll('.btn-ferramentas');
-  var _animationShow = "animate__bounceInDown";
-  var _animationHide = "animate__bounceOutUp"; // Função para abrir/fechar a caixa de ferramentas
+  var _animationShow = "animate__fadeInDown";
+  var _animationHide = "animate__backOutUp"; // Função para abrir/fechar a caixa de ferramentas
 
   function toggleToolBox(toolBox, show) {
     if (show) {
@@ -97,7 +94,17 @@ function eventButton() {
         console.error('Caixa de ferramentas não encontrada para este botão.');
       }
     });
-  }); // Evento para fechar a caixa de ferramentas ao clicar no botão de fechar
+  }); // // Função para Fechar o Toobox quando o sumario ou anotações for Aberto
+  // function closeToggleBox(toolBox) {
+  //     if (toolBox.style.display === 'flex') {
+  //         // Chama a função toggleToolBox para fechar a caixa de ferramentas
+  //         toggleToolBox(toolBox, false);
+  //     }
+  // }
+  // const toolBox = document.querySelector('.box-tools-inline');
+  // // Chamando a função para fechar a caixa de ferramentas
+  // closeToggleBox(toolBox);
+  // Evento para fechar a caixa de ferramentas ao clicar no botão de fechar
 
   document.querySelectorAll('#close_box').forEach(function (closeButton, index) {
     closeButton.addEventListener('click', function () {
@@ -108,5 +115,14 @@ function eventButton() {
         toggleToolBox(toolBox, false); // Fechar a caixa ao clicar no botão de fechar
       }
     });
-  });
+  }); // =============== Modulos de Aceite ===================== //
+
+  var abri_anotacao = document.querySelectorAll('.abrir-annotation');
+  abri_anotacao.forEach(function (openAnnotation, index) {
+    openAnnotation.addEventListener("click", function (event) {
+      eventButton();
+      createAnnotation();
+      abrirConfigurcoesBaseMenu();
+    });
+  }); // ======================================================= \\
 }
