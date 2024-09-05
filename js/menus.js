@@ -96,7 +96,7 @@ function abrirAnotacoes() {
         fecharMenuSumario();
 
           // Chamando a função para fechar a caixa de ferramentas
-        closeToggleBox(toolBox);
+        // closeToggleBox(toolBox);
 
         menuAnotacoes.classList.toggle('open-annotation');
 

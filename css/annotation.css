@@ -13,7 +13,7 @@
     height: 30rem;
     background-color: var(--fundo-menu-sumario);
     transition: all .5s ease;
-    z-index: calc(var(--posicionamento-menu-sumario) - 1);
+    z-index: calc(var(--posicionamento-menu-sumario) );
     /* overflow: hidden;
     overflow-y: scroll; */
     border-radius: 0.5rem;
@@ -448,7 +448,7 @@ a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    border-left: 45px solid #eee;
+    border-left: 45px solid #ffffffd4;
     border-bottom: 45px solid transparent;
     box-shadow: 3px 3px 2px #dbd581;
     display: block;
@@ -461,7 +461,7 @@ a:hover {
     position: absolute;
     top: 0;
     right: 0;
-    border-right: 45px solid #eee;
+    border-right: 45px solid #ffffffd4;
     border-bottom: 45px solid transparent;
     box-shadow: -3px 3px 2px #dbd581;
     display: none;
