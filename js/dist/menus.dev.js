@@ -134,12 +134,11 @@ function abrirDicionario() {
   // Alterna a classe para abrir ou fechar o menu
 
   menuDicionario.classList.toggle('open'); // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
-
-  document.addEventListener('click', function (evento) {
-    if (menuDicionario.classList.contains('open') && !menuDicionario.contains(evento.target)) {
-      fecharMenuDicionario();
-    }
-  });
+  // document.addEventListener('click', function (evento) {
+  //     if (menuDicionario.classList.contains('open') && !menuDicionario.contains(evento.target)) {
+  //         fecharMenuDicionario();
+  //     }
+  // });
 } // Função para fechar o dicionário
 
 
