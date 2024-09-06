@@ -151,10 +151,12 @@
 
     .sidebar-menu {
         top: 35% !important;
+        transform: translateY(-35%) !important;
     }
 
     .sidebar-menu-Annotation {
         top: 35% !important;
+        transform: translateY(-35%)  !important;
     }
 
 }
