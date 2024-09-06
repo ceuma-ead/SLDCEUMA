@@ -147,7 +147,7 @@ const api = [
                     "Dicionario":{
                         "ativa":true,
                         "html" : `
-                             <button><i data-lucide="search"></i>Dicionario</button>
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
                     "close":{
@@ -365,7 +365,7 @@ const api = [
                     "Dicionario":{
                         "ativa":true,
                         "html" : `
-                             <button><i data-lucide="search"></i>Dicionario</button>
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
                     "close":{
@@ -732,7 +732,7 @@ const api = [
                     "Dicionario":{
                         "ativa":true,
                         "html" : `
-                             <button><i data-lucide="search"></i>Dicionario</button>
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
                     "close":{
@@ -988,7 +988,7 @@ const api = [
                     "Dicionario":{
                         "ativa":true,
                         "html" : `
-                             <button><i data-lucide="search"></i>Dicionario</button>
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
                     "close":{
@@ -1215,7 +1215,7 @@ const api = [
                     "Dicionario":{
                         "ativa":true,
                         "html" : `
-                             <button><i data-lucide="search"></i>Dicionario</button>
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
                     "close":{
@@ -1483,7 +1483,7 @@ const api = [
                     "Dicionario":{
                         "ativa":true,
                         "html" : `
-                             <button><i data-lucide="search"></i>Dicionario</button>
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
                     "close":{

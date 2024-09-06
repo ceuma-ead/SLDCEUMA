@@ -122,5 +122,12 @@ function eventButton() {
     openAnnotation.addEventListener("click", function (event) {
       createAnnotation();
     });
+  });
+  var abri_dicionario = document.querySelectorAll('.abrir-dicionario');
+  abri_dicionario.forEach(function (openDict, index) {
+    openDict.addEventListener("click", function (event) {
+      event.stopPropagation();
+      abrirDicionario();
+    });
   }); // ======================================================= \\
 }

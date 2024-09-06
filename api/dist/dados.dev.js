@@ -84,7 +84,7 @@ var api = [// PAGINA 1
       },
       "Dicionario": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+        "html": "\n                             <button class=\"abrir-dicionario\"><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
       },
       "close": {
         "ativa": true,
@@ -214,7 +214,7 @@ var api = [// PAGINA 1
       },
       "Dicionario": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+        "html": "\n                             <button class=\"abrir-dicionario\"><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
       },
       "close": {
         "ativa": true,
@@ -404,7 +404,7 @@ var api = [// PAGINA 1
       },
       "Dicionario": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+        "html": "\n                             <button class=\"abrir-dicionario\"><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
       },
       "close": {
         "ativa": true,
@@ -559,7 +559,7 @@ var api = [// PAGINA 1
       },
       "Dicionario": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+        "html": "\n                             <button class=\"abrir-dicionario\"><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
       },
       "close": {
         "ativa": true,
@@ -698,7 +698,7 @@ var api = [// PAGINA 1
       },
       "Dicionario": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+        "html": "\n                             <button class=\"abrir-dicionario\"><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
       },
       "close": {
         "ativa": true,
@@ -711,8 +711,8 @@ var api = [// PAGINA 1
       "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
       "attr_unitario": {
         "Olá, estudante! Bem-vindo à Unidade 1!": {
-          "attr": "font-weight=[999], font-size=[20px]," // "attr_inline":`class=[],id=[]`
-
+          "attr": "font-weight=[999], font-size=[20px],",
+          "attr_inline": "class=[subtitulo],id=[]"
         }
       } // "fundo": "blue",
       // "corTexto": "black",
@@ -847,7 +847,7 @@ var api = [// PAGINA 1
       },
       "Dicionario": {
         "ativa": true,
-        "html": "\n                             <button><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
+        "html": "\n                             <button class=\"abrir-dicionario\"><i data-lucide=\"search\"></i>Dicionario</button>\n                        "
       },
       "close": {
         "ativa": true,

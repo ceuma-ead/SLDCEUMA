@@ -126,4 +126,27 @@ function fecharMenuAnotacoes() {
       vizioon_anotation.style.display = 'none';
     }
   }
+} // Função para abrir o dicionário
+
+
+function abrirDicionario() {
+  var menuDicionario = document.querySelector('.dicionario-menu'); // Fecha o menu de anotações, se estiver aberto
+  // Alterna a classe para abrir ou fechar o menu
+
+  menuDicionario.classList.toggle('open'); // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
+
+  document.addEventListener('click', function (evento) {
+    if (menuDicionario.classList.contains('open') && !menuDicionario.contains(evento.target)) {
+      fecharMenuDicionario();
+    }
+  });
+} // Função para fechar o dicionário
+
+
+function fecharMenuDicionario() {
+  var menuDicionario = document.querySelector('.dicionario-menu'); // Remove a classe 'open' para fechar o menu
+
+  if (menuDicionario.classList.contains('open')) {
+    menuDicionario.classList.remove('open');
+  }
 }

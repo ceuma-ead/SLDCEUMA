@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     abrirSumario();
     abrirAnotacoes();
+    
 });
 
 
@@ -14,7 +15,9 @@ function closeToggleBox(toolBox) {
     toolBox.addEventListener('animationend', () => {
         toolBox.style.display = 'none';
         toolBox.classList.remove('animate__animated', _animationHide); // Remove a animação de saída
-    }, {once: true});
+    }, {
+        once: true
+    });
 }
 
 // Função para abrir o sumário
@@ -32,7 +35,7 @@ function abrirSumario() {
 
         menuSumario.classList.toggle('open');
 
-
+        
         if (menuSumario.classList.contains('open')) {
             botaoAbrirSumario.innerHTML = `
                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -66,7 +69,6 @@ function fecharMenuSumario() {
     }
 }
 
-
 // Função para abrir o menu de anotações
 function abrirAnotacoes() {
     const botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
@@ -93,7 +95,7 @@ function abrirAnotacoes() {
         // Fecha o menu de sumário, se estiver aberto
         fecharMenuSumario();
 
-          // Chamando a função para fechar a caixa de ferramentas
+        // Chamando a função para fechar a caixa de ferramentas
         // closeToggleBox(toolBox);
 
         menuAnotacoes.classList.toggle('open-annotation');
@@ -127,8 +129,6 @@ function abrirAnotacoes() {
         }
     });
 }
-
-
 
 function fecharMenuAnotacoes() {
 
@@ -166,3 +166,34 @@ function fecharMenuAnotacoes() {
 
     }
 }
+
+// Função para abrir o dicionário
+function abrirDicionario() {
+    const menuDicionario = document.querySelector('.dicionario-menu');
+
+    // Fecha o menu de anotações, se estiver aberto
+   
+
+    // Alterna a classe para abrir ou fechar o menu
+    menuDicionario.classList.toggle('open');
+
+    // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
+    document.addEventListener('click', function (evento) {
+        if (menuDicionario.classList.contains('open') && !menuDicionario.contains(evento.target)) {
+            fecharMenuDicionario();
+        }
+    });
+}
+
+// Função para fechar o dicionário
+function fecharMenuDicionario() {
+    const menuDicionario = document.querySelector('.dicionario-menu');
+
+    // Remove a classe 'open' para fechar o menu
+    if (menuDicionario.classList.contains('open')) {
+        menuDicionario.classList.remove('open');
+    }
+}
+
+
+

@@ -8,7 +8,7 @@
     transform: translateY(-50%);
     height: 30rem;
     background:var(--fundo-menu-sumario);
-   
+    right: -200%;
     transition: all .5s ease;
     z-index: calc(var(--posicionamento-menu-sumario) + 2);
     /* overflow: hidden;

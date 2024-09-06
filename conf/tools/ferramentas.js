@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Iniciar Evento
     eventButton();
-    
+
 });
 
 
@@ -128,12 +128,23 @@ function eventButton() {
     const abri_anotacao = document.querySelectorAll('.abrir-annotation');
     abri_anotacao.forEach((openAnnotation, index) => {
         openAnnotation.addEventListener("click", function (event) {
-                
+
             createAnnotation();
-            
+
         })
+    })
 
 
+
+    const abri_dicionario = document.querySelectorAll('.abrir-dicionario');
+    abri_dicionario.forEach((openDict, index) => {
+        openDict.addEventListener("click", function (event) {
+
+            event.stopPropagation()
+
+            abrirDicionario()
+
+        })
     })
 
     // ======================================================= \\
