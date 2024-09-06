@@ -58,7 +58,7 @@ var api = [// PAGINA 1
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       }
     }, {
       "container": "box-tools-inline",

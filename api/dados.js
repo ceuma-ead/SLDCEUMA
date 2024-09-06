@@ -104,7 +104,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `

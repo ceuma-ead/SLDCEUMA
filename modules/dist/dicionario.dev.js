@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
               items.forEach(function (a, index) {
                 a.href = "#";
 
-                a.onclick = function _callee() {
+                a.onclick = function _callee(event) {
                   return regeneratorRuntime.async(function _callee$(_context3) {
                     while (1) {
                       switch (_context3.prev = _context3.next) {
@@ -149,9 +149,10 @@ document.addEventListener('DOMContentLoaded', function () {
                           return regeneratorRuntime.awrap(buscarPalavra(a.innerHTML));
 
                         case 3:
+                          fecharMenuDicionario();
                           abrirDicionario();
 
-                        case 4:
+                        case 5:
                         case "end":
                           return _context3.stop();
                       }

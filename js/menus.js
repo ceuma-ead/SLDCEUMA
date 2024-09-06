@@ -173,7 +173,6 @@ function abrirDicionario() {
 
     // Fecha o menu de anotações, se estiver aberto
    
-
     // Alterna a classe para abrir ou fechar o menu
     menuDicionario.classList.toggle('open');
 

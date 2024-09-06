@@ -69,10 +69,6 @@ function renderizarResultado(definicao, palavra) {
     itemDiv.appendChild(definicaoP);
 
     resultContainer.appendChild(itemDiv);
-
-
-
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -91,13 +87,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     const items = sugestoes_lista.querySelectorAll("a")
                     items.forEach((a, index) => {
                         a.href = "#"
-                        a.onclick = async () => {
+                        a.onclick = async (event) => {
+
                             // cal<ei>1</ei>
                             // alert(a.innerHTML)
                             searchInput.value = a.innerHTML;
                             await buscarPalavra(a.innerHTML);
-
+                            fecharMenuDicionario()
                             abrirDicionario();
+                            
                         }
                     })
                 } else {
