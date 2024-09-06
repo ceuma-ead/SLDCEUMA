@@ -38,7 +38,7 @@ function buscarPalavra(palavra) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          loading = document.getElementById('loader-annotation'); // Certifique-se que o ID está correto
+          loading = document.getElementById('loading-dicionario'); // Certifique-se que o ID está correto
 
           resultContainer = document.getElementById('result');
 
@@ -101,6 +101,40 @@ function renderizarResultado(definicao, palavra) {
   itemDiv.appendChild(palavraSpan);
   itemDiv.appendChild(definicaoP);
   resultContainer.appendChild(itemDiv);
+} // Função para verificar se o contêiner de anotações está vazio
+
+
+function checkEmptyDicionarioContainer() {
+  var renderMenuDiv = document.querySelector('.render-dicionario'); // Obtém todos os filhos, exceto a mensagem de "vazio"
+
+  var children = Array.from(renderMenuDiv.children);
+  var nonEmptyChildren = children.filter(function (child) {
+    return !child.classList.contains('render-dicionario-result');
+  }); // Verifica se o contêiner está vazio, desconsiderando a mensagem de "vazio"
+
+  if (nonEmptyChildren.length === 0) {
+    // Se a mensagem de "vazio" não estiver presente, adicione-a
+    var emptyMessage = renderMenuDiv.querySelector('.empty-annotation-message');
+    renderMenuDiv.innerHTML = "";
+
+    if (!emptyMessage) {
+      emptyMessage = document.createElement('div');
+      emptyMessage.classList.add('empty-annotation-message');
+      emptyMessage.innerHTML = "\n                <div class=\"d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center\">\n                    <img src=\"./assets/list.gif\" alt=\"list-is-empty-unscreen1.gif\" style=\"width:20%;\" >\n                    <p style=\"color:#000;\" class=\"text-center\">Digite um \"Termo\" para come\xE7ar a Busca.</p>\n                </div>\n            ";
+      renderMenuDiv.appendChild(emptyMessage);
+    }
+
+    return false; // Retorna false porque o contêiner está vazio
+  } else {
+    // Remove a mensagem de "vazio" se ela existir
+    var _emptyMessage = renderMenuDiv.querySelector('.empty-annotation-message');
+
+    if (_emptyMessage) {
+      renderMenuDiv.removeChild(_emptyMessage);
+    }
+
+    return true; // Retorna true porque o contêiner tem anotações
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -114,22 +148,27 @@ document.addEventListener('DOMContentLoaded', function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             if (!searchInput) {
-              _context4.next = 9;
+              _context4.next = 16;
               break;
             }
 
             // Verifica se o campo de entrada foi encontrado
-            palavra = searchInput.value.trim();
+            palavra = searchInput.value.trim(); // verificar se o campo é vazio 
 
-            if (!palavra) {
-              _context4.next = 7;
+            if (!(searchInput.value !== "")) {
+              _context4.next = 13;
               break;
             }
 
-            _context4.next = 5;
+            if (!palavra) {
+              _context4.next = 10;
+              break;
+            }
+
+            _context4.next = 6;
             return regeneratorRuntime.awrap(buscarPalavra(palavra));
 
-          case 5:
+          case 6:
             sugestoes_lista = document.querySelector("#sugestoes-lista");
 
             if (sugestoes_lista) {
@@ -164,14 +203,27 @@ document.addEventListener('DOMContentLoaded', function () {
               console.log("Sugestões não Encontradas...");
             }
 
-          case 7:
-            _context4.next = 10;
+            _context4.next = 11;
             break;
 
-          case 9:
+          case 10:
+            checkEmptyDicionarioContainer();
+
+          case 11:
+            _context4.next = 14;
+            break;
+
+          case 13:
+            console.log("Dicionario Não encontrou Verbete...");
+
+          case 14:
+            _context4.next = 17;
+            break;
+
+          case 16:
             console.error('Campo de busca não encontrado!');
 
-          case 10:
+          case 17:
           case "end":
             return _context4.stop();
         }
@@ -179,3 +231,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+checkEmptyDicionarioContainer();

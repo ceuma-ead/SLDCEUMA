@@ -20,7 +20,7 @@ async function requisicao(url) {
 }
 
 async function buscarPalavra(palavra) {
-    const loading = document.getElementById('loader-annotation'); // Certifique-se que o ID está correto
+    const loading = document.getElementById('loading-dicionario'); // Certifique-se que o ID está correto
     const resultContainer = document.getElementById('result');
 
     if (loading) {
@@ -71,6 +71,42 @@ function renderizarResultado(definicao, palavra) {
     resultContainer.appendChild(itemDiv);
 }
 
+// Função para verificar se o contêiner de anotações está vazio
+function checkEmptyDicionarioContainer() {
+    const renderMenuDiv = document.querySelector('.render-dicionario');
+
+    // Obtém todos os filhos, exceto a mensagem de "vazio"
+    const children = Array.from(renderMenuDiv.children);
+    const nonEmptyChildren = children.filter(child => !child.classList.contains('render-dicionario-result'));
+
+    // Verifica se o contêiner está vazio, desconsiderando a mensagem de "vazio"
+    if (nonEmptyChildren.length === 0) {
+        // Se a mensagem de "vazio" não estiver presente, adicione-a
+        let emptyMessage = renderMenuDiv.querySelector('.empty-annotation-message');
+        renderMenuDiv.innerHTML = "";
+        if (!emptyMessage) {
+            emptyMessage = document.createElement('div');
+            emptyMessage.classList.add('empty-annotation-message');
+            emptyMessage.innerHTML = `
+                <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
+                    <img src="./assets/list.gif" alt="list-is-empty-unscreen1.gif" style="width:20%;" >
+                    <p style="color:#000;" class="text-center">Digite um "Termo" para começar a Busca.</p>
+                </div>
+            `;
+            renderMenuDiv.appendChild(emptyMessage);
+        }
+        return false; // Retorna false porque o contêiner está vazio
+    } else {
+        // Remove a mensagem de "vazio" se ela existir
+        const emptyMessage = renderMenuDiv.querySelector('.empty-annotation-message');
+        if (emptyMessage) {
+            renderMenuDiv.removeChild(emptyMessage);
+        }
+        return true; // Retorna true porque o contêiner tem anotações
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const buscarButton = document.querySelector('.buscarPalavra');
     const searchInput = document.getElementById('search-input'); // Verificação direta do input
@@ -78,33 +114,44 @@ document.addEventListener('DOMContentLoaded', function () {
     buscarButton.addEventListener('click', async () => {
         if (searchInput) { // Verifica se o campo de entrada foi encontrado
             const palavra = searchInput.value.trim();
-            if (palavra) {
-                await buscarPalavra(palavra);
-
-                const sugestoes_lista = document.querySelector("#sugestoes-lista");
-
-                if (sugestoes_lista) {
-                    const items = sugestoes_lista.querySelectorAll("a")
-                    items.forEach((a, index) => {
-                        a.href = "#"
-                        a.onclick = async (event) => {
-
-                            // cal<ei>1</ei>
-                            // alert(a.innerHTML)
-                            searchInput.value = a.innerHTML;
-                            await buscarPalavra(a.innerHTML);
-                            fecharMenuDicionario()
-                            abrirDicionario();
-                            
-                        }
-                    })
-                } else {
-                    console.log("Sugestões não Encontradas...")
+            // verificar se o campo é vazio 
+            if(searchInput.value !== ""){
+                if (palavra) {
+                    await buscarPalavra(palavra);
+    
+                    const sugestoes_lista = document.querySelector("#sugestoes-lista");
+    
+                    if (sugestoes_lista) {
+                        const items = sugestoes_lista.querySelectorAll("a")
+                        items.forEach((a, index) => {
+                            a.href = "#"
+                            a.onclick = async (event) => {
+    
+                                // cal<ei>1</ei>
+                                // alert(a.innerHTML)
+                                searchInput.value = a.innerHTML;
+                                await buscarPalavra(a.innerHTML);
+                                fecharMenuDicionario()
+                                abrirDicionario();
+    
+                            }
+                        })
+                    } else {
+                        console.log("Sugestões não Encontradas...")
+                    }
+    
+                }else{
+                    checkEmptyDicionarioContainer()
                 }
-
+            }
+            else{
+                console.log("Dicionario Não encontrou Verbete...")
             }
         } else {
             console.error('Campo de busca não encontrado!');
         }
     });
 });
+
+checkEmptyDicionarioContainer()
+

@@ -50,15 +50,15 @@ var api = [// PAGINA 1
       "container": "icons-action--container-mobile",
       "Podcast": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button vizioon-tip=\"Podcast\" vizioon-attr=\"d-none d-md-block\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"audio-lines\"></i>\n                            </button>\n                        "
       },
       "Videoaula": {
         "ativa": true,
-        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button vizioon-tip=\"Videoaula\" vizioon-attr=\"d-none d-md-block\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"video\"></i>\n                            </button>\n                        "
       },
       "Ferramentas": {
         "ativa": true,
-        "html": "\n                            <button class=\"btn-ferramentas\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
+        "html": "\n                            <button class=\"btn-ferramentas\" aria-label=\"close\" vizioon-attr=\"d-none d-md-block\" vizioon-tip=\"Ferramentas\" vizioon-posicao=\"gbottom\">\n                                <i data-lucide=\"pencil-ruler\"></i>\n                            </button>\n                        "
       }
     }, {
       "container": "box-tools-inline",

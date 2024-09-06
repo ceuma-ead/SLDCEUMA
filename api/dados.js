@@ -88,7 +88,7 @@ const api = [
                     "Podcast":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -96,7 +96,7 @@ const api = [
                     "Videoaula":{
                         "ativa":true,
                         "html" : `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -104,7 +104,7 @@ const api = [
                     "Ferramentas":{
                         "ativa":true,
                         "html" : `
-                            <button class="btn-ferramentas" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
