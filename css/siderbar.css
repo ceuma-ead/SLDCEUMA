@@ -51,7 +51,7 @@
     flex-direction: row;
     justify-content: center;
     border-radius: 100%;
-    background-color:var(--fundo-siderbar);
+    background:var(--fundo-siderbar);
     border: 2px solid var(--cor-dos-icones-siderbar);
     color: var(--cor-dos-icones-siderbar);
     transition: all 0.3s;

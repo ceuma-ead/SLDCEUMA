@@ -89,8 +89,9 @@ const responsivo = [
             }
 
             .searcListKeyWord span {
-                padding: 0 0;
+                padding: 0 0.5rem;
             }
+
 
             .container-searcListKeyWord button {
                 margin: 0.2rem;
@@ -338,7 +339,6 @@ const responsivo = [
             ]
     }
 ];
-
 
 function aplicarVariantes(variantes, media) {
     // Verificar se a condição da media query é verdadeira

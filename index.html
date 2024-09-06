@@ -98,10 +98,20 @@
                         vizioon-posicao="left"
                         vizioon-attr="d-none d-md-block">
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook-text"><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9.5 8h5"/><path d="M9.5 12H16"/><path d="M9.5 16H14"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-notebook-text"><path
+                                d="M2 6h4" /><path d="M2 10h4" /><path
+                                d="M2 14h4" /><path d="M2 18h4" /><rect
+                                width="16" height="20" x="4" y="2"
+                                rx="2" /><path d="M9.5 8h5" /><path
+                                d="M9.5 12H16" /><path d="M9.5 16H14" /></svg>
 
                     </button>
 
+                    <!-- Menu Sumario -->
                     <div class="sidebar-menu">
                         <div class="mola-encardernamento">
 
@@ -129,7 +139,9 @@
                         </footer>
 
                     </div>
+                    <!-- Menu Sumario -->
 
+                    <!-- Menu Anotação -->
                     <div class="sidebar-menu-Annotation">
                         <header>
                             <p>Anotações</p>
@@ -187,6 +199,49 @@
                         </footer>
 
                     </div>
+                    <!-- Menu Anotação -->
+
+                    <!-- Menu Dicionário -->
+                    <div class="dicionario-menu">
+                        <header>
+                            <i class="text-light dicionario-adds"
+                                data-lucide="circle-x"></i>
+                            <p>Dicionário</p>
+                            <!-- <i class="text-light dicionario-adds"
+                                data-lucide="history"></i> -->
+                        </header>
+
+                        <!-- Caixa para Renderizar os Itens -->
+                        <div class="render-dicionario" id="result">
+                            <!-- Resultados vão aparecer aqui -->
+                            <!-- <div class="render-dicionario-result">
+                                <span>Laboral</span>
+                                <p>
+                                    Significado de Laboral
+                                    adjetivo
+                                    Que se refere à labuta, ao labor, ao trabalho; trabalhista: ambiente laboral tranquilo.
+                                    Definição de Laboral
+                                    Classe gramatical: adjetivo de dois gêneros Separação silábica: la-bo-ral Plural: laborais
+                                </p>
+                            </div> -->
+                        </div>
+
+                        <!-- Loader (escondido inicialmente) -->
+                        <div id="loader-annotation" style="display: none;"></div>
+
+                        <!-- Caixa para Pesquisa -->
+                        <footer>
+                            <div class="searchDicionario">
+                                <input id="search-input" type="text"
+                                    placeholder="Digite uma palavra...">
+                                <span class="buscarPalavra"><i
+                                        data-lucide="send"></i></span>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- Menu Dicionário -->
+
+                 
 
                 </div>
                 <!-- Menu Navigation -->
@@ -230,7 +285,6 @@
             </div>
             <!-- Finalizando Menu Mobile -->
 
-            
             <main class="carrosel--container">
                 <article class="c-carousel c-carousel--simple w-100 h-100">
                     <div
@@ -349,6 +403,10 @@
         <script src="./js/tools.js"></script>
         <script src="./conf/tools/ferramentas.js"></script>
         <!-- Script para adcionar Ferramentas na Página -->
+
+        <!-- Script Dicionario -->
+        <script src="./modules/dicionario.js"></script>
+        <!-- Script Dicionario -->
     </body>
 
 </html>

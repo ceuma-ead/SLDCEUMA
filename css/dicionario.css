@@ -1,0 +1,189 @@
+@import url(./variaveis.css);
+
+.dicionario-menu  {
+    position: fixed;
+    width: 350px;
+    right: 0;
+    top: 55%;
+    transform: translateY(-50%);
+    height: 30rem;
+    background:var(--fundo-menu-sumario);
+   
+    transition: all .5s ease;
+    z-index: calc(var(--posicionamento-menu-sumario) + 2);
+    /* overflow: hidden;
+    overflow-y: scroll; */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content:space-between;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.dicionario-adds{
+    --wh: 40px;
+    width: var(--wh);
+    height: var(--wh);
+}
+
+.dicionario-menu header {
+    position: sticky;
+    width: 100%;
+    /* height: var(--tamanho-do-header); */
+    top: 0;
+    padding: 0.5rem;
+    display: flex;
+    background-color:var(--fundo-siderbar);
+    align-items: center;
+    border-radius: 0.5rem;
+}
+
+.dicionario-menu header p:nth-of-type(1){
+    font-size:var(--tamanho-do-texto-do-paragrafo-header);
+    color:var( --cor-do-paragrafo-sumario);
+    text-align: center;
+    /* background-color: #fff; */
+    user-select: none;
+    font-family: 'Lato';
+    align-self: center;
+    width: 100%;
+}
+
+.render-dicionario{
+    width: 100%;
+    margin-left: 0.2rem;
+    /* background-color: #A35200; */
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    padding-right: 0.5rem;
+    /* border-radius: 10px;
+    border: 1px solid #011c416b; */
+
+}
+
+
+.render-dicionario-result{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0 0 1rem 0 ;
+    border: 2px solid  var(--cor-geral-fundo-e-componentes);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.render-dicionario-result span{
+    font-size:calc(var(--font-para-paragrafos) + 10px);
+}
+
+.render-dicionario-result p{
+    font-size:calc(var(--font-para-paragrafos) - 2px);
+}
+
+.searchDicionario{
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border-radius: 0.5rem;
+    justify-content: center;
+    /* border: 2px solid  var(--cor-geral-fundo-e-componentes); */
+    margin: 0.5rem 0;
+    height: 100%;
+    gap: 1rem;
+}
+
+.searchDicionario input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: none;
+    padding-left: 0.5rem;
+    border: 1px solid var(--cor-geral-fundo-e-componentes);
+}
+
+.searchDicionario input::placeholder{
+    color: #011C41;
+}
+
+/* .countFoundResult{
+    
+} */
+
+.searchDicionario span{
+    outline: none;
+    border: none;
+    background-color: none;
+    border: 2px solid #FF8A00;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    cursor: pointer;
+    color: #FF8A00;
+    border-radius: 0.5rem;
+}
+
+/* Ir para 4% */
+.dicionario-menu.open {
+    right: 0%; /* Menú visível a 4% da borda direita */
+}
+
+/* Chrome, Edge and Safari */
+.render-dicionario::-webkit-scrollbar {
+    width: 8px;
+    min-height: min-content;
+    padding-left: 1rem;
+    /* background-color: red; */
+    height: 100%;
+    overflow: auto;
+
+}
+
+.render-dicionario::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #00000000;
+}
+
+.render-dicionario::-webkit-scrollbar-track:hover {
+    background-color: #00000000;
+}
+
+.render-dicionario::-webkit-scrollbar-track:active {
+    background-color: #b8b8c2;
+}
+
+.render-dicionario::-webkit-scrollbar-thumb {
+    border-radius: 17px;
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.render-dicionario::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.render-dicionario::-webkit-scrollbar-thumb:active {
+    background-color: #a3470000;
+}
+
+
+/* 
+.mola-encardernamento-dicionario{
+    position: absolute;
+    background-image: url(../assets/mola-de-encardenamento.svg);
+    background-repeat: no-repeat;
+    width: 0;
+    height: 100%;
+    padding: 1rem;
+    background-position: center center;
+     background-color: rgb(0, 255, 255);
+    background-size: 120%;
+    z-index: 999;
+    top: -45%;
+    left: 45%;
+    transform: rotate(90deg) translateX(-50%) translateY(0);
+} */

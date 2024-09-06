@@ -112,6 +112,7 @@
     --gradient-color: #FBFBFB;
     --tamanho-do-header: 20%;
     --cor-do-paragrafo-header: #353535;
+    --cor-do-paragrafo-sumario: #ffffff;
     --tamanho-do-texto-do-paragrafo-header: 1.5rem;
     --familia-do-texto-do-paragrafo-header: var(--familia-da-font-paragrafo);
     --cor-geral-fundo-e-componentes: #011C41;
