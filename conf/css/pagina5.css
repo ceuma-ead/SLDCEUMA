@@ -5,8 +5,6 @@
   width: 100%;
   height: 20rem;
   /* background-color: red; */
- 
-
 }
 
 .accordion {
@@ -17,13 +15,9 @@
   border-radius: 5px;
   /* box-shadow: 0 3px 3px rgba(0,0,0,0.3); */
   align-items: center;
-  
   height: max-content;
   overflow: hidden;
-  overflow-y: scroll;
-
-
-
+  justify-content: center;
 }
 
 .accordion section {
@@ -37,14 +31,12 @@
   color: #333;
   /* background-color: #333; */
   border-radius: 3px;
-
 }
 
 
 .accordion section .box {
   /* position: relative; */
   /* display: block; */
-
   width: 2em;
   height: 15rem;
   margin-left: -0.7rem;
@@ -154,7 +146,6 @@
   .accordion {
     flex-direction: column;
     /* background-color: aqua; */
-
   }
 
   .accordion section h2 {
@@ -167,9 +158,6 @@
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
     background-color: var(--cardColor);
-
-
-
   }
 
   .align-accordion {
@@ -183,9 +171,7 @@
 
   }
 
-
   .accordion section .box {
-   
     width: 100%;
     height: 0;
     display: flex;
@@ -198,8 +184,6 @@
     margin-top: 2rem;
     border-radius: 3px;
     text-align: left;
-  
-
   }
 
   
@@ -211,16 +195,12 @@
     margin-right: 0.5rem;
     width: 100%;
     height: 15rem;
- 
     /* padding: 0 1rem; */
     color: #333;
     /* background-color: #b63030; */
-  
     display: flex;
     align-items: center;
     justify-content: center;
- 
-    
   }
 
   #acc1,
@@ -233,13 +213,10 @@
   }
 
   .accordion section ul {
-
     display: flex;
     list-style-type: lower-alpha;
-  
     width: 60%;
     height: 90%;
-
     /* background: blue; */
     font-size: calc(var(--font-para-paragrafos) - 4px);
     flex-direction: column;
