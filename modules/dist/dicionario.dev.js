@@ -142,10 +142,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     while (1) {
                       switch (_context3.prev = _context3.next) {
                         case 0:
-                          _context3.next = 2;
+                          // cal<ei>1</ei>
+                          // alert(a.innerHTML)
+                          searchInput.value = a.innerHTML;
+                          _context3.next = 3;
                           return regeneratorRuntime.awrap(buscarPalavra(a.innerHTML));
 
-                        case 2:
+                        case 3:
+                          abrirDicionario();
+
+                        case 4:
                         case "end":
                           return _context3.stop();
                       }

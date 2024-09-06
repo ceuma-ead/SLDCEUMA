@@ -94,8 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         a.onclick = async () => {
                             // cal<ei>1</ei>
                             // alert(a.innerHTML)
-
+                            searchInput.value = a.innerHTML;
                             await buscarPalavra(a.innerHTML);
+
+                            abrirDicionario();
                         }
                     })
                 } else {
