@@ -159,6 +159,12 @@
         transform: translateY(-35%)  !important;
     }
 
+    span.subtitulo {
+    font-size: 30px !important;
+    
+    
+    }
+
 }
 
 
@@ -196,7 +202,11 @@
 
         display: block;
     }
-
+    span.subtitulo {
+        font-size: 25px !important;
+        
+        
+        }
 
 }
 
