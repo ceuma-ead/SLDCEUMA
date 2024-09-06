@@ -124,6 +124,10 @@ function eventButton() {
     });
   });
   var abri_dicionario = document.querySelectorAll('.abrir-dicionario');
+  var fechar_dicionario = document.querySelector('.close_dicionario');
+  fechar_dicionario.addEventListener("click", function (event) {
+    fecharMenuDicionario();
+  });
   abri_dicionario.forEach(function (openDict, index) {
     openDict.addEventListener("click", function (event) {
       event.stopPropagation();
