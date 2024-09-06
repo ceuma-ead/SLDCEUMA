@@ -1237,7 +1237,7 @@ const api = [
                 "attr_unitario": {
                     "Olá, estudante! Bem-vindo à Unidade 1!": {
                         "attr": "font-weight=[999], font-size=[20px],",
-                        // "attr_inline":`class=[],id=[]`
+                        "attr_inline":`class=[subtitulo],id=[]`
                     },
                     
                 },
