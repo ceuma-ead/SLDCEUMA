@@ -1,3 +1,14 @@
+// Função para remover acentos e pontuação
+function removerAcentosEPontuacao(str) {
+    // Remover acentos
+    str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    // Remover pontuação (.,;:!? etc.)
+    str = str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+
+    return str;
+}
+
 async function requisicao(url) {
     const proxyUrl = 'https://api.allorigins.win/get?url=';
     const fullUrl = proxyUrl + url;
@@ -97,7 +108,11 @@ function pararAudioDicionario() {
 async function buscarPalavra(palavra) {
     const loading = document.getElementById('loading-dicionario');
     const resultContainer = document.getElementById('result-dicionario');
-    const url = `https://www.dicio.com.br/${palavra}/`;
+
+    // Remover acentos e pontuação da palavra para o formato de URL correto
+    const palavraFormatada = removerAcentosEPontuacao(palavra);
+    // Codificar a palavra com acentos para o formato de URL correto
+    const url = `https://www.dicio.com.br/${encodeURIComponent(palavraFormatada)}/`;
 
     if (loading) {
         loading.style.display = 'block';
@@ -131,12 +146,10 @@ async function buscarPalavra(palavra) {
             `;
             $("#result-dicionario").html(html);
 
-
             // Botão de ouvir
             const audioButton = document.getElementById("audio-button");
             audioButton.onclick = function () {
                 const speechText = `${titulo.innerText}, ${content.innerText}`;
-                // Prevenção de eventos concorrentes
                 if (!utterance || !synth.speaking) {
                     lerTexto(speechText);  // Inicia a leitura do texto
                 }
@@ -145,16 +158,19 @@ async function buscarPalavra(palavra) {
             // Botão de pausar ou retomar
             const pauseButton = document.getElementById("pause-button");
             pauseButton.onclick = function () {
-                // Se o áudio estiver em execução, ele vai pausar ou retomar
-                if (synth.speaking) {
-                    lerTexto('');  // Pausa ou retoma a leitura
+                if (synth.speaking && !synth.paused) {
+                    synth.pause();  // Pausa o áudio
+                    pauseButton.innerHTML = '▶️ Player';  // Muda ícone para "Continuar"
+                } else if (synth.paused) {
+                    synth.resume();  // Retoma o áudio
+                    pauseButton.innerHTML = '⏸ Pausar';  // Muda ícone para "Pausar"
                 }
             };
 
             // Botão de parar
             const stopButton = document.getElementById("stop-button");
             stopButton.onclick = function () {
-                pararAudioDicionario()  // Para completamente o áudio
+                pararAudioDicionario();  // Para completamente o áudio
             };
 
         } else {
@@ -168,12 +184,10 @@ async function buscarPalavra(palavra) {
     } catch (erro) {
         console.error(erro);
         $("#result-dicionario").html(`
-            
             <div class="d-flex erro-notfound-menu align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
                 <p style="color:#000;" class="text-center">Ops, refaça sua pesquisa: <a href="#">${palavra}</a></p>
             </div>
-                
         `);
     } finally {
         if (loading) {
@@ -181,7 +195,6 @@ async function buscarPalavra(palavra) {
         }
     }
 }
-
 
 // Conectar o botão de pesquisa ao evento click
 document.getElementById('buscarPalavra').addEventListener('click', async function () {
