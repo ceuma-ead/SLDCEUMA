@@ -191,3 +191,23 @@
     left: 45%;
     transform: rotate(90deg) translateX(-50%) translateY(0);
 } */
+
+.titulo{
+    font-size: 1.5rem;
+}
+
+.conteudo{
+ 
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.conteudo span{
+    padding: 0.5rem;
+    background-color: #cacaca;
+}
+.conteudo .cl{
+    font-weight: bold;
+}
