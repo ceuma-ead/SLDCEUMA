@@ -34,7 +34,8 @@ function checkEmptyDicionarioContainer() {
             emptyMessage.innerHTML = `
                 <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
                     <img src="./assets/list.gif" alt="list-is-empty-unscreen1.gif" style="width:20%;" >
-                    <p style="color:#000;" class="text-center">Digite um "Termo" para começar a Busca.</p>
+                    <p style="color:#000;" class="text-center">Nada aqui ainda...</p>
+                    <p style="color:#000;" class="text-center">Digite uma palavra.</p>
                 </div>
             `;
             renderMenuDiv.appendChild(emptyMessage);
