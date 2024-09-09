@@ -49,7 +49,7 @@ $(document).ready(function () {
                 //     })
                 // );
 
-                // Verifica se há um servidor salvo no localStorage~
+                // Verifica se há um servidor salvo no localStorage
                 localStorage.setItem("dicionario-servido","dicio")
                 const dicionarioServido = localStorage.getItem("dicionario-servido");
                 // if (dicionarioServido) {

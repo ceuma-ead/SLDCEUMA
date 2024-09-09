@@ -139,7 +139,7 @@ function eventButton() {
     const abri_dicionario = document.querySelectorAll('.abrir-dicionario');
 
     const fechar_dicionario = document.querySelector('.close_dicionario');
-    fechar_dicionario.addEventListener("click",function(event){
+    fechar_dicionario.addEventListener("click", function (event) {
 
         fecharMenuDicionario();
     });
