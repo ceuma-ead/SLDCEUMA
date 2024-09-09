@@ -158,7 +158,12 @@ async function buscarPalavra(palavra) {
             };
 
         } else {
-            $("#result-dicionario").html("<p>Conteúdo não encontrado para esta palavra.</p>");
+            $("#result-dicionario").html(`
+                <div class="d-flex erro-notfound-menu align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                    <p style="color:#000;" class="text-center">Ops, refaça sua pesquisa: <a href="#">${palavra}</a></p>
+                </div>    
+            `);
         }
     } catch (erro) {
         console.error(erro);
