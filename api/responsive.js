@@ -131,7 +131,36 @@ const responsivo = [
                 font-size: 18px;
             }
 
-            
+            .dicionario-menu {
+                width: 300px;
+                height: 21rem;
+                padding: 0.8rem;
+                gap: 0.5rem;
+            }
+            .dicionario-menu header {                
+                 padding: 0.2rem;
+                }
+
+            .dicionario-menu header p:nth-of-type(1) {
+            font-size: calc(var(--tamanho-do-texto-do-paragrafo-header) - 0.2rem);
+            }
+                .mt-3 {
+                margin-top: 0.25rem !important;
+            }       
+
+            .btn {
+                    padding: .175rem .45rem;
+
+                }
+
+            .titulo {
+                font-size: 1.2rem;
+            }
+
+            .searchDicionario {
+                    margin: 0;
+                }
+
     `,
 
 
