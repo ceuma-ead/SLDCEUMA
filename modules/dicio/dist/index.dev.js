@@ -79,8 +79,7 @@ function checkEmptyDicionarioContainer() {
 }
 
 function buscarPalavra(palavra) {
-  var loading, resultContainer, url, dados, parser, doc, titulo, content, html, audioButton, notfound, _content, _html;
-
+  var loading, resultContainer, url, dados, parser, doc, titulo, content, html, audioButton;
   return regeneratorRuntime.async(function buscarPalavra$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -90,9 +89,8 @@ function buscarPalavra(palavra) {
           url = "https://www.dicio.com.br/".concat(palavra, "/");
 
           if (loading) {
-            // Exibe o loader antes de iniciar a busca
             loading.style.display = 'block';
-            resultContainer.innerHTML = ""; // Limpa os resultados anteriores
+            resultContainer.innerHTML = "";
           }
 
           _context2.prev = 4;
@@ -101,16 +99,23 @@ function buscarPalavra(palavra) {
 
         case 7:
           dados = _context2.sent;
+
+          if (dados) {
+            _context2.next = 10;
+            break;
+          }
+
+          throw new Error("Erro ao obter dados do Dicionário.");
+
+        case 10:
           parser = new DOMParser();
           doc = parser.parseFromString(dados, 'text/html');
           titulo = doc.querySelector(".tit-significado");
           content = doc.querySelector(".significado");
 
           if (titulo && content) {
-            // Criar o botão de áudio dinamicamente
-            html = "\n                <button id=\"audio-button\" class=\"btn btn-secondary mt-3\">\uD83D\uDD0A Ouvir Texto</button>\n                <div class=\"titulo\">\n                    ".concat(titulo.innerHTML, "\n                </div>\n                <div class=\"conteudo\">\n                    ").concat(content.innerHTML, "\n                </div>\n            ");
-            $("#result-dicionario").html(html); // Atualizar o botão de áudio para ler o novo texto
-
+            html = "\n            <button id=\"audio-button\" class=\"btn btn-secondary mt-3\">\uD83D\uDD0A Ouvir Texto</button>\n                <div class=\"titulo\">\n                    ".concat(titulo.innerHTML, "\n                </div>\n                <div class=\"conteudo\">\n                    ").concat(content.innerHTML, "\n                </div>\n            ");
+            $("#result-dicionario").html(html);
             audioButton = document.getElementById("audio-button");
 
             audioButton.onclick = function () {
@@ -118,37 +123,33 @@ function buscarPalavra(palavra) {
               lerTexto(speechText);
             };
           } else {
-            notfound = parser.parseFromString(dados, 'text/html');
-            _content = notfound.querySelector("#content");
-            _html = "\n                <div>\n                    ".concat(_content.querySelector(".card").innerHTML, "\n                </div>\n            ");
-            $("#result-dicionario").html(_html);
+            $("#result-dicionario").html("<p>Conteúdo não encontrado para esta palavra.</p>");
           }
 
-          _context2.next = 19;
+          _context2.next = 21;
           break;
 
-        case 15:
-          _context2.prev = 15;
+        case 17:
+          _context2.prev = 17;
           _context2.t0 = _context2["catch"](4);
           console.error(_context2.t0);
           $("#result-dicionario").html("<p>Erro ao buscar a palavra.</p>");
 
-        case 19:
-          _context2.prev = 19;
+        case 21:
+          _context2.prev = 21;
 
           if (loading) {
-            // Esconde o loader após a busca ser concluída (com sucesso ou erro)
             loading.style.display = 'none';
           }
 
-          return _context2.finish(19);
+          return _context2.finish(21);
 
-        case 22:
+        case 24:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[4, 15, 19, 22]]);
+  }, null, null, [[4, 17, 21, 24]]);
 } // Função para ler o texto em voz alta
 
 

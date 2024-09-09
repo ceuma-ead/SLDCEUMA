@@ -57,23 +57,26 @@ async function buscarPalavra(palavra) {
     const url = `https://www.dicio.com.br/${palavra}/`;
 
     if (loading) {
-        // Exibe o loader antes de iniciar a busca
         loading.style.display = 'block';
-        resultContainer.innerHTML = ""; // Limpa os resultados anteriores
+        resultContainer.innerHTML = "";
     }
 
     try {
         const dados = await requisicao(url);
 
+        if (!dados) {
+            throw new Error("Erro ao obter dados do Dicionário.");
+        }
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(dados, 'text/html');
+
         const titulo = doc.querySelector(".tit-significado");
         const content = doc.querySelector(".significado");
 
         if (titulo && content) {
-            // Criar o botão de áudio dinamicamente
             const html = `
-                <button id="audio-button" class="btn btn-secondary mt-3">🔊 Ouvir Texto</button>
+            <button id="audio-button" class="btn btn-secondary mt-3">🔊 Ouvir Texto</button>
                 <div class="titulo">
                     ${titulo.innerHTML}
                 </div>
@@ -81,32 +84,21 @@ async function buscarPalavra(palavra) {
                     ${content.innerHTML}
                 </div>
             `;
-
             $("#result-dicionario").html(html);
 
-            // Atualizar o botão de áudio para ler o novo texto
             const audioButton = document.getElementById("audio-button");
             audioButton.onclick = function () {
                 const speechText = `${titulo.innerText}, ${content.innerText}`;
                 lerTexto(speechText);
             };
         } else {
-            const notfound = parser.parseFromString(dados, 'text/html');
-            const content = notfound.querySelector("#content");
-
-            const html = `
-                <div>
-                    ${content.querySelector(".card").innerHTML}
-                </div>
-            `;
-            $("#result-dicionario").html(html);
+            $("#result-dicionario").html("<p>Conteúdo não encontrado para esta palavra.</p>");
         }
     } catch (erro) {
         console.error(erro);
         $("#result-dicionario").html("<p>Erro ao buscar a palavra.</p>");
     } finally {
         if (loading) {
-            // Esconde o loader após a busca ser concluída (com sucesso ou erro)
             loading.style.display = 'none';
         }
     }
@@ -133,7 +125,7 @@ document.getElementById('buscarPalavra').addEventListener('click', async functio
                 // console.log(ancho)
                 ancho.href = "#"
                 ancho.onclick = async (event) => {
-                    
+
                     // alert(link.innerHTML)
                     const link = ancho.querySelector(".list-link")
                     document.getElementById('search-input').value = link.innerHTML;
@@ -145,7 +137,7 @@ document.getElementById('buscarPalavra').addEventListener('click', async functio
             })
         }
 
-      
+
     } else {
         alert("Por favor, digite uma palavra!");
     }
