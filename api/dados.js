@@ -180,9 +180,14 @@ const api = [
                 "_procurar_paragrafos": {
                     "status": true,
                     "onde_procurar": ".pagina-tipo-texto--box-texto"
-                }
-            },
+                },
 
+                "_Dicionario":{
+                    "status":false,
+                    "dicionario":"michaelis" // dicio ou michaelis
+                }
+
+            },
             "fonte": {
                 // "titulo":"1rem",
                 "paragrafos": "1rem",
@@ -204,8 +209,7 @@ const api = [
                     animate__animated animate__fadeInRigth animate__slow
                 `
             }]
-            
-            
+               
         }
     },
     
@@ -537,7 +541,6 @@ const api = [
                     animate__animated animate__fadeInRigth animate__slow
                 `
             }]
-
         }
     },
     

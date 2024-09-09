@@ -99,8 +99,7 @@ async function buscarPalavra(palavra) {
             // Botão de ouvir
             const audioButton = document.getElementById("audio-button");
             audioButton.onclick = function () {
-                const speechText = `${titulo.innerText}, ${content.innerText}`;
-                // Prevenção de eventos concorrentes
+                const speechText = `${palavra}, ${content.innerText}`;
                 if (!utterance || !synth.speaking) {
                     lerTexto(speechText);  // Inicia a leitura do texto
                 }
@@ -109,9 +108,12 @@ async function buscarPalavra(palavra) {
             // Botão de pausar ou retomar
             const pauseButton = document.getElementById("pause-button");
             pauseButton.onclick = function () {
-                // Se o áudio estiver em execução, ele vai pausar ou retomar
-                if (synth.speaking) {
-                    lerTexto('');  // Pausa ou retoma a leitura
+                if (synth.speaking && !synth.paused) {
+                    synth.pause();  // Pausa o áudio
+                    pauseButton.innerHTML = '▶️ Player';  // Muda ícone para "Continuar"
+                } else if (synth.paused) {
+                    synth.resume();  // Retoma o áudio
+                    pauseButton.innerHTML = '⏸ Pausar';  // Muda ícone para "Pausar"
                 }
             };
 
@@ -125,10 +127,10 @@ async function buscarPalavra(palavra) {
         } else {
             // Caso não encontre o conteúdo esperado, exiba uma mensagem apropriada
             $("#result-dicionario").html(`
-                <div class="d-flex erro-notfound-menu align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
-                    <p style="color:#000;" class="text-center">Ops, refaça sua pesquisa: <a href="#">${palavra}</a></p>
-                </div>    
+                <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100  align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                            <p style="color:#000;" class="text-center">Ops refaça sua Pesquisa <a href="#">${palavra}</a> </p>
+                    </div>         
             `);
         }
 

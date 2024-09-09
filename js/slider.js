@@ -97,7 +97,7 @@ let filtroDuplicadoSumario = true
 gliderElement.addEventListener('glider-slide-visible', function (event) {
     // hideLoading(); // Esconder o loading assim que o slide estiver visível
     showLoading()
-    
+
     saveSliderPosition(event.detail.slide);
     //Atualizar titulo da Página
     updatePageTitle(event.detail.slide);
@@ -110,7 +110,7 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     //Adcionar Marcadores ao Texto
     adcionarMarcadores(event.detail.slide);
     //Passa a Posição Atual da Pagina para o Menu
-    itemnsMenu('', event.detail.slide,filtroDuplicadoSumario);
+    itemnsMenu('', event.detail.slide, filtroDuplicadoSumario);
     //Adcionar Fundo ao Slider Atual
     adicionarFundo(event.detail.slide);
     //Fazer a inserção de scripts na página
@@ -127,6 +127,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     injectEstiloRender(event.detail.slide)
     // Renderizar Ferramentas por Página
     renderTools(event.detail.slide)
+    // Renderizar Dicionario para Certa Página
+    renderizarDicionario(event.detail.slide)
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -156,10 +158,10 @@ function adicionarFundo(slideIndex) {
     if (pageData && pageData.paramentros && pageData.paramentros.cores.imagemFundo) {
         const {
             ativar = LogoPadrao.ativar, // Valores padrão em caso de ausência
-                img = LogoPadrao.img,
-                posicaoY = LogoPadrao.posicaoY,
-                posicaoX = LogoPadrao.posicaoX,
-                tamanho = LogoPadrao.tamanho
+            img = LogoPadrao.img,
+            posicaoY = LogoPadrao.posicaoY,
+            posicaoX = LogoPadrao.posicaoX,
+            tamanho = LogoPadrao.tamanho
 
         } = pageData.paramentros.cores.imagemFundo;
 
@@ -215,10 +217,10 @@ function adicionarLogo(slideIndex) {
     if (pageData && pageData.paramentros && pageData.paramentros.logo) {
         const {
             ativar = LogoPadrao.ativar, // Valores padrão em caso de ausência
-                img = LogoPadrao.img,
-                posicaoY = LogoPadrao.posicaoY,
-                posicaoX = LogoPadrao.posicaoX,
-                tamanho = LogoPadrao.tamanho
+            img = LogoPadrao.img,
+            posicaoY = LogoPadrao.posicaoY,
+            posicaoX = LogoPadrao.posicaoX,
+            tamanho = LogoPadrao.tamanho
 
         } = pageData.paramentros.logo;
 
@@ -331,7 +333,7 @@ function reduzirTexto(texto, tamanhoMaximo) {
 //     const searchInput = document.querySelector('.searcListMateria input');
 //     searchInput.addEventListener('input', () => {
 //         const filtro = searchInput.value.trim();
-        
+
 //         itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
 //     });
 
@@ -543,11 +545,11 @@ function modificarFontes(slideIndex) {
     if (pageData && pageData.paramentros && pageData.paramentros.fonte) {
         const {
             titulo = FontPadrao.titulo,
-                paragrafos = FontPadrao.paragrafos,
-                font_familly = FontPadrao.font_familly,
-                cor_fonte = FontPadrao.cor_fonte,
-                alinhamento_texto = FontPadrao.alinhamento_texto,
-                hifens = FontPadrao.hifens
+            paragrafos = FontPadrao.paragrafos,
+            font_familly = FontPadrao.font_familly,
+            cor_fonte = FontPadrao.cor_fonte,
+            alinhamento_texto = FontPadrao.alinhamento_texto,
+            hifens = FontPadrao.hifens
         } = pageData.paramentros.fonte;
 
         const verificarItem = pageData.paramentros.logo;
@@ -781,7 +783,7 @@ function AnimatedParagrafos(slideIndex) {
         configurarAnimacao.forEach((animation) => {
             const {
                 script_animation = animacaoPadrao.script_animation,
-                    indice = animacaoPadrao.indice
+                indice = animacaoPadrao.indice
             } = animation;
 
             const procurarParagrafo = pageData.paramentros.configuracoes_gerais._procurar_paragrafos;
@@ -825,7 +827,6 @@ function AnimatedParagrafos(slideIndex) {
     }
 }
 
-
 // Função para Criar animação no Elemento
 function AnimatedElementos(slideIndex) {
     const pageData = api[slideIndex];
@@ -855,7 +856,7 @@ function AnimatedElementos(slideIndex) {
     configurarAnimacao.forEach((animation) => {
         const {
             script_animation = animacaoPadrao.script_animation,
-                elemento = animacaoPadrao.elemento
+            elemento = animacaoPadrao.elemento
         } = animation;
 
         const elementos = document.querySelectorAll(elemento);
@@ -1026,7 +1027,7 @@ ${procurarParagrafo.onde_procurar ? `Você precisa ativar primeiro o suporte em:
 //                 console.warn(`Elemento ${tipo} na posição ${posicao} não encontrado.`);
 //             }
 //         });
-    
+
 //     }
 
 // }
@@ -1037,7 +1038,7 @@ function adcionarMarcadores(slideIndex) {
 
     if (pageData && pageData.paramentros && pageData.paramentros.marcador) {
         const slider_containers = document.querySelectorAll(pageData.paramentros.configuracoes_gerais._procurar_paragrafos.onde_procurar);
-        
+
         if (slider_containers.length === 0) {
             console.warn('Nenhum container encontrado para aplicar o marcador.');
             return;
@@ -1113,7 +1114,7 @@ function adcionarMarcadores(slideIndex) {
                             });
                         }
 
-                        styles += `${fundo ? `background-color:${fundo}`:""};${corTexto ? `color:${corTexto}`:""};${padding ? `padding:${padding}`:""}`;
+                        styles += `${fundo ? `background-color:${fundo}` : ""};${corTexto ? `color:${corTexto}` : ""};${padding ? `padding:${padding}` : ""}`;
                         styles += specificStyles; // Sobrescreve atributos genéricos com específicos
 
                         const regex = new RegExp(`(?!<span[^>]*>)(${palavra})(?!</span>)`, 'gi');
@@ -1181,8 +1182,8 @@ function atualizarCoresdaNavegacao(slideIndex) {
     if (pageData && pageData.paramentros && pageData.paramentros.cores) {
         const {
             sidebar = defaultCores.sidebar,
-                fundo = defaultCores.fundo,
-                icones = defaultCores.icones,
+            fundo = defaultCores.fundo,
+            icones = defaultCores.icones,
 
         } = pageData.paramentros.cores;
 
@@ -1324,6 +1325,55 @@ function injectEstiloRender(slideIndex) {
 }
 
 
+function renderizarDicionario(slideIndex) {
+    const pageData = api[slideIndex];
+
+    const _dicionario = {
+        status: true,
+        dicionario: "dicio"
+    };
+
+    if (pageData && pageData.paramentros && pageData.paramentros.configuracoes_gerais && pageData.paramentros.configuracoes_gerais._Dicionario) {
+        const { status = _dicionario.status, dicionario = _dicionario.dicionario } = pageData.paramentros.configuracoes_gerais._Dicionario;
+
+        if (Object.values(pageData.paramentros.configuracoes_gerais._Dicionario).length === 0) {
+            console.log("Dicionário Não pode ser Ativo pois não foi encontrado...");
+            return;
+        }
+
+        const dicionarioServido = localStorage.getItem("dicionario-servido");
+
+        // Caso o dicionário ainda não tenha sido selecionado
+        if (!dicionarioServido || dicionarioServido === "") {
+
+
+            if (typeof pararAudioDicionario === 'function') {
+                servidores(); // Carregar servidores quando o dicionário não está configurado
+            }
+            return;
+        }
+
+        if (status) {
+            localStorage.setItem("dicionario-servido", dicionario);
+        } else {
+            localStorage.removeItem("dicionario-servido"); // Remover ao invés de setar string vazia
+            servidores(); // Atualizar os servidores após remover o dicionário
+        }
+    } else {
+        // Se não há configuração de dicionário, carrega os servidores e atualiza o glider se necessário
+        servidores();
+        localStorage.removeItem("dicionario-servido"); // Remove o dicionário servido
+
+        if (typeof glider !== 'undefined') {
+            glider.refresh(true);
+            glider.updateControls();
+        } else {
+            console.error('O objeto glider não está definido.');
+        }
+    }
+}
+
+
 
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
@@ -1337,8 +1387,9 @@ AnimatedParagrafos(savedPosition);
 AnimationVariablesUpPage(savedPosition);
 AnimatedElementos(savedPosition)
 injectEstiloRender(savedPosition)
+renderizarDicionario(savedPosition)
 // Rederizar Menu
-const irItem = itemnsMenu('', savedPosition,filtroDuplicadoSumario);
+const irItem = itemnsMenu('', savedPosition, filtroDuplicadoSumario);
 // console.log(irItem)
 // Pesquisar Item Menu
 handleSearch();
