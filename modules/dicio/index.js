@@ -210,4 +210,3 @@ document.getElementById('buscarPalavra').addEventListener('click', async functio
 });
 
 checkEmptyDicionarioContainer();
-abrirDicionario();
