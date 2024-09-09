@@ -86,7 +86,7 @@ function lerTexto(texto) {
 }
 
 // Função para parar o áudio
-function pararAudio() {
+function pararAudioDicionario() {
     if (synth.speaking) {
         synth.cancel();  // Cancela a síntese de voz em execução
         isPaused = false;
@@ -154,7 +154,7 @@ async function buscarPalavra(palavra) {
             // Botão de parar
             const stopButton = document.getElementById("stop-button");
             stopButton.onclick = function () {
-                pararAudio();  // Para completamente o áudio
+                pararAudioDicionario()  // Para completamente o áudio
             };
 
         } else {

@@ -188,10 +188,16 @@ function abrirDicionario() {
 function fecharMenuDicionario() {
     const menuDicionario = document.querySelector('.dicionario-menu');
 
-    
+
 
     // Remove a classe 'open' para fechar o menu
     if (menuDicionario.classList.contains('open')) {
+        pararAudioDicionario() 
+
+        $("#result-dicionario").html("");
+        document.getElementById('search-input').value = "";
+        checkEmptyDicionarioContainer();
+        
         menuDicionario.classList.remove('open');
     }
 }
