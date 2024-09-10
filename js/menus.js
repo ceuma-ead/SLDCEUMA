@@ -206,12 +206,18 @@ function abrirDicionario() {
                         footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
                     });
                 }
-            } 
+            }
 
 
         },
         error: (error) => {
             console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: `Erro Json Desativada`,
+                heightAuto: false,
+                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+            });
         }
     });
 

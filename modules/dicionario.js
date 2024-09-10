@@ -10,9 +10,7 @@ async function requisicao(dados) {
                 "_script": item.script
             }
         })
-
         script.forEach(dicionario => {
-
             $.ajax({
                 url: dicionario._script,
                 method: "GET",
@@ -23,7 +21,6 @@ async function requisicao(dados) {
                     $('#result').html('<p>Erro ao carregar os dados</p>');
                 }
             });
-
         });
 
     } catch (error) {
@@ -92,6 +89,12 @@ function renderizarDicionario() {
 
         },
         error: (error) => {
+            Swal.fire({
+                icon: "error",
+                title: `Erro Json Desativada`,
+                heightAuto: false,
+                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+            });
             console.error('Erro:', error);
         }
     });
