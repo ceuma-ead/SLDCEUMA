@@ -1,7 +1,7 @@
 {
     "dicionario":{
-        "ativo":false,
+        "ativo":true,
         "dicionario":"dicio",
-        "menu_dicionario":true
+        "menu_dicionario":false
     }
 }
