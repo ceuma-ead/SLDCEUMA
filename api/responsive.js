@@ -339,6 +339,10 @@ const responsivo = [
                     .accordion-button {
                     font-size: 1.5rem !important;
                     }
+
+                    .message-box--divisor {
+                    justify-content: center;
+                }
         `,
     
             // Atualização Forçada onde ele está aparecendo

@@ -216,9 +216,9 @@
     display: flex;
     list-style-type: lower-alpha;
     width: 60%;
-    height: 90%;
+    height: 100%;
     /* background: blue; */
-    font-size: calc(var(--font-para-paragrafos) - 4px);
+    font-size: calc(var(--font-para-paragrafos) + 1px);
     flex-direction: column;
     overflow: hidden;
     overflow-y: scroll;
