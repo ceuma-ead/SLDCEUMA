@@ -65,6 +65,7 @@ function carregarVozes() {
 
     // Populando o select com as vozes
     voces.forEach((voz, index) => {
+        
         const option = document.createElement('option');
         option.value = index;
         option.textContent = `${voz.name} (${voz.lang})`;
@@ -80,6 +81,7 @@ function carregarVozes() {
 
 // Função para salvar a voz escolhida no localStorage
 function salvarVozEscolhida() {
+    pararAudioDicionario();
     const selectVoz = document.getElementById('select-voz');
     localStorage.setItem('vozSelecionada', selectVoz.value);
 }
@@ -154,10 +156,10 @@ async function buscarPalavra(palavra) {
 
         if (content) {
             const html = `
-                <button id="audio-button" class="btn btn-secondary mt-3">▶️ Player</button>
-                <button id="stop-button" class="btn btn-secondary mt-3">⏹ Parar</button>
                 <label for="select-voz">Escolha a voz:</label>
                 <select id="select-voz" class="form-select"></select>
+                <button id="audio-button" class="btn btn-secondary mt-3">🔊 Ouvir</button>
+                <button id="stop-button" class="btn btn-secondary mt-3">⏹ Parar</button>
                 <div class="titulo">
                     <strong>${palavra}</strong>
                 </div>
@@ -184,19 +186,18 @@ async function buscarPalavra(palavra) {
                 } else if (synth.speaking && !synth.paused) {
                     // Pausa o áudio se estiver falando
                     synth.pause();
-                    audioButton.innerHTML = '▶️ Player';  // Muda ícone para "Continuar"
+                    audioButton.innerHTML = '🔊 Ouvir';  // Muda ícone para "Continuar"
                 } else if (synth.paused) {
                     // Retoma o áudio se estiver pausado
                     synth.resume();
                     audioButton.innerHTML = '⏸ Pausar';  // Muda ícone para "Pausar"
                 }
             };
-
             // Botão de parar
             const stopButton = document.getElementById("stop-button");
             stopButton.onclick = function () {
                 pararAudioDicionario();  // Para completamente o áudio
-                audioButton.innerHTML = '▶️ Player';  // Reseta o ícone para "Player"
+                audioButton.innerHTML = '🔊 Ouvir';  // Reseta o ícone para "Player"
             };
 
             // Listener para salvar a voz escolhida
