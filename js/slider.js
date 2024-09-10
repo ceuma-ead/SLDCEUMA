@@ -1353,6 +1353,7 @@ function renderizarDicionario(slideIndex) {
             return;
         }
 
+
         if (status) {
             localStorage.setItem("dicionario-servido", dicionario);
         } else {
