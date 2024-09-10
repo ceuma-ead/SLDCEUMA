@@ -206,8 +206,8 @@ async function buscarPalavra(palavra) {
             // Botão de parar
             const stopButton = document.getElementById("stop-button");
             stopButton.onclick = function () {
-                pararAudioDicionario();  // Para completamente o áudio
                 audioButton.innerHTML = '🔊 Ouvir';  // Reseta o ícone para "Player"
+                pararAudioDicionario();  // Para completamente o áudio
             };
 
             // Listener para salvar a voz escolhida
