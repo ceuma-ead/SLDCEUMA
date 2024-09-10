@@ -149,7 +149,9 @@ const responsivo = [
             }       
 
             .btn {
-                    padding: .175rem .45rem;
+                    padding: .175rem .45rem !important;
+                    font-size: 0.8rem !important;
+                    margin-top: 0.25rem !important;
 
                 }
 

@@ -1,6 +1,7 @@
 @import url(./variaveis.css);
 
 .dicionario-menu  {
+    text-transform: math-auto;
     position: fixed;
     width: 350px;
     right: 0;
