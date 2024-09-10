@@ -182,11 +182,6 @@ const api = [
                     "onde_procurar": ".pagina-tipo-texto--box-texto"
                 },
 
-                "_Dicionario":{
-                    "status":false,
-                    "dicionario":"michaelis" // dicio ou michaelis
-                }
-
             },
             "fonte": {
                 // "titulo":"1rem",

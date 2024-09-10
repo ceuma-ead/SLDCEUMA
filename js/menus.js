@@ -174,7 +174,48 @@ function abrirDicionario() {
     // Fecha o menu de anotações, se estiver aberto
 
     // Alterna a classe para abrir ou fechar o menu
-    menuDicionario.classList.toggle('open');
+
+    $.ajax({
+        url: "./modules/config.json",
+        method: "GET",
+        cache: false,
+        success: (data) => {
+
+            const _dicionarioModules = data.dicionario
+
+            Object.values(_dicionarioModules).length === 0 ? _dicionarioModules = {
+
+                "ativo": true,
+                "dicionario": "dicio",
+                "menu_dicionario": true
+
+            } : _dicionarioModules;
+
+            if (data && _dicionarioModules) {
+
+                if (_dicionarioModules.menu_dicionario) {
+
+                    menuDicionario.classList.toggle('open');
+                } else {
+                    // Debug
+
+                    Swal.fire({
+                        icon: "error",
+                        title: `Modulo Não Ativo`,
+                        heightAuto: false,
+                        footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+                    });
+                }
+            } 
+
+
+        },
+        error: (error) => {
+            console.error('Erro:', error);
+        }
+    });
+
+
 
     // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
     // document.addEventListener('click', function (evento) {
@@ -191,17 +232,28 @@ function fecharMenuDicionario() {
     // Verifica se o menu está aberto
     if (menuDicionario.classList.contains('open')) {
 
+
+        // Verifica se a função pararAudioDicionario existe
+        if (typeof renderizarDicionario === 'function') {
+            renderizarDicionario();  // Chama Sempre essa Atualização para Verificar se o Dicionario Está True
+        }
+        // Verifica se a função pararAudioDicionario existe se ele não existe signifi que o dicionario Está False ou seja não tem requisição >-<
+        if (typeof pararAudioDicionario === 'function') {
+            pararAudioDicionario();  // Executa a função apenas se ela existir
+        }
+
         // Limpa o conteúdo do dicionário e fecha o menu
         $("#result-dicionario").html("");
         document.getElementById('search-input').value = "";
-        // Verifica se a função pararAudioDicionario existe
-        if (typeof pararAudioDicionario === 'function') {
-            pararAudioDicionario();  // Executa a função apenas se ela existir
-            checkEmptyDicionarioContainer();
+
+        if (typeof checkEmptyDicionarioContainer === 'function') {
+            checkEmptyDicionarioContainer();  // Executa a função apenas se ela existir
         }
 
         menuDicionario.classList.remove('open');
     }
+
+
 }
 
 

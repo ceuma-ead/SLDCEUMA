@@ -127,8 +127,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     injectEstiloRender(event.detail.slide)
     // Renderizar Ferramentas por Página
     renderTools(event.detail.slide)
-    // Renderizar Dicionario para Certa Página
-    renderizarDicionario(event.detail.slide)
+    //Atualizar Base de Servidores
+    
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -1324,58 +1324,6 @@ function injectEstiloRender(slideIndex) {
     }
 }
 
-
-function renderizarDicionario(slideIndex) {
-    const pageData = api[slideIndex];
-
-    const _dicionario = {
-        status: true,
-        dicionario: "dicio"
-    };
-
-    if (pageData && pageData.paramentros && pageData.paramentros.configuracoes_gerais && pageData.paramentros.configuracoes_gerais._Dicionario) {
-        const { status = _dicionario.status, dicionario = _dicionario.dicionario } = pageData.paramentros.configuracoes_gerais._Dicionario;
-
-        if (Object.values(pageData.paramentros.configuracoes_gerais._Dicionario).length === 0) {
-            console.log("Dicionário Não pode ser Ativo pois não foi encontrado...");
-            return;
-        }
-
-        const dicionarioServido = localStorage.getItem("dicionario-servido");
-
-        // Caso o dicionário ainda não tenha sido selecionado
-        if (!dicionarioServido || dicionarioServido === "") {
-
-
-            if (typeof pararAudioDicionario === 'function') {
-                servidores(); // Carregar servidores quando o dicionário não está configurado
-            }
-            return;
-        }
-
-
-        if (status) {
-            localStorage.setItem("dicionario-servido", dicionario);
-        } else {
-            localStorage.removeItem("dicionario-servido"); // Remover ao invés de setar string vazia
-            servidores(); // Atualizar os servidores após remover o dicionário
-        }
-    } else {
-        // Se não há configuração de dicionário, carrega os servidores e atualiza o glider se necessário
-        servidores();
-        localStorage.removeItem("dicionario-servido"); // Remove o dicionário servido
-
-        if (typeof glider !== 'undefined') {
-            glider.refresh(true);
-            glider.updateControls();
-        } else {
-            console.error('O objeto glider não está definido.');
-        }
-    }
-}
-
-
-
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
@@ -1388,7 +1336,7 @@ AnimatedParagrafos(savedPosition);
 AnimationVariablesUpPage(savedPosition);
 AnimatedElementos(savedPosition)
 injectEstiloRender(savedPosition)
-renderizarDicionario(savedPosition)
+
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition, filtroDuplicadoSumario);
 // console.log(irItem)
