@@ -163,6 +163,15 @@ const responsivo = [
                     margin: 0;
                 }
 
+                .form-select {
+                padding: .275rem 2.25rem .275rem .30rem !important;
+                font-size: 0.85rem !important;
+
+                }
+
+                label {
+        font-size: 0.8rem;
+}
     `,
 
 
