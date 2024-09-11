@@ -342,18 +342,14 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Áudio Convertido</h5>
-                            <button type="button" class="btn-close"
+                            <h5 class="modal-title" id="exampleModalLabel">Áudio
+                                Convertido</h5>
+                            <button type="button" class="btn-close btn-close-ouvinte"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body audio-convertido-ouvinte">
                             <!-- Aqui vai aparecer o áudio -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">Fechar</button>
-                           
                         </div>
                     </div>
                 </div>
@@ -363,12 +359,18 @@
         <!-- Arquivo Bootstrap -->
         <script type="text/javascript"
             src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script type="text/javascript"
+            src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"
+            src="./plugins/bootstrap/js/bootstrap.min.js"></script> -->
         <!-- Arquivo Bootstrap -->
 
         <!-- Arquivo Jquery -->
         <script type="text/javascript"
             src="./plugins/jquery/jquery.min.js"></script>
         <!-- Arquivo Jquery -->
+
+      
 
         <!-- Arquivo Icones Lucide -->
         <script type="text/javascript"
@@ -430,6 +432,12 @@
         <!-- Script Dicionario -->
         <script src="./modules/dicionario.js"></script>
         <!-- Script Dicionario -->
+
+        <script type="text/javascript">
+            $(function () {
+                $("[rel='tooltip']").tooltip();
+            });
+        </script>
 
     </body>
 

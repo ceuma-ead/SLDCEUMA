@@ -6,7 +6,7 @@
 @import url(../css/spinner.css);
 @import url(../css/tools.css);
 @import url(../css/dicionario.css);
-
+@import url(../css/variaveis.css);
 
 /* ------ Animações ------ */
 @import url(../plugins/vizionnAnimation/attention.css);
@@ -48,5 +48,8 @@ img{
     -webkit-user-drag: none;
     -moz-window-dragging: none;
 }
+
+
+
 
 

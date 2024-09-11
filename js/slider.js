@@ -1326,6 +1326,10 @@ function injectEstiloRender(slideIndex) {
     }
 }
 
+
+
+
+
 function modulosPage(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -1333,13 +1337,9 @@ function modulosPage(slideIndex) {
         "e3f17edd7b9c4d6cb3a333b278aae0e9", // Primeira chave de API
     ];
 
-    // Lista de idiomas e vozes (simplificado para exemplo, adicione mais conforme necessário)
+    // Lista de idiomas e vozes 
     const languages = {
         'pt-br': { name: 'Português (Brasil)', voices: ['Marcia', 'Ligia', 'Yara', 'Dinis'] },
-        'en-us': { name: 'Inglês (Estados Unidos)', voices: ['Linda', 'Amy', 'John', 'Mike'] },
-        'es-es': { name: 'Espanhol (Espanha)', voices: ['Camila', 'Sofia', 'Luna', 'Diego'] },
-        'fr-fr': { name: 'Francês (França)', voices: ['Bette', 'Iva', 'Zola', 'Axel'] }
-        // Adicione outros idiomas e vozes aqui conforme necessário
     };
 
     if (pageData.paramentros && pageData.paramentros.modulos) {
@@ -1351,38 +1351,63 @@ function modulosPage(slideIndex) {
 
             // Criando os seletores de idioma e voz dinamicamente
             const audioFerramentas = `
-               <div class="mb-3">
-                    <textarea class="Texto-download form-control" style="resize:none;" rows="2" disabled placeholder="Logs de operação"></textarea>
-               </div>
 
-               <div class="mb-3">
-                    <label for="language-select">Selecione o idioma:</label>
-                    <select id="language-select" class="form-control">
-                        ${Object.keys(languages).map(langCode => `<option value="${langCode}">${languages[langCode].name}</option>`).join('')}
-                    </select>
-               </div>
+                <div class="text-center d-flex justify-content-end gap-2 mt-3">
+                  <span class="loading-voz" style="display: none;"></span>
+                </div>
 
-               <div class="mb-3">
-                    <label for="voice-select">Selecione a voz:</label>
-                    <select id="voice-select" class="form-control"></select>
-               </div>
+               <div class="accordion" id="configuracao-ouvinte">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button d-flex flex-row gap-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Configurações Áudio <i class="bi bi-soundwave"></i>
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#configuracao-ouvinte">
+                        <div class="accordion-body">
 
-               <div class="mb-3">
-                    <label for="speed-range">Velocidade (0 a 10):</label>
-                    <input type="range" class="form-range" id="speed-range" min="-10" max="10" value="0">
-               </div>
+                                <div class="mb-3">
+                                    <label for="voice-select">Selecione a voz:</label>
+                                    <select id="voice-select" class="form-control"></select>
+                                </div>
 
-               <div class="mb-3">
-                    <label for="pitch-range">Tom (grave/fino):</label>
-                    <input type="range" class="form-range" id="pitch-range" min="0.5" max="2" step="0.1" value="1">
-               </div>
+                                <div class="mb-3">
+                                    <label for="language-select">Selecione o idioma:</label>
+                                    <select id="language-select" class="form-control">
+                                        ${Object.keys(languages).map(langCode => `<option value="${langCode}">${languages[langCode].name}</option>`).join('')}
+                                    </select>
+                                </div>
 
-               <div class="text-center">
-                    <button class="btn btn-primary download-btn">Download Áudio</button>
+                                 <div class="mb-3">
+                                    <label for="speed-range">Velocidade (0 a 10):</label>
+                                    <input type="range" class="form-range" id="speed-range" min="-10" max="10" value="0">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="pitch-range">Tom (grave/fino):</label>
+                                    <input type="range" class="form-range" id="pitch-range" min="0.5" max="2" step="0.1" value="1">
+                                </div>
+
+                                <!-- Logs da Operação -->
+                                <div class="mb-3">
+                                    <textarea class="Texto-download form-control" style="resize:none;" rows="2" disabled placeholder="Logs de operação"></textarea>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center d-flex justify-content-end gap-2 mt-3">
+                    <button class="btn btn-success playOuvint-btn"><i class="bi bi-play-fill"></i></button>
+                    <button class="btn btn-danger stopOuvint-btn"><i class="bi bi-stop-fill"></i></button>
+                    <button class="btn btn-primary download-btn"><i class="bi bi-download"></i></button>
                </div>
 
             `;
+
             containerAudio.innerHTML += audioFerramentas;
+
+
 
             // Função para popular vozes com base no idioma selecionado
             function popularVozes(langCode) {
@@ -1415,6 +1440,135 @@ function modulosPage(slideIndex) {
                 }
             }
 
+            // Função para popular vozes com base no idioma selecionado
+            function popularVozes(langCode) {
+                const voiceSelect = document.getElementById('voice-select');
+                voiceSelect.innerHTML = ''; // Limpar vozes anteriores
+                const voices = languages[langCode].voices;
+                voices.forEach(voice => {
+                    const option = document.createElement('option');
+                    option.value = voice;
+                    option.textContent = voice;
+                    voiceSelect.appendChild(option);
+                });
+            }
+            // Mudar vozes ao mudar o idioma
+            languageSelect.addEventListener('change', (e) => {
+                popularVozes(e.target.value);
+            });
+
+            // Variáveis para controle
+            let isPlaying = false; // Variável para controlar o estado de reprodução
+            let textoAtual = ''; // Texto que está sendo lido
+            let textoRestante = ''; // Parte restante do texto após a pausa
+            let posicaoAtual = 0; // Posição atual da leitura do texto
+
+            // Função para iniciar a leitura de voz (SpeechSynthesis)
+            const loadingVoz = document.querySelector(".loading-voz");
+
+            function lerTextoOuvinte(texto, posicaoInicial = 0) {
+                // Mostra o loading enquanto a voz está sendo carregada ou processada
+                loadingVoz.style.display = 'block';
+
+                // Verifica se o navegador suporta SpeechSynthesis
+                if (!window.speechSynthesis) {
+                    loadingVoz.style.display = "none";
+                    alert("Seu navegador não suporta a síntese de voz.");
+                    return;
+                }
+
+                // Voz padrão do google
+                const vozPadrao = {
+                    lang: "en-US",
+                    name: "Google US English",
+                    voiceURI: "Google US English"
+                }
+
+                // Configurando a voz padrão (pode ser ajustada conforme desejado)
+                const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === 'pt-BR');
+
+                // Criar a síntese de fala a partir da posição inicial
+                const utterance = new SpeechSynthesisUtterance(texto.substring(posicaoInicial));
+                utterance.voice = voz || window.speechSynthesis.getVoices()[0];
+                utterance.pitch = 1; // Padrão de tom
+                utterance.rate = 1;  // Padrão de velocidade
+
+                // Acompanhar o progresso da fala e salvar a posição atual
+                utterance.onboundary = function (event) {
+                    if (event.name === 'word') {
+                        posicaoAtual = event.charIndex + posicaoInicial;
+                    }
+                };
+
+                // Quando a fala terminar, esconde o loading e reseta o botão
+                utterance.onend = function () {
+                    loadingVoz.style.display = 'none';
+                    isPlaying = false;
+                    resetPlayButton(); // Reseta o botão para "Play"
+                };
+
+                // Iniciar a fala
+                window.speechSynthesis.speak(utterance);
+            }
+
+            // Elementos de controle do áudio
+            const playBtn = containerAudio.querySelector(".playOuvint-btn");
+            const stopBtn = containerAudio.querySelector(".stopOuvint-btn");
+            const textoOuvinte = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
+
+            // Função para alternar entre "Play" e "Pause"
+            playBtn.addEventListener('click', () => {
+                if (!isPlaying) {
+                    // Iniciar ou retomar reprodução
+                    lerTextoOuvinte(textoOuvinte, posicaoAtual);  // Chama a função para ler o texto com a voz padrão
+                    playBtn.innerHTML = '<i class="bi bi-pause-fill"></i>'; // Troca o ícone para "Pause"
+                    playBtn.classList.remove('btn-success'); // Muda a cor para "Pause"
+                    playBtn.classList.add('btn-warning');
+                    isPlaying = true;
+                } else {
+                    // Pausar reprodução
+                    window.speechSynthesis.cancel(); // Pausar a síntese de voz (salvaremos a posição atual)
+                    textoRestante = textoOuvinte.substring(posicaoAtual); // Salva a parte restante do texto
+                    playBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; // Troca o ícone de volta para "Play"
+                    playBtn.classList.remove('btn-warning'); // Muda a cor de volta para "Play"
+                    playBtn.classList.add('btn-success');
+                    isPlaying = false;
+                    loadingVoz.style.display = "none"; // Esconder o loading
+                }
+            });
+
+
+            document.querySelector(".btn-close-ouvinte").addEventListener("click", () => {
+                window.speechSynthesis.cancel();  // Interrompe a síntese de voz se estiver acontecendo
+                playBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; // Reseta o ícone para "Play"
+                playBtn.classList.remove('btn-warning'); // Muda a cor de volta para "Play"
+                playBtn.classList.add('btn-success');
+                isPlaying = false;
+                posicaoAtual = 0; // Resetar a posição atual
+                textoRestante = ''; // Limpar o texto restante
+                loadingVoz.style.display = "none"; // Esconder o loading
+            })
+
+            // Função para parar o áudio e resetar o botão "Play"
+            stopBtn.addEventListener('click', () => {
+                window.speechSynthesis.cancel();  // Interrompe a síntese de voz se estiver acontecendo
+                playBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; // Reseta o ícone para "Play"
+                playBtn.classList.remove('btn-warning'); // Muda a cor de volta para "Play"
+                playBtn.classList.add('btn-success');
+                isPlaying = false;
+                posicaoAtual = 0; // Resetar a posição atual
+                textoRestante = ''; // Limpar o texto restante
+                loadingVoz.style.display = "none"; // Esconder o loading
+            });
+
+            // Função para resetar o botão "Play"
+            function resetPlayButton() {
+                playBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; // Reseta o ícone para "Play"
+                playBtn.classList.remove('btn-warning'); // Muda a cor de volta para "Play"
+                playBtn.classList.add('btn-success');
+            }
+
+
             // Função de síntese de voz
             function sintetizarAudio(apiKey, texto, velocidade, tom, langCode, voz, logPre) {
                 const apiUrl = `https://api.voicerss.org/`;
@@ -1434,8 +1588,8 @@ function modulosPage(slideIndex) {
                     method: 'GET',
                 })
                     .then(response => {
-                        logPre.textContent += `Criando Ponto de Trasmissão\n`;
-    
+                        logPre.textContent += `Criando Ponto de Transmissão\n`;
+
                         if (response.ok) {
                             logPre.textContent += `${response.status}\n`;
                             logPre.textContent += 'Áudio gerado com sucesso!\n';
@@ -1447,7 +1601,14 @@ function modulosPage(slideIndex) {
                     });
             }
 
-            // Adicionar evento ao botão de download
+            // // Pegar módulo de áudio
+            // if (modulos.audio) {
+            //     // Verificar se áudio está ativo
+            //     if (modulos.audio.ativo) { }
+
+            // }
+
+            // Adicionar evento ao botão de download e reprodução
             const downloadBtn = containerAudio.querySelector(".download-btn");
             downloadBtn.addEventListener('click', function () {
                 const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
@@ -1456,7 +1617,6 @@ function modulosPage(slideIndex) {
                 const langCode = document.getElementById("language-select").value;  // Pegar o idioma
                 const voz = document.getElementById("voice-select").value;  // Pegar a voz
                 const logPre = containerAudio.querySelector(".Texto-download");
-              
 
                 logPre.textContent = ''; // Limpar logs anteriores
                 let chaveAtual = 0; // Começar pela primeira chave
@@ -1471,7 +1631,6 @@ function modulosPage(slideIndex) {
                             link.download = 'audio.mp3';
                             link.click();
 
-                            logPre.textContent += 'Áudio baixado com sucesso.\n';
                         })
                         .catch(error => {
                             logPre.textContent += `Erro: ${error.message}\n`;
@@ -1491,6 +1650,7 @@ function modulosPage(slideIndex) {
         });
     }
 }
+
 
 
 
