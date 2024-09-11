@@ -1,0 +1,39 @@
+@import url(./variaveis.css);
+
+.container-ferramenta-ouvinte{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.container-ferramenta-ouvinte button{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2rem;
+}
+
+.container-ferramenta-ouvinte button i{
+   font-size: 1.5rem;
+}
+
+#button-Dowload-Ouvinte{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    height: 3rem;
+    font-size: 3rem;
+    
+}
+

@@ -3,6 +3,7 @@
 @import url(../css/menu_sidebar.css);
 @import url(../css/annotation.css);
 @import url(../css/capa.css);
+@import url(../css/ouvinte.css);
 @import url(../css/spinner.css);
 @import url(../css/tools.css);
 @import url(../css/dicionario.css);
@@ -18,9 +19,9 @@
 @import url(../plugins/vizionnAnimation/zoom.css);
 /* ------ Animações ------ */
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box !important;
     font-family: var(--familia-da-font-paragrafo);
 
@@ -35,7 +36,7 @@ html{
 } */
 
 
-body{
+body {
     width: 100vw !important;
     height: 100vh !important;
     position: relative;
@@ -43,13 +44,8 @@ body{
     /* overflow: hidden; */
 }
 
-img{
+img {
     user-select: none;
     -webkit-user-drag: none;
     -moz-window-dragging: none;
 }
-
-
-
-
-

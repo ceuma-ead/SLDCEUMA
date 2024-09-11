@@ -711,7 +711,6 @@ const api = [
                              <button><i data-lucide="pencil"></i>Destacar</button>
                         `
                     },
-
                     "Notas": {
                         "ativa": true,
                         "html": `
@@ -721,7 +720,7 @@ const api = [
                     "Ouvinte": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
                     },
                     "Download": {
@@ -742,9 +741,6 @@ const api = [
                               <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
-
-
-
                 }
 
             ],
@@ -938,7 +934,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -946,7 +942,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -954,7 +950,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -975,7 +971,6 @@ const api = [
                              <button><i data-lucide="pencil"></i>Destacar</button>
                         `
                     },
-
                     "Notas": {
                         "ativa": true,
                         "html": `
@@ -985,7 +980,7 @@ const api = [
                     "Ouvinte": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
                     },
                     "Download": {
@@ -1006,9 +1001,6 @@ const api = [
                               <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
-
-
-
                 }
 
             ],
@@ -1069,8 +1061,15 @@ const api = [
 
 
 
+            ],
+            "modulos":[
+                {
+                    "audio":{
+                        "ativo":true,
+                        "idRef":".pagina-tipo-texto--box-texto"
+                    }
+                }
             ]
-
         }
     },
 
@@ -1122,36 +1121,36 @@ const api = [
                 "posicao": "",
                 "src": ""
             }],
-            "ferramentas":[
+            "ferramentas": [
                 {
-                    "container":"icons-action--container",
-                    "Podcast":{
-                        "ativa":true,
-                        "html" : `
+                    "container": "icons-action--container",
+                    "Podcast": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
                     },
-                    "Videoaula":{
-                        "ativa":true,
-                        "html" : `
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
                             </button>
                         `
                     },
-                    "Ferramentas":{
-                        "ativa":true,
-                        "html" : `
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
                             <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
                     },
-                    "FullScreen":{
-                        "ativa":true,
-                        "html" : `
+                    "FullScreen": {
+                        "ativa": true,
+                        "html": `
                             <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
                                 <i data-lucide="maximize-2"></i>
                             </button>
@@ -1160,26 +1159,26 @@ const api = [
 
                 },
                 {
-                    "container":"icons-action--container-mobile",
-                    "Podcast":{
-                        "ativa":true,
-                        "html" : `
+                    "container": "icons-action--container-mobile",
+                    "Podcast": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
                     },
-                    "Videoaula":{
-                        "ativa":true,
-                        "html" : `
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
                             </button>
                         `
                     },
-                    "Ferramentas":{
-                        "ativa":true,
-                        "html" : `
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
                             <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
@@ -1188,53 +1187,49 @@ const api = [
 
                 },
                 {
-                    "container":"box-tools-inline",
-                    "Resulmo":{
-                        "ativa":true,
-                        "html" : `
+                    "container": "box-tools-inline",
+                    "Resulmo": {
+                        "ativa": true,
+                        "html": `
                             <button><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
-                    "Destacar":{
-                        "ativa":true,
-                        "html" : `
+                    "Destacar": {
+                        "ativa": true,
+                        "html": `
                              <button><i data-lucide="pencil"></i>Destacar</button>
                         `
                     },
-                    
-                    "Notas":{
-                        "ativa":true,
-                        "html" : `
+                    "Notas": {
+                        "ativa": true,
+                        "html": `
                              <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
                         `
                     },
-                    "Ouvinte":{
-                        "ativa":true,
-                        "html" : `
-                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                    "Ouvinte": {
+                        "ativa": true,
+                        "html": `
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
                     },
-                    "Download":{
-                        "ativa":true,
-                        "html" : `
+                    "Download": {
+                        "ativa": true,
+                        "html": `
                             <button><i data-lucide="download"></i>Download</button>
                         `
                     },
-                    "Dicionario":{
-                        "ativa":true,
-                        "html" : `
+                    "Dicionario": {
+                        "ativa": true,
+                        "html": `
                              <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
-                    "close":{
-                        "ativa":true,
-                        "html" : `
+                    "close": {
+                        "ativa": true,
+                        "html": `
                               <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
-                    
-                   
-
                 }
 
             ],
@@ -1301,6 +1296,14 @@ const api = [
             //         animate__animated animate__fadeInDown animate__slow
             //     `
             // }]
+            "modulos":[
+                {
+                    "audio":{
+                        "ativo":true,
+                        "idRef":".pagina-tipo-texto--box-texto"
+                    }
+                }
+            ]
 
         }
     },
@@ -1390,36 +1393,36 @@ const api = [
                 "posicao": "",
                 "src": ""
             }],
-            "ferramentas":[
+            "ferramentas": [
                 {
-                    "container":"icons-action--container",
-                    "Podcast":{
-                        "ativa":true,
-                        "html" : `
+                    "container": "icons-action--container",
+                    "Podcast": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
                     },
-                    "Videoaula":{
-                        "ativa":true,
-                        "html" : `
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
                             </button>
                         `
                     },
-                    "Ferramentas":{
-                        "ativa":true,
-                        "html" : `
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
                             <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
                     },
-                    "FullScreen":{
-                        "ativa":true,
-                        "html" : `
+                    "FullScreen": {
+                        "ativa": true,
+                        "html": `
                             <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
                                 <i data-lucide="maximize-2"></i>
                             </button>
@@ -1428,26 +1431,26 @@ const api = [
 
                 },
                 {
-                    "container":"icons-action--container-mobile",
-                    "Podcast":{
-                        "ativa":true,
-                        "html" : `
+                    "container": "icons-action--container-mobile",
+                    "Podcast": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
                     },
-                    "Videoaula":{
-                        "ativa":true,
-                        "html" : `
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
                             <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
                             </button>
                         `
                     },
-                    "Ferramentas":{
-                        "ativa":true,
-                        "html" : `
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
                             <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
@@ -1456,53 +1459,49 @@ const api = [
 
                 },
                 {
-                    "container":"box-tools-inline",
-                    "Resulmo":{
-                        "ativa":true,
-                        "html" : `
+                    "container": "box-tools-inline",
+                    "Resulmo": {
+                        "ativa": true,
+                        "html": `
                             <button><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
-                    "Destacar":{
-                        "ativa":true,
-                        "html" : `
+                    "Destacar": {
+                        "ativa": true,
+                        "html": `
                              <button><i data-lucide="pencil"></i>Destacar</button>
                         `
                     },
-                    
-                    "Notas":{
-                        "ativa":true,
-                        "html" : `
+                    "Notas": {
+                        "ativa": true,
+                        "html": `
                              <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
                         `
                     },
-                    "Ouvinte":{
-                        "ativa":true,
-                        "html" : `
-                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                    "Ouvinte": {
+                        "ativa": true,
+                        "html": `
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
                     },
-                    "Download":{
-                        "ativa":true,
-                        "html" : `
+                    "Download": {
+                        "ativa": true,
+                        "html": `
                             <button><i data-lucide="download"></i>Download</button>
                         `
                     },
-                    "Dicionario":{
-                        "ativa":true,
-                        "html" : `
+                    "Dicionario": {
+                        "ativa": true,
+                        "html": `
                              <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
                         `
                     },
-                    "close":{
-                        "ativa":true,
-                        "html" : `
+                    "close": {
+                        "ativa": true,
+                        "html": `
                               <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
-                    
-                   
-
                 }
 
             ],
@@ -1523,7 +1522,6 @@ const api = [
 
 
             }],
-
             "cores": {
                 // "sidebar": "red",
                 // "fundo": "red",
@@ -1569,7 +1567,15 @@ const api = [
                 "script_animation": `
                     animate__animated animate__fadeInDown animate__slow
                 `
-            }]
+            }],
+            "modulos":[
+                {
+                    "audio":{
+                        "ativo":true,
+                        "idRef":".pagina-tipo-texto--box-texto"
+                    }
+                }
+            ]
 
         }
     },

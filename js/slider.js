@@ -1355,12 +1355,17 @@ function modulosPage(slideIndex) {
                 <div class="text-center d-flex justify-content-end gap-2 mt-3">
                   <span class="loading-voz" style="display: none;"></span>
                 </div>
+                <div class="container-ferramenta-ouvinte">
+                    <button class="btn btn-success playOuvint-btn"><i class="bi bi-play-fill"></i></button>
+                    <button class="btn btn-danger stopOuvint-btn"><i class="bi bi-stop-fill"></i></button>
+                    <button class="btn btn-primary openDownload-btn d-flex justify-content-center align-items-center"><i class="bi bi-download"></i></button>
+               </div>
 
-               <div class="accordion" id="configuracao-ouvinte">
+               <div class="accordion mt-2 d-none " id="configuracao-ouvinte">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button d-flex flex-row gap-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Configurações Áudio <i class="bi bi-soundwave"></i>
+                            Configurações Áudio para download <i class="bi bi-soundwave"></i>
                         </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#configuracao-ouvinte">
@@ -1388,25 +1393,53 @@ function modulosPage(slideIndex) {
                                     <input type="range" class="form-range" id="pitch-range" min="0.5" max="2" step="0.1" value="1">
                                 </div>
 
+                                <button id="button-Dowload-Ouvinte" class="btn btn-success  download-btn">Baixar Áudio <i class="bi bi-download"></i></button>
+
                                 <!-- Logs da Operação -->
+                                <!--
                                 <div class="mb-3">
                                     <textarea class="Texto-download form-control" style="resize:none;" rows="2" disabled placeholder="Logs de operação"></textarea>
                                 </div>
+                                -->
                         </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="text-center d-flex justify-content-end gap-2 mt-3">
-                    <button class="btn btn-success playOuvint-btn"><i class="bi bi-play-fill"></i></button>
-                    <button class="btn btn-danger stopOuvint-btn"><i class="bi bi-stop-fill"></i></button>
-                    <button class="btn btn-primary download-btn"><i class="bi bi-download"></i></button>
-               </div>
 
             `;
 
             containerAudio.innerHTML += audioFerramentas;
 
+            function addAccordionConfigDownload(){
+                const configuracaoDownload = document.getElementById("configuracao-ouvinte");
+                const openCollapeseDownload = document.getElementById("collapseOne");
+                
+                if(configuracaoDownload.classList.contains("d-none")){
+                    configuracaoDownload.classList.remove("d-none")
+                    openCollapeseDownload.classList.add("show")
+                    configuracaoDownload.classList.add("d-block")
+           
+                }
+            }
+            
+            function removeAccordionConfigDownload(){
+                const configuracaoDownload = document.getElementById("configuracao-ouvinte");
+                
+                if(configuracaoDownload.classList.contains("d-block")){
+                    configuracaoDownload.classList.remove("d-block")
+                    configuracaoDownload.classList.add("d-none")
+
+                }
+            }
+
+            const abrirOuvinteDownload = document.querySelector(".openDownload-btn")
+            abrirOuvinteDownload.addEventListener('click',()=>{
+                addAccordionConfigDownload()
+            })
+
+
+            
 
 
             // Função para popular vozes com base no idioma selecionado
@@ -1525,6 +1558,7 @@ function modulosPage(slideIndex) {
                     playBtn.classList.remove('btn-success'); // Muda a cor para "Pause"
                     playBtn.classList.add('btn-warning');
                     isPlaying = true;
+                    removeAccordionConfigDownload()
                 } else {
                     // Pausar reprodução
                     window.speechSynthesis.cancel(); // Pausar a síntese de voz (salvaremos a posição atual)
@@ -1534,6 +1568,7 @@ function modulosPage(slideIndex) {
                     playBtn.classList.add('btn-success');
                     isPlaying = false;
                     loadingVoz.style.display = "none"; // Esconder o loading
+                    removeAccordionConfigDownload()
                 }
             });
 
@@ -1547,6 +1582,7 @@ function modulosPage(slideIndex) {
                 posicaoAtual = 0; // Resetar a posição atual
                 textoRestante = ''; // Limpar o texto restante
                 loadingVoz.style.display = "none"; // Esconder o loading
+                removeAccordionConfigDownload()
             })
 
             // Função para parar o áudio e resetar o botão "Play"
@@ -1582,6 +1618,10 @@ function modulosPage(slideIndex) {
                     f: '44khz_16bit_stereo'  // Qualidade do áudio
                 });
 
+                const sppinnerButton = document.querySelector(".download-btn")
+
+                sppinnerButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
+
                 logPre.textContent += `Chave Validada!...\n`;
 
                 return fetch(`${apiUrl}?${params.toString()}`, {
@@ -1593,6 +1633,7 @@ function modulosPage(slideIndex) {
                         if (response.ok) {
                             logPre.textContent += `${response.status}\n`;
                             logPre.textContent += 'Áudio gerado com sucesso!\n';
+                             sppinnerButton.innerHTML = `<i class="bi bi-download"></i>`
                             return response.blob();
                         } else {
                             logPre.textContent += `Erro com a chave ${apiKey}: ${response.statusText}\n`;
