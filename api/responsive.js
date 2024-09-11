@@ -3,7 +3,7 @@ const responsivo = [
         // Onde o Estilo tem que aparecer 
         "Tipo": "All", // Pode ser "All" para todas as páginas ou um número específico para uma página
         // Que tipo de quebra Tem que Fazer
-        "media" : "(max-width: 1240px)", // Apenas a condição dentro dos parênteses
+        "media" : "(max-width: 1248px)", // Apenas a condição dentro dos parênteses
         // Estilos que podem vir adicionais
         "synchronous" : `
              .pagina-tipo-texto--box-texto p{
