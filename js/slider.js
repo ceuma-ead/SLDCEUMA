@@ -1365,7 +1365,7 @@ function modulosPage(slideIndex) {
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button d-flex flex-row gap-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Configurações Áudio para download <i class="bi bi-soundwave"></i>
+                            Configurações de <span class="p-1 border rounded border-success">Áudio</span> para download <i class="bi bi-soundwave"></i>
                         </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#configuracao-ouvinte">
