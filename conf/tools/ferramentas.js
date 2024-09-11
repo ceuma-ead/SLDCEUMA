@@ -77,16 +77,15 @@ function eventButton() {
         }
     }
 
+    
+
     // Evento para abrir/fechar caixas de ferramentas ao clicar no botão correspondente
     btnFerramentas.forEach((button, index) => {
         button.addEventListener('click', () => {
-
-            const toolBoxes = document.querySelectorAll('.box-tools-inline');
-
-            if (toolBoxes[index]) {
-                const toolBox = toolBoxes[index];
+            const toolBoxes = document.querySelector('.box-tools-inline');
+            if (toolBoxes) {
+                const toolBox = toolBoxes;
                 const isVisible = toolBox.style.display === 'flex';
-
                 toggleToolBox(toolBox, !isVisible); // Alterna a exibição da caixa
             } else {
                 console.error('Caixa de ferramentas não encontrada para este botão.');
@@ -108,14 +107,11 @@ function eventButton() {
 
 
     // Evento para fechar a caixa de ferramentas ao clicar no botão de fechar
-    document.querySelectorAll('#close_box').forEach((closeButton, index) => {
+    document.querySelectorAll('#close_box').forEach((closeButton) => {
         closeButton.addEventListener('click', () => {
-
-            const toolBoxes = document.querySelectorAll('.box-tools-inline');
-
-            if (toolBoxes[index]) {
-                const toolBox = toolBoxes[index];
-
+            const toolBoxes = document.querySelector('.box-tools-inline');
+            if (toolBoxes) {
+                const toolBox = toolBoxes;
                 toggleToolBox(toolBox, false); // Fechar a caixa ao clicar no botão de fechar
             }
         });
@@ -128,29 +124,21 @@ function eventButton() {
     const abri_anotacao = document.querySelectorAll('.abrir-annotation');
     abri_anotacao.forEach((openAnnotation, index) => {
         openAnnotation.addEventListener("click", function (event) {
-
             createAnnotation();
-
         })
     })
 
-
-
+    
     const abri_dicionario = document.querySelectorAll('.abrir-dicionario');
-
     const fechar_dicionario = document.querySelector('.close_dicionario');
     fechar_dicionario.addEventListener("click", function (event) {
-
         fecharMenuDicionario();
     });
 
     abri_dicionario.forEach((openDict, index) => {
         openDict.addEventListener("click", function (event) {
-
             event.stopPropagation();
-
             abrirDicionario();
-
         });
     });
 

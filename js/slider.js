@@ -128,7 +128,9 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     // Renderizar Ferramentas por Página
     renderTools(event.detail.slide)
     //Atualizar Base de Servidores
-    
+    //Modulos de Audio ná página
+    modulosPage(event.detail.slide)
+
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
 
@@ -1324,6 +1326,172 @@ function injectEstiloRender(slideIndex) {
     }
 }
 
+function modulosPage(slideIndex) {
+    const pageData = api[slideIndex];
+
+    const tokens = [
+        "e3f17edd7b9c4d6cb3a333b278aae0e9", // Primeira chave de API
+    ];
+
+    // Lista de idiomas e vozes (simplificado para exemplo, adicione mais conforme necessário)
+    const languages = {
+        'pt-br': { name: 'Português (Brasil)', voices: ['Marcia', 'Ligia', 'Yara', 'Dinis'] },
+        'en-us': { name: 'Inglês (Estados Unidos)', voices: ['Linda', 'Amy', 'John', 'Mike'] },
+        'es-es': { name: 'Espanhol (Espanha)', voices: ['Camila', 'Sofia', 'Luna', 'Diego'] },
+        'fr-fr': { name: 'Francês (França)', voices: ['Bette', 'Iva', 'Zola', 'Axel'] }
+        // Adicione outros idiomas e vozes aqui conforme necessário
+    };
+
+    if (pageData.paramentros && pageData.paramentros.modulos) {
+        const moduloAudio = pageData.paramentros.modulos;
+
+        moduloAudio.forEach((modulos) => {
+            const containerAudio = document.querySelector(".audio-convertido-ouvinte");
+            containerAudio.innerHTML = "";
+
+            // Criando os seletores de idioma e voz dinamicamente
+            const audioFerramentas = `
+               <div class="mb-3">
+                    <textarea class="Texto-download form-control" rows="2" disabled placeholder="Logs de operação"></textarea>
+               </div>
+
+               <div class="mb-3">
+                    <label for="language-select">Selecione o idioma:</label>
+                    <select id="language-select" class="form-control">
+                        ${Object.keys(languages).map(langCode => `<option value="${langCode}">${languages[langCode].name}</option>`).join('')}
+                    </select>
+               </div>
+
+               <div class="mb-3">
+                    <label for="voice-select">Selecione a voz:</label>
+                    <select id="voice-select" class="form-control"></select>
+               </div>
+
+               <div class="mb-3">
+                    <label for="speed-range">Velocidade (0 a 10):</label>
+                    <input type="range" class="form-range" id="speed-range" min="-10" max="10" value="0">
+               </div>
+
+               <div class="mb-3">
+                    <label for="pitch-range">Tom (grave/fino):</label>
+                    <input type="range" class="form-range" id="pitch-range" min="0.5" max="2" step="0.1" value="1">
+               </div>
+
+               <div class="text-center">
+                    <button class="btn btn-primary download-btn">Download Áudio</button>
+               </div>
+
+            `;
+            containerAudio.innerHTML += audioFerramentas;
+
+            // Função para popular vozes com base no idioma selecionado
+            function popularVozes(langCode) {
+                const voiceSelect = document.getElementById('voice-select');
+                voiceSelect.innerHTML = ''; // Limpar vozes anteriores
+                const voices = languages[langCode].voices;
+                voices.forEach(voice => {
+                    const option = document.createElement('option');
+                    option.value = voice;
+                    option.textContent = voice;
+                    voiceSelect.appendChild(option);
+                });
+            }
+
+            // Inicialmente popular com o primeiro idioma
+            const languageSelect = document.getElementById('language-select');
+            popularVozes(languageSelect.value);
+
+            // Mudar vozes ao mudar o idioma
+            languageSelect.addEventListener('change', (e) => {
+                popularVozes(e.target.value);
+            });
+
+            // Função para alternar entre as chaves de API
+            function usarOutraChave(indexAtual) {
+                if (indexAtual < tokens.length - 1) {
+                    return tokens[indexAtual + 1];
+                } else {
+                    return null; // Se não houver mais chaves
+                }
+            }
+
+            // Função de síntese de voz
+            function sintetizarAudio(apiKey, texto, velocidade, tom, langCode, voz, logPre) {
+                const apiUrl = `https://api.voicerss.org/`;
+                const params = new URLSearchParams({
+                    key: apiKey,
+                    src: texto,
+                    hl: langCode,  // Idioma selecionado
+                    v: voz,        // Voz selecionada
+                    r: velocidade,  // Velocidade escolhida
+                    c: 'MP3',  // Formato do áudio
+                    f: '44khz_16bit_stereo'  // Qualidade do áudio
+                });
+
+                logPre.textContent += `Iniciando a requisição com a chave ${apiKey}...\n`;
+
+                return fetch(`${apiUrl}?${params.toString()}`, {
+                    method: 'GET',
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            logPre.textContent += 'Áudio gerado com sucesso!\n';
+                            return response.blob();
+                        } else {
+                            logPre.textContent += `Erro com a chave ${apiKey}: ${response.statusText}\n`;
+                            throw new Error('Erro ao gerar áudio');
+                        }
+                    });
+            }
+
+            // Adicionar evento ao botão de download
+            const downloadBtn = containerAudio.querySelector(".download-btn");
+            downloadBtn.addEventListener('click', function () {
+                const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
+                const velocidade = document.getElementById("speed-range").value;  // Pegar a velocidade
+                const tom = document.getElementById("pitch-range").value;  // Pegar o tom
+                const langCode = document.getElementById("language-select").value;  // Pegar o idioma
+                const voz = document.getElementById("voice-select").value;  // Pegar a voz
+                const logPre = containerAudio.querySelector(".Texto-download");
+              
+
+                logPre.textContent = ''; // Limpar logs anteriores
+                let chaveAtual = 0; // Começar pela primeira chave
+
+                function tentarProximaChave() {
+                    sintetizarAudio(tokens[chaveAtual], texto, velocidade, tom, langCode, voz, logPre)
+                        .then(blob => {
+                            const url = URL.createObjectURL(blob);
+                            // Criar link para baixar o arquivo de áudio
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.download = 'audio.mp3';
+                            link.click();
+
+                            logPre.textContent += 'Áudio baixado com sucesso.\n';
+                        })
+                        .catch(error => {
+                            logPre.textContent += `Erro: ${error.message}\n`;
+                            chaveAtual += 1;
+                            const novaChave = usarOutraChave(chaveAtual);
+                            if (novaChave) {
+                                logPre.textContent += `Tentando com a próxima chave...\n`;
+                                tentarProximaChave(); // Tentar novamente com outra chave
+                            } else {
+                                logPre.textContent += 'Todas as chaves falharam.\n';
+                            }
+                        });
+                }
+
+                tentarProximaChave(); // Iniciar a tentativa com a primeira chave
+            });
+        });
+    }
+}
+
+
+
+
 // Atualiza o título e as cores ao inicializar
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
@@ -1336,6 +1504,7 @@ AnimatedParagrafos(savedPosition);
 AnimationVariablesUpPage(savedPosition);
 AnimatedElementos(savedPosition)
 injectEstiloRender(savedPosition)
+modulosPage(savedPosition)
 
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition, filtroDuplicadoSumario);

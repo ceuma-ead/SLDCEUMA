@@ -10,7 +10,7 @@ async function requisicao(url) {
         const data = await response.json();
         return data.contents;
     } catch (error) {
-        console.error('Erro:', error);
+        // console.error('Erro:', error);
         return null;
     }
 }
@@ -194,7 +194,7 @@ async function buscarPalavra(palavra) {
                 <button id="audio-button" class="btn btn-secondary mt-3">🔊 Ouvir</button>
                 <button id="stop-button" class="btn btn-secondary mt-3">⏹ Parar</button>
                 <span class="loading-voz" style="display: none;"></span>
-                <div class="titulo">
+                <div class="titulo mt-1">
                     <strong>${palavra}</strong>
                 </div>
                 <div class="conteudo">
@@ -206,8 +206,9 @@ async function buscarPalavra(palavra) {
 
 
             carregarVozes();  // Carregar as vozes no select
-            const loadingVoz = document.querySelector(".loading-voz");
+
             // Mostra o loading enquanto a voz está sendo carregada ou processada
+            const loadingVoz = document.querySelector(".loading-voz");
 
 
             // Botão para iniciar, pausar ou retomar

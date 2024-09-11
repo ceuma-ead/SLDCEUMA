@@ -12,6 +12,7 @@ function renderTools(sliderIndex) {
     const allContainersMobile = document.querySelectorAll('.icons-action--container-mobile');
     allContainersMobile.forEach(container => container.innerHTML = '');
 
+
     // Limpa os contêineres Inline
     const allContainersInlines = document.querySelectorAll('.box-tools-inline');
     allContainersInlines.forEach(container => container.innerHTML = '');

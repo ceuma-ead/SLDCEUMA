@@ -349,6 +349,7 @@ async function createAnnotation() {
             },
             showCancelButton: true,
             heightAuto: false,
+            withAuto:false
         });
 
         if (texto) {

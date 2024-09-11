@@ -19,7 +19,7 @@ async function requisicao(url) {
         const data = await response.json();
         return data.contents;
     } catch (error) {
-        console.error('Erro:', error);
+        // console.error('Erro:', error);
         return null;
     }
 }
@@ -95,38 +95,71 @@ function salvarVozEscolhida() {
 
 // Função para ler o texto em voz alta
 function lerTexto(texto) {
+    const loadingVoz = document.querySelector(".loading-voz");
+
+    // Mostra o loading enquanto a voz está sendo carregada ou processada
+    loadingVoz.style.display = 'block';
+
     // Se o navegador não suporta SpeechSynthesis, sair da função
     if (!synth) {
+        loadingVoz.style.display = "none";
         alert("Seu navegador não suporta a síntese de voz.");
         return;
     }
 
-    // Se já há um utterance em execução, pause ou retome o áudio
-    if (synth.speaking && !isPaused) {
-        synth.pause();  // Pausa o áudio
-        isPaused = true;
-    } else if (synth.paused && isPaused) {
-        synth.resume();  // Retoma o áudio se estava pausado
-        isPaused = false;
+    // Função para iniciar a síntese de voz
+    function iniciarFala() {
+        if (synth.speaking && !isPaused) {
+            synth.pause();  // Pausa o áudio se já estiver falando
+            isPaused = true;
+        } else if (synth.paused && isPaused) {
+            synth.resume();  // Retoma o áudio se estiver pausado
+            isPaused = false;
+        } else {
+            // Cria um novo utterance se nenhum áudio estiver sendo reproduzido
+            utterance = new SpeechSynthesisUtterance(texto);
+
+            // Definir a voz selecionada
+            const selectVoz = document.getElementById('select-voz');
+            const selectedVoiceIndex = selectVoz.value;
+            const voices = synth.getVoices();
+
+            // Esperar até que as vozes estejam carregadas antes de continuar
+            if (voices.length === 0) {
+                synth.onvoiceschanged = iniciarFala;
+                return;
+            }
+
+            utterance.voice = voices[selectedVoiceIndex];
+
+            // Garantir que apenas um utterance seja reproduzido por vez
+            utterance.onend = function () {
+                loadingVoz.style.display = "none";  // Esconde o loading quando terminar de falar
+                utterance = null;  // Reseta o utterance
+            };
+
+            utterance.onerror = function () {
+                loadingVoz.style.display = "none";  // Esconde o loading em caso de erro
+                // alert("Ocorreu um erro durante a síntese de voz.");
+            };
+
+            // Adiciona um pequeno atraso para permitir que o loading seja renderizado
+            setTimeout(() => {
+                synth.speak(utterance);  // Inicia a fala
+                isPaused = false;
+            }, 100);  // 100ms de atraso
+        }
+    }
+
+    // Verifica se as vozes já estão disponíveis
+    if (synth.getVoices().length > 0) {
+        iniciarFala();
     } else {
-        // Cria um novo utterance se nenhum áudio estiver sendo reproduzido
-        utterance = new SpeechSynthesisUtterance(texto);
-
-        // Definir a voz selecionada
-        const selectVoz = document.getElementById('select-voz');
-        const selectedVoiceIndex = selectVoz.value;
-        const voices = synth.getVoices();
-        utterance.voice = voices[selectedVoiceIndex];
-
-        // Garantir que apenas um utterance seja reproduzido por vez
-        utterance.onend = function () {
-            utterance = null;  // Reseta o utterance quando terminar de falar
-        };
-
-        synth.speak(utterance);  // Fala o texto
-        isPaused = false;
+        // Espera que as vozes sejam carregadas
+        synth.onvoiceschanged = iniciarFala;
     }
 }
+
 
 // Função para parar o áudio
 function pararAudioDicionario() {
@@ -171,7 +204,8 @@ async function buscarPalavra(palavra) {
                 <select id="select-voz" class="form-select"></select>
                 <button id="audio-button" class="btn btn-secondary mt-3">🔊 Ouvir</button>
                 <button id="stop-button" class="btn btn-secondary mt-3">⏹ Parar</button>
-                <div class="titulo">
+                <span class="loading-voz" style="display: none;"></span>
+                <div class="titulo mt-1">
                     ${titulo.innerHTML}
                 </div>
                 <div class="conteudo">
@@ -181,6 +215,9 @@ async function buscarPalavra(palavra) {
             $("#result-dicionario").html(html);
 
             carregarVozes();  // Carregar as vozes no select
+
+            // Mostra o loading enquanto a voz está sendo carregada ou processada
+            const loadingVoz = document.querySelector(".loading-voz");
 
             // Botão para iniciar, pausar ou retomar
             const audioButton = document.getElementById("audio-button");
@@ -194,10 +231,12 @@ async function buscarPalavra(palavra) {
                     audioButton.innerHTML = '⏸ Pausar';  // Muda ícone para "Pausar"
                 } else if (synth.speaking && !synth.paused) {
                     // Pausa o áudio se estiver falando
+                    loadingVoz.style.display = 'none';
                     synth.pause();
                     audioButton.innerHTML = '🔊 Ouvir';  // Muda ícone para "Continuar"
                 } else if (synth.paused) {
                     // Retoma o áudio se estiver pausado
+                    loadingVoz.style.display = 'block';
                     synth.resume();
                     audioButton.innerHTML = '⏸ Pausar';  // Muda ícone para "Pausar"
                 }

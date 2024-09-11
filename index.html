@@ -57,8 +57,6 @@
                         <div class="spinner"></div>
                     </div>
 
-                    
-
                     <!-- Spinner Loadding -->
 
                     <!-- Menu Desktop -->
@@ -206,8 +204,9 @@
                     <!-- Menu Dicionário -->
                     <div class="dicionario-menu ">
                         <header>
-                            <i class="text-light dicionario-adds close_dicionario"
-                                data-lucide="circle-x" ></i>
+                            <i
+                                class="text-light dicionario-adds close_dicionario"
+                                data-lucide="circle-x"></i>
                             <p>Dicionário</p>
                             <!-- <i class="text-light dicionario-adds"
                                 data-lucide="history"></i> -->
@@ -229,14 +228,16 @@
                         </div>
 
                         <!-- Loader (escondido inicialmente) -->
-                        <div id="loading-dicionario" style="display: none;"></div>
+                        <div id="loading-dicionario"
+                            style="display: none;"></div>
 
                         <!-- Caixa para Pesquisa -->
                         <footer>
                             <div class="searchDicionario">
                                 <input id="search-input" type="text"
                                     placeholder="Buscar no dicionário...">
-                                <span class="buscarPalavra" id="buscarPalavra"><i
+                                <span class="buscarPalavra"
+                                    id="buscarPalavra"><i
                                         data-lucide="send"></i></span>
                             </div>
                         </footer>
@@ -254,7 +255,7 @@
                 <nav
                     class=" navbar navbar-expand-lg d-block d-md-none">
                     <div
-                        class="collapse navbar-collapse icons-action--container-mobile"
+                        class="collapse navbar-collapse icons-action--container-mobile "
                         id="navbarNavDropdown">
                         <!-- <button><i data-lucide="audio-lines"></i></button>
                         <button><i data-lucide="video"></i></button>
@@ -335,6 +336,28 @@
             </div>
             <!--  Iniciando Marca do Ceuma -->
 
+            <!-- Modal Ouvinte -->
+            <div class="modal fade " id="modal-ouvinte" tabindex="-1"
+                aria-labelledby="modal-ouvinte" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Áudio Convertido</h5>
+                            <button type="button" class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body audio-convertido-ouvinte">
+                            <!-- Aqui vai aparecer o áudio -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Fechar</button>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Arquivo Bootstrap -->
@@ -407,7 +430,7 @@
         <!-- Script Dicionario -->
         <script src="./modules/dicionario.js"></script>
         <!-- Script Dicionario -->
-         
+
     </body>
 
 </html>
