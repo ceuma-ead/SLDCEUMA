@@ -1352,7 +1352,7 @@ function modulosPage(slideIndex) {
             // Criando os seletores de idioma e voz dinamicamente
             const audioFerramentas = `
                <div class="mb-3">
-                    <textarea class="Texto-download form-control" rows="2" disabled placeholder="Logs de operação"></textarea>
+                    <textarea class="Texto-download form-control" style="resize:none;" rows="2" disabled placeholder="Logs de operação"></textarea>
                </div>
 
                <div class="mb-3">
@@ -1428,13 +1428,16 @@ function modulosPage(slideIndex) {
                     f: '44khz_16bit_stereo'  // Qualidade do áudio
                 });
 
-                logPre.textContent += `Iniciando a requisição com a chave ${apiKey}...\n`;
+                logPre.textContent += `Chave Validada!...\n`;
 
                 return fetch(`${apiUrl}?${params.toString()}`, {
                     method: 'GET',
                 })
                     .then(response => {
+                        logPre.textContent += `Criando Ponto de Trasmissão\n`;
+    
                         if (response.ok) {
+                            logPre.textContent += `${response.status}\n`;
                             logPre.textContent += 'Áudio gerado com sucesso!\n';
                             return response.blob();
                         } else {
