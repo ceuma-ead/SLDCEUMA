@@ -1327,7 +1327,120 @@ function injectEstiloRender(slideIndex) {
 }
 
 
+function audioPreviewPlay(_blob) {
+    // Elementos de controle do player de áudio
+    const audioPlayerOuvinte = document.querySelector(".audio-player-ouvinte");
 
+    function changerAudioOuvinte(audio) {
+        return new Audio(
+            audio
+        );
+    }
+
+    const audioOuvinte = changerAudioOuvinte(_blob)
+
+    // Verifica se o player de áudio existe
+    if (audioPlayerOuvinte && audioOuvinte) {
+        // Quando os dados de áudio são carregados, atualiza a duração
+        audioOuvinte.addEventListener(
+            "loadeddata",
+            () => {
+                const durationElement = audioPlayerOuvinte.querySelector(".time .length");
+                if (durationElement) {
+                    durationElement.textContent = getTimeCodeFromNum(audioOuvinte.duration);
+                }
+                audioOuvinte.volume = 0.75;
+            },
+            false
+        );
+
+        // Clicando na linha do tempo para avançar ou retroceder o áudio
+        const timeline = audioPlayerOuvinte.querySelector(".timeline");
+        if (timeline) {
+            timeline.addEventListener("click", (e) => {
+                const timelineWidth = window.getComputedStyle(timeline).width;
+                const timeToSeek = (e.offsetX / parseInt(timelineWidth)) * audioOuvinte.duration;
+                audioOuvinte.currentTime = timeToSeek;
+            }, false);
+        }
+
+        // Controle de volume
+        const volumeSlider = audioPlayerOuvinte.querySelector(".controls .volume-slider");
+        if (volumeSlider) {
+            volumeSlider.addEventListener("click", (e) => {
+                const sliderWidth = window.getComputedStyle(volumeSlider).width;
+                const newVolume = e.offsetX / parseInt(sliderWidth);
+                audioOuvinte.volume = newVolume;
+                const volumePercentage = audioPlayerOuvinte.querySelector(".controls .volume-percentage");
+                if (volumePercentage) {
+                    volumePercentage.style.width = newVolume * 100 + '%';
+                }
+            }, false);
+        }
+
+        // Atualiza o progresso do áudio e o tempo atual a cada 500ms
+        setInterval(() => {
+            const progressBar = audioPlayerOuvinte.querySelector(".progress");
+            if (progressBar && audioOuvinte.duration) {
+                progressBar.style.width = (audioOuvinte.currentTime / audioOuvinte.duration) * 100 + "%";
+            }
+            const currentTimeElement = audioPlayerOuvinte.querySelector(".time .current");
+            if (currentTimeElement) {
+                currentTimeElement.textContent = getTimeCodeFromNum(audioOuvinte.currentTime);
+            }
+        }, 500);
+
+        // Alterna entre tocar e pausar o áudio ao clicar no botão de play
+        const playBtnOuvintePreview = audioPlayerOuvinte.querySelector(".controls .toggle-play");
+        if (playBtnOuvintePreview) {
+            playBtnOuvintePreview.addEventListener(
+                "click",
+                () => {
+                    if (audioOuvinte.paused) {
+                        playBtnOuvintePreview.classList.remove("play");
+                        playBtnOuvintePreview.classList.add("pause");
+                        audioOuvinte.play();
+                    } else {
+                        playBtnOuvintePreview.classList.remove("pause");
+                        playBtnOuvintePreview.classList.add("play");
+                        audioOuvinte.pause();
+                    }
+                },
+                false
+            );
+        }
+
+        // Controle do botão de mute (mudo)
+        const volumeButton = audioPlayerOuvinte.querySelector(".volume-button");
+        if (volumeButton) {
+            volumeButton.addEventListener("click", () => {
+                const volumeEl = audioPlayerOuvinte.querySelector(".volume-container .volume");
+                audioOuvinte.muted = !audioOuvinte.muted;
+                if (volumeEl) {
+                    if (audioOuvinte.muted) {
+                        volumeEl.classList.remove("icono-volumeMedium");
+                        volumeEl.classList.add("icono-volumeMute");
+                    } else {
+                        volumeEl.classList.add("icono-volumeMedium");
+                        volumeEl.classList.remove("icono-volumeMute");
+                    }
+                }
+            });
+        }
+    }
+
+    // Função para converter tempo (segundos) em formato "mm:ss"
+    function getTimeCodeFromNum(num) {
+        let seconds = parseInt(num);
+        let minutes = parseInt(seconds / 60);
+        seconds -= minutes * 60;
+        const hours = parseInt(minutes / 60);
+        minutes -= hours * 60;
+
+        if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, "0")}`;
+        return `${String(hours).padStart(2, "0")}:${minutes}:${String(seconds % 60).padStart(2, "0")}`;
+    }
+}
 
 
 function modulosPage(slideIndex) {
@@ -1393,14 +1506,53 @@ function modulosPage(slideIndex) {
                                     <input type="range" class="form-range" id="pitch-range" min="0.5" max="2" step="0.1" value="1">
                                 </div>
 
-                                <button id="button-Dowload-Ouvinte" class="btn btn-success  download-btn">Baixar Áudio <i class="bi bi-download"></i></button>
+                                <details class="mb-3 d-flex align-items-center">
+                                    <summary>Previzualizar <span class="border border-danger p-2 rounded">Creditos:3</span></summary>
+                                    <div class="mb-3 mt-2 d-flex align-items-center">
+                      
+                                        <div class="audio-player-ouvinte">
+                                        <div class="timeline">
+                                            <div class="progress"></div>
+                                        </div>
+                                        <div class="controls">
+                                            <div class="play-container">
+                                            <div class="toggle-play play">
+                                            </div>
+                                            </div>
+                                            <div class="time">
+                                            <div class="current">0:00</div>
+                                            <div class="divider">/</div>
+                                            <div class="length"></div>
+                                            </div>
+                                            <div class="name">Music Song</div>
+                                    
+                                            <div class="volume-container">
+                                            <div class="volume-button">
+                                                <div class="volume icono-volumeMedium"></div>
+                                            </div>
+                                            
+                                            <div class="volume-slider">
+                                                <div class="volume-percentage"></div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </details>
+
+                                
+
+                                    
+                                <button id="button-Dowload-Ouvinte" class="btn btn-success download-btn">Baixar Áudio</button>
 
                                 <!-- Logs da Operação -->
-                                <!--
-                                <div class="mb-3">
+                            
+                                <div class="mb-3 d-none">
                                     <textarea class="Texto-download form-control" style="resize:none;" rows="2" disabled placeholder="Logs de operação"></textarea>
                                 </div>
-                                -->
+
+                                
+                               
                         </div>
                         </div>
                     </div>
@@ -1411,22 +1563,29 @@ function modulosPage(slideIndex) {
 
             containerAudio.innerHTML += audioFerramentas;
 
-            function addAccordionConfigDownload(){
+            // Elementos de controle do áudio
+            const playBtn = containerAudio.querySelector(".playOuvint-btn");
+            const stopBtn = containerAudio.querySelector(".stopOuvint-btn");
+            const textoOuvinte = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
+
+
+
+            function addAccordionConfigDownload() {
                 const configuracaoDownload = document.getElementById("configuracao-ouvinte");
                 const openCollapeseDownload = document.getElementById("collapseOne");
-                
-                if(configuracaoDownload.classList.contains("d-none")){
+
+                if (configuracaoDownload.classList.contains("d-none")) {
                     configuracaoDownload.classList.remove("d-none")
                     openCollapeseDownload.classList.add("show")
                     configuracaoDownload.classList.add("d-block")
-           
+
                 }
             }
-            
-            function removeAccordionConfigDownload(){
+
+            function removeAccordionConfigDownload() {
                 const configuracaoDownload = document.getElementById("configuracao-ouvinte");
-                
-                if(configuracaoDownload.classList.contains("d-block")){
+
+                if (configuracaoDownload.classList.contains("d-block")) {
                     configuracaoDownload.classList.remove("d-block")
                     configuracaoDownload.classList.add("d-none")
 
@@ -1434,13 +1593,41 @@ function modulosPage(slideIndex) {
             }
 
             const abrirOuvinteDownload = document.querySelector(".openDownload-btn")
-            abrirOuvinteDownload.addEventListener('click',()=>{
+            abrirOuvinteDownload.addEventListener('click', () => {
+                // // Variável para capturar o áudio
+                // const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
+                // const velocidade = document.getElementById("speed-range").value;  // Pegar a velocidade
+                // const tom = document.getElementById("pitch-range").value;  // Pegar o tom
+                // const langCode = document.getElementById("language-select").value;  // Pegar o idioma
+                // const voz = document.getElementById("voice-select").value;  // Pegar a voz
+                // const logPre = containerAudio.querySelector(".Texto-download");
+
+                // logPre.textContent = ''; // Limpar logs anteriores
+                // let chaveAtual = 0; // Começar pela primeira chave
+
+                // function tentarProximaChave() {
+                //     sintetizarAudio(tokens[chaveAtual], texto, velocidade, tom, langCode, voz, logPre)
+                //         .then(blob => {
+                //             const url = URL.createObjectURL(blob);
+                //             audioPreviewPlay( url)
+
+                //         })
+                //         .catch(error => {
+                //             logPre.textContent += `Erro: ${error.message}\n`;
+                //             chaveAtual += 1;
+                //             const novaChave = usarOutraChave(chaveAtual);
+                //             if (novaChave) {
+                //                 logPre.textContent += `Tentando com a próxima chave...\n`;
+                //                 tentarProximaChave(); // Tentar novamente com outra chave
+                //             } else {
+                //                 logPre.textContent += 'Todas as chaves falharam.\n';
+                //             }
+                //         });
+                // }
+
+                // tentarProximaChave(); // Iniciar a tentativa com a primeira chave
                 addAccordionConfigDownload()
             })
-
-
-            
-
 
             // Função para popular vozes com base no idioma selecionado
             function popularVozes(langCode) {
@@ -1510,15 +1697,11 @@ function modulosPage(slideIndex) {
                     return;
                 }
 
-                // Voz padrão do google
-                const vozPadrao = {
-                    lang: "en-US",
-                    name: "Google US English",
-                    voiceURI: "Google US English"
-                }
+                // Configurar a voz padrão do Google (ou outras, se desejado)
+                const vozPadrao = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google US English");
 
                 // Configurando a voz padrão (pode ser ajustada conforme desejado)
-                const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === 'pt-BR');
+                const voz = vozPadrao || window.speechSynthesis.getVoices().find(voice => voice.lang === 'pt-BR');
 
                 // Criar a síntese de fala a partir da posição inicial
                 const utterance = new SpeechSynthesisUtterance(texto.substring(posicaoInicial));
@@ -1540,14 +1723,12 @@ function modulosPage(slideIndex) {
                     resetPlayButton(); // Reseta o botão para "Play"
                 };
 
+                // criar uma Previzualizador no Audio para o audio Gerado
+                audioPreviewPlay()
+
                 // Iniciar a fala
                 window.speechSynthesis.speak(utterance);
             }
-
-            // Elementos de controle do áudio
-            const playBtn = containerAudio.querySelector(".playOuvint-btn");
-            const stopBtn = containerAudio.querySelector(".stopOuvint-btn");
-            const textoOuvinte = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
 
             // Função para alternar entre "Play" e "Pause"
             playBtn.addEventListener('click', () => {
@@ -1595,6 +1776,7 @@ function modulosPage(slideIndex) {
                 posicaoAtual = 0; // Resetar a posição atual
                 textoRestante = ''; // Limpar o texto restante
                 loadingVoz.style.display = "none"; // Esconder o loading
+                removeAccordionConfigDownload()
             });
 
             // Função para resetar o botão "Play"
@@ -1603,6 +1785,9 @@ function modulosPage(slideIndex) {
                 playBtn.classList.remove('btn-warning'); // Muda a cor de volta para "Play"
                 playBtn.classList.add('btn-success');
             }
+
+
+
 
 
             // Função de síntese de voz
@@ -1633,7 +1818,7 @@ function modulosPage(slideIndex) {
                         if (response.ok) {
                             logPre.textContent += `${response.status}\n`;
                             logPre.textContent += 'Áudio gerado com sucesso!\n';
-                             sppinnerButton.innerHTML = `<i class="bi bi-download"></i>`
+                            sppinnerButton.innerHTML = `Sucesso <i class="bi bi-check-circle"></i>`
                             return response.blob();
                         } else {
                             logPre.textContent += `Erro com a chave ${apiKey}: ${response.statusText}\n`;
@@ -1697,6 +1882,7 @@ function modulosPage(slideIndex) {
 
 
 // Atualiza o título e as cores ao inicializar
+
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
 adicionarLogo(savedPosition);
