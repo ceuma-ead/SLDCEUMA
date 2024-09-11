@@ -149,7 +149,9 @@ const responsivo = [
             }       
 
             .btn {
-                    padding: .175rem .45rem;
+                    padding: .175rem .45rem !important;
+                    font-size: 0.8rem !important;
+                    margin-top: 0.25rem !important;
 
                 }
 
@@ -161,6 +163,15 @@ const responsivo = [
                     margin: 0;
                 }
 
+                .form-select {
+                padding: .275rem 2.25rem .275rem .30rem !important;
+                font-size: 0.85rem !important;
+
+                }
+
+                label {
+        font-size: 0.8rem;
+}
     `,
 
 
