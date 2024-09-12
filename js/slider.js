@@ -1914,7 +1914,7 @@ function modulosPage(slideIndex) {
                     return;
                 }
 
-                // Configurando a voz padrão (pode ser ajustada conforme desejado) Google português do Brasil
+                // Configurando a voz padrão (pode ser ajustada conforme desejado) 
                 const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === "pt-Br");
 
                 // Criar a síntese de fala a partir da posição inicial
