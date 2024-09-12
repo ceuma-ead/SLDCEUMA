@@ -1423,7 +1423,7 @@ function modulosPage(slideIndex) {
                                 .preview-section {
                                     border: 2px solid #f1f1f1;
                                     border-radius: 12px;
-                                    padding: 20px;
+                                    padding: .5rem 1rem;
                                     background-color: #f9fafc;
                                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                                     transition: all 0.3s ease;
@@ -1448,7 +1448,7 @@ function modulosPage(slideIndex) {
 
                                 .preview-title {
                                     color: #0056b3;
-                                    font-size: 20px;
+                                    font-size: 16px;
                                 }
 
                                 .preview-attempts {
@@ -1468,6 +1468,7 @@ function modulosPage(slideIndex) {
                                 .preview-controls {
                                     display: flex;
                                     gap: 10px;
+                                    justify-content: center;
                                 }
 
                                 .btn {
@@ -1598,7 +1599,7 @@ function modulosPage(slideIndex) {
             function verificarTentativas() {
                 tentativas = getCookie("tentativasAudio");
                 tentativas = tentativas ? parseInt(tentativas) : 0; // Se não existir, começa com 0
-                tentativasSpan.textContent = `Tentativas ${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
+                tentativasSpan.textContent = `${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
 
                 // Se já alcançou o limite de tentativas, desabilita o botão Play
                 if (tentativas >= maxTentativas) {
@@ -1637,7 +1638,7 @@ function modulosPage(slideIndex) {
                     containerTentativas.innerHTML = `
                         <div class="relogio-container" style="display: flex; align-items: center; gap: 10px;">
                             <img src="https://img.icons8.com/ios-filled/50/000000/hourglass--v1.png" alt="Relógio ícone" style="width: 30px; height: 30px;">
-                            <div style="font-size: 18px; font-weight: bold;">
+                            <div style="font-size: 14px; font-weight: bold;">
                                 Tente Novamente em <span style="color: red;">${minutos}m ${segundos}s</span>
                             </div>
                         </div>

@@ -5045,7 +5045,7 @@ fieldset:disabled .btn {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 1rem 1.25rem;
+    padding: .5rem 1rem;
     font-size: 1rem;
     color: #212529;
     text-align: left;
@@ -5141,7 +5141,7 @@ fieldset:disabled .btn {
 }
 
 .accordion-body {
-    padding: 1rem 1.25rem
+    padding: .5rem 1rem;
 }
 
 .accordion-flush .accordion-collapse {
@@ -6068,7 +6068,7 @@ fieldset:disabled .btn {
     flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: calc(.3rem - 1px);
     border-top-right-radius: calc(.3rem - 1px)
@@ -6087,7 +6087,7 @@ fieldset:disabled .btn {
 .modal-body {
     position: relative;
     flex: 1 1 auto;
-    padding: 1rem
+    padding: 0.5rem 1rem 1rem 1rem;
 }
 
 .modal-footer {
@@ -7819,7 +7819,7 @@ fieldset:disabled .btn {
 }
 
 .mt-3 {
-    margin-top: 1rem !important
+    margin-top: 0.5rem !important
 }
 
 .mt-4 {
@@ -7875,7 +7875,7 @@ fieldset:disabled .btn {
 }
 
 .mb-3 {
-    margin-bottom: 1rem !important
+    margin-bottom: .5rem !important
 }
 
 .mb-4 {
