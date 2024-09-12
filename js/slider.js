@@ -1397,7 +1397,7 @@ function modulosPage(slideIndex) {
 
                                 <div class="mb-3">
                                     <label for="voice-select">Selecione a voz:</label>
-                                    <select id="voice-select" class="form-control"></select>
+                                    <select id="voice-select" class="form-control changerVoice"></select>
                                 </div>
 
                                 <div class="mb-3">
@@ -1548,11 +1548,35 @@ function modulosPage(slideIndex) {
 
             containerAudio.innerHTML += audioFerramentas;
 
+            // Função para popular vozes com base no idioma selecionado
+            function popularVozes(langCode) {
+                const voiceSelect = document.getElementById('voice-select');
+                voiceSelect.innerHTML = ''; // Limpar vozes anteriores
+                if (languages[langCode]) {
+                    const voices = languages[langCode].voices;
+                    voices.forEach(voice => {
+                        const option = document.createElement('option');
+                        option.value = voice;
+                        option.textContent = voice;
+                        voiceSelect.appendChild(option);
+                    });
+                }
+            }
+
+            // Inicialmente popular com o primeiro idioma
+            const languageSelect = document.getElementById('language-select');
+            popularVozes(languageSelect.value);
+
+            // Mudar vozes ao mudar o idioma
+            languageSelect.addEventListener('change', (e) => {
+                popularVozes(e.target.value);
+            });
+
+
             // Elementos de controle do áudio
             const playBtn = containerAudio.querySelector(".playOuvint-btn");
             const stopBtn = containerAudio.querySelector(".stopOuvint-btn");
             const textoOuvinte = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
-
 
 
             function addAccordionConfigDownload() {
@@ -1750,38 +1774,69 @@ function modulosPage(slideIndex) {
             // ============================================================================================================= \\
 
             // Variáveis para armazenar os valores atualizados dos controles
-           
+
             let velocidadeAtual = document.getElementById("speed-range").value;
             let tomAtual = document.getElementById("pitch-range").value;
             let langCodeAtual = document.getElementById("language-select").value;
             let vozAtual = document.getElementById("voice-select").value;
 
             // Atualiza as variáveis de controle sem regenerar o áudio imediatamente
+
             document.getElementById("speed-range").addEventListener("change", (e) => {
                 velocidadeAtual = e.target.value;
-            });
-            document.getElementById("pitch-range").addEventListener("change", (e) => {
-                tomAtual = e.target.value;
-            });
-            document.getElementById("language-select").addEventListener("change", (e) => {
-                langCodeAtual = e.target.value;
-            });
-            document.getElementById("voice-select").addEventListener("change", (e) => {
-                vozAtual = e.target.value;
+                localStorage.setItem('velocidade', velocidadeAtual); // Salva no localStorage
             });
 
+            document.getElementById("pitch-range").addEventListener("change", (e) => {
+                tomAtual = e.target.value;
+                localStorage.setItem('tom', tomAtual); // Salva no localStorage
+            });
+
+            document.getElementById("language-select").addEventListener("change", (e) => {
+                langCodeAtual = e.target.value;
+                localStorage.setItem('langCode', langCodeAtual); // Salva no localStorage
+                popularVozes(langCodeAtual); 
+            });
+
+            document.getElementById("voice-select").addEventListener("change", (e) => {
+                vozAtual = e.target.value;
+                localStorage.setItem('voz', vozAtual); // Salva no localStorage
+            });
+
+            // Carrega os valores do localStorage ao iniciar a página
+            if (localStorage.getItem('velocidade')) {
+                velocidadeAtual = localStorage.getItem('velocidade');
+                document.getElementById("speed-range").value = velocidadeAtual;
+            }
+
+            if (localStorage.getItem('tom')) {
+                tomAtual = localStorage.getItem('tom');
+                document.getElementById("pitch-range").value = tomAtual;
+            }
+
+            if (localStorage.getItem('langCode')) {
+                langCodeAtual = localStorage.getItem('langCode');
+                document.getElementById("language-select").value = langCodeAtual;
+            }
+
+            if (localStorage.getItem('voz')) {
+                vozAtual = localStorage.getItem('voz');
+                document.getElementById("voice-select").value = vozAtual;
+            }
+
+            let chavePreview = 0; // Começar pela primeira chave
             // Função para sintetizar e gerar o áudio sempre que "Play" é clicado
             function gerarAudio() {
                 const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
 
                 playBtnPrevizualizar.innerHTML = `
-        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-        Play
-    `;
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Play
+                `;
 
-                sintetizarAudio(tokens[0], texto, velocidadeAtual, tomAtual, langCodeAtual, vozAtual, "")
+                sintetizarAudio(tokens[chavePreview], texto, velocidadeAtual, tomAtual, langCodeAtual, vozAtual, "")
                     .then(blob => {
-                        
+
                         // Libera o URL anterior do blob para liberar recursos
                         if (audioBlobUrl) {
                             URL.revokeObjectURL(audioBlobUrl);
@@ -1816,13 +1871,18 @@ function modulosPage(slideIndex) {
                         };
                     })
                     .catch(error => {
+                        const novaChave = usarOutraChave(chaveAtual);
+                        if (novaChave) {
+                            chavePreview += 1
+                            gerarAudio(); // Tentar novamente com outra chave
+                        }
                         console.error("Erro ao gerar o áudio", error);
                     });
             }
 
             // Evento para o botão de "Play"
             playBtnPrevizualizar.addEventListener("click", () => {
-                verificarTentativas(); 
+                verificarTentativas();
                 if (tentativas < maxTentativas) {
                     incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
                     gerarAudio(); // Sempre gera o áudio com os valores atualizados ao clicar em "Play"
@@ -1831,7 +1891,7 @@ function modulosPage(slideIndex) {
 
             // Evento para o botão de "Pause"
             pauseBtnPrevizualizar.addEventListener("click", () => {
-                verificarTentativas(); 
+                verificarTentativas();
                 if (audioOuvinte) {
                     audioOuvinte.pause();
                     playBtnPrevizualizar.style.display = "inline-block";
@@ -1846,28 +1906,7 @@ function modulosPage(slideIndex) {
                 addAccordionConfigDownload()
             })
 
-            // Função para popular vozes com base no idioma selecionado
-            function popularVozes(langCode) {
-                const voiceSelect = document.getElementById('voice-select');
-                voiceSelect.innerHTML = ''; // Limpar vozes anteriores
-                const voices = languages[langCode].voices;
-                voices.forEach(voice => {
-                    const option = document.createElement('option');
-                    option.value = voice;
-                    option.textContent = voice;
-                    voiceSelect.appendChild(option);
-                });
-            }
-
-            // Inicialmente popular com o primeiro idioma
-            const languageSelect = document.getElementById('language-select');
-            popularVozes(languageSelect.value);
-
-            // Mudar vozes ao mudar o idioma
-            languageSelect.addEventListener('change', (e) => {
-                popularVozes(e.target.value);
-            });
-
+            
             // Função para alternar entre as chaves de API
             function usarOutraChave(indexAtual) {
                 if (indexAtual < tokens.length - 1) {
@@ -1877,22 +1916,6 @@ function modulosPage(slideIndex) {
                 }
             }
 
-            // Função para popular vozes com base no idioma selecionado
-            function popularVozes(langCode) {
-                const voiceSelect = document.getElementById('voice-select');
-                voiceSelect.innerHTML = ''; // Limpar vozes anteriores
-                const voices = languages[langCode].voices;
-                voices.forEach(voice => {
-                    const option = document.createElement('option');
-                    option.value = voice;
-                    option.textContent = voice;
-                    voiceSelect.appendChild(option);
-                });
-            }
-            // Mudar vozes ao mudar o idioma
-            languageSelect.addEventListener('change', (e) => {
-                popularVozes(e.target.value);
-            });
 
             // Variáveis para controle
             let isPlaying = false; // Variável para controlar o estado de reprodução
@@ -2049,7 +2072,7 @@ function modulosPage(slideIndex) {
                 const langCode = document.getElementById("language-select").value;  // Pegar o idioma
                 const voz = document.getElementById("voice-select").value;  // Pegar a voz
                 const logPre = containerAudio.querySelector(".Texto-download");
-                const sppinnerButton = document.querySelector(".download-btn")
+                const sppinnerButton = document.querySelector(".download-btn");
 
                 // sppinnerButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
                 // sppinnerButton.innerHTML = `Sucesso <i class="bi bi-check-circle"></i>`
@@ -2085,6 +2108,7 @@ function modulosPage(slideIndex) {
 
                 tentarProximaChave(); // Iniciar a tentativa com a primeira chave
             });
+
         });
     }
 }
