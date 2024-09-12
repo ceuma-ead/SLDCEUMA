@@ -1517,7 +1517,7 @@ function modulosPage(slideIndex) {
                                 </style>
                                
                                
-                               <details class="preview-section mb-3">
+                               <details class="preview-section mb-3 open">
                                 <summary class="preview-summary">
                                     <span class="preview-title">Pré-visualizar</span>
                                     <span class="preview-attempts">Tentativas <span class="attempts-counter border-danger">0/3</span></span>
@@ -1543,6 +1543,8 @@ function modulosPage(slideIndex) {
 
 
             `;
+
+
 
             containerAudio.innerHTML += audioFerramentas;
 
@@ -1581,6 +1583,7 @@ function modulosPage(slideIndex) {
             const maxTentativas = 3; // Limite máximo de tentativas
             const tentativasSpan = document.querySelector(".attempts-counter"); // Elemento que exibe as tentativas
             const containerTentativas = document.querySelector(".preview-controls"); // Container para exibir o relógio
+            const previewSection = document.querySelector(".preview-section");
             let tentativas = 0; // Variável para controlar o número de tentativas
             const playBtnPrevizualizar = document.getElementById("btnPlayPrevizualizar");
             const pauseBtnPrevizualizar = document.getElementById("btnPausePrevizualizar");
@@ -1588,7 +1591,7 @@ function modulosPage(slideIndex) {
             let audioOuvinte = null;  // Variável global para armazenar a instância atual do áudio
             let audioBlobUrl = null;  // Variável para armazenar o URL do blob atual
             let audioGerado = false;  // Variável para verificar se o áudio já foi gerado
-
+            previewSection.setAttribute('open', true)
 
 
             // Função para verificar e atualizar as tentativas
@@ -1608,7 +1611,7 @@ function modulosPage(slideIndex) {
                         setCookie("expiracaoAudio", novaExpiracao.toUTCString(), 30);
                         iniciarRelogio(novaExpiracao);
                     }
-                
+
                 }
             }
 
@@ -1627,10 +1630,10 @@ function modulosPage(slideIndex) {
 
                     const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
                     const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-                    if(audioOuvinte){
+                    if (audioOuvinte) {
                         audioOuvinte.pause();
                     }
-                    
+
                     containerTentativas.innerHTML = `
                         <div class="relogio-container" style="display: flex; align-items: center; gap: 10px;">
                             <img src="https://img.icons8.com/ios-filled/50/000000/hourglass--v1.png" alt="Relógio ícone" style="width: 30px; height: 30px;">
@@ -1654,29 +1657,47 @@ function modulosPage(slideIndex) {
 
             // Chama a função ao carregar a página para verificar as tentativas atuais
             verificarTentativas();
+            // Variáveis para armazenar os valores atualizados dos controles
+            let velocidadeAtual = document.getElementById("speed-range").value;
+            let tomAtual = document.getElementById("pitch-range").value;
+            let langCodeAtual = document.getElementById("language-select").value;
+            let vozAtual = document.getElementById("voice-select").value;
 
-            // Função para sintetizar e gerar o áudio
+            // Atualiza as variáveis de controle sem regenerar o áudio imediatamente
+            document.getElementById("speed-range").addEventListener("change", (e) => {
+                velocidadeAtual = e.target.value;
+            });
+            document.getElementById("pitch-range").addEventListener("change", (e) => {
+                tomAtual = e.target.value;
+            });
+            document.getElementById("language-select").addEventListener("change", (e) => {
+                langCodeAtual = e.target.value;
+            });
+            document.getElementById("voice-select").addEventListener("change", (e) => {
+                vozAtual = e.target.value;
+            });
+
+            // Função para sintetizar e gerar o áudio apenas quando "Play" é clicado
             function gerarAudio() {
                 const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
-                const velocidade = document.getElementById("speed-range").value;
-                const tom = document.getElementById("pitch-range").value;
-                const langCode = document.getElementById("language-select").value;
-                const voz = document.getElementById("voice-select").value;
 
                 playBtnPrevizualizar.innerHTML = `
-                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                    Play
-                `
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        Play
+    `;
 
-                sintetizarAudio(tokens[0], texto, velocidade, tom, langCode, voz, "")
+                sintetizarAudio(tokens[0], texto, velocidadeAtual, tomAtual, langCodeAtual, vozAtual, "")
                     .then(blob => {
+                        // Libera o URL anterior do blob para liberar recursos
+                        if (audioBlobUrl) {
+                            URL.revokeObjectURL(audioBlobUrl);
+                        }
+
                         audioBlobUrl = URL.createObjectURL(blob);
-                        audioOuvinte = new Audio(audioBlobUrl); // Define o áudio gerado
+                        audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
                         audioGerado = true;  // Marca que o áudio foi gerado
 
-                        playBtnPrevizualizar.innerHTML = `
-                            Play
-                        `
+                        playBtnPrevizualizar.innerHTML = `Play`;
 
                         // Quando o áudio estiver pronto, atualiza a interface
                         audioOuvinte.addEventListener("loadeddata", () => {
@@ -1693,7 +1714,6 @@ function modulosPage(slideIndex) {
                         // Alternar entre os botões "Play" e "Pause"
                         playBtnPrevizualizar.style.display = "none";
                         pauseBtnPrevizualizar.style.display = "flex";
-                 
 
                         // Quando o áudio parar, volta para o botão "Play"
                         audioOuvinte.onended = () => {
@@ -1708,15 +1728,13 @@ function modulosPage(slideIndex) {
 
             // Evento para o botão de "Play"
             playBtnPrevizualizar.addEventListener("click", () => {
-
                 if (tentativas < maxTentativas) {
                     incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
+
                     if (!audioGerado) {
-                        gerarAudio();
+                        gerarAudio(); // Gera o áudio se ele ainda não foi gerado
                     } else {
-                        verificarTentativas();
-                        audioOuvinte.play();
-                        
+                        audioOuvinte.play(); // Caso já tenha sido gerado, apenas toca o áudio
                         playBtnPrevizualizar.style.display = "none";
                         pauseBtnPrevizualizar.style.display = "flex";
                     }
@@ -1725,11 +1743,22 @@ function modulosPage(slideIndex) {
 
             // Evento para o botão de "Pause"
             pauseBtnPrevizualizar.addEventListener("click", () => {
-           
+                if (audioOuvinte) {
+                    audioOuvinte.pause();
+                    playBtnPrevizualizar.style.display = "inline-block";
+                    pauseBtnPrevizualizar.style.display = "none";
+                }
+            });
+
+
+
+            // Evento para o botão de "Pause"
+            pauseBtnPrevizualizar.addEventListener("click", () => {
+
                 if (audioOuvinte) {
                     verificarTentativas();
                     audioOuvinte.pause();
-                    
+
                     playBtnPrevizualizar.style.display = "inline-block";
                     pauseBtnPrevizualizar.style.display = "none";
                 }
@@ -1813,11 +1842,8 @@ function modulosPage(slideIndex) {
                     return;
                 }
 
-                // Configurar a voz padrão do Google (ou outras, se desejado)
-                const vozPadrao = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google US English");
-
                 // Configurando a voz padrão (pode ser ajustada conforme desejado)
-                const voz = vozPadrao || window.speechSynthesis.getVoices().find(voice => voice.lang === 'pt-BR');
+                const voz = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google US English" && console.log(voice));
 
                 // Criar a síntese de fala a partir da posição inicial
                 const utterance = new SpeechSynthesisUtterance(texto.substring(posicaoInicial));
