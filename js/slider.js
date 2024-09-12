@@ -1423,7 +1423,7 @@ function modulosPage(slideIndex) {
                                 .preview-section {
                                     border: 2px solid #f1f1f1;
                                     border-radius: 12px;
-                                    padding: .5rem 1rem;
+                                    padding: 20px;
                                     background-color: #f9fafc;
                                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                                     transition: all 0.3s ease;
@@ -1448,7 +1448,7 @@ function modulosPage(slideIndex) {
 
                                 .preview-title {
                                     color: #0056b3;
-                                    font-size: 16px;
+                                    font-size: 20px;
                                 }
 
                                 .preview-attempts {
@@ -1468,7 +1468,6 @@ function modulosPage(slideIndex) {
                                 .preview-controls {
                                     display: flex;
                                     gap: 10px;
-                                    justify-content: center;
                                 }
 
                                 .btn {
@@ -1521,7 +1520,7 @@ function modulosPage(slideIndex) {
                                <details class="preview-section mb-3 open">
                                 <summary class="preview-summary">
                                     <span class="preview-title">Pré-visualizar</span>
-                                    <span class="preview-attempts">Tentativas <span class="attempts-counter border-danger">0/3</span></span>
+                                    <span class="preview-attempts">Disponibilidade : <span class="attempts-counter border-danger">0/3</span></span>
                                 </summary>
                                 <div class="preview-controls">
                                     <button id="btnPlayPrevizualizar" class="btn btn-play">Play</button>
@@ -1599,7 +1598,7 @@ function modulosPage(slideIndex) {
             function verificarTentativas() {
                 tentativas = getCookie("tentativasAudio");
                 tentativas = tentativas ? parseInt(tentativas) : 0; // Se não existir, começa com 0
-                tentativasSpan.textContent = `${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
+                tentativasSpan.textContent = `Tentativas ${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
 
                 // Se já alcançou o limite de tentativas, desabilita o botão Play
                 if (tentativas >= maxTentativas) {
@@ -1638,7 +1637,7 @@ function modulosPage(slideIndex) {
                     containerTentativas.innerHTML = `
                         <div class="relogio-container" style="display: flex; align-items: center; gap: 10px;">
                             <img src="https://img.icons8.com/ios-filled/50/000000/hourglass--v1.png" alt="Relógio ícone" style="width: 30px; height: 30px;">
-                            <div style="font-size: 14px; font-weight: bold;">
+                            <div style="font-size: 18px; font-weight: bold;">
                                 Tente Novamente em <span style="color: red;">${minutos}m ${segundos}s</span>
                             </div>
                         </div>
@@ -1658,7 +1657,100 @@ function modulosPage(slideIndex) {
 
             // Chama a função ao carregar a página para verificar as tentativas atuais
             verificarTentativas();
+
+            // // Função para sintetizar e gerar o áudio
+            // function gerarAudio() {
+            //     const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
+            //     const velocidade = document.getElementById("speed-range").value;
+            //     const tom = document.getElementById("pitch-range").value;
+            //     const langCode = document.getElementById("language-select").value;
+            //     const voz = document.getElementById("voice-select").value;
+
+            //     playBtnPrevizualizar.innerHTML = `
+            //         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            //         Play
+            //     `;
+
+            //     sintetizarAudio(tokens[0], texto, velocidade, tom, langCode, voz, "")
+            //         .then(blob => {
+            //             // Libera o URL anterior do blob para liberar recursos
+            //             if (audioBlobUrl) {
+            //                 URL.revokeObjectURL(audioBlobUrl);
+            //             }
+
+            //             audioBlobUrl = URL.createObjectURL(blob);
+            //             audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
+            //             audioGerado = true;  // Marca que o áudio foi gerado
+
+            //             playBtnPrevizualizar.innerHTML = `Play`;
+
+            //             // Quando o áudio estiver pronto, atualiza a interface
+            //             audioOuvinte.addEventListener("loadeddata", () => {
+            //                 const durationElement = document.querySelector(".time .length");
+            //                 if (durationElement) {
+            //                     durationElement.textContent = getTimeCodeFromNum(audioOuvinte.duration);
+            //                 }
+            //                 audioOuvinte.volume = 0.75;
+            //             });
+
+            //             // Tocar o áudio gerado
+            //             audioOuvinte.play();
+
+            //             // Alternar entre os botões "Play" e "Pause"
+            //             playBtnPrevizualizar.style.display = "none";
+            //             pauseBtnPrevizualizar.style.display = "flex";
+
+            //             // Quando o áudio parar, volta para o botão "Play"
+            //             audioOuvinte.onended = () => {
+            //                 playBtnPrevizualizar.style.display = "inline-block";
+            //                 pauseBtnPrevizualizar.style.display = "none";
+            //             };
+            //         })
+            //         .catch(error => {
+            //             console.error("Erro ao gerar o áudio", error);
+            //         });
+            // }
+
+            // // Evento para o botão de "Play"
+            // playBtnPrevizualizar.addEventListener("click", () => {
+            //     if (tentativas < maxTentativas) {
+            //         incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
+
+            //         // Regenera o áudio sempre que os valores mudarem
+            //         document.getElementById("speed-range").addEventListener("change", gerarAudio);
+            //         document.getElementById("pitch-range").addEventListener("change", gerarAudio);
+            //         document.getElementById("language-select").addEventListener("change", gerarAudio);
+            //         document.getElementById("voice-select").addEventListener("change", gerarAudio);
+
+            //         if (!audioGerado) {
+            //             gerarAudio(); // Gera o áudio se ele ainda não foi gerado
+            //         } else {
+            //             audioOuvinte.play(); // Caso já tenha sido gerado, apenas toca o áudio
+            //             playBtnPrevizualizar.style.display = "none";
+            //             pauseBtnPrevizualizar.style.display = "flex";
+            //         }
+            //     }
+            // });
+
+
+            // // Evento para o botão de "Pause"
+            // pauseBtnPrevizualizar.addEventListener("click", () => {
+
+            //     if (audioOuvinte) {
+            //         verificarTentativas();
+            //         audioOuvinte.pause();
+
+            //         playBtnPrevizualizar.style.display = "inline-block";
+            //         pauseBtnPrevizualizar.style.display = "none";
+            //     }
+            // });
+
+
+
+            // ============================================================================================================= \\
+
             // Variáveis para armazenar os valores atualizados dos controles
+           
             let velocidadeAtual = document.getElementById("speed-range").value;
             let tomAtual = document.getElementById("pitch-range").value;
             let langCodeAtual = document.getElementById("language-select").value;
@@ -1678,7 +1770,7 @@ function modulosPage(slideIndex) {
                 vozAtual = e.target.value;
             });
 
-            // Função para sintetizar e gerar o áudio apenas quando "Play" é clicado
+            // Função para sintetizar e gerar o áudio sempre que "Play" é clicado
             function gerarAudio() {
                 const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
 
@@ -1689,6 +1781,7 @@ function modulosPage(slideIndex) {
 
                 sintetizarAudio(tokens[0], texto, velocidadeAtual, tomAtual, langCodeAtual, vozAtual, "")
                     .then(blob => {
+                        
                         // Libera o URL anterior do blob para liberar recursos
                         if (audioBlobUrl) {
                             URL.revokeObjectURL(audioBlobUrl);
@@ -1729,21 +1822,16 @@ function modulosPage(slideIndex) {
 
             // Evento para o botão de "Play"
             playBtnPrevizualizar.addEventListener("click", () => {
+                verificarTentativas(); 
                 if (tentativas < maxTentativas) {
                     incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
-
-                    if (!audioGerado) {
-                        gerarAudio(); // Gera o áudio se ele ainda não foi gerado
-                    } else {
-                        audioOuvinte.play(); // Caso já tenha sido gerado, apenas toca o áudio
-                        playBtnPrevizualizar.style.display = "none";
-                        pauseBtnPrevizualizar.style.display = "flex";
-                    }
+                    gerarAudio(); // Sempre gera o áudio com os valores atualizados ao clicar em "Play"
                 }
             });
 
             // Evento para o botão de "Pause"
             pauseBtnPrevizualizar.addEventListener("click", () => {
+                verificarTentativas(); 
                 if (audioOuvinte) {
                     audioOuvinte.pause();
                     playBtnPrevizualizar.style.display = "inline-block";
@@ -1751,23 +1839,6 @@ function modulosPage(slideIndex) {
                 }
             });
 
-
-
-            // Evento para o botão de "Pause"
-            pauseBtnPrevizualizar.addEventListener("click", () => {
-
-                if (audioOuvinte) {
-                    verificarTentativas();
-                    audioOuvinte.pause();
-
-                    playBtnPrevizualizar.style.display = "inline-block";
-                    pauseBtnPrevizualizar.style.display = "none";
-                }
-            });
-
-
-
-            // ============================================================================================================= \\
 
 
             const abrirOuvinteDownload = document.querySelector(".openDownload-btn")
@@ -1843,8 +1914,8 @@ function modulosPage(slideIndex) {
                     return;
                 }
 
-                // Configurando a voz padrão (pode ser ajustada conforme desejado)
-                const voz = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google US English" && console.log(voice));
+                // Configurando a voz padrão (pode ser ajustada conforme desejado) Google português do Brasil
+                const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === "pt-Br");
 
                 // Criar a síntese de fala a partir da posição inicial
                 const utterance = new SpeechSynthesisUtterance(texto.substring(posicaoInicial));
