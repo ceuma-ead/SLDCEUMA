@@ -91,7 +91,7 @@
 /* overflow-y: scroll; */
 
 /* On screens that are 1200px wide or less, the background color is lightgray */
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1520px) {
 
     .pagina-tipo-texto--box-texto p {
         font-size: calc(var(--font-para-paragrafos) + 2) !important;

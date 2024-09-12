@@ -340,14 +340,16 @@ async function createAnnotation() {
         const {
             value: texto
         } = await Swal.fire({
-            title: 'Crie sua anotação',
+            title: 'Tomar nota',
             input: 'textarea',
-            inputLabel: 'Texto da Anotação',
-            inputPlaceholder: 'Digite o texto da anotação aqui...',
+            inputLabel: '',
+            inputPlaceholder: 'Faça sua anotação aqui...',
             inputAttributes: {
-                'aria-label': 'Digite o texto da anotação aqui'
+                'aria-label': 'Faça sua anotação aqui'
             },
             showCancelButton: true,
+            confirmButtonText: 'Anotar',
+            cancelButtonText: 'Cancelar',
             heightAuto: false,
             withAuto:false
         });
