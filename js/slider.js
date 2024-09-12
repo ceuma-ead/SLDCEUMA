@@ -1524,7 +1524,7 @@ function modulosPage(slideIndex) {
                                 </summary>
                                 <div class="preview-controls">
                                     <button id="btnPlayPrevizualizar" class="btn btn-play">Play</button>
-                                    <button id="btnPausePrevizualizar" class="btn btn-pause" style="display:none;">Pause</button>
+                                    <button id="btnPausePrevizualizar" class="btn btn-pause align-items-center gap-3" style="display:none;">Pause <div class="loader-speech"></div></button>
                                 </div>
                             </details>
 
@@ -1582,6 +1582,14 @@ function modulosPage(slideIndex) {
             const tentativasSpan = document.querySelector(".attempts-counter"); // Elemento que exibe as tentativas
             const containerTentativas = document.querySelector(".preview-controls"); // Container para exibir o relógio
             let tentativas = 0; // Variável para controlar o número de tentativas
+            const playBtnPrevizualizar = document.getElementById("btnPlayPrevizualizar");
+            const pauseBtnPrevizualizar = document.getElementById("btnPausePrevizualizar");
+            const loaderSpeech = document.getElementById("loader-speech");
+            let audioOuvinte = null;  // Variável global para armazenar a instância atual do áudio
+            let audioBlobUrl = null;  // Variável para armazenar o URL do blob atual
+            let audioGerado = false;  // Variável para verificar se o áudio já foi gerado
+
+
 
             // Função para verificar e atualizar as tentativas
             function verificarTentativas() {
@@ -1619,7 +1627,10 @@ function modulosPage(slideIndex) {
 
                     const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
                     const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
+                    if(audioOuvinte){
+                        audioOuvinte.pause();
+                    }
+                    
                     containerTentativas.innerHTML = `
                         <div class="relogio-container" style="display: flex; align-items: center; gap: 10px;">
                             <img src="https://img.icons8.com/ios-filled/50/000000/hourglass--v1.png" alt="Relógio ícone" style="width: 30px; height: 30px;">
@@ -1644,12 +1655,6 @@ function modulosPage(slideIndex) {
             // Chama a função ao carregar a página para verificar as tentativas atuais
             verificarTentativas();
 
-            const playBtnPrevizualizar = document.getElementById("btnPlayPrevizualizar");
-            const pauseBtnPrevizualizar = document.getElementById("btnPausePrevizualizar");
-            let audioOuvinte = null;  // Variável global para armazenar a instância atual do áudio
-            let audioBlobUrl = null;  // Variável para armazenar o URL do blob atual
-            let audioGerado = false;  // Variável para verificar se o áudio já foi gerado
-
             // Função para sintetizar e gerar o áudio
             function gerarAudio() {
                 const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
@@ -1669,6 +1674,10 @@ function modulosPage(slideIndex) {
                         audioOuvinte = new Audio(audioBlobUrl); // Define o áudio gerado
                         audioGerado = true;  // Marca que o áudio foi gerado
 
+                        playBtnPrevizualizar.innerHTML = `
+                            Play
+                        `
+
                         // Quando o áudio estiver pronto, atualiza a interface
                         audioOuvinte.addEventListener("loadeddata", () => {
                             const durationElement = document.querySelector(".time .length");
@@ -1683,7 +1692,8 @@ function modulosPage(slideIndex) {
 
                         // Alternar entre os botões "Play" e "Pause"
                         playBtnPrevizualizar.style.display = "none";
-                        pauseBtnPrevizualizar.style.display = "inline-block";
+                        pauseBtnPrevizualizar.style.display = "flex";
+                 
 
                         // Quando o áudio parar, volta para o botão "Play"
                         audioOuvinte.onended = () => {
@@ -1698,26 +1708,28 @@ function modulosPage(slideIndex) {
 
             // Evento para o botão de "Play"
             playBtnPrevizualizar.addEventListener("click", () => {
-                verificarTentativas();
+
                 if (tentativas < maxTentativas) {
                     incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
                     if (!audioGerado) {
                         gerarAudio();
                     } else {
+                        verificarTentativas();
                         audioOuvinte.play();
+                        
                         playBtnPrevizualizar.style.display = "none";
-                        pauseBtnPrevizualizar.style.display = "inline-block";
+                        pauseBtnPrevizualizar.style.display = "flex";
                     }
                 }
             });
 
             // Evento para o botão de "Pause"
             pauseBtnPrevizualizar.addEventListener("click", () => {
+           
                 if (audioOuvinte) {
+                    verificarTentativas();
                     audioOuvinte.pause();
-                    playBtnPrevizualizar.innerHTML = `
-                        Play
-                    `
+                    
                     playBtnPrevizualizar.style.display = "inline-block";
                     pauseBtnPrevizualizar.style.display = "none";
                 }
