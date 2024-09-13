@@ -2123,12 +2123,12 @@ function modulosPage(slideIndex) {
 
                 // pegar container de renderização
                 const containerToolbar = toolbarRender.idRef
-                // console.log(containerToolbar)
+                console.log(containerToolbar)
                 const containerPage = document.querySelectorAll(containerToolbar)[slideIndex - 1];
                 
                 if(containerPage){
                     // criar um marcador de referencia para a página
-                    containerPage.classList.add(toolbarRender.refTools)
+                    // containerPage.classList.add();
                     
 
                 }

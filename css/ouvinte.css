@@ -33,7 +33,8 @@
     gap: 0.5rem;
     width: 100%;
     height: 3rem;
-    font-size: 1.2rem;
+    font-size: 16px !important;
+    font-weight: 100;
 
 }
 
@@ -45,7 +46,7 @@
 
 
 .loader-speech  {
-    width: 30px;
+    width: 19px;
     aspect-ratio: .75;
     --c: no-repeat linear-gradient(#ffffff 0 0);
     background: 

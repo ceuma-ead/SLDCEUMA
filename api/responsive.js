@@ -170,8 +170,27 @@ const responsivo = [
                 }
 
                 label {
-        font-size: 0.8rem;
-}
+                    font-size: 0.8rem;
+                }
+
+
+                .accordion-body {
+                gap: 0 1rem !important;
+                display: flex !important;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+                .modal-content{
+                width: 81% !important;
+                
+                }
+
+                #button-Dowload-Ouvinte{
+                max-width: 82%;
+                height: 2rem !important;
+                }
     `,
 
 
