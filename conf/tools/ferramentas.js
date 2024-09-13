@@ -40,6 +40,7 @@ function eventButton() {
         }
 
     }
+    
 
     // Reaplica o evento de clique para o botão de tela cheia
     const btnScreen = document.querySelector(".btn-fullscreen");

@@ -183,8 +183,7 @@ const responsivo = [
             }
 
                 .modal-content{
-                width: 81% !important;
-                
+                width: 81% !important;                
                 }
 
                 #button-Dowload-Ouvinte{
