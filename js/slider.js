@@ -1939,8 +1939,8 @@ function modulosPage(slideIndex) {
                 }
 
                 // Configurando a voz padrão (pode ser ajustada conforme desejado) 
-                const voz = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google português do Brasil");
-                // const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === "pt-Br");
+                // const voz = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google português do Brasil");
+                const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === "pt-Br");
 
                 // Criar a síntese de fala a partir da posição inicial
                 const utterance = new SpeechSynthesisUtterance(texto.substring(posicaoInicial));
