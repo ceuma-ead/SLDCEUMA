@@ -1,12 +1,13 @@
 
 #toolbar {
-    display:block;
+    display:none;
     position: absolute;
     background: #D9D9D9;
     padding: 4px;
     border-radius: 5px;
     align-items: center;
     z-index: 10;
+    
 
 }
 .toolbar-container {
@@ -15,16 +16,18 @@
     background-color: #D9D9D9;
     padding: 0.3rem;
     border: 1px solid black;
+    gap: 0.5rem;
 }
 
 .box-marca-cores {
     display: none;
     position: absolute;
-    width: 40%;
+    width: 100%;
     height: 50%;
     /* background: #D9D9D9; */
     top: -100%;
     left: 0%;
+
     
     transform: translate(0, 50%);
     -webkit-transform: translate(0, -50%);
@@ -37,13 +40,13 @@
    
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
     background: #D9D9D9;
     /*background: rebeccapurple;
     */border: 1px solid black;
-    gap: 0.1rem;
-    padding: 0.2rem;
+    gap: 0.5rem;
+    padding: 1rem;
     border-radius:0.4rem;
     -webkit-border-radius:0.4rem;
     -moz-border-radius:0.4rem;

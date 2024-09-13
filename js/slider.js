@@ -2229,6 +2229,7 @@ function modulosPage(slideIndex) {
                         }
                     }
 
+                 
                     document.addEventListener('mouseup', function (e) {
                         const selection = window.getSelection();
                         const textoSelecionado = selection.toString().trim();
@@ -2283,6 +2284,11 @@ function modulosPage(slideIndex) {
                         }
                     });
 
+
+                    function fecharBoxCores(){
+                        document.getElementById('boxMarcaCores').style.display = 'none';
+                    }
+
                     // Ocultar toolbar ao clicar fora dela
                     document.addEventListener('mousedown', function (e) {
                         if (!document.getElementById('toolbar').contains(e.target)) {
@@ -2295,6 +2301,7 @@ function modulosPage(slideIndex) {
                     document.getElementById('destacar').addEventListener('click', function () {
                         const boxMarcaCores = document.getElementById('boxMarcaCores');
                         boxMarcaCores.style.display = 'block';
+                     
                     });
 
                     // Aplicar cor ao texto selecionado ao clicar na paleta de cores
@@ -2303,7 +2310,8 @@ function modulosPage(slideIndex) {
                             const corFundo = this.getAttribute('data-cor');
                             const corTexto = this.getAttribute('data-color');
                             aplicarDestaqueSelecionado(corFundo, corTexto);
-                            document.getElementById('boxMarcaCores').style.display = 'none';
+                            fecharBoxCores()
+                            
                         });
                     });
 
@@ -2410,9 +2418,13 @@ function modulosPage(slideIndex) {
                     // Função para simular busca no dicionário
                     async function buscarNoDicionario(palavra) {
                         if (palavra) {
+                            const toolbar = document.getElementById('toolbar');
+                            // Se mais de um parágrafo foi selecionado, esconder a toolbar
+                            toolbar.style.display = 'none';
+                            document.getElementById('search-input').value = palavra.toLowerCase();
                             fecharMenuDicionario();
                             abrirDicionario();
-                            await buscarPalavra(palavra);
+                            await buscarPalavra(palavra.toLowerCase());
                         } else {
                             alert("Por favor, selecione uma palavra válida.");
                         }
@@ -2422,6 +2434,7 @@ function modulosPage(slideIndex) {
                     document.getElementById('dicionario-toolbar').addEventListener('click', function () {
                         const primeiraPalavra = obterPrimeiraPalavra();
 
+                        fecharBoxCores()
                         if (primeiraPalavra) {
                             buscarNoDicionario(primeiraPalavra);
                         } else {
@@ -2429,6 +2442,9 @@ function modulosPage(slideIndex) {
                         }
                     });
 
+                    document.getElementById('resumo').addEventListener('click', function () {
+                       fecharBoxCores()
+                    });
 
                 }
 
