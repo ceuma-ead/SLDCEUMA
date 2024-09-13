@@ -1353,7 +1353,7 @@ function deleteCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
-
+// Modulos da página
 function modulosPage(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -1572,6 +1572,7 @@ function modulosPage(slideIndex) {
             // Elementos de controle do áudio
             const playBtn = containerAudio.querySelector(".playOuvint-btn");
             const stopBtn = containerAudio.querySelector(".stopOuvint-btn");
+
             const textoOuvinte = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
 
 
@@ -1600,7 +1601,7 @@ function modulosPage(slideIndex) {
 
             // ========================================== | Previzualizar Áudio | ========================================= //
 
-            const maxTentativas = 3; // Limite máximo de tentativas
+            const maxTentativas = 2; // Limite máximo de tentativas
             const tentativasSpan = document.querySelector(".attempts-counter"); // Elemento que exibe as tentativas
             const containerTentativas = document.querySelector(".preview-controls"); // Container para exibir o relógio
             const previewSection = document.querySelector(".preview-section");
@@ -1612,7 +1613,8 @@ function modulosPage(slideIndex) {
             let audioBlobUrl = null;  // Variável para armazenar o URL do blob atual
             let audioGerado = false;  // Variável para verificar se o áudio já foi gerado
             previewSection.setAttribute('open', true)
-
+            // Tempo de expiração do chave cookie para reinicar tentativas api
+            const expiracaoChaveCookie = 60
 
             // Função para verificar e atualizar as tentativas
             function verificarTentativas() {
@@ -1627,8 +1629,8 @@ function modulosPage(slideIndex) {
                         iniciarRelogio(new Date(expiracao));
                     } else {
                         const novaExpiracao = new Date();
-                        novaExpiracao.setTime(novaExpiracao.getTime() + 30 * 60 * 1000); // 30 minutos
-                        setCookie("expiracaoAudio", novaExpiracao.toUTCString(), 30);
+                        novaExpiracao.setTime(novaExpiracao.getTime() + expiracaoChaveCookie * 60 * 1000); // 30 minutos
+                        setCookie("expiracaoAudio", novaExpiracao.toUTCString(), expiracaoChaveCookie);
                         iniciarRelogio(novaExpiracao);
                     }
 
@@ -1638,7 +1640,7 @@ function modulosPage(slideIndex) {
             // Função para incrementar as tentativas
             function incrementarTentativas() {
                 tentativas++;
-                setCookie("tentativasAudio", tentativas, 30); // Expira em 30 minutos
+                setCookie("tentativasAudio", tentativas, expiracaoChaveCookie); // Expira em expiracaoChaveCookie - 2 !! valor escolhido minutos
                 tentativasSpan.textContent = `Tentativas ${tentativas}/${maxTentativas}`;
             }
 
@@ -1668,9 +1670,10 @@ function modulosPage(slideIndex) {
                         clearInterval(intervalo);
                         deleteCookie("tentativasAudio");
                         deleteCookie("expiracaoAudio");
-                        containerTentativas.innerHTML = "Você pode tentar novamente!";
+                        containerTentativas.innerHTML = "Acesso liberado recarregue a página!";
                         tentativasSpan.textContent = `Tentativas 0/${maxTentativas}`;
                         playBtnPrevizualizar.disabled = false; // Reabilita o botão "Play"
+                        verificarTentativas();
                     }
                 }, 1000);
             }
@@ -1956,10 +1959,12 @@ function modulosPage(slideIndex) {
                     isPlaying = false;
                     resetPlayButton(); // Reseta o botão para "Play"
                 };
+                // criar um modulo de Erro para analizar a Voz
 
-                // criar uma Previzualizador no Audio para o audio Gerado
-
-
+                utterance.onerror = (event) =>{
+                    console.log(event)
+                    
+                }
                 // Iniciar a fala
                 window.speechSynthesis.speak(utterance);
             }
@@ -2107,6 +2112,32 @@ function modulosPage(slideIndex) {
             });
 
         });
+
+        // Modulo de Toolbar
+        const moduloToolbar = pageData.paramentros.modulos
+
+        moduloToolbar.forEach((modulo)=>{
+            const toolbarRender = modulo.toolbar
+            
+            if(toolbarRender){
+
+                // pegar container de renderização
+                const containerToolbar = toolbarRender.idRef
+                // console.log(containerToolbar)
+                const containerPage = document.querySelectorAll(containerToolbar)[slideIndex - 1];
+                
+                if(containerPage){
+                    // criar um marcador de referencia para a página
+                    containerPage.classList.add(toolbarRender.refTools)
+                    
+
+                }
+
+            }else{
+                console.log("Toolbar Não Ativo para Essa página")
+            }
+        })
+        
     }
 }
 

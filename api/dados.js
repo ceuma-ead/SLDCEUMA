@@ -50,7 +50,7 @@ const api = [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
@@ -58,7 +58,7 @@ const api = [
                         `
                     },
                     "Videoaula": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
@@ -66,7 +66,7 @@ const api = [
                         `
                     },
                     "Ferramentas": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
                                 <i data-lucide="pencil-ruler"></i>
@@ -74,7 +74,7 @@ const api = [
                         `
                     },
                     "FullScreen": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
                                 <i data-lucide="maximize-2"></i>
@@ -536,6 +536,29 @@ const api = [
                     "audio":{
                         "ativo":true,
                         "idRef":".pagina-tipo-texto--box-texto"
+                    },
+                    "toolbar":{
+                        "ativo":true,
+                        "refTools":"marcador",
+                        "idRef":".pagina-tipo-texto--box-texto",
+                        "blocoRenderizacao":`
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo"><i data-lucide="file-text"></i> Resumo</button>
+                                    <button class="toolbar-button" id="destacar"><i data-lucide="pencil"></i> Destacar</button>
+                                    <button class="toolbar-button" id="dicionario-toolbar"><i data-lucide="search"></i> Dicionário</button>
+                                    <button class="toolbar-button" id="limpar"><i data-lucide="eraser"></i> Limpar</button>
+                                </div>
+                            </div>
+
+                       `
                     }
                 }
             ]
@@ -1249,7 +1272,6 @@ const api = [
                 // "padding": "0.3rem",
 
             }],
-
             "cores": {
                 // "sidebar": "red",
                 // "fundo": "red",
@@ -1576,7 +1598,6 @@ const api = [
                     }
                 }
             ]
-
         }
     },
 
