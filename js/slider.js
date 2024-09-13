@@ -2140,8 +2140,6 @@ function modulosPage(slideIndex) {
                     div.innerHTML = `${toolbar}`
                     document.body.appendChild(div)
 
-
-
                     let selectedRange = null;
 
                     // Função para gerar um ID único para cada destaque
@@ -2343,7 +2341,7 @@ function modulosPage(slideIndex) {
 
                     // Gerar IDs únicos para cada bloco com classe 'editar'
                     document.querySelectorAll(`.${toolbarRender.refTools}`).forEach((element, index) => {
-                        element.id = `${toolbarRender.refTools}-${index}`;
+                        element.id = `editar-${index}`;
                     });
 
 
@@ -2357,7 +2355,7 @@ function modulosPage(slideIndex) {
                         }
 
                         const range = selection.getRangeAt(0);
-                        const container = range.startContainer.parentElement.closest(`${toolbarRender.refTools}`); // Encontra o container (div com classe 'editar')
+                        const container = range.startContainer.parentElement.closest(`.${toolbarRender.refTools}`); // Encontra o container (div com classe 'editar')
                         const paragrafos = container.querySelectorAll('p');
                         const paragrafoSelecionado = range.startContainer.parentElement;
 
@@ -2421,7 +2419,6 @@ function modulosPage(slideIndex) {
                             alert("Por favor, selecione uma palavra válida.");
                         }
                     });
-
 
 
                 }
