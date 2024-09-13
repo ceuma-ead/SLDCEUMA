@@ -1423,7 +1423,7 @@ function modulosPage(slideIndex) {
                                 .preview-section {
                                     border: 2px solid #f1f1f1;
                                     border-radius: 12px;
-                                    padding: 20px;
+                                    padding: .5rem;
                                     background-color: #f9fafc;
                                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                                     transition: all 0.3s ease;
@@ -1443,7 +1443,7 @@ function modulosPage(slideIndex) {
                                     font-size: 18px;
                                     font-weight: 600;
                                     color: #333;
-                                    padding-bottom: 10px;
+                                    // padding-bottom: 10px;
                                 }
 
                                 .preview-title {
@@ -1481,16 +1481,20 @@ function modulosPage(slideIndex) {
                                 }
 
                                 .btn-play {
-                                    background-color: #28a745;
+                                    font-size: 16px !important;
+                                    background-color: #f15f0e;
+                                    font-weight: 100;
                                     color: white;
                                 }
 
                                 .btn-play:hover {
-                                    background-color: #218838;
+                                    background-color: #f15f0e;
                                     transform: scale(1.05);
                                 }
 
                                 .btn-pause {
+                                    font-size: 16px !important;
+                                    font-weight: 100;
                                     background-color: #dc3545;
                                     color: white;
                                 }
@@ -1519,13 +1523,14 @@ function modulosPage(slideIndex) {
                                
                                <details class="preview-section mb-3 open">
                                 <summary class="preview-summary">
-                                    <span class="preview-title">Pré-visualizar</span>
-                                    <span class="preview-attempts">Disponibilidade : <span class="attempts-counter border-danger">0/3</span></span>
-                                </summary>
                                 <div class="preview-controls">
-                                    <button id="btnPlayPrevizualizar" class="btn btn-play">Play</button>
-                                    <button id="btnPausePrevizualizar" class="btn btn-pause align-items-center gap-3" style="display:none;">Pause <div class="loader-speech"></div></button>
+                                    <button id="btnPlayPrevizualizar" class="btn btn-play">Pré-visualizar</button>
+                                    <button id="btnPausePrevizualizar" class="btn btn-pause align-items-center gap-3" style="display:none;">Pausar <div class="loader-speech"></div></button>
                                 </div>
+                                    <!-- <span class="preview-title">Pré-visualizar</span> -->
+                                    <span class="preview-attempts">Pré-visualizações : <span class="attempts-counter border-danger">0/3</span></span>
+                                </summary>
+                                
                             </details>
 
 
@@ -1618,7 +1623,7 @@ function modulosPage(slideIndex) {
             function verificarTentativas() {
                 tentativas = getCookie("tentativasAudio");
                 tentativas = tentativas ? parseInt(tentativas) : 0; // Se não existir, começa com 0
-                tentativasSpan.textContent = `Tentativas ${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
+                tentativasSpan.textContent = `${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
 
                 // Se já alcançou o limite de tentativas, desabilita o botão Play
                 if (tentativas >= maxTentativas) {
@@ -1639,7 +1644,7 @@ function modulosPage(slideIndex) {
             function incrementarTentativas() {
                 tentativas++;
                 setCookie("tentativasAudio", tentativas, 30); // Expira em 30 minutos
-                tentativasSpan.textContent = `Tentativas ${tentativas}/${maxTentativas}`;
+                tentativasSpan.textContent = ` ${tentativas}/${maxTentativas}`;
             }
 
             // Função para iniciar o relógio de contagem regressiva
@@ -1657,7 +1662,7 @@ function modulosPage(slideIndex) {
                     containerTentativas.innerHTML = `
                         <div class="relogio-container" style="display: flex; align-items: center; gap: 10px;">
                             <img src="https://img.icons8.com/ios-filled/50/000000/hourglass--v1.png" alt="Relógio ícone" style="width: 30px; height: 30px;">
-                            <div style="font-size: 18px; font-weight: bold;">
+                            <div style="font-size: 14px; font-weight: bold;">
                                 Tente Novamente em <span style="color: red;">${minutos}m ${segundos}s</span>
                             </div>
                         </div>

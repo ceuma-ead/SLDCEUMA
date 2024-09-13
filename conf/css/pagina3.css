@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  --cardsGap: 1rem;
+  --cardsGap: .8rem;
   gap: var(--cardsGap);
   padding-bottom: var(--cardsGap);
   width: 100%;
