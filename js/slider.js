@@ -1523,8 +1523,8 @@ function modulosPage(slideIndex) {
                                     <span class="preview-attempts">Disponibilidade : <span class="attempts-counter border-danger">0/3</span></span>
                                 </summary>
                                 <div class="preview-controls">
-                                    <button id="btnPlayPrevizualizar" class="btn btn-play">Play</button>
-                                    <button id="btnPausePrevizualizar" class="btn btn-pause align-items-center gap-3" style="display:none;">Pause <div class="loader-speech"></div></button>
+                                    <button id="btnPlayPrevizualizar" class="btn btn-play">Pré-visualizar</button>
+                                    <button id="btnPausePrevizualizar" class="btn btn-pause align-items-center gap-3" style="display:none;">Parar <div class="loader-speech"></div></button>
                                 </div>
                             </details>
 
@@ -1845,7 +1845,7 @@ function modulosPage(slideIndex) {
                         audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
                         audioGerado = true;  // Marca que o áudio foi gerado
 
-                        playBtnPrevizualizar.innerHTML = `Play`;
+                        playBtnPrevizualizar.innerHTML = `Pré-visualizar`;
 
                         // Quando o áudio estiver pronto, atualiza a interface
                         audioOuvinte.addEventListener("loadeddata", () => {
