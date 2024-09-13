@@ -2133,10 +2133,17 @@ function modulosPage(slideIndex) {
 
 
                 if (containerPage) {
+                    const classRemover = document.querySelector(".div-render-toolbar");
+                    
+                    if(classRemover){
+                        $(".div-render-toolbar").html("");
+                    }
                     // criar um marcador de referencia para a página
                     containerPage.classList.add(toolbarRender.refTools);
                     let div = document.createElement("div");
+                    div.className = `div-render-toolbar`;
                     const toolbar = toolbarRender.blocoRenderizacao;
+                    
                     div.innerHTML = `${toolbar}`
                     document.body.appendChild(div)
 
@@ -2401,9 +2408,11 @@ function modulosPage(slideIndex) {
                     }
 
                     // Função para simular busca no dicionário
-                    function buscarNoDicionario(palavra) {
+                    async function buscarNoDicionario(palavra) {
                         if (palavra) {
-                            alert(`Busca no dicionário para a palavra: ${palavra}`);
+                            fecharMenuDicionario();
+                            abrirDicionario();
+                            await buscarPalavra(palavra);
                         } else {
                             alert("Por favor, selecione uma palavra válida.");
                         }
@@ -2424,6 +2433,7 @@ function modulosPage(slideIndex) {
                 }
 
             } else {
+                $(".div-render-toolbar").html(``);
                 console.log("Toolbar Não Ativo para Essa página")
             }
         })
