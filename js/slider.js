@@ -1847,7 +1847,7 @@ function modulosPage(slideIndex) {
                         audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
                         audioGerado = true;  // Marca que o áudio foi gerado
 
-                        playBtnPrevizualizar.innerHTML = `Play`;
+                        playBtnPrevizualizar.innerHTML = `Continuar`;
 
                         // Quando o áudio estiver pronto, atualiza a interface
                         audioOuvinte.addEventListener("loadeddata", () => {
