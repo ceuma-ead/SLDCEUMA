@@ -1516,7 +1516,7 @@ function modulosPage(slideIndex) {
 
                                 </style>
                                
-                               
+                
                                <details class="preview-section mb-3 open">
                                 <summary class="preview-summary">
                                     <span class="preview-title">Pré-visualizar</span>
