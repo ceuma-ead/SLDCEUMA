@@ -2,7 +2,6 @@ const _prefixAssets = "./assets/"
 
 const api = [
 
-    
     // PAGINA 1
     {
         "pagina": 1,
@@ -540,7 +539,7 @@ const api = [
                     },
                     "toolbar":{
                         "ativo":true,
-                        "refTools":"marcador",
+                        "refTools":"editar",
                         "idRef":".pagina-tipo-texto--box-texto",
                         "blocoRenderizacao":`
                             <div id="toolbar" style="display: none; position: absolute;">

@@ -1,4 +1,3 @@
-@import url(../css/toolbar.css);
 @import url(../css/texto.css);
 @import url(../css/menu_sidebar.css);
 @import url(../css/annotation.css);
@@ -7,6 +6,7 @@
 @import url(../css/spinner.css);
 @import url(../css/tools.css);
 @import url(../css/dicionario.css);
+@import url(../css/toolbar.css);
 @import url(../css/variaveis.css);
 
 /* ------ Animações ------ */
