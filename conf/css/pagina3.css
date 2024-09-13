@@ -71,6 +71,7 @@
 }
 
 .olcards li .content .text {
+  text-align: justify;
   font-size: var(--font-para-paragrafos);
 }
 
