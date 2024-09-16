@@ -2134,8 +2134,8 @@ function modulosPage(slideIndex) {
 
                 if (containerPage) {
                     const classRemover = document.querySelector(".div-render-toolbar");
-                    
-                    if(classRemover){
+
+                    if (classRemover) {
                         $(".div-render-toolbar").html("");
                     }
                     // criar um marcador de referencia para a página
@@ -2143,7 +2143,7 @@ function modulosPage(slideIndex) {
                     let div = document.createElement("div");
                     div.className = `div-render-toolbar`;
                     const toolbar = toolbarRender.blocoRenderizacao;
-                    
+
                     div.innerHTML = `${toolbar}`
                     document.body.appendChild(div)
 
@@ -2229,7 +2229,7 @@ function modulosPage(slideIndex) {
                         }
                     }
 
-                 
+
                     document.addEventListener('mouseup', function (e) {
                         const selection = window.getSelection();
                         const textoSelecionado = selection.toString().trim();
@@ -2285,7 +2285,7 @@ function modulosPage(slideIndex) {
                     });
 
 
-                    function fecharBoxCores(){
+                    function fecharBoxCores() {
                         document.getElementById('boxMarcaCores').style.display = 'none';
                     }
 
@@ -2301,7 +2301,7 @@ function modulosPage(slideIndex) {
                     document.getElementById('destacar').addEventListener('click', function () {
                         const boxMarcaCores = document.getElementById('boxMarcaCores');
                         boxMarcaCores.style.display = 'block';
-                     
+
                     });
 
                     // Aplicar cor ao texto selecionado ao clicar na paleta de cores
@@ -2311,7 +2311,7 @@ function modulosPage(slideIndex) {
                             const corTexto = this.getAttribute('data-color');
                             aplicarDestaqueSelecionado(corFundo, corTexto);
                             fecharBoxCores()
-                            
+
                         });
                     });
 
@@ -2415,6 +2415,27 @@ function modulosPage(slideIndex) {
                         return primeiraPalavra;
                     }
 
+
+                    function obterParagrafoCompleto() {
+                        const selection = window.getSelection();
+                        const range = selection.getRangeAt(0);
+                    
+                        // Obter o elemento que contém a seleção (o nó)
+                        const elementoSelecionado = range.commonAncestorContainer;
+                    
+                        // Verifica se a seleção está dentro de um parágrafo (<p>)
+                        const paragrafo = elementoSelecionado.nodeType === 3 ? elementoSelecionado.parentNode : elementoSelecionado;
+                    
+                        if (paragrafo.tagName === "P") {
+                            // Retorna o texto completo do parágrafo
+                            return paragrafo.textContent.trim();
+                        } else {
+                            return null;
+                        }
+                    }
+                    
+
+
                     // Função para simular busca no dicionário
                     async function buscarNoDicionario(palavra) {
                         if (palavra) {
@@ -2441,9 +2462,17 @@ function modulosPage(slideIndex) {
                             alert("Por favor, selecione uma palavra válida.");
                         }
                     });
+                    
 
                     document.getElementById('resumo').addEventListener('click', function () {
-                       fecharBoxCores()
+                        const textoResumo = obterParagrafoCompleto();
+                        fecharBoxCores()
+                        fecharResumo()
+                        resumoAI(textoResumo).then(resumo => {
+                            console.log('Resumo retornado:', resumo);
+                        });
+                        abrirResumo()
+
                     });
 
                 }

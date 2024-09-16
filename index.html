@@ -83,7 +83,7 @@
                 <div class="header-title">
                     <p></p>
                 </div>
-            
+
                 <!-- Menu Navigation  -->
                 <!-- Iniciando Menu Navigation -->
                 <div class="siderbar-container-menu">
@@ -244,36 +244,61 @@
                     </div>
                     <!-- Menu Dicionário -->
 
-
                     <!-- Menu Resumo -->
                     <div class="resumo-menu ">
                         <header>
                             <i
                                 class="text-light resumo-adds close_resumo"
                                 data-lucide="circle-x"></i>
+                            
                             <p>Resumo</p>
-                            <!-- <i class="text-light dicionario-adds"
-                                data-lucide="history"></i> -->
+                            <i class="text-light resumo-adds"
+                                data-lucide="history"></i>
                         </header>
 
                         <!-- Caixa para Renderizar os Itens -->
                         <div class="render-resumo" id="result-resumo">
                             <!-- Resultados vão aparecer aqui -->
-                            <div class="render-resumo-result">
-                                <span>Laboral</span>
+
+                            <div class="render-resumo-result" >  
+                                <!-- <span>Guerra Fria
+                                    <span
+                                        class="w-100">
+                                        <button class="btn btn-warning btn-dowload-resposta"><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-download"><path
+                                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline
+                                                    points="7 10 12 15 17 10" /><line
+                                                    x1="12" x2="12" y1="15"
+                                                    y2="3" /></svg></button>
+                                        <button id="btn-reprocessar-resposta" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-waypoints"><circle cx="12" cy="4.5" r="2.5"/><path d="m10.2 6.3-3.9 3.9"/><circle cx="4.5" cy="12" r="2.5"/><path d="M7 12h10"/><circle cx="19.5" cy="12" r="2.5"/><path d="m13.8 17.7 3.9-3.9"/><circle cx="12" cy="19.5" r="2.5"/></svg></button>
+                                    </span>
+                                </span>
                                 <p>
-                                    Significado de Laboral
-                                    adjetivo
-                                    Que se refere à labuta, ao labor, ao trabalho; trabalhista: ambiente laboral tranquilo.
-                                    Definição de Laboral
-                                    Classe gramatical: adjetivo de dois gênerosSeparação silábica: la-bo-ralPlural: laborais
-                                </p>
+                                    A Guerra Fria foi um período de tensão
+                                    geopolítica entre os Estados Unidos e a
+                                    União Soviética, que durou de 1947 a 1991.
+                                    Apesar de não haver combates diretos entre
+                                    as duas superpotências, a Guerra Fria foi
+                                    caracterizada por uma intensa corrida
+                                    armamentista nuclear, uma disputa ideológica
+                                    entre o capitalismo e o comunismo, e uma
+                                    série de conflitos indiretos em todo o
+                                    mundo.
+                                </p> -->
                             </div>
+
                         </div>
 
                         <!-- Loader (escondido inicialmente) -->
-                        <div id="loading-resumo"
-                            style="display: none;"></div>
+
+                        <div id="loading-resumo"></div>
 
                         <!-- Caixa para Pesquisa -->
                         <!-- <footer>
@@ -443,7 +468,6 @@
         <script type="text/javascript" src="./api/index.js"></script>
         <!-- Arquivo da Api -->
 
-        
         <!-- Script Dicionario -->
         <script src="./modules/dicionario.js"></script>
         <!-- Script Dicionario -->
@@ -473,9 +497,9 @@
         <script src="./conf/tools/ferramentas.js"></script>
         <!-- Script para adcionar Ferramentas na Página -->
 
-         <!-- Script para adcionar Ferramentas de AI generativa na Página -->
-         <script src="./modules/ceumaAI.js"></script>
-          <!-- Script para adcionar Ferramentas de AI generativa na Página -->
+        <!-- Script para adcionar Ferramentas de AI generativa na Página -->
+        <script src="./modules/ceumaAI.js"></script>
+        <!-- Script para adcionar Ferramentas de AI generativa na Página -->
 
         <script type="text/javascript">
             $(function () {

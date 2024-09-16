@@ -144,6 +144,20 @@ function eventButton(API = "", INDEX = "") {
     });
 
 
+    const abri_resumo = document.querySelectorAll('.abrir-resumo');
+    const fechar_resumo = document.querySelector('.close_resumo');
+    fechar_resumo.addEventListener("click", function (event) {
+        fecharResumo();
+    });
+
+    abri_resumo.forEach((openResumo, index) => {
+        openResumo.addEventListener("click", function (event) {
+            event.stopPropagation();
+            abrirResumo();
+        });
+    });
+
+
     const containerBoxMarcador = API;
 
     // Verifica se a API não é nula ou indefinida antes de prosseguir

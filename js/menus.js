@@ -170,7 +170,7 @@ function fecharMenuAnotacoes() {
 // Função para abrir o dicionário
 function abrirDicionario() {
     const menuDicionario = document.querySelector('.dicionario-menu');
-
+    fecharResumo()
     // Fecha o menu de anotações, se estiver aberto
 
     // Alterna a classe para abrir ou fechar o menu
@@ -194,7 +194,7 @@ function abrirDicionario() {
             if (data && _dicionarioModules) {
 
                 if (_dicionarioModules.menu_dicionario) {
-
+                    
                     menuDicionario.classList.toggle('open');
                 } else {
                     // Debug
@@ -231,7 +231,98 @@ function abrirDicionario() {
     // });
 }
 
-// Função para fechar o dicionário
+// Função para abrir o resumo
+function abrirResumo() {
+    const menuResumo = document.querySelector('.resumo-menu');
+
+    // Alterna a classe para abrir ou fechar o menu de resumo
+    menuResumo.classList.toggle('open');
+    fecharMenuDicionario()
+ 
+    // Fecha o menu quando clicar fora dele
+    // document.addEventListener('click', function (evento) {
+    //     if (menuResumo.classList.contains('open') && !menuResumo.contains(evento.target)) {
+    //         fecharResumo();
+    //     }
+    // });
+}
+
+// Função para fechar o menu de resumo
+function fecharResumo() {
+    const menuResumo = document.querySelector('.resumo-menu');
+
+    // Verifica se o menu está aberto
+    if (menuResumo.classList.contains('open')) {
+        menuResumo.classList.remove('open');
+    }
+}
+
+// Função para abrir o resumo
+function abrirDicionario() {
+    const menuDicionario = document.querySelector('.dicionario-menu');
+
+    // Fecha o menu de anotações, se estiver aberto
+
+    // Alterna a classe para abrir ou fechar o menu
+
+    $.ajax({
+        url: "./modules/config.json",
+        method: "GET",
+        cache: false,
+        success: (data) => {
+
+            const _dicionarioModules = data.dicionario
+
+            Object.values(_dicionarioModules).length === 0 ? _dicionarioModules = {
+
+                "ativo": true,
+                "dicionario": "dicio",
+                "menu_dicionario": true
+
+            } : _dicionarioModules;
+
+            if (data && _dicionarioModules) {
+
+                if (_dicionarioModules.menu_dicionario) {
+
+                    menuDicionario.classList.toggle('open');
+                    fecharResumo();
+                } else {
+                    // Debug
+
+                    Swal.fire({
+                        icon: "error",
+                        title: `Modulo Não Ativo`,
+                        heightAuto: false,
+                        footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+                    });
+                }
+            }
+
+
+        },
+        error: (error) => {
+            console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: `Erro Json Desativada`,
+                heightAuto: false,
+                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+            });
+        }
+    });
+
+
+
+    // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
+    // document.addEventListener('click', function (evento) {
+    //     if (menuDicionario.classList.contains('open') && !menuDicionario.contains(evento.target)) {
+    //         fecharMenuDicionario();
+    //     }
+    // });
+}
+
+// Função para fechar o resumo
 function fecharMenuDicionario() {
     const menuDicionario = document.querySelector('.dicionario-menu');
 
@@ -261,6 +352,3 @@ function fecharMenuDicionario() {
 
 
 }
-
-
-

@@ -50,7 +50,7 @@ const api = [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
-                        "ativa": false,
+                        "ativa": true,
                         "html": `
                             <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
                                 <i data-lucide="audio-lines"></i>
@@ -58,7 +58,7 @@ const api = [
                         `
                     },
                     "Videoaula": {
-                        "ativa": false,
+                        "ativa": true,
                         "html": `
                             <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
                                 <i data-lucide="video"></i>
@@ -74,7 +74,7 @@ const api = [
                         `
                     },
                     "FullScreen": {
-                        "ativa": false,
+                        "ativa": true,
                         "html": `
                             <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
                                 <i data-lucide="maximize-2"></i>
@@ -116,16 +116,30 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="file-text"></i>Resumo</button>
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="pencil"></i>Destacar</button>
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
                         `
                     },
-
                     "Notas": {
                         "ativa": true,
                         "html": `
@@ -135,7 +149,7 @@ const api = [
                     "Ouvinte": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="ear"></i>Ouvinte</button>
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
                     },
                     "Download": {
@@ -156,10 +170,8 @@ const api = [
                               <button><i data-lucide="x" id="close_box"></i></button>
                         `
                     },
-
-
-
                 }
+
             ],
             "cores": {
                 // "sidebar": "red",
@@ -332,7 +344,7 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="file-text"></i>Resumo</button>
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar": {
@@ -340,7 +352,7 @@ const api = [
                         "html": `
                              <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
                         `,
-                        "acionador":`
+                        "acionador": `
 
                             <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
                                 <div class="cores-destaque-inline-btn">
@@ -530,8 +542,6 @@ const api = [
             //         `
             //     }
             // ],
-
-
             // Animação para Texto API
             "animacao_texto": [{
                 "indice": "all", // 0 | all
@@ -546,17 +556,17 @@ const api = [
                     animate__animated animate__fadeInRigth animate__slow
                 `
             }],
-            "modulos":[
+            "modulos": [
                 {
-                    "audio":{
-                        "ativo":true,
-                        "idRef":".pagina-tipo-texto--box-texto"
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".pagina-tipo-texto--box-texto"
                     },
-                    "toolbar":{
-                        "ativo":true,
-                        "refTools":"editar",
-                        "idRef":".pagina-tipo-texto--box-texto",
-                        "blocoRenderizacao":`
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": "editar",
+                        "idRef": ".pagina-tipo-texto--box-texto",
+                        "blocoRenderizacao": `
                             <div id="toolbar" style="display: none; position: absolute;">
                                 <div class="toolbar-container">
                                     <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
@@ -754,13 +764,28 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="file-text"></i>Resumo</button>
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="pencil"></i>Destacar</button>
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
                         `
                     },
                     "Notas": {
@@ -880,11 +905,11 @@ const api = [
             },
 
             ],
-            "modulos":[
+            "modulos": [
                 {
-                    "audio":{
-                        "ativo":true,
-                        "idRef":".pagina-tipo-texto--box-texto"
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".pagina-tipo-texto--box-texto"
                     }
                 }
             ]
@@ -1014,13 +1039,28 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="file-text"></i>Resumo</button>
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="pencil"></i>Destacar</button>
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
                         `
                     },
                     "Notas": {
@@ -1095,7 +1135,6 @@ const api = [
             //         animate__animated animate__fadeInDown animate__slow
             //     `
             // }],
-
             // Animação pra toda Página
             "animacao_elemento": [{
                 "elemento": ".animation", // 0 | all
@@ -1114,11 +1153,11 @@ const api = [
 
 
             ],
-            "modulos":[
+            "modulos": [
                 {
-                    "audio":{
-                        "ativo":true,
-                        "idRef":".pagina-tipo-texto--box-texto"
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".pagina-tipo-texto--box-texto"
                     }
                 }
             ]
@@ -1243,13 +1282,28 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="file-text"></i>Resumo</button>
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="pencil"></i>Destacar</button>
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
                         `
                     },
                     "Notas": {
@@ -1347,11 +1401,11 @@ const api = [
             //         animate__animated animate__fadeInDown animate__slow
             //     `
             // }]
-            "modulos":[
+            "modulos": [
                 {
-                    "audio":{
-                        "ativo":true,
-                        "idRef":".pagina-tipo-texto--box-texto"
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".pagina-tipo-texto--box-texto"
                     }
                 }
             ]
@@ -1514,13 +1568,28 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="file-text"></i>Resumo</button>
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                         `
                     },
                     "Destacar": {
                         "ativa": true,
                         "html": `
-                             <button><i data-lucide="pencil"></i>Destacar</button>
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
                         `
                     },
                     "Notas": {
@@ -1619,11 +1688,11 @@ const api = [
                     animate__animated animate__fadeInDown animate__slow
                 `
             }],
-            "modulos":[
+            "modulos": [
                 {
-                    "audio":{
-                        "ativo":true,
-                        "idRef":".pagina-tipo-texto--box-texto"
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".pagina-tipo-texto--box-texto"
                     }
                 }
             ]
