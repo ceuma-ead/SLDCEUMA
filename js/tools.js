@@ -41,7 +41,7 @@ function renderTools(sliderIndex) {
         // Aplica novamente os ícones
         lucide.createIcons();
         if(typeof eventButton === "function"){
-            eventButton()
+            eventButton(ferramentas,pageData.pagina)
         }
         else{
             console.log("Funçao Não Renderizada...")
