@@ -2457,10 +2457,6 @@ function modulosPage(slideIndex) {
     }
 }
 
-
-
-
-
 // Atualiza o título e as cores ao inicializar
 
 updatePageTitle(savedPosition);

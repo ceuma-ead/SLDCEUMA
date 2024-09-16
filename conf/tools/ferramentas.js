@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function eventButton() {
+function eventButton(API = "", INDEX = "") {
     // Função para entrar/sair da tela cheia
     function Screen(tipo, elemento) {
         const elem = document.documentElement; // Seleciona o elemento raiz (html)
@@ -40,7 +40,7 @@ function eventButton() {
         }
 
     }
-    
+
 
     // Reaplica o evento de clique para o botão de tela cheia
     const btnScreen = document.querySelector(".btn-fullscreen");
@@ -78,7 +78,7 @@ function eventButton() {
         }
     }
 
-    
+
 
     // Evento para abrir/fechar caixas de ferramentas ao clicar no botão correspondente
     btnFerramentas.forEach((button, index) => {
@@ -129,7 +129,7 @@ function eventButton() {
         })
     })
 
-    
+
     const abri_dicionario = document.querySelectorAll('.abrir-dicionario');
     const fechar_dicionario = document.querySelector('.close_dicionario');
     fechar_dicionario.addEventListener("click", function (event) {
@@ -142,6 +142,81 @@ function eventButton() {
             abrirDicionario();
         });
     });
+
+
+    const containerBoxMarcador = API;
+
+    // Verifica se a API não é nula ou indefinida antes de prosseguir
+    if (containerBoxMarcador && Array.isArray(containerBoxMarcador)) {
+        containerBoxMarcador.forEach((ferramentaGrupo) => {
+            if (ferramentaGrupo) {
+                for (const key in ferramentaGrupo) {
+                    if (ferramentaGrupo.hasOwnProperty(key)) { // Verifica se a chave pertence ao objeto
+                        if (key !== 'container' && ferramentaGrupo[key].ativa) {
+
+                            if (ferramentaGrupo.container === "box-tools-inline") {
+                                const _acionadorConteudo = ferramentaGrupo[key].acionador;
+
+                                if (_acionadorConteudo) {
+                                    const btnMarcador = document.querySelectorAll(".abrir-destacar");
+                                    const containerMarcador = document.createElement("div");
+                                    containerMarcador.innerHTML = _acionadorConteudo;
+
+                                    const containerMarcadorBTN = document.querySelector(".acionador");
+                                    if (containerMarcadorBTN) {
+                                        containerMarcadorBTN.appendChild(containerMarcador);
+                                    } else {
+                                        console.error("Elemento .acionador não encontrado");
+                                    }
+
+                                    btnMarcador.forEach((btn, index) => {
+                                        btn.addEventListener("click", function (event) {
+                                            event.stopPropagation();
+                                            const containerMarcadorCores = document.querySelector("#boxMarcaCores-inline-btn");
+
+
+                                            Swal.fire({
+                                                title: "<strong>Como usar <u>Marca Texto</u></strong>",
+                                                icon: "info",
+                                                html: `
+                                                 você pode usar <b class="text-success">Selecione um Texto ou paragrafo</b>,
+                                                  <a href="#" autofocus>saiba mais sobre é função</a>.
+                                                  
+                                                `,
+                                                showCloseButton: true,
+                                                showCancelButton: true,
+                                                focusConfirm: false,
+                                                heightAuto: false,
+                                                confirmButtonText: `
+                                                  <i class="fa fa-thumbs-up"></i> Essa dica foi útil!
+                                                `,
+                                                confirmButtonAriaLabel: "Thumbs up, great!",
+                                                cancelButtonText: `
+                                                  <i class="fa fa-thumbs-down"></i>
+                                                `,
+                                                cancelButtonAriaLabel: "Thumbs down"
+                                              });
+
+                                            // if (containerMarcadorCores) {
+                                            //     containerMarcadorCores.style.display = "block";
+                                            // } else {
+                                            //     console.error("#boxMarcaCores-inline-btn não encontrado");
+                                            // }
+                                        });
+                                    });
+                                } else {
+                                    // console.warn("Marcador não encontrado para chave:", key);
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                console.warn("Grupo de ferramenta inválido:", ferramentaGrupo);
+            }
+        });
+    }
+
 
     // ======================================================= \\
 

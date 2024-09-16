@@ -83,6 +83,7 @@
                 <div class="header-title">
                     <p></p>
                 </div>
+            
                 <!-- Menu Navigation  -->
                 <!-- Iniciando Menu Navigation -->
                 <div class="siderbar-container-menu">
@@ -242,6 +243,50 @@
                         </footer>
                     </div>
                     <!-- Menu Dicionário -->
+
+
+                    <!-- Menu Resumo -->
+                    <div class="resumo-menu ">
+                        <header>
+                            <i
+                                class="text-light resumo-adds close_resumo"
+                                data-lucide="circle-x"></i>
+                            <p>Resumo</p>
+                            <!-- <i class="text-light dicionario-adds"
+                                data-lucide="history"></i> -->
+                        </header>
+
+                        <!-- Caixa para Renderizar os Itens -->
+                        <div class="render-resumo" id="result-resumo">
+                            <!-- Resultados vão aparecer aqui -->
+                            <div class="render-resumo-result">
+                                <span>Laboral</span>
+                                <p>
+                                    Significado de Laboral
+                                    adjetivo
+                                    Que se refere à labuta, ao labor, ao trabalho; trabalhista: ambiente laboral tranquilo.
+                                    Definição de Laboral
+                                    Classe gramatical: adjetivo de dois gênerosSeparação silábica: la-bo-ralPlural: laborais
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Loader (escondido inicialmente) -->
+                        <div id="loading-resumo"
+                            style="display: none;"></div>
+
+                        <!-- Caixa para Pesquisa -->
+                        <!-- <footer>
+                            <div class="searchResumo">
+                                <input id="search-input" type="text"
+                                    placeholder="Buscar no resumo...">
+                                <span class="buscarResumo"
+                                    id="buscarResumo"><i
+                                        data-lucide="send"></i></span>
+                            </div>
+                        </footer> -->
+                    </div>
+                    <!-- Menu Resumo -->
 
                 </div>
                 <!-- Menu Navigation -->
@@ -427,6 +472,10 @@
         <script src="./js/tools.js"></script>
         <script src="./conf/tools/ferramentas.js"></script>
         <!-- Script para adcionar Ferramentas na Página -->
+
+         <!-- Script para adcionar Ferramentas de AI generativa na Página -->
+         <script src="./modules/ceumaAI.js"></script>
+          <!-- Script para adcionar Ferramentas de AI generativa na Página -->
 
         <script type="text/javascript">
             $(function () {
