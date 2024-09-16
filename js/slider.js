@@ -2433,6 +2433,24 @@ function modulosPage(slideIndex) {
                             return null;
                         }
                     }
+
+                    function obterTextoSelecionado() {
+                        const selection = window.getSelection();
+                    
+                        // Verifica se há uma seleção ativa
+                        if (selection.rangeCount > 0) {
+                            const range = selection.getRangeAt(0);
+                    
+                            // Obtém o texto selecionado
+                            const textoSelecionado = range.toString().trim();
+                    
+                            // Retorna o texto selecionado
+                            return textoSelecionado;
+                        }
+                    
+                        return null; // Nenhuma seleção foi feita
+                    }
+                    
                     
 
 
@@ -2465,11 +2483,12 @@ function modulosPage(slideIndex) {
                     
 
                     document.getElementById('resumo').addEventListener('click', function () {
-                        const textoResumo = obterParagrafoCompleto();
+                        const textoResumo = obterTextoSelecionado();
                         fecharBoxCores()
                         fecharResumo()
+                        // alert(textoResumo)
                         resumoAI(textoResumo).then(resumo => {
-                            console.log('Resumo retornado:', resumo);
+                            // console.log('Resumo retornado:', resumo);
                         });
                         abrirResumo()
 
