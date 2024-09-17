@@ -352,5 +352,3 @@ function fecharMenuDicionario() {
 
 
 }
-
-// abrirResumo();
