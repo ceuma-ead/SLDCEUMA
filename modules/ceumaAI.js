@@ -8,7 +8,7 @@ function reduzirTexto(texto, tamanhoMaximo) {
 }
 
 // Função para obter o resumo usando a API de forma dinâmica
-async function resumoAI(tema, tamanhoTexto = 8, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
+async function resumoAI(tema, tamanhoTexto = 10, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
     const configuracoes = {
         temperado: "completo", // completo || detalhado com referência
         tipo: "um estudante leigo",
@@ -80,14 +80,14 @@ async function resumoAI(tema, tamanhoTexto = 8, paragrafos = "1 linha", apiUrl =
 
         // Exibindo o resumo no lugar correto dentro da estrutura HTML
         document.querySelector('.render-resumo-result').innerHTML = `
-            <span class="d-flex flex-column">${temaReduzido}
-                <span class="w-100">
+            <span class="d-flex flex-column border border-2 bg-dark text-light p-2 rounded justify-content-center align-items-center">${temaReduzido}
+                <span class="w-100 d-flex gap-2 justify-content-center align-items-center">
                     <button class="btn btn-warning btn-dowload-resposta"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-to-line"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg></button>
                     <button id="btn-reprocessar-resposta" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></button>
                     <button id="btn-salvar-historico" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-clock"><circle cx="16" cy="16" r="6"/><path d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"/><path d="M16 14v2l1 1"/></svg></button>
                 </span>
             </span>
-            <p>${matches}</p>
+            <p class="mt-1">${matches}</p>
         `;
 
         // Configurando os botões de ação (download e salvar no histórico)
