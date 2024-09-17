@@ -383,7 +383,7 @@ const api = [
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="download"></i>Download</button>
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
                     },
                     "Dicionario": {

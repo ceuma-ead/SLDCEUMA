@@ -158,8 +158,30 @@ function eventButton(API = "", INDEX = "") {
     });
 
 
-    const containerBoxMarcador = API;
 
+    const download_pdf = document.querySelectorAll('.baixar-pdf');
+
+
+    download_pdf.forEach((button, index) => {
+        button.addEventListener("click", function (event) {
+            event.stopPropagation();
+        
+            // Obter o valor do atributo 'pdf-data'
+            const pdfUrl = button.getAttribute('pdf-data');
+    
+            // Criar um link de download dinamicamente
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1); // Nome do arquivo extraído da URL
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);  // Remover o link após o download
+        });
+    });
+    
+
+
+    const containerBoxMarcador = API;
     // Verifica se a API não é nula ou indefinida antes de prosseguir
     if (containerBoxMarcador && Array.isArray(containerBoxMarcador)) {
         containerBoxMarcador.forEach((ferramentaGrupo) => {
