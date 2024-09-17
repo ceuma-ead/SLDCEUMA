@@ -131,3 +131,5 @@ function salvarHistoricoResumo(tema, resumo) {
 
     console.log("Resumo salvo no histórico:", novoResumo);
 }
+
+
