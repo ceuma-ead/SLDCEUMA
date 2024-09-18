@@ -20,6 +20,7 @@ function checkEmptyResumoContainer() {
             emptyMessage = document.createElement('div');
             emptyMessage.classList.add('empty-resumo-message-add');
             emptyMessage.innerHTML = `
+
                 <div class="d-flex align-items-center justify-content-center h-100">
                     <div class="text-center p-4">
                         <img src="./assets/list.gif" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
@@ -28,6 +29,7 @@ function checkEmptyResumoContainer() {
                   
                     </div>
                 </div>
+
             `;
             resumoContainer.appendChild(emptyMessage);
         }
@@ -400,6 +402,6 @@ function fecharMenuDicionario() {
 
 }
 
-abrirResumo();
+// abrirResumo();
 
 
