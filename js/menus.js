@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     abrirSumario();
     abrirAnotacoes();
-    checkEmptyResumoContainer()
+    checkEmptyResumoContainer();
+    checkEmptyResumoContainerHistorico();
 });
 
 
@@ -42,10 +43,47 @@ function checkEmptyResumoContainer() {
     }
 }
 
-// Chama a função para verificar quando a página carrega
-document.addEventListener('DOMContentLoaded', () => {
-    checkEmptyResumoContainer();
-});
+
+// Função para verificar se o contêiner de resumo está vazio
+function checkEmptyResumoContainerHistorico() {
+    const resumoContainer = document.querySelector('.render-resumo-result-historico');
+
+    // Verifica se o contêiner existe
+    if (!resumoContainer) return;
+
+    // Verifica se o conteúdo do contêiner está vazio (desconsiderando comentários ou espaços em branco)
+    if (!resumoContainer.children.length || resumoContainer.innerHTML.trim() === '') {
+        console.log("Vazio")
+        // Adiciona a mensagem de "vazio" se não houver conteúdo visível
+        let emptyMessage = document.querySelector('.empty-resumo-historico-message');
+        
+        if (!emptyMessage) {
+            emptyMessage = document.createElement('div');
+            emptyMessage.classList.add('empty-resumo-message-add');
+            emptyMessage.innerHTML = `
+
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="text-center p-4">
+                        <img src="./assets/list.gif" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
+                        <h4>Nada aqui ainda...</h4>
+                        <p>Selecione uma palavra ou parágrafo para dar continuidade.</p>
+                  
+                    </div>
+                </div>
+                
+            `;
+            resumoContainer.appendChild(emptyMessage);
+        }
+    } else {
+        // Remove a mensagem de "vazio" se houver conteúdo
+        const emptyMessage = document.querySelector('.empty-resumo-historico-message');
+        if (emptyMessage) {
+            emptyMessage.remove();
+        }
+    }
+}
+
+
 
 
 const toolBox = document.querySelector('.box-tools-inline');

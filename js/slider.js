@@ -2488,6 +2488,8 @@ function modulosPage(slideIndex) {
                         fecharResumo()
                         // alert(textoResumo)
                         resumoAI(textoResumo,"Hematologia clinica").then(resumo => {
+                            // const containerFlip = document.querySelector("#flip-container");
+                            // containerFlip.classList.toggle('flip-active')
                             soundBipe()
                             // console.log('Resumo retornado:', resumo);
                         });

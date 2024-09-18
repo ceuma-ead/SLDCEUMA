@@ -1,34 +1,139 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Iniciar Evento
     eventButton();
-
+    exibirHistoricoResumos();
 });
 
-// Função para salvar o histórico de resumos (simulação usando localStorage)
-function salvarHistoricoResumo(tema, resumo) {
-    const historicoAtual = JSON.parse(localStorage.getItem('historicoResumos')) || [];
+// Cria a coleção de resumos (usando LocalDB.js)
+var historicoResumos = new LDB.Collection('historicoResumos');
 
+// Função para salvar o histórico de resumos usando LocalDB.js
+function salvarHistoricoResumo(tema, resumo) {
     const novoResumo = {
         tema: tema,
         resumo: resumo,
         data: new Date().toLocaleString()
     };
 
-    // Adiciona o novo resumo ao histórico atual
-    historicoAtual.push(novoResumo);
+    // Salva o novo resumo na coleção "historicoResumos"
+    historicoResumos.save(novoResumo, function (_novoResumo) {
+        console.log("Resumo salvo no histórico:", _novoResumo);
 
-    // Salva novamente no localStorage
-    localStorage.setItem('historicoResumos', JSON.stringify(historicoAtual));
+        Swal.fire({
+            title: "Resumo Salvo com Sucesso",
+            text: "Seu resumo foi salvo...",
+            icon: "success",
+            heightAuto: false,
+        });
 
-    console.log("Resumo salvo no histórico:", novoResumo);
+        // Atualiza a visualização do histórico após salvar
+        exibirHistoricoResumos();
+    });
+}
+
+// Função para exibir os resumos salvos no histórico usando LocalDB.js
+function exibirHistoricoResumos() {
+    const historicoContainer = document.querySelector('.render-resumo-result-historico');
+
+    // Limpa o container antes de adicionar novos itens
+    historicoContainer.innerHTML = '';
+
+    // Busca todos os resumos salvos na coleção "historicoResumos"
+    historicoResumos.find({}, function (resumos) {
+        if (resumos.length === 0) {
+            historicoContainer.innerHTML = `<p>Nenhum resumo salvo no histórico.</p>`;
+            return;
+        }
+
+        // Itera sobre os resumos e renderiza cada um na página
+        resumos.forEach(function (resumo) {
+            const temaReduzido = reduzirTexto(resumo.tema, 10);
+
+            const resumoHTML = `
+                <div class="result-historico-items">
+                    <small class="text-muted">Data: ${resumo.data}</small>
+                    <span class="title img-back-history d-flex flex-column border border-2 bg-dark text-dark p-2 rounded justify-content-center align-items-center">
+                        ${temaReduzido}
+                        <span class="w-100 d-flex gap-2 justify-content-center align-items-center">
+                            <button class="btn btn-warning btn-dowload-resposta-historico" data-id-historico="${resumo._id}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-to-line">
+                                    <path d="M12 17V3" /><path d="m6 11 6 6 6-6" /><path d="M19 21H5" />
+                                </svg>
+                            </button>
+                            <button class="btn btn-danger btn-apagar-historico" data-id-historico="${resumo._id}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
+                                    <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/>
+                                </svg>
+                            </button>
+                        </span>
+                    </span>
+                    <p>${resumo.resumo}</p>
+                </div>
+            `;
+            historicoContainer.innerHTML += resumoHTML;
+        });
+
+        // Adiciona evento para os botões de download
+        document.querySelectorAll('.btn-dowload-resposta-historico').forEach(button => {
+            button.addEventListener('click', function () {
+                const id = this.getAttribute('data-id-historico');
+                baixarResumo(id);
+            });
+        });
+
+        // Adiciona evento para os botões de apagar
+        document.querySelectorAll('.btn-apagar-historico').forEach(button => {
+            button.addEventListener('click', function () {
+                const id = this.getAttribute('data-id-historico');
+                apagarResumo(id);
+            });
+        });
+    });
+}
+
+// Função para baixar o resumo em um arquivo .txt
+function baixarResumo(id) {
+    // Busca o resumo pelo ID
+    historicoResumos.find({ _id: id }, function (resumos) {
+        if (resumos.length > 0) {
+            const resumo = resumos[0];
+            const temaReduzido = reduzirTexto(resumo.tema, 20);
+            const blob = new Blob([resumo.tema + '\n\n' + resumo.resumo], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `${temaReduzido}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    });
+}
+
+// Função para apagar um resumo do histórico
+function apagarResumo(id) {
+    // Apaga o resumo pelo ID
+    historicoResumos.find({ _id: id }, function (resumos) {
+        if (resumos.length > 0) {
+            const resumo = resumos[0];
+            resumo.delete(function () {
+                Swal.fire({
+                    title: "Resumo Apagado",
+                    text: "O resumo foi removido do histórico.",
+                    icon: "success",
+                    heightAuto: false,
+                });
+
+                // Atualiza a visualização do histórico após apagar
+                exibirHistoricoResumos();
+            });
+        }
+    });
 }
 
 
 
-function historicoAi(){
-   
-
-}
 
 function eventButton(API = "", INDEX = "") {
     // Função para entrar/sair da tela cheia
@@ -190,10 +295,10 @@ function eventButton(API = "", INDEX = "") {
     download_pdf.forEach((button, index) => {
         // button.addEventListener("click", function (event) {
         //     event.stopPropagation();
-        
+
         //     // Obter o valor do atributo 'pdf-data'
         //     const pdfUrl = button.getAttribute('pdf-data');
-    
+
         //     // Criar um link de download dinamicamente
         //     const link = document.createElement('a');
         //     link.href = pdfUrl;
@@ -203,7 +308,7 @@ function eventButton(API = "", INDEX = "") {
         //     document.body.removeChild(link);  // Remover o link após o download
         // });
     });
-    
+
 
 
     const containerBoxMarcador = API;
@@ -261,7 +366,7 @@ function eventButton(API = "", INDEX = "") {
                                                   <i class="fa fa-thumbs-down"></i>
                                                 `,
                                                 cancelButtonAriaLabel: "Thumbs down"
-                                              });
+                                            });
 
                                             // if (containerMarcadorCores) {
                                             //     containerMarcadorCores.style.display = "block";
@@ -287,11 +392,10 @@ function eventButton(API = "", INDEX = "") {
     const containerFlip = document.querySelector("#flip-container");
 
     btn_historico.onclick = () => {
-        historicoAi();
         containerFlip.classList.toggle('flip-active')
     };
 
-   
+
 
     // ======================================================= \\
 

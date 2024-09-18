@@ -43,10 +43,6 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
        
     // `;
 
-
-
-    
-
     
     const question = `
         Analise o seguinte tema "${analisarContexto}" e veja se a palavra ou parágrafo fornecido abaixo está no contexto:
@@ -54,9 +50,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         **Entrada:** ${tema}
 
         **Instruções:**
-        - Caso não seja um paragrafo diga e não esteja no contexto faça um texto amigavel <p class="removerMenu"> faça um texto amigavel aqui pra mim</p> 
-        - Caso ele selecione menor que 3 palavras faça um texto aqui diz que ele precia selecionar mais de 3 palavras <p class="removerMenu"> faça um texto amigavel aqui pra mim</p> 
-        - Caso ele selecione 1 unica palavra faça um texto aqui diz que ele precia selecionar mais de 1 palavra <p class="removerMenu"> faça um texto amigavel aqui pra mim</p> 
+        - Caso não seja um paragrafo diga e não esteja no contexto faça um texto amigavel <p class="removerMenu">Ex:Você precisa inserir mais de uma paragrafo para que eu possa analisar o contexto e gerar um resumo sobre "${tema}".</p> 
+        - Caso ele selecione menor que 3 palavras faça um texto aqui diz que ele precia selecionar mais de 3 palavras <p class="removerMenu">Ex:Você precisa inserir mais de uma palavra para que eu possa analisar o contexto e gerar um resumo sobre "${tema}".</p> 
+        - Caso ele selecione 1 unica palavra mesmo que teja no contexto ele não pode selecionar apenas 1 palavra faça um texto aqui diz que ele precia selecionar mais de 1 palavra <p class="removerMenu"> Ex:Você precisa inserir mais de uma palavra para que eu possa analisar o contexto e gerar um resumo sobre "${tema}".</p> 
 
         - Apenas resumos **relevantes ao contexto** devem ser aceitos.
         - Com base nessa análise, crie um resumo **${configuracoes.temperado}**.
@@ -81,10 +77,6 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         resumo que você fez
         """
     `;
-
-
-
-
 
     const dynamicApiUrl = apiUrl || `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${configuracoes.apiKey}`;
 
@@ -180,7 +172,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
                                                                 class="dropdown-menu reflow-items dropdown-menu-dark">
                                                                 <li><a
                                                                         class="dropdown-item reflow-item-ai"
-                                                                        ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M20 12h2"/></svg> Com Detatalhamento</a></li>
+                                                                        ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M20 12h2"/></svg> Com Detalhamento</a></li>
                                                                         <hr
                                                                         class="dropdown-divider">
                                                                 <li><a
@@ -286,10 +278,22 @@ function reflowAI(_class,tema, analisarContexto = ""){
             // console.log(event.target.innerText)
             // console.log(tema, analisarContexto)
 
-            resumoAI(tema,analisarContexto,event.target.innerText,"Universitario",10,"2 paragrafos").then(resumo => {
-                soundBipe()
-                // console.log('Resumo retornado:', resumo);
-            });
+            const prompt = event.target.innerText.trim();
+            // console.log(prompt)
+
+            if(prompt === "Com Referências"){
+                resumoAI(tema,analisarContexto,"Faça com links e Referenicas pra me clicar gera no minimo 10 links em forma de lista enumerada","Universitario",10,"1 linhas").then(resumo => {
+                    soundBipe()
+                    // console.log('Resumo retornado:', resumo);
+                });
+            }else if(prompt === "Com Detalhamento"){
+                resumoAI(tema,analisarContexto,"Faça um Resumo detalhado","Universitario avançado",10,"3 paragrafos").then(resumo => {
+                    soundBipe()
+                    // console.log('Resumo retornado:', resumo);
+                });
+            }
+
+           
 
         })
    });
