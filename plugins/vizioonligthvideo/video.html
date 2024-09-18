@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel de Vídeos com Tamanho Fixo</title>
+
+    <!-- Fancybox Carousel CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.27/dist/carousel.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.27/dist/fancybox.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .carousel-video {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            padding-bottom: 50px; /* Espaço para miniaturas */
+        }
+
+        /* Estilos para manter todos os vídeos na proporção 16:9 */
+        .carousel__slide {
+            position: relative;
+            padding-top: 56.25%; /* Proporção de 16:9 (9 / 16 = 0.5625) */
+        }
+
+        .carousel__slide iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilo para miniaturas modernas */
+        .carousel__thumbs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel__thumb {
+            width: 120px;
+            height: 68px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel__thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel__thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .carousel__thumb--active {
+            border: 2px solid #007bff;
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Carrossel de Vídeos com Miniaturas Modernas</h1>
+
+    <!-- Carrossel de Vídeos -->
+    <div class="carousel-video">
+        <div class="carousel">
+            <!-- Slide 1: YouTube Video -->
+            <div class="carousel__slide">
+                <iframe src="https://www.youtube.com/embed/egyIeygdS_E" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+
+            <!-- Slide 2: Vimeo Video -->
+            <div class="carousel__slide">
+                <iframe src="https://player.vimeo.com/video/112836958" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+
+            <!-- Slide 3: Wistia Video -->
+            <div class="carousel__slide">
+                <iframe src="https://fast.wistia.net/embed/iframe/mwhrulrucj" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Miniaturas Modernas -->
+        <div class="carousel__thumbs">
+            <div class="carousel__thumb" data-slide="0">
+                <img src="https://img.youtube.com/vi/egyIeygdS_E/hqdefault.jpg" alt="YouTube Thumbnail">
+            </div>
+            <div class="carousel__thumb" data-slide="1">
+                <img src="https://www.lightgalleryjs.com/images/demo/vimeo-video-poster.jpg" alt="Vimeo Thumbnail">
+            </div>
+            <div class="carousel__thumb" data-slide="2">
+                <img src="https://www.lightgalleryjs.com/images/demo/wistia-video-poster.jpeg" alt="Wistia Thumbnail">
+            </div>
+        </div>
+    </div>
+
+    <!-- Fancybox Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.27/dist/carousel.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.27/dist/fancybox.umd.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carousel = new Carousel(document.querySelector('.carousel'), {
+                Dots: false, // Desativa os pontos padrão de navegação
+                infinite: false,
+                slidesPerPage: 1,
+            });
+
+            const thumbs = document.querySelectorAll('.carousel__thumb');
+            
+            // Adiciona clique nas miniaturas para navegar no carrossel
+            thumbs.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => {
+                    carousel.slideTo(index); // Navega até o slide correspondente
+                    document.querySelector('.carousel__thumb--active')?.classList.remove('carousel__thumb--active');
+                    thumb.classList.add('carousel__thumb--active');
+                });
+            });
+
+            // Definir a primeira miniatura como ativa inicialmente
+            thumbs[0].classList.add('carousel__thumb--active');
+
+            // Sincronizar as miniaturas com o carrossel
+            carousel.on('change', (carousel) => {
+                document.querySelector('.carousel__thumb--active')?.classList.remove('carousel__thumb--active');
+                thumbs[carousel.page].classList.add('carousel__thumb--active');
+            });
+        });
+    </script>
+
+</body>
+</html>

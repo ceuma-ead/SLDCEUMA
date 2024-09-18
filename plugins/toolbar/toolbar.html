@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolbar Example</title>
+
+    <!-- Importando estilos para a toolbar -->
+    <link href="https://paulkinzett.github.io/toolbar/css/documentation.css" rel="stylesheet"/>
+    <link href="https://paulkinzett.github.io/toolbar/css/jquery.toolbar.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- Importando jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Importando o script da toolbar -->
+    <script src="https://paulkinzett.github.io/toolbar/js/jquery.toolbar.min.js"></script>
+
+  
+    
+</head>
+<body>
+
+    <!-- Opções da toolbar -->
+    <div id="toolbar-options" class="hidden">
+       <a href="#" id="plane"><i class="fa fa-plane"></i></a>
+       <a href="#" id="car"><i class="fa fa-car"></i></a>
+       <a href="#" id="bicycle"><i class="fa fa-bicycle"></i></a>
+    </div>
+
+    <!-- Botão que ativa a toolbar -->
+    <div data-toolbar="toolbar-options" data-toolbar-animation="flip" class="btn-toolbar feature-toolbar btn-toolbar-primary" data-toolbar-style="primary" id="button">
+        <i class="fa fa-cog" style="position: relative"></i>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            // Inicializando a toolbar
+            $('#button').toolbar({
+                content: '#toolbar-options',
+                position: 'top',
+                style: 'primary',
+                animation: 'flip'
+            });
+        });
+    </script>
+
+</body>
+</html>

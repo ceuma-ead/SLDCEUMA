@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.css"
+          />
+    <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.css"
+          /> -->
+
+          <link
+          rel="stylesheet"
+          href="./fancyapps.min.css"
+          />
+    <link
+          rel="stylesheet"
+          href="./fancyappsthumbs.min.css"
+          />
+    <style>
+      #myCarousel {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      #myCarousel .f-carousel__slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+
+      /* Ajuste para as miniaturas */
+      .f-carousel__thumbs {
+        margin-top: 20px;
+      }
+
+      .f-carousel__thumb {
+        width: 120px;
+        height: 68px;
+        overflow: hidden;
+      }
+
+      .f-carousel__thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="f-carousel" id="myCarousel">
+        <!-- Vimeo Video 1 -->
+        <div
+             class="f-carousel__slide"
+             data-thumb-src="https://i.vimeocdn.com/video/112836958_192x144.jpg"
+             >
+          <iframe src="https://player.vimeo.com/video/112836958" allow="autoplay; fullscreen"></iframe>
+        </div>
+
+        <!-- Vimeo Video 2 -->
+        <div
+             class="f-carousel__slide"
+             data-thumb-src="https://i.vimeocdn.com/video/725100190_192x144.jpg"
+             >
+          <iframe src="https://player.vimeo.com/video/725100190" allow="autoplay; fullscreen"></iframe>
+        </div>
+
+        <!-- Vimeo Video 3 -->
+        <div
+             class="f-carousel__slide"
+             data-thumb-src="https://i.vimeocdn.com/video/902482734_192x144.jpg"
+             >
+          <iframe src="https://player.vimeo.com/video/902482734" allow="autoplay; fullscreen"></iframe>
+        </div>
+
+        <!-- Vimeo Video 4 -->
+        <div
+             class="f-carousel__slide"
+             data-thumb-src="https://i.vimeocdn.com/video/1041484605_192x144.jpg"
+             >
+          <iframe src="https://player.vimeo.com/video/1041484605" allow="autoplay; fullscreen"></iframe>
+        </div>
+
+        <!-- Vimeo Video 5 -->
+        <div
+             class="f-carousel__slide"
+             data-thumb-src="https://i.vimeocdn.com/video/876797160_192x144.jpg"
+             >
+          <iframe src="https://player.vimeo.com/video/876797160" allow="autoplay; fullscreen"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fancyapps Carousel Scripts -->
+    <script src="./fancyapps.umd.js"></script>
+    <script src="./fancyapps.thumbs.umd.js"></script>
+    <script>
+      new Carousel(document.getElementById("myCarousel"), {
+        Dots: false,  // Remove os pontos de navegação
+        Thumbs: {
+          type: "modern",  // Tipo de miniatura
+        },
+      }, { Thumbs });
+    </script>
+  </body>
+</html>

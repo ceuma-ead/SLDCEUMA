@@ -1,7 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () {
     abrirSumario();
     abrirAnotacoes();
+    checkEmptyResumoContainer()
+});
 
+
+// Função para verificar se o contêiner de resumo está vazio
+function checkEmptyResumoContainer() {
+    const resumoContainer = document.querySelector('.render-resumo-result');
+
+    // Verifica se o contêiner existe
+    if (!resumoContainer) return;
+
+    // Verifica se o conteúdo do contêiner está vazio (desconsiderando comentários ou espaços em branco)
+    if (!resumoContainer.children.length || resumoContainer.innerHTML.trim() === '') {
+        // Adiciona a mensagem de "vazio" se não houver conteúdo visível
+        let emptyMessage = document.querySelector('.empty-resumo-message');
+        if (!emptyMessage) {
+            emptyMessage = document.createElement('div');
+            emptyMessage.classList.add('empty-annotation-message');
+            emptyMessage.innerHTML = `
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="text-center p-4">
+                        <img src="./assets/list.gif" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
+                        <h4>Nada aqui ainda...</h4>
+                        <p>Selecione uma palavra ou parágrafo para dar continuidade.</p>
+                  
+                    </div>
+                </div>
+            `;
+            resumoContainer.appendChild(emptyMessage);
+        }
+    } else {
+        // Remove a mensagem de "vazio" se houver conteúdo
+        const emptyMessage = document.querySelector('.empty-resumo-message');
+        if (emptyMessage) {
+            emptyMessage.remove();
+        }
+    }
+}
+
+// Chama a função para verificar quando a página carrega
+document.addEventListener('DOMContentLoaded', () => {
+    checkEmptyResumoContainer();
 });
 
 
@@ -29,6 +70,7 @@ function abrirSumario() {
         evento.stopPropagation();
         // Fecha o menu de anotações, se estiver aberto
         fecharMenuAnotacoes();
+        fecharResumo();
 
         // Chamando a função para fechar a caixa de ferramentas
         closeToggleBox(toolBox);
@@ -94,6 +136,7 @@ function abrirAnotacoes() {
 
         // Fecha o menu de sumário, se estiver aberto
         fecharMenuSumario();
+        fecharResumo();
 
         // Chamando a função para fechar a caixa de ferramentas
         // closeToggleBox(toolBox);
@@ -250,10 +293,14 @@ function abrirResumo() {
 // Função para fechar o menu de resumo
 function fecharResumo() {
     const menuResumo = document.querySelector('.resumo-menu');
-
+    $(".render-resumo-result").html("");
     // Verifica se o menu está aberto
     if (menuResumo.classList.contains('open')) {
         menuResumo.classList.remove('open');
+    }
+
+    if (typeof checkEmptyResumoContainer === 'function') {
+        checkEmptyResumoContainer();  // Executa a função apenas se ela existir
     }
 }
 
@@ -353,4 +400,6 @@ function fecharMenuDicionario() {
 
 }
 
-// abrirResumo();
+abrirResumo();
+
+

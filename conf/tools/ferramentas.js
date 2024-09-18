@@ -4,6 +4,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// Função para salvar o histórico de resumos (simulação usando localStorage)
+function salvarHistoricoResumo(tema, resumo) {
+    const historicoAtual = JSON.parse(localStorage.getItem('historicoResumos')) || [];
+
+    const novoResumo = {
+        tema: tema,
+        resumo: resumo,
+        data: new Date().toLocaleString()
+    };
+
+    // Adiciona o novo resumo ao histórico atual
+    historicoAtual.push(novoResumo);
+
+    // Salva novamente no localStorage
+    localStorage.setItem('historicoResumos', JSON.stringify(historicoAtual));
+
+    console.log("Resumo salvo no histórico:", novoResumo);
+}
+
+
+
+function historicoAi(){
+   
+
+}
 
 function eventButton(API = "", INDEX = "") {
     // Função para entrar/sair da tela cheia
@@ -163,20 +188,20 @@ function eventButton(API = "", INDEX = "") {
 
 
     download_pdf.forEach((button, index) => {
-        button.addEventListener("click", function (event) {
-            event.stopPropagation();
+        // button.addEventListener("click", function (event) {
+        //     event.stopPropagation();
         
-            // Obter o valor do atributo 'pdf-data'
-            const pdfUrl = button.getAttribute('pdf-data');
+        //     // Obter o valor do atributo 'pdf-data'
+        //     const pdfUrl = button.getAttribute('pdf-data');
     
-            // Criar um link de download dinamicamente
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1); // Nome do arquivo extraído da URL
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);  // Remover o link após o download
-        });
+        //     // Criar um link de download dinamicamente
+        //     const link = document.createElement('a');
+        //     link.href = pdfUrl;
+        //     link.download = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1); // Nome do arquivo extraído da URL
+        //     document.body.appendChild(link);
+        //     link.click();
+        //     document.body.removeChild(link);  // Remover o link após o download
+        // });
     });
     
 
@@ -212,13 +237,18 @@ function eventButton(API = "", INDEX = "") {
 
 
                                             Swal.fire({
-                                                title: "<strong>Como usar <u>Marca Texto</u></strong>",
+                                                title: "<strong>Como usar o <u>Marca Texto</u></strong>",
                                                 icon: "info",
                                                 html: `
-                                                 você pode usar <b class="text-success">Selecione um Texto ou paragrafo</b>,
-                                                  <a href="#" autofocus>saiba mais sobre é função</a>.
-                                                  
-                                                `,
+                                                <div class="alert alert-info mt-3 p-3">
+                                                    <p class="mb-0">
+                                                        Você pode usar da seguinte maneira: <b class="text-success">Selecione um texto ou parágrafo</b>.
+                                                        <br>
+                                                        <a href="#" class="text-primary text-decoration-underline" autofocus>Se tiver alguma dúvida, consulte o tutorial disponível</a>.
+                                                    </p>
+                                                </div>
+                                            `,
+
                                                 showCloseButton: true,
                                                 showCancelButton: true,
                                                 focusConfirm: false,
@@ -253,6 +283,15 @@ function eventButton(API = "", INDEX = "") {
         });
     }
 
+    const btn_historico = document.querySelector("#history-icon");
+    const containerFlip = document.querySelector("#flip-container");
+
+    btn_historico.onclick = () => {
+        historicoAi();
+        containerFlip.classList.toggle('flip-active')
+    };
+
+   
 
     // ======================================================= \\
 

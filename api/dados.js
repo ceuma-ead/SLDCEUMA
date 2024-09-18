@@ -1804,14 +1804,7 @@ const api = [
 
                     <div class="pagina-tipo-texto--box-texto align-accordion">
 
-                       <button
-                        class="btn btn-success btn-lg mrb50"
-                        data-iframe="true"
-                        id="open-video"
-                        data-src="https://player.vimeo.com/video/1008560966?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                    >
-                        Video
-                    </button>
+                     
                                                                         
                     </div> 
                 

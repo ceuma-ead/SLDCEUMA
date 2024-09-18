@@ -2487,7 +2487,7 @@ function modulosPage(slideIndex) {
                         fecharBoxCores()
                         fecharResumo()
                         // alert(textoResumo)
-                        resumoAI(textoResumo).then(resumo => {
+                        resumoAI(textoResumo,"Hematologia clinica").then(resumo => {
                             // console.log('Resumo retornado:', resumo);
                         });
                         abrirResumo()
@@ -2506,7 +2506,6 @@ function modulosPage(slideIndex) {
 }
 
 // Atualiza o título e as cores ao inicializar
-
 updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
 adicionarLogo(savedPosition);
