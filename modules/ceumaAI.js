@@ -7,10 +7,10 @@ function reduzirTexto(texto, tamanhoMaximo) {
     }
 }
 
-
-
-
-
+// Função para verificar se o texto é um parágrafo válido
+function validarParagrafo(tema) {
+    return tema.trim().length > 0; // Verifica se o tema não está vazio ou só tem espaços
+}
 
 
 // Função para obter o resumo usando a API de forma dinâmica
@@ -22,26 +22,69 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         apiKey: apiKey || "AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I", // Usa uma chave padrão se nenhuma chave for passada
     };
 
-    const question = `
-        Analise o Sequinte tema "${analisarContexto}" veja se a palavra ou paragrafo que é esse aqui
-        input:${tema}
-        está no contexto.
-        **Deverao ser Aceitos apenas Resumo no Contexto**
-        *Analise a seguinte questão : ${configuracoes.temperado}*
-            - com base nessa analise quero que vc criar o seguinte resumo quando criar se tiver referencia ou detlhes vc coloca os links pra 
-              acesso.
+    // const question = `
+    //     Analise o Sequinte tema "${analisarContexto}" veja se a palavra ou paragrafo que é esse aqui
+    //     input:${tema}
+    //     está no contexto.
+    //     **Deverao ser Aceitos apenas Resumo no Contexto**
+    //     *Analise a seguinte questão : ${configuracoes.temperado}*
+    //         - com base nessa analise quero que vc criar o seguinte resumo quando criar se tiver referencia ou detlhes vc coloca os links pra 
+    //           acesso.
 
-        Faça um resumo sobre **${tema}** ${configuracoes.temperado} para ${configuracoes.tipo}.
-        !importante - Os resumos devem ter no mínimo ${configuracoes.paragrafos}, não pode passar disso.
-        se passar, encerre logo.
+    //     Faça um resumo sobre **${tema}** ${configuracoes.temperado} para ${configuracoes.tipo}.
+    //     !importante - Os resumos devem ter no mínimo ${configuracoes.paragrafos}, não pode passar disso.
+    //     se passar, encerre logo.
 
-        *Observações obrigatórias*:
-        1 - Não sair do contexto.
-        2 - Não é permitido falar de outra coisa, apenas o conteúdo solicitado.
+    //     *Observações obrigatórias*:
+    //     1 - Não sair do contexto.
+    //     2 - Não é permitido falar de outra coisa, apenas o conteúdo solicitado.
         
-        !Importante: todo resumo deve ser colocado aqui: """ resumo que você fez """. 
+    //     !Importante: todo resumo deve ser colocado aqui: """ resumo que você fez """. 
        
+    // `;
+
+
+
+    
+
+    
+    const question = `
+        Analise o seguinte tema "${analisarContexto}" e veja se a palavra ou parágrafo fornecido abaixo está no contexto:
+
+        **Entrada:** ${tema}
+
+        **Instruções:**
+        - Caso não seja um paragrafo diga que ele ou seja menor que 3 palavras faça um texto amigavel <p class="removerMenu">Selecione um texto valido para realizar seu resumo. caso deseja saber o significado dessa
+        palavra utiliza a ferramenta dicionario 😊</p> 
+       
+
+        - Apenas resumos **relevantes ao contexto** devem ser aceitos.
+        - Com base nessa análise, crie um resumo **${configuracoes.temperado}**.
+        - Caso haja referências ou detalhes importantes, insira os links no formato sugerido.
+
+        Exemplo de Links:
+        - <a target="_blank" href="https://exemplo1.com">https://exemplo1.com</a>
+        - <a target="_blank" href="https://exemplo2.com">https://exemplo2.com</a>
+
+        Faça um resumo sobre **"${tema}"** com o estilo **${configuracoes.temperado}** para **${configuracoes.tipo}**.
+
+        **Importante:**
+        - O resumo deve ter no mínimo **${configuracoes.paragrafos}**. Caso o texto ultrapasse esse limite, finalize o resumo imediatamente.
+
+        **Observações obrigatórias:**
+        1. Mantenha-se no contexto.
+        2. Não inclua conteúdo irrelevante ao tema solicitado.
+
+        **Formato do Resumo:**
+        O resumo deve ser inserido no seguinte formato:
+        """
+        resumo que você fez
+        """
     `;
+
+
+
+
 
     const dynamicApiUrl = apiUrl || `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${configuracoes.apiKey}`;
 
@@ -72,9 +115,6 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         const response = await fetch(dynamicApiUrl, requestOptions);
         // const response = [{}]
 
-
-
-
         // Verificando se a requisição foi bem-sucedida
         if (!response.ok) {
             throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
@@ -87,14 +127,13 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
 
         // Extraindo o texto do resumo gerado pela API
         const resumo = responseData.candidates[0].content.parts[0].text;
-        ''
+
         // Regex para extrair o conteúdo entre aspas triplas
         const regex = /"""([\s\S]*)"""/;
         const matches = resumo.match(regex) ? resumo.match(regex)[1] : resumo;
 
         // Escondendo o loader
-        document.getElementById('loading-resumo').style.display = 'none';
-
+      
         // Exibindo o resumo no lugar correto dentro da estrutura HTML
         document.querySelector('.render-resumo-result').innerHTML = `
         <div class="result-resumo-items">
@@ -116,7 +155,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
                                             </div>
             <span class=" title img-back-resumo d-flex flex-column border border-2 bg-dark text-light p-2 rounded justify-content-center align-items-center">${temaReduzido}
                                     <span
-                                        class="w-100 d-flex gap-2 justify-content-center align-items-center">
+                                        class="items-action-btn-ai w-100 gap-2 justify-content-center align-items-center" style="display:flex">
                                         <button
                                             class="btn btn-warning btn-dowload-resposta"><svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -185,6 +224,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
             </div">
         `;
 
+        document.getElementById('loading-resumo').style.display = 'none';
+      
+
         const data = document.querySelector('.data-generacao');
 
         if (data) {
@@ -207,7 +249,18 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         // paramentros para dar o reflow na AI
         reflowAI(".reflow-items",tema,analisarContexto)
 
+        const noneToolbar = document.querySelector(".removerMenu");
+        if(noneToolbar){
+            const toolbarActions = document.querySelector(".items-action-btn-ai");
+            toolbarActions.style.display = "none";
+        }else{
+            const toolbarActions = document.querySelector(".items-action-btn-ai");
+            toolbarActions.style.display = "flex";
+        }
+
+     
         return resumo;
+
 
     } catch (error) {
         // Escondendo o loader em caso de erro
@@ -240,7 +293,7 @@ function reflowAI(_class,tema, analisarContexto = ""){
 
             resumoAI(tema,analisarContexto,event.target.innerText,"Universitario",10,"2 paragrafos").then(resumo => {
                 soundBipe()
-                console.log('Resumo retornado:', resumo);
+                // console.log('Resumo retornado:', resumo);
             });
 
         })
