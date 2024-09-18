@@ -14,10 +14,10 @@ function reduzirTexto(texto, tamanhoMaximo) {
 
 
 // Função para obter o resumo usando a API de forma dinâmica
-async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
+async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo="um estudante leigo", tamanhoTexto = 10, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
     const configuracoes = {
-        temperado: "completo", // completo || detalhado com referência
-        tipo: "um estudante leigo",
+        temperado: _temperado, // completo || detalhado com referência
+        tipo: _tipo,
         paragrafos: paragrafos,
         apiKey: apiKey || "AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I", // Usa uma chave padrão se nenhuma chave for passada
     };
@@ -27,6 +27,9 @@ async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragraf
         input:${tema}
         está no contexto.
         **Deverao ser Aceitos apenas Resumo no Contexto**
+        *Analise a seguinte questão : ${configuracoes.temperado}*
+            - com base nessa analise quero que vc criar o seguinte resumo quando criar se tiver referencia ou detlhes vc coloca os links pra 
+              acesso.
 
         Faça um resumo sobre **${tema}** ${configuracoes.temperado} para ${configuracoes.tipo}.
         !importante - Os resumos devem ter no mínimo ${configuracoes.paragrafos}, não pode passar disso.
@@ -127,22 +130,41 @@ async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragraf
                                                     d="M12 17V3" /><path
                                                     d="m6 11 6 6 6-6" /><path
                                                     d="M19 21H5" /></svg></button>
-                                        <button id="btn-reprocessar-resposta"
-                                            class="btn btn-success"><svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                class="lucide lucide-settings-2"><path
-                                                    d="M20 7h-9" /><path
-                                                    d="M14 17H5" /><circle
-                                                    cx="17" cy="17"
-                                                    r="3" /><circle cx="7"
-                                                    cy="7"
-                                                    r="3" /></svg></button>
+                                        <div class="btn-group">
+                                                            <button
+                                                                id="btn-reprocessar-resposta"
+                                                                class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="lucide lucide-settings-2"><path
+                                                                        d="M20 7h-9" /><path
+                                                                        d="M14 17H5" /><circle
+                                                                        cx="17"
+                                                                        cy="17"
+                                                                        r="3" /><circle
+                                                                        cx="7"
+                                                                        cy="7"
+                                                                        r="3" /></svg></button>
+                                                            <ul
+                                                                class="dropdown-menu reflow-items dropdown-menu-dark">
+                                                                <li><a
+                                                                        class="dropdown-item reflow-item-ai"
+                                                                        ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M20 12h2"/></svg> Com Detatalhamento</a></li>
+                                                                        <hr
+                                                                        class="dropdown-divider">
+                                                                <li><a
+                                                                        class="dropdown-item reflow-item-ai"
+                                                                        ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-message-square"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M20 12h2"/></svg> Com Referências</a></li>
+                                                            </ul>
+                                                        </div>
+
                                         <button id="btn-salvar-historico"
                                             class="btn btn-info"><svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +204,11 @@ async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragraf
         document.querySelector('.btn-dowload-resposta').addEventListener('click', () => downloadResumo(matches));
         document.getElementById('btn-salvar-historico').addEventListener('click', () => salvarHistoricoResumo(tema, matches));
 
+        // paramentros para dar o reflow na AI
+        reflowAI(".reflow-items",tema,analisarContexto)
+
         return resumo;
+
     } catch (error) {
         // Escondendo o loader em caso de erro
         document.getElementById('loading-resumo').style.display = 'none';
@@ -201,6 +227,27 @@ function downloadResumo(resumo, nomeArquivo = 'resumo.txt') {
     link.download = nomeArquivo;
     link.click();
 }
+
+function reflowAI(_class,tema, analisarContexto = ""){
+
+   const reflow =  document.querySelector(_class);
+
+   const reflowItems = reflow.querySelectorAll("li > a");
+   reflowItems.forEach(btn => {
+        btn.addEventListener("click",function(event){
+            // console.log(event.target.innerText)
+            // console.log(tema, analisarContexto)
+
+            resumoAI(tema,analisarContexto,event.target.innerText,"Universitario",10,"2 paragrafos").then(resumo => {
+                soundBipe()
+                console.log('Resumo retornado:', resumo);
+            });
+
+        })
+   });
+
+};
+
 
 
 
