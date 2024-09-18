@@ -1,0 +1,7 @@
+[
+    {   "id":"som-ai-notify",
+        "ativar":true,
+        "path":"./sounds",
+        "audio":"notify.mp3"
+    }
+]

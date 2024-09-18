@@ -71,12 +71,12 @@
     flex-direction: column;
     gap: 0.5rem;
     margin: 0 0 1rem 0;
+     /* background-color: #A35200; */
     /* border: 2px solid var(--cor-geral-fundo-e-componentes); */
     /* padding: 0.5rem; */
     border-radius: 0.5rem;
     
 }
-
 
 
 
@@ -358,4 +358,21 @@
     color: #333;
 }
 
+
+.empty-resumo-message-add {
+    -moz-window-dragging: none;
+    -webkit-user-drag: none;
+    /* background-color: #333; */
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:100%;
+    height: 100%;
+}
+
+.empty-resumo-message-add img {
+    -moz-window-dragging: none;
+    -webkit-user-drag: none;
+}
 

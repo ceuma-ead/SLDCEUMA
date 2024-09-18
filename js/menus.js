@@ -18,7 +18,7 @@ function checkEmptyResumoContainer() {
         let emptyMessage = document.querySelector('.empty-resumo-message');
         if (!emptyMessage) {
             emptyMessage = document.createElement('div');
-            emptyMessage.classList.add('empty-annotation-message');
+            emptyMessage.classList.add('empty-resumo-message-add');
             emptyMessage.innerHTML = `
                 <div class="d-flex align-items-center justify-content-center h-100">
                     <div class="text-center p-4">

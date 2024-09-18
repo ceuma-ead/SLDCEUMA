@@ -8,6 +8,11 @@ function reduzirTexto(texto, tamanhoMaximo) {
 }
 
 
+
+
+
+
+
 // Função para obter o resumo usando a API de forma dinâmica
 async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
     const configuracoes = {
@@ -62,6 +67,10 @@ async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragraf
 
         // Fazendo a requisição POST usando fetch e aguardando a resposta
         const response = await fetch(dynamicApiUrl, requestOptions);
+        // const response = [{}]
+
+
+
 
         // Verificando se a requisição foi bem-sucedida
         if (!response.ok) {
@@ -79,7 +88,7 @@ async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragraf
         // Regex para extrair o conteúdo entre aspas triplas
         const regex = /"""([\s\S]*)"""/;
         const matches = resumo.match(regex) ? resumo.match(regex)[1] : resumo;
-     
+
         // Escondendo o loader
         document.getElementById('loading-resumo').style.display = 'none';
 
@@ -181,6 +190,8 @@ async function resumoAI(tema, analisarContexto = "", tamanhoTexto = 10, paragraf
         document.querySelector('.render-resumo-result').innerHTML = `Erro ao gerar o resumo: ${error.message}`;
     }
 }
+
+
 
 // Função para realizar o download do resumo
 function downloadResumo(resumo, nomeArquivo = 'resumo.txt') {
