@@ -54,9 +54,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         **Entrada:** ${tema}
 
         **Instruções:**
-        - Caso não seja um paragrafo diga que ele ou seja menor que 3 palavras faça um texto amigavel <p class="removerMenu">Selecione um texto valido para realizar seu resumo. caso deseja saber o significado dessa
-        palavra utiliza a ferramenta dicionario 😊</p> 
-       
+        - Caso não seja um paragrafo diga e não esteja no contexto faça um texto amigavel <p class="removerMenu"> faça um texto amigavel aqui pra mim</p> 
+        - Caso ele selecione menor que 3 palavras faça um texto aqui diz que ele precia selecionar mais de 3 palavras <p class="removerMenu"> faça um texto amigavel aqui pra mim</p> 
+        - Caso ele selecione 1 unica palavra faça um texto aqui diz que ele precia selecionar mais de 1 palavra <p class="removerMenu"> faça um texto amigavel aqui pra mim</p> 
 
         - Apenas resumos **relevantes ao contexto** devem ser aceitos.
         - Com base nessa análise, crie um resumo **${configuracoes.temperado}**.
@@ -137,22 +137,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         // Exibindo o resumo no lugar correto dentro da estrutura HTML
         document.querySelector('.render-resumo-result').innerHTML = `
         <div class="result-resumo-items">
-          <div
-                                                class="avatar-container d-flex justify-content-between align-items-center mb-3">
-                                                <div
-                                                    class="d-flex gap-2 align-items-center">
-                                                    <img class="rounded-circle"
-                                                        style="width: 40px;"
-                                                        alt="Avatar"
-                                                        src="./assets/eva.jpg" />
-                                                    <span><strong
-                                                            class="text-success border border-2 border-success p-1 rounded">Eva
-                                                            Respondeu
-                                                            :</strong></span>
-                                                </div>
-                                                <span><strong
-                                                        class="data-generacao">00/00/000</strong></span>
-                                            </div>
+                                        
             <span class=" title img-back-resumo d-flex flex-column border border-2 bg-dark text-light p-2 rounded justify-content-center align-items-center">${temaReduzido}
                                     <span
                                         class="items-action-btn-ai w-100 gap-2 justify-content-center align-items-center" style="display:flex">
@@ -220,8 +205,18 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
                                                     d="M16 14v2l1 1" /></svg></button>
                                     </span>
                                 </span>
+               <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex gap-2 align-items-center">
+                        <img class="rounded-circle"
+                             style="width: 40px;"
+                             alt="Avatar"
+                             src="./assets/eva.jpg" />
+                        <span><strong class="text-success border border-2 border-success p-1 rounded">Eva Respondeu :</strong></span>
+                    </div>
+                    <span><strong class="data-generacao">00/00/000</strong></span>
+                </div>
             <p class="mt-1">${matches}</p>
-            </div">
+            </div>
         `;
 
         document.getElementById('loading-resumo').style.display = 'none';
