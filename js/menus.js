@@ -29,7 +29,7 @@ function checkEmptyResumoContainer() {
                   
                     </div>
                 </div>
-
+                
             `;
             resumoContainer.appendChild(emptyMessage);
         }
@@ -402,6 +402,6 @@ function fecharMenuDicionario() {
 
 }
 
-// abrirResumo();
+abrirResumo();
 
 

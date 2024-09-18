@@ -2493,11 +2493,12 @@ function modulosPage(slideIndex) {
                                 const silentAudio =  new Audio(`${metadados.path}/${metadados.audio}`);
                                 silentAudio.muted = false; // Som mudo
                                 silentAudio.play().then(() => {
-                                    console.log("Áudio habilitado.");
+                                    // console.log("Áudio habilitado.");
                                 }).catch(error => {
                                     console.error('Erro ao tentar habilitar o áudio:', error);
                                 });
-                            }           
+                            }
+
                             $.ajax({
                                 url: "./sounds/soundConfig.json",
                                 method: "GET",
