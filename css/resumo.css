@@ -393,7 +393,7 @@
     margin-left: -15px;
     border: 1px solid rgb(51, 255, 0);
     border-radius: 50%;
-    animation: pulsed 3600ms ease-out 1s infinite;
+    animation: pulsed 3600ms ease-out 0.4s infinite;
     opacity: 0;
 }
 

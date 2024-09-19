@@ -3,5 +3,13 @@
         "ativo":true,
         "dicionario":"dicio",
         "menu_dicionario":true
+    },
+    "voiceSSR":{
+        "config":{
+            "pt-br": { "name": "Português (Brasil)", "voices": ["Marcia", "Ligia", "Yara", "Dinis"] }
+        },
+        "tokens":[
+            "e3f17edd7b9c4d6cb3a333b278aae0e9"
+        ]
     }
 }

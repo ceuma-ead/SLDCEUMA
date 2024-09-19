@@ -1,3 +1,10 @@
+@import url(./variaveis.css);
+
+:root{
+    --lgColorResumo:rgb(73, 73, 73);
+}
+
+
 .spinner {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -8,8 +15,13 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 #loading-spinner {
@@ -80,10 +92,10 @@
     height: 48px;
     color: #011c41;
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    
+    transform: translate(-50%, -50%);
+
 
 }
 
@@ -111,6 +123,7 @@
     0% {
         transform: translate(-50%, -50%) rotateZ(0deg);
     }
+
     100% {
         transform: translate(-50%, -50%) rotateZ(360deg);
     }
@@ -127,28 +140,36 @@
 }
 
 @keyframes spinDicionario {
+
     0%,
     100% {
         box-shadow: .2em 0px 0 0px currentcolor;
     }
+
     12% {
         box-shadow: .2em .2em 0 0 currentcolor;
     }
+
     25% {
         box-shadow: 0 .2em 0 0px currentcolor;
     }
+
     37% {
         box-shadow: -.2em .2em 0 0 currentcolor;
     }
+
     50% {
         box-shadow: -.2em 0 0 0 currentcolor;
     }
+
     62% {
         box-shadow: -.2em -.2em 0 0 currentcolor;
     }
+
     75% {
         box-shadow: 0px -.2em 0 0 currentcolor;
     }
+
     87% {
         box-shadow: .2em -.2em 0 0 currentcolor;
     }
@@ -160,34 +181,37 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    margin:15px auto;
+    margin: 15px auto;
     position: relative;
     color: #636363;
     box-sizing: border-box;
     animation: animloader 2s linear infinite;
-  }
-  
-  @keyframes animloader {
-    0% {
-      box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
-    }
-    25% {
-      box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
-    }
-    50% {
-      box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
-    }
-    75% {
-      box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
-    }
-    100% {
-      box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
-    }
-  }
+}
 
- 
-  #loading-resumo {
-    display: none;
+@keyframes animloader {
+    0% {
+        box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+    }
+
+    25% {
+        box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 2px;
+    }
+
+    50% {
+        box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 2px, -38px 0 0 -2px;
+    }
+
+    75% {
+        box-shadow: 14px 0 0 2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+    }
+
+    100% {
+        box-shadow: 14px 0 0 -2px, 38px 0 0 2px, -14px 0 0 -2px, -38px 0 0 -2px;
+    }
+}
+
+
+/* #loading-resumo {
     position: absolute;
     top:50%;
     left: 50%;
@@ -232,4 +256,56 @@
     80% { height: 65%; opacity: 1;}
     100% { height: 65%; opacity: 0;}
  }
-      
+       */
+
+
+#loading-resumo {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+    margin: 15px auto;
+    position: relative;
+    color: #232323;
+    left: -100px;
+    box-sizing: border-box;
+    animation: shadowRolling 2s linear infinite;
+}
+
+@keyframes shadowRolling {
+    0% {
+        box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    12% {
+        box-shadow: 100px 0 var(--lgColorResumo), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    25% {
+        box-shadow: 110px 0 var(--lgColorResumo), 100px 0 var(--lgColorResumo), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    36% {
+        box-shadow: 120px 0 var(--lgColorResumo), 110px 0 var(--lgColorResumo), 100px 0 var(--lgColorResumo), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    50% {
+        box-shadow: 130px 0 var(--lgColorResumo), 120px 0 var(--lgColorResumo), 110px 0 var(--lgColorResumo), 100px 0 var(--lgColorResumo);
+    }
+
+    62% {
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--lgColorResumo), 120px 0 var(--lgColorResumo), 110px 0 var(--lgColorResumo);
+    }
+
+    75% {
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--lgColorResumo), 120px 0 var(--lgColorResumo);
+    }
+
+    87% {
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--lgColorResumo);
+    }
+
+    100% {
+        box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+    }
+}

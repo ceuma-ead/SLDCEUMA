@@ -258,21 +258,41 @@
                                 data-lucide="history"></i>
                         </header>
 
+                      
+
                         <!-- Contêiner de flip entre Resumo e Histórico -->
                         <div class="flip-container" id="flip-container">
 
                             <!-- Frente: Resumo -->
                             <div class="flip-side front">
-
                                 <div class="content" id="result-resumo">
+                                    <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <div class="position-relative">
+                                                <div class="pulse position-relative ai-response-loading " style="display:none;">
+                                                    <i></i>
+                                                    <i></i>
+                                                    <i></i>
+                                                    <i></i>
+                                                    <i></i>
+                                                </div>
+                                                <img class="rounded-circle" style="width: 40px;" alt="Avatar" src="./assets/eva.jpg" />
+                                            </div>
+                                            <span><strong id="text-typing-ai" class="text-success border border-2 border-success p-1 rounded">Eva respondeu
+                                                    :</strong></span>
+                                        </div>
+                                        <span><strong class="data-generacao">00/00/000</strong></span>
+                                    </div>
+                                    <div id="loading-resumo" style="display: none;" ></div>
                                     <div class="render-resumo-result"
                                         id="render-resumo-result">
-                                     
-                                        <div class="result-resumo-items">
+                                        
+                                        <!-- <div class="result-resumo-items">
+                                            
                                             <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
                                                 <div class="d-flex gap-2 align-items-center">
                                                    <div class="position-relative">
-                                                    <div class="pulse position-relative ">
+                                                    <div class="pulse position-relative ai-response-loading ">
                                                         <i></i>
                                                         <i></i>
                                                         <i></i>
@@ -412,14 +432,13 @@
 
                                                 </span>
                                             </span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Verso: Histórico -->
                             <div class="flip-side back">
-                                
                                 <div class="content result-historico"
                                     id="result-historico">
                                     <div class="render-resumo-result-historico" id="render-resumo-result-historico">
@@ -480,7 +499,8 @@
 
                         </div>
 
-                        <div id="loading-resumo" style="display: none;"></div>
+                        
+
                     </div>
                     <!-- Menu Resumo -->
 
