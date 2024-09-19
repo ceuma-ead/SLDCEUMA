@@ -26,7 +26,7 @@ function checkEmptyResumoContainer() {
                     <div class="text-center p-4">
                         <img src="./assets/list.gif" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
                         <h4>Nada aqui ainda...</h4>
-                        <p>Selecione uma palavra ou parágrafo para dar continuidade.</p>
+                        <p>Selecione um texto apropriado para dar continuidade.</p>
                   
                     </div>
                 </div>
