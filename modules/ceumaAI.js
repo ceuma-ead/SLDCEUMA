@@ -50,9 +50,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         **Entrada:** ${tema}
 
         **Instruções:**
-        - Caso não seja um paragrafo diga e não esteja no contexto faça um texto amigavel <p class="removerMenu">Ex:Você precisa inserir mais de uma paragrafo para que eu possa analisar o contexto e gerar um resumo sobre "${tema}".</p> 
-        - Caso ele selecione menor que 3 palavras faça um texto aqui diz que ele precia selecionar mais de 3 palavras <p class="removerMenu">Ex:Você precisa inserir mais de uma palavra para que eu possa analisar o contexto e gerar um resumo sobre "${tema}".</p> 
-        - Caso ele selecione 1 unica palavra mesmo que teja no contexto ele não pode selecionar apenas 1 palavra faça um texto aqui diz que ele precia selecionar mais de 1 palavra <p class="removerMenu"> Ex:Você precisa inserir mais de uma palavra para que eu possa analisar o contexto e gerar um resumo sobre "${tema}".</p> 
+        - Caso não seja um paragrafo e não esteja no contexto faça um texto amigavel <p class="removerMenu">Ex:Você deve selecionar um texto apropriado para eu analisar e resumir. Tente selecionar o parágrafo inteiro.</p> 
+        - Caso ele selecione menor que 3 palavras faça um texto aqui diz que ele precia selecionar mais de 3 palavras <p class="removerMenu">Ex:Você deve selecionar um texto apropriado para eu analisar e resumir. Tente selecionar o parágrafo inteiro.</p> 
+        - Caso ele selecione 1 unica palavra mesmo que teja no contexto ele não pode selecionar apenas 1 palavra faça um texto aqui diz que ele precia selecionar mais de 1 palavra <p class="removerMenu"> Ex:Você deve selecionar um texto apropriado para eu analisar e resumir. Tente selecionar o parágrafo inteiro.</p> 
 
         - Apenas resumos **relevantes ao contexto** devem ser aceitos.
         - Com base nessa análise, crie um resumo **${configuracoes.temperado}**.
@@ -203,7 +203,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
                              style="width: 40px;"
                              alt="Avatar"
                              src="./assets/eva.jpg" />
-                        <span><strong class="text-success border border-2 border-success p-1 rounded">Eva Respondeu :</strong></span>
+                        <span><strong class="text-success border border-2 border-success p-1 rounded">Eva respondeu :</strong></span>
                     </div>
                     <span><strong class="data-generacao">00/00/000</strong></span>
                 </div>
