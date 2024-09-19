@@ -55,9 +55,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
     **Instruções - Secundárias:**
 
     - Se a seleção tiver menos de 3 palavras, exiba uma mensagem indicando que o usuário precisa selecionar mais de 3 palavras: 
-      <p class="removerMenu">Exemplo: A seleção deve conter mais de 3 palavras para análise e resumo. Tente selecionar o parágrafo inteiro.</p>
+      <p class="removerMenu">Você deve selecionar um texto apropriado para eu analisar e resumir. Tente selecionar o parágrafo inteiro.</p>
     - Se apenas uma palavra for selecionada, mesmo que no contexto, exiba uma mensagem solicitando a seleção de mais palavras: 
-      <p class="removerMenu">Exemplo: A seleção não pode ser de apenas uma palavra. Tente selecionar o parágrafo inteiro.</p>
+      <p class="removerMenu">A seleção não pode ser de apenas uma palavra. Se quiser saber o significado da palavra <span style="text-transform:uppercase; font-weight: 600">${tema}</span> utilize a ferramenta Dicionário.</p>
 
     - Apenas resumos **relevantes ao contexto** devem ser aceitos.
     - Com base na análise, crie um resumo com estilo **${configuracoes.temperado}**.
