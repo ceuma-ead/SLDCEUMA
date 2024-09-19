@@ -130,7 +130,20 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
         document.querySelector('.render-resumo-result').innerHTML = `
         <div class="result-resumo-items">
                                         
-            <span class=" title img-back-resumo d-flex flex-column border border-2 bg-dark text-light p-2 rounded justify-content-center align-items-center">${temaReduzido}
+            
+               <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex gap-2 align-items-center">
+                        <img class="rounded-circle"
+                             style="width: 40px;"
+                             alt="Avatar"
+                             src="./assets/eva.jpg" />
+                        <span><strong class="text-success border border-2 border-success p-1 rounded">Eva respondeu :</strong></span>
+                    </div>
+                    <span><strong class="data-generacao">00/00/000</strong></span>
+                </div>
+            <p class="mt-1">${matches}</p>
+
+            <span class=" title img-back-resumo d-flex flex-column border border-2 bg-dark text-light p-2 rounded justify-content-center align-items-center">
                                     <span
                                         class="items-action-btn-ai w-100 gap-2 justify-content-center align-items-center" style="display:flex">
                                         <button
@@ -197,17 +210,6 @@ async function resumoAI(tema, analisarContexto = "", _temperado="completo",_tipo
                                                     d="M16 14v2l1 1" /></svg></button>
                                     </span>
                                 </span>
-               <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
-                    <div class="d-flex gap-2 align-items-center">
-                        <img class="rounded-circle"
-                             style="width: 40px;"
-                             alt="Avatar"
-                             src="./assets/eva.jpg" />
-                        <span><strong class="text-success border border-2 border-success p-1 rounded">Eva respondeu :</strong></span>
-                    </div>
-                    <span><strong class="data-generacao">00/00/000</strong></span>
-                </div>
-            <p class="mt-1">${matches}</p>
             </div>
         `;
 
