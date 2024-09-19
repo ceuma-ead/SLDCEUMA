@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
 var historicoResumos = new LDB.Collection('historicoResumos');
 
 // Função para salvar o histórico de resumos usando LocalDB.js
-function salvarHistoricoResumo(tema, resumo) {
+function salvarHistoricoResumo(titleResumo,tema, resumo) {
     const novoResumo = {
+        title:titleResumo,
         tema: tema,
         resumo: resumo,
         data: new Date().toLocaleString()
@@ -47,7 +48,7 @@ function exibirHistoricoResumos() {
 
         // Itera sobre os resumos e renderiza cada um na página
         resumos.forEach(function (resumo) {
-            const temaReduzido = reduzirTexto(resumo.tema, 10);
+            const temaReduzido = reduzirTexto(resumo.title, 15);
 
             const resumoHTML = `
                 <div class="result-historico-items">

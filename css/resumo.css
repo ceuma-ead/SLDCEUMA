@@ -130,7 +130,7 @@
     font-size: calc(var(--font-para-paragrafos) - 2px);
     text-align: justify;
     hyphens: auto;
-    padding-right: 0.2rem;
+    padding-right: 0.5rem;
     
 }
 
@@ -377,4 +377,53 @@
 .empty-resumo-message-add img {
     -moz-window-dragging: none;
     -webkit-user-drag: none;
+}
+.pulse{
+    /* background-color: #011C41; */
+}
+
+.pulse i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%,-50%);
+    margin-top: 2px;
+    margin-left: -15px;
+    border: 1px solid rgb(51, 255, 0);
+    border-radius: 50%;
+    animation: pulsed 3600ms ease-out 1s infinite;
+    opacity: 0;
+}
+
+.pulse i:nth-child(2) {
+    animation-delay: 1300ms;
+  
+}
+
+.pulse i:nth-child(3) {
+    animation-delay: 1600ms;
+}
+
+.pulse i:nth-child(4) {
+    animation-delay: 1900ms;
+}
+
+.pulse i:nth-child(5) {
+    animation-delay: 2200ms;
+}
+
+@keyframes pulsed {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(3);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }
