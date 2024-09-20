@@ -237,7 +237,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                 <button aria-label="play" id="btn-processar-audio" class="btn btn-light">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speech"><path d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20"/><path d="M19.8 17.8a7.5 7.5 0 0 0 .003-10.603"/><path d="M17 15a3.5 3.5 0 0 0-.025-4.975"/></svg>
                 </button>
-                <p class="text-mute">Áudio</p>
+                <p class="text-mute label-audio-voice-recog">Áudio</p>
             </div>
         `;
 
@@ -263,7 +263,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                     <span><strong class="data-generacao">00/00/000</strong></span>
                 </div>
             -->
-                <p class="processamento-resposta-ai">
+                <p class="processamento-resposta-ai animate__animated ">
                     ${resumoTextual}
                 </p>
 
@@ -289,8 +289,6 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
 
         document.getElementById('loading-resumo').style.display = 'none';
         document.getElementById('text-typing-ai').innerHTML = "Eva respondeu :"
-
-
 
         const noneToolbar = document.querySelector(".removerMenu");
         const titleResumo = document.querySelector(".titleResumo");
@@ -357,109 +355,12 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
     }
 }
 
-
 let audio = null; // Variável global para armazenar a instância do áudio
 let pauseTimeout = null; // Timer para o tempo de pausa
 let countdownInterval = null; // Intervalo para o contador regressivo
 const tempoAudio = 5000; // 3 segundos em milissegundos
 let tempoRestante = tempoAudio / 1000; // Tempo restante em segundos
-const labelTempo = document.querySelector(".label-audio-voice-recog"); // Elemento que será atualizado com o tempo
 let reiniciarAudio = false; // Controla se o áudio deve ser reiniciado
-
-// Função para gerar e tocar o áudio
-function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade = 0, tom = 1) {
-    const tokens = [];
-    const languages = {};
-
-    // Requisição AJAX para carregar as configurações
-    $.ajax({
-        url: "./modules/config.json",
-        method: "GET",
-        cache: false,
-        success: (data) => {
-            if (data.voiceSSR && data.voiceSSR.tokens) {
-                tokens.length = 0;
-                data.voiceSSR.tokens.forEach(token => tokens.push(token));
-            }
-
-            if (data.voiceSSR && data.voiceSSR.config) {
-                Object.keys(data.voiceSSR.config).forEach(lang => {
-                    languages[lang] = data.voiceSSR.config[lang];
-                });
-            }
-
-            function sintetizarAudio(apiKey, texto, velocidade, tom, langCode, voz) {
-                const apiUrl = `https://api.voicerss.org/`;
-                const params = new URLSearchParams({
-                    key: apiKey,
-                    src: texto,
-                    hl: langCode,
-                    v: voz,
-                    r: velocidade,
-                    c: 'MP3',
-                    f: '44khz_16bit_stereo'
-                });
-
-                return fetch(`${apiUrl}?${params.toString()}`, {
-                    method: 'GET',
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            return response.blob();
-                        } else {
-                            throw new Error('Erro ao gerar áudio');
-                        }
-                    });
-            }
-
-
-          
-            const buttonProcessAudio = document.getElementById("btn-processar-audio");
-            buttonProcessAudio.innerHTML = `
-                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>`;
-
-            sintetizarAudio(tokens[0], resumo, velocidade, tom, langCode, voz)
-                .then(blob => {
-                    const audioURL = URL.createObjectURL(blob);
-                    if (audio) {
-                        audio.pause();
-                    }
-
-                    audio = new Audio(audioURL);
-                    updateIcon('pause'); // Atualizar o ícone para "pause"
-                    limparTempoLabel(); // Limpar o tempo exibido ao reiniciar o áudio
-                    audio.play();
-
-                    audio.addEventListener("timeupdate", updateTempoLabel); // Atualiza o label com o tempo decorrido
-
-                    audio.onended = () => {
-                        updateIcon('play'); // Voltar para o ícone "play" quando o áudio terminar
-                    };
-
-                    audio.onpause = () => {
-                        updateIcon('play'); // Atualizar o ícone para "play" ao pausar
-                        iniciarContagemRegressiva(); // Iniciar a contagem regressiva ao pausar
-                    };
-
-                    audio.onplay = () => {
-                        updateIcon('pause'); // Atualizar o ícone para "pause" ao tocar
-                        cancelarContagemRegressiva(); // Cancelar a contagem regressiva se o áudio for retomado
-                        if (reiniciarAudio) {
-                            audio.currentTime = 0; // Reinicia o áudio se pausado por mais de 3 segundos
-                            limparTempoLabel(); // Limpar a exibição de tempo ao reiniciar o áudio
-                            reiniciarAudio = false; // Reseta a flag de reinício
-                        }
-                    };
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                });
-        },
-        error: (error) => {
-            console.error('Erro ao carregar as configurações:', error);
-        }
-    });
-}
 
 // Função para trocar os ícones entre "play" e "pause"
 function updateIcon(state) {
@@ -467,7 +368,7 @@ function updateIcon(state) {
     button.innerHTML = ``;
     if (state === 'play') {
         button.setAttribute("aria-label", "play");
-        
+
         button.innerHTML = `
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speech">
                 <path d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20"/>
@@ -484,64 +385,167 @@ function updateIcon(state) {
     }
 }
 
-// Função para iniciar a contagem regressiva quando o áudio for pausado
-function iniciarContagemRegressiva() {
-    limparTempoLabel(); // Limpar o label quando começar a contagem regressiva
-    tempoRestante = tempoAudio / 1000; // Definir o tempo restante em segundos
+function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade = 0, tom = 1) {
 
-    countdownInterval = setInterval(() => {
-        tempoRestante -= 1;
-        updateLabelTempoRestante(tempoRestante);
+    const labelTempo = document.querySelector(".label-audio-voice-recog"); // Elemento que será atualizado com o tempo
+    console.log(labelTempo)
+    // Função para gerar e tocar o áudio
+    function AudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade = 0, tom = 1) {
+        const tokens = [];
+        const languages = {};
 
-        if (tempoRestante <= 0) {
-            limparTempoLabel()
-            clearInterval(countdownInterval); // Parar o intervalo quando chegar a 0
-            reiniciarAudio = true; // Indicar que o áudio deve ser reiniciado quando o usuário apertar "play"
+        // Requisição AJAX para carregar as configurações
+        $.ajax({
+            url: "./modules/config.json",
+            method: "GET",
+            cache: false,
+            success: (data) => {
+                if (data.voiceSSR && data.voiceSSR.tokens) {
+                    tokens.length = 0;
+                    data.voiceSSR.tokens.forEach(token => tokens.push(token));
+                }
+
+                if (data.voiceSSR && data.voiceSSR.config) {
+                    Object.keys(data.voiceSSR.config).forEach(lang => {
+                        languages[lang] = data.voiceSSR.config[lang];
+                    });
+                }
+
+                function sintetizarAudio(apiKey, texto, velocidade, tom, langCode, voz) {
+                    const apiUrl = `https://api.voicerss.org/`;
+                    const params = new URLSearchParams({
+                        key: apiKey,
+                        src: texto,
+                        hl: langCode,
+                        v: voz,
+                        r: velocidade,
+                        c: 'MP3',
+                        f: '44khz_16bit_stereo'
+                    });
+
+                    return fetch(`${apiUrl}?${params.toString()}`, {
+                        method: 'GET',
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.blob();
+                            } else {
+                                throw new Error('Erro ao gerar áudio');
+                            }
+                        });
+                }
+
+
+
+                const buttonProcessAudio = document.getElementById("btn-processar-audio");
+                buttonProcessAudio.innerHTML = `
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>`;
+
+                sintetizarAudio(tokens[0], resumo, velocidade, tom, langCode, voz)
+                    .then(blob => {
+                        const audioURL = URL.createObjectURL(blob);
+                        if (audio) {
+                            audio.pause();
+                        }
+
+                        audio = new Audio(audioURL);
+                        updateIcon('pause'); // Atualizar o ícone para "pause"
+                        limparTempoLabel(); // Limpar o tempo exibido ao reiniciar o áudio
+                        audio.play();
+
+                        audio.addEventListener("timeupdate", updateTempoLabel); // Atualiza o label com o tempo decorrido
+
+                        audio.onended = () => {
+                            updateIcon('play'); // Voltar para o ícone "play" quando o áudio terminar
+                        };
+
+                        audio.onpause = () => {
+                            updateIcon('play'); // Atualizar o ícone para "play" ao pausar
+                            iniciarContagemRegressiva(); // Iniciar a contagem regressiva ao pausar
+                        };
+
+                        audio.onplay = () => {
+                            updateIcon('pause'); // Atualizar o ícone para "pause" ao tocar
+                            cancelarContagemRegressiva(); // Cancelar a contagem regressiva se o áudio for retomado
+                            if (reiniciarAudio) {
+                                audio.currentTime = 0; // Reinicia o áudio se pausado por mais de 3 segundos
+                                limparTempoLabel(); // Limpar a exibição de tempo ao reiniciar o áudio
+                                reiniciarAudio = false; // Reseta a flag de reinício
+                            }
+                        };
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                    });
+            },
+            error: (error) => {
+                console.error('Erro ao carregar as configurações:', error);
+            }
+        });
+    }
+
+
+    AudioResumo(resumo, voz, langCode, velocidade, tom);
+
+
+
+    // Função para iniciar a contagem regressiva quando o áudio for pausado
+    function iniciarContagemRegressiva() {
+        limparTempoLabel(); // Limpar o label quando começar a contagem regressiva
+        tempoRestante = tempoAudio / 1000; // Definir o tempo restante em segundos
+
+        countdownInterval = setInterval(() => {
+            tempoRestante -= 1;
+            updateLabelTempoRestante(tempoRestante);
+
+            if (tempoRestante <= 0) {
+                limparTempoLabel()
+                clearInterval(countdownInterval); // Parar o intervalo quando chegar a 0
+                reiniciarAudio = true; // Indicar que o áudio deve ser reiniciado quando o usuário apertar "play"
+            }
+        }, 1000); // Contagem regressiva de 1 em 1 segundo
+    }
+
+    // Função para cancelar a contagem regressiva se o áudio for retomado
+    function cancelarContagemRegressiva() {
+        if (countdownInterval) {
+            clearInterval(countdownInterval); // Cancelar a contagem regressiva
+            countdownInterval = null;
         }
-    }, 1000); // Contagem regressiva de 1 em 1 segundo
-}
-
-// Função para cancelar a contagem regressiva se o áudio for retomado
-function cancelarContagemRegressiva() {
-    if (countdownInterval) {
-        clearInterval(countdownInterval); // Cancelar a contagem regressiva
-        countdownInterval = null;
     }
-}
 
-// Função para limpar o tempo no label
-function limparTempoLabel() {
-    if (labelTempo) {
-        labelTempo.innerHTML = ''; // Limpar o tempo quando o áudio reiniciar
+    // Função para limpar o tempo no label
+    function limparTempoLabel() {
+        if (labelTempo) {
+            labelTempo.innerHTML = 'Áudio'; // Limpar o tempo quando o áudio reiniciar
+        }
     }
-}
 
-// Função para mostrar o tempo restante no label
-function updateLabelTempoRestante(tempoRestante) {
-    if (labelTempo) {
-        // labelTempo.innerHTML = `
-        // <span class="badge rounded-pill bg-danger text-mute">
-        //     ${tempoRestante}s         
-        //  </span>`;
+    // Função para mostrar o tempo restante no label
+    function updateLabelTempoRestante(tempoRestante) {
+        if (labelTempo) {
+            labelTempo.innerHTML = `
+                ${tempoRestante}s         
+            `;
+        }
     }
-}
 
-// Função para atualizar o tempo decorrido no label
-function updateTempoLabel() {
-    if (audio && labelTempo) {
-        const currentTime = formatTime(audio.currentTime);
-        // labelTempo.innerHTML = `
-        // <span class="badge rounded-pill bg-danger text-mute">
-        //     Tempo decorrido: ${currentTime}         
-        //  </span>`;
+    // Função para atualizar o tempo decorrido no label
+    function updateTempoLabel() {
+        if (audio && labelTempo) {
+            // const currentTime = formatTime(audio.currentTime);
+            // labelTempo.innerHTML = `
+            //     ${currentTime}s         
+            // `;
+        }
     }
-}
 
-// Função auxiliar para formatar o tempo em mm:ss
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    // Função auxiliar para formatar o tempo em mm:ss
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
 }
 
 
