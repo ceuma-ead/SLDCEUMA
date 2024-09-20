@@ -1440,7 +1440,7 @@ function modulosPage(slideIndex) {
                 moduloAudio.forEach((modulos) => {
                     const containerAudio = document.querySelector(".audio-convertido-ouvinte");
                     containerAudio.innerHTML = "";
-        
+
                     // Criando os seletores de idioma e voz dinamicamente
                     const audioFerramentas = `
         
@@ -1614,14 +1614,14 @@ function modulosPage(slideIndex) {
                             </div>
                         </div>
                     `;
-        
+
                     containerAudio.innerHTML += audioFerramentas;
-        
+
                     // Função para popular vozes com base no idioma selecionado
                     function popularVozes(langCode) {
                         const voiceSelect = document.getElementById('voice-select');
                         voiceSelect.innerHTML = ''; // Limpar vozes anteriores
-        
+
                         if (languages[langCode]) {
                             const voices = languages[langCode].voices;
                             voices.forEach(voice => {
@@ -1632,49 +1632,49 @@ function modulosPage(slideIndex) {
                             });
                         }
                     }
-        
+
                     // Inicialmente popular com o primeiro idioma
                     const languageSelect = document.getElementById('language-select');
                     popularVozes(languageSelect.value);
-        
+
                     // Mudar vozes ao mudar o idioma
                     languageSelect.addEventListener('change', (e) => {
                         popularVozes(e.target.value);
                     });
-        
-        
+
+
                     // Elementos de controle do áudio
                     const playBtn = containerAudio.querySelector(".playOuvint-btn");
                     const stopBtn = containerAudio.querySelector(".stopOuvint-btn");
-        
+
                     const textoOuvinte = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
-        
-        
+
+
                     function addAccordionConfigDownload() {
                         const configuracaoDownload = document.getElementById("configuracao-ouvinte");
                         const openCollapeseDownload = document.getElementById("collapseOne");
-        
+
                         if (configuracaoDownload.classList.contains("d-none")) {
                             configuracaoDownload.classList.remove("d-none")
                             openCollapeseDownload.classList.add("show")
                             configuracaoDownload.classList.add("d-block")
-        
+
                         }
                     }
-        
+
                     function removeAccordionConfigDownload() {
                         const configuracaoDownload = document.getElementById("configuracao-ouvinte");
-        
+
                         if (configuracaoDownload.classList.contains("d-block")) {
                             configuracaoDownload.classList.remove("d-block")
                             configuracaoDownload.classList.add("d-none")
-        
+
                         }
                     }
-        
-        
+
+
                     // ========================================== | Previzualizar Áudio | ========================================= //
-        
+
                     const maxTentativas = 2; // Limite máximo de tentativas
                     const tentativasSpan = document.querySelector(".attempts-counter"); // Elemento que exibe as tentativas
                     const containerTentativas = document.querySelector(".preview-controls"); // Container para exibir o relógio
@@ -1689,13 +1689,13 @@ function modulosPage(slideIndex) {
                     previewSection.setAttribute('open', true)
                     // Tempo de expiração do chave cookie para reinicar tentativas api
                     const expiracaoChaveCookie = 60
-        
+
                     // Função para verificar e atualizar as tentativas
                     function verificarTentativas() {
                         tentativas = getCookie("tentativasAudio");
                         tentativas = tentativas ? parseInt(tentativas) : 0; // Se não existir, começa com 0
                         tentativasSpan.textContent = `${tentativas}/${maxTentativas}`; // Atualiza o contador na UI
-        
+
                         // Se já alcançou o limite de tentativas, desabilita o botão Play
                         if (tentativas >= maxTentativas) {
                             const expiracao = getCookie("expiracaoAudio");
@@ -1707,29 +1707,29 @@ function modulosPage(slideIndex) {
                                 setCookie("expiracaoAudio", novaExpiracao.toUTCString(), expiracaoChaveCookie);
                                 iniciarRelogio(novaExpiracao);
                             }
-        
+
                         }
                     }
-        
+
                     // Função para incrementar as tentativas
                     function incrementarTentativas() {
                         tentativas++;
                         setCookie("tentativasAudio", tentativas, 30); // Expira em 30 minutos
                         tentativasSpan.textContent = ` ${tentativas}/${maxTentativas}`;
                     }
-        
+
                     // Função para iniciar o relógio de contagem regressiva
                     function iniciarRelogio(dataExpiracao) {
                         const intervalo = setInterval(() => {
                             const agora = new Date().getTime();
                             const distancia = new Date(dataExpiracao).getTime() - agora;
-        
+
                             const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
                             const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
                             if (audioOuvinte) {
                                 audioOuvinte.pause();
                             }
-        
+
                             containerTentativas.innerHTML = `
                                 <div class="relogio-container" style="display: flex; align-items: center; gap: 10px;">
                                     <img src="https://img.icons8.com/ios-filled/50/000000/hourglass--v1.png" alt="Relógio ícone" style="width: 30px; height: 30px;">
@@ -1738,7 +1738,7 @@ function modulosPage(slideIndex) {
                                     </div>
                                 </div>
                                 `;
-        
+
                             // Se o tempo acabar, permite novas tentativas
                             if (distancia < 0) {
                                 clearInterval(intervalo);
@@ -1751,10 +1751,10 @@ function modulosPage(slideIndex) {
                             }
                         }, 1000);
                     }
-        
+
                     // Chama a função ao carregar a página para verificar as tentativas atuais
                     verificarTentativas();
-        
+
                     // // Função para sintetizar e gerar o áudio
                     // function gerarAudio() {
                     //     const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
@@ -1762,25 +1762,25 @@ function modulosPage(slideIndex) {
                     //     const tom = document.getElementById("pitch-range").value;
                     //     const langCode = document.getElementById("language-select").value;
                     //     const voz = document.getElementById("voice-select").value;
-        
+
                     //     playBtnPrevizualizar.innerHTML = `
                     //         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                     //         Play
                     //     `;
-        
+
                     //     sintetizarAudio(tokens[0], texto, velocidade, tom, langCode, voz, "")
                     //         .then(blob => {
                     //             // Libera o URL anterior do blob para liberar recursos
                     //             if (audioBlobUrl) {
                     //                 URL.revokeObjectURL(audioBlobUrl);
                     //             }
-        
+
                     //             audioBlobUrl = URL.createObjectURL(blob);
                     //             audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
                     //             audioGerado = true;  // Marca que o áudio foi gerado
-        
+
                     //             playBtnPrevizualizar.innerHTML = `Play`;
-        
+
                     //             // Quando o áudio estiver pronto, atualiza a interface
                     //             audioOuvinte.addEventListener("loadeddata", () => {
                     //                 const durationElement = document.querySelector(".time .length");
@@ -1789,14 +1789,14 @@ function modulosPage(slideIndex) {
                     //                 }
                     //                 audioOuvinte.volume = 0.75;
                     //             });
-        
+
                     //             // Tocar o áudio gerado
                     //             audioOuvinte.play();
-        
+
                     //             // Alternar entre os botões "Play" e "Pause"
                     //             playBtnPrevizualizar.style.display = "none";
                     //             pauseBtnPrevizualizar.style.display = "flex";
-        
+
                     //             // Quando o áudio parar, volta para o botão "Play"
                     //             audioOuvinte.onended = () => {
                     //                 playBtnPrevizualizar.style.display = "inline-block";
@@ -1807,18 +1807,18 @@ function modulosPage(slideIndex) {
                     //             console.error("Erro ao gerar o áudio", error);
                     //         });
                     // }
-        
+
                     // // Evento para o botão de "Play"
                     // playBtnPrevizualizar.addEventListener("click", () => {
                     //     if (tentativas < maxTentativas) {
                     //         incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
-        
+
                     //         // Regenera o áudio sempre que os valores mudarem
                     //         document.getElementById("speed-range").addEventListener("change", gerarAudio);
                     //         document.getElementById("pitch-range").addEventListener("change", gerarAudio);
                     //         document.getElementById("language-select").addEventListener("change", gerarAudio);
                     //         document.getElementById("voice-select").addEventListener("change", gerarAudio);
-        
+
                     //         if (!audioGerado) {
                     //             gerarAudio(); // Gera o áudio se ele ainda não foi gerado
                     //         } else {
@@ -1828,99 +1828,99 @@ function modulosPage(slideIndex) {
                     //         }
                     //     }
                     // });
-        
-        
+
+
                     // // Evento para o botão de "Pause"
                     // pauseBtnPrevizualizar.addEventListener("click", () => {
-        
+
                     //     if (audioOuvinte) {
                     //         verificarTentativas();
                     //         audioOuvinte.pause();
-        
+
                     //         playBtnPrevizualizar.style.display = "inline-block";
                     //         pauseBtnPrevizualizar.style.display = "none";
                     //     }
                     // });
-        
-        
-        
+
+
+
                     // ============================================================================================================= \\
-        
+
                     // Variáveis para armazenar os valores atualizados dos controles
-        
+
                     let velocidadeAtual = document.getElementById("speed-range").value;
                     let tomAtual = document.getElementById("pitch-range").value;
                     let langCodeAtual = document.getElementById("language-select").value;
                     let vozAtual = document.getElementById("voice-select").value;
-        
+
                     // Atualiza as variáveis de controle sem regenerar o áudio imediatamente
-        
+
                     document.getElementById("speed-range").addEventListener("change", (e) => {
                         velocidadeAtual = e.target.value;
                         localStorage.setItem('velocidade', velocidadeAtual); // Salva no localStorage
                     });
-        
+
                     document.getElementById("pitch-range").addEventListener("change", (e) => {
                         tomAtual = e.target.value;
                         localStorage.setItem('tom', tomAtual); // Salva no localStorage
                     });
-        
+
                     document.getElementById("language-select").addEventListener("change", (e) => {
                         langCodeAtual = e.target.value;
                         localStorage.setItem('langCode', langCodeAtual); // Salva no localStorage
                         popularVozes(langCodeAtual);
                     });
-        
+
                     document.getElementById("voice-select").addEventListener("change", (e) => {
                         vozAtual = e.target.value;
                         localStorage.setItem('voz', vozAtual); // Salva no localStorage
                     });
-        
+
                     // Carrega os valores do localStorage ao iniciar a página
                     if (localStorage.getItem('velocidade')) {
                         velocidadeAtual = localStorage.getItem('velocidade');
                         document.getElementById("speed-range").value = velocidadeAtual;
                     }
-        
+
                     if (localStorage.getItem('tom')) {
                         tomAtual = localStorage.getItem('tom');
                         document.getElementById("pitch-range").value = tomAtual;
                     }
-        
+
                     if (localStorage.getItem('langCode')) {
                         langCodeAtual = localStorage.getItem('langCode');
                         document.getElementById("language-select").value = langCodeAtual;
                     }
-        
+
                     if (localStorage.getItem('voz')) {
                         vozAtual = localStorage.getItem('voz');
                         document.getElementById("voice-select").value = vozAtual;
                     }
-        
+
                     let chavePreview = 0; // Começar pela primeira chave
                     // Função para sintetizar e gerar o áudio sempre que "Play" é clicado
                     function gerarAudio() {
                         const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
-        
+
                         playBtnPrevizualizar.innerHTML = `
                             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                             Play
                         `;
-        
+
                         sintetizarAudio(tokens[chavePreview], texto, velocidadeAtual, tomAtual, langCodeAtual, vozAtual, "")
                             .then(blob => {
-        
+
                                 // Libera o URL anterior do blob para liberar recursos
                                 if (audioBlobUrl) {
                                     URL.revokeObjectURL(audioBlobUrl);
                                 }
-        
+
                                 audioBlobUrl = URL.createObjectURL(blob);
                                 audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
                                 audioGerado = true;  // Marca que o áudio foi gerado
-        
+
                                 playBtnPrevizualizar.innerHTML = `Pré-visualizar`;
-        
+
                                 // Quando o áudio estiver pronto, atualiza a interface
                                 audioOuvinte.addEventListener("loadeddata", () => {
                                     const durationElement = document.querySelector(".time .length");
@@ -1929,14 +1929,14 @@ function modulosPage(slideIndex) {
                                     }
                                     audioOuvinte.volume = 0.75;
                                 });
-        
+
                                 // Tocar o áudio gerado
                                 audioOuvinte.play();
-        
+
                                 // Alternar entre os botões "Play" e "Pause"
                                 playBtnPrevizualizar.style.display = "none";
                                 pauseBtnPrevizualizar.style.display = "flex";
-        
+
                                 // Quando o áudio parar, volta para o botão "Play"
                                 audioOuvinte.onended = () => {
                                     playBtnPrevizualizar.style.display = "inline-block";
@@ -1952,7 +1952,7 @@ function modulosPage(slideIndex) {
                                 console.error("Erro ao gerar o áudio", error);
                             });
                     }
-        
+
                     // Evento para o botão de "Play"
                     playBtnPrevizualizar.addEventListener("click", () => {
                         verificarTentativas();
@@ -1961,7 +1961,7 @@ function modulosPage(slideIndex) {
                             gerarAudio(); // Sempre gera o áudio com os valores atualizados ao clicar em "Play"
                         }
                     });
-        
+
                     // Evento para o botão de "Pause"
                     pauseBtnPrevizualizar.addEventListener("click", () => {
                         verificarTentativas();
@@ -1971,15 +1971,15 @@ function modulosPage(slideIndex) {
                             pauseBtnPrevizualizar.style.display = "none";
                         }
                     });
-        
-        
-        
+
+
+
                     const abrirOuvinteDownload = document.querySelector(".openDownload-btn")
                     abrirOuvinteDownload.addEventListener('click', () => {
                         addAccordionConfigDownload()
                     })
-        
-        
+
+
                     // Função para alternar entre as chaves de API
                     function usarOutraChave(indexAtual) {
                         if (indexAtual < tokens.length - 1) {
@@ -1988,45 +1988,45 @@ function modulosPage(slideIndex) {
                             return null; // Se não houver mais chaves
                         }
                     }
-        
-        
+
+
                     // Variáveis para controle
                     let isPlaying = false; // Variável para controlar o estado de reprodução
                     let textoAtual = ''; // Texto que está sendo lido
                     let textoRestante = ''; // Parte restante do texto após a pausa
                     let posicaoAtual = 0; // Posição atual da leitura do texto
-        
+
                     // Função para iniciar a leitura de voz (SpeechSynthesis)
                     const loadingVoz = document.querySelector(".loading-voz");
-        
+
                     function lerTextoOuvinte(texto, posicaoInicial = 0) {
                         // Mostra o loading enquanto a voz está sendo carregada ou processada
                         loadingVoz.style.display = 'block';
-        
+
                         // Verifica se o navegador suporta SpeechSynthesis
                         if (!window.speechSynthesis) {
                             loadingVoz.style.display = "none";
                             alert("Seu navegador não suporta a síntese de voz.");
                             return;
                         }
-        
+
                         // Configurando a voz padrão (pode ser ajustada conforme desejado) 
                         // const voz = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === "Google português do Brasil");
                         const voz = window.speechSynthesis.getVoices().find(voice => voice.lang === "pt-Br");
-        
+
                         // Criar a síntese de fala a partir da posição inicial
                         const utterance = new SpeechSynthesisUtterance(texto.substring(posicaoInicial));
                         utterance.voice = voz || window.speechSynthesis.getVoices()[0];
                         utterance.pitch = 1; // Padrão de tom
                         utterance.rate = 1;  // Padrão de velocidade
-        
+
                         // Acompanhar o progresso da fala e salvar a posição atual
                         utterance.onboundary = function (event) {
                             if (event.name === 'word') {
                                 posicaoAtual = event.charIndex + posicaoInicial;
                             }
                         };
-        
+
                         // Quando a fala terminar, esconde o loading e reseta o botão
                         utterance.onend = function () {
                             loadingVoz.style.display = 'none';
@@ -2034,15 +2034,15 @@ function modulosPage(slideIndex) {
                             resetPlayButton(); // Reseta o botão para "Play"
                         };
                         // criar um modulo de Erro para analizar a Voz
-        
+
                         utterance.onerror = (event) => {
                             console.log(event)
-        
+
                         }
                         // Iniciar a fala
                         window.speechSynthesis.speak(utterance);
                     }
-        
+
                     // Função para alternar entre "Play" e "Pause"
                     playBtn.addEventListener('click', () => {
                         if (!isPlaying) {
@@ -2065,8 +2065,8 @@ function modulosPage(slideIndex) {
                             removeAccordionConfigDownload()
                         }
                     });
-        
-        
+
+
                     document.querySelector(".btn-close-ouvinte").addEventListener("click", () => {
                         window.speechSynthesis.cancel();  // Interrompe a síntese de voz se estiver acontecendo
                         playBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; // Reseta o ícone para "Play"
@@ -2078,7 +2078,7 @@ function modulosPage(slideIndex) {
                         loadingVoz.style.display = "none"; // Esconder o loading
                         removeAccordionConfigDownload()
                     })
-        
+
                     // Função para parar o áudio e resetar o botão "Play"
                     stopBtn.addEventListener('click', () => {
                         window.speechSynthesis.cancel();  // Interrompe a síntese de voz se estiver acontecendo
@@ -2091,15 +2091,15 @@ function modulosPage(slideIndex) {
                         loadingVoz.style.display = "none"; // Esconder o loading
                         removeAccordionConfigDownload()
                     });
-        
+
                     // Função para resetar o botão "Play"
                     function resetPlayButton() {
                         playBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; // Reseta o ícone para "Play"
                         playBtn.classList.remove('btn-warning'); // Muda a cor de volta para "Play"
                         playBtn.classList.add('btn-success');
                     }
-        
-        
+
+
                     // Função de síntese de voz
                     function sintetizarAudio(apiKey, texto, velocidade, tom, langCode, voz, logPre) {
                         const apiUrl = `https://api.voicerss.org/`;
@@ -2112,15 +2112,15 @@ function modulosPage(slideIndex) {
                             c: 'MP3',  // Formato do áudio
                             f: '44khz_16bit_stereo'  // Qualidade do áudio
                         });
-        
+
                         logPre.textContent += `Chave Validada!...\n`;
-        
+
                         return fetch(`${apiUrl}?${params.toString()}`, {
                             method: 'GET',
                         })
                             .then(response => {
                                 logPre.textContent += `Criando Ponto de Transmissão\n`;
-        
+
                                 if (response.ok) {
                                     logPre.textContent += `${response.status}\n`;
                                     logPre.textContent += 'Áudio gerado com sucesso!\n';
@@ -2131,14 +2131,14 @@ function modulosPage(slideIndex) {
                                 }
                             });
                     }
-        
+
                     // // Pegar módulo de áudio
                     // if (modulos.audio) {
                     //     // Verificar se áudio está ativo
                     //     if (modulos.audio.ativo) { }
-        
+
                     // }
-        
+
                     // Adicionar evento ao botão de download e reprodução
                     const downloadBtn = containerAudio.querySelector(".download-btn");
                     downloadBtn.addEventListener('click', function () {
@@ -2149,14 +2149,14 @@ function modulosPage(slideIndex) {
                         const voz = document.getElementById("voice-select").value;  // Pegar a voz
                         const logPre = containerAudio.querySelector(".Texto-download");
                         const sppinnerButton = document.querySelector(".download-btn");
-        
+
                         // sppinnerButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
                         // sppinnerButton.innerHTML = `Sucesso <i class="bi bi-check-circle"></i>`
-        
+
                         sppinnerButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
                         logPre.textContent = ''; // Limpar logs anteriores
                         let chaveAtual = 0; // Começar pela primeira chave
-        
+
                         function tentarProximaChave() {
                             sintetizarAudio(tokens[chaveAtual], texto, velocidade, tom, langCode, voz, logPre)
                                 .then(blob => {
@@ -2167,7 +2167,7 @@ function modulosPage(slideIndex) {
                                     link.href = url;
                                     link.download = 'audio.mp3';
                                     link.click();
-        
+
                                 })
                                 .catch(error => {
                                     logPre.textContent += `Erro: ${error.message}\n`;
@@ -2181,10 +2181,10 @@ function modulosPage(slideIndex) {
                                     }
                                 });
                         }
-        
+
                         tentarProximaChave(); // Iniciar a tentativa com a primeira chave
                     });
-        
+
                 });
             },
             error: (error) => {
@@ -2549,33 +2549,100 @@ function modulosPage(slideIndex) {
                         }
                     }
 
-                    // Adicionar evento ao botão "Dicionário" da toolbar
-                    document.getElementById('dicionario-toolbar').addEventListener('click', function () {
-                        const primeiraPalavra = obterPrimeiraPalavra();
+                   
+                    // Função para verificar se mais de uma palavra foi selecionada
+                    function verificarSelecao() {
+                        const renderMenuDiv = document.querySelector('.render-dicionario');
+                        renderMenuDiv.innerHTML = "";
+                        const textoSelecionado = window.getSelection().toString().trim();
 
-                        fecharBoxCores()
-                        if (primeiraPalavra) {
-                            buscarNoDicionario(primeiraPalavra);
-                        } else {
-                            alert("Por favor, selecione uma palavra válida.");
+                        // Conta o número de palavras na seleção
+                        const palavras = textoSelecionado.split(/\s+/); // Quebra o texto em palavras pelo espaço
+
+                        if (palavras.length > 1) {
+                            // Mais de uma palavra foi selecionada
+                            abrirDicionario();
+                            renderMenuDiv.innerHTML = `
+                            
+                                <div style="position:absolute;top:50%;left:50%; transform: translate(-50%,-50%);">
+                                    <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                                        <p style="color:#000;" class="text-center"><strong>Opps...</strong></p>
+                                        <p style="color:#000;" class="text-center">Selecione apenas uma palavra.</p>
+                                    </div>
+                                </div>
+                            `;
+                            return false; // Retorna false para impedir a busca
                         }
+
+                        return palavras[0]; // Retorna a primeira palavra se apenas uma for selecionada
+                    }
+
+                    // Evento para o clique no dicionário
+                    document.getElementById('dicionario-toolbar').addEventListener('click', function () {
+                        const primeiraPalavra = verificarSelecao(); // Usa a função de verificação
+
+                        fecharBoxCores();
+                        if (primeiraPalavra) {
+                            buscarNoDicionario(primeiraPalavra); // Faz a busca no dicionário se for uma única palavra
+                        } 
+                        // else {
+                        //     alert("Por favor, selecione uma palavra válida.");
+                        // }
                     });
+
+
+
+                    // document.getElementById('resumo').addEventListener('click', function () {
+                    //     const textoResumo = obterTextoSelecionado();
+                    //     fecharBoxCores()
+                    //     fecharResumo()
+                    //     // alert(textoResumo)
+                    //     resumoAI(textoResumo, "Hematologia clinica").then(resumo => {
+                    //         // const containerFlip = document.querySelector("#flip-container");
+                    //         // containerFlip.classList.toggle('flip-active')
+                    //         soundBipe()
+                    //         // console.log('Resumo retornado:', resumo);
+                    //     });
+                    //     abrirResumo()
+
+                    // });
 
 
                     document.getElementById('resumo').addEventListener('click', function () {
                         const textoResumo = obterTextoSelecionado();
-                        fecharBoxCores()
-                        fecharResumo()
-                        // alert(textoResumo)
+                        fecharBoxCores();
+                        
+                        // Chama a função que gera o resumo
                         resumoAI(textoResumo, "Hematologia clinica").then(resumo => {
-                            // const containerFlip = document.querySelector("#flip-container");
-                            // containerFlip.classList.toggle('flip-active')
-                            soundBipe()
-                            // console.log('Resumo retornado:', resumo);
+                            const containerFlip = document.querySelector("#flip-container");
+                    
+                            // Verifica se o container está mostrando o histórico (flipado)
+                            if (containerFlip.classList.contains('flip-active')) {
+                                // Se estiver no histórico, removemos o flip para voltar ao resumo
+                                containerFlip.classList.remove('flip-active');
+                            }
+                    
+                            // Processa o resumo e o exibe
+                            soundBipe();
+                            console.log('Resumo retornado:', resumo);
+                    
+                            // Após gerar o resumo, você pode processar o resumo e exibir na tela
                         });
-                        abrirResumo()
-
+                    
+                        const verificarAberturaResumo = document.querySelector(".resumo-menu");
+                    
+                        // Verifica se o resumo está aberto ou não
+                        if (verificarAberturaResumo.classList.contains("open")) {
+                            // O menu já está aberto, então não precisamos fechá-lo, apenas atualizar
+                            console.log("O menu de resumo já está aberto.");
+                        } else {
+                            // O menu está fechado, então fechamos e reabrimos para garantir atualização
+                            fecharResumo(); // Fecha o resumo, caso esteja parcialmente aberto
+                            abrirResumo(); // Reabre o menu de resumo
+                        }
                     });
+                    
 
                 }
 

@@ -11,5 +11,13 @@
         "tokens":[
             "e3f17edd7b9c4d6cb3a333b278aae0e9"
         ]
+    },
+    "ceumaAI":{
+        "ativo":true,
+        "https":"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?",
+        "tokens":[
+            "AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I"
+        ],
+        "menu_resumo":true
     }
 }

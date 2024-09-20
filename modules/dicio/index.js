@@ -61,6 +61,7 @@ function checkEmptyDicionarioContainer() {
     }
 }
 
+
 // Variável global para controlar o estado da síntese de voz
 let synth = window.speechSynthesis;
 let isPaused = false;

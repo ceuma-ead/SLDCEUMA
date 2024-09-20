@@ -327,10 +327,7 @@
     overflow: auto;
 } */
 
-.label-audio-voice-recog{
-    right: 1%;
-    top: 77%;
-}
+
 
 /* .processamento-resposta-ai::-webkit-scrollbar-track {
     border-radius: 3px;
@@ -394,7 +391,7 @@
 
 .back {
     transform: rotateY(180deg);
-    background-color: #eee;
+    background-color: white;
 }
 
 /* Estilos gerais */
@@ -427,6 +424,11 @@
     transform: translate(-50%,-50%);
     width:100%;
     height: 100%;
+}
+
+.empty-resumo-message-add p{
+    text-align: center;
+    font-size: 1rem;
 }
 
 .empty-resumo-message-add img {

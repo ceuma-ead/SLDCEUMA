@@ -35,15 +35,44 @@ function addDataResumo() {
 
 addDataResumo()
 
+async function resumoConfig() {
+    try {
+        const data = await $.ajax({
+            url: "./modules/config.json",
+            method: "GET",
+            cache: false,
+        });
+        return data;
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: `Erro Json Desativada`,
+            heightAuto: false,
+            footer: `<a href="#" onclick="">você acha que isso é um erro? @suporte</a>`
+        });
+        console.error('Erro:', error);
+    }
+}
+
+
+
+
+
+
 
 // Função para obter o resumo usando a API de forma dinâmica
 async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _tipo = "um estudante leigo", tamanhoTexto = 10, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
+    
+    const configuracoesData = await resumoConfig();
+    console.log(configuracoesData)
+
     const configuracoes = {
         temperado: _temperado, // completo || detalhado com referência
         tipo: _tipo,
         paragrafos: paragrafos,
         apiKey: apiKey || "AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I", // Usa uma chave padrão se nenhuma chave for passada
     };
+
 
     // const question = `
     //     Analise o Sequinte tema "${analisarContexto}" veja se a palavra ou paragrafo que é esse aqui
@@ -267,16 +296,11 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                     ${resumoTextual}
                 </p>
 
+                
                 <span
                     class=" mt-2 title img-back-resumo d-flex flex-column border border-2 bg-dark text-light p-2 rounded justify-content-center align-items-center">
                     <span id="containerResumo-result-reprocessamento" style="display:none;">
-                        <button  id="btn-reprocessar-resumo" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw">
-                                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                                <path d="M3 3v5h5" />
-                                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-                                <path d="M16 16h5v5" /></svg></button>
+                        <p>Sem Ferramentas Disponíveis ...</p>
                     </span>
 
                     <span class="items-action-btn-ai w-100 gap-2 justify-content-center align-items-center" style="display:flex;">
@@ -300,12 +324,12 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
             toolbarActions.style.display = "none";
             containerResumoResult.style.display = "block";
 
-            const btnReprocessamento = document.getElementById("btn-reprocessar-resumo");
-            btnReprocessamento.addEventListener("click", () => {
+            // const btnReprocessamento = document.getElementById("btn-reprocessar-resumo");
+            // btnReprocessamento.addEventListener("click", () => {
 
-                fecharResumo();
-                abrirResumo();
-            })
+            //     fecharResumo();
+            //     abrirResumo();
+            // })
 
 
         } else {
@@ -358,7 +382,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
 let audio = null; // Variável global para armazenar a instância do áudio
 let pauseTimeout = null; // Timer para o tempo de pausa
 let countdownInterval = null; // Intervalo para o contador regressivo
-const tempoAudio = 5000; // 3 segundos em milissegundos
+const tempoAudio = 60000; // 3 segundos em milissegundos
 let tempoRestante = tempoAudio / 1000; // Tempo restante em segundos
 let reiniciarAudio = false; // Controla se o áudio deve ser reiniciado
 
@@ -388,7 +412,7 @@ function updateIcon(state) {
 function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade = 0, tom = 1) {
 
     const labelTempo = document.querySelector(".label-audio-voice-recog"); // Elemento que será atualizado com o tempo
-    console.log(labelTempo)
+    // console.log(labelTempo)
     // Função para gerar e tocar o áudio
     function AudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade = 0, tom = 1) {
         const tokens = [];
@@ -524,8 +548,9 @@ function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade 
     // Função para mostrar o tempo restante no label
     function updateLabelTempoRestante(tempoRestante) {
         if (labelTempo) {
+            const currentTime = formatTime(tempoRestante);
             labelTempo.innerHTML = `
-                ${tempoRestante}s         
+                ${currentTime}s         
             `;
         }
     }

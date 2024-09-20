@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     abrirSumario();
     abrirAnotacoes();
     checkEmptyResumoContainer();
+    checkEmptyResumoHistoricoContainer() 
    
 });
 
@@ -44,46 +45,40 @@ function checkEmptyResumoContainer() {
 }
 
 
-// // Função para verificar se o contêiner de resumo está vazio
-// function checkEmptyResumoContainerHistorico() {
-//     const resumoContainer = document.querySelector('.render-resumo-result-historico');
+// Função para verificar se o contêiner de resumo histórico está vazio
+function checkEmptyResumoHistoricoContainer() {
+    const resumoHistoricoContainer = document.querySelector('.render-resumo-result-historico');
 
-//     // Verifica se o contêiner existe
-//     if (!resumoContainer) return;
+    // Verifica se o contêiner existe
+    if (!resumoHistoricoContainer) return;
 
-//     // Verifica se o conteúdo do contêiner está vazio (desconsiderando comentários ou espaços em branco)
-//     if (!resumoContainer.children.length || resumoContainer.innerHTML.trim() === '') {
-//         console.log("Vazio")
-//         // Adiciona a mensagem de "vazio" se não houver conteúdo visível
-//         let emptyMessage = document.querySelector('.empty-resumo-historico-message');
-        
-//         if (!emptyMessage) {
-//             emptyMessage = document.createElement('div');
-//             emptyMessage.classList.add('empty-resumo-message-add');
-//             emptyMessage.innerHTML = `
-
-//                 <div class="d-flex align-items-center justify-content-center h-100">
-//                     <div class="text-center p-4">
-//                         <img src="./assets/list.gif" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
-//                         <h4>Nada aqui ainda...</h4>
-//                         <p>Selecione uma palavra ou parágrafo para dar continuidade.</p>
+    // Verifica se o conteúdo do contêiner está vazio
+    if (!resumoHistoricoContainer.children.length || resumoHistoricoContainer.innerHTML.trim() === '') {
+        // Adiciona a mensagem de "vazio" se não houver conteúdo visível
+        let emptyMessage = document.querySelector('.empty-resumo-historico-message');
+        if (!emptyMessage) {
+            emptyMessage = document.createElement('div');
+            emptyMessage.classList.add('empty-resumo-message-add');
+            emptyMessage.innerHTML = `
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="text-center p-4">
+                        <img src="./assets/list.gif" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
+                        <h4>Nada aqui ainda...</h4>
+                        <p>Salve um item no Histórico para dar continuidade.</p>
                   
-//                     </div>
-//                 </div>
-                
-//             `;
-//             resumoContainer.appendChild(emptyMessage);
-//         }
-//     } else {
-//         // Remove a mensagem de "vazio" se houver conteúdo
-//         const emptyMessage = document.querySelector('.empty-resumo-historico-message');
-//         if (emptyMessage) {
-//             emptyMessage.remove();
-//         }
-//     }
-// }
-
-// checkEmptyResumoContainerHistorico();
+                    </div>
+                </div>
+            `;
+            resumoHistoricoContainer.appendChild(emptyMessage);
+        }
+    } else {
+        // Remove a mensagem de "vazio" se houver conteúdo
+        const emptyMessage = document.querySelector('.empty-resumo-historico-message');
+        if (emptyMessage) {
+            emptyMessage.remove();
+        }
+    }
+}
 
 
 const toolBox = document.querySelector('.box-tools-inline');
@@ -253,7 +248,8 @@ function fecharMenuAnotacoes() {
 // Função para abrir o dicionário
 function abrirDicionario() {
     const menuDicionario = document.querySelector('.dicionario-menu');
-    fecharResumo()
+    fecharResumo();
+    
     // Fecha o menu de anotações, se estiver aberto
 
     // Alterna a classe para abrir ou fechar o menu
@@ -303,9 +299,7 @@ function abrirDicionario() {
             });
         }
     });
-
-
-
+    
     // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
     // document.addEventListener('click', function (evento) {
     //     if (menuDicionario.classList.contains('open') && !menuDicionario.contains(evento.target)) {
@@ -319,8 +313,47 @@ function abrirResumo() {
     const menuResumo = document.querySelector('.resumo-menu');
 
     // Alterna a classe para abrir ou fechar o menu de resumo
-    menuResumo.classList.toggle('open');
-    fecharMenuDicionario()
+    // menuResumo.classList.toggle('open');
+    fecharMenuDicionario();
+    fecharMenuAnotacoes();
+    fecharMenuSumario();
+
+    $.ajax({
+        url: "./modules/config.json",
+        method: "GET",
+        cache: false,
+        success: (data) => {
+
+            const _ceumaAIModules = data.ceumaAI;
+            if (data &&  _ceumaAIModules) {
+
+                if (_ceumaAIModules.menu_resumo) {
+                    
+                    menuResumo.classList.toggle('open');
+                } else {
+                    // Debug
+
+                    Swal.fire({
+                        icon: "error",
+                        title: `Modulo Não Ativo`,
+                        heightAuto: false,
+                        footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+                    });
+                }
+            }
+
+
+        },
+        error: (error) => {
+            console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: `Erro Json Desativada`,
+                heightAuto: false,
+                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+            });
+        }
+    });
  
     // Fecha o menu quando clicar fora dele
     // document.addEventListener('click', function (evento) {
@@ -440,6 +473,6 @@ function fecharMenuDicionario() {
 
 }
 
-abrirResumo();
+// abrirResumo();
 
 

@@ -7,6 +7,14 @@
         <meta name="description" content="SLDCEUMA (2.0) Version <BETA>">
         <meta name="author" content="Ceuma">
         <title>SLDCEUMA +2.0</title>
+
+        <link rel="stylesheet" type="text/css"
+            href="./plugins/bootstrap/css/bootstrap.min.css">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+            rel="stylesheet">
+        <script type="text/javascript"
+            src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
         <link rel="stylesheet" type="text/css" href="./global/style.css">
         <script type="text/javascript" src="./js/lucide.js"></script>
         <script type="text/javascript"
@@ -30,12 +38,20 @@
             href="./plugins/bootstrapIcons/font/bootstrap-icons.css">
         <link rel="stylesheet"
             href="./plugins/bootstrapIcons/font/bootstrap-icons.min.css">
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-            crossorigin="anonymous"></script>
         <!-- Link Para Animação Textual -->
         <script type="text/javascript" src="./db/src/LocalDB.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="./plugins/fontawesome/css/all.css">
+        <link rel="stylesheet" type="text/css"
+            href="./plugins/glider/glider.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/carrosel.css">
+        <link rel="stylesheet" type="text/css" href="./css/siderbar.css">
+        <link rel="stylesheet" type="text/css"
+            href="./global/responsive.min.css">
+        <script type="text/javascript"
+            src="./plugins/tippy/popperjs.min.js"></script>
+        <script
+            src="./plugins/tippy/tippybundle.umd.js"></script>
 
     </head>
 
@@ -258,36 +274,44 @@
                                 data-lucide="history"></i>
                         </header>
 
-                      
-
                         <!-- Contêiner de flip entre Resumo e Histórico -->
                         <div class="flip-container" id="flip-container">
 
                             <!-- Frente: Resumo -->
                             <div class="flip-side front">
                                 <div class="content" id="result-resumo">
-                                    <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
-                                        <div class="d-flex gap-2 align-items-center">
+                                    <div
+                                        class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
+                                        <div
+                                            class="d-flex gap-2 align-items-center">
                                             <div class="position-relative">
-                                                <div class="pulse position-relative ai-response-loading " style="display:none;">
+                                                <div
+                                                    class="pulse position-relative ai-response-loading "
+                                                    style="display:none;">
                                                     <i></i>
                                                     <i></i>
                                                     <i></i>
                                                     <i></i>
                                                     <i></i>
                                                 </div>
-                                                <img class="rounded-circle" style="width: 40px;" alt="Avatar" src="./assets/eva.jpg" />
+                                                <img class="rounded-circle"
+                                                    style="width: 40px;"
+                                                    alt="Avatar"
+                                                    src="./assets/eva.jpg" />
                                             </div>
-                                            <span><strong id="text-typing-ai" class="text-success border border-2 border-success p-1 rounded">Eva
+                                            <span><strong id="text-typing-ai"
+                                                    class="text-success border border-2 border-success p-1 rounded">Eva
                                                     :</strong></span>
                                         </div>
-                                        <span><strong class="data-generacao">00/00/000</strong></span>
-                                        
+                                        <span><strong
+                                                class="data-generacao">00/00/000</strong></span>
+
                                     </div>
-                                    <div id="loading-resumo" style="display: none;" ></div>
+                                    <div id="loading-resumo"
+                                        style="display: none;"></div>
                                     <div class="render-resumo-result"
                                         id="render-resumo-result">
-                                        
+
                                         <!-- <div class="result-resumo-items">
                                             
                                             <div class="mt-3 avatar-container d-flex justify-content-between align-items-center mb-3">
@@ -442,7 +466,8 @@
                             <div class="flip-side back">
                                 <div class="content result-historico"
                                     id="result-historico">
-                                    <div class="render-resumo-result-historico" id="render-resumo-result-historico">
+                                    <div class="render-resumo-result-historico"
+                                        id="render-resumo-result-historico">
                                         <!-- <div class="result-historico-items">
                                             <span
                                                 class="title img-back-history d-flex flex-column border border-2 bg-dark text-dark p-2 rounded justify-content-center align-items-center">Guerra
@@ -500,8 +525,6 @@
 
                         </div>
 
-                        
-
                     </div>
                     <!-- Menu Resumo -->
 
@@ -549,11 +572,13 @@
 
             <main class="carrosel--container">
                 <article class="c-carousel c-carousel--simple w-100 h-100">
+
                     <div
                         class="c-carousel__slides js-carousel--simple content-render-api h-100">
                         <!-- <article class="c-carousel__slide">1</article>
                         <article class="c-carousel__slide">2</article>
                         <article class="c-carousel__slide">3</article> -->
+
                     </div>
                     <button class="glider-prev"><i
                             class="fas fa-chevron-left"></i></button>
@@ -617,15 +642,20 @@
                 </div>
             </div>
         </div>
+        
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
 
         <!-- Arquivo Bootstrap -->
         <script type="text/javascript"
             src="./plugins/bootstrap/js/bootstrap.min.js"></script>
-        <!-- <script type="text/javascript"
-            src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript"
-            src="./plugins/bootstrap/js/bootstrap.min.js"></script> -->
+            src="./plugins/bootstrap/js/bootstrap.min.js"></script>
         <!-- Arquivo Bootstrap -->
+
 
         <!-- AI Marked -->
         <script

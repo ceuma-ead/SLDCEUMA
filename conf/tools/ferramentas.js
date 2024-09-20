@@ -7,19 +7,42 @@ document.addEventListener('DOMContentLoaded', function () {
 // Cria a coleção de resumos (usando LocalDB.js)
 var historicoResumos = new LDB.Collection('historicoResumos');
 
-// Função para salvar o histórico de resumos usando LocalDB.js
-function salvarHistoricoResumo(titleResumo,tema, resumo) {
+function salvarHistoricoResumo(titleResumo, tema, resumo) {
     const novoResumo = {
-        title:titleResumo,
+        title: titleResumo,
         tema: tema,
         resumo: resumo,
         data: new Date().toLocaleString()
     };
 
+    const iconHistory = document.getElementById("history-icon");
+
+    // Configura o tippy no ícone de histórico para aparecer automaticamente
+    const tooltipInstance = tippy(iconHistory, {
+        content: 'Seu resumo está aqui. Clique para ver 👉',
+        placement: 'left',
+        arrow: true, // Exibe uma seta no tooltip
+        theme: 'light', // Define o tema claro para o tooltip
+        // duration: [300, 200], // Define a duração da animação de entrada e saída
+        // delay: [200, 0], // Define o atraso para mostrar o tooltip
+        interactive: true, // Torna o tooltip interativo
+        allowHTML: true, // Permite HTML no conteúdo
+        trigger: 'manual', // Define o trigger manual (sem precisar de interação do usuário)
+        showOnCreate: true, // Mostra o tooltip imediatamente ao ser criado
+        hideOnClick: 'toggle',
+        onShown(instance) {
+            // Tooltip é mostrado uma vez e depois destruído
+            setTimeout(() => {
+                instance.destroy(); // Destroi o tooltip após ser mostrado por 3 segundos
+            }, 4000); // Tempo de exibição do tooltip (3 segundos)
+        }
+    });
+
     // Salva o novo resumo na coleção "historicoResumos"
     historicoResumos.save(novoResumo, function (_novoResumo) {
         console.log("Resumo salvo no histórico:", _novoResumo);
 
+        // Exibe um alerta de sucesso com SweetAlert
         Swal.fire({
             title: "Resumo Salvo com Sucesso",
             text: "Seu resumo foi salvo...",
@@ -32,17 +55,19 @@ function salvarHistoricoResumo(titleResumo,tema, resumo) {
     });
 }
 
+
+
 // Função para exibir os resumos salvos no histórico usando LocalDB.js
 function exibirHistoricoResumos() {
     const historicoContainer = document.querySelector('.render-resumo-result-historico');
-
-    // Limpa o container antes de adicionar novos itens
     historicoContainer.innerHTML = '';
 
+    // Limpa o container antes de adicionar novos itens
+    
     // Busca todos os resumos salvos na coleção "historicoResumos"
     historicoResumos.find({}, function (resumos) {
         if (resumos.length === 0) {
-            historicoContainer.innerHTML = `<p>Nenhum resumo salvo no histórico.</p>`;
+            checkEmptyResumoHistoricoContainer();
             return;
         }
 
@@ -112,27 +137,75 @@ function baixarResumo(id) {
     });
 }
 
-// Função para apagar um resumo do histórico
-function apagarResumo(id) {
-    // Apaga o resumo pelo ID
-    historicoResumos.find({ _id: id }, function (resumos) {
-        if (resumos.length > 0) {
-            const resumo = resumos[0];
-            resumo.delete(function () {
-                Swal.fire({
-                    title: "Resumo Apagado",
-                    text: "O resumo foi removido do histórico.",
-                    icon: "success",
-                    heightAuto: false,
-                });
 
-                // Atualiza a visualização do histórico após apagar
-                exibirHistoricoResumos();
-            });
-        }
+// Função para pesquisar um registro no histórico (agora retorna uma Promise)
+function pesquisarRegistro(id) {
+    return new Promise((resolve, reject) => {
+        historicoResumos.find({ _id: id }, function (resumos) {
+            if (resumos.length > 0) {
+                const resumo = resumos[0];
+                resolve(resumo); // Resolve a Promise com o resumo encontrado
+            } else {
+                reject('Registro não encontrado');
+            }
+        });
     });
 }
 
+// Função para apagar um resumo do histórico com confirmação
+function apagarResumo(id) {
+    // Pesquisar o registro antes de tentar apagar
+    pesquisarRegistro(id)
+        .then((resumo) => {
+            // Exibe uma mensagem de confirmação antes de apagar o resumo
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: "Você não poderá reverter esta ação!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, apagar!',
+                cancelButtonText: 'Cancelar',
+                heightAuto: false,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Apaga o resumo pelo ID se o usuário confirmar
+                    resumo.delete(function () {
+                        Swal.fire({
+                            title: "Resumo Apagado",
+                            icon: "success",
+                            html: `
+                                <div class="d-flex gap-1 flex-column">
+                                    <p class="border border-2 p-2 border-dark rounded">ID: ${resumo._id}</p>
+                                    <strong>${resumo.title}</strong>
+                                </div>
+                            `,
+                            heightAuto: false,
+                        });
+
+                        // Atualiza a visualização do histórico após apagar
+                        exibirHistoricoResumos();
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // Se a ação for cancelada, nada acontece
+                    // Swal.fire({
+                    //     title: "Cancelado",
+                    //     text: "O resumo não foi apagado.",
+                    //     icon: "info",
+                    //     heightAuto: false,
+                    // });
+                }
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+            Swal.fire({
+                title: "Erro",
+                text: "Registro não encontrado.",
+                icon: "error",
+                heightAuto: false,
+            });
+        });
+}
 
 
 
