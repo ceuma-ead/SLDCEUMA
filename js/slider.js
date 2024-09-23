@@ -132,6 +132,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     modulosPage(event.detail.slide)
     // renderizador de tooltips
     tooltipRender(event.detail.slide)
+    // Renderizar Popover para criar tooltipo estilo popover na página
+    renderPopover(event.detail.slide)
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });

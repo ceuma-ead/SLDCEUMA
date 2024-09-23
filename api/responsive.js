@@ -182,9 +182,12 @@ const responsivo = [
                 justify-content: center;
             }
 
+                /*
                 .modal-content{
                 width: 81% !important;                
                 }
+
+                */
 
                 #button-Dowload-Ouvinte{
                 max-width: 82%;
