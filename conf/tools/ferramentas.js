@@ -362,77 +362,28 @@ function eventButton(API = "", INDEX = "") {
     });
 
 
-    // const download_pdf = document.querySelectorAll('.baixar-pdf');
-    // download_pdf.forEach((button, index) => {
-    //     button.addEventListener("click", function (event) {
-    //         event.stopPropagation();
-    
-    //         var myModal = new bootstrap.Modal(document.getElementById('modal-pdf'), {
-    //             keyboard: true
-    //         });
-    //         myModal.show();
-
-    //         // // Obter o valor do atributo 'pdf-data'
-    //         // const pdfUrl = button.getAttribute('pdf-data');
-
-    //         // // Criar um link de download dinamicamente
-    //         // const link = document.createElement('a');
-    //         // link.href = pdfUrl;
-    //         // link.download = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1); // Nome do arquivo extraído da URL
-    //         // document.body.appendChild(link);
-    //         // link.click();
-    //         // document.body.removeChild(link);  // Remover o link após o download
-    //     });
-    // });
-
-
-
     const download_pdf = document.querySelectorAll('.baixar-pdf');
-
-
     download_pdf.forEach((button, index) => {
-
-
         button.addEventListener("click", function (event) {
             event.stopPropagation();
+    
+            // var myModal = new bootstrap.Modal(document.getElementById('modal-pdf'), {
+            //     keyboard: true
+            // });
+            // myModal.show();
 
-            $(".modal-pdf-content").html();
-
-            $(".modal-pdf-content").html(`
-                <div id="flipbookContainer">
-                </div>
-            `);
-
-
+            // Obter o valor do atributo 'pdf-data'
             const pdfUrl = button.getAttribute('pdf-data');
+            // Criar um link de download dinamicamente
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1); // Nome do arquivo extraído da URL
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);  // Remover o link após o download
 
-            var pdf = pdfUrl;
-            var options = {
-                height:400,
-                duration: 700,
-                backgroundColor: "#2F2D2F"
-              };
-
-            var flipBook = $("#flipbookContainer").flipBook(pdf, options);
-
-            var myModal = new bootstrap.Modal(document.getElementById('modal-pdf'), {
-                keyboard: true
-            });
-            myModal.show();
-
-            // // Obter o valor do atributo 'pdf-data'
-            // const pdfUrl = button.getAttribute('pdf-data');
-
-            // // Criar um link de download dinamicamente
-            // const link = document.createElement('a');
-            // link.href = pdfUrl;
-            // link.download = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1); // Nome do arquivo extraído da URL
-            // document.body.appendChild(link);
-            // link.click();
-            // document.body.removeChild(link);  // Remover o link após o download
         });
     });
-
 
 
     const containerBoxMarcador = API;
