@@ -137,7 +137,6 @@ function baixarResumo(id) {
     });
 }
 
-
 // Função para pesquisar um registro no histórico (agora retorna uma Promise)
 function pesquisarRegistro(id) {
     return new Promise((resolve, reject) => {
@@ -207,8 +206,6 @@ function apagarResumo(id) {
         });
 }
 
-
-
 function eventButton(API = "", INDEX = "") {
     // Função para entrar/sair da tela cheia
     function Screen(tipo, elemento) {
@@ -244,7 +241,6 @@ function eventButton(API = "", INDEX = "") {
         }
 
     }
-
 
     // Reaplica o evento de clique para o botão de tela cheia
     const btnScreen = document.querySelector(".btn-fullscreen");
@@ -282,8 +278,6 @@ function eventButton(API = "", INDEX = "") {
         }
     }
 
-
-
     // Evento para abrir/fechar caixas de ferramentas ao clicar no botão correspondente
     btnFerramentas.forEach((button, index) => {
         button.addEventListener('click', () => {
@@ -309,8 +303,6 @@ function eventButton(API = "", INDEX = "") {
     // // Chamando a função para fechar a caixa de ferramentas
     // closeToggleBox(toolBox);
 
-
-
     // Evento para fechar a caixa de ferramentas ao clicar no botão de fechar
     document.querySelectorAll('#close_box').forEach((closeButton) => {
         closeButton.addEventListener('click', () => {
@@ -322,9 +314,7 @@ function eventButton(API = "", INDEX = "") {
         });
     });
 
-
     // =============== Modulos de Aceite ===================== //
-
 
     const abri_anotacao = document.querySelectorAll('.abrir-annotation');
     abri_anotacao.forEach((openAnnotation, index) => {
@@ -332,7 +322,6 @@ function eventButton(API = "", INDEX = "") {
             createAnnotation();
         })
     })
-
 
     const abri_dicionario = document.querySelectorAll('.abrir-dicionario');
     const fechar_dicionario = document.querySelector('.close_dicionario');
@@ -347,7 +336,6 @@ function eventButton(API = "", INDEX = "") {
         });
     });
 
-
     const abri_resumo = document.querySelectorAll('.abrir-resumo');
     const fechar_resumo = document.querySelector('.close_resumo');
     fechar_resumo.addEventListener("click", function (event) {
@@ -360,7 +348,6 @@ function eventButton(API = "", INDEX = "") {
             abrirResumo();
         });
     });
-
 
     const download_pdf = document.querySelectorAll('.baixar-pdf');
     download_pdf.forEach((button, index) => {

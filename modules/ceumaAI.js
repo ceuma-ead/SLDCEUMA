@@ -251,7 +251,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M2 12h2" />
                                     <path d="M9 11v2" />
                                     <path d="M15 11v2" />
-                                    <path d="M20 12h2" /></svg>Resumo Simplificado</a></li>
+                                    <path d="M20 12h2" /></svg> Resumo Simplificado</a></li>
                         <hr class="dropdown-divider">
                         <!-- Modulo Desativado -->
                         <!--
@@ -275,7 +275,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M2 12h2" />
                                     <path d="M9 11v2" />
                                     <path d="M15 11v2" />
-                                    <path d="M20 12h2" /></svg>Resumo Detalhado</a></li>
+                                    <path d="M20 12h2" /></svg> Resumo Detalhado</a></li>
                     </ul>
                 </div>
                 <p class="text-mute">Categoria</p>
@@ -365,7 +365,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
             const containerToolsFast = document.querySelector(".container-tools-fast");
             toolbarActions.style.display = "flex";
             containerResumoResult.style.display = "none"
-
+            // containerToolsFast.style.display = "flex";
         }
 
         // Configurando os botões de ação (download e salvar no histórico)
@@ -1044,7 +1044,8 @@ function reflowAI(_class, tema, analisarContexto = "", _reprocessar = null) {
             const prompt = event.target.innerText.trim();
             // console.log(prompt)
 
-            if (prompt === "Modo Detalhado") {
+            if (prompt === "Resumo Detalhado") {
+                
                 clearContainer.innerHTML = ``;
                 resumoAI(tema, analisarContexto, "Faça um resumo bem detalhado com links e referências pra me clicar gera no minimo 10 links em forma de lista enumerada", "Universitario", 10, "1 linhas").then(resumo => {
                     soundBipe()
@@ -1052,13 +1053,15 @@ function reflowAI(_class, tema, analisarContexto = "", _reprocessar = null) {
                     // console.log('Resumo retornado:', resumo);
                 });
             } else if (prompt === "Com Detalhamento") {
+
                 clearContainer.innerHTML = ``;
                 resumoAI(tema, analisarContexto, "Faça um Resumo detalhado", "Universitario avançado", 10, "3 paragrafos").then(resumo => {
                     soundBipe()
                     paraAudioResumo()
                     // console.log('Resumo retornado:', resumo);
                 });
-            } else if (prompt === "Modo Simplificado") {
+            } else if (prompt === "Resumo Simplificado") {
+
                 clearContainer.innerHTML = ``;
                 resumoAI(tema, analisarContexto, "Faça um Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
                     soundBipe()
