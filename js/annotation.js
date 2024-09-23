@@ -251,14 +251,11 @@ function changeAnnotationColor(annotationElement, annotationId) {
 function abrirConfigurcoesBaseMenu() {
     const menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
     const ButtonMenuAnotacoes = document.querySelector(".openAnnotation");
-    const vizioon_anotation = document.querySelector(".vizion-annotation");
-    // verificar se container é vazio pra mudar o icon
     const iconAnnotation = checkEmptyAnnotationsContainer();
 
     if (!menuAnotacoes || !ButtonMenuAnotacoes) {
         console.log(menuAnotacoes);
         console.log(ButtonMenuAnotacoes);
-        console.log(vizioon_anotation);
         console.error('abrirConfigurcoesBaseMenu: Elementos não encontrados.');
         return;
     }
@@ -270,7 +267,6 @@ function abrirConfigurcoesBaseMenu() {
         ButtonMenuAnotacoes.innerHTML = `
                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             `
-        vizioon_anotation.innerHTML = 'Fechar Anotações ❌';
         console.log('abrirConfigurcoesBaseMenu: Menu aberto.');
     } else {
         ButtonMenuAnotacoes.innerHTML = `
@@ -278,19 +274,10 @@ function abrirConfigurcoesBaseMenu() {
                         : 
         `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticky-note"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></svg> `}
     `
-        vizioon_anotation.innerHTML = 'Veja Suas Anotações Aqui 🤩!!!';
+
         console.log('abrirConfigurcoesBaseMenu: Menu fechado.');
     }
 
-    if (vizioon_anotation) {
-        vizioon_anotation.innerHTML = 'Suas Anotações 🤩 !!';
-        vizioon_anotation.style.display = 'none';
-    }
-
-    // // // Atualiza os ícones, se necessário
-    // if (typeof lucide !== 'undefined' && lucide.createIcons) {
-    //     lucide.createIcons();
-    // }
 }
 
 // if(typeof abrirConfigurcoesBaseMenu === "function" ){

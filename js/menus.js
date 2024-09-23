@@ -179,15 +179,10 @@ function abrirAnotacoes() {
         menuAnotacoes.classList.toggle('open-annotation');
 
         // Pegar ID Personalizado para Mudar o Nome do Tooltip...
-        const vizioon_anotation = document.querySelector(".vizion-annotation")
-
-        // console.log(vizioon_anotation)
-
+    
 
         if (menuAnotacoes.classList.contains('open-annotation')) {
-            botaoAbrirAnotacoes.innerHTML = `<i class="bi bi-x-lg "></i>`
-            botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Fechar Anotações ❌');
-            vizioon_anotation.innerHTML = `Fechar Anotações ❌`
+            botaoAbrirAnotacoes.innerHTML = `<i class="bi bi-x-lg"></i>`
         } else {
 
             botaoAbrirAnotacoes.innerHTML = `
@@ -195,8 +190,6 @@ function abrirAnotacoes() {
                     :
                     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticky-note"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></svg> `}
             `
-            botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
-            vizioon_anotation.innerHTML = `Suas Anotações 🤩 !!`
         }
 
     });
@@ -212,7 +205,7 @@ function fecharMenuAnotacoes() {
 
     const menuAnotacoes = document.querySelector('.sidebar-menu-Annotation');
     const botaoAbrirAnotacoes = document.querySelector('.openAnnotation');
-    const vizioon_anotation = document.querySelector(".vizion-annotation");
+    // const vizioon_anotation = document.querySelector(".vizion-annotation");
 
     // Verificar se o container é vazio para mudar o ícone
     const iconAnnotation = checkEmptyAnnotationsContainer();
@@ -234,13 +227,6 @@ function fecharMenuAnotacoes() {
                 :
                 `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticky-note"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></svg> `}
         `
-        botaoAbrirAnotacoes.setAttribute('vizioon-tip', 'Suas Anotações 🤩 !!');
-
-        if (vizioon_anotation) {
-            vizioon_anotation.innerHTML = 'Suas Anotações 🤩 !!';
-            vizioon_anotation.style.display = 'none';
-        }
-
 
     }
 }
