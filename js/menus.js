@@ -473,6 +473,6 @@ function fecharMenuDicionario() {
 
 }
 
-// abrirResumo();
+
 
 

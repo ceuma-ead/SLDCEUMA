@@ -175,7 +175,7 @@ function apagarResumo(id) {
                             icon: "success",
                             html: `
                                 <div class="d-flex gap-1 flex-column">
-                                    <p class="border border-2 p-2 border-dark rounded">ID: ${resumo._id}</p>
+                                    <p class>ID: ${resumo._id}</p>
                                     <strong>${resumo.title}</strong>
                                 </div>
                             `,
@@ -464,11 +464,42 @@ function eventButton(API = "", INDEX = "") {
 
     const btn_historico = document.querySelector("#history-icon");
     const containerFlip = document.querySelector("#flip-container");
-
+    const nomeHeaderResumo = document.querySelector(".nome-header-resumo");
+    
     btn_historico.onclick = () => {
-        containerFlip.classList.toggle('flip-active')
+        // Alterna a classe 'flip-active' no container
+        containerFlip.classList.toggle('flip-active');
+    
+        // Verifica o estado do container e atualiza o título
+        if (containerFlip.classList.contains('flip-active')) {
+            nomeHeaderResumo.innerHTML = "Histórico"; // Muda para 'Histórico' quando flipado
+        } else {
+            nomeHeaderResumo.innerHTML = "Resumo"; // Muda para 'Resumo' quando não flipado
+        }
     };
+    
 
+
+    // document.getElementById('btn-menu-chat-ai').addEventListener('click', function (event) {
+    //     const menuInterno = document.getElementById('menu-interno');
+
+    //     // Alterna a classe 'open' para exibir/esconder o menu com animação
+    //     menuInterno.classList.toggle('open');
+        
+    //     // Impede que o clique no botão feche o menu
+    //     event.stopPropagation();
+    // });
+    
+    // // Fecha o menu quando clicar fora dele
+    // document.addEventListener('click', function (event) {
+    //     const menuInterno = document.getElementById('menu-interno');
+        
+    //     // Verifica se o menu está aberto e se o clique foi fora do menu
+    //     if (!menuInterno.contains(event.target) && !event.target.matches('#btn-menu')) {
+    //         menuInterno.classList.remove('open');
+    //     }
+    // });
+    
 
 
     // ======================================================= \\

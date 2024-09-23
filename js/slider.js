@@ -2614,7 +2614,7 @@ function modulosPage(slideIndex) {
                         fecharBoxCores();
                         
                         // Chama a função que gera o resumo
-                        resumoAI(textoResumo, "Hematologia clinica").then(resumo => {
+                        resumoAI(textoResumo, "Hematologia clinica","Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
                             const containerFlip = document.querySelector("#flip-container");
                     
                             // Verifica se o container está mostrando o histórico (flipado)
@@ -2625,7 +2625,7 @@ function modulosPage(slideIndex) {
                     
                             // Processa o resumo e o exibe
                             soundBipe();
-                            console.log('Resumo retornado:', resumo);
+                            // console.log('Resumo retornado:', resumo);
                     
                             // Após gerar o resumo, você pode processar o resumo e exibir na tela
                         });
@@ -2635,7 +2635,7 @@ function modulosPage(slideIndex) {
                         // Verifica se o resumo está aberto ou não
                         if (verificarAberturaResumo.classList.contains("open")) {
                             // O menu já está aberto, então não precisamos fechá-lo, apenas atualizar
-                            console.log("O menu de resumo já está aberto.");
+                            // console.log("O menu de resumo já está aberto.");
                         } else {
                             // O menu está fechado, então fechamos e reabrimos para garantir atualização
                             fecharResumo(); // Fecha o resumo, caso esteja parcialmente aberto

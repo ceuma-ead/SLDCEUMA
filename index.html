@@ -8,13 +8,6 @@
         <meta name="author" content="Ceuma">
         <title>SLDCEUMA +2.0</title>
 
-        <link rel="stylesheet" type="text/css"
-            href="./plugins/bootstrap/css/bootstrap.min.css">
-        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
-            rel="stylesheet">
-        <script type="text/javascript"
-            src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
         <link rel="stylesheet" type="text/css" href="./global/style.css">
         <script type="text/javascript" src="./js/lucide.js"></script>
         <script type="text/javascript"
@@ -30,8 +23,7 @@
             rel="stylesheet">
         <!-- Link para a fonte Lato do Google Fonts -->
         <!-- Link Para Animação Textual -->
-        <link
-            rel="stylesheet"
+        <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <!-- Option 1: Include in HTML -->
         <link rel="stylesheet"
@@ -42,6 +34,7 @@
         <script type="text/javascript" src="./db/src/LocalDB.js"></script>
         <link rel="stylesheet" type="text/css"
             href="./plugins/fontawesome/css/all.css">
+
         <link rel="stylesheet" type="text/css"
             href="./plugins/glider/glider.min.css">
         <link rel="stylesheet" type="text/css" href="./css/carrosel.css">
@@ -50,8 +43,14 @@
             href="./global/responsive.min.css">
         <script type="text/javascript"
             src="./plugins/tippy/popperjs.min.js"></script>
-        <script
-            src="./plugins/tippy/tippybundle.umd.js"></script>
+        <script src="./plugins/tippy/tippybundle.umd.js"></script>
+
+        <link rel="stylesheet" type="text/css"
+            href="./plugins/bootstrap/css/bootstrap.min.css">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+            rel="stylesheet">
+        <script type="text/javascript"
+            src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     </head>
 
@@ -266,12 +265,16 @@
 
                     <!-- Menu Resumo -->
                     <div class="resumo-menu">
+
                         <header>
+
                             <i class="text-light resumo-adds close_resumo"
                                 data-lucide="circle-x"></i>
-                            <p>Resumo</p>
+                            <!-- <i class="text-light resumo-adds" id="btn-menu-chat-ai" style="margin-left: 0.5rem;" data-lucide="menu"></i> -->
+                            <p class="nome-header-resumo">Resumo</p>
                             <i class="text-light resumo-adds" id="history-icon"
                                 data-lucide="history"></i>
+
                         </header>
 
                         <!-- Contêiner de flip entre Resumo e Histórico -->
@@ -309,6 +312,26 @@
                                     </div>
                                     <div id="loading-resumo"
                                         style="display: none;"></div>
+                                    <!-- Menu oculto que será mostrado dentro -->
+
+                                    <!-- Menu oculto que será mostrado dentro -->
+                                    <div id="menu-interno" class="menu-interno">
+                                        <!-- <div class="menu-chats-openAI">
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Opção 1</a></li>
+                                                <li><a href="#">Opção 2</a></li>
+                                                <li><a href="#">Opção 3</a></li>
+                                            </ul>
+                                        </div> -->
+
+                                        <ul class="historico-conversa-menu-chat-ai">
+                                            <li><a href="#">Resumo...<i class="text-danger" data-lucide="trash-2"></i></a></li>
+                                            <li><a href="#">Resumo...<i class="text-danger"  data-lucide="trash-2"></i></a></li>
+                                            <li><a href="#">Resumo... <i class="text-danger"  data-lucide="trash-2"></i></a></li>
+                                        </ul>
+                                        
+                                    </div>
+
                                     <div class="render-resumo-result"
                                         id="render-resumo-result">
 
@@ -642,20 +665,15 @@
                 </div>
             </div>
         </div>
-        
 
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+        </script>
 
-        <!-- Arquivo Bootstrap -->
-        <script type="text/javascript"
-            src="./plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript"
-            src="./plugins/bootstrap/js/bootstrap.min.js"></script>
-        <!-- Arquivo Bootstrap -->
-
+        <script type="text/javascript" src="./js/tooltip.js"></script>
+        <script type="text/javascript" src="./js/popover.js"></script>
 
         <!-- AI Marked -->
         <script
@@ -678,8 +696,8 @@
         <!-- Arquivo Icones Lucide -->
 
         <!-- Arquivo de Toltip Js -->
-        <script type="text/javascript"
-            src="./plugins/tooltip/vizioonTip.min.js"></script>
+        <!-- <script type="text/javascript"
+            src="./plugins/tooltip/vizioonTip.min.js"></script> -->
         <!-- Arquivo de Toltip Js -->
 
         <!-- Arquivo de VizioonIst -->

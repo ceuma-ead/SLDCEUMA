@@ -345,6 +345,7 @@ const api = [
                         "ativa": true,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
                         `
                     },
                     "Destacar": {
