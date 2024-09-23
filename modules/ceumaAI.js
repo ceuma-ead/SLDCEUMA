@@ -251,7 +251,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M2 12h2" />
                                     <path d="M9 11v2" />
                                     <path d="M15 11v2" />
-                                    <path d="M20 12h2" /></svg> Modo Simplificado</a></li>
+                                    <path d="M20 12h2" /></svg>Resumo Simplificado</a></li>
                         <hr class="dropdown-divider">
                         <!-- Modulo Desativado -->
                         <!--
@@ -275,10 +275,10 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M2 12h2" />
                                     <path d="M9 11v2" />
                                     <path d="M15 11v2" />
-                                    <path d="M20 12h2" /></svg> Modo Detalhado</a></li>
+                                    <path d="M20 12h2" /></svg>Resumo Detalhado</a></li>
                     </ul>
                 </div>
-                <p class="text-mute">Reprocessar</p>
+                <p class="text-mute">Categoria</p>
             </div>
 
             <div class="d-flex flex-column gap-1 align-items-center justify-content-center">

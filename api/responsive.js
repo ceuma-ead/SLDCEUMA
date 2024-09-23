@@ -190,6 +190,35 @@ const responsivo = [
                 max-width: 82%;
                 height: 2rem !important;
                 }
+
+                .resumo-menu {
+                width: 300px;
+                height: 21rem;
+                padding: 0.8rem;
+                gap: 0.5rem;
+                }
+
+                .text-success { 
+                font-size: 0.8rem;
+                            }
+
+
+                            strong.data-generacao {
+                            font-size: 0.8rem;
+                }
+
+                .resumo-menu header p:nth-of-type(1) {
+                font-size: 1rem !important;
+                }
+                .result-resumo-items p {
+                    font-size: calc(var(--font-para-paragrafos) - 4px) !important;
+                    }
+
+                .dropdown-item {
+                font-size: .8rem;
+
+                    }
+
     `,
 
 
