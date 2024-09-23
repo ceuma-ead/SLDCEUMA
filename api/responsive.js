@@ -183,9 +183,9 @@ const responsivo = [
             }
 
                 /*
-                .modal-content{
-                width: 81% !important;                
-                }
+                    .modal-content{
+                    width: 81% !important;                
+                    }
 
                 */
 
