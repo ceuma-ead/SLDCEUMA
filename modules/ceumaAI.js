@@ -327,7 +327,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                     ${resumoTextual}
                 </p>
 
-                <div class="container-tools-fast w-100 justify-content-center align-items-center gap-2 p-2" style="display:flex;">
+                <div class="container-tools-fast w-100 d-none justify-content-center align-items-center gap-2 p-2" style="display:flex;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw text-danger reload-container-ai " style="cursor:pointer;"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy text-success copy-container-ai" style="cursor:pointer;"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                 </div>
@@ -358,19 +358,14 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
             const containerToolsFast = document.querySelector(".container-tools-fast");
             toolbarActions.style.display = "none";
             containerResumoResult.style.display = "block";
-            containerToolsFast.style.display = "none";
-            // const btnReprocessamento = document.getElementById("btn-reprocessar-resumo");
-            // btnReprocessamento.addEventListener("click", () => {
-            //     fecharResumo();
-            //     abrirResumo();
-            // })
+
         } else {
             const toolbarActions = document.querySelector(".items-action-btn-ai");
             const containerResumoResult = document.getElementById("containerResumo-result-reprocessamento");
             const containerToolsFast = document.querySelector(".container-tools-fast");
             toolbarActions.style.display = "flex";
             containerResumoResult.style.display = "none"
-            containerToolsFast.style.display = "flex";
+
         }
 
         // Configurando os botões de ação (download e salvar no histórico)
