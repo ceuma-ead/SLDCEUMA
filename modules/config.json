@@ -13,11 +13,16 @@
         ]
     },
     "ceumaAI":{
+        "nome_bot":"Bot",
+        "version_bot":"0.0.1",
+        "img_bot":"./assets/bot.png",
+        "voz_bot":{
+            "pt-br": { "name": "Português (Brasil)", "voices": "Ligia" }
+        },
+        "contexto":"Hematologia clinica",
         "ativo":true,
-        "https":"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?",
-        "tokens":[
-            "AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I"
-        ],
+        "https":"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent",
+        "token":"AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I",
         "menu_resumo":true
     }
 }

@@ -2609,12 +2609,19 @@ function modulosPage(slideIndex) {
                     // });
 
 
-                    document.getElementById('resumo').addEventListener('click', function () {
+                    document.getElementById('resumo').addEventListener('click',async function () {
                         const textoResumo = obterTextoSelecionado();
                         fecharBoxCores();
+
+                        const configuracaoData = await resumoConfig();
+                        const config = configuracaoData.ceumaAI
+                        
+                        const { contexto } = config;
+
+                        // console.log(contexto)
                         
                         // Chama a função que gera o resumo
-                        resumoAI(textoResumo, "Hematologia clinica","Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
+                        resumoAI(textoResumo, contexto,"Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
                             const containerFlip = document.querySelector("#flip-container");
                     
                             // Verifica se o container está mostrando o histórico (flipado)

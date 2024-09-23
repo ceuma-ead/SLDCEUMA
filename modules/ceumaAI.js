@@ -55,24 +55,47 @@ async function resumoConfig() {
 }
 
 
+async function bot() {
+    const bot_service = await resumoConfig();
+
+    const configuracoes = bot_service.ceumaAI;
+
+    if (configuracoes) {
 
 
+        const { nome_bot } = configuracoes;
 
+        // console.log(configuracoes)
+        const nomeBot = reduzirTexto(nome_bot,10);
+
+        $(".nome-avatar").html(`${nomeBot} :`);
+        $(".avatar-img").attr("src", configuracoes.img_bot)
+    }
+
+}
+// Configuração do BOT SERVIÇO //\\
+bot()
 
 
 // Função para obter o resumo usando a API de forma dinâmica
 async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _tipo = "um estudante leigo", tamanhoTexto = 10, paragrafos = "1 linha", apiUrl = null, apiKey = null) {
 
     const configuracoesData = await resumoConfig();
-    console.log(configuracoesData)
+    // console.log(configuracoesData)
+    const config = configuracoesData.ceumaAI;
+    
+    const { token , https , contexto , nome_bot , voz_bot } = config;
+    // console.log(voz_bot);
+
 
     const configuracoes = {
         temperado: _temperado, // completo || detalhado com referência
         tipo: _tipo,
         paragrafos: paragrafos,
-        apiKey: apiKey || "AIzaSyBu-iiNt4oFyjwHFnsTXMJatjn7m70gp6I", // Usa uma chave padrão se nenhuma chave for passada
+        apiKey: apiKey || token, // Usa uma chave padrão se nenhuma chave for passada
     };
 
+    const nomeBot = reduzirTexto(nome_bot, 4);
 
     // const question = `
     //     Analise o Sequinte tema "${analisarContexto}" veja se a palavra ou paragrafo que é esse aqui
@@ -96,7 +119,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
     // `;
 
     const question = `
-            Analise o tema "${analisarContexto}" e verifique se a palavra ou parágrafo fornecido abaixo está no contexto:
+            Analise o tema "${contexto}" e verifique se a palavra ou parágrafo fornecido abaixo está no contexto:
 
             **Entrada:** ${tema}
             - Siga a ordem das instruções: primeiro as instruções primárias, depois as secundárias.
@@ -138,7 +161,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
             """
     `;
 
-    const dynamicApiUrl = apiUrl || `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${configuracoes.apiKey}`;
+    const dynamicApiUrl = apiUrl || `${https}?key=${configuracoes.apiKey}`;
+
+
 
     const data = {
         contents: [
@@ -165,7 +190,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
         // document.getElementById('loading-resumo').style.display = 'block';
 
         document.getElementById('loading-resumo').style.display = 'block';
-        document.getElementById('text-typing-ai').innerHTML = "Eva Está Digitando..."
+        document.getElementById('text-typing-ai').innerHTML = `${nomeBot} está digitando...`
 
         // Fazendo a requisição POST usando fetch e aguardando a resposta
         const response = await fetch(dynamicApiUrl, requestOptions);
@@ -228,6 +253,8 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M15 11v2" />
                                     <path d="M20 12h2" /></svg> Modo Simplificado</a></li>
                         <hr class="dropdown-divider">
+                        <!-- Modulo Desativado -->
+                        <!--
                         <li><a class="dropdown-item reflow-item-ai"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="lucide lucide-bot-message-square">
@@ -237,7 +264,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M9 11v2" />
                                     <path d="M15 11v2" />
                                     <path d="M20 12h2" /></svg> Com Detalhamento</a></li>
+                       
                         <hr class="dropdown-divider">
+                        -->
                         <li><a class="dropdown-item reflow-item-ai"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="lucide lucide-bot-message-square">
@@ -246,7 +275,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                                     <path d="M2 12h2" />
                                     <path d="M9 11v2" />
                                     <path d="M15 11v2" />
-                                    <path d="M20 12h2" /></svg> Com Referências</a></li>
+                                    <path d="M20 12h2" /></svg> Modo Detalhado</a></li>
                     </ul>
                 </div>
                 <p class="text-mute">Reprocessar</p>
@@ -318,7 +347,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
         `;
 
         document.getElementById('loading-resumo').style.display = 'none';
-        document.getElementById('text-typing-ai').innerHTML = "Eva respondeu :"
+        document.getElementById('text-typing-ai').innerHTML = `${nomeBot} respondeu: `
 
         const noneToolbar = document.querySelector(".removerMenu");
         const titleResumo = document.querySelector(".titleResumo");
@@ -361,7 +390,15 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                     updateIcon('pause'); // Atualizar o ícone para "pause" imediatamente
                     audio.play();
                 } else {
-                    gerarAudioResumo(resumoTextual, "Ligia", "pt-br", 0, 1);
+
+                    const obj =  voz_bot;
+                    const lang = Object.keys(obj);
+                    const configVoz = Object.values(obj)
+                    const voz = Object.assign({},...configVoz);
+                    // console.log(voz.voices)
+
+
+                    gerarAudioResumo(resumoTextual, voz.voices ,lang[0], 0, 1);
                 }
             } else if (ariaLabel === "pause") {
                 updateIcon('play'); // Atualizar o ícone para "play"
@@ -371,7 +408,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
 
 
         // paramentros para dar o reflow na AI
-        reflowAI(".reflow-items", tema, analisarContexto)
+        reflowAI(".reflow-items", tema, analisarContexto, resumoTextual)
 
         return resumo;
 
@@ -887,9 +924,16 @@ function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade 
     }
 
 
-    AudioResumo(resumo, voz, langCode, velocidade, tom);
-
-
+    // Retirando Titulo desse Resumo
+    function removerPartes(texto) {
+        // Expressão regular para encontrar e remover todas as tags <span> e seu conteúdo
+        const textoLimpo = texto.replace(/<span.*?>.*?<\/span>/gi, '');
+        // console.log(textoLimpo);
+        return textoLimpo;  // Retorna o texto limpo, caso precise usar em outra parte do código
+    }
+    
+    
+    AudioResumo(removerPartes(resumo), voz, langCode, velocidade, tom);
 
     // Função para iniciar a contagem regressiva quando o áudio for pausado
     function iniciarContagemRegressiva() {
@@ -915,6 +959,8 @@ function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade 
             countdownInterval = null;
         }
     }
+
+    
 
     // Função para limpar o tempo no label
     function limparTempoLabel() {
@@ -951,6 +997,29 @@ function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade 
     }
 }
 
+function paraAudioResumo() {
+    const labelTempo = document.querySelector(".label-audio-voice-recog"); // Elemento que será atualizado com o tempo
+
+    // Pausa o áudio, destrói o objeto e limpa o estado
+    if (audio) {
+        audio.pause(); // Pausa o áudio atual
+        audio.src = ""; // Remove a referência ao arquivo de áudio
+        audio.load(); // Reinicia o elemento de áudio
+        audio = null; // Remove o objeto de áudio para gerar um novo posteriormente
+        // console.log("Áudio pausado e destruído.");
+        limparTempoLabel(); // Limpa o label de tempo
+    } else {
+        // console.log("Nenhum áudio está em execução.");
+    }
+
+    // Função para limpar o tempo no label
+    function limparTempoLabel() {
+        if (labelTempo) {
+            labelTempo.innerHTML = 'Áudio'; // Texto padrão quando o áudio for destruído
+        }
+    }
+}
+
 
 
 
@@ -965,7 +1034,7 @@ function downloadResumo(resumo, nomeArquivo = 'resumo.txt') {
     link.click();
 }
 
-function reflowAI(_class, tema, analisarContexto = "") {
+function reflowAI(_class, tema, analisarContexto = "", _reprocessar = null) {
     // Limpar Container
     const clearContainer = document.querySelector('.render-resumo-result')
 
@@ -980,22 +1049,25 @@ function reflowAI(_class, tema, analisarContexto = "") {
             const prompt = event.target.innerText.trim();
             // console.log(prompt)
 
-            if (prompt === "Com Referências") {
+            if (prompt === "Modo Detalhado") {
                 clearContainer.innerHTML = ``;
-                resumoAI(tema, analisarContexto, "Faça com links e Referenicas pra me clicar gera no minimo 10 links em forma de lista enumerada", "Universitario", 10, "1 linhas").then(resumo => {
+                resumoAI(tema, analisarContexto, "Faça um resumo bem detalhado com links e referências pra me clicar gera no minimo 10 links em forma de lista enumerada", "Universitario", 10, "1 linhas").then(resumo => {
                     soundBipe()
+                    paraAudioResumo()
                     // console.log('Resumo retornado:', resumo);
                 });
             } else if (prompt === "Com Detalhamento") {
                 clearContainer.innerHTML = ``;
                 resumoAI(tema, analisarContexto, "Faça um Resumo detalhado", "Universitario avançado", 10, "3 paragrafos").then(resumo => {
                     soundBipe()
+                    paraAudioResumo()
                     // console.log('Resumo retornado:', resumo);
                 });
             } else if (prompt === "Modo Simplificado") {
                 clearContainer.innerHTML = ``;
                 resumoAI(tema, analisarContexto, "Faça um Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
                     soundBipe()
+                    paraAudioResumo()
                     // console.log('Resumo retornado:', resumo);
                 });
             }
@@ -1006,8 +1078,11 @@ function reflowAI(_class, tema, analisarContexto = "") {
     const refreshContainerAi = document.querySelector(".reload-container-ai");
     refreshContainerAi.addEventListener("click", function (event) {
 
-        resumoAI(tema, analisarContexto, "Faça novamente esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
+        // console.log(_reprocessar)
+
+        resumoAI(tema, analisarContexto, _reprocessar ? `Refaça pra me esse resumo de outra forma mais no mesmo contexto :${_reprocessar}` : `Faça um Resumo bem simplificado novamente`, "Estudante Leigo", 10, "1 linha").then(resumo => {
             soundBipe()
+            paraAudioResumo()
             // console.log('Resumo retornado:', resumo);
         });
     })
@@ -1021,7 +1096,7 @@ function reflowAI(_class, tema, analisarContexto = "") {
             .then(() => {
 
                 // Configura o tippy no ícone de histórico para aparecer automaticamente
-                const tooltipInstance = tippy(copyContainerAi , {
+                const tooltipInstance = tippy(copyContainerAi, {
                     content: 'Copiado com Sucesso ✅',
                     placement: 'top',
                     arrow: true, // Exibe uma seta no tooltip
