@@ -195,7 +195,7 @@ const responsivo = [
                 }
 
                 .resumo-menu {
-                width: 300px;
+                width: 375px;
                 height: 21rem;
                 padding: 0.8rem;
                 gap: 0.5rem;
