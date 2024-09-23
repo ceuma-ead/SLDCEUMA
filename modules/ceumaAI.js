@@ -66,7 +66,7 @@ async function bot() {
         const { nome_bot } = configuracoes;
 
         // console.log(configuracoes)
-        const nomeBot = reduzirTexto(nome_bot,10);
+        const nomeBot = reduzirTexto(nome_bot, 10);
 
         $(".nome-avatar").html(`${nomeBot} :`);
         $(".avatar-img").attr("src", configuracoes.img_bot)
@@ -83,8 +83,8 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
     const configuracoesData = await resumoConfig();
     // console.log(configuracoesData)
     const config = configuracoesData.ceumaAI;
-    
-    const { token , https , contexto , nome_bot , voz_bot } = config;
+
+    const { token, https, contexto, nome_bot, voz_bot } = config;
     // console.log(voz_bot);
 
 
@@ -188,6 +188,9 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
         // Mostrando o loader enquanto o resumo está sendo gerado
         document.querySelector('.render-resumo-result').innerHTML = "";
         // document.getElementById('loading-resumo').style.display = 'block';
+        const reloadButtonAi = document.querySelector('.reload-button-ai');
+
+
 
         document.getElementById('loading-resumo').style.display = 'block';
         document.getElementById('text-typing-ai').innerHTML = `${nomeBot} está digitando...`
@@ -358,15 +361,19 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
             const containerToolsFast = document.querySelector(".container-tools-fast");
             toolbarActions.style.display = "none";
             containerResumoResult.style.display = "block";
+            reloadButtonAi.innerHTML = ``;
 
         } else {
             const toolbarActions = document.querySelector(".items-action-btn-ai");
+            reloadButtonAi.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw text-danger reload-container-ai " style="cursor:pointer;"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>`;
+
             const containerResumoResult = document.getElementById("containerResumo-result-reprocessamento");
             const containerToolsFast = document.querySelector(".container-tools-fast");
             toolbarActions.style.display = "flex";
             containerResumoResult.style.display = "none"
             // containerToolsFast.style.display = "flex";
         }
+
 
         // Configurando os botões de ação (download e salvar no histórico)
         document.querySelector('.btn-dowload-resposta').addEventListener('click', () => downloadResumo(resumoTextual, titleResumo ? titleResumo.innerHTML : tema));
@@ -386,14 +393,14 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
                     audio.play();
                 } else {
 
-                    const obj =  voz_bot;
+                    const obj = voz_bot;
                     const lang = Object.keys(obj);
                     const configVoz = Object.values(obj)
-                    const voz = Object.assign({},...configVoz);
+                    const voz = Object.assign({}, ...configVoz);
                     // console.log(voz.voices)
 
 
-                    gerarAudioResumo(resumoTextual, voz.voices ,lang[0], 0, 1);
+                    gerarAudioResumo(resumoTextual, voz.voices, lang[0], 0, 1);
                 }
             } else if (ariaLabel === "pause") {
                 updateIcon('play'); // Atualizar o ícone para "play"
@@ -404,6 +411,7 @@ async function resumoAI(tema, analisarContexto = "", _temperado = "completo", _t
 
         // paramentros para dar o reflow na AI
         reflowAI(".reflow-items", tema, analisarContexto, resumoTextual)
+
 
         return resumo;
 
@@ -926,8 +934,8 @@ function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade 
         // console.log(textoLimpo);
         return textoLimpo;  // Retorna o texto limpo, caso precise usar em outra parte do código
     }
-    
-    
+
+
     AudioResumo(removerPartes(resumo), voz, langCode, velocidade, tom);
 
     // Função para iniciar a contagem regressiva quando o áudio for pausado
@@ -955,7 +963,7 @@ function gerarAudioResumo(resumo, voz = "Ligia", langCode = "pt-br", velocidade 
         }
     }
 
-    
+
 
     // Função para limpar o tempo no label
     function limparTempoLabel() {
@@ -1018,6 +1026,30 @@ function paraAudioResumo() {
 
 
 
+ // Função para desabilitar o botão e mostrar o tooltip com o tempo restante
+ function disableButton(duration,elemento) {
+    const button = document.querySelector(elemento);
+    let timeRemaining = duration;
+
+    // Desabilitar o botão
+    button.disabled = true;
+    button.setAttribute('data-time-remaining', timeRemaining);
+
+    // Atualizar o tooltip
+    const interval = setInterval(() => {
+        timeRemaining--;
+        button.setAttribute('data-time-remaining', timeRemaining);
+
+        // Quando o tempo acabar, reabilitar o botão e limpar o tooltip
+        if (timeRemaining <= 0) {
+            clearInterval(interval);
+            button.disabled = false;
+            button.removeAttribute('data-time-remaining');
+        }
+    }, 1000);
+}
+
+
 
 
 // Função para realizar o download do resumo
@@ -1045,7 +1077,7 @@ function reflowAI(_class, tema, analisarContexto = "", _reprocessar = null) {
             // console.log(prompt)
 
             if (prompt === "Resumo Detalhado") {
-                
+
                 clearContainer.innerHTML = ``;
                 resumoAI(tema, analisarContexto, "Faça um resumo bem detalhado com links e referências pra me clicar gera no minimo 10 links em forma de lista enumerada", "Universitario", 10, "1 linhas").then(resumo => {
                     soundBipe()
@@ -1074,17 +1106,60 @@ function reflowAI(_class, tema, analisarContexto = "", _reprocessar = null) {
     });
 
     const refreshContainerAi = document.querySelector(".reload-container-ai");
+
     refreshContainerAi.addEventListener("click", function (event) {
+        // Verificar se o botão já está desabilitado
+        if (refreshContainerAi.disabled) {
+            const remainingTime = refreshContainerAi.getAttribute('data-time-remaining');
+    
+            // Criando o tooltip usando Tippy.js
+            const tooltipInstance = tippy(refreshContainerAi, {
+                content: `Aguarde ${remainingTime}s`,
+                placement: 'left', // Exibe o tooltip acima do botão
+                arrow: false, // Exibe uma seta no tooltip
+                theme: 'dark', // Define o tema claro para o tooltip
+                interactive: true, // Permite interação com o tooltip
+                trigger: 'manual', // Tooltip será acionado manualmente
+                showOnCreate: true, // Exibe o tooltip imediatamente após criação
+                maxWidth: 'none',
+                offset: [0, 10],
+                onShown(instance) {
+                    // Atualiza o tooltip com o tempo restante a cada segundo
+                    const interval = setInterval(() => {
+                        const updatedTime = refreshContainerAi.getAttribute('data-time-remaining');
+                        instance.setContent(`Aguarde ${updatedTime}s`);
+    
+                        // Se o tempo acabar, destrói o tooltip e limpa o intervalo
+                        if (updatedTime <= 0) {
+                            clearInterval(interval);
+                            instance.destroy();
+                        }
+                    }, 1000);
+                }
+            });
+    
+            return; // Evitar reprocessamento enquanto o botão estiver desabilitado
+        }
 
-        // console.log(_reprocessar)
+        // Limpar o conteúdo do container
+        clearContainer.innerHTML = ``;
 
-        resumoAI(tema, analisarContexto, _reprocessar ? `Refaça pra me esse resumo de outra forma mais no mesmo contexto :${_reprocessar}` : `Faça um Resumo bem simplificado novamente`, "Estudante Leigo", 10, "1 linha").then(resumo => {
-            soundBipe()
-            paraAudioResumo()
-            // console.log('Resumo retornado:', resumo);
-        });
-    })
+        // Desabilitar o botão e iniciar o processo de resumo
+        resumoAI(tema, analisarContexto, _reprocessar ?
+            `Refaça pra me esse resumo de outra forma mais no mesmo contexto :${_reprocessar}` :
+            `Faça um Resumo bem simplificado novamente`, "Estudante Leigo", 10, "1 linha").then(resumo => {
 
+                // Aqui o processo do resumo termina
+                soundBipe();
+                paraAudioResumo();
+
+                // Desabilitar o botão por 2 segundos
+                disableButton(6,".reload-container-ai"); // Chama a função para desabilitar o botão por 5 segundos
+
+            });
+    });
+
+   
     const copyContainerAi = document.querySelector(".copy-container-ai");
 
     copyContainerAi.addEventListener('click', function () {

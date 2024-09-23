@@ -28,6 +28,13 @@
 @import url(../plugins/vizionnAnimation/zoom.css);
 /* ------ Animações ------ */
 
+
+
+:root{
+    --bg-tooltip:rgb(255, 255, 255);
+    --cor-tooltip:black;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -60,3 +67,12 @@ img {
 }
 
 
+.tippy-box[data-theme~='light'] {
+    background-color:var( --bg-tooltip);
+    color:var(--cor-tooltip);
+    font-size: 0.9rem;
+}
+
+.tippy-arrow{
+    color:var(--bg-tooltip);
+}
