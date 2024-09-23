@@ -13,9 +13,9 @@
         ]
     },
     "ceumaAI":{
-        "nome_bot":"Bot",
+        "nome_bot":"Eva",
         "version_bot":"0.0.1",
-        "img_bot":"./assets/bot.png",
+        "img_bot":"./assets/eva.jpg",
         "voz_bot":{
             "pt-br": { "name": "Português (Brasil)", "voices": "Ligia" }
         },

@@ -130,6 +130,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     //Atualizar Base de Servidores
     //Modulos de Audio ná página
     modulosPage(event.detail.slide)
+    // renderizador de tooltips
+    tooltipRender(event.detail.slide)
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });

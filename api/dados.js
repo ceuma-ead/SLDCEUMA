@@ -52,15 +52,15 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                        <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
-                            </button>
+                        </button>
                         `
                     },
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -68,7 +68,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": false,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -76,7 +76,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -280,7 +280,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -288,7 +288,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -296,7 +296,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -304,7 +304,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -701,7 +701,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -709,7 +709,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -717,7 +717,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -725,7 +725,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -766,6 +766,7 @@ const api = [
                         "ativa": true,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
                         `
                     },
                     "Destacar": {
@@ -804,7 +805,7 @@ const api = [
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="download"></i>Download</button>
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
                     },
                     "Dicionario": {
@@ -976,7 +977,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -984,7 +985,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -992,7 +993,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1000,7 +1001,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1041,6 +1042,7 @@ const api = [
                         "ativa": true,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
                         `
                     },
                     "Destacar": {
@@ -1079,7 +1081,7 @@ const api = [
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="download"></i>Download</button>
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
                     },
                     "Dicionario": {
@@ -1219,7 +1221,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -1227,7 +1229,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -1235,7 +1237,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1243,7 +1245,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1284,6 +1286,7 @@ const api = [
                         "ativa": true,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
                         `
                     },
                     "Destacar": {
@@ -1322,7 +1325,7 @@ const api = [
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="download"></i>Download</button>
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
                     },
                     "Dicionario": {
@@ -1499,13 +1502,13 @@ const api = [
                 "posicao": "",
                 "src": ""
             }],
-            "ferramentas": [
+           "ferramentas": [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -1513,7 +1516,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -1521,7 +1524,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1529,7 +1532,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1570,6 +1573,7 @@ const api = [
                         "ativa": true,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
                         `
                     },
                     "Destacar": {
@@ -1608,7 +1612,7 @@ const api = [
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="download"></i>Download</button>
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
                     },
                     "Dicionario": {
@@ -1837,7 +1841,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -1845,7 +1849,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-posicao="gbottom">
+                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -1853,7 +1857,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1861,7 +1865,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen" aria-label="min" vizioon-tip="Tela cheia" vizioon-posicao="gbottom">
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1902,6 +1906,7 @@ const api = [
                         "ativa": true,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
                         `
                     },
                     "Destacar": {
@@ -1940,7 +1945,7 @@ const api = [
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button><i data-lucide="download"></i>Download</button>
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
                     },
                     "Dicionario": {
