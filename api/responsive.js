@@ -307,6 +307,13 @@ const responsivo = [
             }
 
 
+            .container-img-lightbox-fluid {
+                flex-direction: column;
+                height: auto;
+                // padding: 4rem;
+            }
+
+
     `,
 
         // Atualização Forçada onde ele está aparecendo
@@ -407,6 +414,17 @@ const responsivo = [
                     .message-box--divisor {
                     justify-content: center;
                 }
+
+                .container-img-lightbox-fluid {   
+                padding: 8rem;
+                    flex-direction: column;
+                    width: 80%;
+                    height: auto;
+            }
+
+                    .modal-content-imagem {
+                max-width: 700px !important;
+            }
         `,
     
             // Atualização Forçada onde ele está aparecendo

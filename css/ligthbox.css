@@ -211,8 +211,8 @@
         padding: 1rem 2rem;
     }
     .toggle-lupa>svg {
-        width: calc(var(--tamanho-do-texto-icone) * 0.5);
-        height: calc(var(--tamanho-do-texto-icone) * 0.5);
+        width: calc(var(--tamanho-do-texto-icone) * 1.5);
+        height: calc(var(--tamanho-do-texto-icone) * 1.5);
     }
     .description {
         font-size: 65%;
