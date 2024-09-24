@@ -1987,9 +1987,9 @@ const api = [
 
             }],
             "cores": {
-                // "sidebar": "red",
-                // "fundo": "red",
-                // "icones": "rgb(0, 110, 201)"
+                "sidebar": "#000000",
+                "fundo": "#011C41",
+                "icones": "white"
             },
             "configuracoes_gerais": {
 
