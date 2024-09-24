@@ -222,6 +222,9 @@ const responsivo = [
 
                     }
 
+                    .modal-content-imagem {
+                    max-width: 500px;
+                    }
     `,
 
 
