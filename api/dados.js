@@ -1799,19 +1799,25 @@ const api = [
     {
         "pagina": 8,
         "nome_page": `Video Aula`,
-        "tipo": "Texto",
+        "tipo": "Video",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                <div class="pagina-tipo-texto animation">
+                <div class="pagina-tipo-video animation">
 
-                    <div class="pagina-tipo-texto--box-texto align-accordion">
-
-                     
-                                                                        
-                    </div> 
+                  <div class="pagina-tipo-video--box-video">
+                        <div class="f-carousel render-video-container" id="carrosel-video">
+                            <!-- Renderizador de Video -->
+                            <!-- 
+                            <div class="f-carousel__slide" data-thumb-src="https://i.vimeocdn.com/video/112836958_192x144.jpg">
+                                <iframe class="iframe-video" src="https://player.vimeo.com/video/112836958" ></iframe>
+                            </div>
+                            -->
+                            
+                        </div>
+                  </div>
                 
                 </div>
             `,
@@ -1990,11 +1996,15 @@ const api = [
                 // Habilitar Procurar de Paragrafos ná Pagina 2
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                    "onde_procurar": ".pagina-tipo-video",
                 },
                 "_procurar_animacao": {
                     "status": true,
                     "onde_procurar_animacao": ".animation",
+                },
+                "_renderizadar_video": {
+                    "status": true,
+                    "onde_colocar_video": ".render-video-container",
                 }
             },
             "fonte": {

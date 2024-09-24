@@ -1,6 +1,7 @@
 // Função para renderizar o conteúdo da API
 function renderPages() {
     const container = document.querySelector('.content-render-api');
+    
     if (container) {
         // Limpa o contêiner para evitar duplicações
         container.innerHTML = '';
@@ -25,7 +26,7 @@ function renderPages() {
                     Lupa();
                 }
 
-            }
+            };
 
             if (pageData.tipo === 'Texto') {
                 // Cria um artigo para cada página
@@ -43,7 +44,26 @@ function renderPages() {
                  */
 
 
-            }
+            };
+
+            if (pageData.tipo === 'Video') {
+                // Cria um artigo para cada página
+                const article = document.createElement('article');
+                article.classList.add('c-carousel__slide');
+                // Adiciona o HTML do container_render ao artigo
+            
+                article.innerHTML = pageData.data.container_render;
+                container.appendChild(article);
+                // Ativar ou Desativar a Lupa nas Imagens
+                // console.log(pageData.paramentros.lupa)
+                // Ativas Lupa nas classes img-photo-actions
+                /* Lupa
+                 *  Yes | No (string)
+                 *
+                 */
+
+
+            };
         });
         
     } else {

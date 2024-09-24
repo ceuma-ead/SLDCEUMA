@@ -68,7 +68,7 @@ const glider = new Glider(gliderElement, {
 const savedPosition = getSavedSliderPosition();
 const loadingSpinner = document.getElementById('loading-spinner');
 
-function showLoading(time) {
+function showLoading(time = 0) {
     loadingSpinner.style.display = 'flex';
     // Garantir que o loading desapareça após 3 segundos (ou ajuste conforme necessário)
     setTimeout(hideLoading, time);
@@ -84,11 +84,14 @@ gliderElement.addEventListener('glider-slide-hidden', function (event) {
     // console.log()
 });
 
-//Executar ao scrollar para um novo slide
-glider.scrollItem(savedPosition);
+//Executar para rolar para o slider que está salvo
+document.addEventListener("DOMContentLoaded",function(event){
+    glider.scrollItem(savedPosition); 
+
+})
 
 
-//Controlador =================
+//Controlador de Filtragem do Sumario =================
 
 let filtroDuplicadoSumario = true
 
@@ -134,6 +137,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     tooltipRender(event.detail.slide)
     // Renderizar Popover para criar tooltipo estilo popover na página
     renderPopover(event.detail.slide)
+    // Renderizar Video
+    renderVideo(event.detail.slide)
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
@@ -1262,7 +1267,44 @@ function injectScriptPage(slideIndex) {
     }
 }
 
-// Força Atualição
+// // Força Atualição
+// function AnimationVariablesUpPage(slideIndex) {
+//     const pageData = api[slideIndex];
+
+//     if (pageData && pageData.paramentros && pageData.forcarAtualizacao) {
+//         const variaveis = pageData.forcarAtualizacao.variaveis || [];
+//         aplicarReflowVariaveis(variaveis);
+//     } else {
+//         // Atualiza o controle do glider se estiver definido
+//         if (typeof glider !== 'undefined') {
+//             glider.refresh(true);
+//             glider.updateControls();
+//         } else {
+//             console.error('O objeto glider não está definido.');
+//         }
+
+//         // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
+//         const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
+//         aplicarReflowVariaveis(variaveis);
+//     }
+// }
+
+// // Função para aplicar o reflow e atualizar as variáveis de animação
+// function aplicarReflowVariaveis(variaveis) {
+//     variaveis.forEach(variable => {
+//         // Define o valor de 'Entrada' antes do reflow
+//         document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
+//     });
+
+//     // Força o reflow
+//     void document.documentElement.offsetWidth;
+
+//     variaveis.forEach(variable => {
+//         // Define o valor de 'Saida' após o reflow
+//         document.documentElement.style.setProperty(variable.Nome, variable.Saida);
+//     });
+// }
+
 function AnimationVariablesUpPage(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -1270,33 +1312,20 @@ function AnimationVariablesUpPage(slideIndex) {
         const variaveis = pageData.forcarAtualizacao.variaveis || [];
         aplicarReflowVariaveis(variaveis);
     } else {
-        // Atualiza o controle do glider se estiver definido
-        if (typeof glider !== 'undefined') {
-            glider.refresh(true);
-            glider.updateControls();
-        } else {
-            console.error('O objeto glider não está definido.');
-        }
-
-        // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
-        const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
-        aplicarReflowVariaveis(variaveis);
+        console.error('Nenhuma atualização necessária para esse slide.');
     }
 }
 
-// Função para aplicar o reflow e atualizar as variáveis de animação
 function aplicarReflowVariaveis(variaveis) {
     variaveis.forEach(variable => {
-        // Define o valor de 'Entrada' antes do reflow
-        document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
-    });
-
-    // Força o reflow
-    void document.documentElement.offsetWidth;
-
-    variaveis.forEach(variable => {
-        // Define o valor de 'Saida' após o reflow
-        document.documentElement.style.setProperty(variable.Nome, variable.Saida);
+        // Verificar se a animação já foi aplicada para evitar duplicações
+        const valorAtual = getComputedStyle(document.documentElement).getPropertyValue(variable.Nome);
+        if (valorAtual !== variable.Saida) {
+            // Aplicar 'Entrada' e 'Saída'
+            document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
+            void document.documentElement.offsetWidth; // Forçar reflow
+            document.documentElement.style.setProperty(variable.Nome, variable.Saida);
+        }
     });
 }
 
