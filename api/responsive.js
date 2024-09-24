@@ -308,9 +308,10 @@ const responsivo = [
 
 
             .container-img-lightbox-fluid {
-                flex-direction: column;
-                height: auto;
-                // padding: 4rem;
+                flex-direction: column !important;
+                height: auto !important;
+                padding: 4rem !important;
+                
             }
 
 
