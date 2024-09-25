@@ -204,7 +204,7 @@ const api = [
             },
             "logo": {
                 "ativar": true,
-                "img": "url(../assets/logopreta.png)",
+                "img": "url(../assets/logobranca.png)",
                 "posicaoY": "bottom 1.8%",
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
@@ -2037,7 +2037,7 @@ const api = [
             },
             "logo": {
                 "ativar": true,
-                "img": "url(../assets/logopreta.png)",
+                "img": "url(../assets/logobranca.png)",
                 "posicaoY": "bottom 1.8%",
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
