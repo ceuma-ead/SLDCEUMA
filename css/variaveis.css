@@ -13,6 +13,14 @@
     --cor-de-fundo-seta: rgba(1, 28, 65, 0.22);
     /* ----------------------------------------- */
 
+    /* Componente de Video Cores */
+    /* ------------------------------------------ */
+
+    --cor-dos-icones-de-video: rgb(255, 255, 255);
+    --bordar-icones-de-video: 1px solid rgb(255, 255, 255);
+    --fundo-icones-de-video: rgb(255, 255, 255);
+    /* ------------------------------------------ */
+
     /* Tamanhos e Cores para Sidebar */
     /* ---------------------------------------- */
     --fundo-siderbar: #011C41;

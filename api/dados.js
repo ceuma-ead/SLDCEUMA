@@ -1818,6 +1818,26 @@ const api = [
                             
                         </div>
                   </div>
+
+                  <div class="transcritor--box">
+                    <div>
+                        <!-- cabeçalho -->
+                        <p class="header-transcritor">Transcrição</p>
+                    </div>
+
+                    <div class="body-transcritor">
+                        <!-- body -->
+                        <p>
+                        Já parou para pensar quantas horas diárias você passa em casa? E que na maioria dos casos esse tempo pode dobrar ou triplicar aos finais de semana? Já parou para pensar que é na nossa casa que criamos longos vínculos afetivos com ambientes, móveis e objetos? 
+                        Já parou para pensar quantas horas diárias você passa em casa? E que na maioria dos casos esse tempo pode dobrar ou triplicar aos finais de semana? Já parou para pensar que é na nossa casa que criamos longos vínculos afetivos com ambientes, móveis e objetos? 
+                        </p>
+                    </div>
+
+                    <div class="footer-transcritor">
+                        <!-- footer -->
+                        <button>Gerar Transcrição</button>
+                    </div>
+                  </div>
                 
                 </div>
             `,
@@ -1996,7 +2016,7 @@ const api = [
                 // Habilitar Procurar de Paragrafos ná Pagina 2
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-video",
+                    "onde_procurar": ".transcritor--box",
                 },
                 "_procurar_animacao": {
                     "status": true,
@@ -2040,7 +2060,7 @@ const api = [
                 {
                     "audio": {
                         "ativo": true,
-                        "idRef": ".pagina-tipo-texto--box-texto"
+                        "idRef": ".transcritor--box"
                     }
                 }
             ]

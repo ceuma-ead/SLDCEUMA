@@ -1,11 +1,7 @@
 
-
 document.addEventListener("DOMContentLoaded", function (event) {
     renderVideo(savedPosition)
 })
-
-
-
 
 async function videos() {
 
@@ -60,7 +56,7 @@ async function renderVideo(slideIndex = null) {
 
             // Itera sobre os vídeos retornados da API
             videosArray.forEach(video => {
-                const { id, _ativo, dataThumbSrc, srcVideo, attrFrame } = video;
+                const { _ativo, dataThumbSrc, srcVideo, attrFrame } = video;
 
                 // Verifica se o vídeo está ativo
                 if (_ativo) {
@@ -85,12 +81,23 @@ async function renderVideo(slideIndex = null) {
 
             // Inicializa o carrossel após adicionar os vídeos
             new Carousel(document.getElementById("carrosel-video"), {
-                Dots: false,
-                Navigation: false,  // Remove os pontos de navegação
+                Dots: false,  // Remove os pontos de navegação
                 Thumbs: {
-                    type: "modern",  // Tipo de miniatura
+                    type: "classic",  // Sincronização clássica das miniaturas
+               
+                    lazyLoad: false,
+                    Navigation:true,
+                },
+                Navigation:true,
+                
+                Carousel: {
+                    infinite: false,
+                    transition: 'none',  // Remove a animação de transição de slides
                 },
             }, { Thumbs });
+
+            
+
 
         } else {
             console.error("Container de vídeo não está ativado ou a classe de renderização não bate.");

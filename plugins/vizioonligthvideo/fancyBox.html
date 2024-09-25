@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FancyApps Carousel with Navigation and Thumbnails</title>
+
+    <!-- FancyApps Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.css"
+    />
+
+    <style>
+      /* Adicione estilo para miniaturas */
+      #thumbContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .thumb {
+        cursor: pointer;
+        margin: 0 5px;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+      }
+      .thumb.active {
+        opacity: 1;
+        border: 2px solid #000;
+      }
+      .thumb img {
+        width: 80px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="p-4">
+      <h1>Carousel with Thumbnails</h1>
+
+      <!-- Carousel Container -->
+      <div id="myCarousel" class="f-carousel" style="max-width: 600px; margin: 0 auto;">
+        <div class="f-carousel__slide">
+          <img src="https://via.placeholder.com/600x400?text=Slide+1" alt="Slide 1" />
+        </div>
+        <div class="f-carousel__slide">
+          <img src="https://via.placeholder.com/600x400?text=Slide+2" alt="Slide 2" />
+        </div>
+        <div class="f-carousel__slide">
+          <img src="https://via.placeholder.com/600x400?text=Slide+3" alt="Slide 3" />
+        </div>
+        <div class="f-carousel__slide">
+          <img src="https://via.placeholder.com/600x400?text=Slide+4" alt="Slide 4" />
+        </div>
+      </div>
+
+      <!-- Previous and Next Buttons -->
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+
+      <!-- Thumbnails -->
+      <div id="thumbContainer">
+        <div class="thumb">
+          <img src="https://via.placeholder.com/80x50?text=1" alt="Thumb 1" />
+        </div>
+        <div class="thumb">
+          <img src="https://via.placeholder.com/80x50?text=2" alt="Thumb 2" />
+        </div>
+        <div class="thumb">
+          <img src="https://via.placeholder.com/80x50?text=3" alt="Thumb 3" />
+        </div>
+        <div class="thumb">
+          <img src="https://via.placeholder.com/80x50?text=4" alt="Thumb 4" />
+        </div>
+      </div>
+    </div>
+
+    <!-- FancyApps Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.umd.js"></script>
+
+    <script>
+      // Inicializando o carrossel
+      const myCarousel = new Carousel(document.getElementById('myCarousel'), {
+        Dots: false,
+        Navigation: false, // Desabilitar navegação padrão porque vamos usar botões personalizados
+      });
+
+      // Botões de próximo e anterior
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        myCarousel.slidePrev();
+      });
+
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        myCarousel.slideNext();
+      });
+
+      // Thumbnails para navegação
+      const thumbs = document.querySelectorAll('.thumb');
+      thumbs.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+          myCarousel.slideTo(index); // Mudar para o slide correspondente
+          setActiveThumbnail(index);
+        });
+      });
+
+      // Função para ativar thumbnail
+      function setActiveThumbnail(activeIndex) {
+        thumbs.forEach((thumb, index) => {
+          if (index === activeIndex) {
+            thumb.classList.add('active');
+          } else {
+            thumb.classList.remove('active');
+          }
+        });
+      }
+
+      // Inicializa o primeiro thumbnail como ativo
+      setActiveThumbnail(0);
+    </script>
+  </body>
+</html>

@@ -424,8 +424,8 @@ const responsivo = [
             }
 
                     .modal-content-imagem {
-                max-width: 700px !important;
-            }
+                     max-width: 700px !important;
+                }
         `,
     
             // Atualização Forçada onde ele está aparecendo

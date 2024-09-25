@@ -67,7 +67,7 @@
 }
 
 .f-thumbs__slide {
-    position: relative;
+    /* position: relative; */
     flex: 0 0 auto;
     box-sizing: content-box;
     display: flex;
