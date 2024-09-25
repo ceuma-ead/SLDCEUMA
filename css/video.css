@@ -128,7 +128,7 @@
     padding: 0 2rem 0 0;
     hyphens: auto;
     text-align: justify;
-    height: 100%;
+    height: calc(var(--tamanho-dos-components-gerais-video-transcritor-tumbs));
     overflow-y: scroll;
     
 }

@@ -26,6 +26,105 @@ async function videos() {
 
 }
 
+
+
+async function transcritor() {
+    try{
+       // Requeste Video Transcritor... 
+    }catch(error){
+        console.log(error);
+    }
+};
+
+
+
+// async function renderVideo(slideIndex = null) {
+//     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
+//     const videosRender = await videos();  // Chama a função `videos` para obter os vídeos da API
+
+//     // Verifica se o `pageData` é do tipo "Video"
+//     if (pageData && pageData.tipo === "Video") {
+
+//         const containerRenderConfig = pageData.paramentros.configuracoes_gerais._renderizadar_video;
+//         const containerRenderVideo = containerRenderConfig.onde_colocar_video;
+//         const containerVideo = document.querySelector(containerRenderVideo);  // Seleciona o contêiner de vídeo
+
+//         // Verifica se o contêiner existe
+//         if (!containerVideo) {
+//             // console.error("Contêiner de vídeo não encontrado.");
+//             return;
+//         }
+
+//         // Verifica se o carrossel já foi inicializado
+//         if (containerVideo.querySelector('.f-carousel__slide')) {
+//             // console.log("O carrossel já foi inicializado. Evitando duplicações.");
+//             return;
+//         }
+
+//         // Verifica se o status do renderizador de vídeo está ativo e se o contêiner existe
+//         if (containerRenderConfig.status && containerVideo) {
+//             const videosArray = videosRender;
+//             let slidesHTML = '';  // Variável para acumular os slides
+
+//             // Itera sobre os vídeos retornados da API
+//             videosArray.forEach(video => {
+//                 const { _ativo, dataThumbSrc, srcVideo, attrFrame } = video;
+
+//                 // Verifica se o vídeo está ativo
+//                 if (_ativo) {
+//                     // Parseando o attrFrame para separar allow e class
+//                     const allowMatch = attrFrame.match(/allow\s*=\s*\[\s*(.*?)\s*\]/);
+//                     const classMatch = attrFrame.match(/class\s*=\s*\[\s*(.*?)\s*\]/);
+
+//                     const allowAttr = allowMatch ? allowMatch[1].replace(/\s+/g, '').split(';').join('; ') : '';
+//                     const classAttr = classMatch ? classMatch[1].replace(/\s+/g, '').split(',') : '';
+
+//                     // Acumula o HTML dos slides
+//                     slidesHTML += `
+//                         <div class="f-carousel__slide" data-thumb-src="${dataThumbSrc}">
+//                             <iframe class="iframe-video ${classAttr.join(' ')}" src="${srcVideo}" allow="${allowAttr}"></iframe>
+//                         </div>
+//                     `;
+//                 }
+//             });
+
+//             // Adiciona todos os slides ao contêiner
+//             containerVideo.innerHTML = slidesHTML;
+
+//             // Inicializa o carrossel após adicionar os vídeos
+//             new Carousel(document.getElementById("carrosel-video"), {
+//                 on: {
+//                     "*": (carousel, eventName) => {
+//                         console.log(carousel.page
+//                         )
+//                     },
+//                 },
+//                 Dots: false,  // Remove os pontos de navegação
+//                 Thumbs: {
+//                     type: "classic",  // Sincronização clássica das miniaturas
+//                     lazyLoad: false,
+//                     Navigation:true,
+//                 },
+//                 Navigation:true,
+                
+//                 Carousel: {
+//                     infinite: false,
+//                     transition: 'none',  // Remove a animação de transição de slides
+//                 },
+//             }, { Thumbs });
+
+            
+
+
+//         } else {
+//             console.error("Container de vídeo não está ativado ou a classe de renderização não bate.");
+//         }
+//     } else {
+//         console.warn("O slideIndex fornecido não corresponde a uma página de vídeo.");
+//     }
+// }
+
+
 async function renderVideo(slideIndex = null) {
     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
     const videosRender = await videos();  // Chama a função `videos` para obter os vídeos da API
@@ -39,13 +138,11 @@ async function renderVideo(slideIndex = null) {
 
         // Verifica se o contêiner existe
         if (!containerVideo) {
-            // console.error("Contêiner de vídeo não encontrado.");
             return;
         }
 
         // Verifica se o carrossel já foi inicializado
         if (containerVideo.querySelector('.f-carousel__slide')) {
-            // console.log("O carrossel já foi inicializado. Evitando duplicações.");
             return;
         }
 
@@ -70,7 +167,7 @@ async function renderVideo(slideIndex = null) {
                     // Acumula o HTML dos slides
                     slidesHTML += `
                         <div class="f-carousel__slide" data-thumb-src="${dataThumbSrc}">
-                            <iframe class="iframe-video ${classAttr.join(' ')}" src="${srcVideo}" allow="${allowAttr}"></iframe>
+                            <iframe class="iframe-video ${classAttr.join(' ')}" src="${srcVideo}" allow="${allowAttr}" allowfullscreen></iframe>
                         </div>
                     `;
                 }
@@ -81,24 +178,49 @@ async function renderVideo(slideIndex = null) {
 
             // Inicializa o carrossel após adicionar os vídeos
             new Carousel(document.getElementById("carrosel-video"), {
+                on: {
+                    "*": (carousel, eventName) => {
+                        console.log(carousel.page);
+                    },
+                    change: (carousel) => {
+                        // Pausa todos os vídeos quando um slide muda
+                        const iframes = containerVideo.querySelectorAll('iframe');
+                        iframes.forEach(iframe => {
+                            const src = iframe.src;
+                            iframe.src = src;  // Força o iframe a recarregar e parar o vídeo
+                        });
+                    }
+                },
                 Dots: false,  // Remove os pontos de navegação
                 Thumbs: {
                     type: "classic",  // Sincronização clássica das miniaturas
-               
                     lazyLoad: false,
                     Navigation:true,
                 },
                 Navigation:true,
-                
                 Carousel: {
                     infinite: false,
                     transition: 'none',  // Remove a animação de transição de slides
                 },
-            }, { Thumbs });
-
-            
+            },{ Thumbs });
 
 
+
+            // Função para parar todos os vídeos, exceto o atual
+            function stopAllVideos() {
+                const iframes = document.querySelectorAll('iframe.iframe-video');
+                iframes.forEach(iframe => {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                });
+            }
+
+            // Adiciona um evento de click para pausar outros vídeos ao iniciar um novo
+            const iframes = containerVideo.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                iframe.addEventListener('play', function () {
+                    stopAllVideos();  // Pausa todos os vídeos
+                });
+            });
         } else {
             console.error("Container de vídeo não está ativado ou a classe de renderização não bate.");
         }
