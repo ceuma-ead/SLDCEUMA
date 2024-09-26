@@ -82,13 +82,26 @@ function hideLoading() {
 
 //Executar para rolar para o slider que está salvo
 
+
 function iraoItemquandoCarregar() {
     loadingSpinner.style.display = 'flex';
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+
+    // Mostrar ao recarregar a página o loading
     iraoItemquandoCarregar()
+    // fazer o scrool até esse item nesse mesmo time.
     glider.scrollItem(savedPosition);
+
+    //verificar se esse item já tá visivel 
+    /*
+        item Ativo ->
+                    -- não <> sim --
+                    |              |
+        Show Loading   <-     -> Hide Loading 
+
+    */
     gliderElement.addEventListener("glider-slide-visible", (event) => {
         // showLoading(event.timeStamp);
         hideLoading()
@@ -98,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             showLoading(event.timeStamp);
             // console.log()
         });
+
     });
 
 })

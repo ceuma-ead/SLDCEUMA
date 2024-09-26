@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     abrirSumario();
     abrirAnotacoes();
     checkEmptyResumoContainer();
-    checkEmptyResumoHistoricoContainer() 
+    checkEmptyResumoHistoricoContainer(); 
    
 });
 

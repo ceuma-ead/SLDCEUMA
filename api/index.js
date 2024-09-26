@@ -64,6 +64,26 @@ function renderPages() {
 
 
             };
+
+
+            if (pageData.tipo === 'Audio') {
+                // Cria um artigo para cada página
+                const article = document.createElement('article');
+                article.classList.add('c-carousel__slide');
+                // Adiciona o HTML do container_render ao artigo
+            
+                article.innerHTML = pageData.data.container_render;
+                container.appendChild(article);
+                // Ativar ou Desativar a Lupa nas Imagens
+                // console.log(pageData.paramentros.lupa)
+                // Ativas Lupa nas classes img-photo-actions
+                /* Lupa
+                 *  Yes | No (string)
+                 *
+                 */
+
+
+            };
         });
         
     } else {

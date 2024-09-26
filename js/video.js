@@ -177,6 +177,49 @@ async function transcritor() {
 // }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    checkEmptyTranscritorContainer(); 
+   
+});
+
+
+// Função para verificar se o contêiner de resumo histórico está vazio
+function checkEmptyTranscritorContainer() {
+    const resumoTranscritorContainer = document.querySelector('.body-transcritor-video');
+    const footerTranscritor = document.querySelector('.footer-transcritor-video');
+    // Verifica se o contêiner existe
+    if (!resumoTranscritorContainer) return;
+
+    // Verifica se o conteúdo do contêiner está vazio
+    if (!resumoTranscritorContainer.children.length || resumoTranscritorContainer.innerHTML.trim() === '') {
+        footerTranscritor.style.display = "none";
+        // Adiciona a mensagem de "vazio" se não houver conteúdo visível
+        let emptyMessage = document.querySelector('.empty-transcritor-message');
+        if (!emptyMessage) {
+            emptyMessage = document.createElement('div');
+            emptyMessage.classList.add('empty-transcritor-message');
+            emptyMessage.innerHTML = `
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="text-center p-4">
+                        <img src="./assets/transcritorGold.png" alt="list-is-empty" class="img-fluid mb-3" style="max-width: 150px;">
+                        <h4 class="text-light">Não Há descrição disponiveis...</h4>
+                    </div>
+                </div>
+            `;
+            resumoTranscritorContainer.appendChild(emptyMessage);
+        }
+    } else {
+        // Remove a mensagem de "vazio" se houver conteúdo
+        const emptyMessage = document.querySelector('.empty-transcritor-message');
+        if (emptyMessage) {
+            footerTranscritor.style.display = "block";
+            emptyMessage.remove();
+        }
+    }
+}
+
+
 
 
 async function carroselVideoRender(id = "carrosel-video") {
@@ -226,7 +269,6 @@ function pauseAllVideos(slider) {
         slider.destroy();  // Destrói o carrossel
     }
 }
-
 
   // Função para parar todos os vídeos, exceto o atual
   function stopAllVideos() {
