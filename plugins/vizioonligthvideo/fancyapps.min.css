@@ -588,9 +588,10 @@
     padding: 0;
     width: var(--f-button-width);
     height: var(--f-button-height);
-    border: var(--f-button-border);
+    border: none !important;
     border-radius: var(--f-button-border-radius);
     color: var(--f-button-color);
+    opacity: 60%;
     background: var(--f-button-bg);
     box-shadow: var(--f-button-shadow);
     pointer-events: all;
