@@ -36,6 +36,7 @@ async function transcritor() {
     }
 };
 
+
 // async function carroselVideoRender(id = "carrosel-video") {
 //     // Inicializa o carrossel após adicionar os vídeos
 //     const slider = new Carousel(document.getElementById(id), {
@@ -60,23 +61,44 @@ async function transcritor() {
 //             infinite: false,
 //             transition: 'none',  // Remove a animação de transição de slides
 //         },
-//     });
+//     },{Thumbs});
 
 //     return slider;
+// }
+
+// // Função para destruir e limpar o carrossel
+// function pauseAllVideos(slider) {
+//     if (slider && typeof slider.destroy === "function") {
+//         const iframes = document.querySelectorAll('iframe.iframe-video');
+//         iframes.forEach(iframe => {
+//             // Guarda na memoria o SRC antigo 
+//             const iframeSrcOld = iframe.src
+//             // Limpar o src do Elemento
+//             iframe.src = '';
+//             // Reatribuir o src na memoria ao Elemento depois de Pausar
+//             iframe.src = iframeSrcOld;
+//             iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+//             iframe.removeEventListener('play', stopAllVideos);  // Remove o listener de play
+//         });
+
+//         slider.destroy();  // Destrói o carrossel
+//     }
+// }
+
+
+//   // Função para parar todos os vídeos, exceto o atual
+//   function stopAllVideos() {
+//     const iframes = document.querySelectorAll('iframe.iframe-video');
+//     iframes.forEach(iframe => {
+//         iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+//     });
 // }
 
 // async function renderVideo(slideIndex = null) {
 //     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
 //     const videosRender = await videos();  // Chama a função `videos` para obter os vídeos da API
 
-//     // Função para parar todos os vídeos, exceto o atual
-//     function stopAllVideos() {
-//         const iframes = document.querySelectorAll('iframe.iframe-video');
-//         iframes.forEach(iframe => {
-//             iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-//         });
-//     }
-
+//     // Inicializa o carrossel e armazena a instância
 //     const sliderVideo = await carroselVideoRender();
 
 //     // Verifica se o `pageData` é do tipo "Video"
@@ -84,8 +106,14 @@ async function transcritor() {
 //         const containerRenderConfig = pageData.paramentros.configuracoes_gerais._renderizadar_video;
 //         const containerRenderVideo = containerRenderConfig.onde_colocar_video;
 //         const containerVideo = document.querySelector(containerRenderVideo);  // Seleciona o contêiner de vídeo
-
+//         // const containerThumbs = document.querySelector(".f-thumbs")
 //         // Verifica se o contêiner existe
+//         console.log(document.querySelectorAll(".f-thumbs"))
+
+//         const existingThumbs = document.querySelectorAll('.f-thumbs');
+//         if (existingThumbs.length > 0) {
+//             existingThumbs.forEach(thumb => thumb.remove());  // Remove todos os containers .f-thumbs existentes
+//         }
 //         if (!containerVideo) {
 //             return;
 //         }
@@ -94,6 +122,9 @@ async function transcritor() {
 //         if (containerVideo.querySelector('.f-carousel__slide')) {
 //             return;
 //         }
+
+//         // verificar se já existe o container de Thumbs;
+
 
 //         // Verifica se o status do renderizador de vídeo está ativo e se o contêiner existe
 //         if (containerRenderConfig.status && containerVideo) {
@@ -133,16 +164,19 @@ async function transcritor() {
 //                     iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');  // Certifica-se que o vídeo atual continua tocando
 //                 });
 //             });
+
 //         } else {
 //             console.error("Container de vídeo não está ativado ou a classe de renderização não bate.");
 //         }
 //     } else {
-//         console.log(sliderVideo)
-
-      
+//         // Se o slideIndex não for vídeo, destrua o carrossel e pare os vídeos
+//         // console.log( sliderVideo)
+//         pauseAllVideos(sliderVideo)
 //         console.warn("O slideIndex fornecido não corresponde a uma página de vídeo.");
 //     }
 // }
+
+
 
 
 async function carroselVideoRender(id = "carrosel-video") {
@@ -216,7 +250,7 @@ async function renderVideo(slideIndex = null) {
         const containerVideo = document.querySelector(containerRenderVideo);  // Seleciona o contêiner de vídeo
         // const containerThumbs = document.querySelector(".f-thumbs")
         // Verifica se o contêiner existe
-        console.log(document.querySelectorAll(".f-thumbs"))
+        // console.log(document.querySelectorAll(".f-thumbs"))
 
         const existingThumbs = document.querySelectorAll('.f-thumbs');
         if (existingThumbs.length > 0) {

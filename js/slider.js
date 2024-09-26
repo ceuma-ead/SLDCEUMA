@@ -78,15 +78,27 @@ function hideLoading() {
     loadingSpinner.style.display = 'none';
 }
 
-// Mostrar o loading antes de iniciar a mudança de slide
-gliderElement.addEventListener('glider-slide-hidden', function (event) {
-    showLoading(event.timeStamp);
-    // console.log()
-});
+
 
 //Executar para rolar para o slider que está salvo
-document.addEventListener("DOMContentLoaded",function(event){
-    glider.scrollItem(savedPosition); 
+
+function iraoItemquandoCarregar() {
+    loadingSpinner.style.display = 'flex';
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    iraoItemquandoCarregar()
+    glider.scrollItem(savedPosition);
+    gliderElement.addEventListener("glider-slide-visible", (event) => {
+        // showLoading(event.timeStamp);
+        hideLoading()
+
+        // // Mostrar o loading antes de iniciar a mudança de slide
+        gliderElement.addEventListener('glider-slide-hidden', function (event) {
+            showLoading(event.timeStamp);
+            // console.log()
+        });
+    });
 
 })
 
@@ -2582,7 +2594,7 @@ function modulosPage(slideIndex) {
                         }
                     }
 
-                   
+
                     // Função para verificar se mais de uma palavra foi selecionada
                     function verificarSelecao() {
                         const renderMenuDiv = document.querySelector('.render-dicionario');
@@ -2618,7 +2630,7 @@ function modulosPage(slideIndex) {
                         fecharBoxCores();
                         if (primeiraPalavra) {
                             buscarNoDicionario(primeiraPalavra); // Faz a busca no dicionário se for uma única palavra
-                        } 
+                        }
                         // else {
                         //     alert("Por favor, selecione uma palavra válida.");
                         // }
@@ -2642,36 +2654,36 @@ function modulosPage(slideIndex) {
                     // });
 
 
-                    document.getElementById('resumo').addEventListener('click',async function () {
+                    document.getElementById('resumo').addEventListener('click', async function () {
                         const textoResumo = obterTextoSelecionado();
                         fecharBoxCores();
 
                         const configuracaoData = await resumoConfig();
                         const config = configuracaoData.ceumaAI
-                        
+
                         const { contexto } = config;
 
                         // console.log(contexto)
-                        
+
                         // Chama a função que gera o resumo
-                        resumoAI(textoResumo, contexto,"Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
+                        resumoAI(textoResumo, contexto, "Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
                             const containerFlip = document.querySelector("#flip-container");
-                    
+
                             // Verifica se o container está mostrando o histórico (flipado)
                             if (containerFlip.classList.contains('flip-active')) {
                                 // Se estiver no histórico, removemos o flip para voltar ao resumo
                                 containerFlip.classList.remove('flip-active');
                             }
-                    
+
                             // Processa o resumo e o exibe
                             soundBipe();
                             // console.log('Resumo retornado:', resumo);
-                    
+
                             // Após gerar o resumo, você pode processar o resumo e exibir na tela
                         });
-                    
+
                         const verificarAberturaResumo = document.querySelector(".resumo-menu");
-                    
+
                         // Verifica se o resumo está aberto ou não
                         if (verificarAberturaResumo.classList.contains("open")) {
                             // O menu já está aberto, então não precisamos fechá-lo, apenas atualizar
@@ -2682,7 +2694,7 @@ function modulosPage(slideIndex) {
                             abrirResumo(); // Reabre o menu de resumo
                         }
                     });
-                    
+
 
                 }
 
