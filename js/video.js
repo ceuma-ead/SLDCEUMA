@@ -186,23 +186,25 @@ function pauseAllVideos(slider) {
             // Reatribuir o src na memoria ao Elemento depois de Pausar
             iframe.src = iframeSrcOld;
             iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            iframe.removeEventListener('play', stopAllVideos);  // Remove o listener de play
         });
 
         slider.destroy();  // Destrói o carrossel
     }
 }
 
+
+  // Função para parar todos os vídeos, exceto o atual
+  function stopAllVideos() {
+    const iframes = document.querySelectorAll('iframe.iframe-video');
+    iframes.forEach(iframe => {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    });
+}
+
 async function renderVideo(slideIndex = null) {
     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
     const videosRender = await videos();  // Chama a função `videos` para obter os vídeos da API
-
-    // Função para parar todos os vídeos, exceto o atual
-    function stopAllVideos() {
-        const iframes = document.querySelectorAll('iframe.iframe-video');
-        iframes.forEach(iframe => {
-            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        });
-    }
 
     // Inicializa o carrossel e armazena a instância
     const sliderVideo = await carroselVideoRender();
