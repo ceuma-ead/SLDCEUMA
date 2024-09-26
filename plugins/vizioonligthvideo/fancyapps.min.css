@@ -331,8 +331,8 @@
     --f-button-active-bg: var(--f-button-bg);
     --f-button-svg-width: 24px;
     --f-button-svg-height: 24px;
-    --f-button-next-pos: 10px;
-    --f-button-prev-pos: 10px;
+    --f-button-next-pos: 0;
+    --f-button-prev-pos: 0;
     --f-spinner-color-1: rgba(0, 0, 0, 0.1);
     --f-spinner-color-2: rgba(17, 24, 28, 0.8);
     --f-spinner-stroke: 2.75;
@@ -599,10 +599,12 @@
     transition: var(--f-button-transition)
 }
 
+
 @media(hover: hover) {
-    .f-button:hover:not([disabled]) {
+    .f-button:hover:not([enabled]) {
         color: var(--f-button-hover-color);
-        background-color: var(--f-button-hover-bg)
+        background-color: var(--f-button-hover-bg);
+        opacity: 100%;
     }
 }
 
