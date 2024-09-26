@@ -125,20 +125,20 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     //Fazer a inserção de Responsividade em uma Página ou Varias
     responsivePage(event.detail.slide);
     //Fazer animação no Elemento da Página
-    AnimatedElementos(event.detail.slide)
+    AnimatedElementos(event.detail.slide);
     // Função para inserir a URL ná página
-    injectEstiloRender(event.detail.slide)
+    injectEstiloRender(event.detail.slide);
     // Renderizar Ferramentas por Página
-    renderTools(event.detail.slide)
+    renderTools(event.detail.slide);
     //Atualizar Base de Servidores
     //Modulos de Audio ná página
-    modulosPage(event.detail.slide)
+    modulosPage(event.detail.slide);
     // renderizador de tooltips
-    tooltipRender(event.detail.slide)
+    tooltipRender(event.detail.slide);
     // Renderizar Popover para criar tooltipo estilo popover na página
-    renderPopover(event.detail.slide)
+    renderPopover(event.detail.slide);
     // Renderizar Video
-    renderVideo(event.detail.slide)
+    renderVideo(event.detail.slide);
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
