@@ -10,17 +10,23 @@
     {
         "_ativo":true,
         "track": 1,
-        "name": "Podcast 01",
-        "duration": "2:46",
-        "audioSrc": "https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
+        "name": "Podcast (1) Sobre alguma coisa...",
+        "duration": "3:34",
+        "audioSrc": "../sounds/podcast/podcast1.mp3"
     },
     {
         "_ativo":true,
         "track": 2,
-        "name": "Podcast 02",
-        "duration": "2:46",
-        "audioSrc": "https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
+        "name": "Podcast (2) Sobre alguma coisa...",
+        "duration": "2:59",
+        "audioSrc": "../sounds/podcast/podcast2.mp3"
+    },
+    {
+        "_ativo":true,
+        "track": 3,
+        "name": "Podcast (3) Sobre alguma coisa...",
+        "duration": "3:11",
+        "audioSrc": "../sounds/podcast/podcast3.mp3"
     }
-   
    
 ]
