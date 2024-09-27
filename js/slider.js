@@ -109,11 +109,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     */
     gliderElement.addEventListener("glider-slide-visible", (event) => {
 
-        console.log(event.detail.slide)
+        // console.log(event.detail.slide)
         // showLoading(event.timeStamp);
         hideLoading()
-
-
 
         // // Mostrar o loading antes de iniciar a mudança de slide
         gliderElement.addEventListener('glider-slide-hidden', function (event) {
@@ -174,6 +172,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     renderPopover(event.detail.slide);
     // Renderizar Video
     renderVideo(event.detail.slide);
+    // Renderizar Audio
+    renderAudio(event.detail.slide);
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });

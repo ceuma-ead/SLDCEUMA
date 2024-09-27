@@ -1,0 +1,17 @@
+[
+    {   
+        "configuracao":{
+            "plugin":"audio",
+            "version":1,
+            "ativar":true,
+            "moduloTranscritor":false
+        } 
+    },
+    {
+   
+        "_ativo":true,
+        "srcAudio":"https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
+    }
+   
+   
+]

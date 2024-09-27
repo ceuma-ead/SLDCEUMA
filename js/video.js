@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     renderVideo(savedPosition)
 })
 
-async function videos() {
+async function videosApi() {
 
     try {
         const data = await $.ajax({
@@ -25,17 +25,6 @@ async function videos() {
     }
 
 }
-
-
-
-async function transcritor() {
-    try{
-       // Requeste Video Transcritor... 
-    }catch(error){
-        console.log(error);
-    }
-};
-
 
 // async function carroselVideoRender(id = "carrosel-video") {
 //     // Inicializa o carrossel após adicionar os vídeos
@@ -179,13 +168,13 @@ async function transcritor() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    checkEmptyTranscritorContainer(); 
+    checkEmptyTranscritorVideoContainer(); 
    
 });
 
 
 // Função para verificar se o contêiner de resumo histórico está vazio
-function checkEmptyTranscritorContainer() {
+function checkEmptyTranscritorVideoContainer() {
     const resumoTranscritorContainer = document.querySelector('.body-transcritor-video');
     const footerTranscritor = document.querySelector('.footer-transcritor-video');
     // Verifica se o contêiner existe
@@ -221,12 +210,14 @@ function checkEmptyTranscritorContainer() {
 
 
 
-async function moduloTranscritor(conf = {}) {
+async function moduloTranscritorVideo(conf = {}) {
     $.ajax({
         url: "./modules/videos.json",
         method: "GET",
         cache: false,
         success: (data) => {
+
+       
 
             if(data && Array.isArray(data) && Array.isArray(data).length !== 0){
                 const dadosFiltrados = data.filter((item,index) => item.configuracao)
@@ -234,22 +225,22 @@ async function moduloTranscritor(conf = {}) {
                 const configuracaoVideo = configuracao.configuracao;
 
                 if(!!configuracaoVideo && Object.values(configuracaoVideo).length !== 0){
-                    //Onde procurar o Transcritor
+                    //Onde procurar o Transcritor Video
                     const containerRenderConfig = conf.paramentros.configuracoes_gerais._procurar_paragrafos;
                     const moduloTranscritor = containerRenderConfig.onde_procurar;
-                    const containerVideo = document.querySelector(moduloTranscritor); 
-
-                    // Ativar ou destativar o transcritor
-
+                    const containerVideoTranscritor = document.querySelector(moduloTranscritor); 
+                    // Ativar ou destativar o transcritor Video
                     const transcritor = configuracaoVideo.moduloTranscritor;
                     if(transcritor){
-                        
+                        containerVideoTranscritor.style.display = "block";
                     }else{
-                        containerVideo.style.display = "none";
+                        containerVideoTranscritor.style.display = "none";
                     }
 
                 }
             }
+
+            return data;
         },
         error: (error) => {
             console.error('Erro:', error);
@@ -262,8 +253,6 @@ async function moduloTranscritor(conf = {}) {
         }
     });
 }
-
-
 
 
 async function carroselVideoRender(id = "carrosel-video") {
@@ -324,11 +313,7 @@ function pauseAllVideos(slider) {
 
 async function renderVideo(slideIndex = null) {
     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
-    const videosRender = await videos();  // Chama a função `videos` para obter os vídeos da API
-
-    // Inicializar as configurações do modulo de Transcrição
-
-    const configuracoesVideo = await moduloTranscritor(pageData);
+    const videosRender = await videosApi();  // Chama a função `videos` para obter os vídeos da API
 
     // Inicializa o carrossel e armazena a instância
     const sliderVideo = await carroselVideoRender();
@@ -338,14 +323,20 @@ async function renderVideo(slideIndex = null) {
         const containerRenderConfig = pageData.paramentros.configuracoes_gerais._renderizadar_video;
         const containerRenderVideo = containerRenderConfig.onde_colocar_video;
         const containerVideo = document.querySelector(containerRenderVideo);  // Seleciona o contêiner de vídeo
-        // const containerThumbs = document.querySelector(".f-thumbs")
-        // Verifica se o contêiner existe
-        // console.log(document.querySelectorAll(".f-thumbs"))
 
+        // Inicializar as configurações do modulo de Transcrição
+        const configuracoesVideo = await moduloTranscritorVideo(pageData);
+
+        // const containerThumbs = document.querySelector(".f-thumbs")
+        // console.log(document.querySelectorAll(".f-thumbs"))
+        
+        // verificar se já existe o container de Thumbs;
         const existingThumbs = document.querySelectorAll('.f-thumbs');
         if (existingThumbs.length > 0) {
             existingThumbs.forEach(thumb => thumb.remove());  // Remove todos os containers .f-thumbs existentes
         }
+        
+        // Verifica se o contêiner existe
         if (!containerVideo) {
             return;
         }
@@ -355,7 +346,6 @@ async function renderVideo(slideIndex = null) {
             return;
         }
 
-        // verificar se já existe o container de Thumbs;
 
 
         // Verifica se o status do renderizador de vídeo está ativo e se o contêiner existe

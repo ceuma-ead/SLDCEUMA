@@ -8,7 +8,7 @@ function renderPages() {
 
         // Itera sobre os dados da API
         api.forEach(pageData => {
-            if (pageData.tipo === 'imagem') {
+            if (pageData.tipo === 'Imagem') {
                 // Cria um artigo para cada página
                 const article = document.createElement('article');
                 article.classList.add('c-carousel__slide');

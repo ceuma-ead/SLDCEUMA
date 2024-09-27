@@ -1,0 +1,363 @@
+@import url(./variaveis.css);
+
+:root {
+    --tamanho-container-audio: 75%;
+    --tamanho-do-audio: var(--tamanho-container-audio);
+    --tamanho-dos-components-gerais-audio-transcritor-tumbs: 80%;
+    --largura-dos-containers-audio-transcritor: 30%;
+}
+
+.pagina-tipo-audio {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: green; */
+    gap: 1rem;
+
+
+}
+
+#carrosel-audio {
+
+    width: var(--tamanho-container-audio);
+    height: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pagina-tipo-audio--box-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tamanho-do-audio);
+    height: 100%;
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+}
+
+
+
+.transcritor--box-audio {
+    /* background: red; */
+
+    width: var(--largura-dos-containers-audio-transcritor);
+    height: var(--tamanho-dos-components-gerais-audio-transcritor-tumbs);
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    font-family: var(--familia-da-font-paragrafo);
+    font-size: var(--font-para-paragrafos);
+
+}
+
+.body-transcritor-audio {
+    /* background: red;  */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 2rem 0 0;
+    hyphens: auto;
+    text-align: justify;
+    height: calc(var(--tamanho-dos-components-gerais-audio-transcritor-tumbs));
+    overflow-y: scroll;
+
+}
+
+
+
+.body-transcritor-audio p {
+    font-family: var(--familia-da-font-paragrafo);
+    color: white !important;
+}
+
+.body-transcritor-audio::-webkit-scrollbar {
+    width: 8px;
+    min-height: min-content;
+    padding-left: 1rem;
+    /* background-color: red; */
+    height: 100%;
+    overflow: auto;
+
+}
+
+
+.body-transcritor-audio::-webkit-scrollbar-track:active {
+    background-color: #b8b8c2;
+}
+
+
+.body-transcritor-audio::-webkit-scrollbar-thumb {
+    border-radius: 17px;
+    background-color: var(--cor-dos-icones-de-audio);
+}
+
+
+.body-transcritor-audio::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+
+.body-transcritor-audio::-webkit-scrollbar-thumb:active {
+    background-color: #ff6f0000;
+}
+
+.body-transcritor-audio::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #00000000;
+}
+
+
+.body-transcritor-audio::-webkit-scrollbar-track:hover {
+    background-color: #00000000;
+}
+
+
+.footer-transcritor {
+    /* background-color: #b8b8c2; */
+    width: 100%;
+    margin: 1rem 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-transcritor-audio {
+    font-family: var(--familia-da-font-paragrafo);
+    color: white !important;
+    border-bottom: 1px solid #29292E;
+    width: 85%;
+    position: relative;
+    padding: 0 0 0.1rem 0;
+}
+
+.header-transcritor-audio::after {
+    position: absolute;
+    width: 70%;
+    height: 3px;
+    bottom: 0%;
+    left: 0;
+    /* background-color: red; */
+    background-color: white;
+    content: "";
+    display: inline;
+}
+
+/* Estilos para o botão */
+.footer-transcritor-audio button {
+    color: white;
+    background-color: #FF8A00;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Animação de "hover" */
+.footer-transcritor-audio button:hover {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+
+}
+
+
+
+.add-bottom {
+    margin-bottom: 2rem !important;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.no-support {
+    margin: 2rem auto;
+    text-align: center;
+    width: 90%;
+}
+
+
+/* Audio Player Styles
+================================================== */
+
+audio {
+    display: none;
+}
+
+#audiowrap,
+#plwrap {
+    margin: 0 auto;
+}
+
+#tracks {
+    font-size: 0;
+    position: relative;
+    text-align: center;
+}
+
+#nowPlay {
+    display: block;
+    font-size: 0;
+}
+
+#nowPlay span {
+    display: inline-block;
+    font-size: 1.05rem;
+    vertical-align: top;
+}
+
+#nowPlay span#npAction {
+    padding: 21px;
+    width: 30%;
+}
+
+#nowPlay span#npTitle {
+    padding: 21px;
+    text-align: right;
+    width: 70%;
+}
+
+#plList li {
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 21px 0;
+}
+
+#plList li:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.plItem {
+    position: relative;
+}
+
+.plTitle {
+    left: 50px;
+    overflow: hidden;
+    position: absolute;
+    right: 65px;
+    text-overflow: ellipsis;
+    top: 0;
+    white-space: nowrap;
+}
+
+.plNum {
+    padding-left: 21px;
+    width: 25px;
+}
+
+.plLength {
+    padding-left: 21px;
+    position: absolute;
+    right: 21px;
+    top: 0;
+}
+
+.plSel,
+.plSel:hover {
+    background-color: rgba(0, 0, 0, .1);
+    color: #fff;
+    cursor: default !important;
+}
+
+#tracks a {
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2.3rem;
+    height: 40px;
+    line-height: .2;
+    margin: 0 5px 30px;
+    padding: 12px;
+    text-decoration: none;
+    transition: background .3s ease;
+}
+
+#tracks a:hover,
+#tracks a:active {
+    background-color: rgba(0, 0, 0, .1);
+    color: #fff;
+}
+
+#tracks a::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+
+/* Plyr Overrides
+================================================== */
+
+.plyr--audio .plyr__controls {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-family: "Source Sans Pro", arial, sans-serif;
+    padding: 20px 20px 20px 13px;
+    width: 100%;
+}
+
+a.plyr__controls__item.plyr__control:hover,
+.plyr--audio .plyr__controls button:hover,
+.plyr--audio .plyr__controls button.tab-focus:focus,
+.plyr__play-large {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.plyr__progress--played,
+.plyr__volume--display {
+    color: rgba(0, 0, 0, .1);
+}
+
+.plyr--audio .plyr__progress--buffer,
+.plyr--audio .plyr__volume--display {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.plyr--audio .plyr__progress--buffer {
+    color: rgba(0, 0, 0, .1);
+}
+
+.plyr__controls .plyr__controls__item.plyr__time {
+    font-size: 14px;
+    margin-left: 7px;
+}
+
+
+/* Media Queries
+================================================== */
+
+@media only screen and (max-width:600px) {
+    #nowPlay span#npAction {
+        display: none;
+    }
+
+    #nowPlay span#npTitle {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+}

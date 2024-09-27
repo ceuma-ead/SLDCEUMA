@@ -1503,7 +1503,7 @@ const api = [
                 "posicao": "",
                 "src": ""
             }],
-           "ferramentas": [
+            "ferramentas": [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
@@ -1705,12 +1705,11 @@ const api = [
         }
     },
 
-
-    // PAGINA 7
+    // PAGINA DE IMAGEM 7
     {
         "pagina": 7,
         "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,
-        "tipo": "imagem",
+        "tipo": "Imagem",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
         "id_elemento_para_modificar": "container-imagem",
@@ -1725,6 +1724,7 @@ const api = [
                         </div>
                         <p class="description">Descrição da imagem 1</p>
                     </div>
+                    
                     <div class="item-ligthbox">
                         <div class="item-ligthbox-img img-photo-actions">
 
@@ -1733,6 +1733,7 @@ const api = [
                         </div>
                         <p class="description">Descrição da imagem 2</p>
                     </div>
+                    
                 </div>
                 `
         },
@@ -1795,14 +1796,14 @@ const api = [
         }
     },
 
-    // PAGINA 8
+    // PAGINA DE VIDEO  8
     {
         "pagina": 8,
         "nome_page": `Video Aula`,
         "tipo": "Video",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
-        "id_elemento_para_modificar": "container-imagem",
+        "id_elemento_para_modificar": "container-video",
         "data": {
             "container_render": `
                 <div class="pagina-tipo-video animation">
@@ -1827,7 +1828,7 @@ const api = [
 
                     <div class="body-transcritor-video">
                         <!-- body -->
-                       
+                       <p>ola</p>
                     </div>
 
                     <div class="footer-transcritor-video">
@@ -2023,7 +2024,7 @@ const api = [
                     "status": true,
                     "onde_colocar_video": ".render-video-container",
                 },
-               
+
             },
             "fonte": {
                 // "titulo":"1rem",
@@ -2058,60 +2059,50 @@ const api = [
                 {
                     "audio": {
                         "ativo": true,
-                        "idRef": ".transcritor--box"
+                        "idRef": ".transcritor--box-video"
                     }
                 }
             ]
         }
     },
 
-    
-    // PAGINA 9
+    // PAGINA DE AUDIO  9 
     {
         "pagina": 9,
         "nome_page": `Podcast`,
         "tipo": "Audio",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
-        "id_elemento_para_modificar": "container-imagem",
+        "id_elemento_para_modificar": "container-audio",
         "data": {
             "container_render": `
-                <div class="pagina-tipo-audio animation">
+            <div class="pagina-tipo-audio animation">
 
-                  <div class="pagina-tipo-audio--box-audio">
-                        <div class="f-carousel render-audio-container" id="carrosel-video">
-                            <!-- Renderizador de audio -->
-                            <!-- 
-                            <div class="f-carousel__slide" data-thumb-src="https://i.vimeocdn.com/video/112836958_192x144.jpg">
-                                <iframe class="iframe-video" src="https://player.vimeo.com/video/112836958" ></iframe>
-                            </div>
-                            -->
-                            
-                        </div>
-                  </div>
-
-                  <div class="transcritor--box-audio">
-                    <div>
-                        <!-- cabeçalho -->
-                        <p class="header-transcritor-audio">Transcrição</p>
-                    </div>
-
-                    <div class="body-transcritor-audio">
-                        <!-- body -->
-                        <p>
-                        Já parou para pensar quantas horas diárias você passa em casa? E que na maioria dos casos esse tempo pode dobrar ou triplicar aos finais de semana? Já parou para pensar que é na nossa casa que criamos longos vínculos afetivos com ambientes, móveis e objetos? 
-                        Já parou para pensar quantas horas diárias você passa em casa? E que na maioria dos casos esse tempo pode dobrar ou triplicar aos finais de semana? Já parou para pensar que é na nossa casa que criamos longos vínculos afetivos com ambientes, móveis e objetos? 
-                        </p>
-                    </div>
-
-                    <div class="footer-transcritor-audio">
-                        <!-- footer -->
-                        <button>Gerar Transcrição</button>
-                    </div>
-                  </div>
-                
+              <div class="pagina-tipo-audio--box-audio">
+                <div class="render-audio-container" id="carrosel-audio">
+                    
                 </div>
-            `,
+            </div>
+
+              <div class="transcritor--box-audio">
+                <div>
+                    <!-- cabeçalho -->
+                    <p class="header-transcritor-audio">Transcrição</p>
+                </div>
+
+                <div class="body-transcritor-audio">
+                    <!-- body -->
+                   
+                </div>
+
+                <div class="footer-transcritor-audio">
+                    <!-- footer -->
+                    <button>Gerar Transcrição</button>
+                </div>
+              </div>
+            
+            </div>
+        `,
         },
         "forcarAtualizacao": {
             "variaveis": [
@@ -2138,34 +2129,34 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
-                                <i data-lucide="audio-lines"></i>
-                            </button>
-                        `
+                        <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <i data-lucide="audio-lines"></i>
+                        </button>
+                    `
                     },
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
-                                <i data-lucide="video"></i>
-                            </button>
-                        `
+                        <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <i data-lucide="video"></i>
+                        </button>
+                    `
                     },
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
-                                <i data-lucide="pencil-ruler"></i>
-                            </button>
-                        `
+                        <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <i data-lucide="pencil-ruler"></i>
+                        </button>
+                    `
                     },
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
-                                <i data-lucide="maximize-2"></i>
-                            </button>
-                        `
+                        <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <i data-lucide="maximize-2"></i>
+                        </button>
+                    `
                     },
 
                 },
@@ -2174,26 +2165,26 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
-                                <i data-lucide="audio-lines"></i>
-                            </button>
-                        `
+                        <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
+                            <i data-lucide="audio-lines"></i>
+                        </button>
+                    `
                     },
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
-                                <i data-lucide="video"></i>
-                            </button>
-                        `
+                        <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
+                            <i data-lucide="video"></i>
+                        </button>
+                    `
                     },
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
-                                <i data-lucide="pencil-ruler"></i>
-                            </button>
-                        `
+                        <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <i data-lucide="pencil-ruler"></i>
+                        </button>
+                    `
                     },
 
                 },
@@ -2202,60 +2193,60 @@ const api = [
                     "Resulmo": {
                         "ativa": true,
                         "html": `
-                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
-                            
-                        `
+                        <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                        
+                    `
                     },
                     "Destacar": {
                         "ativa": true,
                         "html": `
-                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
-                        `,
+                         <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                    `,
                         "acionador": `
 
-                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
-                                <div class="cores-destaque-inline-btn">
-                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
-                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
-                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
-                                        <button class="toolbar-button" id="limpar">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
-                                            Limpar
-                                        </button>
-                                 </div>
-                            </div>
+                        <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                            <div class="cores-destaque-inline-btn">
+                                    <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                    <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                    <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                    <button class="toolbar-button" id="limpar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                        Limpar
+                                    </button>
+                             </div>
+                        </div>
 
-                        `
+                    `
                     },
                     "Notas": {
                         "ativa": true,
                         "html": `
-                             <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
-                        `
+                         <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
+                    `
                     },
                     "Ouvinte": {
                         "ativa": true,
                         "html": `
-                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
-                        `
+                         <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
+                    `
                     },
                     "Download": {
                         "ativa": true,
                         "html": `
-                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
-                        `
+                        <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
+                    `
                     },
                     "Dicionario": {
                         "ativa": true,
                         "html": `
-                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
-                        `
+                         <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
+                    `
                     },
                     "close": {
                         "ativa": true,
                         "html": `
-                              <button><i data-lucide="x" id="close_box"></i></button>
-                        `
+                          <button><i data-lucide="x" id="close_box"></i></button>
+                    `
                     },
                 }
 
@@ -2284,19 +2275,20 @@ const api = [
             },
             "configuracoes_gerais": {
 
-                // Habilitar Procurar de Paragrafos ná Pagina 2
+                // Habilitar Procurar de Paragrafos ná Pagina 8 e Transcritor
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".transcritor--box",
+                    "onde_procurar": ".transcritor--box-audio",
                 },
                 "_procurar_animacao": {
                     "status": true,
                     "onde_procurar_animacao": ".animation",
                 },
-                "_renderiza_audio": {
+                "_renderizar_audio": {
                     "status": true,
                     "onde_colocar_audio": ".render-audio-container",
-                }
+                },
+
             },
             "fonte": {
                 // "titulo":"1rem",
@@ -2324,19 +2316,19 @@ const api = [
             "animacao_elemento": [{
                 "elemento": ".animation", // 0 | all
                 "script_animation": `
-                    animate__animated animate__fadeInDown animate__slow
-                `
+                animate__animated animate__fadeInDown animate__slow
+            `
             }],
             "modulos": [
                 {
                     "audio": {
                         "ativo": true,
-                        "idRef": ".transcritor--box"
+                        "idRef": ".transcritor--box-audio"
                     }
                 }
             ]
         }
-    }
+    },
 
 
 ];
