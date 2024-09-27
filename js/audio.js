@@ -119,7 +119,7 @@ async function renderAudio(slideIndex = null) {
     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
     const audioRender = await audioApi();  // Chama a função `audioRender` para obter os audio da API
 
-
+    // console.log(audioRender)
 
     if (pageData && pageData.tipo === "Audio") {
         const containerRenderConfig = pageData.paramentros.configuracoes_gerais._renderizar_audio;
@@ -135,7 +135,7 @@ async function renderAudio(slideIndex = null) {
                     </div>
                     <div id="audiowrap">
                         <div id="audio0">
-                            <audio id="audio1" preload controls>Your browser does not support HTML5 Audio! 😢</audio>
+                            <audio id="podcast" preload controls>Your browser does not support HTML5 Audio! 😢</audio>
                         </div>
                         <div id="tracks">
                             <a id="btnPrev">&larr;</a><a id="btnNext">&rarr;</a>
@@ -151,7 +151,7 @@ async function renderAudio(slideIndex = null) {
         var supportsAudio = !!document.createElement('audio').canPlayType;
         if (supportsAudio) {
             // Inicializar Plyr
-            var player = new Plyr('#audio1', {
+            var player = new Plyr('#podcast', {
                 controls: [
                     'restart',
                     'play',
@@ -160,29 +160,31 @@ async function renderAudio(slideIndex = null) {
                     'duration',
                     'mute',
                     'volume',
-                    'download'
+                    // 'download'
                 ]
             });
 
             // Playlist e controles
-            var index = 0,
-                playing = false,
-                tracks = [{
-                    "track": 1,
-                    "name": "Podcast 01",
-                    "duration": "2:46",
-                    "audioSrc": "https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
-                },
-                {
-                    "track": 2,
-                    "name": "Podcast 01",
-                    "duration": "2:46",
-                    "audioSrc": "https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
-                }],
-                trackCount = tracks.length,
-                npAction = document.getElementById('npAction'),
-                npTitle = document.getElementById('npTitle'),
-                audio = document.getElementById('audio1');
+            var index = 0;
+            playing = false;
+
+
+            //Api de Audio
+            const audioApi = audioRender
+            .filter((item, index) => item._ativo === true && index > 0) // Filtra só os que estão ativos e remove o primeiro
+            .map(item => item);
+          
+            if(Array.isArray(audioApi).length === 0){
+                alert("Sem audios para rendenrizar");
+                return;
+            }
+            // console.log(audioApi)
+            tracks = audioApi;
+
+            trackCount = tracks.length,
+            npAction = document.getElementById('npAction');
+            npTitle = document.getElementById('npTitle');
+            audio = document.getElementById('podcast');
 
             // Inicializar lista de faixas
             var plList = document.getElementById('plList');
@@ -293,10 +295,6 @@ async function renderAudio(slideIndex = null) {
     } else {
         console.warn("O slideIndex fornecido não corresponde a uma página de audio.");
     }
-
-
-
-
 
 }
 

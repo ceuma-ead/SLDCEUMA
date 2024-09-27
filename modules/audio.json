@@ -3,14 +3,23 @@
         "configuracao":{
             "plugin":"audio",
             "version":1,
-            "ativar":true,
+            "ativarAudio":true,
             "moduloTranscritor":false
         } 
     },
     {
-   
         "_ativo":true,
-        "srcAudio":"https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
+        "track": 1,
+        "name": "Podcast 01",
+        "duration": "2:46",
+        "audioSrc": "https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
+    },
+    {
+        "_ativo":true,
+        "track": 2,
+        "name": "Podcast 02",
+        "duration": "2:46",
+        "audioSrc": "https://www.myinstants.com/media/sounds/e-o-pix-nada-ainda.mp3"
     }
    
    

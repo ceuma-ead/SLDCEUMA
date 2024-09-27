@@ -3,7 +3,7 @@
         "configuracao":{
             "plugin":"video",
             "version":1,
-            "ativar":true,
+            "ativarVideo":true,
             "moduloTranscritor":false
         } 
     },
