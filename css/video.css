@@ -114,7 +114,7 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    justify-content: center;
+    /* justify-content: center; */
     font-family: var(--familia-da-font-paragrafo);
     font-size: var(--font-para-paragrafos);
     
@@ -129,7 +129,7 @@
     padding: 0 2rem 0 0;
     hyphens: auto;
     text-align: justify;
-    height: calc(var(--tamanho-dos-components-gerais-video-transcritor-tumbs));
+    /* height: calc(var(--tamanho-dos-components-gerais-video-transcritor-tumbs)); */
     overflow-y: scroll;
     
 }

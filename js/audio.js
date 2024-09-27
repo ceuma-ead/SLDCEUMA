@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function (event) {
     renderAudio(savedPosition);
-    checkEmptyTranscritorAudioContainer();
+    // checkEmptyTranscritorAudioContainer();
 })
 
 async function audioApi() {
@@ -129,27 +129,34 @@ async function renderAudio(slideIndex = null) {
         // Inicializar as configurações do modulo de Transcrição
         const configuracoesAudio = await moduloTranscritorAudio(pageData);
 
-        containerAudio.innerHTML = ``
+        if (!containerAudio) {
+            return;
+        }
+        
         containerAudio.innerHTML = `
-             <div class="column add-bottom">
-                <div id="mainwrap">
-                    <div id="nowPlay">
-                        <span id="npAction">Paused...</span><span id="npTitle"></span>
-                    </div>
-                    <div id="audiowrap">
-                        <div id="audio0">
-                            <audio id="podcast" preload controls>Your browser does not support HTML5 Audio! 😢</audio>
-                        </div>
-                        <div id="tracks">
-                            <a id="btnPrev">&larr;</a><a id="btnNext">&rarr;</a>
-                        </div>
-                    </div>
+        
+                 <div id="mainwrap" class="container-audio-render-result">
                     <div id="plwrap">
-                        <ul id="plList"></ul>
-                    </div>
-                </div>
-            </div>
-        `
+                         <ul id="plList"></ul>
+                     </div>
+                     <div class="container-toools-info-audio">
+                        <div id="nowPlay">
+                         <span id="npAction">Paused...</span><span id="npTitle"></span>
+                        </div>
+                        <div id="audiowrap">
+                            <div id="audio0">
+                                <audio id="podcast" preload controls>Your browser does not support HTML5 Audio! 😢</audio>
+                            </div>
+                            <div id="tracks">
+                                <a id="btnPrev">&larr;</a><a id="btnNext">&rarr;</a>
+                            </div>
+                        </div>
+                     </div>
+                     
+                 </div>
+         
+        `;
+
         // console.log(containerAudio)
         var supportsAudio = !!document.createElement('audio').canPlayType;
         if (supportsAudio) {
@@ -313,8 +320,7 @@ async function renderAudio(slideIndex = null) {
             // Sem suporte a áudio
             document.querySelector('.column').classList.add('hidden');
             document.querySelector('.container').innerHTML = '<p class="no-support">Your browser does not support the audio tag.</p>';
-        }
-
+        };
     } else {
         console.warn("O slideIndex fornecido não corresponde a uma página de audio.");
     }

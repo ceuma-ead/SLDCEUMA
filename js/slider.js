@@ -85,9 +85,9 @@ function hideLoading() {
 // recalculando o Layout com base no visibility dele
 // resolvendo a questão de mostrar o loading enquando ele não está escondido na página
 function iraoItemquandoCarregar() {
-    
+
     gliderElement.addEventListener("glider-slide-hidden", (event) => {
-        loadingSpinner.style.display = 'flex';      
+        loadingSpinner.style.display = 'flex';
     });
 }
 
@@ -143,6 +143,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     adicionarLogo(event.detail.slide);
     //Modificar fontes da Página
     modificarFontes(event.detail.slide);
+    //Modificar setas da Página
+    modificarArrows(event.detail.slide);
     //Adcionar Marcadores ao Texto
     adcionarMarcadores(event.detail.slide);
     //Passa a Posição Atual da Pagina para o Menu
@@ -645,6 +647,50 @@ function modificarFontes(slideIndex) {
         document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
         document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.alinhamento_texto);
         document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
+
+        if (typeof glider !== 'undefined') {
+            glider.refresh(true);
+            glider.updateControls();
+        } else {
+            console.error('O objeto glider não está definido.');
+        }
+    }
+}
+
+
+function modificarArrows(slideIndex) {
+    const pageData = api[slideIndex];
+
+    // Criar um Font padrão para Página
+    const SetaPadrao = {
+        corSetas: getComputedStyle(document.documentElement).getPropertyValue('--cor-das-setas').trim(),
+        corFundo: getComputedStyle(document.documentElement).getPropertyValue('--cor-de-fundo-seta').trim(),
+    };
+
+    if (pageData && pageData.paramentros && pageData.paramentros.setas) {
+        const {
+            corSetas = SetaPadrao.corSetas,
+            corFundo = SetaPadrao.corFundo
+        } = pageData.paramentros.setas;
+
+        console.log(corSetas)
+        console.log(corFundo)
+
+        const verificarItem = pageData.paramentros.setas
+        if (Object.values(verificarItem).length === 0) {
+
+            document.documentElement.style.setProperty('--cor-das-setas', corSetas);
+            document.documentElement.style.setProperty('--cor-de-fundo-seta', corFundo);
+            return;
+        }
+
+        document.documentElement.style.setProperty('--cor-das-setas', corSetas);
+        document.documentElement.style.setProperty('--cor-de-fundo-seta', corFundo);
+
+
+    } else {
+        document.documentElement.style.setProperty('--cor-das-setas', SetaPadrao.corSetas);
+        document.documentElement.style.setProperty('--cor-de-fundo-seta', SetaPadrao.corFundo);
 
         if (typeof glider !== 'undefined') {
             glider.refresh(true);
@@ -2735,6 +2781,7 @@ updatePageTitle(savedPosition);
 atualizarCoresdaNavegacao(savedPosition);
 adicionarLogo(savedPosition);
 modificarFontes(savedPosition);
+modificarArrows(savedPosition);
 adcionarMarcadores(savedPosition);
 adicionarFundo(savedPosition)
 injectScriptPage(savedPosition);

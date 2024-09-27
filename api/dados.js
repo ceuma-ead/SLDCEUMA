@@ -1828,7 +1828,7 @@ const api = [
 
                     <div class="body-transcritor-video">
                         <!-- body -->
-                       <p>ola</p>
+        
                     </div>
 
                     <div class="footer-transcritor-video">
@@ -2004,6 +2004,10 @@ const api = [
 
 
             }],
+            "setas":{
+                "corSetas": "#fff",
+                "corFundo":"rgba(255, 255, 255, 0.174)"
+            },
             "cores": {
                 "sidebar": "#000000",
                 "fundo": "#011C41",
@@ -2078,28 +2082,28 @@ const api = [
             "container_render": `
             <div class="pagina-tipo-audio animation">
 
-              <div class="pagina-tipo-audio--box-audio">
-                <div class="render-audio-container" id="carrosel-audio">
+                <div class="pagina-tipo-audio--box-audio">
+                    <div class="render-audio-container" id="carrosel-audio">
+
+                    </div>
+                </div>
+
+                <div class="transcritor--box-audio">
+                    <div>
+                        <!-- cabeçalho -->
+                        <p class="header-transcritor-audio">Transcrição</p>
+                    </div>
+
+                    <div class="body-transcritor-audio">
+                        <!-- body -->
                     
-                </div>
-            </div>
+                    </div>
 
-              <div class="transcritor--box-audio">
-                <div>
-                    <!-- cabeçalho -->
-                    <p class="header-transcritor-audio">Transcrição</p>
+                    <div class="footer-transcritor-audio">
+                        <!-- footer -->
+                        <button>Gerar Transcrição</button>
+                    </div>
                 </div>
-
-                <div class="body-transcritor-audio">
-                    <!-- body -->
-                   
-                </div>
-
-                <div class="footer-transcritor-audio">
-                    <!-- footer -->
-                    <button>Gerar Transcrição</button>
-                </div>
-              </div>
             
             </div>
         `,
@@ -2272,6 +2276,10 @@ const api = [
                 "sidebar": "#000000",
                 "fundo": "#011C41",
                 "icones": "white"
+            },
+            "setas":{
+                "corSetas": "#fff",
+                "corFundo":"rgba(255, 255, 255, 0.174)"
             },
             "configuracoes_gerais": {
 
