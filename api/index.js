@@ -18,8 +18,10 @@ function renderPages() {
                 // Ativar ou Desativar a Lupa nas Imagens
                 // console.log(pageData.paramentros.lupa)
                 // Ativas Lupa nas classes img-photo-actions
-
-                
+                /* Lupa
+                 *  Yes | No (string)
+                 *
+                 */
                 if (pageData.paramentros && pageData.paramentros.lupa && pageData.paramentros.lupa === "Yes") {
                     Lupa();
                 }
@@ -35,7 +37,12 @@ function renderPages() {
                 container.appendChild(article);
                 // Ativar ou Desativar a Lupa nas Imagens
                 // console.log(pageData.paramentros.lupa)
-               
+                // Ativas Lupa nas classes img-photo-actions
+                /* Lupa
+                 *  Yes | No (string)
+                 *
+                 */
+
 
             };
 
@@ -49,7 +56,13 @@ function renderPages() {
                 container.appendChild(article);
                 // Ativar ou Desativar a Lupa nas Imagens
                 // console.log(pageData.paramentros.lupa)
-               
+                // Ativas Lupa nas classes img-photo-actions
+                /* Lupa
+                 *  Yes | No (string)
+                 *
+                 */
+
+
             };
 
 
@@ -63,7 +76,13 @@ function renderPages() {
                 container.appendChild(article);
                 // Ativar ou Desativar a Lupa nas Imagens
                 // console.log(pageData.paramentros.lupa)
-               
+                // Ativas Lupa nas classes img-photo-actions
+                /* Lupa
+                 *  Yes | No (string)
+                 *
+                 */
+
+
             };
         });
         

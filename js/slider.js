@@ -82,17 +82,22 @@ function hideLoading() {
 
 //Executar para rolar para o slider que está salvo
 
-
+// recalculando o Layout com base no visibility dele
+// resolvendo a questão de mostrar o loading enquando ele não está escondido na página
 function iraoItemquandoCarregar() {
-    loadingSpinner.style.display = 'flex';
+    
+    gliderElement.addEventListener("glider-slide-hidden", (event) => {
+        loadingSpinner.style.display = 'flex';      
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    // Mostrar ao recarregar a página o loading
-    iraoItemquandoCarregar()
     // fazer o scrool até esse item nesse mesmo time.
+    iraoItemquandoCarregar()
+
     glider.scrollItem(savedPosition);
+
 
     //verificar se esse item já tá visivel 
     /*
@@ -103,8 +108,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     */
     gliderElement.addEventListener("glider-slide-visible", (event) => {
+
+        console.log(event.detail.slide)
         // showLoading(event.timeStamp);
         hideLoading()
+
+
 
         // // Mostrar o loading antes de iniciar a mudança de slide
         gliderElement.addEventListener('glider-slide-hidden', function (event) {

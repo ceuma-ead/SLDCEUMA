@@ -221,6 +221,50 @@ function checkEmptyTranscritorContainer() {
 
 
 
+async function moduloTranscritor(conf = {}) {
+    $.ajax({
+        url: "./modules/videos.json",
+        method: "GET",
+        cache: false,
+        success: (data) => {
+
+            if(data && Array.isArray(data) && Array.isArray(data).length !== 0){
+                const dadosFiltrados = data.filter((item,index) => item.configuracao)
+                const configuracao = Object.assign({},...dadosFiltrados);
+                const configuracaoVideo = configuracao.configuracao;
+
+                if(!!configuracaoVideo && Object.values(configuracaoVideo).length !== 0){
+                    //Onde procurar o Transcritor
+                    const containerRenderConfig = conf.paramentros.configuracoes_gerais._procurar_paragrafos;
+                    const moduloTranscritor = containerRenderConfig.onde_procurar;
+                    const containerVideo = document.querySelector(moduloTranscritor); 
+
+                    // Ativar ou destativar o transcritor
+
+                    const transcritor = configuracaoVideo.moduloTranscritor;
+                    if(transcritor){
+                        
+                    }else{
+                        containerVideo.style.display = "none";
+                    }
+
+                }
+            }
+        },
+        error: (error) => {
+            console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: `Erro Json Desativada`,
+                heightAuto: false,
+                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+            });
+        }
+    });
+}
+
+
+
 
 async function carroselVideoRender(id = "carrosel-video") {
     // Inicializa o carrossel após adicionar os vídeos
@@ -281,6 +325,10 @@ function pauseAllVideos(slider) {
 async function renderVideo(slideIndex = null) {
     const pageData = api[slideIndex];  // Assume que a variável `api` já esteja definida
     const videosRender = await videos();  // Chama a função `videos` para obter os vídeos da API
+
+    // Inicializar as configurações do modulo de Transcrição
+
+    const configuracoesVideo = await moduloTranscritor(pageData);
 
     // Inicializa o carrossel e armazena a instância
     const sliderVideo = await carroselVideoRender();

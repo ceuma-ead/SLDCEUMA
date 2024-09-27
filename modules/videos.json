@@ -1,13 +1,24 @@
 [
-    [
-        { "ativar":true }
-    ],
+    {   
+        "configuracao":{
+            "plugin":"video",
+            "version":1,
+            "ativar":true,
+            "moduloTranscritor":false
+        } 
+    },
     {
    
         "_ativo":true,
+        "dataThumbSrc":"https://yt3.ggpht.com/qv6Lb0yiCjDB6GkDAnYXf5TNxYREqVAWOEyuOiuQPKlnQ7oVgRW_yACMC-HssKgHLps0b9sJ_w=s48-c-k-c0x00ffffff-no-rj",
+        "srcVideo":"https://www.youtube.com/embed/gakpfrlk3_w",
+        "attrFrame":"allow = [ autoplay ; fullscreen ; ] | class=[ frame-video ]"
+    },
+    {
+        "_ativo":true,
         "dataThumbSrc":"https://i.vimeocdn.com/video/1922601134-ca422386ae7dd209ba86d9875864490d311fe655a8fcd9bd8ba9f4a13116f7fa-d_295x166?r=pad",
         "srcVideo":"https://player.vimeo.com/video/1005953469?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-        "attrFrame":"allow = [ autoplay ; fullscreen ; ] | class=[ frame-video ]"
+        "attrFrame":"allow = [ autoplay ; fullscreen ; ] | class=[ frame-video ] "
     },
     {
         "_ativo":true,

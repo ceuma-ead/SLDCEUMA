@@ -2010,10 +2010,10 @@ const api = [
             },
             "configuracoes_gerais": {
 
-                // Habilitar Procurar de Paragrafos ná Pagina 2
+                // Habilitar Procurar de Paragrafos ná Pagina 8 e Transcritor
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".transcritor--box",
+                    "onde_procurar": ".transcritor--box-video",
                 },
                 "_procurar_animacao": {
                     "status": true,
@@ -2022,7 +2022,8 @@ const api = [
                 "_renderizadar_video": {
                     "status": true,
                     "onde_colocar_video": ".render-video-container",
-                }
+                },
+               
             },
             "fonte": {
                 // "titulo":"1rem",
