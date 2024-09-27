@@ -126,6 +126,9 @@ async function renderAudio(slideIndex = null) {
         const containerRenderAudio = containerRenderConfig.onde_colocar_audio;
         const containerAudio = document.querySelector(containerRenderAudio);  // Seleciona o contêiner de audio
 
+        // Inicializar as configurações do modulo de Transcrição
+        const configuracoesAudio = await moduloTranscritorAudio(pageData);
+
         containerAudio.innerHTML = ``
         containerAudio.innerHTML = `
              <div class="column add-bottom">
@@ -189,11 +192,13 @@ async function renderAudio(slideIndex = null) {
             // Inicializar lista de faixas
             var plList = document.getElementById('plList');
             tracks.forEach(function (track, key) {
+
+                // Cria um elemento de lista para cada faixa
                 var li = document.createElement('li');
                 li.innerHTML = '<div class="plItem"> \
                                         <span class="plNum">' + (track.track < 10 ? '0' + track.track : track.track) + '.</span> \
                                         <span class="plTitle">' + track.name + '</span> \
-                                        <span class="plLength">' + track.duration + '</span> \
+                                        <span class="plLength" id="duration-' + key + '">' + track.duration + '</span> \
                                     </div>';
                 plList.appendChild(li);
 
@@ -202,6 +207,14 @@ async function renderAudio(slideIndex = null) {
                         playTrack(key);
                     }
                 });
+
+                // Carregar temporariamente a faixa para obter os metadados de duração
+                const tempAudio = new Audio();
+                tempAudio.src = track.audioSrc;
+                tempAudio.onloadedmetadata = function () {
+                    const formattedTime = formatTime(tempAudio.duration);
+                    document.getElementById('duration-' + key).textContent = formattedTime;
+                };
             });
 
             // Função para carregar uma faixa
@@ -213,7 +226,17 @@ async function renderAudio(slideIndex = null) {
                 index = id;
                 audio.src = tracks[id].audioSrc; // Carregar diretamente do atributo audioSrc
                 updateDownload(id, audio.src);
+
+                return audio;
             }
+
+            // Função para formatar o tempo em MM:SS
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60); // Calcula os minutos
+                const secs = Math.floor(seconds % 60); // Calcula os segundos restantes
+                return minutes + ':' + (secs < 10 ? '0' + secs : secs); // Formata como MM:SS
+            }
+
 
             // Atualizar link de download
             function updateDownload(id, source) {
