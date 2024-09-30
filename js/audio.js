@@ -132,7 +132,7 @@ async function renderAudio(slideIndex = null) {
         if (!containerAudio) {
             return;
         }
-        
+
         containerAudio.innerHTML = `
         
                  <div id="mainwrap" class="container-audio-render-result">
@@ -141,7 +141,7 @@ async function renderAudio(slideIndex = null) {
                      </div>
                      <div class="container-toools-info-audio">
                         <div id="nowPlay">
-                         <span id="npAction">Paused...</span><span id="npTitle"></span>
+                         <span id="npAction">Pausado...</span><div class="d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></i><span id="npTitle"></span></div>
                         </div>
                         <div id="audiowrap">
                             <div id="audio0">
@@ -181,10 +181,10 @@ async function renderAudio(slideIndex = null) {
 
             //Api de Audio
             const audioApi = audioRender
-            .filter((item, index) => item._ativo === true && index > 0) // Filtra só os que estão ativos e remove o primeiro
-            .map(item => item);
-          
-            if(Array.isArray(audioApi).length === 0){
+                .filter((item, index) => item._ativo === true && index > 0) // Filtra só os que estão ativos e remove o primeiro
+                .map(item => item);
+
+            if (Array.isArray(audioApi).length === 0) {
                 alert("Sem audios para rendenrizar");
                 return;
             }
@@ -192,9 +192,11 @@ async function renderAudio(slideIndex = null) {
             tracks = audioApi;
 
             trackCount = tracks.length,
-            npAction = document.getElementById('npAction');
+                npAction = document.getElementById('npAction');
             npTitle = document.getElementById('npTitle');
             audio = document.getElementById('podcast');
+
+            
 
             // Inicializar lista de faixas
             var plList = document.getElementById('plList');
@@ -202,11 +204,19 @@ async function renderAudio(slideIndex = null) {
 
                 // Cria um elemento de lista para cada faixa
                 var li = document.createElement('li');
-                li.innerHTML = '<div class="plItem"> \
-                                        <span class="plNum">' + (track.track < 10 ? '0' + track.track : track.track) + '.</span> \
-                                        <span class="plTitle">' + track.name + '</span> \
-                                        <span class="plLength" id="duration-' + key + '">' + track.duration + '</span> \
-                                    </div>';
+
+                const trackName  = reduzirTexto(track.name,7);
+           
+                li.innerHTML = `
+                    <div class="plItem"> 
+                                        <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
+                                        <!--
+                                        <span class="plNum">${(track.track < 10 ? '0' + track.track : track.track)}</span> 
+                                        -->
+                                        <span class="plTitle">${trackName}</span> 
+                                        <span class="plLength" id="duration-${key}">${track.duration}</span> 
+                                    </div>
+                `
                 plList.appendChild(li);
 
                 li.addEventListener('click', function () {
@@ -226,10 +236,14 @@ async function renderAudio(slideIndex = null) {
 
             // Função para carregar uma faixa
             function loadTrack(id) {
+                // TrackName 
+                const trackName  = reduzirTexto(tracks[id].name,15);
+                
                 var selected = document.querySelector('.plSel');
                 if (selected) selected.classList.remove('plSel');
                 plList.children[id].classList.add('plSel');
-                npTitle.textContent = tracks[id].name;
+                
+                npTitle.textContent = trackName;
                 index = id;
                 audio.src = tracks[id].audioSrc; // Carregar diretamente do atributo audioSrc
                 updateDownload(id, audio.src);
