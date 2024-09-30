@@ -304,16 +304,6 @@ function adicionarLogo(slideIndex) {
     }
 }
 
-// Função para limitar o texto e adicionar "..."
-function reduzirTexto(texto, tamanhoMaximo) {
-    if (texto.length > tamanhoMaximo) {
-        return texto.substring(0, tamanhoMaximo) + '...';
-    } else {
-        return texto;
-    }
-}
-
-
 // // Função para lidar com o evento de pesquisa
 // function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
 //     const renderMenuDiv = document.querySelector('.render-menu');
@@ -663,18 +653,19 @@ function modificarArrows(slideIndex) {
 
     // Criar um Font padrão para Página
     const SetaPadrao = {
-        corSetas: getComputedStyle(document.documentElement).getPropertyValue('--cor-das-setas').trim(),
-        corFundo: getComputedStyle(document.documentElement).getPropertyValue('--cor-de-fundo-seta').trim(),
+        corSetas: getComputedStyle(document.documentElement).getPropertyValue('--cor-das-setas-default').trim(),
+        corFundo: getComputedStyle(document.documentElement).getPropertyValue('--cor-de-fundo-seta-default').trim(),
     };
 
+    // console.log(SetaPadrao);
+
     if (pageData && pageData.paramentros && pageData.paramentros.setas) {
+   
         const {
             corSetas = SetaPadrao.corSetas,
             corFundo = SetaPadrao.corFundo
         } = pageData.paramentros.setas;
 
-        console.log(corSetas)
-        console.log(corFundo)
 
         const verificarItem = pageData.paramentros.setas
         if (Object.values(verificarItem).length === 0) {
@@ -689,6 +680,7 @@ function modificarArrows(slideIndex) {
 
 
     } else {
+        
         document.documentElement.style.setProperty('--cor-das-setas', SetaPadrao.corSetas);
         document.documentElement.style.setProperty('--cor-de-fundo-seta', SetaPadrao.corFundo);
 

@@ -11,6 +11,9 @@
     --tamanho-de-fonte-seta: calc((var(--altura-seta) + var(--largura-seta)) / 5);
     --cor-das-setas: black;
     --cor-de-fundo-seta: rgba(1, 28, 65, 0.22);
+
+    --cor-das-setas-default:black;
+    --cor-de-fundo-seta-default: rgba(1, 28, 65, 0.22);
     /* ----------------------------------------- */
 
     /* Componente de Video Cores */
