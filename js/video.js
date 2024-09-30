@@ -73,21 +73,21 @@ async function moduloTranscritorVideo(conf = {}) {
         success: (data) => {
 
 
-            if(data && Array.isArray(data) && Array.isArray(data).length !== 0){
-                const dadosFiltrados = data.filter((item,index) => item.configuracao)
-                const configuracao = Object.assign({},...dadosFiltrados);
+            if (data && Array.isArray(data) && Array.isArray(data).length !== 0) {
+                const dadosFiltrados = data.filter((item, index) => item.configuracao)
+                const configuracao = Object.assign({}, ...dadosFiltrados);
                 const configuracaoVideo = configuracao.configuracao;
 
-                if(!!configuracaoVideo && Object.values(configuracaoVideo).length !== 0){
+                if (!!configuracaoVideo && Object.values(configuracaoVideo).length !== 0) {
                     //Onde procurar o Transcritor Video
                     const containerRenderConfig = conf.paramentros.configuracoes_gerais._procurar_paragrafos;
                     const moduloTranscritor = containerRenderConfig.onde_procurar;
-                    const containerVideoTranscritor = document.querySelector(moduloTranscritor); 
+                    const containerVideoTranscritor = document.querySelector(moduloTranscritor);
                     // Ativar ou destativar o transcritor Video
                     const transcritor = configuracaoVideo.moduloTranscritor;
-                    if(transcritor){
+                    if (transcritor) {
                         containerVideoTranscritor.style.display = "block";
-                    }else{
+                    } else {
                         containerVideoTranscritor.style.display = "none";
                     }
 
@@ -134,7 +134,7 @@ async function carroselVideoRender(id = "carrosel-video") {
             infinite: false,
             transition: 'none',  // Remove a animação de transição de slides
         },
-    },{Thumbs});
+    }, { Thumbs });
 
     return slider;
 }
@@ -158,8 +158,8 @@ function pauseAllVideos(slider) {
     }
 }
 
-  // Função para parar todos os vídeos, exceto o atual
-  function stopAllVideos() {
+// Função para parar todos os vídeos, exceto o atual
+function stopAllVideos() {
     const iframes = document.querySelectorAll('iframe.iframe-video');
     iframes.forEach(iframe => {
         iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
@@ -184,13 +184,13 @@ async function renderVideo(slideIndex = null) {
 
         // const containerThumbs = document.querySelector(".f-thumbs")
         // console.log(document.querySelectorAll(".f-thumbs"))
-        
+
         // verificar se já existe o container de Thumbs;
         const existingThumbs = document.querySelectorAll('.f-thumbs');
         if (existingThumbs.length > 0) {
             existingThumbs.forEach(thumb => thumb.remove());  // Remove todos os containers .f-thumbs existentes
         }
-        
+
         // Verifica se o contêiner existe
         if (!containerVideo) {
             return;

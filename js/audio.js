@@ -168,6 +168,18 @@ async function renderAudio(slideIndex = null) {
 
     // console.log(audioRender)
 
+    function pausarTodosAudios() {
+        // Seleciona todos os elementos de áudio na página
+        const audios = document.querySelectorAll('audio');
+        
+        // Pausa todos os áudios
+        audios.forEach(audio => {
+            if (!audio.paused) {
+                audio.pause();
+            }
+        });
+    }
+    
     if (pageData && pageData.tipo === "Audio") {
         const containerRenderConfig = pageData.paramentros.configuracoes_gerais._renderizar_audio;
         const containerRenderAudio = containerRenderConfig.onde_colocar_audio;
@@ -473,7 +485,7 @@ async function renderAudio(slideIndex = null) {
                 }
             });
 
-            // // Botão Anterior
+            // Botão Anterior
             // document.getElementById('btnPrev').addEventListener('click', function () {
             //     if ((index - 1) > -1) {
             //         index--;
@@ -488,7 +500,7 @@ async function renderAudio(slideIndex = null) {
             //     }
             // });
 
-            // // Botão Próximo
+            // Botão Próximo
             // document.getElementById('btnNext').addEventListener('click', function () {
             //     if ((index + 1) < trackCount) {
             //         index++;
@@ -525,7 +537,6 @@ async function renderAudio(slideIndex = null) {
 
 
             // Botão Próximo
-
             document.getElementById('btnNext').addEventListener('click', function () {
                 if ((index + 1) < trackCount) {
                     index++;
@@ -556,6 +567,7 @@ async function renderAudio(slideIndex = null) {
             document.querySelector('.container').innerHTML = '<p class="no-support">Your browser does not support the audio tag.</p>';
         };
     } else {
+        pausarTodosAudios()
         console.warn("O slideIndex fornecido não corresponde a uma página de audio.");
     }
 
