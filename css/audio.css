@@ -8,6 +8,7 @@
     --largura-dos-container-audio-e-lista:100%;
     --cor-quando-ativar-a-lista:rgb(255 138 0);
     --cor-quando-hover-a-lista:rgba(85, 85, 85, 0.623);
+    --cor-quando-hover-a-lista-default:var(--cor-quando-hover-a-lista);
 }
 
 .pagina-tipo-audio {
@@ -334,16 +335,13 @@ audio {
     width: 100%;
     font-size: var(--font-para-paragrafos);
     text-align: var(--alinhamento-do-texto-paragrafo);
-
     gap:0.5rem;
     /* background-color: #29292E; */
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     /* background-color: rebeccapurple; */
     color: rgb(255, 255, 255);
-
 }
 
 

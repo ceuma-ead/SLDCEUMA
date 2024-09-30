@@ -112,50 +112,50 @@ async function moduloTranscritorAudio(conf = {}) {
 
 
 
-async function moduloListaAudio() {
-    $.ajax({
-        url: "./modules/audio.json",
-        method: "GET",
-        cache: false,
-        success: (data) => {
+// async function moduloListaAudio() {
+//     $.ajax({
+//         url: "./modules/audio.json",
+//         method: "GET",
+//         cache: false,
+//         success: (data) => {
 
-            if (data && Array.isArray(data) && Array.isArray(data).length !== 0) {
-                const dadosFiltrados = data.filter((item, index) => item.configuracao)
-                const configuracao = Object.assign({}, ...dadosFiltrados);
-                const configuracaoAudio = configuracao.configuracao;
+//             if (data && Array.isArray(data) && Array.isArray(data).length !== 0) {
+//                 const dadosFiltrados = data.filter((item, index) => item.configuracao)
+//                 const configuracao = Object.assign({}, ...dadosFiltrados);
+//                 const configuracaoAudio = configuracao.configuracao;
 
 
-                if (!!configuracaoAudio && Object.values(configuracaoAudio).length !== 0) {
+//                 if (!!configuracaoAudio && Object.values(configuracaoAudio).length !== 0) {
 
-                    // console.log(configuracaoAudio);
-                    const containerLista = document.querySelector("#plwrap");
-                    // console.log(containerLista)
-                    // Ativar ou destativar o transcritor Audio
+//                     // console.log(configuracaoAudio);
+//                     const containerLista = document.querySelector("#plwrap");
+//                     // console.log(containerLista)
+//                     // Ativar ou destativar o transcritor Audio
 
-                    const lista = configuracaoAudio.AtivarLista;
-                    // console.log(lista)
-                    if (lista) {
-                        containerLista.style.display = "block";
-                        return lista
-                    } else {
-                        containerLista.style.display = "none";
-                    }
-                }
-            }
+//                     const lista = configuracaoAudio.AtivarLista;
+//                     // console.log(lista)
+//                     if (lista) {
+//                         containerLista.style.display = "block";
+//                         return lista
+//                     } else {
+//                         containerLista.style.display = "none";
+//                     }
+//                 }
+//             }
 
-            return data;
-        },
-        error: (error) => {
-            console.error('Erro:', error);
-            Swal.fire({
-                icon: "error",
-                title: `Erro Json Desativada`,
-                heightAuto: false,
-                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
-            });
-        }
-    });
-}
+//             return data;
+//         },
+//         error: (error) => {
+//             console.error('Erro:', error);
+//             Swal.fire({
+//                 icon: "error",
+//                 title: `Erro Json Desativada`,
+//                 heightAuto: false,
+//                 footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+//             });
+//         }
+//     });
+// }
 
 
 
@@ -171,7 +171,7 @@ async function renderAudio(slideIndex = null) {
     function pausarTodosAudios() {
         // Seleciona todos os elementos de áudio na página
         const audios = document.querySelectorAll('audio');
-        
+
         // Pausa todos os áudios
         audios.forEach(audio => {
             if (!audio.paused) {
@@ -179,7 +179,7 @@ async function renderAudio(slideIndex = null) {
             }
         });
     }
-    
+
     if (pageData && pageData.tipo === "Audio") {
         const containerRenderConfig = pageData.paramentros.configuracoes_gerais._renderizar_audio;
         const containerRenderAudio = containerRenderConfig.onde_colocar_audio;
@@ -260,110 +260,21 @@ async function renderAudio(slideIndex = null) {
             tracks = audioApi;
 
             trackCount = tracks.length,
-                npAction = document.getElementById('npAction');
+            npAction = document.getElementById('npAction');
             npTitle = document.getElementById('npTitle');
             audio = document.getElementById('podcast');
+            const containerLista = document.querySelector("#plwrap");
+            // console.log(tracks.length)
 
-
-
-            // Inicializar lista de faixas
-            // var plList = document.getElementById('plList');
-            // tracks.forEach(function (track, key) {
-
-            //     // Cria um elemento de lista para cada faixa
-            //     var li = document.createElement('li');
-
-            //     const trackName  = reduzirTexto(track.name,15);
-
-            //     // Opção 01
-            //     // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
-
-            //     // Opção 02
-            //     // https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}
-
-            //     li.innerHTML = `
-            //         <div class="plItem"> 
-            //                             <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
-            //                             <!--
-            //                             <span class="plNum">${(track.track < 10 ? '0' + track.track : track.track)}</span> 
-            //                             -->
-            //                             <span class="plTitle">${trackName}</span> 
-            //                             <span class="plLength" id="duration-${key}">${track.duration}</span> 
-            //                         </div>
-            //     `
-            //     plList.appendChild(li);
-
-            //     li.addEventListener('click', function () {
-            //         if (key !== index) {
-            //             // quando chegar em (3)
-            //             /*
-            //                 x >= 3 ? scroll : nao scroll
-            //             */
-
-
-
-            //             playTrack(key);
-            //         }
-            //     });
-
-            //     // Carregar temporariamente a faixa para obter os metadados de duração
-            //     const tempAudio = new Audio();
-            //     tempAudio.src = track.audioSrc;
-            //     tempAudio.onloadedmetadata = function () {
-            //         const formattedTime = formatTime(tempAudio.duration);
-            //         document.getElementById('duration-' + key).textContent = formattedTime;
-            //     };
-            // });
-
-            // var plList = document.getElementById('plList');
-            // tracks.forEach(function (track, key) {
-
-            //     // Cria um elemento de lista para cada faixa
-            //     var li = document.createElement('li');
-
-            //     const trackName  = reduzirTexto(track.name,15);
-
-            //     // Opção 01
-            //     // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
-
-            //     // Opção 02
-            //     // https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}
-
-            //     li.innerHTML = `
-            //         <div class="plItem"> 
-            //                             <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
-            //                             <!--
-            //                             <span class="plNum">${(track.track < 10 ? '0' + track.track : track.track)}</span> 
-            //                             -->
-            //                             <span class="plTitle">${trackName}</span> 
-            //                             <span class="plLength" id="duration-${key}">${track.duration}</span> 
-            //                         </div>
-            //     `
-            //     plList.appendChild(li);
-
-            //     li.addEventListener('click', function () {
-            //         if (key !== index) {
-            //             // quando chegar em (3)
-            //             /*
-            //                 x >= 3 ? scroll : nao scroll
-            //             */
-
-
-
-            //             playTrack(key);
-            //         }
-            //     });
-
-            //     // Carregar temporariamente a faixa para obter os metadados de duração
-            //     const tempAudio = new Audio();
-            //     tempAudio.src = track.audioSrc;
-            //     tempAudio.onloadedmetadata = function () {
-            //         const formattedTime = formatTime(tempAudio.duration);
-            //         document.getElementById('duration-' + key).textContent = formattedTime;
-            //     };
-            // });
-
+            // Lista de Sons
             var plList = document.getElementById('plList');
+            
+            if(tracks.length > 1){
+                containerLista.style.display = "block";
+            }else{
+                containerLista.style.display = "none";
+            };
+
             tracks.forEach(function (track, key) {
 
                 // Cria um elemento de lista para cada faixa
@@ -372,12 +283,12 @@ async function renderAudio(slideIndex = null) {
                 const trackName = reduzirTexto(track.name, 15);
 
                 li.innerHTML = `
-        <div class="plItem"> 
-            <span><img class="rounded-circle img-tracker" alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
-            <span class="plTitle">${trackName}</span> 
-            <span class="plLength" id="duration-${key}">${track.duration}</span> 
-        </div>
-    `;
+                <div class="plItem"> 
+                    <span><img class="rounded-circle img-tracker" alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
+                    <span class="plTitle">${trackName}</span> 
+                    <span class="plLength" id="duration-${key}">${track.duration}</span> 
+                </div>
+            `;
                 plList.appendChild(li);
 
                 li.addEventListener('click', function () {
@@ -402,8 +313,46 @@ async function renderAudio(slideIndex = null) {
                     const formattedTime = formatTime(tempAudio.duration);
                     document.getElementById('duration-' + key).textContent = formattedTime;
                 };
+
+                
             });
 
+
+            // Função para carregar uma faixa
+            // function loadTrack(id) {
+            //     // TrackName 
+            //     const trackName = reduzirTexto(tracks[id].name, 15);
+
+            //     // Remover 'plSel' do item previamente selecionado
+            //     var selected = document.querySelector('.plSel');
+            //     if (selected) selected.classList.remove('plSel');
+
+            //     // Ativar a novar cor do Hover so para esse elemento com a class .plSel
+            //     const corHover = getComputedStyle(document.documentElement).getPropertyValue('--cor-quando-ativar-a-lista').trim()
+            //     const corOldHover = getComputedStyle(document.documentElement).getPropertyValue('--cor-quando-hover-a-lista-default').trim()
+            //     document.documentElement.style.setProperty('--cor-quando-hover-a-lista', corHover);
+
+            //     // Adicionar 'plSel' ao item atual
+            //     plList.children[id].classList.add('plSel');
+
+            //     // Remover 'plSelText' de todos os itens previamente
+            //     const allItems = document.querySelectorAll('.plItem');
+            //     allItems.forEach(item => item.classList.remove('plSelText'));
+
+            //     // Adicionar 'plSelText' ao item atual
+            //     const addClassActive = plList.children[id].querySelector(".plItem");
+            //     if (addClassActive) {
+            //         addClassActive.classList.add("plSelText");
+            //     }
+
+            //     // Atualizar título e carregar nova faixa de áudio
+            //     npTitle.textContent = trackName;
+            //     index = id;
+            //     audio.src = tracks[id].audioSrc; // Carregar diretamente do atributo audioSrc
+            //     updateDownload(id, audio.src);
+
+            //     return audio;
+            // }
 
             // Função para carregar uma faixa
             function loadTrack(id) {
@@ -412,17 +361,26 @@ async function renderAudio(slideIndex = null) {
 
                 // Remover 'plSel' do item previamente selecionado
                 var selected = document.querySelector('.plSel');
-                if (selected) selected.classList.remove('plSel');
+                if (selected) {
+                    // Voltar a cor de hover original para o item desativado
+                    selected.classList.remove('plSel');
+                    selected.style.setProperty('--cor-quando-hover-a-lista', ''); // Reseta para o valor original
+                }
 
                 // Adicionar 'plSel' ao item atual
-                plList.children[id].classList.add('plSel');
+                const currentItem = plList.children[id];
+                currentItem.classList.add('plSel');
+
+                // Alterar a cor do hover para o item atual
+                const corHover = getComputedStyle(document.documentElement).getPropertyValue('--cor-quando-ativar-a-lista').trim();
+                currentItem.style.setProperty('--cor-quando-hover-a-lista', corHover); // Define a cor de hover do item ativo
 
                 // Remover 'plSelText' de todos os itens previamente
                 const allItems = document.querySelectorAll('.plItem');
                 allItems.forEach(item => item.classList.remove('plSelText'));
 
                 // Adicionar 'plSelText' ao item atual
-                const addClassActive = plList.children[id].querySelector(".plItem");
+                const addClassActive = currentItem.querySelector(".plItem");
                 if (addClassActive) {
                     addClassActive.classList.add("plSelText");
                 }
@@ -560,7 +518,7 @@ async function renderAudio(slideIndex = null) {
             loadTrack(index); // Carregar a primeira faixa ao iniciar
 
             // Modulos de Ativação de Lista 
-            moduloListaAudio();
+            // moduloListaAudio();
         } else {
             // Sem suporte a áudio
             document.querySelector('.column').classList.add('hidden');

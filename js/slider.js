@@ -567,7 +567,7 @@ function handleSearch() {
 // }
 // ------------------ Versão ( 01 ) -----------------
 
-
+//
 function modificarFontes(slideIndex) {
     const pageData = api[slideIndex];
 
