@@ -126,7 +126,7 @@ async function moduloListaAudio() {
 
 
                 if (!!configuracaoAudio && Object.values(configuracaoAudio).length !== 0) {
-                 
+
                     // console.log(configuracaoAudio);
                     const containerLista = document.querySelector("#plwrap");
                     // console.log(containerLista)
@@ -176,7 +176,7 @@ async function renderAudio(slideIndex = null) {
         // Inicializar as configurações do modulo de Transcrição
         const configuracoesAudio = await moduloTranscritorAudio(pageData);
 
-        
+
         if (!containerAudio) {
             return;
         }
@@ -252,7 +252,7 @@ async function renderAudio(slideIndex = null) {
             npTitle = document.getElementById('npTitle');
             audio = document.getElementById('podcast');
 
-            
+
 
             // Inicializar lista de faixas
             // var plList = document.getElementById('plList');
@@ -262,7 +262,7 @@ async function renderAudio(slideIndex = null) {
             //     var li = document.createElement('li');
 
             //     const trackName  = reduzirTexto(track.name,15);
-                
+
             //     // Opção 01
             //     // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
 
@@ -289,7 +289,7 @@ async function renderAudio(slideIndex = null) {
             //             */
 
 
-                        
+
             //             playTrack(key);
             //         }
             //     });
@@ -310,7 +310,7 @@ async function renderAudio(slideIndex = null) {
             //     var li = document.createElement('li');
 
             //     const trackName  = reduzirTexto(track.name,15);
-                
+
             //     // Opção 01
             //     // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
 
@@ -337,7 +337,7 @@ async function renderAudio(slideIndex = null) {
             //             */
 
 
-                        
+
             //             playTrack(key);
             //         }
             //     });
@@ -352,78 +352,78 @@ async function renderAudio(slideIndex = null) {
             // });
 
             var plList = document.getElementById('plList');
-tracks.forEach(function (track, key) {
+            tracks.forEach(function (track, key) {
 
-    // Cria um elemento de lista para cada faixa
-    var li = document.createElement('li');
+                // Cria um elemento de lista para cada faixa
+                var li = document.createElement('li');
 
-    const trackName  = reduzirTexto(track.name, 15);
+                const trackName = reduzirTexto(track.name, 15);
 
-    li.innerHTML = `
+                li.innerHTML = `
         <div class="plItem"> 
             <span><img class="rounded-circle img-tracker" alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
             <span class="plTitle">${trackName}</span> 
             <span class="plLength" id="duration-${key}">${track.duration}</span> 
         </div>
     `;
-    plList.appendChild(li);
+                plList.appendChild(li);
 
-    li.addEventListener('click', function () {
-        if (key !== index) {
-            // Condição para rolar a lista se o item não estiver visível
-            if (key >= 2) { // A partir do 4º item, executa o scroll
-                li.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }else if(key <= 2){
-                li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                li.addEventListener('click', function () {
+                    if (key !== index) {
+                        // Condição para rolar a lista se o item não estiver visível
+                        if (key >= 2) { // A partir do 4º item, executa o scroll
+                            li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } else if (key <= 2) {
+                            li.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            }
+                        }
 
-            // Tocar a faixa clicada
-            playTrack(key);
-        }
-    });
+                        // Tocar a faixa clicada
+                        playTrack(key);
+                    }
+                });
 
-    // Carregar temporariamente a faixa para obter os metadados de duração
-    const tempAudio = new Audio();
-    tempAudio.src = track.audioSrc;
-    tempAudio.onloadedmetadata = function () {
-        const formattedTime = formatTime(tempAudio.duration);
-        document.getElementById('duration-' + key).textContent = formattedTime;
-    };
-});
+                // Carregar temporariamente a faixa para obter os metadados de duração
+                const tempAudio = new Audio();
+                tempAudio.src = track.audioSrc;
+                tempAudio.onloadedmetadata = function () {
+                    const formattedTime = formatTime(tempAudio.duration);
+                    document.getElementById('duration-' + key).textContent = formattedTime;
+                };
+            });
 
 
             // Função para carregar uma faixa
             function loadTrack(id) {
                 // TrackName 
-                const trackName  = reduzirTexto(tracks[id].name, 15);
-                
+                const trackName = reduzirTexto(tracks[id].name, 15);
+
                 // Remover 'plSel' do item previamente selecionado
                 var selected = document.querySelector('.plSel');
                 if (selected) selected.classList.remove('plSel');
-                
+
                 // Adicionar 'plSel' ao item atual
                 plList.children[id].classList.add('plSel');
-                
+
                 // Remover 'plSelText' de todos os itens previamente
                 const allItems = document.querySelectorAll('.plItem');
                 allItems.forEach(item => item.classList.remove('plSelText'));
-                
+
                 // Adicionar 'plSelText' ao item atual
                 const addClassActive = plList.children[id].querySelector(".plItem");
                 if (addClassActive) {
                     addClassActive.classList.add("plSelText");
                 }
-                
+
                 // Atualizar título e carregar nova faixa de áudio
                 npTitle.textContent = trackName;
                 index = id;
                 audio.src = tracks[id].audioSrc; // Carregar diretamente do atributo audioSrc
                 updateDownload(id, audio.src);
-            
+
                 return audio;
             }
-            
+
 
             // Função para formatar o tempo em MM:SS
             function formatTime(seconds) {
@@ -478,6 +478,11 @@ tracks.forEach(function (track, key) {
                 if ((index - 1) > -1) {
                     index--;
                     loadTrack(index);
+
+                    // Verifica se é necessário fazer o scroll
+                    var li = plList.children[index];
+                    li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
                     if (playing) {
                         audio.play();
                     }
@@ -492,8 +497,12 @@ tracks.forEach(function (track, key) {
             document.getElementById('btnNext').addEventListener('click', function () {
                 if ((index + 1) < trackCount) {
                     index++;
-                    
                     loadTrack(index);
+
+                    // Verifica se é necessário fazer o scroll
+                    var li = plList.children[index];
+                    li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
                     if (playing) {
                         audio.play();
                     }
@@ -503,6 +512,7 @@ tracks.forEach(function (track, key) {
                     loadTrack(index);
                 }
             });
+
 
             loadTrack(index); // Carregar a primeira faixa ao iniciar
 
