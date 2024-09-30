@@ -28,8 +28,23 @@
     },
     {
         "_ativo":true,
-        "track": 3,
-        "name": "Podcast 3wewweeeeeeee",
+        "track": 4,
+        "name": "Podcast 4wewweeeeeeee",
+        "audioSrc": "../sounds/podcast/podcast3.mp3"
+    },{
+        "_ativo":true,
+        "track": 5,
+        "name": "Podcast 5wewweeeeeeee",
+        "audioSrc": "../sounds/podcast/podcast3.mp3"
+    },{
+        "_ativo":true,
+        "track": 6,
+        "name": "Podcast 6wewweeeeeeee",
+        "audioSrc": "../sounds/podcast/podcast3.mp3"
+    },{
+        "_ativo":true,
+        "track": 7,
+        "name": "Podcast 7wewweeeeeeee",
         "audioSrc": "../sounds/podcast/podcast3.mp3"
     }
    

@@ -127,18 +127,18 @@ async function moduloListaAudio() {
 
                 if (!!configuracaoAudio && Object.values(configuracaoAudio).length !== 0) {
                  
-                    console.log(configuracaoAudio);
-
-                    const containerLista = document.querySelector("plwrap");
-
-
+                    // console.log(configuracaoAudio);
+                    const containerLista = document.querySelector("#plwrap");
+                    // console.log(containerLista)
                     // Ativar ou destativar o transcritor Audio
 
-                    const lista = configuracaoAudio.modulo;
-                    if (transcritor) {
-                        return transcritor
+                    const lista = configuracaoAudio.AtivarLista;
+                    // console.log(lista)
+                    if (lista) {
+                        containerLista.style.display = "block";
+                        return lista
                     } else {
-                        containerAudio.style.display = "none";
+                        containerLista.style.display = "none";
                     }
                 }
             }
@@ -255,46 +255,143 @@ async function renderAudio(slideIndex = null) {
             
 
             // Inicializar lista de faixas
-            var plList = document.getElementById('plList');
-            tracks.forEach(function (track, key) {
+            // var plList = document.getElementById('plList');
+            // tracks.forEach(function (track, key) {
 
-                // Cria um elemento de lista para cada faixa
-                var li = document.createElement('li');
+            //     // Cria um elemento de lista para cada faixa
+            //     var li = document.createElement('li');
 
-                const trackName  = reduzirTexto(track.name,15);
+            //     const trackName  = reduzirTexto(track.name,15);
                 
-                // Opção 01
-                // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
+            //     // Opção 01
+            //     // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
 
-                // Opção 02
-                // https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}
+            //     // Opção 02
+            //     // https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}
 
-                li.innerHTML = `
-                    <div class="plItem"> 
-                                        <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
-                                        <!--
-                                        <span class="plNum">${(track.track < 10 ? '0' + track.track : track.track)}</span> 
-                                        -->
-                                        <span class="plTitle">${trackName}</span> 
-                                        <span class="plLength" id="duration-${key}">${track.duration}</span> 
-                                    </div>
-                `
-                plList.appendChild(li);
+            //     li.innerHTML = `
+            //         <div class="plItem"> 
+            //                             <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
+            //                             <!--
+            //                             <span class="plNum">${(track.track < 10 ? '0' + track.track : track.track)}</span> 
+            //                             -->
+            //                             <span class="plTitle">${trackName}</span> 
+            //                             <span class="plLength" id="duration-${key}">${track.duration}</span> 
+            //                         </div>
+            //     `
+            //     plList.appendChild(li);
 
-                li.addEventListener('click', function () {
-                    if (key !== index) {
-                        playTrack(key);
-                    }
-                });
+            //     li.addEventListener('click', function () {
+            //         if (key !== index) {
+            //             // quando chegar em (3)
+            //             /*
+            //                 x >= 3 ? scroll : nao scroll
+            //             */
 
-                // Carregar temporariamente a faixa para obter os metadados de duração
-                const tempAudio = new Audio();
-                tempAudio.src = track.audioSrc;
-                tempAudio.onloadedmetadata = function () {
-                    const formattedTime = formatTime(tempAudio.duration);
-                    document.getElementById('duration-' + key).textContent = formattedTime;
-                };
-            });
+
+                        
+            //             playTrack(key);
+            //         }
+            //     });
+
+            //     // Carregar temporariamente a faixa para obter os metadados de duração
+            //     const tempAudio = new Audio();
+            //     tempAudio.src = track.audioSrc;
+            //     tempAudio.onloadedmetadata = function () {
+            //         const formattedTime = formatTime(tempAudio.duration);
+            //         document.getElementById('duration-' + key).textContent = formattedTime;
+            //     };
+            // });
+
+            // var plList = document.getElementById('plList');
+            // tracks.forEach(function (track, key) {
+
+            //     // Cria um elemento de lista para cada faixa
+            //     var li = document.createElement('li');
+
+            //     const trackName  = reduzirTexto(track.name,15);
+                
+            //     // Opção 01
+            //     // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
+
+            //     // Opção 02
+            //     // https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}
+
+            //     li.innerHTML = `
+            //         <div class="plItem"> 
+            //                             <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
+            //                             <!--
+            //                             <span class="plNum">${(track.track < 10 ? '0' + track.track : track.track)}</span> 
+            //                             -->
+            //                             <span class="plTitle">${trackName}</span> 
+            //                             <span class="plLength" id="duration-${key}">${track.duration}</span> 
+            //                         </div>
+            //     `
+            //     plList.appendChild(li);
+
+            //     li.addEventListener('click', function () {
+            //         if (key !== index) {
+            //             // quando chegar em (3)
+            //             /*
+            //                 x >= 3 ? scroll : nao scroll
+            //             */
+
+
+                        
+            //             playTrack(key);
+            //         }
+            //     });
+
+            //     // Carregar temporariamente a faixa para obter os metadados de duração
+            //     const tempAudio = new Audio();
+            //     tempAudio.src = track.audioSrc;
+            //     tempAudio.onloadedmetadata = function () {
+            //         const formattedTime = formatTime(tempAudio.duration);
+            //         document.getElementById('duration-' + key).textContent = formattedTime;
+            //     };
+            // });
+
+            var plList = document.getElementById('plList');
+tracks.forEach(function (track, key) {
+
+    // Cria um elemento de lista para cada faixa
+    var li = document.createElement('li');
+
+    const trackName  = reduzirTexto(track.name, 15);
+
+    li.innerHTML = `
+        <div class="plItem"> 
+            <span><img class="rounded-circle img-tracker" alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
+            <span class="plTitle">${trackName}</span> 
+            <span class="plLength" id="duration-${key}">${track.duration}</span> 
+        </div>
+    `;
+    plList.appendChild(li);
+
+    li.addEventListener('click', function () {
+        if (key !== index) {
+            // Condição para rolar a lista se o item não estiver visível
+            if (key >= 2) { // A partir do 4º item, executa o scroll
+                li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }else if(key <= 2){
+                li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            }
+
+            // Tocar a faixa clicada
+            playTrack(key);
+        }
+    });
+
+    // Carregar temporariamente a faixa para obter os metadados de duração
+    const tempAudio = new Audio();
+    tempAudio.src = track.audioSrc;
+    tempAudio.onloadedmetadata = function () {
+        const formattedTime = formatTime(tempAudio.duration);
+        document.getElementById('duration-' + key).textContent = formattedTime;
+    };
+});
+
 
             // Função para carregar uma faixa
             function loadTrack(id) {
@@ -395,6 +492,7 @@ async function renderAudio(slideIndex = null) {
             document.getElementById('btnNext').addEventListener('click', function () {
                 if ((index + 1) < trackCount) {
                     index++;
+                    
                     loadTrack(index);
                     if (playing) {
                         audio.play();
