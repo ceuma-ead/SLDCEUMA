@@ -6,7 +6,7 @@
     --tamanho-dos-components-gerais-audio-transcritor-tumbs: 80%;
     --largura-dos-containers-audio-transcritor: 50%;
     --largura-dos-container-audio-e-lista:100%;
-    --cor-quando-ativar-a-lista:rgb(85, 85, 85);
+    --cor-quando-ativar-a-lista:rgb(255 138 0);
     --cor-quando-hover-a-lista:rgba(85, 85, 85, 0.623);
 }
 
@@ -340,7 +340,7 @@ audio {
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     /* background-color: rebeccapurple; */
     color: rgb(255, 255, 255);
 
