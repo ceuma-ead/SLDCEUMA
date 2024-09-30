@@ -371,9 +371,9 @@ async function renderAudio(slideIndex = null) {
                 li.addEventListener('click', function () {
                     if (key !== index) {
                         // Condição para rolar a lista se o item não estiver visível
-                        if (key >= 2) { // A partir do 4º item, executa o scroll
+                        if (key >= 1) { // A partir do 4º item, executa o scroll
                             li.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        } else if (key <= 2) {
+                        } else if (key <= 1) {
                             li.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                         }
@@ -473,45 +473,77 @@ async function renderAudio(slideIndex = null) {
                 }
             });
 
+            // // Botão Anterior
+            // document.getElementById('btnPrev').addEventListener('click', function () {
+            //     if ((index - 1) > -1) {
+            //         index--;
+            //         loadTrack(index);
+            //         if (playing) {
+            //             audio.play();
+            //         }
+            //     } else {
+            //         audio.pause();
+            //         index = 0;
+            //         loadTrack(index);
+            //     }
+            // });
+
+            // // Botão Próximo
+            // document.getElementById('btnNext').addEventListener('click', function () {
+            //     if ((index + 1) < trackCount) {
+            //         index++;
+
+            //         loadTrack(index);
+            //         if (playing) {
+            //             audio.play();
+            //         }
+            //     } else {
+            //         audio.pause();
+            //         index = 0;
+            //         loadTrack(index);
+            //     }
+            // });
+
             // Botão Anterior
             document.getElementById('btnPrev').addEventListener('click', function () {
                 if ((index - 1) > -1) {
                     index--;
-                    loadTrack(index);
-
-                    // Verifica se é necessário fazer o scroll
-                    var li = plList.children[index];
-                    li.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    if (playing) {
-                        audio.play();
-                    }
                 } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
+                    index = 0; // Garante que o index não seja menor que 0
+                }
+
+                loadTrack(index);
+
+                // Realiza o scroll para o item atual, mesmo que seja o primeiro
+                var li = plList.children[index];
+                li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                if (playing) {
+                    audio.play();
                 }
             });
 
+
             // Botão Próximo
+
             document.getElementById('btnNext').addEventListener('click', function () {
                 if ((index + 1) < trackCount) {
                     index++;
-                    loadTrack(index);
-
-                    // Verifica se é necessário fazer o scroll
-                    var li = plList.children[index];
-                    li.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    if (playing) {
-                        audio.play();
-                    }
                 } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
+                    index = 0; // Volta para o primeiro item se passar do último
+                }
+
+                loadTrack(index);
+
+                // Realiza o scroll para o item atual
+                var li = plList.children[index];
+                li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                if (playing) {
+                    audio.play();
                 }
             });
+
 
 
             loadTrack(index); // Carregar a primeira faixa ao iniciar
