@@ -4,25 +4,32 @@
             "plugin":"audio",
             "version":1,
             "ativarAudio":true,
-            "moduloTranscritor":false
+            "moduloTranscritor":false,
+            "AtivarLista":true
         } 
     },
     {
         "_ativo":true,
         "track": 1,
-        "name": "Podcast 1wewewe...",
+        "name": "Podcast 1wewewewewsd",
         "audioSrc": "../sounds/podcast/podcast1.mp3"
     },
     {
         "_ativo":true,
         "track": 2,
-        "name": "Podcast 2wewe...",
+        "name": "Podcast 2wewewewwwwww",
         "audioSrc": "../sounds/podcast/podcast2.mp3"
     },
     {
         "_ativo":true,
         "track": 3,
-        "name": "Podcast 3wewe...",
+        "name": "Podcast 3wewweeeeeeee",
+        "audioSrc": "../sounds/podcast/podcast3.mp3"
+    },
+    {
+        "_ativo":true,
+        "track": 3,
+        "name": "Podcast 3wewweeeeeeee",
         "audioSrc": "../sounds/podcast/podcast3.mp3"
     }
    

@@ -112,6 +112,53 @@ async function moduloTranscritorAudio(conf = {}) {
 
 
 
+async function moduloListaAudio() {
+    $.ajax({
+        url: "./modules/audio.json",
+        method: "GET",
+        cache: false,
+        success: (data) => {
+
+            if (data && Array.isArray(data) && Array.isArray(data).length !== 0) {
+                const dadosFiltrados = data.filter((item, index) => item.configuracao)
+                const configuracao = Object.assign({}, ...dadosFiltrados);
+                const configuracaoAudio = configuracao.configuracao;
+
+
+                if (!!configuracaoAudio && Object.values(configuracaoAudio).length !== 0) {
+                 
+                    console.log(configuracaoAudio);
+
+                    const containerLista = document.querySelector("plwrap");
+
+
+                    // Ativar ou destativar o transcritor Audio
+
+                    const lista = configuracaoAudio.modulo;
+                    if (transcritor) {
+                        return transcritor
+                    } else {
+                        containerAudio.style.display = "none";
+                    }
+                }
+            }
+
+            return data;
+        },
+        error: (error) => {
+            console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: `Erro Json Desativada`,
+                heightAuto: false,
+                footer: `<a href="#" onclick="">você acha que isso é um erro ? @suporte</a>`
+            });
+        }
+    });
+}
+
+
+
 
 
 
@@ -129,6 +176,7 @@ async function renderAudio(slideIndex = null) {
         // Inicializar as configurações do modulo de Transcrição
         const configuracoesAudio = await moduloTranscritorAudio(pageData);
 
+        
         if (!containerAudio) {
             return;
         }
@@ -141,7 +189,15 @@ async function renderAudio(slideIndex = null) {
                      </div>
                      <div class="container-toools-info-audio">
                         <div id="nowPlay">
-                         <span id="npAction">Pausado...</span><div class="d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></i><span id="npTitle"></span></div>
+                            <!--
+                                <span id="npAction">Pausado...</span>
+                            -->
+
+                            <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines text-light"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></i><span id="npTitle">
+                                </span>
+                            </div>
+
                         </div>
                         <div id="audiowrap">
                             <div id="audio0">
@@ -205,8 +261,14 @@ async function renderAudio(slideIndex = null) {
                 // Cria um elemento de lista para cada faixa
                 var li = document.createElement('li');
 
-                const trackName  = reduzirTexto(track.name,7);
-           
+                const trackName  = reduzirTexto(track.name,15);
+                
+                // Opção 01
+                // https://craftypixels.com/placeholder-image/600x600/ffffff/121212&text=${key < 9 ? `0${key + 1}` : key + 1}
+
+                // Opção 02
+                // https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}
+
                 li.innerHTML = `
                     <div class="plItem"> 
                                         <span><img class="rounded-circle img-tracker"  alt="Avatar" src="https://placehold.co/600x600?text=${key < 9 ? `0${key + 1}` : key + 1}" /></span>
@@ -237,19 +299,34 @@ async function renderAudio(slideIndex = null) {
             // Função para carregar uma faixa
             function loadTrack(id) {
                 // TrackName 
-                const trackName  = reduzirTexto(tracks[id].name,15);
+                const trackName  = reduzirTexto(tracks[id].name, 15);
                 
+                // Remover 'plSel' do item previamente selecionado
                 var selected = document.querySelector('.plSel');
                 if (selected) selected.classList.remove('plSel');
+                
+                // Adicionar 'plSel' ao item atual
                 plList.children[id].classList.add('plSel');
                 
+                // Remover 'plSelText' de todos os itens previamente
+                const allItems = document.querySelectorAll('.plItem');
+                allItems.forEach(item => item.classList.remove('plSelText'));
+                
+                // Adicionar 'plSelText' ao item atual
+                const addClassActive = plList.children[id].querySelector(".plItem");
+                if (addClassActive) {
+                    addClassActive.classList.add("plSelText");
+                }
+                
+                // Atualizar título e carregar nova faixa de áudio
                 npTitle.textContent = trackName;
                 index = id;
                 audio.src = tracks[id].audioSrc; // Carregar diretamente do atributo audioSrc
                 updateDownload(id, audio.src);
-
+            
                 return audio;
             }
+            
 
             // Função para formatar o tempo em MM:SS
             function formatTime(seconds) {
@@ -278,16 +355,16 @@ async function renderAudio(slideIndex = null) {
             // Controles de reprodução (play/pause)
             audio.addEventListener('play', function () {
                 playing = true;
-                npAction.textContent = 'Now Playing...';
+                // npAction.textContent = 'Now Playing...';
             });
 
             audio.addEventListener('pause', function () {
                 playing = false;
-                npAction.textContent = 'Paused...';
+                // npAction.textContent = 'Paused...';
             });
 
             audio.addEventListener('ended', function () {
-                npAction.textContent = 'Paused...';
+                // npAction.textContent = 'Paused...';
                 if ((index + 1) < trackCount) {
                     index++;
                     loadTrack(index);
@@ -330,6 +407,9 @@ async function renderAudio(slideIndex = null) {
             });
 
             loadTrack(index); // Carregar a primeira faixa ao iniciar
+
+            // Modulos de Ativação de Lista 
+            moduloListaAudio();
         } else {
             // Sem suporte a áudio
             document.querySelector('.column').classList.add('hidden');

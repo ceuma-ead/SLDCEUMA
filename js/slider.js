@@ -608,7 +608,7 @@ function modificarFontes(slideIndex) {
 
         if (slider_container) {
             // Selecionar todos os parágrafos dentro do contêiner
-            const paragrafos_slider = slider_container.querySelectorAll("p");
+            const paragrafos_slider = slider_container.querySelectorAll("p") ? slider_container.querySelectorAll("p") : slider_container.querySelectorAll("span");
 
             paragrafos_slider.forEach((p) => {
                 p.style.fontSize = paragrafos;

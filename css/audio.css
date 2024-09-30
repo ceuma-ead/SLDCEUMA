@@ -6,6 +6,8 @@
     --tamanho-dos-components-gerais-audio-transcritor-tumbs: 80%;
     --largura-dos-containers-audio-transcritor: 50%;
     --largura-dos-container-audio-e-lista:100%;
+    --cor-quando-ativar-a-lista:rgb(85, 85, 85);
+    --cor-quando-hover-a-lista:rgba(85, 85, 85, 0.623);
 }
 
 .pagina-tipo-audio {
@@ -210,7 +212,52 @@
 #plwrap{
     /* background: rebeccapurple; */
     width:var(--largura-dos-container-audio-e-lista);
+    overflow: hidden;
+    height: 90%;
+    overflow-y: scroll;
 }
+
+#plwrap::-webkit-scrollbar {
+    width: 8px;
+    min-height: min-content;
+    padding-left: 1rem;
+    /* background-color: red; */
+    height: 100%;
+    overflow: auto;
+    
+}
+
+
+#plwrap::-webkit-scrollbar-track:active {
+    background-color: #b8b8c2;
+}
+
+
+#plwrap::-webkit-scrollbar-thumb {
+    border-radius: 17px;
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+
+#plwrap::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+
+#plwrap::-webkit-scrollbar-thumb:active {
+    background-color: #a3470000;
+}
+
+#plwrap::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #00000000;
+}
+
+#plwrap::-webkit-scrollbar-track:hover {
+    background-color: #00000000;
+}
+
+
 audio {
     display: none;
 }
@@ -246,6 +293,7 @@ audio {
     text-align: right;
     text-wrap: nowrap;
     width: 100%;
+    color: white;
     /* background: rebeccapurple; */
 }
 
@@ -277,7 +325,7 @@ audio {
 }
 
 #plList li:hover {
-    background-color: rgba(0, 0, 0, .1);
+    background-color:var(--cor-quando-hover-a-lista);
 }
 
 .plItem {
@@ -286,6 +334,7 @@ audio {
     width: 100%;
     font-size: var(--font-para-paragrafos);
     text-align: var(--alinhamento-do-texto-paragrafo);
+
     gap:0.5rem;
     /* background-color: #29292E; */
 
@@ -293,19 +342,20 @@ audio {
     align-items: center;
     justify-content: center;
     /* background-color: rebeccapurple; */
-
+    color: rgb(255, 255, 255);
 
 }
 
 
-
-
-
 .plSel,
 .plSel:hover {
-    background-color: rgba(0, 0, 0, .1);
-    color: #fff;
+    background-color:var(--cor-quando-ativar-a-lista);
     cursor: default !important;
+
+}
+
+.plSelText{
+    color: rgb(0, 0, 0);
 }
 
 #tracks a {
