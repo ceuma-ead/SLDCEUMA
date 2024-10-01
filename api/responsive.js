@@ -337,6 +337,20 @@ const responsivo = [
             width: 85% !important;
             }
 
+            .pagina-tipo-video--box-video{
+            height: 30%;
+            width: 100%;
+            flex-wrap: wrap;
+            }
+
+            .f-thumbs__track {
+            flex-direction: row
+            }
+
+            .f-carousel__thumbs {
+            width: 100%
+            }
+
     `,
 
         // Atualização Forçada onde ele está aparecendo
