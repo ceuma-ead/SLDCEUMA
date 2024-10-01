@@ -3,11 +3,7 @@
 .container-img-lightbox-fluid-all{
     overflow: hidden;
     overflow-y:scroll;   
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 100%;
     height: auto;
     /* background-color: rgb(64, 255, 0); */
 }
@@ -15,11 +11,10 @@
 .container-img-lightbox-fluid {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    justify-content: start;
+    width: 100% !important;
     gap: 1rem;
-    height: auto;
+    height: 100%;
     padding: 4rem;
     /* background-color: aqua; */
  
