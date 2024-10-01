@@ -10,8 +10,8 @@
     {
    
         "_ativo":true,
-        "dataThumbSrc":"https://yt3.ggpht.com/qv6Lb0yiCjDB6GkDAnYXf5TNxYREqVAWOEyuOiuQPKlnQ7oVgRW_yACMC-HssKgHLps0b9sJ_w=s48-c-k-c0x00ffffff-no-rj",
-        "srcVideo":"https://www.youtube.com/embed/gakpfrlk3_w",
+        "dataThumbSrc":"https://i.vimeocdn.com/video/1859640298-d0a05919259325374bf680502f256829c9bc896c8f6b3c45e0f91c5b25585d3f-d_295x166?r=pad",
+        "srcVideo":"https://player.vimeo.com/video/950836922?h=95c52219be&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
         "attrFrame":"allow = [ autoplay ; fullscreen ; ] | class=[ iframe-video ]"
     }
    

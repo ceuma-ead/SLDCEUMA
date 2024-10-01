@@ -41,12 +41,13 @@ function renderTools(sliderIndex) {
         // Aplica novamente os ícones
         lucide.createIcons();
         if(typeof eventButton === "function"){
-            eventButton(ferramentas,pageData.pagina)
+            eventButton(ferramentas,pageData.pagina,api)
             
         }
         else{
-            console.log("Funçao Não Renderizada...")
+            // console.log("Funçao Não Renderizada...")
         }
+
     } else {
         console.log('Nenhuma ferramenta ativa para esta página.');
     }

@@ -1340,44 +1340,7 @@ function injectScriptPage(slideIndex) {
     }
 }
 
-// // Força Atualição
-// function AnimationVariablesUpPage(slideIndex) {
-//     const pageData = api[slideIndex];
-
-//     if (pageData && pageData.paramentros && pageData.forcarAtualizacao) {
-//         const variaveis = pageData.forcarAtualizacao.variaveis || [];
-//         aplicarReflowVariaveis(variaveis);
-//     } else {
-//         // Atualiza o controle do glider se estiver definido
-//         if (typeof glider !== 'undefined') {
-//             glider.refresh(true);
-//             glider.updateControls();
-//         } else {
-//             console.error('O objeto glider não está definido.');
-//         }
-
-//         // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
-//         const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
-//         aplicarReflowVariaveis(variaveis);
-//     }
-// }
-
-// // Função para aplicar o reflow e atualizar as variáveis de animação
-// function aplicarReflowVariaveis(variaveis) {
-//     variaveis.forEach(variable => {
-//         // Define o valor de 'Entrada' antes do reflow
-//         document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
-//     });
-
-//     // Força o reflow
-//     void document.documentElement.offsetWidth;
-
-//     variaveis.forEach(variable => {
-//         // Define o valor de 'Saida' após o reflow
-//         document.documentElement.style.setProperty(variable.Nome, variable.Saida);
-//     });
-// }
-
+// Força Atualição
 function AnimationVariablesUpPage(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -1385,20 +1348,33 @@ function AnimationVariablesUpPage(slideIndex) {
         const variaveis = pageData.forcarAtualizacao.variaveis || [];
         aplicarReflowVariaveis(variaveis);
     } else {
-        console.error('Nenhuma atualização necessária para esse slide.');
+        // Atualiza o controle do glider se estiver definido
+        if (typeof glider !== 'undefined') {
+            glider.refresh(true);
+            glider.updateControls();
+        } else {
+            console.error('O objeto glider não está definido.');
+        }
+
+        // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
+        const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
+        aplicarReflowVariaveis(variaveis);
     }
 }
 
+// Função para aplicar o reflow e atualizar as variáveis de animação
 function aplicarReflowVariaveis(variaveis) {
     variaveis.forEach(variable => {
-        // Verificar se a animação já foi aplicada para evitar duplicações
-        const valorAtual = getComputedStyle(document.documentElement).getPropertyValue(variable.Nome);
-        if (valorAtual !== variable.Saida) {
-            // Aplicar 'Entrada' e 'Saída'
-            document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
-            void document.documentElement.offsetWidth; // Forçar reflow
-            document.documentElement.style.setProperty(variable.Nome, variable.Saida);
-        }
+        // Define o valor de 'Entrada' antes do reflow
+        document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
+    });
+
+    // Força o reflow
+    void document.documentElement.offsetWidth;
+
+    variaveis.forEach(variable => {
+        // Define o valor de 'Saida' após o reflow
+        document.documentElement.style.setProperty(variable.Nome, variable.Saida);
     });
 }
 
@@ -2779,9 +2755,9 @@ adicionarFundo(savedPosition)
 injectScriptPage(savedPosition);
 AnimatedParagrafos(savedPosition);
 AnimationVariablesUpPage(savedPosition);
-AnimatedElementos(savedPosition)
-injectEstiloRender(savedPosition)
-modulosPage(savedPosition)
+AnimatedElementos(savedPosition);
+injectEstiloRender(savedPosition);
+modulosPage(savedPosition);
 
 // Rederizar Menu
 const irItem = itemnsMenu('', savedPosition, filtroDuplicadoSumario);

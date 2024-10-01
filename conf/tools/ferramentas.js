@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Iniciar Evento
-    eventButton();
+    eventButton("","",api);
     exibirHistoricoResumos();
 });
 
@@ -206,7 +206,7 @@ function apagarResumo(id) {
         });
 }
 
-function eventButton(API = "", INDEX = "") {
+function eventButton(API = "", INDEX = "", PAGINA = {}) {
     // Função para entrar/sair da tela cheia
     function Screen(tipo, elemento) {
         const elem = document.documentElement; // Seleciona o elemento raiz (html)
@@ -371,6 +371,75 @@ function eventButton(API = "", INDEX = "") {
 
         });
     });
+
+    
+    const btn_podcast = document.querySelectorAll('.btn-podcast');
+    btn_podcast.forEach((btn, index) => {
+        btn.addEventListener("click", function (event) {
+            event.stopPropagation();
+            const paginas = PAGINA;
+    
+            if (Array.isArray(paginas)) {
+                const paginaAudio = paginas.filter((obj) => obj.tipo === "Audio");
+    
+                if (paginaAudio.length !== 0) {
+                    const audioPage = paginaAudio.map((obj) => ({
+                        id: 0,
+                        prop: obj
+                    }));
+    
+                    const objetoDestruido = Object.assign({}, ...audioPage);
+    
+                    const {
+                        id = 0,
+                        prop = {}
+                    } = objetoDestruido;
+    
+                    if (id === 0) {
+                        const idPage = prop.pagina;
+                        glider.scrollItem(idPage - 1);
+                    }
+                }
+            } else {
+                console.error("PAGINA não é um array");
+            }
+        });
+    });
+    
+    const btn_video = document.querySelectorAll('.btn-videoaula');
+    btn_video.forEach((btn, index) => {
+        btn.addEventListener("click", function (event) {
+            event.stopPropagation();
+            const paginas = PAGINA;
+    
+            if (Array.isArray(paginas)) {
+                const paginaVideo = paginas.filter((obj) => obj.tipo === "Video");
+    
+                if (paginaVideo.length !== 0) {
+                    const videoPage = paginaVideo.map((obj) => ({
+                        id: 0,
+                        prop: obj
+                    }));
+    
+                    const objetoDestruido = Object.assign({}, ...videoPage);
+    
+                    const {
+                        id = 0,
+                        prop = {}
+                    } = objetoDestruido;
+    
+                    if (id === 0) {
+                        const idPage = prop.pagina;
+                        glider.scrollItem(idPage - 1);
+                    }
+                }
+            } else {
+                console.error("PAGINA não é um array");
+            }
+        });
+    });
+    
+
 
 
     const containerBoxMarcador = API;

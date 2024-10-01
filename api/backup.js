@@ -204,7 +204,7 @@ const api = [
             },
             "logo": {
                 "ativar": true,
-                "img": "url(../assets/logopreta.png)",
+                "img": "url(../assets/logobranca.png)",
                 "posicaoY": "bottom 1.8%",
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
@@ -245,7 +245,7 @@ const api = [
                           Trata-se de uma disciplina que contribui em inúmeras esferas para a sua formação acadêmica e pode ser aplicada em diversos contextos da vida real, possibilitando a interpretação de exames laboratoriais e identificação de condições como anemias, leucemias e coagulopatias. Este conhecimento é fundamental para o diagnóstico clínico, além de proporcionar uma base sólida para a realização de pesquisas científicas em áreas como a fisiologia das células-tronco e o desenvolvimento de novas terapias.
                         </p>
 
-                       <div class="pagina-tipo-texto--box-texto-div-container-presets">
+                       <div class="pagina-tipo-texto--box-texto-div-container-presets ">
                             <img src="${_prefixAssets}ok.gif" />
                             <p style="padding: 10px; background:#4285f4; font-weight: 700; border-radius: 10px;">
                             Ao final da disciplina você estará capacitado para implementar e monitorar processos de controle de qualidade em laboratórios, garantindo a precisão e confiabilidade dos resultados. Ademais, ensina sobre a política de sangue, normas técnicas e imunohematologia, preparando o futuro profissional para trabalhar em bancos de sangue e compreender a importância dos testes pré-transfusionais.
@@ -266,6 +266,7 @@ const api = [
             ]
         },
         "paramentros": {
+            "lupa": "Yes",
             "inserir_estilo_pagina": [{
                 "url": "./conf/css/pagina2.css"
             }],
@@ -1502,7 +1503,7 @@ const api = [
                 "posicao": "",
                 "src": ""
             }],
-           "ferramentas": [
+            "ferramentas": [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
@@ -1704,35 +1705,36 @@ const api = [
         }
     },
 
-
-    // PAGINA 7
+    // PAGINA DE IMAGEM 7
     {
         "pagina": 7,
         "nome_page": `Relações étnicas-raciais e história a cultura afro-brasileira e africana`,
-        "tipo": "imagem",
+        "tipo": "Imagem",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
                 <div class="container-img-lightbox-fluid">
-                <div class="item-ligthbox">
-                <div class="item-ligthbox-img img-photo-actions">
-    
-                <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01"/>    
-    
+                    <div class="item-ligthbox">
+                        <div class="item-ligthbox-img img-photo-actions">
+
+                            <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01" />
+
+                        </div>
+                        <p class="description">Descrição da imagem 1</p>
+                    </div>
+                    
+                    <div class="item-ligthbox">
+                        <div class="item-ligthbox-img img-photo-actions">
+
+                            <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1" />
+
+                        </div>
+                        <p class="description">Descrição da imagem 2</p>
+                    </div>
+                    
                 </div>
-                <p class="description">Descrição da imagem 1</p>
-                </div>
-                <div class="item-ligthbox">
-                <div class="item-ligthbox-img img-photo-actions">
-    
-                <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1"/>
-    
-                </div>
-                <p class="description">Descrição da imagem 2</p>
-                            </div>
-                            </div>
                 `
         },
         "paramentros": {
@@ -1794,24 +1796,46 @@ const api = [
         }
     },
 
-
-    // PAGINA 8
+    // PAGINA DE VIDEO  8
     {
         "pagina": 8,
         "nome_page": `Video Aula`,
-        "tipo": "Texto",
+        "tipo": "Video",
         "id_page": ".content-render-api",
         "id_component": ".c-carousel__slides",
-        "id_elemento_para_modificar": "container-imagem",
+        "id_elemento_para_modificar": "container-video",
         "data": {
             "container_render": `
-                <div class="pagina-tipo-texto animation">
+                <div class="pagina-tipo-video animation">
 
-                    <div class="pagina-tipo-texto--box-texto align-accordion">
+                  <div class="pagina-tipo-video--box-video">
+                        <div class="f-carousel render-video-container" id="carrosel-video">
+                            <!-- Renderizador de Video -->
+                            <!-- 
+                            <div class="f-carousel__slide" data-thumb-src="https://i.vimeocdn.com/video/112836958_192x144.jpg">
+                                <iframe class="iframe-video" src="https://player.vimeo.com/video/112836958" ></iframe>
+                            </div>
+                            -->
+                            
+                        </div>
+                  </div>
 
-                     
-                                                                        
-                    </div> 
+                  <div class="transcritor--box-video">
+                    <div>
+                        <!-- cabeçalho -->
+                        <p class="header-transcritor-video">Transcrição</p>
+                    </div>
+
+                    <div class="body-transcritor-video">
+                        <!-- body -->
+        
+                    </div>
+
+                    <div class="footer-transcritor-video">
+                        <!-- footer -->
+                        <button>Gerar Transcrição</button>
+                    </div>
+                  </div>
                 
                 </div>
             `,
@@ -1980,22 +2004,31 @@ const api = [
 
 
             }],
+            "setas":{
+                "corSetas": "#fff",
+                "corFundo":"rgba(255, 255, 255, 0.174)"
+            },
             "cores": {
-                // "sidebar": "red",
-                // "fundo": "red",
-                // "icones": "rgb(0, 110, 201)"
+                "sidebar": "#000000",
+                "fundo": "#011C41",
+                "icones": "white"
             },
             "configuracoes_gerais": {
 
-                // Habilitar Procurar de Paragrafos ná Pagina 2
+                // Habilitar Procurar de Paragrafos ná Pagina 8 e Transcritor
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                    "onde_procurar": ".transcritor--box-video",
                 },
                 "_procurar_animacao": {
                     "status": true,
                     "onde_procurar_animacao": ".animation",
-                }
+                },
+                "_renderizadar_video": {
+                    "status": true,
+                    "onde_colocar_video": ".render-video-container",
+                },
+
             },
             "fonte": {
                 // "titulo":"1rem",
@@ -2007,7 +2040,7 @@ const api = [
             },
             "logo": {
                 "ativar": true,
-                "img": "url(../assets/logopreta.png)",
+                "img": "url(../assets/logobranca.png)",
                 "posicaoY": "bottom 1.8%",
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
@@ -2030,7 +2063,275 @@ const api = [
                 {
                     "audio": {
                         "ativo": true,
-                        "idRef": ".pagina-tipo-texto--box-texto"
+                        "idRef": ".transcritor--box-video"
+                    }
+                }
+            ]
+        }
+    },
+
+    // PAGINA DE AUDIO  9 
+    {
+        "pagina": 9,
+        "nome_page": `Podcast`,
+        "tipo": "Audio",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-audio",
+        "data": {
+            "container_render": `
+            <div class="pagina-tipo-audio animation">
+
+                <div class="pagina-tipo-audio--box-audio">
+                    <div class="render-audio-container" id="carrosel-audio">
+
+                    </div>
+                </div>
+
+                <div class="transcritor--box-audio">
+                    <div>
+                        <!-- cabeçalho -->
+                        <p class="header-transcritor-audio">Transcrição</p>
+                    </div>
+
+                    <div class="body-transcritor-audio">
+                        <!-- body -->
+                    
+                    </div>
+
+                    <div class="footer-transcritor-audio">
+                        <!-- footer -->
+                        <button>Gerar Transcrição</button>
+                    </div>
+                </div>
+            
+            </div>
+        `,
+        },
+        "forcarAtualizacao": {
+            "variaveis": [
+                {
+                    "Nome": "--animacao-sidebar",
+                    "Entrada": "none",
+                    "Saida": "slideDown 2s forwards"
+                }
+            ]
+        },
+        "paramentros": {
+            // Injetar estilos na Pagina
+            "inserir_estilo_pagina": [{
+                "url": "./conf/css/pagina5.css"
+            }],
+            "inserir_escript_pagina": [{
+                "onde": "body",
+                "posicao": "",
+                "src": ""
+            }],
+            "ferramentas": [
+                {
+                    "container": "icons-action--container",
+                    "Podcast": {
+                        "ativa": true,
+                        "html": `
+                        <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <i data-lucide="audio-lines"></i>
+                        </button>
+                    `
+                    },
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
+                        <button class="tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <i data-lucide="video"></i>
+                        </button>
+                    `
+                    },
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
+                        <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <i data-lucide="pencil-ruler"></i>
+                        </button>
+                    `
+                    },
+                    "FullScreen": {
+                        "ativa": true,
+                        "html": `
+                        <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <i data-lucide="maximize-2"></i>
+                        </button>
+                    `
+                    },
+
+                },
+                {
+                    "container": "icons-action--container-mobile",
+                    "Podcast": {
+                        "ativa": true,
+                        "html": `
+                        <button vizioon-tip="Podcast" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
+                            <i data-lucide="audio-lines"></i>
+                        </button>
+                    `
+                    },
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
+                        <button vizioon-tip="Videoaula" vizioon-attr="d-none d-md-block" vizioon-posicao="gbottom">
+                            <i data-lucide="video"></i>
+                        </button>
+                    `
+                    },
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
+                        <button class="btn-ferramentas" aria-label="close" vizioon-attr="d-none d-md-block" vizioon-tip="Ferramentas" vizioon-posicao="gbottom">
+                            <i data-lucide="pencil-ruler"></i>
+                        </button>
+                    `
+                    },
+
+                },
+                {
+                    "container": "box-tools-inline",
+                    "Resulmo": {
+                        "ativa": true,
+                        "html": `
+                        <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                        
+                    `
+                    },
+                    "Destacar": {
+                        "ativa": true,
+                        "html": `
+                         <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                    `,
+                        "acionador": `
+
+                        <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                            <div class="cores-destaque-inline-btn">
+                                    <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                    <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                    <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                    <button class="toolbar-button" id="limpar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                        Limpar
+                                    </button>
+                             </div>
+                        </div>
+
+                    `
+                    },
+                    "Notas": {
+                        "ativa": true,
+                        "html": `
+                         <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
+                    `
+                    },
+                    "Ouvinte": {
+                        "ativa": true,
+                        "html": `
+                         <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
+                    `
+                    },
+                    "Download": {
+                        "ativa": true,
+                        "html": `
+                        <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
+                    `
+                    },
+                    "Dicionario": {
+                        "ativa": true,
+                        "html": `
+                         <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
+                    `
+                    },
+                    "close": {
+                        "ativa": true,
+                        "html": `
+                          <button><i data-lucide="x" id="close_box"></i></button>
+                    `
+                    },
+                }
+
+            ],
+            "marcador": [{
+                "tipo": "p",
+                "posicao": 0,
+                "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
+                "attr_unitario": {
+                    "Olá, estudante! Bem-vindo à Unidade 1!": {
+                        "attr": "font-weight=[999], Font-size=[18px]",
+
+                    },
+
+                },
+                // "fundo": "blue",
+                // "corTexto": "black",
+                // "padding": "0.3rem",
+
+
+            }],
+            "cores": {
+                "sidebar": "#000000",
+                "fundo": "#011C41",
+                "icones": "white"
+            },
+            "setas":{
+                "corSetas": "#fff",
+                "corFundo":"rgba(255, 255, 255, 0.174)"
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 8 e Transcritor
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".transcritor--box-audio",
+                },
+                "_procurar_animacao": {
+                    "status": true,
+                    "onde_procurar_animacao": ".animation",
+                },
+                "_renderizar_audio": {
+                    "status": true,
+                    "onde_colocar_audio": ".render-audio-container",
+                },
+
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logobranca.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            // Animação para Texto API
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                animate__animated animate__fadeInDown animate__slow
+            `
+            }],
+            "modulos": [
+                {
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".transcritor--box-audio"
                     }
                 }
             ]
