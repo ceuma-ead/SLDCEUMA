@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-tooltipRender()
+  tooltipRender()
 });
 
 
-function tooltipRender(){
-    // Seleciona todos os elementos com a classe tooltip-btn
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('.tooltip-btn'));
+function tooltipRender() {
 
-    // Inicializa todos os tooltips
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, {
+      trigger: 'hover'
     });
+  });
 }
