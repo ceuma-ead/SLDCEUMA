@@ -69,6 +69,7 @@
     opacity: 0;
     bottom: 0;
     margin-bottom: 4rem;
+    gap: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

@@ -264,14 +264,27 @@ async function renderAudio(slideIndex = null) {
             npTitle = document.getElementById('npTitle');
             audio = document.getElementById('podcast');
             const containerLista = document.querySelector("#plwrap");
+            const tracksButton = document.querySelector("#tracks");
+            const podcastAudio = document.querySelector(".container-toools-info-audio");
             // console.log(tracks.length)
 
             // Lista de Sons
             var plList = document.getElementById('plList');
             
             if(tracks.length > 1){
+                podcastAudio.style = `
+                    width:var(--largura-dos-container-audio-e-lista);
+                
+                `
+                tracksButton.style.display = "block";
                 containerLista.style.display = "block";
+                
             }else{
+                podcastAudio.style = `
+                    width:50%;
+                
+                `
+                tracksButton.style.display = "none";
                 containerLista.style.display = "none";
             };
 

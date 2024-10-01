@@ -216,6 +216,10 @@
     overflow: hidden;
     height: 90%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
 }
 
 #plwrap::-webkit-scrollbar {
@@ -305,7 +309,8 @@ audio {
     gap: 0.5rem;
     /* background-color: red; */
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    height: 90%;
 }
 
 
