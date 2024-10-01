@@ -1730,8 +1730,6 @@ const api = [
                             </div>
                             <p class="description">Descrição da imagem 2</p>
                         </div>
-
-                        
                         
                     </div>
                 </div>    
@@ -2259,6 +2257,253 @@ const api = [
                         <button>Gerar Transcrição</button>
                     </div>
                 </div>
+            
+            </div>
+        `,
+        },
+        "forcarAtualizacao": {
+            "variaveis": [
+                {
+                    "Nome": "--animacao-sidebar",
+                    "Entrada": "none",
+                    "Saida": "slideDown 2s forwards"
+                }
+            ]
+        },
+        "paramentros": {
+            // Injetar estilos na Pagina
+            "inserir_estilo_pagina": [{
+                "url": "./conf/css/pagina5.css"
+            }],
+            "inserir_escript_pagina": [{
+                "onde": "body",
+                "posicao": "",
+                "src": ""
+            }],
+            "ferramentas": [
+                {
+                    "container": "icons-action--container",
+                    "Podcast": {
+                        "ativa":false,
+                        "html": `
+                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container": "icons-action--container-mobile",
+                    "Podcast": {
+                        "ativa": false,
+                        "html": `
+                            <button class="btn-podcast">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-videoaula">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-ferramentas" aria-label="close">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container": "box-tools-inline",
+                    "Resulmo": {
+                        "ativa": true,
+                        "html": `
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
+                        `
+                    },
+                    "Destacar": {
+                        "ativa": true,
+                        "html": `
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
+                        `
+                    },
+                    "Notas": {
+                        "ativa": true,
+                        "html": `
+                             <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
+                        `
+                    },
+                    "Ouvinte": {
+                        "ativa": true,
+                        "html": `
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
+                        `
+                    },
+                    "Download": {
+                        "ativa": true,
+                        "html": `
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
+                        `
+                    },
+                    "Dicionario": {
+                        "ativa": true,
+                        "html": `
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
+                        `
+                    },
+                    "close": {
+                        "ativa": true,
+                        "html": `
+                              <button><i data-lucide="x" id="close_box"></i></button>
+                        `
+                    },
+                }
+
+            ],
+            "marcador": [{
+                "tipo": "p",
+                "posicao": 0,
+                "palavras": "Olá, estudante! Bem-vindo à Unidade 1!",
+                "attr_unitario": {
+                    "Olá, estudante! Bem-vindo à Unidade 1!": {
+                        "attr": "font-weight=[999], Font-size=[18px]",
+
+                    },
+
+                },
+                // "fundo": "blue",
+                // "corTexto": "black",
+                // "padding": "0.3rem",
+
+
+            }],
+            "cores": {
+                "sidebar": "#000000",
+                "fundo": "#011C41",
+                "icones": "white"
+            },
+            "setas":{
+                "corSetas": "#fff",
+                "corFundo":"rgba(255, 255, 255, 0.174)"
+            },
+            "configuracoes_gerais": {
+
+                // Habilitar Procurar de Paragrafos ná Pagina 8 e Transcritor
+                "_procurar_paragrafos": {
+                    "status": true,
+                    "onde_procurar": ".transcritor--box-audio",
+                },
+                "_procurar_animacao": {
+                    "status": true,
+                    "onde_procurar_animacao": ".animation",
+                },
+                "_renderizar_audio": {
+                    "status": true,
+                    "onde_colocar_audio": ".render-audio-container",
+                },
+
+            },
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logobranca.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            // Animação para Texto API
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                animate__animated animate__fadeInDown animate__slow
+            `
+            }],
+            "modulos": [
+                {
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".transcritor--box-audio"
+                    }
+                }
+            ]
+        }
+    },
+    
+    // PAGINA DE AUDIO  9 
+    {
+        "pagina": 10,
+        "nome_page": `Podcast`,
+        "tipo": "Audio",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-audio",
+        "data": {
+            "container_render": `
+            <div class="pagina-tipo-audio animation">
+
+              <iframe style="max-width:100%" src="https://wordwall.net/pt/embed/18b8164727ea452c9fc205ac3c5a75b5?themeId=23&templateId=10&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe>
             
             </div>
         `,
