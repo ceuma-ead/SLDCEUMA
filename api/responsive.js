@@ -314,6 +314,28 @@ const responsivo = [
                 
             }
 
+            .transcritor--box-audio {
+            display: none;
+            
+            }
+
+            
+           .container-audio-render-result {
+            flex-direction: column;
+            }        
+    
+            #carrosel-audio {
+            height: auto;
+            }
+
+            .plyr{
+            min-width: 280px;
+            }
+
+            
+            .container-toools-info-audio {
+            width: 85% !important;
+            }
 
     `,
 
