@@ -267,6 +267,20 @@ async function renderAudio(slideIndex = null) {
             const tracksButton = document.querySelector("#tracks");
             const podcastAudio = document.querySelector(".container-toools-info-audio");
             // console.log(tracks.length)
+            //Função para verificar se a lista contem mais de 3 - true > ele vai ficar justifyContent:start
+
+            function verificarLista(){
+                
+                if(tracks.length > 2){
+                    const podcastList = document.querySelector("#plList");
+                    podcastList.style.justifyContent = "start"
+                }else{
+                    const podcastList = document.querySelector("#plList");
+                    podcastList.style.justifyContent = "center"
+                }
+            }
+
+            verificarLista()
 
             // Lista de Sons
             var plList = document.getElementById('plList');
@@ -313,7 +327,7 @@ async function renderAudio(slideIndex = null) {
                             li.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                         }
-
+                        
                         // Tocar a faixa clicada
                         playTrack(key);
                     }

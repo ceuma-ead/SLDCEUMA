@@ -13,12 +13,7 @@
         "track": 1,
         "name": "Podcast ...",
         "audioSrc": "../sounds/podcast/podcast1.mp3"
-    },
-    {
-        "_ativo":true,
-        "track": 1,
-        "name": "Podcast ...",
-        "audioSrc": "../sounds/podcast/podcast1.mp3"
     }
+   
    
 ]
