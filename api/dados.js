@@ -52,7 +52,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                        <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                        <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                         </button>
                         `
@@ -60,7 +60,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -68,7 +68,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": false,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas "  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -76,7 +76,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -281,7 +281,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -289,7 +289,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -297,7 +297,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -305,7 +305,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -702,7 +702,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -710,7 +710,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -718,7 +718,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -726,7 +726,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -978,7 +978,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -986,7 +986,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -994,7 +994,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1002,7 +1002,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1222,7 +1222,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -1230,7 +1230,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -1238,7 +1238,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1246,7 +1246,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1509,7 +1509,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -1517,7 +1517,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -1525,7 +1525,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1533,7 +1533,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -1769,7 +1769,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -1777,7 +1777,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -1785,7 +1785,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -1793,7 +1793,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -2018,7 +2018,7 @@ const api = [
                     "Podcast": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -2026,7 +2026,7 @@ const api = [
                     "Videoaula": {
                         "ativa": false,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -2034,7 +2034,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -2042,7 +2042,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -2164,7 +2164,12 @@ const api = [
             "cores": {
                 "sidebar": "#000000",
                 "fundo": "#011C41",
-                "icones": "white"
+                "icones": "white",
+                "iconesEspecificos":{
+                    ".openAnnotation":{
+                        "cor":"white",
+                    }  
+                }
             },
             "configuracoes_gerais": {
 
@@ -2286,7 +2291,7 @@ const api = [
                     "Podcast": {
                         "ativa":false,
                         "html": `
-                            <button class="btn-podcast tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
                             </button>
                         `
@@ -2294,7 +2299,7 @@ const api = [
                     "Videoaula": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-videoaula tooltip-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
                                 <i data-lucide="video"></i>
                             </button>
                         `
@@ -2302,7 +2307,7 @@ const api = [
                     "Ferramentas": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-ferramentas tooltip-btn" aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
                                 <i data-lucide="pencil-ruler"></i>
                             </button>
                         `
@@ -2310,7 +2315,7 @@ const api = [
                     "FullScreen": {
                         "ativa": true,
                         "html": `
-                            <button class="btn-fullscreen tooltip-btn" aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
                                 <i data-lucide="maximize-2"></i>
                             </button>
                         `
@@ -2428,7 +2433,13 @@ const api = [
             "cores": {
                 "sidebar": "#000000",
                 "fundo": "#011C41",
-                "icones": "white"
+                "icones": "white",
+                // Cores de icones Especificas
+                "iconesEspecificos":{
+                    ".openAnnotation":{
+                        "cor":"white",
+                    }  
+                }
             },
             "setas":{
                 "corSetas": "#fff",

@@ -660,7 +660,7 @@ function modificarArrows(slideIndex) {
     // console.log(SetaPadrao);
 
     if (pageData && pageData.paramentros && pageData.paramentros.setas) {
-   
+
         const {
             corSetas = SetaPadrao.corSetas,
             corFundo = SetaPadrao.corFundo
@@ -680,7 +680,7 @@ function modificarArrows(slideIndex) {
 
 
     } else {
-        
+
         document.documentElement.style.setProperty('--cor-das-setas', SetaPadrao.corSetas);
         document.documentElement.style.setProperty('--cor-de-fundo-seta', SetaPadrao.corFundo);
 
@@ -1256,7 +1256,8 @@ function atualizarCoresdaNavegacao(slideIndex) {
     const defaultCores = {
         sidebar: getComputedStyle(document.documentElement).getPropertyValue('--fundo-siderbar-js-default'),
         fundo: getComputedStyle(document.documentElement).getPropertyValue('--fundo-carrosel-js-default'),
-        icones: getComputedStyle(document.documentElement).getPropertyValue('--cor-dos-icones-siderbar-js-default')
+        icones: getComputedStyle(document.documentElement).getPropertyValue('--cor-dos-icones-siderbar-js-default'),
+        anotacao: getComputedStyle(document.documentElement).getPropertyValue('--cor-dos-icones-de-anotacao-default')
     };
 
     // console.log(defaultCores.sidebar)
@@ -1268,16 +1269,41 @@ function atualizarCoresdaNavegacao(slideIndex) {
             sidebar = defaultCores.sidebar,
             fundo = defaultCores.fundo,
             icones = defaultCores.icones,
-
+            iconesEspecificos = {}
         } = pageData.paramentros.cores;
+
+        // deixa as variaveis de cores especificas...
+        if (Object.values(iconesEspecificos).length === 0) {
+            document.documentElement.style.setProperty('--cor-dos-icones-de-anotacao', defaultCores.anotacao);
+        }
+
+        //Cores personalizadas
+
+        const _classCustom = Object.keys(iconesEspecificos);
+
+        _classCustom.forEach(className => {
+            const _elementoCustom = document.querySelector(className);
+            // console.log(_elementoCustom);
+
+            if (_elementoCustom) {
+                // Aqui você pode aplicar a cor personalizada
+                // _elementoCustom.style.color = iconesEspecificos[className].cor;
+                document.documentElement.style.setProperty('--cor-dos-icones-de-anotacao', iconesEspecificos[className].cor);
+            } else {
+                // console.warn("Elemento não encontrado", className);
+            }
+        });
+
 
         const verificarItem = pageData.paramentros.cores;
         if (Object.values(verificarItem).length === 0) {
             document.documentElement.style.setProperty('--fundo-siderbar', defaultCores.sidebar);
             document.documentElement.style.setProperty('--fundo-carrosel', defaultCores.fundo);
             document.documentElement.style.setProperty('--cor-dos-icones-siderbar', defaultCores.icones);
+            document.documentElement.style.setProperty('--cor-dos-icones-de-anotacao', defaultCores.anotacao);
             return;
         }
+
 
         document.documentElement.style.setProperty('--fundo-siderbar', sidebar);
         document.documentElement.style.setProperty('--fundo-carrosel', fundo);
@@ -1293,6 +1319,7 @@ function atualizarCoresdaNavegacao(slideIndex) {
         document.documentElement.style.setProperty('--fundo-siderbar', defaultCores.sidebar);
         document.documentElement.style.setProperty('--fundo-carrosel', defaultCores.fundo);
         document.documentElement.style.setProperty('--cor-dos-icones-siderbar', defaultCores.icones);
+        document.documentElement.style.setProperty('--cor-dos-icones-de-anotacao', defaultCores.anotacao);
     }
 }
 
