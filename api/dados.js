@@ -1715,27 +1715,27 @@ const api = [
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                <div class="container-img-lightbox-fluid animation">
-                    <div class="item-ligthbox">
-                        <div class="item-ligthbox-img img-photo-actions">
-
-                            <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01" />
-
+                <div class="w-100 h-100 container-img-lightbox-fluid-all">
+                    <div class="container-img-lightbox-fluid animation">
+                        <div class="item-ligthbox">
+                            <div class="item-ligthbox-img img-photo-actions">
+                                <img src='./assets/unidade_01/Figura_01.png' alt="figura - 01" />
+                            </div>
+                            <p class="description">Descrição da imagem 1</p>
                         </div>
-                        <p class="description">Descrição da imagem 1</p>
-                    </div>
-                    
-                    <div class="item-ligthbox">
-                        <div class="item-ligthbox-img img-photo-actions">
-
-                            <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1" />
-
+                        
+                        <div class="item-ligthbox">
+                            <div class="item-ligthbox-img img-photo-actions">
+                                <img src='./assets/unidade_01/Figura_02.png' alt="figura - 02" class="example-1" />
+                            </div>
+                            <p class="description">Descrição da imagem 2</p>
                         </div>
-                        <p class="description">Descrição da imagem 2</p>
+
+                        
+                        
                     </div>
-                    
-                </div>
-                `
+                </div>    
+            `
         },
         "forcarAtualizacao": {
             "variaveis": [
