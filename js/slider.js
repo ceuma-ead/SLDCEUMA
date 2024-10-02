@@ -198,10 +198,8 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
 //=================
 // Esconder Loading
 gliderElement.addEventListener("glider-slide-visible", (event) => {
-
     // console.log(event.detail.slide)
     // showLoading(event.timeStamp);
-
     // // Mostrar o loading antes de iniciar a mudança de slide
     gliderElement.addEventListener('glider-slide-hidden', function (event) {
         showLoading(event.timeStamp);

@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
    
 });
 
-
 // Função para verificar se o contêiner de resumo está vazio
 function checkEmptyResumoContainer() {
     const resumoContainer = document.querySelector('.render-resumo-result');
@@ -44,7 +43,6 @@ function checkEmptyResumoContainer() {
     }
 }
 
-
 // Função para verificar se o contêiner de resumo histórico está vazio
 function checkEmptyResumoHistoricoContainer() {
     const resumoHistoricoContainer = document.querySelector('.render-resumo-result-historico');
@@ -79,7 +77,6 @@ function checkEmptyResumoHistoricoContainer() {
         }
     }
 }
-
 
 const toolBox = document.querySelector('.box-tools-inline');
 const _animationShow = "animate__fadeInDown";
@@ -417,8 +414,6 @@ function abrirDicionario() {
             });
         }
     });
-
-
 
     // Fecha o menu quando clicar fora dele (Adiciona apenas uma vez)
     // document.addEventListener('click', function (evento) {

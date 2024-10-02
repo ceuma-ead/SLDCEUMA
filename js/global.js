@@ -5,3 +5,4 @@ function reduzirTexto(texto, tamanhoMaximo) {
         return texto;
     }
 }
+
