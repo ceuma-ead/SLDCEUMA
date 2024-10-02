@@ -111,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         // console.log(event.detail.slide)
         // showLoading(event.timeStamp);
-        hideLoading()
 
         // // Mostrar o loading antes de iniciar a mudança de slide
         gliderElement.addEventListener('glider-slide-hidden', function (event) {
@@ -121,7 +120,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     });
 
-})
+});
+
+
+
 
 
 //Controlador de Filtragem do Sumario =================
@@ -179,6 +181,16 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
+
+//=================
+// Esconder Loading
+gliderElement.addEventListener('glider-slide-visible', function (event) {
+    showLoading(event.timeStamp);
+    // console.log()
+});
+hideLoading()
+//=================
+
 
 // Função para atualizar o título da página ao carregar
 function updatePageTitle(slideIndex) {
