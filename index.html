@@ -78,6 +78,13 @@
         <!-- Estilo do Play do Podcast -->
         <link rel="stylesheet" href="./plugins/plyr/plyr.min.css" />
         <!-- Estilo do Play do Podcast -->
+
+        <!-- Core para o H5P -->
+        <link type="text/css" rel="stylesheet" media="all" href="./plugins/h5p/core/styles/h5p.css" />
+        <script type="text/javascript" src="./plugins/h5p/core/main.bundle.js"></script>
+        <!-- Core para o H5P -->
+
+    
         
         
     </head>
@@ -826,7 +833,16 @@
         <script type="text/javascript" src="./js/audio.js"></script>
         <!-- Script de Audio para renderização -->
 
-       
+        <script type="text/javascript">
+            const {
+              H5P
+            } = H5PStandalone;
+            new H5P(document.getElementById('h5p-container'), {
+              h5pJsonPath: './plugins/h5p/h5p-folder/MultiChoice',
+              frameJs: './plugins/h5p/core/frame.bundle.js',
+              frameCss: './plugins/h5p/core/styles/h5p.css'
+            });
+        </script>
     </body>
 
 </html>

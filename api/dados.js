@@ -2501,6 +2501,222 @@ const api = [
         }
     },
 
+    // PAGINA DE ATIVIDADES 10 
+    {
+        "pagina": 10,
+        "nome_page": `Atividade`,
+        "tipo": "Atividade",
+        "id_page": ".content-render-api",
+        "id_component": ".c-carousel__slides",
+        "id_elemento_para_modificar": "container-atividade",
+        "data": {
+            "container_render": `
+                <div class="pagina-tipo-atividade animation">
+
+                    <div id="h5p-container"></div>
+
+                </div>
+        `,
+        },
+        "forcarAtualizacao": {
+            "variaveis": [
+                {
+                    "Nome": "--animacao-sidebar",
+                    "Entrada": "none",
+                    "Saida": "slideDown 2s forwards"
+                }
+            ]
+        },
+        "paramentros": {
+            // Injetar estilos na Pagina
+            "inserir_estilo_pagina": [{
+                "url": "./conf/css/pagina5.css"
+            }],
+            "inserir_escript_pagina": [{
+                "onde": "body",
+                "posicao": "",
+                "src": ""
+            }],
+            "ferramentas": [
+                {
+                    "container": "icons-action--container",
+                    "Podcast": {
+                        "ativa":false,
+                        "html": `
+                            <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-videoaula " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Videoaula">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-ferramentas " aria-label="close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ferramentas">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+                    "FullScreen": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-fullscreen " aria-label="min" data-bs-toggle="tooltip" data-bs-placement="bottom" title="FullScreen">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container": "icons-action--container-mobile",
+                    "Podcast": {
+                        "ativa": false,
+                        "html": `
+                            <button class="btn-podcast">
+                                <i data-lucide="audio-lines"></i>
+                            </button>
+                        `
+                    },
+                    "Videoaula": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-videoaula">
+                                <i data-lucide="video"></i>
+                            </button>
+                        `
+                    },
+                    "Ferramentas": {
+                        "ativa": true,
+                        "html": `
+                            <button class="btn-ferramentas" aria-label="close">
+                                <i data-lucide="pencil-ruler"></i>
+                            </button>
+                        `
+                    },
+
+                },
+                {
+                    "container": "box-tools-inline",
+                    "Resulmo": {
+                        "ativa": true,
+                        "html": `
+                            <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
+                            
+                        `
+                    },
+                    "Destacar": {
+                        "ativa": true,
+                        "html": `
+                             <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
+                        `,
+                        "acionador": `
+
+                            <div class="box-marca-cores-inline-btn" id="boxMarcaCores-inline-btn">
+                                <div class="cores-destaque-inline-btn">
+                                        <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                        <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                        <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                        <button class="toolbar-button" id="limpar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                            Limpar
+                                        </button>
+                                 </div>
+                            </div>
+
+                        `
+                    },
+                    "Notas": {
+                        "ativa": true,
+                        "html": `
+                             <button class="abrir-annotation"><i data-lucide="sticky-note"></i>Notas</button>
+                        `
+                    },
+                    "Ouvinte": {
+                        "ativa": true,
+                        "html": `
+                             <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
+                        `
+                    },
+                    "Download": {
+                        "ativa": true,
+                        "html": `
+                            <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
+                        `
+                    },
+                    "Dicionario": {
+                        "ativa": true,
+                        "html": `
+                             <button class="abrir-dicionario"><i data-lucide="search"></i>Dicionario</button>
+                        `
+                    },
+                    "close": {
+                        "ativa": true,
+                        "html": `
+                              <button><i data-lucide="x" id="close_box"></i></button>
+                        `
+                    },
+                }
+
+            ],
+            "cores": {
+                // "sidebar": "#000000",
+                // "fundo": "#011C41",
+                // "icones": "white",
+                // Cores de icones Especificas
+                // "iconesEspecificos":{
+                //     ".openAnnotation":{
+                //         "cor":"white",
+                //     }  
+                // }
+            },
+
+            "configuracoes_gerais": {},
+            "fonte": {
+                // "titulo":"1rem",
+                "paragrafos": "1rem",
+                // "font_familly":"Lato",
+                // "cor_fonte":"black",
+                "alinhamento_texto": "justify",
+                "hifens": "auto"
+            },
+            "logo": {
+                "ativar": true,
+                "img": "url(../assets/logobranca.png)",
+                "posicaoY": "bottom 1.8%",
+                "posicaoX": "left 0.5%",
+                "tamanho": "10%",
+            },
+            // Animação para Texto API
+            // "animacao_texto": [{
+            //     "indice": "all", // 0 | all
+            //     "script_animation": `
+            //         animate__animated animate__fadeInDown animate__slow
+            //     `
+            // }],
+            // Animação pra toda Página
+            "animacao_elemento": [{
+                "elemento": ".animation", // 0 | all
+                "script_animation": `
+                animate__animated animate__fadeInDown animate__slow
+            `
+            }],
+            "modulos": [
+                {
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".transcritor--box-audio"
+                    }
+                }
+            ]
+        }
+    },
     
     
 
