@@ -33,6 +33,19 @@ const glider = new Glider(gliderElement, {
     dots: '#dots'
 });
 
+// Obtém os botões de navegação
+const nextButton = document.querySelector('.glider-next');
+const prevButton = document.querySelector('.glider-prev');
+
+// Adiciona ouvintes de eventos
+// nextButton.addEventListener('click', (event) => {
+//     console.log(event)
+// });
+
+// prevButton.addEventListener('click', (event) => {
+//     console.log(event)
+// });
+
 // // Recupera e define a posição salva ao inicializar
 // const savedPosition = getSavedSliderPosition();
 // glider.scrollItem(savedPosition);
@@ -80,6 +93,7 @@ function hideLoading() {
 
 
 
+
 //Executar para rolar para o slider que está salvo
 
 // recalculando o Layout com base no visibility dele
@@ -98,14 +112,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     glider.scrollItem(savedPosition);
 
-
     //verificar se esse item já tá visivel 
     /*
         item Ativo ->
                     -- não <> sim --
                     |              |
         Show Loading   <-     -> Hide Loading 
-
     */
     gliderElement.addEventListener("glider-slide-visible", (event) => {
 
@@ -119,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
 
     });
+    
 
 });
 
@@ -184,9 +197,17 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
 
 //=================
 // Esconder Loading
-gliderElement.addEventListener('glider-slide-visible', function (event) {
-    showLoading(event.timeStamp);
-    // console.log()
+gliderElement.addEventListener("glider-slide-visible", (event) => {
+
+    // console.log(event.detail.slide)
+    // showLoading(event.timeStamp);
+
+    // // Mostrar o loading antes de iniciar a mudança de slide
+    gliderElement.addEventListener('glider-slide-hidden', function (event) {
+        showLoading(event.timeStamp);
+        // console.log()
+    });
+
 });
 hideLoading()
 //=================
@@ -579,7 +600,7 @@ function handleSearch() {
 // }
 // ------------------ Versão ( 01 ) -----------------
 
-//
+
 function modificarFontes(slideIndex) {
     const pageData = api[slideIndex];
 
@@ -1379,43 +1400,82 @@ function injectScriptPage(slideIndex) {
     }
 }
 
-// Força Atualição
+// // Força Atualição
+// function AnimationVariablesUpPage(slideIndex) {
+//     const pageData = api[slideIndex];
+
+//     if (pageData && pageData.paramentros && pageData.forcarAtualizacao) {
+//         const variaveis = pageData.forcarAtualizacao.variaveis || [];
+//         aplicarReflowVariaveis(variaveis);
+//     } else {
+//         // Atualiza o controle do glider se estiver definido
+//         if (typeof glider !== 'undefined') {
+//             glider.refresh(true);
+//             glider.updateControls();
+//         } else {
+//             console.error('O objeto glider não está definido.');
+//         }
+
+//         // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
+//         const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
+//         aplicarReflowVariaveis(variaveis);
+//     }
+// }
+
+// // Função para aplicar o reflow e atualizar as variáveis de animação
+// function aplicarReflowVariaveis(variaveis) {
+//     variaveis.forEach(variable => {
+//         // Define o valor de 'Entrada' antes do reflow
+//         document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
+//     });
+
+//     // Força o reflow
+//     void document.documentElement.offsetWidth;
+
+//     variaveis.forEach(variable => {
+//         // Define o valor de 'Saida' após o reflow
+//         document.documentElement.style.setProperty(variable.Nome, variable.Saida);
+//     });
+// }
+
+// Função para forçar atualização das variáveis de animação
 function AnimationVariablesUpPage(slideIndex) {
     const pageData = api[slideIndex];
+    const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
 
-    if (pageData && pageData.paramentros && pageData.forcarAtualizacao) {
-        const variaveis = pageData.forcarAtualizacao.variaveis || [];
-        aplicarReflowVariaveis(variaveis);
+    // Atualiza o controle do glider se estiver definido
+    if (typeof glider !== 'undefined') {
+        
+        glider.refresh(true);
+        glider.updateControls();
     } else {
-        // Atualiza o controle do glider se estiver definido
-        if (typeof glider !== 'undefined') {
-            glider.refresh(true);
-            glider.updateControls();
-        } else {
-            console.error('O objeto glider não está definido.');
-        }
+        console.error('O objeto glider não está definido.');
+    }
 
-        // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
-        const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
+    // Se houver variáveis para atualizar, aplica o reflow
+    if (variaveis.length > 0) {
         aplicarReflowVariaveis(variaveis);
     }
 }
 
 // Função para aplicar o reflow e atualizar as variáveis de animação
 function aplicarReflowVariaveis(variaveis) {
+    // Define os valores de 'Entrada' e forçam o reflow
+
+    
     variaveis.forEach(variable => {
-        // Define o valor de 'Entrada' antes do reflow
         document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
     });
 
     // Força o reflow
     void document.documentElement.offsetWidth;
 
+    // Define os valores de 'Saida' após o reflow
     variaveis.forEach(variable => {
-        // Define o valor de 'Saida' após o reflow
         document.documentElement.style.setProperty(variable.Nome, variable.Saida);
     });
 }
+
 
 // Função para injetar Estilo na página
 function injectEstiloRender(slideIndex) {
