@@ -121,13 +121,7 @@
     .h5p-answers ul {
         flex: 1 1 100%;
     }
-    #h5p-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 90%;
-        height:100%;
-    }
+  
 }
 
 @media screen and (max-width: 600px) {}
