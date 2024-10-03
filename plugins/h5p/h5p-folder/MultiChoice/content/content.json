@@ -2,7 +2,7 @@
     "answers": [
         {
             "correct": false,
-            "text": "<div>I<\/div>\n",
+            "text": "<div>Lançar o aplicativo conforme o cronograma e planejar uma atualização futura para corrigir os problemas de usabilidade identificados. <\/div>\n",
             "tipsAndFeedback": {
                 "tip": "",
                 "chosenFeedback": "",
@@ -16,7 +16,7 @@
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>II<\/div>\n"
+            "text": "<div>Organizar uma reunião com a equipe de desenvolvimento para discutir o feedback e implementar as correções necessárias com base nas prioridades definidas. <\/div>\n"
         },
 
         {
@@ -26,7 +26,7 @@
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>III<\/div>\n"
+            "text": "<div>Aumentar o orçamento do projeto para contratar uma equipe externa especializada em usabilidade para corrigir os problemas rapidamente. <\/div>\n"
         },
         {
             "correct": false,
@@ -35,7 +35,7 @@
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>I e II<\/div>\n"
+            "text": "<div>Solicitar aos usuários de teste que continuem usando o aplicativo e enviar uma pesquisa para coletar mais feedback antes de tomar qualquer ação. <\/div>\n"
         }
         ,  {
             "correct": false,
@@ -44,7 +44,7 @@
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>I,II e III<\/div>\n"
+            "text": "<div>Revisar o cronograma do projeto para estender a fase de testes e realizar uma nova rodada de testes com os problemas corrigidos antes do lançamento final. <\/div>\n"
         }
     ],
     "UI": {
@@ -65,7 +65,7 @@
         "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
         "a11yRetry": "Retry the task. Reset all responses and start the task over again."
     },
-    "question": "<p> <img src='../../../../../plugins/h5p/h5p-folder/imagens/atividade.png'> <\/p>\n",
+    "question": "<p>Uma engenheira de produção está gerenciando um projeto para desenvolver um novo aplicativo móvel para uma empresa de turismo. Após a conclusão da fase de desenvolvimento, o aplicativo está pronto para ser testado por um grupo seleto de usuários antes do lançamento final. Durante o período de testes, a engenheira recebe feedback de que o aplicativo possui vários problemas de usabilidade que não foram identificados anteriormente. Qual das seguintes ações é a mais adequada para a engenheira tomar para garantir que os problemas de usabilidade sejam resolvidos antes do lançamento oficial?<\/p>\n",
     "behaviour": {
         "enableRetry": true,
         "enableSolutionsButton": true,

@@ -107,6 +107,10 @@
   text-align: justify;
   hyphens: auto;
   height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:start;
+  align-items: center;
 }
 
 

@@ -1,16 +1,59 @@
 @import url(./variaveis.css);
 
 
-.pagina-tipo-atividade{
+.pagina-tipo-atividade {
     width: 100%;
     height: 100%;
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column; */
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
-.texo-intro-atividade{
+
+/* Chrome, Edge and Safari */
+.pagina-tipo-atividade::-webkit-scrollbar {
+    width: 8px;
+    min-height: min-content;
+    padding-left: 1rem;
+    /* background-color: red; */
+    height: 100%;
+    overflow: auto;
+    display: none;
+    /* display: none; */
+
+}
+
+.pagina-tipo-atividade::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #00000000;
+}
+
+.pagina-tipo-atividade::-webkit-scrollbar-track:hover {
+    background-color: #00000000;
+}
+
+.pagina-tipo-atividade::-webkit-scrollbar-track:active {
+    background-color: #b8b8c2;
+}
+
+.pagina-tipo-atividade::-webkit-scrollbar-thumb {
+    border-radius: 17px;
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.pagina-tipo-atividade::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.pagina-tipo-atividade::-webkit-scrollbar-thumb:active {
+    background-color: #a3470000;
+}
+
+
+.texo-intro-atividade {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,14 +67,14 @@
 }
 
 
-#h5p-container{
+#h5p-container {
     /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; */
     width: 100%;
     /* background-color: aqua; */
-    
+
 }
 
 
@@ -40,18 +83,22 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Espaçamento entre as colunas */
+    gap: 10px;
+    /* Espaçamento entre as colunas */
 }
 
 .h5p-answers ul {
-    flex: 1 1 30%; /* Em telas grandes, cada coluna ocupa cerca de 30% da largura */
-    min-width: 150px; /* Define a largura mínima das colunas */
+    flex: 1 1 30%;
+    /* Em telas grandes, cada coluna ocupa cerca de 30% da largura */
+    min-width: 150px;
+    /* Define a largura mínima das colunas */
     padding: 0;
     list-style-type: none;
 }
 
 .h5p-answers li {
-    width: 100%; /* Ocupa 100% da largura da coluna */
+    width: 100%;
+    /* Ocupa 100% da largura da coluna */
     box-sizing: border-box;
     padding: 10px;
 }
@@ -59,6 +106,7 @@
 /* Ajuste para telas menores */
 @media screen and (max-width: 768px) {
     .h5p-answers ul {
-        flex: 1 1 100%; /* Em telas menores, cada coluna ocupa 100% da largura */
+        flex: 1 1 100%;
+        /* Em telas menores, cada coluna ocupa 100% da largura */
     }
 }
