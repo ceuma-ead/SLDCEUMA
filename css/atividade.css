@@ -10,8 +10,11 @@
 }
 
 #h5p-container{
+    display: flex;
     width: 90%;
     height: 90%;
+    flex-direction: column;
+    justify-content: center;
 
 }
 

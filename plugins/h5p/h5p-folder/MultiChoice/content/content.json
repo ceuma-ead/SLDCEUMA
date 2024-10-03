@@ -1,8 +1,8 @@
 {
     "answers": [
         {
-            "correct": true,
-            "text": "<div>Yes<\/div>\n",
+            "correct": false,
+            "text": "<div>Opção 1<\/div>\n",
             "tipsAndFeedback": {
                 "tip": "",
                 "chosenFeedback": "",
@@ -10,26 +10,36 @@
             }
         },
         {
+            "correct": true,
+            "tipsAndFeedback": {
+                "tip": "",
+                "chosenFeedback": "",
+                "notChosenFeedback": ""
+            },
+            "text": "<div>Opção 2<\/div>\n"
+        },
+
+        {
             "correct": false,
             "tipsAndFeedback": {
                 "tip": "",
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>No<\/div>\n"
+            "text": "<div>Opção 3<\/div>\n"
         }
     ],
     "UI": {
-        "showSolutionButton": "Show solution",
-        "tryAgainButton": "Retry",
-        "checkAnswerButton": "Check",
+        "showSolutionButton": "Mostrar resposta",
+        "tryAgainButton": "Tentar novamente",
+        "checkAnswerButton": "Conferir",
         "tipsLabel": "Show tip",
-        "scoreBarLabel": "You got :num out of :total points",
+        "scoreBarLabel": "Você obteve :num de :total pontos",
         "tipAvailable": "Tip available",
         "feedbackAvailable": "Feedback available",
         "readFeedback": "Read feedback",
-        "wrongAnswer": "Wrong answer",
-        "correctAnswer": "Correct answer",
+        "wrongAnswer": "Resposta errada",
+        "correctAnswer": "Resposta correta",
         "shouldCheck": "Should have been checked",
         "shouldNotCheck": "Should not have been checked",
         "noInput": "Please answer before viewing the solution",
@@ -71,12 +81,12 @@
         {
             "from": 0,
             "to": 0,
-            "feedback": "Don&#039;t worry! You can do it!"
+            "feedback": "Não se preocupe! Você consegue!"
         },
         {
             "from": 0,
             "to": 100,
-            "feedback": "Congratulations!"
+            "feedback": "Parabéns!"
         }
     ]
 }
