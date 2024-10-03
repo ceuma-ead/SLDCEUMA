@@ -128,6 +128,7 @@
 
 /* The numeric part on the end (score / maxScore) */
 .h5p-joubelui-score-numeric {
+  display:none;
   margin: 0em 0.4em;
   font-size: 1.333em;
   line-height: 0.7;
