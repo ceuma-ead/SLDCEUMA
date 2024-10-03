@@ -506,7 +506,7 @@ a:hover {
     -webkit-user-drag: none;
 }
 
-.highlight {
+.highlight-text-annotation {
     background-color: #000000;
     /* Fundo preto */
     color: #ffffff;

@@ -492,6 +492,7 @@ const responsivo = [
     }
 ];
 
+// Função para aplicar variantes CSS dinamicamente
 function aplicarVariantes(variantes, media) {
     // Verificar se a condição da media query é verdadeira
     if (window.matchMedia(media).matches) {
@@ -521,36 +522,60 @@ function aplicarVariantes(variantes, media) {
     }
 }
 
+// Função para processar as configurações responsivas da página
 function responsivePage(slideIndex){
     const pageData = api[slideIndex];
 
     // Página para Exibir Estilos
     const idPage = pageData.pagina;
     
+    // Remove os estilos anteriores antes de aplicar novos
+    removerEstilosAnteriores();
+
     // Verificar se é para todas as páginas ou uma página específica
     responsivo.forEach(config => {
         // Se for "All", aplica para todas as páginas
         if (config.Tipo === "All") {
             aplicarVariantes(config.variantes, config.media);
-            adicionarEstilos(config.media, config.synchronous);
+            adicionarEstilos(config.media, config.synchronous, slideIndex);
         } 
         // Senão, aplica apenas para a página especificada
         else if (config.Tipo === idPage) {
             aplicarVariantes(config.variantes, config.media);
-            adicionarEstilos(config.media, config.synchronous);
+            adicionarEstilos(config.media, config.synchronous, slideIndex);
         }
     });
 }
 
-function adicionarEstilos(media, estilos) {
-    const estilo = document.createElement('style');
-    estilo.type = 'text/css';
+// Função para adicionar estilos com base na media query
+function adicionarEstilos(media, estilos, slideIndex) {
+    // Verifica se o estilo já foi aplicado
+    const existingStyle = document.querySelector(`#style-slide-${slideIndex}`);
+    
+    if (!existingStyle) {
+        // Cria um elemento de estilo com ID único
+        const estilo = document.createElement('style');
+        estilo.type = 'text/css';
+        estilo.id = `style-slide-${slideIndex}`; // Atribui um ID ao estilo
 
-    // Adiciona os estilos na media query especificada
-    estilo.innerHTML = `@media screen and ${media} { ${estilos} }`;
+        // Adiciona os estilos na media query especificada
+        estilo.innerHTML = `@media screen and ${media} { ${estilos} }`;
 
-    document.head.appendChild(estilo);
+        document.head.appendChild(estilo);
+    }
 }
+
+// Função para remover os estilos anteriores ao mudar de slide
+function removerEstilosAnteriores() {
+    const oldStyles = document.querySelectorAll('style[id^="style-slide-"]');
+    oldStyles.forEach(style => {
+        style.remove();
+    });
+}
+
+// Chama a função responsiva para o slide atual
+responsivePage(savedPosition);
+
 
 // Chama a função responsiva para o slide atual
 responsivePage(savedPosition);

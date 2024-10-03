@@ -629,21 +629,21 @@ const api = [
                                     <div class="content">
                                         <div class="icon"></div>
 
-                                        <div class="text">Saiba identificar e interpretar as alterações hematológicas, entendendo suas causas e efeitos</div>
+                                        <p class="text"  style="--cardColorText:#000000;">Saiba identificar e interpretar as alterações hematológicas, entendendo suas causas e efeitos</p>
                                     </div>
                                 </li>
                                 <li style="--cardColor:#36aeb3"  class="box2">
                                     <div class="content">
                                         <div class="icon"></div>
                     
-                                        <div class="text">Compreenda a fisiologia e a fisiopatogenia das células-tronco, a eritropoese e a estrutura da hemoglobina</div>
+                                        <p class="text" style="--cardColorText:#000000;">Compreenda a fisiologia e a fisiopatogenia das células-tronco, a eritropoese e a estrutura da hemoglobina</p>
                                     </div>
                                 </li>
                                 <li style="--cardColor:#162d59"  class="box3">
                                     <div class="content">
                                         <div class="icon"></div>
              
-                                        <div class="text">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</div>
+                                        <p class="text" style="--cardColorText:#000000;">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</p>
                                     </div>
                                 </li>
                                 
@@ -654,16 +654,14 @@ const api = [
                              <li style="--cardColor:#f15f0e" class="box4">
                                     <div class="content">
                                         <div class="icon"></div>
-
-                                        <div class="text">Saiba avaliar e otimizar o controle de qualidade nas etapas pré-analítica, analítica e pós-analítica, com ênfase na automação em hematologia.</div>
+                                        <p class="text" style="--cardColorText:#000000;">Saiba avaliar e otimizar o controle de qualidade nas etapas pré-analítica, analítica e pós-analítica, com ênfase na automação em hematologia.</p>
                                     </div>
                                 </li>
 
                                 <li style="--cardColor:#fc374e" class="box5">
                                     <div class="content">
                                         <div class="icon"></div>
-     
-                                        <div class="text">Entenda a história da hemoterapia, as normas técnicas, a legislação vigente e as práticas de banco de sangue, além de dominar os testes pré-transfusionais e gerenciar reações transfusionais</div>
+                                        <p class="text" style="--cardColorText:#ffff;"> Entenda a história da hemoterapia, as normas técnicas, a legislação vigente e as práticas de banco de sangue, além de dominar os testes pré-transfusionais e gerenciar reações transfusionais</p>
                                     </div>
                                 </li>
                                 
@@ -913,6 +911,43 @@ const api = [
                     "audio": {
                         "ativo": true,
                         "idRef": ".pagina-tipo-texto--box-texto"
+                    },
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": "editar",
+                        "idRef": ".pagina-tipo-texto--box-texto",
+                        "blocoRenderizacao": `
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                            <button class="toolbar-button" id="limpar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                                Limpar
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                        Resumo
+                                    </button>
+                                    <button class="toolbar-button" id="destacar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                        Destacar
+                                    </button>
+                                    <button class="toolbar-button" id="dicionario-toolbar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-search"><path d="M21 6H3"/><path d="M10 12H3"/><path d="M10 18H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
+                                        Dicionário
+                                    </button>
+                                    
+                                </div>
+                            </div>
+
+                       `
                     }
                 }
             ]
@@ -2079,14 +2114,14 @@ const api = [
                 {
                     "container": "box-tools-inline",
                     "Resulmo": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                             
                         `
                     },
                     "Destacar": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                              <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
                         `,
@@ -2113,7 +2148,7 @@ const api = [
                         `
                     },
                     "Ouvinte": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                              <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
@@ -2156,18 +2191,18 @@ const api = [
 
 
             }],
-            "setas":{
+            "setas": {
                 "corSetas": "#fff",
-                "corFundo":"rgba(255, 255, 255, 0.174)"
+                "corFundo": "rgba(255, 255, 255, 0.174)"
             },
             "cores": {
                 "sidebar": "#000000",
                 "fundo": "#011C41",
                 "icones": "white",
-                "iconesEspecificos":{
-                    ".openAnnotation":{
-                        "cor":"white",
-                    }  
+                "iconesEspecificos": {
+                    ".openAnnotation": {
+                        "cor": "white",
+                    }
                 }
             },
             "configuracoes_gerais": {
@@ -2288,7 +2323,7 @@ const api = [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
-                        "ativa":false,
+                        "ativa": false,
                         "html": `
                             <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
@@ -2352,14 +2387,14 @@ const api = [
                 {
                     "container": "box-tools-inline",
                     "Resulmo": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button class="abrir-resumo"><i data-lucide="file-text"></i>Resumo</button>
                             
                         `
                     },
                     "Destacar": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                              <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
                         `,
@@ -2386,7 +2421,7 @@ const api = [
                         `
                     },
                     "Ouvinte": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                              <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
@@ -2434,15 +2469,15 @@ const api = [
                 "fundo": "#011C41",
                 "icones": "white",
                 // Cores de icones Especificas
-                "iconesEspecificos":{
-                    ".openAnnotation":{
-                        "cor":"white",
-                    }  
+                "iconesEspecificos": {
+                    ".openAnnotation": {
+                        "cor": "white",
+                    }
                 }
             },
-            "setas":{
+            "setas": {
                 "corSetas": "#fff",
-                "corFundo":"rgba(255, 255, 255, 0.174)"
+                "corFundo": "rgba(255, 255, 255, 0.174)"
             },
             "configuracoes_gerais": {
 
@@ -2512,7 +2547,11 @@ const api = [
         "data": {
             "container_render": `
                 <div class="pagina-tipo-atividade animation">
-
+                    <!--
+                    <p class="texo-intro-atividade">
+                        A frase em latim “Ex Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, significa “da África sempre há novidades a reportar”. A partir dessa ideia, o curador alemão Alfons Hug montou a exposição “Ex Africa”, que conta com 18 artistas de oito países africanos e dois artistas brasileiros. A ideia da mostra é retratar a produção artística africana sem estereótipos aos quais estamos acostumados, como objetos de artesanato e referencias iconográficas. Disponível em: https://www1.folha.uol.com.br/ilustrada/2018. Acesso em: 12 jul. 2018 (adaptado).
+                    </p>
+                    -->
                     <div id="h5p-container"></div>
 
                 </div>
@@ -2532,16 +2571,18 @@ const api = [
             "inserir_estilo_pagina": [{
                 "url": "./conf/css/pagina5.css"
             }],
-            "inserir_escript_pagina": [{
-                "onde": "body",
-                "posicao": "",
-                "src": ""
-            }],
+            "inserir_escript_pagina": [
+                {
+                    "onde": "body",
+                    "posicao": "beforeend",
+                    "src": "./conf/js/atividade.js"
+                }
+            ],
             "ferramentas": [
                 {
                     "container": "icons-action--container",
                     "Podcast": {
-                        "ativa":false,
+                        "ativa": true,
                         "html": `
                             <button class="btn-podcast " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast">
                                 <i data-lucide="audio-lines"></i>
@@ -2612,7 +2653,7 @@ const api = [
                         `
                     },
                     "Destacar": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                              <button class="acionador abrir-destacar"><i data-lucide="pencil"></i>Destacar</button>
                         `,
@@ -2639,13 +2680,13 @@ const api = [
                         `
                     },
                     "Ouvinte": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                              <button class="btn-ouvinte" data-bs-toggle="modal" data-bs-target="#modal-ouvinte"><i data-lucide="ear"></i>Ouvinte</button>
                         `
                     },
                     "Download": {
-                        "ativa": true,
+                        "ativa": false,
                         "html": `
                             <button pdf-data="../pdf/unidade-01.pdf"  class="baixar-pdf" ><i data-lucide="download"></i>Download</button>
                         `
@@ -2676,7 +2717,6 @@ const api = [
                 //     }  
                 // }
             },
-
             "configuracoes_gerais": {},
             "fonte": {
                 // "titulo":"1rem",
@@ -2717,8 +2757,11 @@ const api = [
             ]
         }
     },
-    
-    
+
+
+
+
+
 
 
 ];

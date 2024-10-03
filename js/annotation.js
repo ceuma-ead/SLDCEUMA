@@ -581,10 +581,13 @@ function downloadAnnotation(annotationItem) {
     document.body.removeChild(element); // Remove do DOM
 }
 
-const comandos = [{
-    _acionador: ":clear",
-    funcao: limparAnotacoes
-}];
+const comandos = [
+    {
+        _acionador: ":clear",
+        funcao: limparAnotacoes
+    }
+
+];
 
 // Funções para os comandos
 function limparAnotacoes() {
@@ -634,7 +637,7 @@ function filterAnnotations(searchTerm) {
     annotations.forEach(annotation => {
         const textElement = annotation.querySelector('p');
         if (textElement) {
-            textElement.innerHTML = textElement.innerHTML.replace(/<\/?span class="highlight">/g, '');
+            textElement.innerHTML = textElement.innerHTML.replace(/<\/?span class="highlight-text-annotation">/g, '');
         }
     });
 
@@ -654,7 +657,7 @@ function filterAnnotations(searchTerm) {
                     if (textElement.textContent.toLowerCase().includes(keyword)) {
                         matched = true;
                         const regex = new RegExp(`(${keyword})`, 'gi');
-                        highlightedHTML = highlightedHTML.replace(regex, '<span class="highlight">$1</span>');
+                        highlightedHTML = highlightedHTML.replace(regex, '<span class="highlight-text-annotation">$1</span>');
                     }
                 });
 
@@ -740,13 +743,13 @@ function onSearchButtonClick(event) {
 }
 
 // // Adiciona o evento de clique no botão de pesquisa
-// document.querySelector('#searchButton').addEventListener('click', onSearchButtonClick);
+document.querySelector('#searchButton').addEventListener('click', onSearchButtonClick);
 
-// // Adiciona evento para o campo de pesquisa para filtragem em tempo real
-// document.querySelector('#searchInput').addEventListener('input', function () {
-//     const searchTerm = this.value;
-//     filterAnnotations(searchTerm);
-// });
+// Adiciona evento para o campo de pesquisa para filtragem em tempo real
+document.querySelector('#searchInput').addEventListener('input', function () {
+    const searchTerm = this.value;
+    filterAnnotations(searchTerm);
+});
 
 // Carrega as anotações existentes do banco de dados e as renderiza
 annotation.find({}, function (results) {

@@ -70,6 +70,10 @@
 
 }
 
+
+.text{
+  color:var(--cardColorText) !important;
+}
 .olcards li .content .text {
   text-align: justify;
   font-size: var(--font-para-paragrafos);
@@ -139,8 +143,8 @@
 
 .message-box-success {
   background-color: #DDF3D5;
-  border: #9ddc86 2px solid;
-  color: #597151;
+  border: #9ddc86 2px solid ;
+  color: #597151 ;
 }
 
 /* Estilos para dispositivos móveis */

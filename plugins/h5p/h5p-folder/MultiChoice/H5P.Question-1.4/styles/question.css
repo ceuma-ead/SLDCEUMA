@@ -1,3 +1,5 @@
+@import url(../../../../../../css/variaveis.css);
+
 .h5p-question {
   /* background: rgba(255, 255, 255, 0.9); */
   position: relative;
@@ -94,15 +96,65 @@
 }
 
 .h5p-question-introduction {
-  margin: 1em;
-  font-size: 1.125em;
-  line-height: 1;
+  /* font-size: 1.125em; */
+  /* line-height: 1; */
+  /* width: 100%; */
+  overflow: hidden;
+  overflow-y: scroll;
+  border: 2px solid var(--cor-geral-fundo-e-componentes);
+  border-radius:0.3rem;
+  padding:0.5rem;
+  text-align: justify;
+  hyphens: auto;
+  height: 7rem;
+}
+
+
+
+/* Chrome, Edge and Safari */
+.h5p-question-introduction::-webkit-scrollbar {
+  width: 8px;
+  min-height: min-content;
+  padding-left: 1rem;
+  /* background-color: red; */
+  height: 100%;
+  overflow: auto;
+  display: none;
+  /* display: none; */
+
+}
+
+.h5p-question-introduction::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background-color: #00000000;
+}
+
+.h5p-question-introduction::-webkit-scrollbar-track:hover {
+  background-color: #00000000;
+}
+
+.h5p-question-introduction::-webkit-scrollbar-track:active {
+  background-color: #b8b8c2;
+}
+
+.h5p-question-introduction::-webkit-scrollbar-thumb {
+  border-radius: 17px;
+  background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.h5p-question-introduction::-webkit-scrollbar-thumb:hover {
+  background-color: var(--cor-geral-fundo-e-componentes);
+}
+
+.h5p-question-introduction::-webkit-scrollbar-thumb:active {
+  background-color: #a3470000;
 }
 
 .h5p-question-introduction > p {
   font-size: inherit;
   line-height: inherit;
-  margin: 0;
+  margin: 0;  
+  background-color: red;
 }
 
 .h5p-question-content {
@@ -225,13 +277,13 @@
 
 /* CP specific styles */
 .h5p-course-presentation .h5p-question-introduction {
-  font-size: 1.125em;
-  line-height: 1.125em;
+  /* font-size: 1.125em;
+  line-height: 1.125em; */
 }
 
 .h5p-course-presentation .h5p-question-introduction > p {
-  font-size: 1em;
-  line-height: 1em;
+  /* font-size: 1em;
+  line-height: 1em; */
   margin: 0;
 }
 .h5p-question .h5p-hidden-read {

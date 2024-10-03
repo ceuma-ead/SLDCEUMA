@@ -1358,17 +1358,23 @@ function atualizarCoresdaNavegacao(slideIndex) {
 function injectScriptPage(slideIndex) {
     const pageData = api[slideIndex];
 
+    // Remove scripts antigos antes de adicionar novos
+    removeScriptsAnteriores();
+
     // Verifica se existe a chave "inserir_escript_pagina" na estrutura de parâmetros
     if (pageData && pageData.paramentros && pageData.paramentros.inserir_escript_pagina) {
         const scripts = pageData.paramentros.inserir_escript_pagina;
 
-        scripts.forEach(scriptItem => {
+        scripts.forEach((scriptItem, index) => {
             // Verifica se o script já existe na página
             const existingScript = document.querySelector(`script[src="${scriptItem.src}"]`);
             if (!existingScript) {
                 // Cria um elemento de script
                 const scriptElement = document.createElement('script');
                 scriptElement.src = scriptItem.src;
+
+                // Atribui um ID único ao script
+                scriptElement.id = `slide-script-${slideIndex}-${index}`;
 
                 // Verifica a posição do script (head, body, etc.)
                 let parentElement;
@@ -1392,10 +1398,19 @@ function injectScriptPage(slideIndex) {
             }
         });
     } else {
+        
         // Atualiza o controle do glider caso não haja scripts
         glider.refresh(true);
         glider.updateControls();
     }
+}
+
+// Função para remover scripts antigos ao navegar para outro slide
+function removeScriptsAnteriores() {
+    const oldScripts = document.querySelectorAll('script[id^="slide-script-"]');
+    oldScripts.forEach(script => {
+        script.remove();
+    });
 }
 
 // // Força Atualição
@@ -1474,35 +1489,45 @@ function aplicarReflowVariaveis(variaveis) {
     });
 }
 
-
 // Função para injetar Estilo na página
 function injectEstiloRender(slideIndex) {
     const pageData = api[slideIndex];
 
+    // Remove links antigos antes de adicionar novos
+    removeEstilosAnteriores();
+
     // Verifica se as URLs de estilos existem na estrutura de parâmetros
     if (pageData && pageData.paramentros && pageData.paramentros.inserir_estilo_pagina) {
         const urls = pageData.paramentros.inserir_estilo_pagina;
-        // console.log(urls )
-        urls.forEach(styleObj => {
+
+        urls.forEach((styleObj, index) => {
             if (styleObj.url) {
                 // Cria um novo elemento <link> para o estilo
                 const linkElement = document.createElement('link');
                 linkElement.rel = 'stylesheet';
                 linkElement.href = styleObj.url;
-                linkElement.type = "text/css"
-                // console.log(linkElement)
+                linkElement.type = "text/css";
+
+                // Atribui um ID único para o link
+                linkElement.id = `slide-style-${slideIndex}-${index}`;
 
                 // Adiciona o <link> ao head do documento
                 document.head.appendChild(linkElement);
-
             }
         });
-
     } else {
         // Atualiza o controle do glider caso não haja estilos para injetar
         glider.refresh(true);
         glider.updateControls();
     }
+}
+
+// Função para remover estilos anteriores ao navegar para outro slide
+function removeEstilosAnteriores() {
+    const oldLinks = document.querySelectorAll('link[id^="slide-style-"]');
+    oldLinks.forEach(link => {
+        link.remove();
+    });
 }
 
 // Função para definir um cookie com expiração em minutos

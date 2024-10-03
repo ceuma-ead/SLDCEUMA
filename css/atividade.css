@@ -7,14 +7,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-#h5p-container{
+.texo-intro-atividade{
     display: flex;
-    width: 90%;
-    height: 90%;
     flex-direction: column;
     justify-content: center;
+    width: 90%;
+    /* background-color: aqua; */
+    font-size: var(--font-para-paragrafos);
+    text-align: var(--alinhamento-do-texto-paragrafo);
+    hyphens: var(--hifens-da-fonte-paragrafo);
+    font-family: var(--familia-da-font-paragrafo);
 
 }
 
+
+#h5p-container{
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    width: 100%;
+    /* background-color: aqua; */
+    
+}
+
+
+
+.h5p-answers {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaçamento entre as colunas */
+}
+
+.h5p-answers ul {
+    flex: 1 1 30%; /* Em telas grandes, cada coluna ocupa cerca de 30% da largura */
+    min-width: 150px; /* Define a largura mínima das colunas */
+    padding: 0;
+    list-style-type: none;
+}
+
+.h5p-answers li {
+    width: 100%; /* Ocupa 100% da largura da coluna */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Ajuste para telas menores */
+@media screen and (max-width: 768px) {
+    .h5p-answers ul {
+        flex: 1 1 100%; /* Em telas menores, cada coluna ocupa 100% da largura */
+    }
+}

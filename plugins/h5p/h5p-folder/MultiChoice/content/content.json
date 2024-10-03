@@ -2,7 +2,7 @@
     "answers": [
         {
             "correct": false,
-            "text": "<div>Opção 1<\/div>\n",
+            "text": "<div>I<\/div>\n",
             "tipsAndFeedback": {
                 "tip": "",
                 "chosenFeedback": "",
@@ -16,7 +16,7 @@
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>Opção 2<\/div>\n"
+            "text": "<div>II<\/div>\n"
         },
 
         {
@@ -26,7 +26,25 @@
                 "chosenFeedback": "",
                 "notChosenFeedback": ""
             },
-            "text": "<div>Opção 3<\/div>\n"
+            "text": "<div>III<\/div>\n"
+        },
+        {
+            "correct": false,
+            "tipsAndFeedback": {
+                "tip": "",
+                "chosenFeedback": "",
+                "notChosenFeedback": ""
+            },
+            "text": "<div>I e II<\/div>\n"
+        }
+        ,  {
+            "correct": false,
+            "tipsAndFeedback": {
+                "tip": "",
+                "chosenFeedback": "",
+                "notChosenFeedback": ""
+            },
+            "text": "<div>I,II e III<\/div>\n"
         }
     ],
     "UI": {
@@ -47,7 +65,7 @@
         "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
         "a11yRetry": "Retry the task. Reset all responses and start the task over again."
     },
-    "question": "<p>Have you successfully hosted your H5P module on H5P Standalone?<\/p>\n",
+    "question": "<p> <img src='../../../../../plugins/h5p/h5p-folder/imagens/atividade.png'> <\/p>\n",
     "behaviour": {
         "enableRetry": true,
         "enableSolutionsButton": true,
@@ -57,7 +75,7 @@
         "type": "auto",
         "confirmCheckDialog": false,
         "confirmRetryDialog": false,
-        "autoCheck": false,
+        "autoCheck": true,
         "passPercentage": 100,
         "showScorePoints": true,
         "enableCheckButton": true
