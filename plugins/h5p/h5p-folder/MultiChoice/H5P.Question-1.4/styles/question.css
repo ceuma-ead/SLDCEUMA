@@ -101,16 +101,16 @@
   /* width: 100%; */
   overflow: hidden;
   overflow-y: scroll;
-  border: 2px solid var(--cor-geral-fundo-e-componentes);
+  /* border: 2px solid var(--cor-geral-fundo-e-componentes); */
   border-radius:0.3rem;
-  padding:0.5rem;
+  /* padding:0.5rem; */
   text-align: justify;
   hyphens: auto;
-  height: 7rem;
-  display: flex;
+  max-height: 7rem;
+  /* display: flex;
   flex-direction: column;
   justify-content:start;
-  align-items: center;
+  align-items: center; */
 }
 
 

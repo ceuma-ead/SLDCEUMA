@@ -4,13 +4,14 @@
 .pagina-tipo-atividade {
     width: 100%;
     height: 100%;
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column; */
+    justify-content: start;
+    flex-direction: column;
     overflow: hidden;
     overflow-y: scroll;
-    padding: 1rem 0;
+
+
 }
 
 
@@ -24,6 +25,7 @@
     overflow: auto;
     display: none;
     /* display: none; */
+    
 
 }
 
@@ -59,6 +61,7 @@
     flex-direction: column;
     justify-content: center;
     width: 90%;
+    
     /* background-color: aqua; */
     font-size: var(--font-para-paragrafos);
     text-align: var(--alinhamento-do-texto-paragrafo);
@@ -69,13 +72,9 @@
 
 
 #h5p-container {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-    width: 100%;
-    /* background-color: aqua; */
-
+  
+    width: 90%;
+    height:100%;
 }
 
 
@@ -85,6 +84,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    
     /* Espaçamento entre as colunas */
 }
 
@@ -104,10 +104,34 @@
     padding: 10px;
 }
 
-/* Ajuste para telas menores */
+
+
+@media screen and (max-width: 1366px) {}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 992px) {}
+
 @media screen and (max-width: 768px) {
+
+    .pagina-tipo-atividade::-webkit-scrollbar{
+        display: block;
+    }
+
     .h5p-answers ul {
         flex: 1 1 100%;
-        /* Em telas menores, cada coluna ocupa 100% da largura */
+    }
+    #h5p-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        height:100%;
     }
 }
+
+@media screen and (max-width: 600px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 320px) {}
