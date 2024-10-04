@@ -38,7 +38,7 @@ function processarIframeH5P() {
                 
                             // Cria um novo contêiner para organizar as colunas
                             const container = document.createElement("div");
-                            container.className = "w-100";
+                            container.className = "w-100 h-100";
                             container.style.display = "flex";
                             container.style.flexWrap = "wrap";
                             container.style.gap = "5px"; // Espaçamento entre as colunas

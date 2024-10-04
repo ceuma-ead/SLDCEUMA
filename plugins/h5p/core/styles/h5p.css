@@ -51,10 +51,11 @@ html.h5p-iframe, html.h5p-iframe > body {
   user-select: none;
 }
 html.h5p-iframe .h5p-content {
-  /* font-size: 16px; */
+  font-size: 12px;
   /* line-height: 1.5em; */
   width: 100%;
-  height: auto;
+  font-family: var(--familia-da-font-paragrafo);
+  
 }
 html.h5p-iframe .h5p-fullscreen .h5p-content,
 html.h5p-iframe .h5p-semi-fullscreen .h5p-content {
