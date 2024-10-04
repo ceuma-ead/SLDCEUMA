@@ -622,3 +622,23 @@ iframe.h5peditor-semi-fullscreen {
     transform: rotate(360deg);
   }
 }
+
+
+@media screen and (max-width: 1366px) {}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 992px) {}
+
+@media screen and (max-width: 768px) {
+  html.h5p-iframe .h5p-content {
+    font-size:1rem;
+    
+  }
+}
+
+@media screen and (max-width: 600px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 320px) {}
