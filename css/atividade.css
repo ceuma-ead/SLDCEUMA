@@ -6,12 +6,11 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content:flex-start;
     flex-direction: column;
     overflow: hidden;
     overflow-y: scroll;
-
-
+    /* background-color: red; */
 }
 
 
@@ -24,9 +23,6 @@
     height: 100%;
     overflow: auto;
     display: none;
-    /* display: none; */
-    
-
 }
 
 .pagina-tipo-atividade::-webkit-scrollbar-track {
@@ -55,32 +51,24 @@
     background-color: #a3470000;
 }
 
-
-.texo-intro-atividade {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#h5p-container{
     width: 90%;
-    
-    /* background-color: aqua; */
-    font-size: var(--font-para-paragrafos);
-    text-align: var(--alinhamento-do-texto-paragrafo);
-    hyphens: var(--hifens-da-fonte-paragrafo);
-    font-family: var(--familia-da-font-paragrafo);
-
 }
 
-
-#h5p-container {
-  
+.h5p-container {
     width: 90%;
-    height:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
 }
 
 
 
 .h5p-answers {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -113,6 +101,13 @@
 @media screen and (max-width: 992px) {}
 
 @media screen and (max-width: 768px) {
+
+    .pagina-tipo-atividade {
+      
+        justify-content:flex-start;
+       
+    }
+    
 
     .pagina-tipo-atividade::-webkit-scrollbar{
         display: block;
