@@ -7,8 +7,8 @@ div[vw] {
     max-width: 95vw;
     min-height: 40px;
     min-width: 40px;
-    right: 0;
-    top:40% !important;
+    right: 6px;
+    top:54%;
     transform: translateY(-50%);
     z-index: 2147483647 !important;
     display: none;
@@ -122,21 +122,28 @@ div[vw].left {
     display: flex;
     flex-direction: column;
     -webkit-flex-direction: column;
-    height: 315px;
+    height: 430px;
     max-width: 100%;
     min-height: 100%
 }
 
+[vp] [vp-settings] .vpw-options-container .vpw-option-content.vpw-option__position {
+    display:none !important;
+}
+
+@media screen and (max-width: 1248px){
+
+    div[vw] {
+              top:58% !important;
+    }
+
+    [vw] [vw-plugin-wrapper].active {
+        height: 335px !important;
+    }
+
 #gameContainer canvas {
     min-height: calc(0.7* 335px) !important;
-    min-width: calc(0.9* 300px);
-    height: 100%;
-    width: 100%;
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -ms-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
+    
 }
 
 [vp] [vp-settings] .vpw-options-container {
@@ -151,11 +158,22 @@ div[vw].left {
 
 [vp] [vp-settings] .vpw-screen-header span {
     Display: none !important;
-    font-weight: 600;
-    color: #363636;
-    font-size: 1em;
+    
 }
 
 [vp] [vp-settings] .vpw-screen-header {
         min-height: 34px !important;
+}
+
+[vp] [vp-settings] .vpw-options-container .vpw-option-content .vpw-position-box {
+    width: 111px !important;
+    height: 97px !important;
+    gap: 9px !important;
+    padding: 4px !important;
+    margin-top: 4px !important;
+}
+
+[vp] [vp-settings] .vpw-options-container .vpw-option-content.vpw-option__position {
+    display:none !important;
+}
 }
