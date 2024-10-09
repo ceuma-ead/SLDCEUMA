@@ -135,10 +135,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 });
 
-
-
-
-
 //Controlador de Filtragem do Sumario =================
 
 let filtroDuplicadoSumario = true
@@ -191,6 +187,7 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     renderVideo(event.detail.slide);
     // Renderizar Audio
     renderAudio(event.detail.slide);
+    
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
@@ -335,92 +332,6 @@ function adicionarLogo(slideIndex) {
     }
 }
 
-// // Função para lidar com o evento de pesquisa
-// function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
-//     const renderMenuDiv = document.querySelector('.render-menu');
-//     renderMenuDiv.innerHTML = ''; // Limpa o menu atual
-
-//     const tamanhoMaximoTexto = 25;
-//     let encontrouItem = false;
-//     let paginaEncontrada = null;
-
-//     const titulosExibidos = new Set(); // Conjunto para armazenar títulos exibidos
-
-//     api.forEach(item => {
-//         const titulo = item.nome_page;
-
-//         // Verifica se o item corresponde ao filtro de pesquisa
-//         if (
-//             filtro === '' ||
-//             titulo.toLowerCase().includes(filtro.toLowerCase()) ||
-//             `#${item.pagina}` === filtro ||
-//             item.pagina.toString() === filtro
-//         ) {
-//             // Se ocultarDuplicados estiver habilitado e o título já foi exibido, pula para o próximo item
-//             if (ocultarDuplicados && titulosExibidos.has(titulo)) {
-//                 return;
-//             }
-
-//             encontrouItem = true;
-//             paginaEncontrada = item.pagina;
-//             titulosExibidos.add(titulo); // Adiciona o título ao conjunto
-
-//             const textoReduzido = reduzirTexto(titulo, tamanhoMaximoTexto);
-
-//             const menuItem = document.createElement('a');
-//             menuItem.innerHTML = `
-//                 <span title="${titulo}">${textoReduzido}</span>
-//                 <span class="horizontal-menu-activer ${slideIndex + 1 === item.pagina ? "active-menu" : ""}"></span>
-//             `;
-
-//             menuItem.onclick = () => {
-//                 fecharMenuSumario()
-//                 glider.scrollItem(item.pagina - 1); // Subtrai 1 para ajustar o índice
-//             }
-
-//             renderMenuDiv.appendChild(menuItem);
-//         }
-//     });
-
-//     if (!encontrouItem) {
-//         const menuItemErro = document.createElement('div');
-//         menuItemErro.className = `erro-notfound-menu`;
-//         menuItemErro.innerHTML = `
-//             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
-//             <p style="color:#000;">Erro: Nenhum item encontrado para "${filtro}"</p>
-//         `;
-//         renderMenuDiv.appendChild(menuItemErro);
-//     }
-
-//     return paginaEncontrada;
-// }
-
-// // itemnsMenu('', 1, true); // Oculta itens duplicados
-// // itemnsMenu('', 1, false); // Exibe todos os itens, mesmo que duplicados
-
-// function handleSearch() {
-//     const searchInput = document.querySelector('.searcListMateria input');
-//     searchInput.addEventListener('input', () => {
-//         const filtro = searchInput.value.trim();
-
-//         itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
-//     });
-
-//     // Quando clicado, ele vai para a página do item que ele encontrou...
-//     const butaoIr = document.querySelector('.searcListMateria span');
-//     butaoIr.onclick = () => {
-//         const filtro = searchInput.value.trim();
-//         const irItem = itemnsMenu(filtro, savedPosition,filtroDuplicadoSumario);
-//         // console.log(irItem); // Exibe no console o ID da página encontrada
-//         if (irItem !== null) {
-//             // Exemplo: Se quiser fazer algo com a página encontrada
-//             glider.scrollItem(irItem); // Vai para a página encontrada
-//         }
-//     };
-// }
-
-
-// ==========================================
 
 // Função para lidar com o evento de pesquisa
 function itemnsMenu(filtro = '', slideIndex, ocultarDuplicados = true) {
@@ -503,101 +414,6 @@ function handleSearch() {
         }
     };
 }
-
-// ==========================================
-
-// Função para Modificar Fonte no Slider
-// ------------------ Versão ( 01 ) -----------------
-// function modificarFontes(slideIndex) {
-//     const pageData = api[slideIndex];
-//     // console.log(pageData)
-
-//     // Criar um Font padrão para Página
-//     const FontPadrao = {
-//         titulo: getComputedStyle(document.documentElement).getPropertyValue('--tamanho-de-font-para-paragrafo-sidebar').trim(),
-//         paragrafos: getComputedStyle(document.documentElement).getPropertyValue('--font-para-paragrafos').trim(),
-//         font_familly: getComputedStyle(document.documentElement).getPropertyValue('--familia-da-font-paragrafo').trim(),
-//         cor_fonte: getComputedStyle(document.documentElement).getPropertyValue('--cor-da-font-paragrafo').trim(),
-//         alinhamento_texto: getComputedStyle(document.documentElement).getPropertyValue('--alinhamento-do-texto-paragrafo').trim(),
-//         hifens: getComputedStyle(document.documentElement).getPropertyValue('--hifens-da-fonte-paragrafo').trim()
-//     };
-
-//     if (pageData && pageData.paramentros && pageData.paramentros.logo) {
-//         const {
-//                 titulo = FontPadrao.titulo,
-//                 paragrafos = FontPadrao.paragrafos,
-//                 font_familly = FontPadrao.font_familly,
-//                 cor_fonte = FontPadrao.cor_fonte,
-//                 alinhamento_texto = FontPadrao.alinhamento_texto,
-//                 hifens = FontPadrao.hifens
-
-//         } = pageData.paramentros.fonte;
-
-//         // console.log(titulo)
-//         // console.log(paragrafos)
-//         // console.log(unidade_medida)
-//         // console.log(font_familly)
-//         // console.log(cor_fonte)
-
-//         // console.log(pageData.paramentros.logo)
-//         const verificarItem = pageData.paramentros.logo
-//         if (Object.values(verificarItem).length === 0) {
-
-//             document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
-//             document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
-//             document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
-//             document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
-//             document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
-
-//             return;
-//         }
-
-//         //cria um controlador de fontes para página
-//         // console.log(pageData)
-
-//         const slider_container = document.querySelector(pageData.id_component)
-//         // console.log(slider_container)
-
-//         //verificar se existe paragrafos dentro do slider
-//         // const paragrafos_slider = slider_container.querySelectorAll("p")
-//         // // console.log(paragrafos_slider)
-
-//         // paragrafos_slider.forEach((p, index) => {
-//         //     p.style.fontSize = `${paragrafos}`;
-//         //     p.style.fontFamily = `${font_familly}`;
-//         //     p.style.color = `${cor_fonte}`;
-//         //     p.style.textAlign = `${alinhamento_texto}`
-//         //     p.style.hyphens = `${hifens}`
-//         // })
-
-//         document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', titulo);
-//         document.documentElement.style.setProperty('--font-para-paragrafos', paragrafos);
-//         document.documentElement.style.setProperty('--familia-da-font-paragrafo', font_familly);
-//         document.documentElement.style.setProperty('--cor-da-font-paragrafo', cor_fonte);
-//         document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo',alinhamento_texto);
-//         document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', hifens);
-
-
-//     } else {
-
-//         if (typeof glider !== 'undefined') {
-//             glider.refresh(true);
-//             glider.updateControls();
-//         } else {
-//             console.error('O objeto glider não está definido.');
-//         }
-//         // Mantém os estilos padrão e atualiza o glider
-//         document.documentElement.style.setProperty('--tamanho-de-font-para-paragrafo-sidebar', FontPadrao.titulo);
-//         document.documentElement.style.setProperty('--font-para-paragrafos', FontPadrao.paragrafos);
-//         document.documentElement.style.setProperty('--familia-da-font-paragrafo', FontPadrao.font_familly);
-//         document.documentElement.style.setProperty('--cor-da-font-paragrafo', FontPadrao.cor_fonte);
-//         document.documentElement.style.setProperty('--alinhamento-do-texto-paragrafo', FontPadrao.cor_fonte);
-//         document.documentElement.style.setProperty('--hifens-da-fonte-paragrafo', FontPadrao.hifens);
-
-//     }
-// }
-// ------------------ Versão ( 01 ) -----------------
-
 
 function modificarFontes(slideIndex) {
     const pageData = api[slideIndex];
@@ -1413,44 +1229,6 @@ function removeScriptsAnteriores() {
     });
 }
 
-// // Força Atualição
-// function AnimationVariablesUpPage(slideIndex) {
-//     const pageData = api[slideIndex];
-
-//     if (pageData && pageData.paramentros && pageData.forcarAtualizacao) {
-//         const variaveis = pageData.forcarAtualizacao.variaveis || [];
-//         aplicarReflowVariaveis(variaveis);
-//     } else {
-//         // Atualiza o controle do glider se estiver definido
-//         if (typeof glider !== 'undefined') {
-//             glider.refresh(true);
-//             glider.updateControls();
-//         } else {
-//             console.error('O objeto glider não está definido.');
-//         }
-
-//         // Caso o `pageData` esteja indefinido ou não possua `forcarAtualizacao`, ainda tentar aplicar o reflow nas variáveis
-//         const variaveis = pageData?.forcarAtualizacao?.variaveis || [];
-//         aplicarReflowVariaveis(variaveis);
-//     }
-// }
-
-// // Função para aplicar o reflow e atualizar as variáveis de animação
-// function aplicarReflowVariaveis(variaveis) {
-//     variaveis.forEach(variable => {
-//         // Define o valor de 'Entrada' antes do reflow
-//         document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
-//     });
-
-//     // Força o reflow
-//     void document.documentElement.offsetWidth;
-
-//     variaveis.forEach(variable => {
-//         // Define o valor de 'Saida' após o reflow
-//         document.documentElement.style.setProperty(variable.Nome, variable.Saida);
-//     });
-// }
-
 // Função para forçar atualização das variáveis de animação
 function AnimationVariablesUpPage(slideIndex) {
     const pageData = api[slideIndex];
@@ -1560,59 +1338,6 @@ function deleteCookie(name) {
 // Modulos da página
 function modulosPage(slideIndex) {
     const pageData = api[slideIndex];
-
-
-
-
-    // // Requisição AJAX para pegar o arquivo JSON
-    // $.ajax({
-    //     url: "./modules/config.json",
-    //     method: "GET",
-    //     cache: false,
-    //     success: (data) => {
-    //         // console.log("Dados recebidos:", data);
-
-    //         // Sobrescrever a lista de tokens com os tokens do JSON retornado
-    //         if (data.voiceSSR && data.voiceSSR.tokens) {
-    //             tokens.length = 0; // Limpa o array atual, sem mudar a posição
-    //             data.voiceSSR.tokens.forEach(token => tokens.push(token)); // Adiciona os novos tokens
-    //         }
-
-    //         // Atualizar as informações de idiomas e vozes
-    //         if (data.voiceSSR && data.voiceSSR.config) {
-    //             Object.keys(data.voiceSSR.config).forEach(lang => {
-    //                 languages[lang] = data.voiceSSR.config[lang]; // Atualiza a lista de idiomas
-    //             });
-    //         }
-
-    //         // // Exemplo de uso dos tokens e idiomas
-    //         // console.log("Tokens dentro do success:", tokens);
-    //         // console.log("Línguas e Vozes dentro do success:", languages);
-    //     },
-    //     error: (error) => {
-    //         Swal.fire({
-    //             icon: "error",
-    //             title: `Erro Json Desativada`,
-    //             heightAuto: false,
-    //             footer: `<a href="#" onclick="">você acha que isso é um erro? @suporte</a>`
-    //         });
-    //         console.error('Erro:', error);
-    //     }
-    // });
-
-
-    // const tokens = [
-    //     "e3f17edd7b9c4d6cb3a333b278aae0e9", // Primeira chave de API
-    // ];
-
-    // // Lista de idiomas e vozes 
-    // const languages = {
-    //     'pt-br': { name: 'Português (Brasil)', voices: ['Marcia', 'Ligia', 'Yara', 'Dinis'] },
-    // };
-
-    // Declaração das variáveis (inicialmente vazias)
-
-
 
     if (pageData.paramentros && pageData.paramentros.modulos) {
         const moduloAudio = pageData.paramentros.modulos;
@@ -2406,16 +2131,14 @@ function modulosPage(slideIndex) {
         const moduloToolbar = pageData.paramentros.modulos
 
         moduloToolbar.forEach((modulo) => {
-            const toolbarRender = modulo.toolbar
+            const toolbarRenderizacao = modulo.toolbar
 
-            if (toolbarRender) {
+            if (toolbarRenderizacao) {
 
                 // pegar container de renderização
-                const containerToolbar = toolbarRender.idRef
+                const containerToolbar = toolbarRenderizacao.idRef
                 // console.log(containerToolbar)
                 const containerPage = document.querySelectorAll(containerToolbar)[slideIndex - 1];
-
-
                 if (containerPage) {
                     const classRemover = document.querySelector(".div-render-toolbar");
 
@@ -2423,438 +2146,24 @@ function modulosPage(slideIndex) {
                         $(".div-render-toolbar").html("");
                     }
                     // criar um marcador de referencia para a página
-                    containerPage.classList.add(toolbarRender.refTools);
+                    containerPage.classList.add(toolbarRenderizacao.refTools);
                     let div = document.createElement("div");
                     div.className = `div-render-toolbar`;
-                    const toolbar = toolbarRender.blocoRenderizacao;
+                    const toolbar = toolbarRenderizacao.blocoRenderizacao;
+                    // Atribuir um Atributo para ele procurar o toolbar pelos containers
+                    containerPage.setAttribute("procurar-toolbar-rfTools",toolbarRenderizacao.refTools)
+                    // console.log(containerPage)
+
 
                     div.innerHTML = `${toolbar}`
                     document.body.appendChild(div)
-
-                    let selectedRange = null;
-
-                    // Função para gerar um ID único para cada destaque
-                    function gerarIdUnico() {
-                        return 'destaque-' + Math.random().toString(36).substr(2, 9);
-                    }
-
-                    // Função para salvar o destaque no LocalStorage com metadados essenciais (incluindo cor do texto)
-                    function salvarDestaque(palavra, corFundo, corTexto, containerId, paragrafoIndex, startOffset, endOffset, parentTag, dataHora, contexto, estiloTexto) {
-                        let destaques = JSON.parse(localStorage.getItem('destaques')) || [];
-                        const idUnico = gerarIdUnico(); // Gerar ID único para o destaque
-
-                        destaques.push({
-                            id: idUnico,                 // ID único
-                            palavra: palavra,            // Palavra destacada
-                            corFundo: corFundo,          // Cor de fundo aplicada
-                            corTexto: corTexto,          // Cor do texto aplicada
-                            containerId: containerId,    // ID do contêiner
-                            paragrafoIndex: paragrafoIndex, // Índice do parágrafo dentro do contêiner
-                            startOffset: startOffset,    // Posição inicial do texto destacado
-                            endOffset: endOffset,        // Posição final do texto destacado
-                            parentTag: parentTag,        // Tag do elemento pai
-                            dataHora: dataHora,          // Data e hora do destaque
-                            estiloTexto: estiloTexto     // Estilo adicional, como negrito ou itálico
-                        });
-
-                        localStorage.setItem('destaques', JSON.stringify(destaques));
-                        console.log('Destaque salvo:', palavra, corFundo, corTexto, dataHora, contexto, estiloTexto);
-                    }
-
-                    // Função para aplicar o destaque ao texto selecionado
-                    function aplicarDestaqueSelecionado(corFundo, corTexto = 'black', estiloTexto = '') {
-                        if (selectedRange) {
-                            const isTextNode = selectedRange.startContainer.nodeType === Node.TEXT_NODE;
-
-                            if (isTextNode) {
-                                const palavraSelecionada = selectedRange.toString();
-                                const container = selectedRange.startContainer.parentElement.closest(`.${toolbarRender.refTools}`);
-                                const containerId = container.id;
-
-                                // Obter o índice do parágrafo (posição do parágrafo dentro do container)
-                                const paragrafo = selectedRange.startContainer.parentElement;
-                                const paragrafoIndex = Array.from(container.querySelectorAll('p')).indexOf(paragrafo);
-
-                                // Obter a posição inicial e final do texto selecionado
-                                const startOffset = selectedRange.startOffset;
-                                const endOffset = selectedRange.endOffset;
-
-                                // Obter a tag do elemento pai
-                                const parentTag = selectedRange.startContainer.parentNode.tagName;
-
-                                let range = selectedRange;
-                                let fragment = range.extractContents();
-
-                                // Criar um novo span com a cor de fundo e texto selecionada, além de estilo adicional
-                                let newSpan = document.createElement('span');
-                                newSpan.style.backgroundColor = corFundo;
-                                newSpan.style.color = corTexto;  // Cor do texto
-                                if (estiloTexto) {
-                                    newSpan.style.cssText += estiloTexto; // Aplica estilo adicional (negrito, itálico, etc.)
-                                }
-                                newSpan.appendChild(fragment);
-
-                                // Inserir o novo span na posição correta
-                                range.insertNode(newSpan);
-
-                                // Se o pai do novo `span` for outro `span`, deve-se garantir que ele seja aninhado
-                                if (newSpan.parentNode.tagName === 'SPAN') {
-                                    newSpan.parentNode.normalize();
-                                }
-
-                                // Dados adicionais
-                                const dataHora = new Date().toISOString();  // Data e hora do destaque
-
-                                // Salvar o destaque com as cores de fundo e texto
-                                salvarDestaque(palavraSelecionada, corFundo, corTexto, containerId, paragrafoIndex, startOffset, endOffset, parentTag, dataHora, estiloTexto);
-                            } else {
-                                alert("A seleção deve ser apenas de texto!");
-                            }
-                        }
-                    }
-
-
-                    document.addEventListener('mouseup', function (e) {
-                        const selection = window.getSelection();
-                        const textoSelecionado = selection.toString().trim();
-                        const toolbar = document.getElementById('toolbar');
-
-                        if (textoSelecionado) {
-                            const range = selection.getRangeAt(0);
-                            const startContainer = range.startContainer;
-                            const endContainer = range.endContainer;
-
-                            // Verifica se a seleção começa e termina no mesmo parágrafo
-                            const startParagrafo = startContainer.parentElement.closest('p');
-                            const endParagrafo = endContainer.parentElement.closest('p');
-
-                            if (startParagrafo && startParagrafo === endParagrafo) {
-                                // Se apenas um parágrafo foi selecionado, mostrar a toolbar
-                                const rangeBox = range.getBoundingClientRect();
-                                const toolbarHeight = toolbar.offsetHeight;
-                                const toolbarWidth = toolbar.offsetWidth;
-
-                                let topPosition = rangeBox.top - 40; // Ajuste para ficar acima da palavra
-                                let leftPosition = rangeBox.left
-
-                                // Garantir que a toolbar fique dentro da tela (horizontalmente)
-                                if (leftPosition + toolbarWidth > window.innerWidth) {
-                                    leftPosition = window.innerWidth - toolbarWidth;
-                                } else if (leftPosition < 0) {
-                                    leftPosition = 0;
-                                }
-
-                                // Ajuste da posição para cima ou abaixo, dependendo do espaço disponível
-                                if (topPosition < 0) {
-                                    topPosition = rangeBox.bottom + window.scrollY + 10; // Mostrar abaixo do texto se não houver espaço acima
-                                }
-
-                                // Aplicar as posições calculadas
-                                toolbar.style.left = `${leftPosition}px`;
-                                toolbar.style.top = `${topPosition}px`;
-                                toolbar.style.display = 'block';
-
-                                // Salvar as posições calculadas para que a toolbar não mude de posição ao abrir a caixa de cores
-                                toolbar.dataset.left = leftPosition;
-                                toolbar.dataset.top = topPosition;
-
-                                // Salvar o range selecionado para ser usado posteriormente
-                                selectedRange = selection.getRangeAt(0);
-                            } else {
-                                // Se mais de um parágrafo foi selecionado, esconder a toolbar
-                                toolbar.style.display = 'none';
-                                selectedRange = null; // Limpar o range salvo
-                            }
-                        }
-                    });
-
-
-                    function fecharBoxCores() {
-                        document.getElementById('boxMarcaCores').style.display = 'none';
-                    }
-
-                    // Ocultar toolbar ao clicar fora dela
-                    document.addEventListener('mousedown', function (e) {
-                        if (!document.getElementById('toolbar').contains(e.target)) {
-                            document.getElementById('toolbar').style.display = 'none';
-                            document.getElementById('boxMarcaCores').style.display = 'none';
-                        }
-                    });
-
-                    // Exibir a caixa de cores ao clicar em "Destacar"
-                    document.getElementById('destacar').addEventListener('click', function () {
-                        const boxMarcaCores = document.getElementById('boxMarcaCores');
-                        boxMarcaCores.style.display = 'block';
-
-                    });
-
-                    // Aplicar cor ao texto selecionado ao clicar na paleta de cores
-                    document.querySelectorAll('.corTexto').forEach(function (colorSpan) {
-                        colorSpan.addEventListener('click', function () {
-                            const corFundo = this.getAttribute('data-cor');
-                            const corTexto = this.getAttribute('data-color');
-                            aplicarDestaqueSelecionado(corFundo, corTexto);
-                            fecharBoxCores()
-
-                        });
-                    });
-
-                    // Função para restaurar destaques salvos (incluindo cor do texto e cor de fundo)
-                    function restaurarDestaques() {
-                        const destaques = JSON.parse(localStorage.getItem('destaques')) || [];
-
-                        destaques.forEach(function (destaque) {
-                            const container = document.getElementById(destaque.containerId);
-                            const paragrafos = container.querySelectorAll('p');
-
-                            // Obter o parágrafo correto pelo índice salvo
-                            const paragrafo = paragrafos[destaque.paragrafoIndex];
-
-                            if (paragrafo) {
-                                // Encontrar a palavra dentro do parágrafo
-                                const regex = new RegExp(`(${destaque.palavra})`, 'gi');
-
-                                // Vamos modificar a função de substituição para restaurar tanto a cor de fundo quanto a cor do texto
-                                paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, function (match, offset) {
-                                    // Verifica se o texto já contém um span
-                                    const spanRegex = /<span.*?>(.*?)<\/span>/i;
-                                    const existingSpan = spanRegex.exec(match);
-
-                                    if (existingSpan) {
-                                        // Se já existe um span, atualizamos para manter a cor de fundo e texto dentro do existente
-                                        return `<span style="background-color: ${existingSpan[1]}; color: ${destaque.corTexto};">${existingSpan[1].replace(destaque.palavra, `<span style="background-color: ${destaque.corFundo}; color: ${destaque.corTexto};">${destaque.palavra}</span>`)}</span>`;
-                                    }
-
-                                    // Caso contrário, aplica o destaque com a cor de fundo e cor do texto normalmente
-                                    return `<span style="background-color: ${destaque.corFundo}; color: ${destaque.corTexto};">${match}</span>`;
-                                });
-                            }
-                        });
-                    }
-
-
-                    // Restaurar destaques ao carregar a página
-                    window.onload = function () {
-                        restaurarDestaques();
-                    };
-
-                    // Gerar IDs únicos para cada bloco com classe 'editar'
-                    document.querySelectorAll(`.${toolbarRender.refTools}`).forEach((element, index) => {
-                        element.id = `editar-${index}`;
-                    });
-
-
-                    // Função para deletar destaques do parágrafo selecionado
-                    function deletarDestaquesDoParagrafoSelecionado() {
-                        const selection = window.getSelection();
-
-                        if (!selection.rangeCount) {
-                            console.log('Nenhuma seleção encontrada.');
-                            return;
-                        }
-
-                        const range = selection.getRangeAt(0);
-                        const container = range.startContainer.parentElement.closest(`.${toolbarRender.refTools}`); // Encontra o container (div com classe 'editar')
-                        const paragrafos = container.querySelectorAll('p');
-                        const paragrafoSelecionado = range.startContainer.parentElement;
-
-                        // Verifica qual o índice do parágrafo selecionado
-                        const paragrafoIndex = Array.from(paragrafos).indexOf(paragrafoSelecionado);
-
-                        // Se não encontrar o parágrafo, sair da função
-                        if (paragrafoIndex === -1) {
-                            console.log('Parágrafo selecionado não encontrado.');
-                            return;
-                        }
-
-                        // Remover spans do parágrafo selecionado
-                        const destaques = JSON.parse(localStorage.getItem('destaques')) || [];
-                        const novoDestaques = destaques.filter(destaque => destaque.paragrafoIndex !== paragrafoIndex || destaque.containerId !== container.id);
-
-                        paragrafos[paragrafoIndex].innerHTML = paragrafos[paragrafoIndex].textContent; // Remove apenas os spans do parágrafo selecionado
-
-                        // Atualiza o localStorage com os destaques restantes
-                        localStorage.setItem('destaques', JSON.stringify(novoDestaques));
-
-                        console.log(`Destaques do parágrafo ${paragrafoIndex} foram deletados.`);
-                    }
-
-                    // Função para conectar o botão de limpar
-                    document.getElementById('limpar').addEventListener('click', function () {
-                        deletarDestaquesDoParagrafoSelecionado();
-                    });
-
-
-                    // Função para obter apenas a primeira palavra da seleção
-                    function obterPrimeiraPalavra() {
-                        const selection = window.getSelection();
-                        const range = selection.getRangeAt(0);
-
-                        // Obter o texto completo da seleção
-                        const textoSelecionado = range.toString().trim();
-
-                        // Quebrar o texto em palavras e pegar a primeira palavra
-                        const primeiraPalavra = textoSelecionado.split(' ')[0];
-
-                        return primeiraPalavra;
-                    }
-
-
-                    function obterParagrafoCompleto() {
-                        const selection = window.getSelection();
-                        const range = selection.getRangeAt(0);
-
-                        // Obter o elemento que contém a seleção (o nó)
-                        const elementoSelecionado = range.commonAncestorContainer;
-
-                        // Verifica se a seleção está dentro de um parágrafo (<p>)
-                        const paragrafo = elementoSelecionado.nodeType === 3 ? elementoSelecionado.parentNode : elementoSelecionado;
-
-                        if (paragrafo.tagName === "P") {
-                            // Retorna o texto completo do parágrafo
-                            return paragrafo.textContent.trim();
-                        } else {
-                            return null;
-                        }
-                    }
-
-                    function obterTextoSelecionado() {
-                        const selection = window.getSelection();
-
-                        // Verifica se há uma seleção ativa
-                        if (selection.rangeCount > 0) {
-                            const range = selection.getRangeAt(0);
-
-                            // Obtém o texto selecionado
-                            const textoSelecionado = range.toString().trim();
-
-                            // Retorna o texto selecionado
-                            return textoSelecionado;
-                        }
-
-                        return null; // Nenhuma seleção foi feita
-                    }
-
-
-
-
-                    // Função para simular busca no dicionário
-                    async function buscarNoDicionario(palavra) {
-                        if (palavra) {
-                            const toolbar = document.getElementById('toolbar');
-                            // Se mais de um parágrafo foi selecionado, esconder a toolbar
-                            toolbar.style.display = 'none';
-                            document.getElementById('search-input').value = palavra.toLowerCase();
-                            fecharMenuDicionario();
-                            abrirDicionario();
-                            await buscarPalavra(palavra.toLowerCase());
-                        } else {
-                            alert("Por favor, selecione uma palavra válida.");
-                        }
-                    }
-
-
-                    // Função para verificar se mais de uma palavra foi selecionada
-                    function verificarSelecao() {
-                        const renderMenuDiv = document.querySelector('.render-dicionario');
-                        renderMenuDiv.innerHTML = "";
-                        const textoSelecionado = window.getSelection().toString().trim();
-
-                        // Conta o número de palavras na seleção
-                        const palavras = textoSelecionado.split(/\s+/); // Quebra o texto em palavras pelo espaço
-
-                        if (palavras.length > 1) {
-                            // Mais de uma palavra foi selecionada
-                            abrirDicionario();
-                            renderMenuDiv.innerHTML = `
-                            
-                                <div style="position:absolute;top:50%;left:50%; transform: translate(-50%,-50%);">
-                                    <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
-                                       <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
-                                        <p style="color:#000;" class="text-center"><strong>Opps...</strong></p>
-                                        <p style="color:#000;" class="text-center">Selecione apenas uma palavra.</p>
-                                    </div>
-                                </div>
-                            `;
-                            return false; // Retorna false para impedir a busca
-                        }
-
-                        return palavras[0]; // Retorna a primeira palavra se apenas uma for selecionada
-                    }
-
-                    // Evento para o clique no dicionário
-                    document.getElementById('dicionario-toolbar').addEventListener('click', function () {
-                        const primeiraPalavra = verificarSelecao(); // Usa a função de verificação
-
-                        fecharBoxCores();
-                        if (primeiraPalavra) {
-                            buscarNoDicionario(primeiraPalavra); // Faz a busca no dicionário se for uma única palavra
-                        }
-                        // else {
-                        //     alert("Por favor, selecione uma palavra válida.");
-                        // }
-                    });
-
-
-
-                    // document.getElementById('resumo').addEventListener('click', function () {
-                    //     const textoResumo = obterTextoSelecionado();
-                    //     fecharBoxCores()
-                    //     fecharResumo()
-                    //     // alert(textoResumo)
-                    //     resumoAI(textoResumo, "Hematologia clinica").then(resumo => {
-                    //         // const containerFlip = document.querySelector("#flip-container");
-                    //         // containerFlip.classList.toggle('flip-active')
-                    //         soundBipe()
-                    //         // console.log('Resumo retornado:', resumo);
-                    //     });
-                    //     abrirResumo()
-
-                    // });
-
-
-                    document.getElementById('resumo').addEventListener('click', async function () {
-                        const textoResumo = obterTextoSelecionado();
-                        fecharBoxCores();
-
-                        const configuracaoData = await resumoConfig();
-                        const config = configuracaoData.ceumaAI
-
-                        const { contexto } = config;
-
-                        // console.log(contexto)
-
-                        // Chama a função que gera o resumo
-                        resumoAI(textoResumo, contexto, "Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
-                            const containerFlip = document.querySelector("#flip-container");
-
-                            // Verifica se o container está mostrando o histórico (flipado)
-                            if (containerFlip.classList.contains('flip-active')) {
-                                // Se estiver no histórico, removemos o flip para voltar ao resumo
-                                containerFlip.classList.remove('flip-active');
-                            }
-
-                            // Processa o resumo e o exibe
-                            soundBipe();
-                            // console.log('Resumo retornado:', resumo);
-
-                            // Após gerar o resumo, você pode processar o resumo e exibir na tela
-                        });
-
-                        const verificarAberturaResumo = document.querySelector(".resumo-menu");
-
-                        // Verifica se o resumo está aberto ou não
-                        if (verificarAberturaResumo.classList.contains("open")) {
-                            // O menu já está aberto, então não precisamos fechá-lo, apenas atualizar
-                            // console.log("O menu de resumo já está aberto.");
-                        } else {
-                            // O menu está fechado, então fechamos e reabrimos para garantir atualização
-                            fecharResumo(); // Fecha o resumo, caso esteja parcialmente aberto
-                            abrirResumo(); // Reabre o menu de resumo
-                        }
-                    });
-
-
+                    
+  
+                    // Passar as configurações para o
+                    if(typeof toolbarRender === "function"){
+                        toolbarRender(pageData , slideIndex , toolbarRenderizacao.refTools);
+                        
+                    } 
                 }
 
             } else {

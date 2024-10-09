@@ -1,0 +1,12 @@
+{
+    "nome":"toolbar-ceuma",
+    "version":1.0,
+    "toolbar_actions":{
+        "elementos_marcacao":["p"],
+        "elementos_selecao":["p"]
+    },
+    "toolbar_configuracao":{
+        "selecionarTodosElementos":true,
+        "marcarMultiplosElementos":true
+    }
+}

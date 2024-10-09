@@ -60,109 +60,7 @@ function Update() {
 
 checkEmptyAnnotationsContainer()
 
-// // Função para renderizar uma anotação na interface
-// function renderAnnotation(annotationItem) {
 
-
-//     const renderMenuDiv = document.querySelector('.render-menu-Annotation');
-
-//     // Cria o elemento para a nova anotação
-//     const newAnnotation = document.createElement('div');
-//     newAnnotation.classList.add('content-box-anotation');
-//     newAnnotation.dataset.id = annotationItem.id; // Armazena o ID da anotação
-
-//     // Configura o conteúdo da nova anotação, incluindo o título editável, texto e ícones de ações
-//     newAnnotation.innerHTML = `
-//         <div class="ribbon rb d-inline-block text-truncate" style="max-width: 80%;" 
-//              title='${annotationItem.title}' contenteditable="true">${annotationItem.title}</div>
-
-//         <p contenteditable="true">${annotationItem.Texto}</p>
-//         <div class="line_anottation"></div>
-//         <div class="render-menu-Annotation--icons">
-//             <button class="delete-icon">
-
-//                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
-
-//             </button>
-//             <button class="download-icon">
-
-//                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-download"><path d="M12 13v8l-4-4"/><path d="m12 21 4-4"/><path d="M4.393 15.269A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.436 8.284"/></svg>
-
-//             </button>
-//             <button class="color-icon">
-
-//                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-
-//             </button>
-//         </div>
-//     `;
-
-//     // Aplica a cor salva na anotação, se existir
-//     if (annotationItem.color) {
-//         newAnnotation.style.background = annotationItem.color.background;
-
-//         // Força a aplicação da cor do texto ao parágrafo
-//         const paragraph = newAnnotation.querySelector('p');
-//         paragraph.style.color = annotationItem.color.text;
-
-//         newAnnotation.dataset.colorIndex = annotationItem.color.index;
-
-//         // Aplica a cor salva nos botões
-//         const buttons = newAnnotation.querySelectorAll('button');
-//         buttons.forEach(button => {
-//             button.style.backgroundColor = annotationItem.color.buttonColor;
-//             button.style.color = annotationItem.color.textButtonColor;
-//         });
-//     }
-
-//     // Evento para remover a anotação ao clicar no ícone de lixeira
-//     newAnnotation.querySelector('.delete-icon').addEventListener('click', function () {
-//         abrirConfigurcoesBaseMenu();
-//         removeAnnotation(annotationItem.id);
-//         checkEmptyAnnotationsContainer(); // Verifica se o contêiner está vazio após remover
-//     });
-
-//     // Evento para baixar a anotação como um arquivo .txt
-//     newAnnotation.querySelector('.download-icon').addEventListener('click', function () {
-//         downloadAnnotation(annotationItem);
-//     });
-
-//     // Evento para alterar a cor da anotação ao clicar no ícone de paleta
-//     newAnnotation.querySelector('.color-icon').addEventListener('click', function () {
-//         changeAnnotationColor(newAnnotation, annotationItem.id);
-//     });
-
-//     // Evento para salvar o novo título quando o usuário editar e sair do campo (blur)
-//     newAnnotation.querySelector('.ribbon').addEventListener('blur', function () {
-//         const updatedTitle = this.innerText.trim();
-//         if (updatedTitle !== annotationItem.title) {
-//             // Atualiza o título da anotação
-//             updateAnnotationField(annotationItem.id, {
-//                 title: updatedTitle
-//             });
-
-//         }
-//     });
-
-//     // Evento para salvar o texto quando o usuário editar e sair do campo (blur)
-//     newAnnotation.querySelector('p').addEventListener('blur', function () {
-//         const updatedText = this.innerText.trim();
-//         if (updatedText !== annotationItem.Texto) {
-//             // Atualiza o texto da anotação
-//             updateAnnotationField(annotationItem.id, {
-//                 Texto: updatedText
-//             });
-//         }
-//     });
-
-//     // Adiciona a nova anotação na interface
-//     renderMenuDiv.appendChild(newAnnotation);
-
-//     // Verifica se o contêiner está vazio após adicionar a nova anotação
-//     checkEmptyAnnotationsContainer();
-// }
-
-// Função para renderizar uma anotação na interface
 function renderAnnotation(annotationItem) {
     const renderMenuDiv = document.querySelector('.render-menu-Annotation');
 
@@ -289,7 +187,6 @@ function renderAnnotation(annotationItem) {
 // Função para atualizar campos específicos da anotação
 function updateAnnotationField(id, updates) {
     // Implementar a lógica para atualizar o título ou texto da anotação no banco de dados
-    // Exemplo fictício:
     annotation.update({
         id
     }, updates);
@@ -721,7 +618,7 @@ function scrollToMatchingElements(elements) {
 function toggleAutoScroll() {
     autoScrollEnabled = !autoScrollEnabled;
     const scrollStatus = autoScrollEnabled ? 'Ativada' : 'Desativada';
-    alert(`Rolagem automática ${scrollStatus}`);
+    // alert(`Rolagem automática: ${scrollStatus}`);
 }
 
 // Função para rolar manualmente para os elementos encontrados
@@ -780,18 +677,34 @@ document.querySelector('.mudarPosicao').addEventListener('click', function () {
 });
 
 
+
+
 const title_rb = document.querySelector('.rb');
 
 if (title_rb) {
+    let limiteCaracteres = 21; // Limite de caracteres
+    const teclasPermitidas = [8, 46, 37, 38, 39, 40]; // Backspace, Delete e setas de navegação
 
-    document.querySelector('.rb').addEventListener('keydown', function (event) {
-        // Impede a quebra de linha ao pressionar Enter
-        if (event.key === 'Enter') {
-            event.preventDefault();
+    // Evento keydown para bloquear novas entradas
+    title_rb.addEventListener('keydown', function(event) {
+        const tamanhoDoTexto = title_rb.innerText.length; // Pega o tamanho do texto atualizado
+
+        // Se o texto for igual ou maior que o limite, bloquear todas as teclas exceto backspace, delete e setas
+        if (tamanhoDoTexto >= limiteCaracteres && !teclasPermitidas.includes(event.keyCode)) {
+            event.preventDefault(); // Bloqueia todas as outras teclas
+        }
+    });
+
+    // Evento input para monitorar o texto em tempo real
+    title_rb.addEventListener('input', function(event) {
+        const tamanhoDoTexto = event.target.innerText.length; // Pega o tamanho do texto
+
+        // Verifica o número de caracteres e alerta se o limite for atingido
+        if (tamanhoDoTexto >= limiteCaracteres) {
+            console.log("Limite de caracteres atingido: " + tamanhoDoTexto);
         }
     });
 }
-
 
 
 

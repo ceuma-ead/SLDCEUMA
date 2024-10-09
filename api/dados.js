@@ -566,7 +566,7 @@ const api = [
                     },
                     "toolbar": {
                         "ativo": true,
-                        "refTools": "editar",
+                        "refTools": ['editar'],
                         "idRef": ".pagina-tipo-texto--box-texto",
                         "blocoRenderizacao": `
                             <div id="toolbar" style="display: none; position: absolute;">
@@ -643,7 +643,7 @@ const api = [
                                     <div class="content">
                                         <div class="icon"></div>
              
-                                        <p class="text" style="--cardColorText:#000000;">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</p>
+                                        <p class="text" style="--cardColorText:#ffff;">Seja capaz de executar e interpretar eritrogramas, diagnosticar anemias, leucemias e coagulopatias, emitindo laudos e pareceres precisos</p>
                                     </div>
                                 </li>
                                 
@@ -654,7 +654,7 @@ const api = [
                              <li style="--cardColor:#f15f0e" class="box4">
                                     <div class="content">
                                         <div class="icon"></div>
-                                        <p class="text" style="--cardColorText:#000000;">Saiba avaliar e otimizar o controle de qualidade nas etapas pré-analítica, analítica e pós-analítica, com ênfase na automação em hematologia.</p>
+                                        <p class="text" style="--cardColorText:#ffff;">Saiba avaliar e otimizar o controle de qualidade nas etapas pré-analítica, analítica e pós-analítica, com ênfase na automação em hematologia.</p>
                                     </div>
                                 </li>
 
@@ -914,7 +914,7 @@ const api = [
                     },
                     "toolbar": {
                         "ativo": true,
-                        "refTools": "editar",
+                        "refTools": ['editar'],
                         "idRef": ".pagina-tipo-texto--box-texto",
                         "blocoRenderizacao": `
                             <div id="toolbar" style="display: none; position: absolute;">

@@ -1,0 +1,401 @@
+let selectedRange = null;
+
+// Função para gerar um ID único para cada destaque
+function gerarIdUnico() {
+    return 'destaque-' + Math.random().toString(36).substr(2, 9);
+}
+
+// Função para salvar o destaque no LocalStorage com metadados essenciais (incluindo cor do texto)
+function salvarDestaque(palavra, corFundo, corTexto, containerId, paragrafoIndex, startOffset, endOffset, parentTag, dataHora, contexto, estiloTexto) {
+    let destaques = JSON.parse(localStorage.getItem('destaques')) || [];
+    const idUnico = gerarIdUnico(); // Gerar ID único para o destaque
+
+    destaques.push({
+        id: idUnico,                 // ID único
+        palavra: palavra,            // Palavra destacada
+        corFundo: corFundo,          // Cor de fundo aplicada
+        corTexto: corTexto,          // Cor do texto aplicada
+        containerId: containerId,    // ID do contêiner
+        paragrafoIndex: paragrafoIndex, // Índice do parágrafo dentro do contêiner
+        startOffset: startOffset,    // Posição inicial do texto destacado
+        endOffset: endOffset,        // Posição final do texto destacado
+        parentTag: parentTag,        // Tag do elemento pai
+        dataHora: dataHora,          // Data e hora do destaque
+        estiloTexto: estiloTexto     // Estilo adicional, como negrito ou itálico
+    });
+
+    localStorage.setItem('destaques', JSON.stringify(destaques));
+    console.log('Destaque salvo:', palavra, corFundo, corTexto, dataHora, contexto, estiloTexto);
+}
+
+// Função para aplicar o destaque ao texto selecionado
+function aplicarDestaqueSelecionado(corFundo, corTexto = 'black', estiloTexto = '') {
+    if (selectedRange) {
+        const isTextNode = selectedRange.startContainer.nodeType === Node.TEXT_NODE;
+
+        if (isTextNode) {
+            const palavraSelecionada = selectedRange.toString();
+            const container = selectedRange.startContainer.parentElement.closest(`.${toolbarRender.refTools}`);
+            const containerId = container.id;
+
+            // Obter o índice do parágrafo (posição do parágrafo dentro do container)
+            const paragrafo = selectedRange.startContainer.parentElement;
+            const paragrafoIndex = Array.from(container.querySelectorAll('p')).indexOf(paragrafo);
+
+            // Obter a posição inicial e final do texto selecionado
+            const startOffset = selectedRange.startOffset;
+            const endOffset = selectedRange.endOffset;
+
+            // Obter a tag do elemento pai
+            const parentTag = selectedRange.startContainer.parentNode.tagName;
+
+            let range = selectedRange;
+            let fragment = range.extractContents();
+
+            // Criar um novo span com a cor de fundo e texto selecionada, além de estilo adicional
+            let newSpan = document.createElement('span');
+            newSpan.style.backgroundColor = corFundo;
+            newSpan.style.color = corTexto;  // Cor do texto
+            if (estiloTexto) {
+                newSpan.style.cssText += estiloTexto; // Aplica estilo adicional (negrito, itálico, etc.)
+            }
+            newSpan.appendChild(fragment);
+
+            // Inserir o novo span na posição correta
+            range.insertNode(newSpan);
+
+            // Se o pai do novo `span` for outro `span`, deve-se garantir que ele seja aninhado
+            if (newSpan.parentNode.tagName === 'SPAN') {
+                newSpan.parentNode.normalize();
+            }
+
+            // Dados adicionais
+            const dataHora = new Date().toISOString();  // Data e hora do destaque
+
+            // Salvar o destaque com as cores de fundo e texto
+            salvarDestaque(palavraSelecionada, corFundo, corTexto, containerId, paragrafoIndex, startOffset, endOffset, parentTag, dataHora, estiloTexto);
+        } else {
+            alert("A seleção deve ser apenas de texto!");
+        }
+    }
+}
+
+
+document.addEventListener('mouseup', function (e) {
+    const selection = window.getSelection();
+    const textoSelecionado = selection.toString().trim();
+    const toolbar = document.getElementById('toolbar');
+
+    if (textoSelecionado) {
+        const range = selection.getRangeAt(0);
+        const startContainer = range.startContainer;
+        const endContainer = range.endContainer;
+
+        // Verifica se a seleção começa e termina no mesmo parágrafo
+        const startParagrafo = startContainer.parentElement.closest('p');
+        const endParagrafo = endContainer.parentElement.closest('p');
+
+        if (startParagrafo && startParagrafo === endParagrafo) {
+            // Se apenas um parágrafo foi selecionado, mostrar a toolbar
+            const rangeBox = range.getBoundingClientRect();
+            const toolbarHeight = toolbar.offsetHeight;
+            const toolbarWidth = toolbar.offsetWidth;
+
+            let topPosition = rangeBox.top - 40; // Ajuste para ficar acima da palavra
+            let leftPosition = rangeBox.left
+
+            // Garantir que a toolbar fique dentro da tela (horizontalmente)
+            if (leftPosition + toolbarWidth > window.innerWidth) {
+                leftPosition = window.innerWidth - toolbarWidth;
+            } else if (leftPosition < 0) {
+                leftPosition = 0;
+            }
+
+            // Ajuste da posição para cima ou abaixo, dependendo do espaço disponível
+            if (topPosition < 0) {
+                topPosition = rangeBox.bottom + window.scrollY + 10; // Mostrar abaixo do texto se não houver espaço acima
+            }
+
+            // Aplicar as posições calculadas
+            toolbar.style.left = `${leftPosition}px`;
+            toolbar.style.top = `${topPosition}px`;
+            toolbar.style.display = 'block';
+
+            // Salvar as posições calculadas para que a toolbar não mude de posição ao abrir a caixa de cores
+            toolbar.dataset.left = leftPosition;
+            toolbar.dataset.top = topPosition;
+
+            // Salvar o range selecionado para ser usado posteriormente
+            selectedRange = selection.getRangeAt(0);
+        } else {
+            // Se mais de um parágrafo foi selecionado, esconder a toolbar
+            toolbar.style.display = 'none';
+            selectedRange = null; // Limpar o range salvo
+        }
+    }
+});
+
+
+function fecharBoxCores() {
+    document.getElementById('boxMarcaCores').style.display = 'none';
+}
+
+// Ocultar toolbar ao clicar fora dela
+document.addEventListener('mousedown', function (e) {
+    if (!document.getElementById('toolbar').contains(e.target)) {
+        document.getElementById('toolbar').style.display = 'none';
+        document.getElementById('boxMarcaCores').style.display = 'none';
+    }
+});
+
+// Exibir a caixa de cores ao clicar em "Destacar"
+document.getElementById('destacar').addEventListener('click', function () {
+    const boxMarcaCores = document.getElementById('boxMarcaCores');
+    boxMarcaCores.style.display = 'block';
+
+});
+
+// Aplicar cor ao texto selecionado ao clicar na paleta de cores
+document.querySelectorAll('.corTexto').forEach(function (colorSpan) {
+    colorSpan.addEventListener('click', function () {
+        const corFundo = this.getAttribute('data-cor');
+        const corTexto = this.getAttribute('data-color');
+        aplicarDestaqueSelecionado(corFundo, corTexto);
+        fecharBoxCores()
+
+    });
+});
+
+// Função para restaurar destaques salvos (incluindo cor do texto e cor de fundo)
+function restaurarDestaques() {
+    const destaques = JSON.parse(localStorage.getItem('destaques')) || [];
+
+    destaques.forEach(function (destaque) {
+        const container = document.getElementById(destaque.containerId);
+        const paragrafos = container.querySelectorAll('p');
+
+        // Obter o parágrafo correto pelo índice salvo
+        const paragrafo = paragrafos[destaque.paragrafoIndex];
+
+        if (paragrafo) {
+            // Encontrar a palavra dentro do parágrafo
+            const regex = new RegExp(`(${destaque.palavra})`, 'gi');
+
+            // Vamos modificar a função de substituição para restaurar tanto a cor de fundo quanto a cor do texto
+            paragrafo.innerHTML = paragrafo.innerHTML.replace(regex, function (match, offset) {
+                // Verifica se o texto já contém um span
+                const spanRegex = /<span.*?>(.*?)<\/span>/i;
+                const existingSpan = spanRegex.exec(match);
+
+                if (existingSpan) {
+                    // Se já existe um span, atualizamos para manter a cor de fundo e texto dentro do existente
+                    return `<span style="background-color: ${existingSpan[1]}; color: ${destaque.corTexto};">${existingSpan[1].replace(destaque.palavra, `<span style="background-color: ${destaque.corFundo}; color: ${destaque.corTexto};">${destaque.palavra}</span>`)}</span>`;
+                }
+
+                // Caso contrário, aplica o destaque com a cor de fundo e cor do texto normalmente
+                return `<span style="background-color: ${destaque.corFundo}; color: ${destaque.corTexto};">${match}</span>`;
+            });
+        }
+    });
+}
+
+
+// Restaurar destaques ao carregar a página
+window.onload = function () {
+    restaurarDestaques();
+};
+
+// Gerar IDs únicos para cada bloco com classe 'editar'
+document.querySelectorAll(`.${toolbarRender.refTools}`).forEach((element, index) => {
+    element.id = `editar-${index}`;
+});
+
+
+// Função para deletar destaques do parágrafo selecionado
+function deletarDestaquesDoParagrafoSelecionado() {
+    const selection = window.getSelection();
+
+    if (!selection.rangeCount) {
+        console.log('Nenhuma seleção encontrada.');
+        return;
+    }
+
+    const range = selection.getRangeAt(0);
+    const container = range.startContainer.parentElement.closest(`.${toolbarRender.refTools}`); // Encontra o container (div com classe 'editar')
+    const paragrafos = container.querySelectorAll('p');
+    const paragrafoSelecionado = range.startContainer.parentElement;
+
+    // Verifica qual o índice do parágrafo selecionado
+    const paragrafoIndex = Array.from(paragrafos).indexOf(paragrafoSelecionado);
+
+    // Se não encontrar o parágrafo, sair da função
+    if (paragrafoIndex === -1) {
+        console.log('Parágrafo selecionado não encontrado.');
+        return;
+    }
+
+    // Remover spans do parágrafo selecionado
+    const destaques = JSON.parse(localStorage.getItem('destaques')) || [];
+    const novoDestaques = destaques.filter(destaque => destaque.paragrafoIndex !== paragrafoIndex || destaque.containerId !== container.id);
+
+    paragrafos[paragrafoIndex].innerHTML = paragrafos[paragrafoIndex].textContent; // Remove apenas os spans do parágrafo selecionado
+
+    // Atualiza o localStorage com os destaques restantes
+    localStorage.setItem('destaques', JSON.stringify(novoDestaques));
+
+    console.log(`Destaques do parágrafo ${paragrafoIndex} foram deletados.`);
+}
+
+// Função para conectar o botão de limpar
+document.getElementById('limpar').addEventListener('click', function () {
+    deletarDestaquesDoParagrafoSelecionado();
+});
+
+// Função para obter apenas a primeira palavra da seleção
+function obterPrimeiraPalavra() {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+
+    // Obter o texto completo da seleção
+    const textoSelecionado = range.toString().trim();
+
+    // Quebrar o texto em palavras e pegar a primeira palavra
+    const primeiraPalavra = textoSelecionado.split(' ')[0];
+
+    return primeiraPalavra;
+}
+
+
+function obterParagrafoCompleto() {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+
+    // Obter o elemento que contém a seleção (o nó)
+    const elementoSelecionado = range.commonAncestorContainer;
+
+    // Verifica se a seleção está dentro de um parágrafo (<p>)
+    const paragrafo = elementoSelecionado.nodeType === 3 ? elementoSelecionado.parentNode : elementoSelecionado;
+
+    if (paragrafo.tagName === "P") {
+        // Retorna o texto completo do parágrafo
+        return paragrafo.textContent.trim();
+    } else {
+        return null;
+    }
+}
+
+function obterTextoSelecionado() {
+    const selection = window.getSelection();
+
+    // Verifica se há uma seleção ativa
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+
+        // Obtém o texto selecionado
+        const textoSelecionado = range.toString().trim();
+
+        // Retorna o texto selecionado
+        return textoSelecionado;
+    }
+
+    return null; // Nenhuma seleção foi feita
+}
+
+// Função para simular busca no dicionário
+async function buscarNoDicionario(palavra) {
+    if (palavra) {
+        const toolbar = document.getElementById('toolbar');
+        // Se mais de um parágrafo foi selecionado, esconder a toolbar
+        toolbar.style.display = 'none';
+        document.getElementById('search-input').value = palavra.toLowerCase();
+        fecharMenuDicionario();
+        abrirDicionario();
+        await buscarPalavra(palavra.toLowerCase());
+    } else {
+        alert("Por favor, selecione uma palavra válida.");
+    }
+}
+
+
+// Função para verificar se mais de uma palavra foi selecionada
+function verificarSelecao() {
+    const renderMenuDiv = document.querySelector('.render-dicionario');
+    renderMenuDiv.innerHTML = "";
+    const textoSelecionado = window.getSelection().toString().trim();
+
+    // Conta o número de palavras na seleção
+    const palavras = textoSelecionado.split(/\s+/); // Quebra o texto em palavras pelo espaço
+
+    if (palavras.length > 1) {
+        // Mais de uma palavra foi selecionada
+        abrirDicionario();
+        renderMenuDiv.innerHTML = `
+        
+            <div style="position:absolute;top:50%;left:50%; transform: translate(-50%,-50%);">
+                <div class="d-flex align-content-center flex-column justify-content-center w-100 h-100 align-items-center">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frown"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                    <p style="color:#000;" class="text-center"><strong>Opps...</strong></p>
+                    <p style="color:#000;" class="text-center">Selecione apenas uma palavra.</p>
+                </div>
+            </div>
+        `;
+        return false; // Retorna false para impedir a busca
+    }
+
+    return palavras[0]; // Retorna a primeira palavra se apenas uma for selecionada
+}
+
+// Evento para o clique no dicionário
+document.getElementById('dicionario-toolbar').addEventListener('click', function () {
+    const primeiraPalavra = verificarSelecao(); // Usa a função de verificação
+
+    fecharBoxCores();
+    if (primeiraPalavra) {
+        buscarNoDicionario(primeiraPalavra); // Faz a busca no dicionário se for uma única palavra
+    }
+    // else {
+    //     alert("Por favor, selecione uma palavra válida.");
+    // }
+});
+
+
+document.getElementById('resumo').addEventListener('click', async function () {
+    const textoResumo = obterTextoSelecionado();
+    fecharBoxCores();
+
+    const configuracaoData = await resumoConfig();
+    const config = configuracaoData.ceumaAI
+
+    const { contexto } = config;
+
+    // console.log(contexto)
+
+    // Chama a função que gera o resumo
+    resumoAI(textoResumo, contexto, "Faça esse Resumo bem siplificadinho pra uma pessoa leiga", "Estudante Leigo", 10, "1 linha").then(resumo => {
+        const containerFlip = document.querySelector("#flip-container");
+
+        // Verifica se o container está mostrando o histórico (flipado)
+        if (containerFlip.classList.contains('flip-active')) {
+            // Se estiver no histórico, removemos o flip para voltar ao resumo
+            containerFlip.classList.remove('flip-active');
+        }
+
+        // Processa o resumo e o exibe
+        soundBipe();
+        // console.log('Resumo retornado:', resumo);
+
+        // Após gerar o resumo, você pode processar o resumo e exibir na tela
+    });
+
+    const verificarAberturaResumo = document.querySelector(".resumo-menu");
+
+    // Verifica se o resumo está aberto ou não
+    if (verificarAberturaResumo.classList.contains("open")) {
+        // O menu já está aberto, então não precisamos fechá-lo, apenas atualizar
+        // console.log("O menu de resumo já está aberto.");
+    } else {
+        // O menu está fechado, então fechamos e reabrimos para garantir atualização
+        fecharResumo(); // Fecha o resumo, caso esteja parcialmente aberto
+        abrirResumo(); // Reabre o menu de resumo
+    }
+});
