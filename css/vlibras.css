@@ -8,11 +8,12 @@ div[vw] {
     min-height: 40px;
     min-width: 40px;
     right: 0;
-    top: 50%;
+    top:40% !important;
     transform: translateY(-50%);
     z-index: 2147483647 !important;
     display: none;
-    margin: 10px !important
+    margin: 10px !important;
+
 }
 
 
@@ -42,15 +43,18 @@ div[vw].left {
     border-radius: 8px;
     transition: all .5s ease;
     right: 0;
-    left: auto
+    left: auto;
+    /* background-color: blue; */
 }
 
 [vw] [vw-access-button] img {
+    
     max-height: 40px;
     transition: all .5s ease;
     border-radius: 8px;
     opacity: 1 !important;
-    visibility: visible !important
+    visibility: visible !important;
+
 }
 
 [vw] [vw-access-button] .access-button {
@@ -123,3 +127,6 @@ div[vw].left {
     min-height: 100%
 }
 
+[vp] [vp-settings] .vpw-options-container .vpw-option-content p {
+    margin-bottom: 0 !important;
+}
