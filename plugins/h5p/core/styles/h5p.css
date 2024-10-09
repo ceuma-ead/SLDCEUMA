@@ -623,6 +623,16 @@ iframe.h5peditor-semi-fullscreen {
   }
 }
 
+@media screen and (min-width: 1520px) {
+
+  html.h5p-iframe .h5p-content {
+    font-size: 18px !important;
+}
+.h5p-question-introduction {
+    max-height: 11rem !important;
+}
+
+}
 
 @media screen and (max-width: 1366px) {}
 

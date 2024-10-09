@@ -629,14 +629,14 @@ const api = [
                                     <div class="content">
                                         <div class="icon"></div>
 
-                                        <p class="text"  style="--cardColorText:#000000;">Saiba identificar e interpretar as alterações hematológicas, entendendo suas causas e efeitos</p>
+                                        <p class="text"  style="--cardColorText:#ffff;">Saiba identificar e interpretar as alterações hematológicas, entendendo suas causas e efeitos</p>
                                     </div>
                                 </li>
                                 <li style="--cardColor:#36aeb3"  class="box2">
                                     <div class="content">
                                         <div class="icon"></div>
                     
-                                        <p class="text" style="--cardColorText:#000000;">Compreenda a fisiologia e a fisiopatogenia das células-tronco, a eritropoese e a estrutura da hemoglobina</p>
+                                        <p class="text" style="--cardColorText:#ffff;">Compreenda a fisiologia e a fisiopatogenia das células-tronco, a eritropoese e a estrutura da hemoglobina</p>
                                     </div>
                                 </li>
                                 <li style="--cardColor:#162d59"  class="box3">
