@@ -118,8 +118,40 @@ div[vw].left {
     display: flex;
     flex-direction: column;
     -webkit-flex-direction: column;
-    height: 250px;
+    height: 315px;
     max-width: 100%;
     min-height: 100%
 }
 
+#gameContainer canvas {
+    min-height: calc(0.7* 335px) !important;
+    min-width: calc(0.9* 300px);
+    height: 100%;
+    width: 100%;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -ms-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+}
+
+[vp] [vp-settings] .vpw-options-container {
+    gap: 6px !important;
+    padding: 10px !important;
+}
+
+[vp] [vp-settings] .vpw-options-container .vpw-option-content p {
+       margin-bottom: 0px !important;
+   
+}
+
+[vp] [vp-settings] .vpw-screen-header span {
+    Display: none !important;
+    font-weight: 600;
+    color: #363636;
+    font-size: 1em;
+}
+
+[vp] [vp-settings] .vpw-screen-header {
+        min-height: 34px !important;
+}
