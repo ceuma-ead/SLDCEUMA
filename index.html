@@ -732,6 +732,15 @@
                 </div>
             </div> -->
 
+            <!-- Adicionando o Vlibras a Página -->
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                  <div class="vw-plugin-top-wrapper"></div>
+                </div>
+              </div>
+            <!-- Adicionando o Vlibras a Página -->
+
             <!-- Modal Tutorial -->
             <div class="modal fade" id="modalTutorial" tabindex="-1"
                 aria-labelledby="modalTutorialLabel" aria-hidden="true">
@@ -856,7 +865,14 @@
         <!-- Script de Toolbar -->
         <script type="text/javascript" src="./js/toolbar.js"></script>
         <!-- Script de Toolbar -->
-         
+
+        <!-- Criando Ponto de Intregação do Vlibras -->
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+          new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <!-- Criando Ponto de Intregação do Vlibras -->
+
         <!-- Script para modulo do H5P -->
         <script type="text/javascript">
             const {
