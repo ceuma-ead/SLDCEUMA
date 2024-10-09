@@ -289,67 +289,64 @@ const responsivo = [
                 }
 
                 .glider-prev {
-                    left: 0px !important;
+                left: 0px !important;
                 }
 
                 .glider-next {
-                    right: 0px !important;
+                right: 0px !important;
                 }
 
                 .pagina-tipo-texto--box-texto p {
-                    font-size: 1rem !important;
+                font-size: 1rem !important;
                 }
 
-                .carrosel--container {            
-                
+                .carrosel--container {
+
                 background-size: 370% !important;
                 background-position-x: 36% !important;
-            }
+                }
 
-
-            .container-img-lightbox-fluid {
+                .container-img-lightbox-fluid {
                 flex-direction: column !important;
                 height: auto !important;
                 padding: 4rem !important;
-                
-            }
 
-            .transcritor--box-audio {
-            display: none;
-            
-            }
+                }
 
-            
-           .container-audio-render-result {
-            flex-direction: column;
-            }        
-    
-            #carrosel-audio {
-            height: auto;
-            }
+                .transcritor--box-audio {
+                display: none;
 
-            .plyr{
-            min-width: 280px;
-            }
+                }
 
-            
-            .container-toools-info-audio {
-            width: 85% !important;
-            }
+                .container-audio-render-result {
+                flex-direction: column;
+                }
 
-            .pagina-tipo-video--box-video{
-            height: 30%;
-            width: 100%;
-            flex-wrap: wrap;
-            }
+                #carrosel-audio {
+                height: auto;
+                }
 
-            .f-thumbs__track {
-            flex-direction: row
-            }
+                .plyr{
+                min-width: 280px;
+                }
 
-            .f-carousel__thumbs {
-            width: 100%
-            }
+                .container-toools-info-audio {
+                width: 85% !important;
+                }
+
+                .pagina-tipo-video--box-video{
+                height: 30%;
+                width: 100%;
+                flex-wrap: wrap;
+                }
+
+                .f-thumbs__track {
+                flex-direction: row
+                }
+
+                .f-carousel__thumbs {
+                width: 100%
+                }
 
     `,
 
@@ -384,42 +381,43 @@ const responsivo = [
             "media" : "(max-width: 980px)", // Apenas a condição dentro dos parênteses
         //Estilos que podem vir adicionais
             "synchronous" : `
-                    .message-box {
-                    display: block !important;
-                    }
-    
-                    .olcards--divisor {
-                    display: contents !important;
-                    }
-    
-                    .olcards {
-                    align-items: flex-start !important;
-                    }
-    
-                    .olcards li .content {
-                    text-align: justify !important;
-                    }
-    
-                    #accordionApresentacao {
+
+                .message-box {
                 display: block !important;
                 }
-    
+
+                .olcards--divisor {
+                display: contents !important;
+                }
+
+                .olcards {
+                align-items: flex-start !important;
+                }
+
+                .olcards li .content {
+                text-align: justify !important;
+                }
+
+                #accordionApresentacao {
+                display: block !important;
+                }
+
                 .accordion-flush .accordion-item {
                 margin-top: 0.5rem !important;
                 }
-    
+
                 .marca-da-agua {
                 display:none !important;
                 }
-    
+
                 .glider-prev {
-                    left: 0px !important;
+                left: 0px !important;
                 }
-    
+
                 .glider-next {
-                    right: 0px !important;
+                right: 0px !important;
                 }
-    
+
                 #accordionApresentacao {
                 display: block !important;
                 font-size: 1.5rem !important;
@@ -430,37 +428,36 @@ const responsivo = [
                 }
 
                 .pagina-tipo-texto--box-texto p {
-                 font-size: 1.5rem !important;
-                 }
+                font-size: 1.5rem !important;
+                }
 
                 .olcards li .content .text {
-                    font-size: 1.5rem !important;
-                    text-align: left !important;
-                    
+                font-size: 1.5rem !important;
+                text-align: left !important;
+
                 }
 
-                    .message-text {
-                        font-size: 1.5rem !important;
-                    }
-
-
-                    .accordion-button {
-                    font-size: 1.5rem !important;
-                    }
-
-                    .message-box--divisor {
-                    justify-content: center;
+                .message-text {
+                font-size: 1.5rem !important;
                 }
 
-                .container-img-lightbox-fluid {   
+                .accordion-button {
+                font-size: 1.5rem !important;
+                }
+
+                .message-box--divisor {
+                justify-content: center;
+                }
+
+                .container-img-lightbox-fluid {
                 padding: 8rem;
-                    flex-direction: column;
-                    width: 80%;
-                    height: auto;
-            }
+                flex-direction: column;
+                width: 80%;
+                height: auto;
+                }
 
-                    .modal-content-imagem {
-                     max-width: 700px !important;
+                .modal-content-imagem {
+                max-width: 700px !important;
                 }
         `,
     
@@ -549,21 +546,26 @@ function responsivePage(slideIndex){
 
 // Função para adicionar estilos com base na media query
 function adicionarEstilos(media, estilos, slideIndex) {
-    // Verifica se o estilo já foi aplicado
-    const existingStyle = document.querySelector(`#style-slide-${slideIndex}`);
-    
+    // Gera um ID único para cada combinação de slideIndex e media query
+    const styleId = `style-slide-${slideIndex}-${media.replace(/\W+/g, '-')}`;
+    const existingStyle = document.querySelector(`#${styleId}`);
+
     if (!existingStyle) {
         // Cria um elemento de estilo com ID único
         const estilo = document.createElement('style');
         estilo.type = 'text/css';
-        estilo.id = `style-slide-${slideIndex}`; // Atribui um ID ao estilo
+        estilo.id = styleId; // Atribui um ID ao estilo
 
-        // Adiciona os estilos na media query especificada
+        // Adiciona os estilos dentro da media query especificada
         estilo.innerHTML = `@media screen and ${media} { ${estilos} }`;
 
         document.head.appendChild(estilo);
     }
 }
+
+// Chamada para a função responsiva
+responsivePage(savedPosition);
+
 
 // Função para remover os estilos anteriores ao mudar de slide
 function removerEstilosAnteriores() {
@@ -576,6 +578,3 @@ function removerEstilosAnteriores() {
 // Chama a função responsiva para o slide atual
 responsivePage(savedPosition);
 
-
-// Chama a função responsiva para o slide atual
-responsivePage(savedPosition);

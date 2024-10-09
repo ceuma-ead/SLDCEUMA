@@ -1197,6 +1197,43 @@ const api = [
                     "audio": {
                         "ativo": true,
                         "idRef": ".pagina-tipo-texto--box-texto"
+                    },
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": ['editar'],
+                        "idRef": ".pagina-tipo-texto--box-texto",
+                        "blocoRenderizacao": `
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                            <button class="toolbar-button" id="limpar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                                Limpar
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                        Resumo
+                                    </button>
+                                    <button class="toolbar-button" id="destacar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                        Destacar
+                                    </button>
+                                    <button class="toolbar-button" id="dicionario-toolbar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-search"><path d="M21 6H3"/><path d="M10 12H3"/><path d="M10 18H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
+                                        Dicionário
+                                    </button>
+                                    
+                                </div>
+                            </div>
+
+                       `
                     }
                 }
             ]
@@ -1446,6 +1483,43 @@ const api = [
                     "audio": {
                         "ativo": true,
                         "idRef": ".pagina-tipo-texto--box-texto"
+                    },
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": ['editar'],
+                        "idRef": ".pagina-tipo-texto--box-texto",
+                        "blocoRenderizacao": `
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                            <button class="toolbar-button" id="limpar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                                Limpar
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                        Resumo
+                                    </button>
+                                    <button class="toolbar-button" id="destacar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                        Destacar
+                                    </button>
+                                    <button class="toolbar-button" id="dicionario-toolbar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-search"><path d="M21 6H3"/><path d="M10 12H3"/><path d="M10 18H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
+                                        Dicionário
+                                    </button>
+                                    
+                                </div>
+                            </div>
+
+                       `
                     }
                 }
             ]
@@ -1689,7 +1763,7 @@ const api = [
             },
             "configuracoes_gerais": {
 
-                // Habilitar Procurar de Paragrafos ná Pagina 2
+                // Habilitar Procurar de Paragrafos ná Pagina 6
                 "_procurar_paragrafos": {
                     "status": true,
                     "onde_procurar": ".pagina-tipo-texto--box-texto",
@@ -1733,6 +1807,43 @@ const api = [
                     "audio": {
                         "ativo": true,
                         "idRef": ".pagina-tipo-texto--box-texto"
+                    },
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": ['editar'],
+                        "idRef": ".pagina-tipo-texto--box-texto",
+                        "blocoRenderizacao": `
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                            <button class="toolbar-button" id="limpar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                                Limpar
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                        Resumo
+                                    </button>
+                                    <button class="toolbar-button" id="destacar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                        Destacar
+                                    </button>
+                                    <button class="toolbar-button" id="dicionario-toolbar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-search"><path d="M21 6H3"/><path d="M10 12H3"/><path d="M10 18H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
+                                        Dicionário
+                                    </button>
+                                    
+                                </div>
+                            </div>
+
+                       `
                     }
                 }
             ]
@@ -1749,7 +1860,8 @@ const api = [
         "id_elemento_para_modificar": "container-imagem",
         "data": {
             "container_render": `
-                <div class="w-100 h-100 container-img-lightbox-fluid-all">
+            
+                <div class="w-100 h-100 container-img-lightbox-fluid-all resumo-alt-ai">
                     <div class="container-img-lightbox-fluid animation">
                         <div class="item-ligthbox">
                             <div class="item-ligthbox-img img-photo-actions">
@@ -1766,7 +1878,9 @@ const api = [
                         </div>
                         
                     </div>
-                </div>    
+                </div>   
+                
+                
             `
         },
         "forcarAtualizacao": {
@@ -1787,10 +1901,10 @@ const api = [
             },
             "configuracoes_gerais": {
 
-                // Habilitar Procurar de Paragrafos ná Pagina 2
+                // Habilitar Procurar de Paragrafos ná Pagina 6
                 "_procurar_paragrafos": {
                     "status": true,
-                    "onde_procurar": ".pagina-tipo-texto--box-texto",
+                    "onde_procurar": ".resumo-alt-ai",
                 },
                 "_procurar_animacao": {
                     "status": true,
@@ -1979,7 +2093,52 @@ const api = [
                 "posicaoY": "bottom 1.8%",
                 "posicaoX": "left 0.5%",
                 "tamanho": "10%",
-            }
+            },
+            "modulos": [
+                {
+                    "audio": {
+                        "ativo": true,
+                        "idRef": ".resumo-alt-ai"
+                    },
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": ['editar'],
+                        "idRef": ".resumo-alt-ai",
+                        "blocoRenderizacao": `
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                            <button class="toolbar-button" id="limpar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                                Limpar
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                        Resumo
+                                    </button>
+                                    <button class="toolbar-button" id="destacar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                        Destacar
+                                    </button>
+                                    <button class="toolbar-button" id="dicionario-toolbar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-search"><path d="M21 6H3"/><path d="M10 12H3"/><path d="M10 18H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
+                                        Dicionário
+                                    </button>
+                                    
+                                </div>
+                            </div>
+
+                       `
+                    }
+                }
+            ]
         }
     },
 
@@ -2547,13 +2706,7 @@ const api = [
         "data": {
             "container_render": `
                 <div class="pagina-tipo-atividade animation">
-                    <!--
-                    <p class="texo-intro-atividade">
-                        A frase em latim “Ex Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, sEx Africa semper aliquid novi”, do escritor romano Caio Plínio, dita há 2.000 anos, significa “da África sempre há novidades a reportar”. A partir dessa ideia, o curador alemão Alfons Hug montou a exposição “Ex Africa”, que conta com 18 artistas de oito países africanos e dois artistas brasileiros. A ideia da mostra é retratar a produção artística africana sem estereótipos aos quais estamos acostumados, como objetos de artesanato e referencias iconográficas. Disponível em: https://www1.folha.uol.com.br/ilustrada/2018. Acesso em: 12 jul. 2018 (adaptado).
-                    </p>
-                    -->
                     <div id="h5p-container"></div>
-
                 </div>
         `,
         },
@@ -2717,7 +2870,17 @@ const api = [
                 //     }  
                 // }
             },
-            "configuracoes_gerais": {},
+            "configuracoes_gerais": {
+                 // Habilitar Procurar de Paragrafos ná Pagina 6
+                //  "_procurar_paragrafos": {
+                //     "status": true,
+                //     "onde_procurar": ".pagina-tipo-atividade",
+                // },
+                // "_procurar_animacao": {
+                //     "status": true,
+                //     "onde_procurar_animacao": ".animation",
+                // }
+            },
             "fonte": {
                 // "titulo":"1rem",
                 "paragrafos": "1rem",
@@ -2752,9 +2915,47 @@ const api = [
                     "audio": {
                         "ativo": true,
                         "idRef": ".transcritor--box-audio"
+                    },
+                    "toolbar": {
+                        "ativo": true,
+                        "refTools": ['editar'],
+                        "idRef": "",
+                        "blocoRenderizacao": `
+                            <div id="toolbar" style="display: none; position: absolute;">
+                                <div class="toolbar-container">
+                                    <div class="box-marca-cores" id="boxMarcaCores" style="display: none;">
+                                        <div class="cores-destaque">
+                                            <span class="corTexto" style="background-color: red;" data-cor="red" data-color="white"></span>
+                                            <span class="corTexto" style="background-color: green;" data-cor="green"  data-color="white"></span>
+                                            <span class="corTexto" style="background-color: blue;" data-cor="blue"  data-color="white"></span>
+                                            <button class="toolbar-button" id="limpar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+                                                Limpar
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    <button class="toolbar-button" id="resumo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                        Resumo
+                                    </button>
+                                    <button class="toolbar-button" id="destacar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                                        Destacar
+                                    </button>
+                                    <button class="toolbar-button" id="dicionario-toolbar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-search"><path d="M21 6H3"/><path d="M10 12H3"/><path d="M10 18H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
+                                        Dicionário
+                                    </button>
+                                    
+                                </div>
+                            </div>
+
+                       `
                     }
                 }
             ]
+            
         }
     },
 

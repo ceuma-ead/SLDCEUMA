@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
 
     });
-    
+
 
 });
 
@@ -187,7 +187,7 @@ gliderElement.addEventListener('glider-slide-visible', function (event) {
     renderVideo(event.detail.slide);
     // Renderizar Audio
     renderAudio(event.detail.slide);
-    
+
 
     console.log("Está na Página 🎉 => " + event.detail.slide);
 });
@@ -1214,7 +1214,7 @@ function injectScriptPage(slideIndex) {
             }
         });
     } else {
-        
+
         // Atualiza o controle do glider caso não haja scripts
         glider.refresh(true);
         glider.updateControls();
@@ -1236,7 +1236,7 @@ function AnimationVariablesUpPage(slideIndex) {
 
     // Atualiza o controle do glider se estiver definido
     if (typeof glider !== 'undefined') {
-        
+
         glider.refresh(true);
         glider.updateControls();
     } else {
@@ -1253,7 +1253,7 @@ function AnimationVariablesUpPage(slideIndex) {
 function aplicarReflowVariaveis(variaveis) {
     // Define os valores de 'Entrada' e forçam o reflow
 
-    
+
     variaveis.forEach(variable => {
         document.documentElement.style.setProperty(variable.Nome, variable.Entrada);
     });
@@ -1684,98 +1684,6 @@ function modulosPage(slideIndex) {
                     // Chama a função ao carregar a página para verificar as tentativas atuais
                     verificarTentativas();
 
-                    // // Função para sintetizar e gerar o áudio
-                    // function gerarAudio() {
-                    //     const texto = document.querySelectorAll(modulos.audio.idRef)[slideIndex - 1].innerText || '';
-                    //     const velocidade = document.getElementById("speed-range").value;
-                    //     const tom = document.getElementById("pitch-range").value;
-                    //     const langCode = document.getElementById("language-select").value;
-                    //     const voz = document.getElementById("voice-select").value;
-
-                    //     playBtnPrevizualizar.innerHTML = `
-                    //         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                    //         Play
-                    //     `;
-
-                    //     sintetizarAudio(tokens[0], texto, velocidade, tom, langCode, voz, "")
-                    //         .then(blob => {
-                    //             // Libera o URL anterior do blob para liberar recursos
-                    //             if (audioBlobUrl) {
-                    //                 URL.revokeObjectURL(audioBlobUrl);
-                    //             }
-
-                    //             audioBlobUrl = URL.createObjectURL(blob);
-                    //             audioOuvinte = new Audio(audioBlobUrl); // Define o novo áudio gerado
-                    //             audioGerado = true;  // Marca que o áudio foi gerado
-
-                    //             playBtnPrevizualizar.innerHTML = `Play`;
-
-                    //             // Quando o áudio estiver pronto, atualiza a interface
-                    //             audioOuvinte.addEventListener("loadeddata", () => {
-                    //                 const durationElement = document.querySelector(".time .length");
-                    //                 if (durationElement) {
-                    //                     durationElement.textContent = getTimeCodeFromNum(audioOuvinte.duration);
-                    //                 }
-                    //                 audioOuvinte.volume = 0.75;
-                    //             });
-
-                    //             // Tocar o áudio gerado
-                    //             audioOuvinte.play();
-
-                    //             // Alternar entre os botões "Play" e "Pause"
-                    //             playBtnPrevizualizar.style.display = "none";
-                    //             pauseBtnPrevizualizar.style.display = "flex";
-
-                    //             // Quando o áudio parar, volta para o botão "Play"
-                    //             audioOuvinte.onended = () => {
-                    //                 playBtnPrevizualizar.style.display = "inline-block";
-                    //                 pauseBtnPrevizualizar.style.display = "none";
-                    //             };
-                    //         })
-                    //         .catch(error => {
-                    //             console.error("Erro ao gerar o áudio", error);
-                    //         });
-                    // }
-
-                    // // Evento para o botão de "Play"
-                    // playBtnPrevizualizar.addEventListener("click", () => {
-                    //     if (tentativas < maxTentativas) {
-                    //         incrementarTentativas(); // Incrementa as tentativas ao clicar em "Play"
-
-                    //         // Regenera o áudio sempre que os valores mudarem
-                    //         document.getElementById("speed-range").addEventListener("change", gerarAudio);
-                    //         document.getElementById("pitch-range").addEventListener("change", gerarAudio);
-                    //         document.getElementById("language-select").addEventListener("change", gerarAudio);
-                    //         document.getElementById("voice-select").addEventListener("change", gerarAudio);
-
-                    //         if (!audioGerado) {
-                    //             gerarAudio(); // Gera o áudio se ele ainda não foi gerado
-                    //         } else {
-                    //             audioOuvinte.play(); // Caso já tenha sido gerado, apenas toca o áudio
-                    //             playBtnPrevizualizar.style.display = "none";
-                    //             pauseBtnPrevizualizar.style.display = "flex";
-                    //         }
-                    //     }
-                    // });
-
-
-                    // // Evento para o botão de "Pause"
-                    // pauseBtnPrevizualizar.addEventListener("click", () => {
-
-                    //     if (audioOuvinte) {
-                    //         verificarTentativas();
-                    //         audioOuvinte.pause();
-
-                    //         playBtnPrevizualizar.style.display = "inline-block";
-                    //         pauseBtnPrevizualizar.style.display = "none";
-                    //     }
-                    // });
-
-
-
-                    // ============================================================================================================= \\
-
-                    // Variáveis para armazenar os valores atualizados dos controles
 
                     let velocidadeAtual = document.getElementById("speed-range").value;
                     let tomAtual = document.getElementById("pitch-range").value;
@@ -1901,13 +1809,10 @@ function modulosPage(slideIndex) {
                         }
                     });
 
-
-
                     const abrirOuvinteDownload = document.querySelector(".openDownload-btn")
                     abrirOuvinteDownload.addEventListener('click', () => {
                         addAccordionConfigDownload()
                     })
-
 
                     // Função para alternar entre as chaves de API
                     function usarOutraChave(indexAtual) {
@@ -1917,7 +1822,6 @@ function modulosPage(slideIndex) {
                             return null; // Se não houver mais chaves
                         }
                     }
-
 
                     // Variáveis para controle
                     let isPlaying = false; // Variável para controlar o estado de reprodução
@@ -2028,7 +1932,6 @@ function modulosPage(slideIndex) {
                         playBtn.classList.add('btn-success');
                     }
 
-
                     // Função de síntese de voz
                     function sintetizarAudio(apiKey, texto, velocidade, tom, langCode, voz, logPre) {
                         const apiUrl = `https://api.voicerss.org/`;
@@ -2128,49 +2031,111 @@ function modulosPage(slideIndex) {
         });
 
         // Modulo de Toolbar
-        const moduloToolbar = pageData.paramentros.modulos
+        // const moduloToolbar = pageData.paramentros.modulos
+
+        // moduloToolbar.forEach((modulo) => {
+        //     const toolbarRenderizacao = modulo.toolbar
+
+        //     if (toolbarRenderizacao) {
+
+        //         // pegar container de renderização
+        //         const containerToolbar = toolbarRenderizacao.idRef
+        //         // console.log(containerToolbar)
+        //         //Container do CarroselComponentes id_component
+
+        //         const CarroselComponent = document.querySelector(`${pageData.id_component}`)
+        //         console.log(CarroselComponent)
+
+        //         const containerPage = document.querySelectorAll(containerToolbar)[0];
+        //         // console.log(containerPage)
+        //         if (containerPage) {
+        //             const classRemover = document.querySelector(".div-render-toolbar");
+
+        //             if (classRemover) {
+        //                 $(".div-render-toolbar").html("");
+        //             }
+        //             // criar um marcador de referencia para a página
+        //             containerPage.classList.add(toolbarRenderizacao.refTools);
+        //             let div = document.createElement("div");
+        //             div.className = `div-render-toolbar`;
+        //             const toolbar = toolbarRenderizacao.blocoRenderizacao;
+        //             // Atribuir um Atributo para ele procurar o toolbar pelos containers
+        //             containerPage.setAttribute("procurar-toolbar-rfTools",toolbarRenderizacao.refTools)
+        //             // console.log(containerPage)
+
+
+        //             div.innerHTML = `${toolbar}`
+        //             document.body.appendChild(div)
+
+
+        //             // Passar as configurações para o
+        //             if(typeof toolbarRender === "function"){
+        //                 toolbarRender(pageData , slideIndex , toolbarRenderizacao.refTools);
+
+        //             } 
+        //         }
+
+        //     } else {
+        //         $(".div-render-toolbar").html(``);
+        //         console.log("Toolbar Não Ativo para Essa página")
+        //     }
+        // })
+
+        // Módulo de Toolbar
+        const moduloToolbar = pageData.paramentros.modulos;
 
         moduloToolbar.forEach((modulo) => {
-            const toolbarRenderizacao = modulo.toolbar
+            const toolbarRenderizacao = modulo.toolbar;
 
             if (toolbarRenderizacao) {
+                // Pegar o container de renderização
+                const containerToolbar = toolbarRenderizacao.idRef;
 
-                // pegar container de renderização
-                const containerToolbar = toolbarRenderizacao.idRef
-                // console.log(containerToolbar)
-                const containerPage = document.querySelectorAll(containerToolbar)[slideIndex - 1];
-                if (containerPage) {
+                // Pegar todos os elementos correspondentes a `containerToolbar`
+                const containerElements = document.querySelectorAll(containerToolbar);
+
+                // Verifica se encontrou algum elemento
+                if (containerElements.length > 0) {
+                    // Remover qualquer classe anterior que use .div-render-toolbar
                     const classRemover = document.querySelector(".div-render-toolbar");
 
                     if (classRemover) {
                         $(".div-render-toolbar").html("");
                     }
-                    // criar um marcador de referencia para a página
-                    containerPage.classList.add(toolbarRenderizacao.refTools);
-                    let div = document.createElement("div");
-                    div.className = `div-render-toolbar`;
-                    const toolbar = toolbarRenderizacao.blocoRenderizacao;
-                    // Atribuir um Atributo para ele procurar o toolbar pelos containers
-                    containerPage.setAttribute("procurar-toolbar-rfTools",toolbarRenderizacao.refTools)
-                    // console.log(containerPage)
 
+                    // Iterar sobre cada elemento correspondente e processar cada um
+                    containerElements.forEach((containerPage, index) => {
+                        // Criar um marcador de referência para a página com IDs únicos
+                        const uniqueId = `${toolbarRenderizacao.refTools}-${index}`;
+                        containerPage.classList.add(toolbarRenderizacao.refTools);
+                        containerPage.id = uniqueId; // Atribuir um ID único
 
-                    div.innerHTML = `${toolbar}`
-                    document.body.appendChild(div)
-                    
-  
-                    // Passar as configurações para o
-                    if(typeof toolbarRender === "function"){
-                        toolbarRender(pageData , slideIndex , toolbarRenderizacao.refTools);
-                        
-                    } 
+                        let div = document.createElement("div");
+                        div.className = `div-render-toolbar`;
+
+                        const toolbar = toolbarRenderizacao.blocoRenderizacao;
+
+                        // Atribuir um atributo ao container para procurar o toolbar pelos containers
+                        containerPage.setAttribute("procurar-toolbar-rfTools", toolbarRenderizacao.refTools);
+
+                        // Inserir o conteúdo da toolbar no novo div
+                        div.innerHTML = `${toolbar}`;
+                        document.body.appendChild(div);
+
+                        // Passar as configurações para o toolbarRender
+                        if (typeof toolbarRender === "function") {
+                            toolbarRender(pageData, slideIndex, toolbarRenderizacao.refTools);
+                        }
+                    });
+                } else {
+                    console.log("Nenhum container encontrado para a toolbar.");
                 }
-
             } else {
                 $(".div-render-toolbar").html(``);
-                console.log("Toolbar Não Ativo para Essa página")
+                console.log("Toolbar não ativo para essa página.");
             }
-        })
+        });
+
 
     }
 }
