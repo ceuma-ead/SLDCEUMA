@@ -527,10 +527,15 @@ function toolbarRender(pagina = {}, sliderIndex = 0, documentoRenderizacao = [])
         });
     }
 
-    // Função para conectar o botão de limpar
-    document.getElementById('limpar').addEventListener('click', function () {
-        deletarMarcacao();
-    });
+    const limparToolbarRender =  document.querySelectorAll('#limpar');
+    // console.log(limparToolbarRender)
+    limparToolbarRender.forEach((btn,index) =>{
+        btn.addEventListener("click",function(){
+            // alert('oi')
+            restaurarDestaques();
+            deletarMarcacao();
+        })
+    })
 
     // Função para obter apenas a primeira palavra da seleção
     function obterPrimeiraPalavra() {
@@ -678,6 +683,5 @@ function toolbarRender(pagina = {}, sliderIndex = 0, documentoRenderizacao = [])
             abrirResumo(); // Reabre o menu de resumo
         }
     });
-
 
 }

@@ -566,7 +566,6 @@ function adicionarEstilos(media, estilos, slideIndex) {
 // Chamada para a função responsiva
 responsivePage(savedPosition);
 
-
 // Função para remover os estilos anteriores ao mudar de slide
 function removerEstilosAnteriores() {
     const oldStyles = document.querySelectorAll('style[id^="style-slide-"]');
