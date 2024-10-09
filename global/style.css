@@ -18,6 +18,7 @@
 @import url(../css/video.css);
 @import url(../css/audio.css);
 @import url(../css/atividade.css);
+@import url(../css/vlibras.css);
 @import url(../css/variaveis.css);
 
 
@@ -33,9 +34,9 @@
 
 
 
-:root{
-    --bg-tooltip:rgb(255, 255, 255);
-    --cor-tooltip:black;
+:root {
+    --bg-tooltip: rgb(255, 255, 255);
+    --cor-tooltip: black;
 }
 
 * {
@@ -71,11 +72,12 @@ img {
 
 
 .tippy-box[data-theme~='light'] {
-    background-color:var( --bg-tooltip);
-    color:var(--cor-tooltip);
+    background-color: var(--bg-tooltip);
+    color: var(--cor-tooltip);
     font-size: 0.9rem;
 }
 
-.tippy-arrow{
-    color:var(--bg-tooltip);
+.tippy-arrow {
+    color: var(--bg-tooltip);
 }
+
