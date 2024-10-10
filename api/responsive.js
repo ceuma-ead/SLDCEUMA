@@ -17,6 +17,11 @@ const responsivo = [
 
             }
 
+            .carrosel--container {
+            background-position-x: 50%;
+            background-position-y: 50%;
+            }
+
             svg {
                 padding: 2px !important;
             
@@ -110,7 +115,7 @@ const responsivo = [
             }
 
             #image-capaOverlay {
-                max-width: 12.5% !important;
+                max-width: 10% !important;
             }  
                 
             .olcards li .content .text {
