@@ -2086,7 +2086,7 @@ function modulosPage(slideIndex) {
 
         moduloToolbar.forEach((modulo) => {
             const toolbarRenderizacao = modulo.toolbar;
-
+            
             if (toolbarRenderizacao) {
                 // Pegar o container de renderização
                 const containerToolbar = toolbarRenderizacao.idRef;
@@ -2096,19 +2096,22 @@ function modulosPage(slideIndex) {
 
                 // Verifica se encontrou algum elemento
                 if (containerElements.length > 0) {
-                    // Remover qualquer classe anterior que use .div-render-toolbar
-                    const classRemover = document.querySelector(".div-render-toolbar");
-
-                    if (classRemover) {
-                        $(".div-render-toolbar").html("");
-                    }
 
                     // Iterar sobre cada elemento correspondente e processar cada um
                     containerElements.forEach((containerPage, index) => {
+                        
                         // Criar um marcador de referência para a página com IDs únicos
                         const uniqueId = `${toolbarRenderizacao.refTools}-${index}`;
                         containerPage.classList.add(toolbarRenderizacao.refTools);
                         containerPage.id = uniqueId; // Atribuir um ID único
+
+                        // Remover qualquer classe anterior que use .div-render-toolbar se o Toolbar já
+                        // tiver sido rendenrizado no DOM ele remove para não duplicar
+                        const classRemover = document.querySelector(".div-render-toolbar");
+
+                        if (classRemover) {
+                            $(".div-render-toolbar").html("");
+                        }
 
                         let div = document.createElement("div");
                         div.className = `div-render-toolbar`;
