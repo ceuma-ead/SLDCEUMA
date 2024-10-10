@@ -31,7 +31,7 @@ function toolbarRender(pagina = {}, sliderIndex = 0, documentoRenderizacao = [])
 
 
     // Função para carregar a configuração da toolbar a partir de um arquivo JSON
-    const toolbarConfig = async (url = "../modules/toolbar.json") => {
+    const toolbarConfig = async (url = "./modules/toolbar.json") => {
         try {
             const response = await fetch(url); // Faz a requisição do arquivo JSON
             if (!response.ok) {
